@@ -16,12 +16,12 @@ get_template_part( 'partials/hero', 'normal' );
 
 ?>
 
-<section class="uwhr-body container">
+<section class="container uw-body">
     <div class="row">
 
-        <?php uwhr_breadcrumbs(); ?>
+        <?php get_template_part( 'breadcrumbs' ); ?>
 
-        <article class="uwhr-content col-lg-12">
+        <article class="uw-body-copy col-lg-12">
 
             <?php
                 while ( have_posts() ) : the_post();
