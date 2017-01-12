@@ -30,15 +30,13 @@
       <?php if(!empty($banner) && $banner[0]){ ?>
         <div id="hashtag"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
       <?php } ?>
-        <h1 class="uw-site-title"><?php the_title(); ?></h1>
-        <span class="udub-slant"><span></span></span>
+        <h1 class="uw-site-title">Got WorkDay questions... Yo we'll solve them!</h1>
       <?php if(!empty($buttontext) && $buttontext[0]){ ?>
         <a class="uw-btn btn-sm btn-none" href="<?php echo $buttonlink[0] ? $buttonlink[0] : ''; ?>"><?php echo $buttontext[0] ? $buttontext[0] : ''; ?></a>
       <?php } ?>
       </div>
     </div>
 </div>
-
 <div class="container uw-body">
 
   <div class="row">
@@ -47,19 +45,14 @@
 
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
-      <!--<?php get_template_part( 'breadcrumbs' ); ?>-->
 
       <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-          <h1>Featured stuff</h1>
-
-          <p>Mason.. put 3 column code here!</p>
+        content
 
       </div>
 
     </div>
-
-
 
   </div>
 
