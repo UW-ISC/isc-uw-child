@@ -9,23 +9,20 @@
 
 get_header();
 
-get_template_part( 'partials/hero', 'normal' );
 ?>
 
 <section class="uw-body container">
     <div class="row">
 
+       <?php get_template_part( 'menu', 'mobile' ); ?>
        <?php get_template_part( 'breadcrumbs' ); ?>
 
         <article class="uw-content col-lg-12">
 
             <?php
             while ( have_posts() ) : the_post();
-                //the_title( '<h3 class="title">', '</h3>' );
-                //uwhr_toc();
                 get_template_part( 'content', 'page' );
 
-                //edit_post_link();
             endwhile;
 
             display_child_pages();

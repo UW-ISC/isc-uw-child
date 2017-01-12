@@ -29,7 +29,6 @@ add_filter( 'theme_page_templates', 'tfc_remove_page_templates' );
  * @author Kevin Zhao <zhaok24@uw.edu>
  * @copyright Copyright (c) 2016, University of Washington
  * @since 0.2.0
- * @package UWHR
  *
  * @global $post
  */
