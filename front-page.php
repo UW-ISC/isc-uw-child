@@ -4,7 +4,7 @@
   */
 ?>
 
-<?php get_header();
+<?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
         $url = get_site_url() . "/wp-content/themes/uw-2014/assets/headers/suzzallo.jpg";
