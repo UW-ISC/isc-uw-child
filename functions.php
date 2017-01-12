@@ -11,7 +11,6 @@ function my_theme_enqueue_styles() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
-
 // Remove any templates from the UW Marketing theme that will not be used
 
 function tfc_remove_page_templates( $templates ) {
@@ -101,30 +100,15 @@ endif;
     function user_guide_menu( $return = false ) {
 
         // $exclude_ids = get_menu_excluded_ids();
+          build_page_navigation(get_the_ID());
+          $headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
+          echo print_r($headers);
+          echo "HEY";
 
-        // Populates headers based on headers on the page.
-        $page_data = get_post();
-        $page_content = $page_data ? $page_data->post_content : '';
-        $links = array();
-        $results = '';
-        $regex = '/<h4.*?>(.*?)<\/h4>/';
-
-        if ( preg_match_all($regex, $page_content, $matches) ) {
-            $results = $matches[1];
-                // Build out links named array with slug and title
-                foreach ($results as $heading) {
-                    // Sluggify the heading
-                    $slug = sanitize_title($heading);
-                    // Store it in $links for saving
-                    $links[$slug] = $heading;
-                }
-        } else {
-            $results = '';
-        }
-
-        // Performs actions on those headers.
-        $headers = $links;
         $pages = '';
+
+        // filters the content to add ids to the headers so that the menu will work
+        add_filter( 'the_content', 'add_ids_to_header_tags_auto');
 
         if (!empty($headers)) {
           foreach ($headers as $slug=>$header) {
@@ -333,4 +317,61 @@ if ( ! function_exists('uw_breadcrumbs') ) :
   }
 
 endif;
+
+function build_page_navigation( $post_id ) {
+
+    // Grab the post and post_content
+    $page_data = get_post($post_id);
+    $page_content = $page_data ? $page_data->post_content : '';
+
+    $links = array();
+    $results = '';
+    $regex = '/<h4.*?>(.*?)<\/h4>/';
+
+    if ( preg_match_all($regex, $page_content, $matches) ) {
+        $results = $matches[1];
+        // Build out links named array with slug and title
+        foreach ($results as $heading) {
+            // Sluggify the heading
+            $slug = sanitize_title($heading);
+
+            // Store it in $links for saving
+            $links[$slug] = $heading;
+        }
+    } else {
+        $results = '';
+    }
+
+    // Slugs are added to h4s in a filter on the_content function
+    update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
+}
+
+function add_ids_to_header_tags_auto( $content ) {
+
+  // _uwhr_page_anchor_links represents if a post contains these anchor links, so if there
+  // are no links we don't want to bother with this method...
+  $headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
+  if (empty($headers)) {
+      return $content;
+  }
+
+  $pattern = '#(?P<full_tag><(?P<tag_name>h4)>(?P<tag_contents>[^<]*)</h4>)#i';
+  if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
+      $find = array();
+      $replace = array();
+      $top = '';
+      foreach( $matches as $match ) {
+          // if ( strlen( $match['tag_extra'] ) && false !== stripos( $match['tag_extra'], 'id=' ) ) {
+          //     continue;
+          // }
+          $find[]    = $match['full_tag'];
+          $id        = sanitize_title( $match['tag_contents'] );
+          $id_attr   = sprintf( ' id="%s"', $id );
+          $replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $match['tag_name'], $id_attr, $match['tag_contents']);
+          $top = '<p class="uwhr-toc-top-btn"><a href="#top">Return to top</a></p>';
+      }
+      $content = str_replace( $find, $replace, $content ) . '<p class="uwhr-toc-top-btn"><a href="#top">Return to top</a></p>';
+  }
+  return $content;
+}
 ?>
