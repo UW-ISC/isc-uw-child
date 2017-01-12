@@ -88,4 +88,70 @@ if ( ! function_exists( 'display_child_pages_with_toc' ) ) :
     }
 endif;
 
+/**
+ * User Guide Menu
+ *
+ * Lists all User Guides in the sidebar and also builds an
+ * in-page navigation.
+ *
+ * @author Abhishek Chauhan <abhi3@uw.edu>
+ */
+if ( ! function_exists( 'user_guide_menu' ) ) :
+    function user_guide_menu( $return = false ) {
+
+        // $exclude_ids = get_menu_excluded_ids();
+
+        // Populates headers based on headers on the page.
+        $page_data = get_post();
+        $page_content = $page_data ? $page_data->post_content : '';
+        $links = array();
+        $results = '';
+        $regex = '/<h4.*?>(.*?)<\/h4>/';
+
+        if ( preg_match_all($regex, $page_content, $matches) ) {
+            $results = $matches[1];
+                // Build out links named array with slug and title
+                foreach ($results as $heading) {
+                    // Sluggify the heading
+                    $slug = sanitize_title($heading);
+                    // Store it in $links for saving
+                    $links[$slug] = $heading;
+                }
+        } else {
+            $results = '';
+        }
+
+        // Performs actions on those headers.
+        $headers = $links;
+        $pages = '';
+
+        if (!empty($headers)) {
+          foreach ($headers as $slug=>$header) {
+            $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$header.'" href="#'.$slug.'">'.$header.'</a></li>';
+          }
+        }
+
+        $first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo('name') . '"> Table of Contents </a></li>';
+
+        $html = sprintf( '<ul>%s%s</ul>',
+            $first_li,
+            $pages
+        );
+
+        if ( empty($pages) ) {
+            if ( $return ) {
+                return false;
+            } else {
+                echo '';
+            }
+        } else {
+            $menu = '<nav class="uw-accordion-menu float-menu" id="pageNav toc" aria-label="Site Menu" tabindex="-1" >' . $html . '</nav>';
+            if ( $return ) {
+                return $menu;
+            } else {
+                echo $menu;
+            }
+        }
+    }
+endif;
 ?>
