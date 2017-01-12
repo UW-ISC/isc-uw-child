@@ -38,3 +38,6 @@
 
 
     <?php get_template_part('thinstrip'); ?>
+
+    <?php require( get_template_directory() . '/inc/template-functions.php' );
+          uw_dropdowns(); ?>

@@ -9,8 +9,8 @@
           <ul class="uw-thin-links">
             <li><a href="http://uw.edu/studentlife" title="Students">asfdsfad</a></li>
             <li><a href="http://uw.edu/parents" title="Parents">sadfasdf</a></li>
-            <li><a href="http://uw.edu/facultystaff" title="Faculty & Staff">sadfas</a></li>
-            <li><a href="http://uw.edu/alumni" title="Alumni">asdfasdf</a></li>
+            <li><a href="http://uw.edu/facultystaff" title="Faculty & Staff">Faculty & Staff</a></li>
+            <li><a href="http://uw.edu/alumni" title="Alumni">Alumni</a></li>
           </ul>
       </nav>
       <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
