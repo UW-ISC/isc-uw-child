@@ -3,7 +3,6 @@
  * Template Name: Article Section
  *
  * A full-width template, that displays the description of a specific article
- * as well as listing the children pages within it
  *
  * @author Abhishek Chauhan <abhi3@uw.edu>
  */

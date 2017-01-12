@@ -40,6 +40,7 @@ if ( ! function_exists( 'display_child_pages_with_toc' ) ) :
       );
       $children_pages = get_pages($args);
       $toc = count($children_pages) > 0;
+      $html = '';
       if ($toc) {
         // Fancy title of Table of Contents
         $html = '<div class="isc-toc" id="toc"><p class="h4 beefy gold">Table of Contents</p><span class="slant xs short gold"></span>';
