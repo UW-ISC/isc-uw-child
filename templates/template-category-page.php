@@ -15,6 +15,8 @@ get_template_part( 'partials/hero', 'normal' );
 <section class="uw-body container">
     <div class="row">
 
+       <?php get_template_part( 'breadcrumbs' ); ?>
+
         <article class="uw-content col-lg-12">
 
             <?php
