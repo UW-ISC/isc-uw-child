@@ -61,5 +61,6 @@
 .dawgdrops-item a { color: #fff; }
 
 /* body */
+#uw-container { overflow-x: initial !important; }
 .uw-body { padding: 0; }
 .uw-body-copy { margin-top: -120px; }

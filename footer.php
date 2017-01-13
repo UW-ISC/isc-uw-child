@@ -6,7 +6,7 @@
 
     <h4>asdfasdf with us:</h4>
 
-    
+
     <p>&copy; <?php echo date("Y"); ?> University of Washington  |  Seattle, WA</p>
 
 </div>

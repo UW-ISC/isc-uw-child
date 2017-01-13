@@ -66,13 +66,13 @@
                         </div>
 
                         <div class="pull-left" style="width: 50%; background: #eee; padding: 20px; margin-bottom:15px;">
-                            <h3>feature 1</h3>
+                            <h3>feature 2</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
                             <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
                         </div>
 
                         <div class="pull-left" style="width: 48%; background: #eee; padding: 20px; margin-right:15px; margin-bottom:15px;">
-                            <h3>feature 1</h3>
+                            <h3>feature 3</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
                             <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
                         </div>
