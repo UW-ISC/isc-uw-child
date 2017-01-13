@@ -20,7 +20,7 @@
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 
-<div class="uw-body isc-body">
+<div class="uw-body">
 
     <div class="uw-content" role='main'>
 
