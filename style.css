@@ -12,4 +12,10 @@
  Text Domain:  uw-isc-child
 */
 
+
+.uw-thinstrip { background: #ccc; color: #4b2e83; }
 .isc-body { padding: 0; }
+
+/* main nav */
+#dawgdrops { background-color: #4b2e83; }
+.dawgdrops-item a { color: #fff; }

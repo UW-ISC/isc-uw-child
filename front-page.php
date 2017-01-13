@@ -7,7 +7,7 @@
 <?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/uw-2014/assets/headers/suzzallo.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
@@ -15,7 +15,6 @@
         $mobileimage = $mobileimage[0];
         $hasmobileimage = 'hero-mobile-image';
       }
-      $sidebar = get_post_meta($post->ID, "sidebar");
       $banner = get_post_meta($post->ID, "banner");
       $buttontext = get_post_meta($post->ID, "buttontext");
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
@@ -28,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div style="background: lime; min-height: 300px;">
+      <div style="background: gray url('/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg'); min-height:300px;">
           <div class="container">
 
             <div class="row">
