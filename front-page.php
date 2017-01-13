@@ -21,35 +21,33 @@
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 
-<div class="uw-hero-image hero-height <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
-    <?php if( !empty($mobileimage) ) { ?>
-    <div class="mobile-image" style="background-image: url(<?php echo $mobileimage ?>);"></div>
-    <?php } ?>
-    <div id="hero-bg">
-      <div id="hero-container" class="container">
-      <?php if(!empty($banner) && $banner[0]){ ?>
-        <div id="hashtag"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
-      <?php } ?>
-        <h1 class="uw-site-title">Got WorkDay questions... Yo we'll solve them!</h1>
-      <?php if(!empty($buttontext) && $buttontext[0]){ ?>
-        <a class="uw-btn btn-sm btn-none" href="<?php echo $buttonlink[0] ? $buttonlink[0] : ''; ?>"><?php echo $buttontext[0] ? $buttontext[0] : ''; ?></a>
-      <?php } ?>
-      </div>
-    </div>
-</div>
-<div class="container uw-body">
+<div class="uw-body isc-body">
+
 
   <div class="row">
 
-    <div class="hero-content col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
+    <div class="uw-content" role='main'>
 
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div id='main_content' class="uw-body-copy" tabindex="-1">
+      <div style="background: lime; height: 300px;">
+          <div class="container">
 
-        content
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>got hr and payroll questions?</h2>
+                </div>
+                <div class="col-md-4">
+                    <h2>shortcuts</h2>
+                </div>
+            </div>
 
+          </div>
+      </div>
+
+      <div id='main_content' class="container uw-body-copy" tabindex="-1">
+          <h2>features</h2>
       </div>
 
     </div>
