@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div style="background: gray url('/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg'); min-height:400px;">
+      <div style="background: gray url('/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg'); min-height:500px;">
           <div class="container">
 
             <div class="row">
@@ -52,43 +52,43 @@
 
           <div class="row">
 
-              <div class="col-md-8"  style="background: #eee;">
+              <div class="col-md-8">
+
                   <h2>features</h2>
 
-                  <div class="row">
+
 
                      <!-- loop featured pages here -->
-                    <div class="col-md-6">
-                        <h3>feature 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                        <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                    </div>
+                        <div class="pull-left" style="width: 48%; background: #eee; padding: 20px; margin-right:15px; margin-bottom:15px;">
+                            <h3>feature 1</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                            <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                        </div>
 
-                    <div class="col-md-6">
-                        <h3>feature 2</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                        <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                    </div>
+                        <div class="pull-left" style="width: 50%; background: #eee; padding: 20px; margin-bottom:15px;">
+                            <h3>feature 1</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                            <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                        </div>
 
-                    <div class="col-md-6">
-                        <h3>feature 3</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                        <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                    </div>
+                        <div class="pull-left" style="width: 48%; background: #eee; padding: 20px; margin-right:15px; margin-bottom:15px;">
+                            <h3>feature 1</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                            <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                        </div>
                     <!-- end loop -->
 
-                  </div>
 
               </div>
-              <div class="col-md-4" style="background: #fff;">
+              <div class="col-md-4">
                   <h2>news</h2>
 
                   <!-- loop featured pages here -->
-                  <h3>news 1</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                  <div style="background: #eee; padding: 20px;">
+                      <h3>news 1</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                  </div>
 
-                  <h3>news 2</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
                   <!-- end loop -->
 
                   <p><a class="uw-btn btn-sm" href="#">see all news</a></p>
