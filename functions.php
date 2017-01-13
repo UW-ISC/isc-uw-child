@@ -100,11 +100,9 @@ endif;
     function user_guide_menu( $return = false ) {
 
         // $exclude_ids = get_menu_excluded_ids();
-          build_page_navigation(get_the_ID());
-          $headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
-          echo print_r($headers);
-          echo "HEY";
-
+        // grabs all the h4s in the content
+        build_page_navigation(get_the_ID());
+        $headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
         $pages = '';
 
         // filters the content to add ids to the headers so that the menu will work
@@ -167,7 +165,7 @@ if ( ! function_exists( 'display_child_pages' ) ) :
         // 1) Article Page Title, 2) Article Page Excerpt 3) List of Article Sections under that Article Page)
         foreach ($children_pages as $article) {
             $page_url = get_permalink($article);
-            $metadata = get_post_meta($article->ID);
+            $metadata = get_post_custom($article->ID);
             $summary = '';
             if (array_key_exists('summary-content', $metadata)) {
               $summary = $metadata['summary-content'][0];
@@ -341,8 +339,7 @@ function build_page_navigation( $post_id ) {
     } else {
         $results = '';
     }
-
-    // Slugs are added to h4s in a filter on the_content function
+    // saving this in the metadata of the post so that we can use this later on
     update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
 }
 
@@ -361,9 +358,6 @@ function add_ids_to_header_tags_auto( $content ) {
       $replace = array();
       $top = '';
       foreach( $matches as $match ) {
-          // if ( strlen( $match['tag_extra'] ) && false !== stripos( $match['tag_extra'], 'id=' ) ) {
-          //     continue;
-          // }
           $find[]    = $match['full_tag'];
           $id        = sanitize_title( $match['tag_contents'] );
           $id_attr   = sprintf( ' id="%s"', $id );
