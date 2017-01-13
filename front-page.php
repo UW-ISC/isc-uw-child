@@ -48,6 +48,20 @@
 
       <div id='main_content' class="container uw-body-copy" tabindex="-1">
           <h2>features</h2>
+          <div class="row">
+              <div class="col-md-4">
+                  <h3>feature 1</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+              </div>
+              <div class="col-md-4">
+                  <h3>feature 2</h3>
+                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+              </div>
+              <div class="col-md-4">
+                  <h3>feature 3</h3>
+                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+              </div>
+          </div>
       </div>
 
     </div>
