@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div style="background: gray url('/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg'); min-height:300px;">
+      <div style="background: gray url('/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg'); min-height:400px;">
           <div class="container">
 
             <div class="row">
@@ -37,10 +37,10 @@
                 <div class="col-md-4">
                     <h2>shortcuts</h2>
                     <ul>
-                        <li><a class="uw-btn" href="#">Call to action</a></li>
-                        <li><a class="uw-btn" href="#">Call to action</a></li>
-                        <li><a class="uw-btn" href="#">Call to action</a></li>
-                        <li><a class="uw-btn" href="#">Call to action</a></li>
+                        <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
+                        <li><a class="uw-btn" href="#">Ask for help!</a></li>
+                        <li><a class="uw-btn" href="#">Learn about Timesheets</a></li>
+                        <li><a class="uw-btn" href="#">New Hires: Stare here!</a></li>
                     </ul>
                 </div>
             </div>
