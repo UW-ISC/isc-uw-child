@@ -3,12 +3,17 @@
     <div class="container">
 
       <div class="pull-left">
-            <a href="/hrp-portal" title="ISC Home" class=""><h1 style="margin:0;">Integrated Service Center</h1></a>
+            <a href="/hrp-portal" title="ISC Home" class="">
+                <h1 style="margin:0;">Integrated Service Center</h1>
+            </a>
       </div>
-      <div class='pull-right'>
+
+    </div>
+
+      <div style="position:absolute; right:30px; top: 20px;">
           <nav class="uw-thin-strip-nav" role='navigation' aria-label='audience based'>
               <ul class="uw-thin-links">
-                <li><a href="/hrp-portal/alskdfj" title="Students">Administrator's Corner</a></li>
+                <li><a href="/hrp-portal/alskdfj" title="Students" style="color:purple;">Administrator's Corner</a></li>
               </ul>
           </nav>
           <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
@@ -33,5 +38,5 @@
           </nav>
       </div>
 
-    </div>
+
 </header>

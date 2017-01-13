@@ -5,13 +5,15 @@
         <div class="pull-left">
               <a href="/hrp-portal" title="ISC Home" class=""><h1 style="margin:0;">Integrated Service Center</h1></a>
         </div>
-      <div class='pull-right'>
+
+    </div>
+
+     <div style="position:absolute; right:30px; top: 20px;">
           <nav class="uw-thin-strip-nav" role='navigation' aria-label='audience based'>
               <ul class="uw-thin-links">
-                <li><a href="http://uw.edu/studentlife" title="Students">asfdsfad</a></li>
-                <li><a href="http://uw.edu/parents" title="Parents">sadfasdf</a></li>
-                <li><a href="http://uw.edu/facultystaff" title="Faculty & Staff">asfd</a></li>
-                <li><a href="http://uw.edu/alumni" title="Alumni">asdf</a></li>
+                <li><a href="http://uw.edu/studentlife" title="Students">Admin Corner</a></li>
+                <li><a href="http://uw.edu/parents" title="Parents">Sign in to Workday</a></li>
+                <li><a href="http://uw.edu/facultystaff" title="Faculty & Staff">Contact Us</a></li>
               </ul>
           </nav>
           <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
@@ -36,6 +38,5 @@
           </nav>
       </div>
 
-  </div>
 
 </header>

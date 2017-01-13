@@ -17,6 +17,9 @@
 /*** mobile ***/
 @media only screen and (max-width: 767px) {
 
+    /* top most banner nav */
+    .uw-thinstrip { background: #ccc; color: #4b2e83; }
+    .uw-thinstrip h1 { font-size: 18px; }
 
     /* main nav mobile */
     .uw-site-title { height: 80px; padding:0; margin: 0 !important; background: purple; }
@@ -26,8 +29,7 @@
 /*** tablet ***/
 @media only screen and (max-width: 991px) and (min-width: 768px) {
 
-
-
+    .uw-thinstrip ul.uw-thin-links:before { background-color: transparent; }
 }
 
 /*** desktop ***/
