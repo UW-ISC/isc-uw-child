@@ -32,7 +32,7 @@
 
             <div class="row">
                 <div class="col-md-8">
-                    <h2>got hr and payroll questions?</h2>
+                    <h2 style="font-size:50px; font-family: "Encode Sans Compressed", sans-serif;">One Place.<br>All your HR &amp; Payroll Questions</h2>
                 </div>
                 <div class="col-md-4">
                     <h2>shortcuts</h2>
@@ -49,22 +49,50 @@
       </div>
 
       <div id='main_content' class="container uw-body-copy" tabindex="-1">
-          <h2>features</h2>
+
           <div class="row">
-              <div class="col-md-4">
-                  <h3>feature 1</h3>
+
+              <div class="col-md-8"  style="background: #eee;">
+                  <h2>features</h2>
+
+                  <div class="row">
+
+                     <!-- loop featured pages here -->
+                    <div class="col-md-6">
+                        <h3>feature 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                        <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3>feature 2</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                        <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3>feature 3</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                        <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                    </div>
+                    <!-- end loop -->
+
+                  </div>
+
+              </div>
+              <div class="col-md-4" style="background: #fff;">
+                  <h2>news</h2>
+
+                  <!-- loop featured pages here -->
+                  <h3>news 1</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                  <p><a class="uw-btn btn-sm" href="#">Smaller Button</a></p>
-              </div>
-              <div class="col-md-4">
-                  <h3>feature 2</h3>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                   <p><a class="uw-btn btn-sm" href="#">Smaller Button</a></p>
-              </div>
-              <div class="col-md-4">
-                  <h3>feature 3</h3>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                   <p><a class="uw-btn btn-sm" href="#">Smaller Button</a></p>
+
+                  <h3>news 2</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                  <!-- end loop -->
+
+                  <p><a class="uw-btn btn-sm" href="#">see all news</a></p>
+
               </div>
           </div>
       </div>
