@@ -206,7 +206,6 @@ function get_uw_breadcrumbs()
 {
 
   global $post;
-  $ancestors = array_reverse( get_post_ancestors( $post->ID ) );
   $blog_title = get_bloginfo('title');
   $html = "";
   if ($blog_title == "") {
@@ -281,6 +280,7 @@ function get_uw_breadcrumbs()
   {
 
     if ( ! is_home() || ! is_front_page() )
+      $ancestors = array_reverse( get_post_ancestors( $post->ID ) );
       $ancestors[] = $post->ID;
 
     if ( ! is_front_page() )
