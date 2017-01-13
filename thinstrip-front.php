@@ -7,7 +7,7 @@
   <div class='align-right'>
       <nav class="uw-thin-strip-nav" role='navigation' aria-label='audience based'>
           <ul class="uw-thin-links">
-            <a><li>Admin's Corner</li></a>
+            <li><a href="http://uw.edu/studentlife" title="Students">Administrator's Corner</a></li>
           </ul>
       </nav>
       <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
