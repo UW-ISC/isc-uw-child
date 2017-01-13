@@ -23,9 +23,6 @@
 
 <div class="uw-body isc-body">
 
-
-  <div class="row">
-
     <div class="uw-content" role='main'>
 
       <?php uw_site_title(); ?>
@@ -65,8 +62,6 @@
       </div>
 
     </div>
-
-  </div>
 
 </div>
 
