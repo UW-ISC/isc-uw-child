@@ -1,6 +1,6 @@
 <?php
 /**
-  * Template Name: Big Hero
+  * Template Name: Front Page
   */
 ?>
 
@@ -85,13 +85,26 @@
 
                   <!-- loop featured pages here -->
                   <div style="background: #eee; padding: 20px;">
-                      <h3>news 1</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                      <?php
+                          $args = array( 'numberposts' => '2' );
+                          $recent_posts = wp_get_recent_posts( $args );
+                          if(!$recent_posts) { ?>
+                              <h3>Oops!</h3>
+                              <p>No recent posts found!</p>
+                          <?php } else {
+                              foreach ($recent_posts as $recent) { ?>
+                                  <h3><?php echo $recent['post_title'] ?></h3>
+                                  <p><?php echo $recent['post_modified_gmt'] ?></p>
+                                  <p><?php echo $recent['post_content'] ?></p>
+                                  <p><a href="<?php echo $recent['guid'] ?>">Read more</a></p>
+                              <?php }
+                          }
+                      ?>
+
+                      <p><a class="uw-btn btn-sm" href="#">See all news</a></p>
                   </div>
 
                   <!-- end loop -->
-
-                  <p><a class="uw-btn btn-sm" href="#">see all news</a></p>
 
               </div>
           </div>
