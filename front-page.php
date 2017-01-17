@@ -108,12 +108,12 @@
                                   <?php echo get_the_title($recent['ID']); ?></a></h3>
                                   <p><?php echo $recent['post_modified_gmt']; ?></p>
                                   <p><?php echo get_the_excerpt($recent['ID']); ?></p>
-                                  <p><a href="<?php echo $recent['guid'] ?>">Read more</a></p>
+                                  <p><a class="uw-btn btn-sm" href="<?php echo $recent['guid'] ?>">Read more</a></p>
                               <?php }
                           }
                       ?>
 
-                      <p><a class="uw-btn btn-sm" href="#">See all news</a></p>
+                      <p><a class="uw-btn btn-lg" href="#">See all news</a></p>
                   </div>
 
                   <!-- end loop -->
