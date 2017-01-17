@@ -1,13 +1,13 @@
 <?php
 /**
-  * Template Name: Big Hero
+  * Template Name: Front Page
   */
 ?>
 
-<?php get_header();
+<?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/uw-2014/assets/headers/suzzallo.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
@@ -15,94 +15,115 @@
         $mobileimage = $mobileimage[0];
         $hasmobileimage = 'hero-mobile-image';
       }
-      $sidebar = get_post_meta($post->ID, "sidebar");
       $banner = get_post_meta($post->ID, "banner");
       $buttontext = get_post_meta($post->ID, "buttontext");
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 
-<div class="uw-hero-image hero-height <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
-    <?php if( !empty($mobileimage) ) { ?>
-    <div class="mobile-image" style="background-image: url(<?php echo $mobileimage ?>);"></div>
-    <?php } ?>
-    <div id="hero-bg">
-      <div id="hero-container" class="container">
-      <?php if(!empty($banner) && $banner[0]){ ?>
-        <div id="hashtag"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
-      <?php } ?>
-        <h1 class="uw-site-title"><?php the_title(); ?></h1>
-        <span class="udub-slant"><span></span></span>
-      <?php if(!empty($buttontext) && $buttontext[0]){ ?>
-        <a class="uw-btn btn-sm btn-none" href="<?php echo $buttonlink[0] ? $buttonlink[0] : ''; ?>"><?php echo $buttontext[0] ? $buttontext[0] : ''; ?></a>
-      <?php } ?>
-      </div>
-    </div>
-</div>
+<div class="uw-body">
 
-<div class="container uw-body">
-
-  <div class="row">
-
-    <div class="hero-content col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
+    <div class="uw-content" role='main'>
 
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
-      <!--<?php get_template_part( 'breadcrumbs' ); ?>-->
 
-      <div id='main_content' class="uw-body-copy" tabindex="-1">
+      <div style="background: gray url(<?php echo $url ?>); min-height:500px;">
+          <div class="container">
 
-          <h1>Featured stuff</h1>
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 style="font-size:50px; font-family: "Encode Sans Compressed", sans-serif;">One Place.<br>All your HR &amp; Payroll Questions</h2>
+                </div>
+                <div class="col-md-4">
+                    <h2>shortcuts</h2>
+                    <ul>
+                        <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
+                        <li><a class="uw-btn" href="#">Ask for help!</a></li>
+                        <li><a class="uw-btn" href="#">Learn about Timesheets</a></li>
+                        <li><a class="uw-btn" href="#">New Hires: Stare here!</a></li>
+                    </ul>
+                </div>
+            </div>
 
-          <p><?php
-              // News Section
-              // this query finds all of the posts and lists them based on
-              // their publishing date (newest in front)
-              $args = array ('numberposts' => 4); // limits only x news posts to display
-              $recent_posts = wp_get_recent_posts($args);
-              ?>
-              <?php $news = wp_get_single_post(960) ?>
-              <a href="<?php echo get_page_link($news->ID); ?>">
-              <?php echo get_the_title($news->ID); ?></a>
-              <?php foreach($recent_posts as $recent) { ?>
-                    <a href="<?php echo get_post_permalink($recent['ID']); ?>">
-                    <?php echo get_the_title($recent['ID']); ?></a>
-                    <?php echo get_the_excerpt($recent['ID']); ?>
-            <?php
-              }
-              wp_reset_query();
-            ?>
+          </div>
+      </div>
 
-            <?php
-            // Featured Pages
-            // this query finds the pages marked featured page and lists their
-            // title as a link, and their summary
+      <div id='main_content' class="container uw-body-copy" tabindex="-1" style="margin-top: -120px;">
 
-            $args = array(
-            	'post_type' => 'page'
-            );
-            $has_pages = get_pages();?>
+          <div class="row">
 
-            <?php if( $has_pages):
-              foreach($has_pages as $page) {
-                $custom_fields = get_post_custom($page->ID);
-                $featured = $custom_fields["isc-featured"][0];
-                $summary = $custom_fields["summary-text"][0];
-                if ($featured != NULL) { ?>
-                      <a href="<?php echo get_page_link($page->ID); ?>">
-                      <?php echo get_the_title($page->ID); ?></a>
-                      <?php echo $summary;
-                    }
-              }?>
-            <?php endif; ?>
+              <div class="col-md-8">
 
-          </p>
+                  <h2>Featured</h2>
 
+                  <div class="row">
+                       <!-- loop featured pages here -->
+                       <?php
+                       // Featured Pages
+                       // this query finds the pages marked featured page and lists their
+                       // title as a link, and their summary
+
+                       $args = array(
+                        'post_type' => 'page'
+                       );
+                       $has_pages = get_pages();?>
+
+                       <?php if( $has_pages):
+                         foreach($has_pages as $page) {
+                           $custom_fields = get_post_custom($page->ID);
+                           $featured = $custom_fields["isc-featured"][0];
+                           $summary = $custom_fields["summary-text"][0];
+                           if ($featured != NULL) { ?>
+                                 <div class="col-md-6">
+                                     <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+                                         <h3>
+                                           <a href="<?php echo get_page_link($page->ID); ?>">
+                                           <?php echo get_the_title($page->ID); ?></a>
+                                         </h3>
+                                         <p> <?php echo $summary; ?> </p>
+                                         <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                                     </div>
+                                 </div>
+                         <?php }
+                         }
+                       endif; ?>
+                       <!-- end loop -->
+                  </div>
+
+              </div>
+              <div class="col-md-4">
+                  <h2>News</h2>
+                  <!-- loop news posts here -->
+
+                  <div style="background: #fff; padding: 20px;">
+                      <?php
+                          $args = array( 'numberposts' => '5' );
+                          $recent_posts = wp_get_recent_posts( $args );
+                          if(!$recent_posts) { ?>
+                              <h3>Oops!</h3>
+                              <p>No recent posts found!</p>
+                          <?php } else {
+                              foreach ($recent_posts as $recent) { ?>
+                                  <h3><a href="<?php echo get_post_permalink($recent['ID']); ?>">
+                                  <?php echo get_the_title($recent['ID']); ?></a></h3>
+                                  <p><?php echo $recent['post_modified_gmt']; ?></p>
+                                  <p><?php echo get_the_excerpt($recent['ID']); ?></p>
+                                  <p><a href="<?php echo $recent['guid'] ?>">Read more</a></p>
+                              <?php }
+                          }
+                      ?>
+
+                      <p><a class="uw-btn btn-sm" href="#">See all news</a></p>
+                  </div>
+
+                  <!-- end loop -->
+
+              </div>
+          </div>
       </div>
 
     </div>
 
   </div>
-
-</div>
 
 <?php get_footer(); ?>
