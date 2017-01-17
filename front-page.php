@@ -53,13 +53,51 @@
 
           <h1>Featured stuff</h1>
 
-          <p>Mason.. put 3 column code here!</p>
+          <p><?php
+              // News Section
+              // this query finds all of the posts and lists them based on
+              // publishing date (newest in front)
+              $args = array ('numberposts' => 4); // limits only x news posts to display
+              $recent_posts = wp_get_recent_posts($args);
+              ?>
+              <a href="http://localhost:8080/hrp-portal/news"> News </a>
+              <?php foreach($recent_posts as $recent) { ?>
+                    <a href="<?php echo get_post_permalink($recent['ID']); ?>">
+                    <?php echo get_the_title($recent['ID']); ?></a>
+                    <?php echo get_the_excerpt($recent['ID']); ?>
+            <?php
+              }
+              wp_reset_query();
+            ?>
+
+            <?php
+            // Featured Pages
+            // this query finds the pages marked featured page and lists their
+            // title as a link, and their summary
+
+            $args = array(
+            	'post_type' => 'page'
+            );
+            $has_pages = get_pages();?>
+
+            <?php if( $has_pages):
+              foreach($has_pages as $page) {
+                $custom_fields = get_post_custom($page->ID);
+                $featured = $custom_fields["isc-featured"][0];
+                $summary = $custom_fields["summary-text"][0];
+                if ($featured != NULL) { ?>
+                      <a href="<?php echo get_page_link($page->ID); ?>">
+                      <?php echo get_the_title($page->ID); ?></a>
+                      <?php echo $summary;
+                    }
+              }?>
+            <?php endif; ?>
+
+          </p>
 
       </div>
 
     </div>
-
-
 
   </div>
 
