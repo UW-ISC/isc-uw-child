@@ -54,51 +54,60 @@
 
               <div class="col-md-8">
 
-                  <h2>features</h2>
+                  <h2>Featured</h2>
 
                   <div class="row">
                        <!-- loop featured pages here -->
-                       <div class="col-md-6">
-                           <div style="background: #eee; padding: 20px; margin-bottom:30px;">
-                               <h3>feature 1</h3>
-                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                               <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                           </div>
-                       </div>
-                       <div class="col-md-6">
-                           <div style="background: #eee; padding: 20px; margin-bottom:30px;">
-                               <h3>feature 1</h3>
-                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                               <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                           </div>
-                       </div>
-                       <div class="col-md-6">
-                           <div style="background: #eee; padding: 20px; margin-bottom:30px;">
-                               <h3>feature 1</h3>
-                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                               <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                           </div>
-                       </div>
+                       <?php
+                       // Featured Pages
+                       // this query finds the pages marked featured page and lists their
+                       // title as a link, and their summary
+
+                       $args = array(
+                        'post_type' => 'page'
+                       );
+                       $has_pages = get_pages();?>
+
+                       <?php if( $has_pages):
+                         foreach($has_pages as $page) {
+                           $custom_fields = get_post_custom($page->ID);
+                           $featured = $custom_fields["isc-featured"][0];
+                           $summary = $custom_fields["summary-text"][0];
+                           if ($featured != NULL) { ?>
+                                 <div class="col-md-6">
+                                     <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+                                         <h3>
+                                           <a href="<?php echo get_page_link($page->ID); ?>">
+                                           <?php echo get_the_title($page->ID); ?></a>
+                                         </h3>
+                                         <p> <?php echo $summary; ?> </p>
+                                         <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                                     </div>
+                                 </div>
+                         <?php }
+                         }
+                       endif; ?>
                        <!-- end loop -->
                   </div>
 
               </div>
               <div class="col-md-4">
-                  <h2>news</h2>
+                  <h2>News</h2>
+                  <!-- loop news posts here -->
 
-                  <!-- loop featured pages here -->
                   <div style="background: #fff; padding: 20px;">
                       <?php
-                          $args = array( 'numberposts' => '2' );
+                          $args = array( 'numberposts' => '5' );
                           $recent_posts = wp_get_recent_posts( $args );
                           if(!$recent_posts) { ?>
                               <h3>Oops!</h3>
                               <p>No recent posts found!</p>
                           <?php } else {
                               foreach ($recent_posts as $recent) { ?>
-                                  <h3><?php echo $recent['post_title'] ?></h3>
-                                  <p><?php echo $recent['post_modified_gmt'] ?></p>
-                                  <p><?php echo $recent['post_content'] ?></p>
+                                  <h3><a href="<?php echo get_post_permalink($recent['ID']); ?>">
+                                  <?php echo get_the_title($recent['ID']); ?></a></h3>
+                                  <p><?php echo $recent['post_modified_gmt']; ?></p>
+                                  <p><?php echo get_the_excerpt($recent['ID']); ?></p>
                                   <p><a href="<?php echo $recent['guid'] ?>">Read more</a></p>
                               <?php }
                           }
@@ -115,6 +124,6 @@
 
     </div>
 
-</div>
+  </div>
 
 <?php get_footer(); ?>
