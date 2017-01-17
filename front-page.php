@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div style="background: gray url('/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg'); min-height:500px;">
+      <div style="background: gray url(<?php echo $url ?>); min-height:500px;">
           <div class="container">
 
             <div class="row">
@@ -48,7 +48,7 @@
           </div>
       </div>
 
-      <div id='main_content' class="container uw-body-copy" tabindex="-1">
+      <div id='main_content' class="container uw-body-copy" tabindex="-1" style="margin-top: -120px;">
 
           <div class="row">
 
