@@ -56,35 +56,38 @@
 
                   <h2>features</h2>
 
-
-
-                     <!-- loop featured pages here -->
-                        <div class="pull-left" style="width: 48%; background: #eee; padding: 20px; margin-right:15px; margin-bottom:15px;">
-                            <h3>feature 1</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                            <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                        </div>
-
-                        <div class="pull-left" style="width: 50%; background: #eee; padding: 20px; margin-bottom:15px;">
-                            <h3>feature 2</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                            <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                        </div>
-
-                        <div class="pull-left" style="width: 48%; background: #eee; padding: 20px; margin-right:15px; margin-bottom:15px;">
-                            <h3>feature 3</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
-                            <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
-                        </div>
-                    <!-- end loop -->
-
+                  <div class="row">
+                       <!-- loop featured pages here -->
+                       <div class="col-md-6">
+                           <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+                               <h3>feature 1</h3>
+                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                               <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+                               <h3>feature 1</h3>
+                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                               <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+                               <h3>feature 1</h3>
+                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus turpis vel tincidunt posuere. Morbi in purus eleifend, imperdiet velit vitae, congue metus. Donec suscipit justo orci, ut accumsan massa sagittis ut. Morbi fringilla aliquam nulla in lacinia.</p>
+                               <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                           </div>
+                       </div>
+                       <!-- end loop -->
+                  </div>
 
               </div>
               <div class="col-md-4">
                   <h2>news</h2>
 
                   <!-- loop featured pages here -->
-                  <div style="background: #eee; padding: 20px;">
+                  <div style="background: #fff; padding: 20px;">
                       <?php
                           $args = array( 'numberposts' => '2' );
                           $recent_posts = wp_get_recent_posts( $args );
