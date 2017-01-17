@@ -1,4 +1,7 @@
 <?php
+ $header = "h4"; // the tag we will treat as the header
+ $subheader = "h5"; // the tag we will treat as the subheader
+
 function my_theme_enqueue_styles() {
 
     $parent_style = 'parent-style';
@@ -104,15 +107,38 @@ endif;
         build_page_navigation(get_the_ID());
         $headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
         $pages = '';
+        $array = array();
+        $subarray = array();
+        $headarray = array();
 
         // filters the content to add ids to the headers so that the menu will work
         add_filter( 'the_content', 'add_ids_to_header_tags_auto');
 
         if (!empty($headers)) {
-          foreach ($headers as $slug=>$header) {
-            $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$header.'" href="#'.$slug.'">'.$header.'</a></li>';
+         foreach ($headers as $slug=>$header) {
+           $content = substr($header, 1, strlen($header));
+           $heading_type = substr($header, 0, 1);
+           if ($heading_type == '4') {
+             array_push($array, $subarray);
+             $subarray = array();
+             array_push($headarray, array($slug, $content));
+           } else {
+             array_push($subarray, array($slug, $content));
+           }
+         }
+       }
+       for ($i = 0; $i < sizeof($headarray); $i++){
+          $subpages = sizeof($array[$i]);
+          if ($subpages > 0) {
+            $pages .= '<li class="nav-item has-children"> <a class="nav-link" title="'.$headarray[$i][1].'" href="#'.$headarray[$i][0].'">'.$headarray[$i][1].'</a></li>';
+          } else {
+            $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$headarray[$i][1].'" href="#'.$headarray[$i][0].'">'.$headarray[$i][1].'</a></li>';
           }
         }
+        array_push($array, $subarray);
+        array_shift($array);
+        echo print_r($array);
+        echo print_r($headarray);
 
         $first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo('name') . '"> Table of Contents </a></li>';
 
@@ -318,30 +344,32 @@ endif;
 
 function build_page_navigation( $post_id ) {
 
-    // Grab the post and post_content
-    $page_data = get_post($post_id);
-    $page_content = $page_data ? $page_data->post_content : '';
+        // Grab the post and post_content
+        $page_data = get_post($post_id);
+        $page_content = $page_data ? $page_data->post_content : '';
 
-    $links = array();
-    $results = '';
-    $regex = '/<h4.*?>(.*?)<\/h4>/';
-
-    if ( preg_match_all($regex, $page_content, $matches) ) {
-        $results = $matches[1];
-        // Build out links named array with slug and title
-        foreach ($results as $heading) {
-            // Sluggify the heading
-            $slug = sanitize_title($heading);
-
-            // Store it in $links for saving
-            $links[$slug] = $heading;
-        }
-    } else {
+        $links = array();
         $results = '';
-    }
-    // saving this in the metadata of the post so that we can use this later on
-    update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
+        $options = "([" . substr($GLOBALS['header'], -1) .  substr($GLOBALS['subheader'], -1) .  "])";
+				$regex = '/<h'. $options . '.*?>(.*?)<\/h\1>/';
+
+        if ( preg_match_all($regex, $page_content, $matches) ) {
+            $results = $matches[2];
+						$results2 = $matches[0];
+						for ($i = 0; $i < sizeof($results); $i++) {
+							$header_type = substr($results2[$i], 2, 1);
+							$heading = $results[$i];
+							$slug = sanitize_title($heading);
+							$links[$slug] = $header_type . $heading;
+						}
+        } else {
+            $results = '';
+        }
+
+        // Slugs are added to h4s in a filter on the_content function
+        update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
 }
+
 
 function add_ids_to_header_tags_auto( $content ) {
 
@@ -351,8 +379,8 @@ function add_ids_to_header_tags_auto( $content ) {
   if (empty($headers)) {
       return $content;
   }
-
-  $pattern = '#(?P<full_tag><(?P<tag_name>h4)>(?P<tag_contents>[^<]*)</h4>)#i';
+  $look_for = "(" . $GLOBALS['header'] . "|" . $GLOBALS['subheader'] . ")";
+  $pattern = '#(?P<full_tag><(?P<tag_name>'. $look_for .')>(?P<tag_contents>[^<]*)</'. $look_for .'>)#i';
   if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
       $find = array();
       $replace = array();
@@ -362,9 +390,8 @@ function add_ids_to_header_tags_auto( $content ) {
           $id        = sanitize_title( $match['tag_contents'] );
           $id_attr   = sprintf( ' id="%s"', $id );
           $replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $match['tag_name'], $id_attr, $match['tag_contents']);
-          $top = '<p class="uwhr-toc-top-btn"><a href="#top">Return to top</a></p>';
       }
-      $content = str_replace( $find, $replace, $content ) . '<p class="uwhr-toc-top-btn"><a href="#top">Return to top</a></p>';
+      $content = str_replace( $find, $replace, $content );
   }
   return $content;
 }
