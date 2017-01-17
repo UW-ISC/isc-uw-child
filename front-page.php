@@ -56,11 +56,13 @@
           <p><?php
               // News Section
               // this query finds all of the posts and lists them based on
-              // publishing date (newest in front)
+              // their publishing date (newest in front)
               $args = array ('numberposts' => 4); // limits only x news posts to display
               $recent_posts = wp_get_recent_posts($args);
               ?>
-              <a href="http://localhost:8080/hrp-portal/news"> News </a>
+              <?php $news = wp_get_single_post(960) ?>
+              <a href="<?php echo get_page_link($news->ID); ?>">
+              <?php echo get_the_title($news->ID); ?></a>
               <?php foreach($recent_posts as $recent) { ?>
                     <a href="<?php echo get_post_permalink($recent['ID']); ?>">
                     <?php echo get_the_title($recent['ID']); ?></a>
