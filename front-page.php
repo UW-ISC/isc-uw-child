@@ -81,7 +81,7 @@
                                            <?php echo get_the_title($page->ID); ?></a>
                                          </h3>
                                          <p> <?php echo $summary; ?> </p>
-                                         <p><a class="uw-btn btn-sm" href="#">learn more</a></p>
+                                         <p><a class="uw-btn btn-sm" href="<?php echo get_page_link($page->ID); ?>">learn more</a></p>
                                      </div>
                                  </div>
                          <?php }
