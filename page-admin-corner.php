@@ -55,7 +55,14 @@
 
                         <?php
 
-                           $args = array('category_name' => 'updates');
+                           $args = array(
+                                	'tax_query' => array(
+                                		array(
+                                			'taxonomy' => 'location',
+                                			'field'    => 'slug',
+                                			'terms'    => 'admin-corner-news',
+                                		),
+                                	),);
                            $category_posts = new WP_Query($args);
 
                            if($category_posts->have_posts()) :
@@ -85,7 +92,7 @@
 
                         <?php
 
-                           $admin_args = array('category_name' => 'updates');
+                           $admin_args = array('taxonomy' => 'updates');
                            $hr_admin_guides = new WP_Query($admin_args);
 
                            $initatior_2s_args = array('category_name' => 'updates');
