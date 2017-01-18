@@ -27,12 +27,12 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div style="background: gray url(<?php echo $url ?>); min-height:500px; background-size:cover;">
+      <div class="uw-hero-image" style="background: gray url(<?php echo $url ?>); min-height:500px; background-size:cover;">
           <div class="container">
 
             <div class="row">
                 <div class="col-md-8">
-                    <h2 style="font-size:50px; font-family: "Encode Sans Compressed", sans-serif;">One Place.<br>All your HR &amp; Payroll Questions</h2>
+                    <h1 style="font-size:65px; color:#fff; font-family: "Encode Sans Compressed", sans-serif;">One Place.<br>All your HR &amp; Payroll Questions</h1>
 
                     <form role="search" method="get" id="searchform" class="searchform" action="">
                     	<div>
