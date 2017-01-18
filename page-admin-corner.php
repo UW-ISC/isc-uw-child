@@ -53,6 +53,26 @@
 
                         <h3>Updates</h3>
 
+                        <?php
+
+                           $args = array('category_name' => 'updates');
+                           $category_posts = new WP_Query($args);
+
+                           if($category_posts->have_posts()) :
+                              while($category_posts->have_posts()) :
+                                 $category_posts->the_post();
+                        ?>
+
+                                 <h3><?php the_title() ?></h3>
+                                 <div class="update-date"><?php echo get_the_date() ?> </div>
+                                 <div class='post-content'><?php the_content() ?></div>
+
+                        <?php
+                              endwhile;
+                          else:
+                          endif;
+                        ?>
+
                     </div>
 
                 </div>
@@ -63,25 +83,43 @@
 
                         <h3>Workday User Guides</h3>
 
+                        <?php
+
+                           $admin_args = array('category_name' => 'updates');
+                           $hr_admin_guides = new WP_Query($admin_args);
+
+                           $initatior_2s_args = array('category_name' => 'updates');
+                           $initiator_2s_guides = new WP_Query($initatior_2s_args);
+
+                           $approver_args = array('category_name' => 'updates');
+                           $approver_guides = new WP_Query($approver_args);
+
+                           $coordinator_args = array('category_name' => 'updates');
+                           $coordinator_guides = new WP_Query($coordinator_args);
+
+                           $initiator_1s_args = array('category_name' => 'updates');
+                           $initiator_1s_guides = new WP_Query($initiator_1s_args);
+                        ?>
+
                         <a class="work-guide no-margin row">
-                            For HR Admins: view 115 User guides
+                            For HR Admins: view <?php echo $hr_admin_guides->post_count; ?> User guides
                         </a>
 
                         <a class="work-guide no-margin row">
-                            For Initiator 2s: view 70 User guides
+                            For Initiator 2s: view <?php echo $initiator_2s_guides->post_count; ?> User guides
                         </a>
 
 
                         <a class="work-guide no-margin row">
-                            For Approvers: View all 22 User guides
+                            For Approvers: View all <?php echo $approver_guides->post_count; ?> User guides
                         </a>
 
                         <a class="work-guide no-margin row">
-                            For On-boarding coordinators: view all 20 User guides
+                            For On-boarding coordinators: view all <?php echo $coordinator_guides->post_count; ?> User guides
                         </a>
 
                         <a class="work-guide no-margin row">
-                            For Initiator 1s: view all 52 User guides
+                            For Initiator 1s: view all <?php echo $initiator_1s_guides->post_count; ?> User guides
                         </a>
 
                         <a class="row" style="color: blue !important;">
@@ -97,23 +135,41 @@
 
                 <div class="row no-margin">
 
-                    <div class="side-card">
+                    <div class="side-card col-lg-12">
 
-                        <div class="card_title">Workshops</div>
-
-                    </div>
-                </div>
-
-                <div class="row no-margin">
-                    <div class="side-card">
-
-                        <div class="card_title">Seasonal Topics</div>
+                        <h3>Workshops</h3>
 
                     </div>
                 </div>
 
                 <div class="row no-margin">
-                    <div class="side-card question">
+                    <div class="side-card col-lg-12">
+
+                        <h3>Seasonal Topics<h3>
+
+                        <?php
+
+                           $seasonal_args = array('category_name' => 'seasonal_topics');
+                           $seasonal_posts = new WP_Query($seasonal_args);
+
+                           if($category_posts->have_posts()) :
+                                 $category_posts->the_post();
+                        ?>
+
+                             <h3><?php the_title() ?></h3>
+                             <div class="update-date"><?php echo get_the_date() ?> </div>
+                             <div class='post-content'><?php the_content() ?></div>
+
+                        <?php
+                          endif;
+
+                          ?>
+
+                    </div>
+                </div>
+
+                <div class="row no-margin">
+                    <div class="side-card question col-lg-12">
 
                         Got a complex question? Need HR Experts?
 
@@ -126,9 +182,9 @@
                 </div>
 
                 <div class="row no-margin">
-                    <div class="side-card">
+                    <div class="side-card col-lg-12">
 
-                        <div class="card_title">Workday Security Roles</div>
+                        <h3>Workday Security Roles</h3>
 
                         <a>Read about Workday Security roles and request the change -></a>
 
