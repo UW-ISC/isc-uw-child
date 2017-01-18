@@ -23,19 +23,12 @@
                     Friendly positioning statement will go here
                 </div>
 
-                <div class="col-lg-7 push-lg-1">
-                    <form class="uwhr-search" role="search" method="POST" action="<?php get_home_url(1, '/') ?>">
-                        <div class="form-group search-wrapper" style="margin-bottom:0px !important;">
-                            <label class="sr-only" for="s">Enter search text: </label>
-                            <input class="search-input form-control search-filed" type="search" placeholder="Get answers" data-swplive="true" value="" name="s" title="Search for:" autocomplete="off">
-                            <div class="search-icons">
-                                <div class="icon erase-icon hide">
-                                    <i class="fa fa-close"></i>
-                                </div>
-                                <div class="icon search-icon">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
+                <div class="col-lg-7 push-lg-1">                    
+                    <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
+                        <div>
+                            <label class="screen-reader-text" for="s">Search for:</label>
+                            <input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
+                            <input type="submit" id="searchsubmit" value="Search">
                         </div>
                     </form>
                     <div class="search-suggestions">
@@ -45,7 +38,7 @@
             </div>
         <div class="row no-margin">
 
-            <div class="col-lg-7">
+            <div class="col-lg-8">
 
                 <div class="row no-margin">
 
@@ -72,7 +65,7 @@
 
                                  <h3><?php the_title() ?></h3>
                                  <div class="update-date"><?php echo get_the_date() ?> </div>
-                                 <div class='post-content'><?php the_content() ?></div>
+                                 <div class='post-content'><?php the_excerpt() ?></div>
 
                         <?php
                               endwhile;
@@ -92,19 +85,55 @@
 
                         <?php
 
-                           $admin_args = array('taxonomy' => 'updates');
+                           $admin_args = array(
+                                	'tax_query' => array(
+                                		array(
+                                			'taxonomy' => 'security-role',
+                                			'field'    => 'slug',
+                                			'terms'    => 'admin',
+                                		),
+                                	),);
+
                            $hr_admin_guides = new WP_Query($admin_args);
 
-                           $initatior_2s_args = array('category_name' => 'updates');
+                           $initatior_2s_args = array(
+                                	'tax_query' => array(
+                                		array(
+                                			'taxonomy' => 'security-role',
+                                			'field'    => 'slug',
+                                			'terms'    => 'initiate-2',
+                                		),
+                                	),);
                            $initiator_2s_guides = new WP_Query($initatior_2s_args);
 
-                           $approver_args = array('category_name' => 'updates');
+                           $approver_args = array(
+                                	'tax_query' => array(
+                                		array(
+                                			'taxonomy' => 'security-role',
+                                			'field'    => 'slug',
+                                			'terms'    => 'approver',
+                                		),
+                                	),);
                            $approver_guides = new WP_Query($approver_args);
 
-                           $coordinator_args = array('category_name' => 'updates');
+                           $coordinator_args = array(
+                                	'tax_query' => array(
+                                		array(
+                                			'taxonomy' => 'security-role',
+                                			'field'    => 'slug',
+                                			'terms'    => 'coordinator',
+                                		),
+                                	),);
                            $coordinator_guides = new WP_Query($coordinator_args);
 
-                           $initiator_1s_args = array('category_name' => 'updates');
+                           $initiator_1s_args = array(
+                                	'tax_query' => array(
+                                		array(
+                                			'taxonomy' => 'security-role',
+                                			'field'    => 'slug',
+                                			'terms'    => 'initate-1',
+                                		),
+                                	),);
                            $initiator_1s_guides = new WP_Query($initiator_1s_args);
                         ?>
 
@@ -146,6 +175,32 @@
 
                         <h3>Workshops</h3>
 
+                        <?php
+
+
+                           $workshop_args = array(
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'location',
+                                            'field'    => 'slug',
+                                            'terms'    => 'admin-corner-workshops',
+                                        ),
+                                    ),);
+                           $workshop_posts = new WP_Query($workshop_args);
+
+                           if($workshop_posts->have_posts()) :
+                                 $workshop_posts->the_post();
+                        ?>
+
+                             <h3><?php the_title() ?></h3>
+                             <div class="update-date"><?php echo get_the_date() ?> </div>
+                             <div class='post-content'><?php the_excerpt() ?></div>
+
+                        <?php
+                          endif;
+
+                          ?>
+
                     </div>
                 </div>
 
@@ -156,16 +211,23 @@
 
                         <?php
 
-                           $seasonal_args = array('category_name' => 'seasonal_topics');
+                           $seasonal_args = array(
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'location',
+                                            'field'    => 'slug',
+                                            'terms'    => 'admin-corner-seasonal',
+                                        ),
+                                    ),);
                            $seasonal_posts = new WP_Query($seasonal_args);
 
-                           if($category_posts->have_posts()) :
-                                 $category_posts->the_post();
+                           if($seasonal_posts->have_posts()) :
+                                 $seasonal_posts->the_post();
                         ?>
 
                              <h3><?php the_title() ?></h3>
                              <div class="update-date"><?php echo get_the_date() ?> </div>
-                             <div class='post-content'><?php the_content() ?></div>
+                             <div class='post-content'><?php the_excerpt() ?></div>
 
                         <?php
                           endif;
