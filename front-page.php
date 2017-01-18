@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="uw-hero-image" style="background: gray url(<?php echo $url ?>); min-height:500px; background-size:cover;">
+      <div class="" style="background: gray url(<?php echo $url ?>); min-height:500px; background-size:cover;">
           <div class="container">
 
             <div class="row">
@@ -35,7 +35,7 @@
 
                     <div style="font-size:65px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 60px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
 
-                    <form role="search" method="get" id="searchform" class="searchform" action="">
+                    <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
                     	<div>
                     		<label class="screen-reader-text" for="s">Search for:</label>
                     		<input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
