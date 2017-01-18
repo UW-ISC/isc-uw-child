@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="" style="background: gray url(<?php echo $url ?>); min-height:500px; background-size:cover; background-position:center center;">
+      <div class="" style="background: gray url(<?php echo $url ?>); min-height:530px; background-size:cover; background-position:center center;">
           <div class="container">
 
             <div class="row">
