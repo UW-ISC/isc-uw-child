@@ -7,7 +7,7 @@
 <?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/milky_way.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
@@ -33,6 +33,7 @@
             <div class="row">
                 <div class="col-md-8">
 
+                    <h2>Search</h2>
                     <div style="font-size:65px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 60px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
 
                     <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
@@ -45,7 +46,7 @@
 
                 </div>
                 <div class="col-md-4">
-                    <h2>shortcuts</h2>
+                    <h2>quicklinks</h2>
                     <ul>
                         <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
                         <li><a class="uw-btn" href="#">Ask for help!</a></li>
@@ -64,7 +65,7 @@
 
               <div class="col-md-8">
 
-                  <h2>Featured</h2>
+                  <h2>Featured articles</h2>
 
                   <div class="row">
                        <!-- loop featured pages here -->
@@ -102,10 +103,10 @@
 
               </div>
               <div class="col-md-4">
-                  <h2>News</h2>
+                  <h2>News &amp; Events</h2>
                   <!-- loop news posts here -->
 
-                  <div style="background: #fff; padding: 20px;">
+                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5);">
                       <?php
                           $args = array( 'numberposts' => '5' );
                           $recent_posts = wp_get_recent_posts( $args );
