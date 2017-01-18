@@ -7,7 +7,7 @@
 <?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/milky_way.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
