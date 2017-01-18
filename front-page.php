@@ -7,7 +7,7 @@
 <?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/milky_way.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
@@ -105,7 +105,7 @@
                   <h2>News</h2>
                   <!-- loop news posts here -->
 
-                  <div style="background: #fff; padding: 20px;">
+                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5);">
                       <?php
                           $args = array( 'numberposts' => '5' );
                           $recent_posts = wp_get_recent_posts( $args );
