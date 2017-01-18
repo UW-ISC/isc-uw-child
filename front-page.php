@@ -87,6 +87,11 @@
                            if ($featured != NULL) { ?>
                                  <div class="col-md-6">
                                      <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+
+                                         <div style="margin:-20px; height:160px;">
+                                             <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg'?>">
+                                         </div>
+
                                          <h3>
                                            <a href="<?php echo get_page_link($page->ID); ?>">
                                            <?php echo get_the_title($page->ID); ?></a>
