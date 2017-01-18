@@ -32,7 +32,8 @@
 
             <div class="row">
                 <div class="col-md-8">
-                    <h1 style="font-size:65px; color:#fff; font-family: "Encode Sans Compressed", sans-serif;">One Place.<br>All your HR &amp; Payroll Questions</h1>
+
+                    <div style="font-size:65px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 60px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
 
                     <form role="search" method="get" id="searchform" class="searchform" action="">
                     	<div>
