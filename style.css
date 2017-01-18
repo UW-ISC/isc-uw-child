@@ -12,7 +12,6 @@
  Text Domain:  uw-isc-child
 */
 
-
 body, p { font-size: 16px !important; }
 
 /*** mobile ***/
@@ -229,4 +228,59 @@ body, p { font-size: 16px !important; }
 
 .uw-accordion-menu-dark .depth-1 .has-children.is-open i {
     margin-right: 0
+
+}
+ .card {
+  background: #eee;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+ }
+
+ .side-card {
+  background: #eee;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  width: 100%;
+ }
+
+.question {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.no-margin {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.work-guide {
+    color: blue !important;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    font-size: 115%;
+}
+
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+.search-suggestions{
+    background: #fff;
+    text-align: center;
 }
