@@ -23,7 +23,7 @@
                     Friendly positioning statement will go here
                 </div>
 
-                <div class="col-lg-7 push-lg-1">                    
+                <div class="col-lg-7 push-lg-1">
                     <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
                         <div>
                             <label class="screen-reader-text" for="s">Search for:</label>
@@ -32,7 +32,19 @@
                         </div>
                     </form>
                     <div class="search-suggestions">
-                        Popular searches: "User guide topic1" | "FAQ topic1" | "FAQ topic2"
+                        <?php
+
+                        global $wpdb;
+
+                        $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
+                            FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
+                            "LIMIT 3 ;";
+                        $queries = $wpdb->get_results($query, ARRAY_N);
+                         ?>
+                        Popular searches:
+                        <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
+                        <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
+                        <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
                     </div>
                 </div>
             </div>
