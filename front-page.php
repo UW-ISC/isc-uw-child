@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="" style="background: #0f0403 url(<?php echo $url ?>); min-height:530px; background-size:contain; background-position:right; background-repeat:no-repeat;">
+      <div class="" style="background: #0f0403 url(<?php echo $url ?>); min-height:450px; background-size:contain; background-position:right; background-repeat:no-repeat;">
           <div class="container">
 
             <div class="row">
