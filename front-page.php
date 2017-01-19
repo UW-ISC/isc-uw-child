@@ -7,7 +7,7 @@
 <?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/2759302071_d8cb576f9e_o.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
@@ -20,21 +20,21 @@
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 
-<div class="uw-body">
+<div class="uw-body" style="padding:0;">
 
     <div class="uw-content" role='main'>
 
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="" style="background: gray url(<?php echo $url ?>); min-height:530px; background-size:cover; background-position:center center;">
+      <div class="" style="background: #0f0403 url(<?php echo $url ?>); height:500px; background-size:65%; background-position:110%; background-repeat:no-repeat;">
           <div class="container">
 
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
 
-                    <h2>Search</h2>
-                    <div style="font-size:65px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 60px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
+                    <h2 class="sr-only">Search</h2>
+                    <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
 
                     <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
                     	<div>
@@ -44,15 +44,19 @@
                     	</div>
                     </form>
 
+                    <div style="display:none;">
+                        <h2>Quicklinks</h2>
+                        <ul>
+                            <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
+                            <li><a class="uw-btn" href="#">Ask for help!</a></li>
+                            <li><a class="uw-btn" href="#">Learn about Timesheets</a></li>
+                            <li><a class="uw-btn" href="#">New Hires: Stare here!</a></li>
+                        </ul>
+                    </div>
+
                 </div>
-                <div class="col-md-4">
-                    <h2>quicklinks</h2>
-                    <ul>
-                        <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
-                        <li><a class="uw-btn" href="#">Ask for help!</a></li>
-                        <li><a class="uw-btn" href="#">Learn about Timesheets</a></li>
-                        <li><a class="uw-btn" href="#">New Hires: Stare here!</a></li>
-                    </ul>
+                <div class="col-md-4 col-md-offset-2">
+
                 </div>
             </div>
 
@@ -90,6 +94,10 @@
                           <div class="col-md-6">
                             <div style="background: #eee; padding: 20px; margin-bottom:30px;">
 
+                                <div style="margin:-20px; height:160px; overflow:hidden; margin-bottom:30px;">
+                                     <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg'?>">
+                                 </div>
+
                               <h3>
                                 <a href="<?php echo get_permalink($featured_page->ID); ?>">
                                 <?php echo get_the_title($featured_page->ID); ?></a>
@@ -101,7 +109,7 @@
                               ?>
 
                               <p> <?php echo $summary; ?> </p>
-                              <p><a class="uw-btn btn-sm" href="<?php echo get_page_link($page->ID); ?>">learn more</a></p>
+                              <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>">learn more</a></p>
 
                             </div>
                         </div>
@@ -120,8 +128,10 @@
                         Gets numberposts of the posts that have been
                         published, and have their location set to homepage
                   -->
+                  <h2>News</h2>
+                  <!-- loop news posts here -->
 
-                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5);">
+                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;">
                       <?php
 
                        $args = array(
