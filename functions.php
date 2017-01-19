@@ -13,7 +13,13 @@ function my_theme_enqueue_styles() {
         wp_get_theme()->get('Version')
     );
 }
+
+function my_theme_enqueue_scripts() {
+    wp_enqueue_script( 'bootstrap-collapse', get_stylesheet_directory_uri() . '/bootstrap-collapse.js' );
+}
+
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_scripts' );
 // Remove any templates from the UW Marketing theme that will not be used
 
 function tfc_remove_page_templates( $templates ) {
@@ -127,18 +133,31 @@ endif;
            }
          }
        }
+
+       array_push($array, $subarray);
+       array_shift($array);
+
        for ($i = 0; $i < sizeof($headarray); $i++){
           $subpages = sizeof($array[$i]);
+          $slug = $headarray[$i][0];
+          $title = $headarray[$i][1];
           if ($subpages > 0) {
-            $pages .= '<li class="nav-item has-children"> <a class="nav-link" title="'.$headarray[$i][1].'" href="#'.$headarray[$i][0].'">'.$headarray[$i][1].'</a></li>';
+            $pages .= '<li class="nav-item has-children"> <button class="nav-link nav-link-12 children-toggle collapsed" data-toggle="collapse" data-target="#'.$slug.'" aria-controls="#'.$slug.'" aria-expanded="false">'.$title.'<i class="fa fa-2x"></i></button>';
+            $pages .= '<ul class="children depth-1 collapse" id="'.$slug.'" aria-expanded="false" style="height: 0px;">';
+            for ($j = 0; $j < $subpages; $j++) {
+              // append subheaders headers
+              $subslug = $array[$i][$j][0];
+              $subtitle = $array[$i][$j][1];
+              $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$subtitle.'" href="#'.$subslug.'">'.$subtitle.'</a></li>';
+
+            }
+            $pages .= "</ul></li>";
+
           } else {
-            $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$headarray[$i][1].'" href="#'.$headarray[$i][0].'">'.$headarray[$i][1].'</a></li>';
+            $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$title.'" href="#'.$slug.'">'.$title.'</a></li>';
           }
         }
-        array_push($array, $subarray);
-        array_shift($array);
-        echo print_r($array);
-        echo print_r($headarray);
+
 
         $first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo('name') . '"> Table of Contents </a></li>';
 
