@@ -1,10 +1,9 @@
 <div role="contentinfo" class="uw-footer">
 
-    <h2>Contact Info &amp; Resource Links</h2>
+    <h2 class="sr-only">Contact Info &amp; Resource Links</h2>
 
     <a href="http://www.washington.edu" class="footer-wordmark">University of Washington</a>
-    <a href="http://www.washington.edu/boundless/"><div class="be-boundless">Be boundless</div></a>
-
+    <a href="http://www.washington.edu/boundless/"><div class="be-boundless" style="margin-bottom:0;">Be boundless</div></a>
 
     <div class="container" style="text-align:left; color:#fff; margin-bottom:30px;">
         <div class="row">

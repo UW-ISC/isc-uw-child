@@ -20,21 +20,21 @@
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 
-<div class="uw-body">
+<div class="uw-body" style="padding:0;">
 
     <div class="uw-content" role='main'>
 
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="" style="background: gray url(<?php echo $url ?>); min-height:530px; background-size:cover; background-position:center center;">
+      <div class="" style="background: #0f0403 url(<?php echo $url ?>); min-height:530px; background-size:contain; background-position:right; background-repeat:no-repeat;">
           <div class="container">
 
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
 
-                    <h2>Search</h2>
-                    <div style="font-size:65px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 60px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
+                    <h2 class="sr-only">Search</h2>
+                    <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
 
                     <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
                     	<div>
@@ -45,8 +45,8 @@
                     </form>
 
                 </div>
-                <div class="col-md-4">
-                    <h2>quicklinks</h2>
+                <div class="col-md-4 col-md-offset-2">
+                    <h2>Quicklinks</h2>
                     <ul>
                         <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
                         <li><a class="uw-btn" href="#">Ask for help!</a></li>
@@ -118,10 +118,10 @@
 
               </div>
               <div class="col-md-4">
-                  <h2>News &amp; Events</h2>
+                  <h2>News</h2>
                   <!-- loop news posts here -->
 
-                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5);">
+                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;">
                       <?php
                           $args = array( 'numberposts' => '5' );
                           $recent_posts = wp_get_recent_posts( $args );
