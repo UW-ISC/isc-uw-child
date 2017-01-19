@@ -113,8 +113,8 @@ endif;
         build_page_navigation(get_the_ID());
         $headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
         $pages = '';
-        $array = array();
         $subarray = array();
+        $temp_storage = array();
         $headarray = array();
 
         // filters the content to add ids to the headers so that the menu will work
@@ -125,39 +125,47 @@ endif;
            $content = substr($header, 1, strlen($header));
            $heading_type = substr($header, 0, 1);
            if ($heading_type == '4') {
-             array_push($array, $subarray);
-             $subarray = array();
+             array_push($subarray, $temp_storage);
+             $temp_storage = array();
              array_push($headarray, array($slug, $content));
            } else {
-             array_push($subarray, array($slug, $content));
+             array_push($temp_storage, array($slug, $content));
            }
          }
        }
 
-       array_push($array, $subarray);
-       array_shift($array);
+       // pushing on the subheaders under the last header
+       array_push($subarray, $temp_storage);
+       // ignoring all the subheaders that occured before the first header
+       array_shift($subarray);
 
+       // iterate through the headers
        for ($i = 0; $i < sizeof($headarray); $i++){
-          $subpages = sizeof($array[$i]);
+          // the subheaders (if any) under the current header
+          $subheaders = $subarray[$i];
+          // slug of the current header
           $slug = $headarray[$i][0];
+          // title of the current header
           $title = $headarray[$i][1];
-          if ($subpages > 0) {
+          if (sizeof($subheaders) > 0) {
+            // means there are subheaders under the current header
             $pages .= '<li class="nav-item has-children"> <button class="nav-link nav-link-12 children-toggle collapsed" data-toggle="collapse" data-target="#'.$slug.'" aria-controls="#'.$slug.'" aria-expanded="false">'.$title.'<i class="fa fa-2x"></i></button>';
             $pages .= '<ul class="children depth-1 collapse" id="'.$slug.'" aria-expanded="false" style="height: 0px;">';
-            for ($j = 0; $j < $subpages; $j++) {
-              // append subheaders headers
-              $subslug = $array[$i][$j][0];
-              $subtitle = $array[$i][$j][1];
+            // iterate through the subheaders under the current header
+            for ($j = 0; $j < sizeof($subheaders); $j++) {
+              // slug of the current subheader
+              $subslug = $subheaders[$j][0];
+              // title of the current subtitle
+              $subtitle = $subheaders[$j][1];
+              // Append the subheaders
               $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$subtitle.'" href="#'.$subslug.'">'.$subtitle.'</a></li>';
-
             }
             $pages .= "</ul></li>";
-
           } else {
+            // if there are no subheaders under the current header, just put the header link
             $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$title.'" href="#'.$slug.'">'.$title.'</a></li>';
           }
         }
-
 
         $first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo('name') . '"> Table of Contents </a></li>';
 
