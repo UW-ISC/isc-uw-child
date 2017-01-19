@@ -7,7 +7,7 @@
 <?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/img/milky_way.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/2759302071_d8cb576f9e_o.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
@@ -27,15 +27,26 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div style="background: gray url(<?php echo $url ?>); min-height:500px;">
+      <div class="" style="background: gray url(<?php echo $url ?>); min-height:530px; background-size:cover; background-position:center center;">
           <div class="container">
 
             <div class="row">
                 <div class="col-md-8">
-                    <h2 style="font-size:50px; font-family: "Encode Sans Compressed", sans-serif;">One Place.<br>All your HR &amp; Payroll Questions</h2>
+
+                    <h2>Search</h2>
+                    <div style="font-size:65px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 60px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
+
+                    <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
+                    	<div>
+                    		<label class="screen-reader-text" for="s">Search for:</label>
+                    		<input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
+                    		<input type="submit" id="searchsubmit" value="Search">
+                    	</div>
+                    </form>
+
                 </div>
                 <div class="col-md-4">
-                    <h2>shortcuts</h2>
+                    <h2>quicklinks</h2>
                     <ul>
                         <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
                         <li><a class="uw-btn" href="#">Ask for help!</a></li>
@@ -54,7 +65,7 @@
 
               <div class="col-md-8">
 
-                  <h2>Featured</h2>
+                  <h2>Featured articles</h2>
 
                   <div class="row">
                        <!-- loop -->
@@ -98,15 +109,15 @@
                         }
                       }
                       ?>
-                       <!-- end loop -->
+
                   </div>
 
               </div>
               <div class="col-md-4">
-                  <h2>News</h2>
+                  <h2>News &amp; Events</h2>
                   <!-- loop news posts here -->
 
-                  <div style="background: #fff; padding: 20px;">
+                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5);">
                       <?php
                           $args = array( 'numberposts' => '5' );
                           $recent_posts = wp_get_recent_posts( $args );
@@ -120,6 +131,7 @@
                                   <p><?php echo $recent['post_modified_gmt']; ?></p>
                                   <p><?php echo get_the_excerpt($recent['ID']); ?></p>
                                   <p><a class="uw-btn btn-sm" href="<?php echo $recent['guid'] ?>">Read more</a></p>
+                                  <p><a href="<?php  echo get_post_permalink($recent['ID']); ?>">Read more</a></p>
                               <?php }
                           }
                       ?>
