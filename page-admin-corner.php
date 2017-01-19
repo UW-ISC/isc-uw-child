@@ -97,77 +97,91 @@
 
                         <?php
 
-                           $admin_args = array(
-                                	'tax_query' => array(
-                                		array(
-                                			'taxonomy' => 'security-role',
-                                			'field'    => 'slug',
-                                			'terms'    => 'admin',
-                                		),
-                                	),);
+                            function get_guide_count($name){
 
-                           $hr_admin_guides = new WP_Query($admin_args);
+                               $args = array(
+                                    	'tax_query' => array(
+                                    		array(
+                                    			'taxonomy' => 'security-role',
+                                    			'field'    => 'slug',
+                                    			'terms'    => $name,
+                                    		),
+                                    	),);
 
-                           $initatior_2s_args = array(
-                                	'tax_query' => array(
-                                		array(
-                                			'taxonomy' => 'security-role',
-                                			'field'    => 'slug',
-                                			'terms'    => 'initiate-2',
-                                		),
-                                	),);
-                           $initiator_2s_guides = new WP_Query($initatior_2s_args);
+                               $guides = new WP_Query($args);
+                               return $guides->post_count;
+                            }
 
-                           $approver_args = array(
-                                	'tax_query' => array(
-                                		array(
-                                			'taxonomy' => 'security-role',
-                                			'field'    => 'slug',
-                                			'terms'    => 'approver',
-                                		),
-                                	),);
-                           $approver_guides = new WP_Query($approver_args);
-
-                           $coordinator_args = array(
-                                	'tax_query' => array(
-                                		array(
-                                			'taxonomy' => 'security-role',
-                                			'field'    => 'slug',
-                                			'terms'    => 'coordinator',
-                                		),
-                                	),);
-                           $coordinator_guides = new WP_Query($coordinator_args);
-
-                           $initiator_1s_args = array(
-                                	'tax_query' => array(
-                                		array(
-                                			'taxonomy' => 'security-role',
-                                			'field'    => 'slug',
-                                			'terms'    => 'initate-1',
-                                		),
-                                	),);
-                           $initiator_1s_guides = new WP_Query($initiator_1s_args);
                         ?>
 
+                        <h3>General</h3>
+
                         <a class="work-guide no-margin row">
-                            For HR Admins: view <?php echo $hr_admin_guides->post_count; ?> User guides
+                            For HR Admins: view <?php echo get_guide_count(''); ?> User guides
                         </a>
 
                         <a class="work-guide no-margin row">
-                            For Initiator 2s: view <?php echo $initiator_2s_guides->post_count; ?> User guides
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
                         </a>
 
+                        <h3>Time and Absence</h3>
 
                         <a class="work-guide no-margin row">
-                            For Approvers: View all <?php echo $approver_guides->post_count; ?> User guides
-                        </a>
-
-                        <a class="work-guide no-margin row">
-                            For On-boarding coordinators: view all <?php echo $coordinator_guides->post_count; ?> User guides
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
                         </a>
 
                         <a class="work-guide no-margin row">
-                            For Initiator 1s: view all <?php echo $initiator_1s_guides->post_count; ?> User guides
+                            For Approvers: View all <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <h3>HCM</h3>
+
+                        <a class="work-guide no-margin row">
+                            For On-boarding coordinators: view all <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 1s: view all <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <h3>Academic Specific</h3>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <h3>Medical Center Specific</h3>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                        </a>
+
+                        <a class="work-guide no-margin row">
+                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
                         </a>
 
                         <a class="row" style="color: blue !important;">
