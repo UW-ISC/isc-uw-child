@@ -68,42 +68,48 @@
                   <h2>Featured articles</h2>
 
                   <div class="row">
-                       <!-- loop featured pages here -->
+                       <!-- loop -->
                        <?php
                        // Featured Pages
                        // this query finds the pages marked featured page and lists their
-                       // title as a link, and their summary
-
+                       // title and summary on a card
                        $args = array(
-                        'post_type' => 'page'
-                       );
-                       $has_pages = get_pages();?>
+                         'post_type'	=> 'page',
+                         'meta_key'		=> 'isc-featured',
+                         'meta_value'	=> 'YES'
+                      );
+                      ?>
 
-                       <?php if( $has_pages):
-                         foreach($has_pages as $page) {
-                           $custom_fields = get_post_custom($page->ID);
-                           $featured = $custom_fields["isc-featured"][0];
-                           $summary = $custom_fields["summary-text"][0];
-                           if ($featured != NULL) { ?>
-                                 <div class="col-md-6">
-                                     <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+                      <?php
+                      $featured = get_pages( $args );
 
-                                         <div style="margin:-20px; height:160px; overflow:hidden; margin-bottom:30px;">
-                                             <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg'?>">
-                                         </div>
+                      if (!$featured) {
+                        echo "No featured pages found!";
+                      } else {
+                        foreach ($featured as $featured_page) { ?>
+                          <div class="col-md-6">
+                            <div style="background: #eee; padding: 20px; margin-bottom:30px;">
 
-                                         <h3>
-                                           <a href="<?php echo get_page_link($page->ID); ?>">
-                                           <?php echo get_the_title($page->ID); ?></a>
-                                         </h3>
-                                         <p> <?php echo $summary; ?> </p>
-                                         <p><a class="uw-btn btn-sm" href="<?php echo get_page_link($page->ID); ?>">learn more</a></p>
-                                     </div>
-                                 </div>
-                         <?php }
-                         }
-                       endif; ?>
-                       <!-- end loop -->
+                              <h3>
+                                <a href="<?php echo get_permalink($featured_page->ID); ?>">
+                                <?php echo get_the_title($featured_page->ID); ?></a>
+                              </h3>
+
+                              <?php
+                                $custom = get_post_custom($featured_page->ID);
+                                $summary = $custom["summary-text"][0];
+                              ?>
+
+                              <p> <?php echo $summary; ?> </p>
+                              <p><a class="uw-btn btn-sm" href="<?php echo get_page_link($page->ID); ?>">learn more</a></p>
+
+                            </div>
+                        </div>
+                          <?php
+                        }
+                      }
+                      ?>
+
                   </div>
 
               </div>
@@ -124,12 +130,13 @@
                                   <?php echo get_the_title($recent['ID']); ?></a></h3>
                                   <p><?php echo $recent['post_modified_gmt']; ?></p>
                                   <p><?php echo get_the_excerpt($recent['ID']); ?></p>
+                                  <p><a class="uw-btn btn-sm" href="<?php echo $recent['guid'] ?>">Read more</a></p>
                                   <p><a href="<?php  echo get_post_permalink($recent['ID']); ?>">Read more</a></p>
                               <?php }
                           }
                       ?>
 
-                      <p><a class="uw-btn btn-sm" href="#">See all news</a></p>
+                      <p><a class="uw-btn btn-lg" href="#">See all news</a></p>
                   </div>
 
                   <!-- end loop -->
