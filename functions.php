@@ -1,6 +1,4 @@
 <?php
- $header = "h4"; // the tag we will treat as the header
- $subheader = "h5"; // the tag we will treat as the subheader
 
 function my_theme_enqueue_styles() {
 
@@ -110,7 +108,7 @@ endif;
 
         // $exclude_ids = get_menu_excluded_ids();
         // grabs all the h4s in the content
-        build_page_navigation(get_the_ID());
+
         $headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
         $pages = '';
         $subarray = array();
@@ -120,15 +118,20 @@ endif;
         // filters the content to add ids to the headers so that the menu will work
         add_filter( 'the_content', 'add_ids_to_header_tags_auto');
 
+        // parse through all the headers and sift/sort headers/subheaders
         if (!empty($headers)) {
          foreach ($headers as $slug=>$header) {
            $content = substr($header, 1, strlen($header));
            $heading_type = substr($header, 0, 1);
            if ($heading_type == '4') {
+             // it is a header!
              array_push($subarray, $temp_storage);
+             // reset the temp_storage array to gather new subheaders under the new header
              $temp_storage = array();
+             // add the header to the headarray
              array_push($headarray, array($slug, $content));
            } else {
+             // it is a subheader, store it until we see the next header... or the content ends
              array_push($temp_storage, array($slug, $content));
            }
          }
@@ -149,7 +152,7 @@ endif;
           $title = $headarray[$i][1];
           if (sizeof($subheaders) > 0) {
             // means there are subheaders under the current header
-            $pages .= '<li class="nav-item has-children"> <button class="nav-link nav-link-12 children-toggle collapsed" data-toggle="collapse" data-target="#'.$slug.'" aria-controls="#'.$slug.'" aria-expanded="false">'.$title.'<i class="fa fa-2x"></i></button>';
+            $pages .= '<li class="nav-item has-children"> <button class="nav-link children-toggle collapsed" data-toggle="collapse" data-target="#'.$slug.'" aria-controls="#'.$slug.'" aria-expanded="false">'.$title.'<i class="fa fa-2x"></i></button>';
             $pages .= '<ul class="children depth-1 collapse" id="'.$slug.'" aria-expanded="false" style="height: 0px;">';
             // iterate through the subheaders under the current header
             for ($j = 0; $j < sizeof($subheaders); $j++) {
@@ -167,6 +170,7 @@ endif;
           }
         }
 
+        // add the title of the table of contents (first element)
         $first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo('name') . '"> Table of Contents </a></li>';
 
         $html = sprintf( '<ul>%s%s</ul>',
@@ -370,14 +374,14 @@ if ( ! function_exists('uw_breadcrumbs') ) :
 endif;
 
 function build_page_navigation( $post_id ) {
-
         // Grab the post and post_content
         $page_data = get_post($post_id);
         $page_content = $page_data ? $page_data->post_content : '';
 
         $links = array();
         $results = '';
-        $options = "([" . substr($GLOBALS['header'], -1) .  substr($GLOBALS['subheader'], -1) .  "])";
+        // the header types we want to look for (4 and 5)
+        $options = "([45])";
 				$regex = '/<h'. $options . '.*?>(.*?)<\/h\1>/';
 
         if ( preg_match_all($regex, $page_content, $matches) ) {
@@ -397,8 +401,9 @@ function build_page_navigation( $post_id ) {
         update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
 }
 
-
-function add_ids_to_header_tags_auto( $content ) {
+function add_ids_to_header_tags_auto( $content) {
+  // making sure the headers have been gathered first
+  build_page_navigation(get_the_ID());
 
   // _uwhr_page_anchor_links represents if a post contains these anchor links, so if there
   // are no links we don't want to bother with this method...
@@ -406,7 +411,8 @@ function add_ids_to_header_tags_auto( $content ) {
   if (empty($headers)) {
       return $content;
   }
-  $look_for = "(" . $GLOBALS['header'] . "|" . $GLOBALS['subheader'] . ")";
+  // the header types we want to look for (h4 and h5)
+  $look_for = "(h4|h5)";
   $pattern = '#(?P<full_tag><(?P<tag_name>'. $look_for .')>(?P<tag_contents>[^<]*)</'. $look_for .'>)#i';
   if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
       $find = array();
