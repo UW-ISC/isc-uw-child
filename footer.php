@@ -1,17 +1,18 @@
 <div role="contentinfo" class="uw-footer">
 
-    <a href="http://www.washington.edu" class="footer-wordmark">University of Washington</a>
-    <a href="http://www.washington.edu/boundless/"><h3 class="be-boundless">Be boundless</h3></a>
+    <h2 class="sr-only">Contact Info &amp; Resource Links</h2>
 
+    <a href="http://www.washington.edu" class="footer-wordmark">University of Washington</a>
+    <a href="http://www.washington.edu/boundless/"><div class="be-boundless" style="margin-bottom:0;">Be boundless</div></a>
 
     <div class="container" style="text-align:left; color:#fff; margin-bottom:30px;">
         <div class="row">
 
             <div class="col-md-4">
-              <h5>Contact Us</h5>
+              <h3>Contact Information</h3>
               <div class="row">
               <div class="col-md-6">
-                <li> ***map goes here*** </li>
+                 ***map goes here***
               </div>
               <div class="col-md-6">
                 <ul>
@@ -26,7 +27,7 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-4">
-                        <h5>HR Resources</h5>
+                        <h3>HR Resources</h3>
                         <ul>
                           <li> <a href="">Forms</a> </li>
                           <li> <a href="">Policies</a> </li>
@@ -35,7 +36,7 @@
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <h5>HR Departments</h5>
+                        <h3>HR Departments</h3>
                         <ul>
                           <li> <a href="http://hr.uw.edu/">UW HR</a> </li>
                           <li> <a href="http://f2.washington.edu/fm/payroll/home">Payroll</a> </li>
@@ -44,7 +45,7 @@
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <h5>UW Resources</h5>
+                        <h3>UW Resources</h3>
                         <ul>
                           <li> <a href="https://www.washington.edu/uwit/">UW IT</a> </li>
                           <li> <a href="https://www.washington.edu/facilities/transportation/">UW Transportation</a> </li>
