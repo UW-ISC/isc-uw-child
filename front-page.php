@@ -115,28 +115,49 @@
               </div>
               <div class="col-md-4">
                   <h2>News &amp; Events</h2>
-                  <!-- loop news posts here -->
+
+                  <!-- loop news posts here
+                        Gets numberposts of the posts that have been
+                        published, and have their location set to homepage
+                  -->
 
                   <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5);">
                       <?php
-                          $args = array( 'numberposts' => '5' );
-                          $recent_posts = wp_get_recent_posts( $args );
-                          if(!$recent_posts) { ?>
-                              <h3>Oops!</h3>
-                              <p>No recent posts found!</p>
-                          <?php } else {
-                              foreach ($recent_posts as $recent) { ?>
-                                  <h3><a href="<?php echo get_post_permalink($recent['ID']); ?>">
-                                  <?php echo get_the_title($recent['ID']); ?></a></h3>
-                                  <p><?php echo $recent['post_modified_gmt']; ?></p>
-                                  <p><?php echo get_the_excerpt($recent['ID']); ?></p>
-                                  <p><a class="uw-btn btn-sm" href="<?php echo $recent['guid'] ?>">Read more</a></p>
-                                  <p><a href="<?php  echo get_post_permalink($recent['ID']); ?>">Read more</a></p>
-                              <?php }
-                          }
-                      ?>
 
-                      <p><a class="uw-btn btn-lg" href="#">See all news</a></p>
+                       $args = array(
+                              'numberposts' => '5',
+                              'post_status' => 'publish',
+                              'tax_query' => array(
+                                array(
+                                  'taxonomy' => 'location',
+                                  'field'    => 'slug',
+                                  'terms'    => 'homepage',
+                                ),
+                              ),);
+                       $news_posts = new WP_Query($args);
+
+                       if($news_posts->have_posts()) :
+                          while($news_posts->have_posts()) :
+                             $news_posts->the_post();
+                             ?>
+
+                             <h3>
+                               <a href="<?php echo get_post_permalink($recent['ID']); ?>">
+                               <?php echo the_title(); ?></a>
+                             </h3>
+                             <p>
+                             <?php echo get_the_date() ?>
+                             <p><?php echo
+                             the_excerpt() ?></p>
+                           </p>
+
+                    <?php
+                          endwhile;
+                      else:
+                        echo "No news posts found.";
+                      endif;
+                    ?>
+                      <p><a class="uw-btn btn-sm" href="#">See all news</a></p>
                   </div>
 
                   <!-- end loop -->
