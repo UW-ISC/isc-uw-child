@@ -105,7 +105,7 @@
                               ?>
 
                               <p> <?php echo $summary; ?> </p>
-                              <p><a class="uw-btn btn-sm" href="<?php echo get_page_link($page->ID); ?>">learn more</a></p>
+                              <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>">learn more</a></p>
 
                             </div>
                         </div>
