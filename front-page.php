@@ -43,27 +43,29 @@
                     		<input type="submit" id="searchsubmit" value="Search">
                     	</div>
                     </form>
-
-                    <div style="display:none;">
-                        <h2>Quicklinks</h2>
-                        <ul>
-                            <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
-                            <li><a class="uw-btn" href="#">Ask for help!</a></li>
-                            <li><a class="uw-btn" href="#">Learn about Timesheets</a></li>
-                            <li><a class="uw-btn" href="#">New Hires: Stare here!</a></li>
-                        </ul>
-                    </div>
-
                 </div>
-                <div class="col-md-4 col-md-offset-2">
+            </div>
+            <div class="row">
 
+                <div class="col-md-8" style="margin-top:20px;">
+                    <h2 class="sr-only">Quicklinks</h2>
+                    <p>popular topics</p>
+                    <a class="btn-sm uw-btn" href="#">Ask for help!</a>
+                    <a class="btn-sm uw-btn" href="#">Learn about Timesheets</a>
+                    <a class="btn-sm uw-btn" href="#">New Hires: Stare here!</a>
+                </div>
+                <div class="col-md-4">
+                    <div style="background: #fff; padding: 20px; margin-top:-30px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); ">
+                        <p>Introducing Workday</p>
+                        <a class="uw-btn" href="#">Sign in to Workday</a>
+                    </div>
                 </div>
             </div>
 
           </div>
       </div>
 
-      <div id='main_content' class="container uw-body-copy" tabindex="-1" style="margin-top: -120px;">
+      <div id='main_content' class="container uw-body-copy" tabindex="-1" style="margin-top: -90px;">
 
           <div class="row">
 
