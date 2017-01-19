@@ -20,21 +20,21 @@
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 
-<div class="uw-body">
+<div class="uw-body" style="padding:0;">
 
     <div class="uw-content" role='main'>
 
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="" style="background: gray url(<?php echo $url ?>); min-height:500px; background-size:cover;">
+      <div class="" style="background: #0f0403 url(<?php echo $url ?>); height:500px; background-size:65%; background-position:110%; background-repeat:no-repeat;">
           <div class="container">
 
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
 
-                    <h2>Search</h2>
-                    <div style="font-size:65px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 60px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
+                    <h2 class="sr-only">Search</h2>
+                    <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
 
                     <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
                     	<div>
@@ -44,15 +44,19 @@
                     	</div>
                     </form>
 
+                    <div style="display:none;">
+                        <h2>Quicklinks</h2>
+                        <ul>
+                            <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
+                            <li><a class="uw-btn" href="#">Ask for help!</a></li>
+                            <li><a class="uw-btn" href="#">Learn about Timesheets</a></li>
+                            <li><a class="uw-btn" href="#">New Hires: Stare here!</a></li>
+                        </ul>
+                    </div>
+
                 </div>
-                <div class="col-md-4">
-                    <h2>quicklinks</h2>
-                    <ul>
-                        <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
-                        <li><a class="uw-btn" href="#">Ask for help!</a></li>
-                        <li><a class="uw-btn" href="#">Learn about Timesheets</a></li>
-                        <li><a class="uw-btn" href="#">New Hires: Stare here!</a></li>
-                    </ul>
+                <div class="col-md-4 col-md-offset-2">
+
                 </div>
             </div>
 
@@ -68,62 +72,101 @@
                   <h2>Featured articles</h2>
 
                   <div class="row">
-                       <!-- loop featured pages here -->
+                       <!-- loop -->
                        <?php
                        // Featured Pages
                        // this query finds the pages marked featured page and lists their
-                       // title as a link, and their summary
-
+                       // title and summary on a card
                        $args = array(
-                        'post_type' => 'page'
-                       );
-                       $has_pages = get_pages();?>
+                         'post_type'	=> 'page',
+                         'meta_key'		=> 'isc-featured',
+                         'meta_value'	=> 'YES'
+                      );
+                      ?>
 
-                       <?php if( $has_pages):
-                         foreach($has_pages as $page) {
-                           $custom_fields = get_post_custom($page->ID);
-                           $featured = $custom_fields["isc-featured"][0];
-                           $summary = $custom_fields["summary-text"][0];
-                           if ($featured != NULL) { ?>
-                                 <div class="col-md-6">
-                                     <div style="background: #eee; padding: 20px; margin-bottom:30px;">
-                                         <h3>
-                                           <a href="<?php echo get_page_link($page->ID); ?>">
-                                           <?php echo get_the_title($page->ID); ?></a>
-                                         </h3>
-                                         <p> <?php echo $summary; ?> </p>
-                                         <p><a class="uw-btn btn-sm" href="<?php echo get_page_link($page->ID); ?>">learn more</a></p>
-                                     </div>
+                      <?php
+                      $featured = get_pages( $args );
+
+                      if (!$featured) {
+                        echo "No featured pages found!";
+                      } else {
+                        foreach ($featured as $featured_page) { ?>
+                          <div class="col-md-6">
+                            <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+
+                                <div style="margin:-20px; height:160px; overflow:hidden; margin-bottom:30px;">
+                                     <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg'?>">
                                  </div>
-                         <?php }
-                         }
-                       endif; ?>
-                       <!-- end loop -->
+
+                              <h3>
+                                <a href="<?php echo get_permalink($featured_page->ID); ?>">
+                                <?php echo get_the_title($featured_page->ID); ?></a>
+                              </h3>
+
+                              <?php
+                                $custom = get_post_custom($featured_page->ID);
+                                $summary = $custom["summary-text"][0];
+                              ?>
+
+                              <p> <?php echo $summary; ?> </p>
+                              <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>">learn more</a></p>
+
+                            </div>
+                        </div>
+                          <?php
+                        }
+                      }
+                      ?>
+
                   </div>
 
               </div>
               <div class="col-md-4">
                   <h2>News &amp; Events</h2>
+
+                  <!-- loop news posts here
+                        Gets numberposts of the posts that have been
+                        published, and have their location set to homepage
+                  -->
+                  <h2>News</h2>
                   <!-- loop news posts here -->
 
-                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5);">
+                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;">
                       <?php
-                          $args = array( 'numberposts' => '5' );
-                          $recent_posts = wp_get_recent_posts( $args );
-                          if(!$recent_posts) { ?>
-                              <h3>Oops!</h3>
-                              <p>No recent posts found!</p>
-                          <?php } else {
-                              foreach ($recent_posts as $recent) { ?>
-                                  <h3><a href="<?php echo get_post_permalink($recent['ID']); ?>">
-                                  <?php echo get_the_title($recent['ID']); ?></a></h3>
-                                  <p><?php echo $recent['post_modified_gmt']; ?></p>
-                                  <p><?php echo get_the_excerpt($recent['ID']); ?></p>
-                                  <p><a href="<?php echo $recent['guid'] ?>">Read more</a></p>
-                              <?php }
-                          }
-                      ?>
 
+                       $args = array(
+                              'numberposts' => '5',
+                              'post_status' => 'publish',
+                              'tax_query' => array(
+                                array(
+                                  'taxonomy' => 'location',
+                                  'field'    => 'slug',
+                                  'terms'    => 'homepage',
+                                ),
+                              ),);
+                       $news_posts = new WP_Query($args);
+
+                       if($news_posts->have_posts()) :
+                          while($news_posts->have_posts()) :
+                             $news_posts->the_post();
+                             ?>
+
+                             <h3>
+                               <a href="<?php echo get_post_permalink($recent['ID']); ?>">
+                               <?php echo the_title(); ?></a>
+                             </h3>
+                             <p>
+                             <?php echo get_the_date() ?>
+                             <p><?php echo
+                             the_excerpt() ?></p>
+                           </p>
+
+                    <?php
+                          endwhile;
+                      else:
+                        echo "No news posts found.";
+                      endif;
+                    ?>
                       <p><a class="uw-btn btn-sm" href="#">See all news</a></p>
                   </div>
 

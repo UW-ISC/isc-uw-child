@@ -17,7 +17,6 @@ body, p { font-size: 16px !important; }
 /*** mobile ***/
 @media only screen and (max-width: 767px) {
 
-    .uw-body { padding: 0; }
 
     /* top most banner nav */
     .uw-thinstrip { background: #fff; color: #4b2e83; }
@@ -36,6 +35,9 @@ body, p { font-size: 16px !important; }
     .uw-site-title { height: 80px; padding:0; margin: 0 !important; background: #4b2e83; }
 
     .uw-mobile-menu-toggle { color: #fff !important; right: 0 !important; }
+
+    /* breadcrumbs */
+    .uw-breadcrumbs { margin-top: 30px !important; }
 
     .uw-body-copy { margin-top: 0 !important; }
 
@@ -63,10 +65,14 @@ body, p { font-size: 16px !important; }
 #dawgdrops { background-color: #4b2e83; }
 .dawgdrops-item a { color: #fff; }
 
+/* breadcrumbs */
+.uw-breadcrumbs { margin-top: 0; }
+
 /* body */
 #uw-container { overflow-x: initial !important; }
 .uw-body { padding-top: 0; }
 
+/*** hr accordian styles ***/
 .uw-body .uw-accordion-menu {
     margin-bottom: 3rem;
     position: relative;
