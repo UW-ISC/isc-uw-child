@@ -19,37 +19,35 @@
 
   <div class="row">
 
-
-
     <div class="col-md-8 uw-content" role='main'>
 
-      <?php get_template_part( 'menu', 'mobile' ); ?>
-      <?php get_template_part( 'breadcrumbs' ); ?>
+        <?php get_template_part( 'menu', 'mobile' ); ?>
+        <?php get_template_part( 'breadcrumbs' ); ?>
 
-      <div id='main_content' class="uw-body-copy" tabindex="-1">
+        <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-          <h2><?php the_title(); ?></h2>
+            <h2><?php the_title(); ?></h2>
 
-        <?php
-          // Start the Loop.
-          while ( have_posts() ) : the_post();
+            <?php
+              // Start the Loop.
+              while ( have_posts() ) : the_post();
 
-            the_content();
+                the_content();
 
-            // If comments are open or we have at least one comment, load up the comment template.
-            if ( comments_open() || get_comments_number() ) {
-              comments_template();
-            }
+                // If comments are open or we have at least one comment, load up the comment template.
+                if ( comments_open() || get_comments_number() ) {
+                  comments_template();
+                }
 
-          endwhile;
-        ?>
+              endwhile;
+            ?>
 
-      </div>
+        </div>
 
     </div>
 
     <div class="col-md-4" role="">
-        sidebar asldkfj asdlk ;lksadfj alskdfj
+    sidebar asldkfj asdlk ;lksadfj alskdfj
     </div>
 
   </div>
