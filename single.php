@@ -10,9 +10,18 @@
 
 <div class="container uw-body">
 
+    <div class="row">
+        <div class="col-md-12">
+            <?php get_template_part( 'menu', 'mobile' ); ?>
+            <?php get_template_part( 'breadcrumbs' ); ?>
+        </div>
+    </div>
+
   <div class="row">
 
-    <div class="col-md-10 uw-content" role='main'>
+
+
+    <div class="col-md-8 uw-content" role='main'>
 
       <?php get_template_part( 'menu', 'mobile' ); ?>
       <?php get_template_part( 'breadcrumbs' ); ?>
@@ -37,6 +46,10 @@
 
       </div>
 
+    </div>
+
+    <div class="col-md-4" role="">
+        sidebar asldkfj asdlk ;lksadfj alskdfj
     </div>
 
   </div>
