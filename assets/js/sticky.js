@@ -4,18 +4,19 @@ $(document).ready(function() {
   var parent = $(".uw-body");
   var toc = $(".float-menu");
   var content = $(".float-content");
-  console.log($(".float-menu").offset());
+  var padding = toc.css("padding-left").slice(0, -2);
+  var menu_percentage = (toc.width() + padding * 2) / $(".row").width();
+  var width_change = 991; // the width at which the table of contents is simply put on top of the content
 
   // getting the point at which to start the floating mechanism
   // we need to calculate both the potential padding and width
   // of a floating toc
   var change = true;
-  var pad_left = (content.offset().left - toc.width() - 30);
+  var pad_left = (content.offset().left - toc.width() - padding * 2);
   var parent_width = parent.width();
-  var new_width = ((parent_width - 90) * 0.25) + 30;
+  var new_width = (parent_width * menu_percentage) + padding / 2;
 
-  if($(window).width() > 991 && change) {
-    console.log($(".float-menu").offset());
+  if($(window).width() > width_change && change) {
     var height_change = $(".float-menu").offset().top;
     change = false;
   }
@@ -26,10 +27,10 @@ $(document).ready(function() {
     // by resizing the window, the width and padding of a potentially
     // floating toc changes, so we have to recalculate it
     parent_width = parent.width();
-    new_width = ((parent_width - 90) * 0.25) + 30;
-    pad_left = (content.offset().left - toc.width() - 30);
+    new_width = (parent_width * menu_percentage) + padding / 2;
+    pad_left = (content.offset().left - toc.width() - padding * 2);
 
-    if($(this).width() > 991 && change) {
+    if($(this).width() > width_change && change) {
       // we don't wanna continually update this however, otherwise it will be wonky
       // the function is continually updating/implementing it's changes which causes a jumpy toc
       // just wanna get it once we have the opportunity and it should never change really...
@@ -38,7 +39,7 @@ $(document).ready(function() {
     }
     // if a user resizes the page to activate the floating thingy, we have to be ready and
     // account for their location on the page
-    if($(this).width() > 991) {
+    if($(this).width() > width_change) {
       if($(this).scrollTop() > height_change) {
         toc.addClass("uw-accordion-menu-floater");
         content.addClass("uw-content-floater");
@@ -61,7 +62,7 @@ $(document).ready(function() {
 
   $(window).scroll(function() {
       // if the page is more than 991 px, it can follow the floating behavior
-      if($(this).width() > 991) {
+      if($(this).width() > width_change) {
         if($(this).scrollTop() > height_change) {
           toc.addClass("uw-accordion-menu-floater");
           content.addClass("uw-content-floater");
