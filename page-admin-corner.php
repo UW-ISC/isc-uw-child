@@ -117,11 +117,11 @@
                         <h3>General</h3>
 
                         <a class="work-guide no-margin row">
-                            For HR Admins: view <?php echo get_guide_count(''); ?> User guides
+                            For Employee as Self: view <?php echo get_guide_count('employee-as-self'); ?> User guides
                         </a>
 
                         <a class="work-guide no-margin row">
-                            For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                            For I-9 Coordinators: view <?php echo get_guide_count('i-9-coordinator'); ?> User guides
                         </a>
 
                         <h3>Time and Absence</h3>
@@ -220,7 +220,11 @@
 
                              <h3><?php the_title() ?></h3>
                              <div class="update-date"><?php echo get_the_date() ?> </div>
-                             <div class='post-content'><?php the_excerpt() ?></div>
+                             <div class='post-content'><?php
+                                 $texdt = the_excerpt();
+                                 wp_trim_words($texdt, 5, '...');
+                                 echo $texdt;
+                              ?></div>
 
                         <?php
                           endif;
@@ -253,7 +257,7 @@
 
                              <h3><?php the_title() ?></h3>
                              <div class="update-date"><?php echo get_the_date() ?> </div>
-                             <div class='post-content'><?php the_excerpt() ?></div>
+                             <div class='post-content'><?php echo wp_trim_words(the_excerpt(), 5, '...')  ?></div>
 
                         <?php
                           endif;
