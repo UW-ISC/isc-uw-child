@@ -32,14 +32,14 @@
 
           <div class="row">
               <div class="col-md-6">
-                  <h2 class="sr-only">Workday</h2>
+                  <h2 class="sr-only">Main Content</h2>
                   <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;"> <?php the_title();?> </div>
                   <span class="udub-slant"><span></span></span>
-                  <p style="color:#fff;">
+                  <div>
                   <?php
                   while ( have_posts() ) : the_post();
                     the_content();
-                  endwhile; ?></p>
+                endwhile; ?></div>
                   <a class="uw-btn" href="#">Sign in to Workday</a>
               </div>
               <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
