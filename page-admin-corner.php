@@ -17,179 +17,174 @@
         </div>
     </div>
 
-  <div class="row">
+    <div class="row">
 
-    <div class="col-md-8 uw-content" role='main'>
+        <div class="col-md-8 uw-content" role='main'>
 
-      <div id='main_content' class="uw-body-copy" tabindex="-1">
+            <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-          <h2><?php the_title(); ?></h2>
+                <h2><?php the_title(); ?></h2>
 
-          <section>
+              <section>
 
-              <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
-                  <div>
-                      <label class="screen-reader-text" for="s">Search for:</label>
-                      <input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
-                      <input type="submit" id="searchsubmit" value="Search">
+                  <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
+                      <div>
+                          <label class="screen-reader-text" for="s">Search for:</label>
+                          <input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
+                          <input type="submit" id="searchsubmit" value="Search">
+                      </div>
+                  </form>
+
+                  <div class="search-suggestions">
+                      <?php
+
+                      global $wpdb;
+
+                      $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
+                          FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
+                          "LIMIT 3 ;";
+                      $queries = $wpdb->get_results($query, ARRAY_N);
+                       ?>
+                      Popular searches:
+                      <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
+                      <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
+                      <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
                   </div>
-              </form>
-
-              <div class="search-suggestions">
-                  <?php
-
-                  global $wpdb;
-
-                  $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
-                      FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
-                      "LIMIT 3 ;";
-                  $queries = $wpdb->get_results($query, ARRAY_N);
-                   ?>
-                  Popular searches:
-                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
-                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
-                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
-              </div>
-
-
 
                   <h3>Updates</h3>
 
-                  <?php
-
-                     $args = array(
-                          	'tax_query' => array(
-                          		array(
-                          			'taxonomy' => 'location',
-                          			'field'    => 'slug',
-                          			'terms'    => 'admin-corner-news',
-                          		),
-                          	),);
-                     $category_posts = new WP_Query($args);
-
-                     if($category_posts->have_posts()) :
-                        while($category_posts->have_posts()) :
-                           $category_posts->the_post();
-                  ?>
-
-                           <h3><?php the_title() ?></h3>
-                           <div class="update-date"><?php echo get_the_date() ?> </div>
-                           <div class='post-content'><?php the_excerpt() ?></div>
-
-                  <?php
-                        endwhile;
-                    else:
-                    endif;
-                  ?>
-
-
-
-
-                  <h3>Workday User Guides</h3>
-
-                  <?php
-
-                      function get_guide_count($name){
+                      <?php
 
                          $args = array(
                               	'tax_query' => array(
                               		array(
-                              			'taxonomy' => 'security-role',
+                              			'taxonomy' => 'location',
                               			'field'    => 'slug',
-                              			'terms'    => $name,
+                              			'terms'    => 'admin-corner-news',
                               		),
                               	),);
+                         $category_posts = new WP_Query($args);
 
-                         $guides = new WP_Query($args);
-                         return $guides->post_count;
-                      }
+                         if($category_posts->have_posts()) :
+                            while($category_posts->have_posts()) :
+                               $category_posts->the_post();
+                      ?>
 
-                  ?>
+                               <h3><?php the_title() ?></h3>
+                               <div class="update-date"><?php echo get_the_date() ?> </div>
+                               <div class='post-content'><?php the_excerpt() ?></div>
 
-                  <h3>General</h3>
+                      <?php
+                            endwhile;
+                        else:
+                        endif;
+                      ?>
 
-                  <a class="">
-                      For Employee as Self: view <?php echo get_guide_count('employee-as-self'); ?> User guides
-                  </a>
+                      <h3>Workday User Guides</h3>
 
-                  <a class=" ">
-                      For I-9 Coordinators: view <?php echo get_guide_count('i-9-coordinator'); ?> User guides
-                  </a>
+                      <?php
 
-                  <h3>Time and Absence</h3>
+                          function get_guide_count($name){
 
-                  <a class=" ">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                             $args = array(
+                                  	'tax_query' => array(
+                                  		array(
+                                  			'taxonomy' => 'security-role',
+                                  			'field'    => 'slug',
+                                  			'terms'    => $name,
+                                  		),
+                                  	),);
 
-                  <a class=" ">
-                      For Approvers: View all <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                             $guides = new WP_Query($args);
+                             return $guides->post_count;
+                          }
 
-                  <h3>HCM</h3>
+                      ?>
 
-                  <a class=" ">
-                      For On-boarding coordinators: view all <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <h3>General</h3>
 
-                  <a class=" ">
-                      For Initiator 1s: view all <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class="">
+                          For Employee as Self: view <?php echo get_guide_count('employee-as-self'); ?> User guides
+                      </a>
 
-                  <a class=" ">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class=" ">
+                          For I-9 Coordinators: view <?php echo get_guide_count('i-9-coordinator'); ?> User guides
+                      </a>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <h3>Time and Absence</h3>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class=" ">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class=" ">
+                          For Approvers: View all <?php echo get_guide_count(''); ?> User guides
+                      </a>
 
-                  <h3>Academic Specific</h3>
+                      <h3>HCM</h3>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class=" ">
+                          For On-boarding coordinators: view all <?php echo get_guide_count(''); ?> User guides
+                      </a>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class=" ">
+                          For Initiator 1s: view all <?php echo get_guide_count(''); ?> User guides
+                      </a>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class=" ">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
 
-                  <h3>Medical Center Specific</h3>
+                      <a class="">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class="">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
+                      <a class="">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
 
-                  <a class="row" style="color: blue !important;">
-                      Go to the User guides library for other security roles >
-                  </a>
+                      <h3>Academic Specific</h3>
 
-              </section>
+                      <a class="">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
+
+                      <a class="">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
+
+                      <a class="">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
+
+                      <h3>Medical Center Specific</h3>
+
+                      <a class="">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
+
+                      <a class="">
+                          For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      </a>
+
+                      <a class="row" style="color: blue !important;">
+                          Go to the User guides library for other security roles >
+                      </a>
+
+                  </section>
 
 
 
 
-          </div>
+              </div>
 
-      </div>
+            </div>
 
-      <div class="col-md-4" role="">
+        <div class="col-md-4" role="">
 
           <h3>Workshops</h3>
 
@@ -261,8 +256,8 @@
 
       </div>
 
+    </div>
 
-</div>
 </div>
 
 <?php get_footer(); ?>
