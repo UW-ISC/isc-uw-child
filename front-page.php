@@ -28,39 +28,34 @@
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
       <div class="" style="background: #0f0403 url(<?php echo $url ?>); height:500px; background-size:65%; background-position:110%; background-repeat:no-repeat;">
-          <div class="container">
+        <div class="container">
 
-            <div class="row">
-                <div class="col-md-6">
+          <div class="row">
+              <div class="col-md-6">
+                  <h2 class="sr-only">Workday</h2>
+                  <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;"> <?php the_title();?> </div>
+                  <span class="udub-slant"><span></span></span>
+                  <p style="color:#fff;">
+                  <?php
+                  while ( have_posts() ) : the_post();
+                    the_content();
+                  endwhile; ?></p>
+                  <a class="uw-btn" href="#">Sign in to Workday</a>
+              </div>
+              <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
+                  <h2 class="sr-only">Quicklinks</h2>
+                  <p>popular topics</p>
+                  <a class="btn-sm uw-btn" href="#">Ask for help!</a>
+                  <a class="btn-sm uw-btn" href="#">Learn about Timesheets</a>
+                  <a class="btn-sm uw-btn" href="#">New Hires: Stare here!</a>
+              </div>
+          </div>
+          <div class="row">
 
-                    <h2 class="sr-only">Search</h2>
-                    <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0;">One Place.<br>All your HR &amp; Payroll Questions</div>
-
-                    <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
-                    	<div>
-                    		<label class="screen-reader-text" for="s">Search for:</label>
-                    		<input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
-                    		<input type="submit" id="searchsubmit" value="Search">
-                    	</div>
-                    </form>
-
-                    <div style="display:none;">
-                        <h2>Quicklinks</h2>
-                        <ul>
-                            <li><a class="uw-btn" href="#">Sign in to WorkDay</a></li>
-                            <li><a class="uw-btn" href="#">Ask for help!</a></li>
-                            <li><a class="uw-btn" href="#">Learn about Timesheets</a></li>
-                            <li><a class="uw-btn" href="#">New Hires: Stare here!</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-                <div class="col-md-4 col-md-offset-2">
-
-                </div>
-            </div>
 
           </div>
+
+        </div>
       </div>
 
       <div id='main_content' class="container uw-body-copy" tabindex="-1" style="margin-top: -120px;">
@@ -128,7 +123,6 @@
                         Gets numberposts of the posts that have been
                         published, and have their location set to homepage
                   -->
-                  <h2>News</h2>
                   <!-- loop news posts here -->
 
                   <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;">
