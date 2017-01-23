@@ -12,7 +12,7 @@
           <nav class="uw-thin-strip-nav" role='navigation' aria-label='audience based'>
               <ul class="uw-thin-links">
                 <li><a href="/hrp-portal/" title="Sign in to Workday"><img alt="" class="" style="width:30px; margin-top:-15px; margin-right:5px;" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/workday-w.png'?>"> Sign in to Workday</a></li>
-                <li><a href="/hrp-portal/" title="Admin Corner">Admin Corner</a></li>
+                <li><a href="/hrp-portal/admin-corner/" title="Admin Corner">Admin Corner</a></li>
                 <li><a href="/hrp-portal/" title="Contact Us">Contact Us</a></li>
               </ul>
           </nav>

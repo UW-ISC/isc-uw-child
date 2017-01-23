@@ -51,7 +51,32 @@
 
             </div>
 
+          <div class="row">
+              <div class="col-md-6">
+                  <h2 class="sr-only">Main Content</h2>
+                  <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;"> <?php the_title();?> </div>
+                  <span class="udub-slant"><span></span></span>
+                  <div>
+                  <?php
+                  while ( have_posts() ) : the_post();
+                    the_content();
+                endwhile; ?></div>
+                  <a class="uw-btn" href="#">Sign in to Workday</a>
+              </div>
+              <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
+                  <h2 class="sr-only">Quicklinks</h2>
+                  <p>popular topics</p>
+                  <a class="btn-sm uw-btn" href="#">Ask for help!</a>
+                  <a class="btn-sm uw-btn" href="#">Learn about Timesheets</a>
+                  <a class="btn-sm uw-btn" href="#">New Hires: Stare here!</a>
+              </div>
           </div>
+          <div class="row">
+
+
+          </div>
+
+        </div>
       </div>
 
       <div id='main_content' class="container uw-body-copy" tabindex="-1" style="margin-top: -100px;">
@@ -99,7 +124,7 @@
                                 $summary = $custom["summary-text"][0];
                               ?>
 
-                              <p> <?php echo $summary; ?> </p>
+                              <p><?php echo $summary; ?></p>
                               <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>">learn more</a></p>
 
                             </div>
@@ -113,29 +138,51 @@
 
               </div>
               <div class="col-md-4">
-                  <h2>News</h2>
+                  <h2>News &amp; Events</h2>
+
+                  <!-- loop news posts here
+                        Gets numberposts of the posts that have been
+                        published, and have their location set to homepage
+                  -->
                   <!-- loop news posts here -->
 
                   <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;">
                       <?php
-                          $args = array( 'numberposts' => '5' );
-                          $recent_posts = wp_get_recent_posts( $args );
-                          if(!$recent_posts) { ?>
-                              <h3>Oops!</h3>
-                              <p>No recent posts found!</p>
-                          <?php } else {
-                              foreach ($recent_posts as $recent) { ?>
-                                  <h3><a href="<?php echo get_post_permalink($recent['ID']); ?>">
-                                  <?php echo get_the_title($recent['ID']); ?></a></h3>
-                                  <p><?php echo $recent['post_modified_gmt']; ?></p>
-                                  <p><?php echo get_the_excerpt($recent['ID']); ?></p>
-                                  <p><a class="uw-btn btn-sm" href="<?php echo $recent['guid'] ?>">Read more</a></p>
-                                  <p><a href="<?php  echo get_post_permalink($recent['ID']); ?>">Read more</a></p>
-                              <?php }
-                          }
-                      ?>
 
-                      <p><a class="uw-btn btn-lg" href="#">See all news</a></p>
+                       $args = array(
+                              'numberposts' => '5',
+                              'post_status' => 'publish',
+                              'tax_query' => array(
+                                array(
+                                  'taxonomy' => 'location',
+                                  'field'    => 'slug',
+                                  'terms'    => 'homepage',
+                                ),
+                              ),);
+                       $news_posts = new WP_Query($args);
+
+                       if($news_posts->have_posts()) :
+                          while($news_posts->have_posts()) :
+                             $news_posts->the_post();
+                             ?>
+
+                             <h3>
+                               <a href="<?php echo get_post_permalink($recent['ID']); ?>">
+                               <?php echo the_title(); ?></a>
+                             </h3>
+                             <p>
+                             <?php echo get_the_date() ?>
+                             <p><?php echo
+                             the_excerpt() ?></p>
+                           </p>
+
+                    <?php
+                          endwhile;
+                      else:
+                        echo "No news posts found.";
+                      endif;
+                    ?>
+                      <p><a class="uw-btn btn-sm" href="#">See all news</a></p>
                   </div>
 
                   <!-- end loop -->
