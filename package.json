@@ -2,13 +2,8 @@
   "name": "isc-uw-child",
   "version": "0.0.1",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-uglify": "~0.5.0",
-    "grunt-contrib-concat": "*",
+    "grunt": "*",
     "grunt-contrib-watch": "*",
-    "grunt-contrib-sass": "*",
-    "grunt-notify": "~0.3.0",
-    "clean-css": "~2.2.7"
+    "grunt-contrib-sass": "*"
   }
 }
