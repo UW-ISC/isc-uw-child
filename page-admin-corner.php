@@ -31,22 +31,6 @@
                         <input type="submit" id="searchsubmit" value="Search">
                     </div>
                 </form>
-
-                <div class="">
-                    <?php
-
-                    global $wpdb;
-
-                    $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
-                        FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
-                        "LIMIT 3 ;";
-                    $queries = $wpdb->get_results($query, ARRAY_N);
-                     ?>
-                    Popular searches:
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
-                </div>
             </div>
 
         </div>
