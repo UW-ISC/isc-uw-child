@@ -30,52 +30,26 @@
       <div class="" style="background: #0f0403 url(<?php echo $url ?>); min-height:500px; background-size:65%; background-position:110%; background-repeat:no-repeat;">
           <div class="container">
 
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="sr-only">Workday</h2>
-                    <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;">Introducing Workday</div>
-                    <span class="udub-slant"><span></span></span>
-                    <p style="color:#fff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec augue rutrum tortor ornare blandit. Duis est ante, tempor a tortor nec, ornare consequat lectus. </p>
-                    <a class="uw-btn" href="#">Sign in to Workday</a>
-                </div>
-                <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
-                    <h2 class="sr-only">Quicklinks</h2>
-                    <p>popular topics</p>
-                    <a class="btn-sm uw-btn" href="#">Ask for help!</a>
-                    <a class="btn-sm uw-btn" href="#">Learn about Timesheets</a>
-                    <a class="btn-sm uw-btn" href="#">New Hires: Stare here!</a>
-                </div>
-            </div>
-            <div class="row">
-
-
-            </div>
-
-          <div class="row">
-              <div class="col-md-6">
-                  <h2 class="sr-only">Main Content</h2>
-                  <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;"> <?php the_title();?> </div>
-                  <span class="udub-slant"><span></span></span>
-                  <div>
-                  <?php
-                  while ( have_posts() ) : the_post();
-                    the_content();
-                endwhile; ?></div>
-                  <a class="uw-btn" href="#">Sign in to Workday</a>
+              <div class="row">
+                  <div class="col-md-6">
+                      <h2 class="sr-only">Main Content</h2>
+                      <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;"> <?php the_title();?> </div>
+                      <span class="udub-slant"><span></span></span>
+                      <div>
+                      <?php
+                      while ( have_posts() ) : the_post();
+                        the_content();
+                    endwhile; ?></div>
+                      <a class="uw-btn" href="#">Sign in to Workday</a>
+                  </div>
+                  <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
+                      <h2 class="sr-only">Quicklinks</h2>
+                      <p>popular topics</p>
+                      <a class="btn-sm uw-btn" href="#">Ask for help!</a>
+                      <a class="btn-sm uw-btn" href="#">Learn about Timesheets</a>
+                      <a class="btn-sm uw-btn" href="#">New Hires: Stare here!</a>
+                  </div>
               </div>
-              <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
-                  <h2 class="sr-only">Quicklinks</h2>
-                  <p>popular topics</p>
-                  <a class="btn-sm uw-btn" href="#">Ask for help!</a>
-                  <a class="btn-sm uw-btn" href="#">Learn about Timesheets</a>
-                  <a class="btn-sm uw-btn" href="#">New Hires: Stare here!</a>
-              </div>
-          </div>
-          <div class="row">
-
-
-          </div>
-
         </div>
       </div>
 
