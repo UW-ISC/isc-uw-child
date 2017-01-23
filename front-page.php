@@ -78,7 +78,7 @@
                       $featured = get_pages( $args );
 
                       if (!$featured) {
-                        echo "No featured pages found!";
+                        echo "<div class='col-md-6'>No featured pages found!</div>";
                       } else {
                         foreach ($featured as $featured_page) { ?>
                           <div class="col-md-6">
@@ -112,7 +112,7 @@
 
               </div>
               <div class="col-md-4">
-                  <h2>News &amp; Events</h2>
+                  <h2>News</h2>
 
                   <!-- loop news posts here
                         Gets numberposts of the posts that have been
