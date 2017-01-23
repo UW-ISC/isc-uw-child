@@ -127,42 +127,59 @@
 
                   <h3>HCM</h3>
 
-                  <a class=" ">
-                      For On-boarding coordinators: view all <?php echo get_guide_count(''); ?> User guides
-                  </a>
-
-                  <a class=" ">
-                      For Initiator 1s: view all <?php echo get_guide_count(''); ?> User guides
-                  </a>
-
-                  <a class=" ">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                  <a class="">
+                    For Time and Absence Approvers: view <?php echo get_guide_count('ta-approver'); ?> User guides
                   </a>
 
                   <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                    For Time and Abesence Initiates: View all <?php echo get_guide_count('ta-initiate'); ?> User guides
                   </a>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                  <a class=" ">
+                    For On-boarding coordinators: view all <?php echo get_guide_count(''); ?> User guides
                   </a>
 
-                  <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
-                  </a>
 
                   <h3>Academic Specific</h3>
 
                   <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      For Position and Job Requisition Initiates: view all <?php echo get_guide_count('pj-req-initiate'); ?> User guides
                   </a>
 
                   <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      For HCM Initiate 1s: view all <?php echo get_guide_count('hcm-initiate-1'); ?> User guides
                   </a>
 
                   <a class="">
-                      For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                      For HCM Initiate 2s: view <?php echo get_guide_count('hcm-initiate-2'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For HR Partners: view <?php echo get_guide_count('hr-partner'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Additional Approver 1s: view <?php echo get_guide_count('addl-approver-1'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Additional Approver 2s: view <?php echo get_guide_count('addl-approver-2'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Costing Allocations Coordinators: view <?php echo get_guide_count('costing-allocations-coord'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Academic Partners: view <?php echo get_guide_count('academic-partner'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Academic Chair / Chair’s Delegates: view <?php echo get_guide_count('academic-chair'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Academic Dean / Dean’s Delegates: view <?php echo get_guide_count('academic-dean'); ?> User guides
                   </a>
 
                   <h3>Medical Center Specific</h3>
@@ -173,6 +190,26 @@
 
                   <a class="">
                       For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides
+                  </a>
+
+                  <a class="row" style="color: blue !important;">
+                      Go to the User guides library for other security roles >
+                  </a>
+
+                  <a class="">
+                      For Medical Centers Job Requisitions Approvers 1s: view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Medical Centers Job Requisitions Approvers 2s: view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Medical Centers Job Requisitions Approvers 3s: view <?php echo get_guide_count('med-cent-job-req-approver-3'); ?> User guides
+                  </a>
+
+                  <a class="">
+                      For Medical Centers Managers: view <?php echo get_guide_count('	medical-centers-manager'); ?> User guides
                   </a>
 
                   <a class="row" style="color: blue !important;">
