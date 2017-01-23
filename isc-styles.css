@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*** sass variables ***/
+/*** sass media query mixins ***/
 /*** basic overrides ***/
 body, p {
   font-size: 16px !important; }
@@ -11,7 +12,7 @@ body, p {
   .uw-thinstrip h1 {
     font-size: 18px;
     line-height: 45px; }
-    @media only screen and (min-width: 992px) {
+    @media (min-width: 992px) {
       .uw-thinstrip h1 {
         font-size: 37px; } }
   .uw-thinstrip button.uw-search {
@@ -19,21 +20,20 @@ body, p {
     background: #fff;
     margin: 0;
     top: -22px;
-    right: -22px;
-    /* desktop */ }
-    @media only screen and (min-width: 992px) {
+    right: -22px; }
+    @media (min-width: 992px) {
       .uw-thinstrip button.uw-search {
         top: 0;
         right: 0; } }
-    @media only screen and (min-width: 992px) {
+    @media (min-width: 992px) {
       .uw-thinstrip button.uw-search:hover {
         background: yellow; } }
   .uw-thinstrip .uw-thin-links {
     display: none; }
-    @media only screen and (min-width: 992px) {
+    @media (min-width: 992px) {
       .uw-thinstrip .uw-thin-links {
         display: block; } }
-    @media only screen and (min-width: 992px) {
+    @media (min-width: 992px) {
       .uw-thinstrip .uw-thin-links a {
         color: #4b2e83 !important; } }
 
