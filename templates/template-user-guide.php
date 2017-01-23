@@ -20,7 +20,7 @@ get_header();
         <?php get_template_part( 'breadcrumbs' ); ?>
         <?php user_guide_menu(); ?>
 
-        <article class="uw-content float-content col-lg-9">
+        <article class="uw-content float-content col-xs-9">
 
             <?php
                 while ( have_posts() ) : the_post();
