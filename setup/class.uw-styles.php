@@ -13,6 +13,8 @@ class UW_Styles
 
   function __construct()
   {
+    $ver = wp_get_theme('isc-uw-child')->version;
+
     $this->STYLES = array(
 
       'google-font-open' => array(
