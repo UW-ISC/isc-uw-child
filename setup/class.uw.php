@@ -20,7 +20,7 @@ class UW
         $child  = get_stylesheet_directory() . '/setup/';
         require_once($parent . 'class.install.php');
         require_once($parent . 'class.uw-scripts.php');
-        require_once($parent . 'class.uw-styles.php');
+        require_once($child . 'class.uw-styles.php');
         require_once($child . 'class.uw-dropdowns.php');
         require_once($parent . 'class.images.php');
         require_once($parent . 'class.squish_bugs.php');
