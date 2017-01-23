@@ -14,7 +14,7 @@ function my_theme_enqueue_styles() {
 
 function my_theme_enqueue_scripts() {
     wp_enqueue_script( 'bootstrap-collapse', get_stylesheet_directory_uri() . '/assets/js/bootstrap-collapse.js' );
-    wp_enqueue_script( 'sticky', get_stylesheet_directory_uri() . '/assets/js/sticky.js' );
+    //wp_enqueue_script( 'sticky', get_stylesheet_directory_uri() . '/assets/js/sticky.js' );
 }
 
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
