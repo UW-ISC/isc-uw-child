@@ -255,7 +255,7 @@
 
 
               <div class="block-half last-block ">
-              <div class="">
+                  <div class="">
                       <h3 class="widgettitle">Widget Title</h3>
                       <div class="twitter-feed" data-name="uwnews" data-count="4">
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus sagittis lorem dapibus, sit amet cursus metus feugiat. Morbi sagittis, ligula vitae tristique faucibus, sem metus ultrices mi, non consequat ante lacus ac sapien.
@@ -264,13 +264,15 @@
               </div>
 
 
-              <div id="" class="">
+            <div id="" class="">
                 <div class="contact-widget-inner">
                     <h3 class="widgettitle">Widget Title</h3>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus sagittis lorem dapibus, sit amet cursus metus feugiat. Morbi sagittis, ligula vitae tristique faucibus, sem metus ultrices mi, non consequat ante lacus ac sapien.
-              </div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus sagittis lorem dapibus, sit amet cursus metus feugiat. Morbi sagittis, ligula vitae tristique faucibus, sem metus ultrices mi, non consequat ante lacus ac sapien.
+                </div>
+            </div>
 
-      </div>
+
+        </div>
 
     </div>
 
