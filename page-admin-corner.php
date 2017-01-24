@@ -9,7 +9,7 @@
       $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
 
-<div class="isc-hero-banner" style="background-image:url('http://curry.aca.uw.edu:8080/hrp-portal/wp-content/themes/uw-2014/assets/headers/suzzallo.jpg');">
+<div class="isc-admin-hero" style="background-image:url('http://curry.aca.uw.edu:8080/hrp-portal/wp-content/themes/uw-2014/assets/headers/suzzallo.jpg');">
 
     <div class="container">
 

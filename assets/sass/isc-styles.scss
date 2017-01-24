@@ -92,9 +92,10 @@ body, p { font-size: 16px !important; }
 }
 
 
-/*** isc styles ***/
 
-.isc-hero-image {
+/*** homepage ***/
+
+.isc-homepage-hero {
 
     position: relative;
     background-size: cover;
@@ -133,7 +134,26 @@ body, p { font-size: 16px !important; }
 
 }
 
-.isc-hero-banner {
+.isc-homepage-body {
+
+    h2 {
+        font-size: 18px;
+        font-family: "Encode Sans Compressed",sans-serif;
+        letter-spacing: .03em;
+        line-height: 1.3;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 2px 1px 1px rgba(0,0,0,.4);
+    }
+
+    .isc-homepage-featured { }
+
+    .isc-homepage-news { }
+}
+
+/*** admin corner ***/
+.isc-admin-hero {
 
     position: relative;
     background-size: cover;
@@ -162,26 +182,12 @@ body, p { font-size: 16px !important; }
 
 }
 
-.isc-homepage {
+/*** generic content and sidebar ***/
+.isc-content {  }
 
-    h2 {
-        font-size: 18px;
-        font-family: "Encode Sans Compressed",sans-serif;
-        letter-spacing: .03em;
-        line-height: 1.3;
-        font-weight: 900;
-        text-transform: uppercase;
-        color: #fff;
-        text-shadow: 2px 1px 1px rgba(0,0,0,.4);
-    }
-}
+.isc-sidebar {  }
 
-.isc-content {
-
-
-}
-
-
+/*** footer ***/
 .isc-footer {
 
     text-align:left;

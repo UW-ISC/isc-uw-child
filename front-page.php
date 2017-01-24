@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="isc-hero-image" style="background-color: #0f0403; background-image: url(<?php echo $url ?>);">
+      <div class="isc-homepage-hero" style="background-color: #0f0403; background-image: url(<?php echo $url ?>);">
           <div class="container">
 
               <div class="row">
@@ -52,11 +52,11 @@
         </div>
       </div>
 
-      <div id='main_content' class="container uw-body-copy isc-homepage" tabindex="-1" style="margin-top: -100px;">
+      <div id='main_content' class="container uw-body-copy isc-homepage-body" tabindex="-1" style="margin-top: -100px;">
 
           <div class="row">
 
-              <div class="col-md-8">
+              <div class="col-md-8 isc-homepage-featured">
 
                   <h2>Featured articles</h2>
 
@@ -110,7 +110,7 @@
                   </div>
 
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 isc-homepage-news">
                   <h2>News</h2>
 
                   <!-- loop news posts here

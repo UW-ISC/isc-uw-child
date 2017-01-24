@@ -78,13 +78,13 @@ body, p {
 .uw-body-copy {
   margin-top: 0; }
 
-/*** isc styles ***/
-.isc-hero-image {
+/*** homepage ***/
+.isc-homepage-hero {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 68%; }
-  .isc-hero-image:before {
+  .isc-homepage-hero:before {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -93,7 +93,7 @@ body, p {
     content: "";
     opacity: .4;
     background: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgba(0, 0, 0, 0.8))) 0 0 no-repeat; }
-  .isc-hero-image:after {
+  .isc-homepage-hero:after {
     position: absolute;
     bottom: 0;
     height: 80px;
@@ -102,34 +102,12 @@ body, p {
     background: url("http://www.washington.edu/wp-content/themes/uw-2014/assets/images/stripes-dark-tile.svg");
     opacity: .2; }
   @media (min-width: 992px) {
-    .isc-hero-image {
+    .isc-homepage-hero {
       min-height: 500px;
       background-size: 160%;
       background-position: 90%; } }
 
-.isc-hero-banner {
-  position: relative;
-  background-size: cover;
-  background-repeat: no-repeat; }
-  .isc-hero-banner:before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 80px;
-    width: 100%;
-    content: "";
-    opacity: .4;
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgba(0, 0, 0, 0.8))) 0 0 no-repeat; }
-  .isc-hero-banner:after {
-    position: absolute;
-    bottom: 0;
-    height: 80px;
-    width: 100%;
-    content: "";
-    background: url("http://www.washington.edu/wp-content/themes/uw-2014/assets/images/stripes-dark-tile.svg");
-    opacity: .2; }
-
-.isc-homepage h2 {
+.isc-homepage-body h2 {
   font-size: 18px;
   font-family: "Encode Sans Compressed",sans-serif;
   letter-spacing: .03em;
@@ -139,6 +117,31 @@ body, p {
   color: #fff;
   text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4); }
 
+/*** admin corner ***/
+.isc-admin-hero {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .isc-admin-hero:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    content: "";
+    opacity: .4;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgba(0, 0, 0, 0.8))) 0 0 no-repeat; }
+  .isc-admin-hero:after {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    content: "";
+    background: url("http://www.washington.edu/wp-content/themes/uw-2014/assets/images/stripes-dark-tile.svg");
+    opacity: .2; }
+
+/*** generic content and sidebar ***/
+/*** footer ***/
 .isc-footer {
   text-align: left;
   color: #fff;
