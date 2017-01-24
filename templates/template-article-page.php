@@ -12,11 +12,15 @@ get_header();
 ?>
 
 <section class="uw-body container">
+
     <div class="row">
+        <div class="col-md-12">
+            <?php get_template_part( 'menu', 'mobile' ); ?>
+            <?php get_template_part( 'breadcrumbs' ); ?>
+        </div>
+    </div>
 
-        <?php get_template_part( 'menu', 'mobile' ); ?>
-        <?php get_template_part( 'breadcrumbs' ); ?>
-
+    <div class="row">
         <article id='main_content' class="uw-body-copy col-lg-12" tabindex="-1">
 
             <?php
@@ -31,6 +35,7 @@ get_header();
         </article>
 
     </div>
+
 </section>
 
 <?php get_footer();

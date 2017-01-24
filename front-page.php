@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="" style="background: #0f0403 url(<?php echo $url ?>); min-height:500px; background-size:160%; background-position:90%; background-repeat:no-repeat;">
+      <div class="isc-hero-image" style="background-color: #0f0403; background-image: url(<?php echo $url ?>);">
           <div class="container">
 
               <div class="row">

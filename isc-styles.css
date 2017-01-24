@@ -1,11 +1,14 @@
 @charset "UTF-8";
 /*** sass variables ***/
 /*** sass media query mixins ***/
-/*** basic overrides ***/
+/*** uw styles overrides ***/
 body, p {
   font-size: 16px !important; }
 
-/*** top most banner nav ***/
+#uw-container {
+  overflow-x: initial !important; }
+
+/*** top banner nav (white bar) ***/
 .uw-thinstrip {
   background: #fff;
   color: #4b2e83; }
@@ -37,44 +40,67 @@ body, p {
       .uw-thinstrip .uw-thin-links a {
         color: #4b2e83 !important; } }
 
-/*** mobile ***/
-@media only screen and (max-width: 767px) {
-  /* main nav mobile */
-  .uw-site-title {
-    height: 80px;
-    padding: 0;
-    margin: 0 !important;
-    background: #4b2e83; }
+/*** main navigation (purple bar) ***/
+.uw-site-title {
+  height: 80px;
+  padding: 0;
+  margin: 0 !important;
+  background: #4b2e83; }
 
-  .uw-mobile-menu-toggle {
-    color: #fff !important;
-    right: 0 !important; }
+.uw-mobile-menu-toggle {
+  color: #fff !important;
+  right: 0 !important; }
 
-  /* breadcrumbs */
-  .uw-breadcrumbs {
-    margin-top: 30px !important; }
-
-  .uw-body-copy {
-    margin-top: 0 !important; } }
-/*** tablet ***/
-/*** desktop ***/
-/* main nav desktop */
+/*** dawgdrops (drop down menu) ***/
 #dawgdrops {
   background-color: #4b2e83; }
 
 .dawgdrops-item a {
   color: #fff; }
 
-/* breadcrumbs */
+/*** uw body  ***/
+@media (min-width: 992px) {
+  .uw-body {
+    padding-top: 0; } }
+
+/*** uw breadcrumbs ***/
 .uw-breadcrumbs {
+  margin: 0;
+  margin-top: 1em;
+  padding: 0; }
+
+/*** uw body copy ***/
+.uw-body-copy {
   margin-top: 0; }
 
-/* body */
-#uw-container {
-  overflow-x: initial !important; }
-
-.uw-body {
-  padding-top: 0; }
+/*** isc styles ***/
+.isc-hero-image {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 68%; }
+  .isc-hero-image:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    content: "";
+    opacity: .4;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgba(0, 0, 0, 0.8))) 0 0 no-repeat; }
+  .isc-hero-image:after {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    content: "";
+    background: url("http://www.washington.edu/wp-content/themes/uw-2014/assets/images/stripes-dark-tile.svg");
+    opacity: .2; }
+  @media (min-width: 992px) {
+    .isc-hero-image {
+      min-height: 500px;
+      background-size: 160%;
+      background-position: 90%; } }
 
 /*** hr accordian styles ***/
 .uw-body .uw-accordion-menu {

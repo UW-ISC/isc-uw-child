@@ -12,10 +12,15 @@ get_header();
 ?>
 
 <section class="uw-body container">
-    <div class="row">
 
-       <?php get_template_part( 'menu', 'mobile' ); ?>
-       <?php get_template_part( 'breadcrumbs' ); ?>
+    <div class="row">
+        <div class="col-md-12">
+            <?php get_template_part( 'menu', 'mobile' ); ?>
+            <?php get_template_part( 'breadcrumbs' ); ?>
+        </div>
+    </div>
+
+    <div class="row">
 
         <article class="uw-content col-lg-12">
 

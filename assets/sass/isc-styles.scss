@@ -1,9 +1,7 @@
 /*** sass variables ***/
-
 $uw-purple: #4b2e83;
 
 /*** sass media query mixins ***/
-
 $tablet-width: 768px;
 $desktop-width: 992px;
 
@@ -19,11 +17,12 @@ $desktop-width: 992px;
     }
 }
 
-
-/*** basic overrides ***/
+/*** uw styles overrides ***/
 body, p { font-size: 16px !important; }
 
-/*** top most banner nav ***/
+#uw-container { overflow-x: initial !important; }
+
+/*** top banner nav (white bar) ***/
 .uw-thinstrip {
 
     background: #fff;
@@ -34,7 +33,7 @@ body, p { font-size: 16px !important; }
     }
 
     button.uw-search {
-        border-color: #4b2e83 !important;
+        border-color: $uw-purple !important;
         background: #fff;
         margin: 0;
         top: -22px;
@@ -53,46 +52,95 @@ body, p { font-size: 16px !important; }
         @include desktop  {display: block; }
 
         a {
-             @include desktop { color: #4b2e83 !important;  }
+             @include desktop { color: $uw-purple !important;  }
         }
     }
 
 }
 
+/*** main navigation (purple bar) ***/
+.uw-site-title { height: 80px; padding:0; margin: 0 !important; background: $uw-purple; }
 
-/*** mobile ***/
-@media only screen and (max-width: 767px) {
+.uw-mobile-menu-toggle { color: #fff !important; right: 0 !important; }
 
-    /* main nav mobile */
-    .uw-site-title { height: 80px; padding:0; margin: 0 !important; background: #4b2e83; }
-
-    .uw-mobile-menu-toggle { color: #fff !important; right: 0 !important; }
-
-    /* breadcrumbs */
-    .uw-breadcrumbs { margin-top: 30px !important; }
-
-    .uw-body-copy { margin-top: 0 !important; }
-
-}
-
-/*** tablet ***/
-@media only screen and (max-width: 991px) and (min-width: 768px) {
-
-}
-
-
-/*** desktop ***/
-
-/* main nav desktop */
-#dawgdrops { background-color: #4b2e83; }
+/*** dawgdrops (drop down menu) ***/
+#dawgdrops { background-color: $uw-purple; }
 .dawgdrops-item a { color: #fff; }
 
-/* breadcrumbs */
-.uw-breadcrumbs { margin-top: 0; }
 
-/* body */
-#uw-container { overflow-x: initial !important; }
-.uw-body { padding-top: 0; }
+/*** uw body  ***/
+.uw-body {
+
+    @include desktop {
+        padding-top: 0;
+    }
+
+}
+
+/*** uw breadcrumbs ***/
+.uw-breadcrumbs {
+    margin: 0;
+    margin-top: 1em;
+    padding: 0;
+
+}
+
+/*** uw body copy ***/
+.uw-body-copy {
+    margin-top: 0
+}
+
+
+/*** isc styles ***/
+
+.isc-hero-image {
+
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 68%;
+
+    &:before{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 80px;
+        width: 100%;
+        content: "";
+        opacity: .4;
+        background: -webkit-gradient(linear,0 0,0 100%,from(rgba(0,0,0,0)),to(rgba(0,0,0,.8))) 0 0 no-repeat;
+    }
+
+    &:after {
+        position: absolute;
+        bottom: 0;
+        height: 80px;
+        width: 100%;
+        content: "";
+        background: url('http://www.washington.edu/wp-content/themes/uw-2014/assets/images/stripes-dark-tile.svg');
+        opacity: .2;
+    }
+
+
+    @include desktop {
+
+        min-height:500px;
+        background-size:160%;
+        background-position:90%;
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
 
 /*** hr accordian styles ***/
 .uw-body .uw-accordion-menu {
