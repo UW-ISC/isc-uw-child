@@ -44,7 +44,6 @@
                   </div>
                   <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
                       <h2 class="sr-only">Quicklinks</h2>
-                      <p>popular topics</p>
                       <a class="btn-sm uw-btn" href="#">Ask for help!</a>
                       <a class="btn-sm uw-btn" href="#">Learn about Timesheets</a>
                       <a class="btn-sm uw-btn" href="#">New Hires: Stare here!</a>
@@ -53,7 +52,7 @@
         </div>
       </div>
 
-      <div id='main_content' class="container uw-body-copy" tabindex="-1" style="margin-top: -100px;">
+      <div id='main_content' class="container uw-body-copy isc-homepage" tabindex="-1" style="margin-top: -100px;">
 
           <div class="row">
 
