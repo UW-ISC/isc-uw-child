@@ -59,6 +59,10 @@ body, p {
   color: #fff;
   font-size: 16px !important; }
 
+.dawgdrops-menu {
+  margin-top: -5px !important;
+  border-top: 4px solid yellow !important; }
+
 /*** uw body  ***/
 @media (min-width: 992px) {
   .uw-body {
