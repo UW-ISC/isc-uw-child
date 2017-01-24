@@ -21,11 +21,11 @@ get_header();
     </div>
 
     <div class="row">
-        <article id='main_content' class="uw-body-copy col-lg-12" tabindex="-1">
+        <article id='main_content' class="uw-body-copy col-md-12" tabindex="-1">
 
             <?php
             while ( have_posts() ) : the_post();
-                the_title( '<h3 class="title">', '</h3>' );
+                the_title( '<h2 class="title">', '</h2>' );
                 the_content();
             endwhile;
 

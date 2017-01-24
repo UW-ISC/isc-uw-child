@@ -22,12 +22,12 @@ get_header();
 
     <div class="row">
 
-        <article class="uw-content col-lg-12">
+        <article class="uw-content col-md-12">
 
             <?php
             while ( have_posts() ) : the_post();
-                get_template_part( 'content', 'page' );
-
+                the_title( '<h2 class="title">', '</h2>' );
+                the_content();
             endwhile;
 
             display_child_pages();

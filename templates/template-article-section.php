@@ -21,11 +21,13 @@ get_header();
 
     <div class="row">
 
-        <article class="uw-body-copy col-lg-12">
+        article section
+
+        <article class="uw-body-copy col-md-12">
 
             <?php
             while ( have_posts() ) : the_post();
-                the_title( '<h3 class="title">', '</h3>' );
+                the_title( '<h2 class="title">', '</h2>' );
                 the_content();
                 edit_post_link();
             endwhile;
