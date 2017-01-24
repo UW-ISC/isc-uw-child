@@ -141,6 +141,23 @@ body, p {
     opacity: .2; }
 
 /*** generic content and sidebar ***/
+.isc-sidebar .isc-widget-tan {
+  background-color: #e8e3d3;
+  padding: 20px; }
+  .isc-sidebar .isc-widget-tan .widgettitle:after {
+    background-color: #e8e3d3; }
+.isc-sidebar .isc-widget-gray {
+  background-color: #ccc;
+  padding: 20px; }
+  .isc-sidebar .isc-widget-gray .widgettitle:after {
+    background-color: #ccc; }
+.isc-sidebar .isc-widget-white {
+  background-color: #fff;
+  border: solid 1px #ddd;
+  padding: 20px; }
+  .isc-sidebar .isc-widget-white .widgettitle:after {
+    background-color: #fff; }
+
 /*** footer ***/
 .isc-footer {
   text-align: left;

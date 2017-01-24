@@ -62,7 +62,7 @@
 
 
 
-        <div class="col-md-8 uw-content" role='main'>
+        <div class="col-md-8 uw-content isc-content" role='main'>
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
@@ -231,93 +231,84 @@
 
             </div>
 
-        <div class="col-md-4 uw-sidebar" role="">
+        <div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
-          <h3>Workshops</h3>
+            <div class="contact-widget-inner isc-widget-tan">
+                <h3 class="widgettitle">Workshops</h3>
+                <div>
+                    <?php
+                       $workshop_args = array(
+                                'tax_query' => array(
+                                    array(
+                                        'taxonomy' => 'location',
+                                        'field'    => 'slug',
+                                        'terms'    => 'admin-corner-workshops',
+                                    ),
+                                ),);
+                       $workshop_posts = new WP_Query($workshop_args);
 
-          <?php
-             $workshop_args = array(
-                      'tax_query' => array(
-                          array(
-                              'taxonomy' => 'location',
-                              'field'    => 'slug',
-                              'terms'    => 'admin-corner-workshops',
-                          ),
-                      ),);
-             $workshop_posts = new WP_Query($workshop_args);
+                       if($workshop_posts->have_posts()) :
+                             $workshop_posts->the_post();
+                    ?>
 
-             if($workshop_posts->have_posts()) :
-                   $workshop_posts->the_post();
-          ?>
+                         <h3><?php the_title() ?></h3>
+                         <div class="update-date"><?php echo get_the_date() ?> </div>
+                         <div class='post-content'><?php
+                             $texdt = the_excerpt();
+                             wp_trim_words($texdt, 5, '...');
+                             echo $texdt;
+                          ?></div>
 
-               <h3><?php the_title() ?></h3>
-               <div class="update-date"><?php echo get_the_date() ?> </div>
-               <div class='post-content'><?php
-                   $texdt = the_excerpt();
-                   wp_trim_words($texdt, 5, '...');
-                   echo $texdt;
-                ?></div>
+                    <?php
+                      endif;
 
-          <?php
-            endif;
-
-            ?>
-
-            <h3>Seasonal Topics</h3>
-
-            <?php
-
-               $seasonal_args = array(
-                        'tax_query' => array(
-                            array(
-                                'taxonomy' => 'location',
-                                'field'    => 'slug',
-                                'terms'    => 'admin-corner-seasonal',
-                            ),
-                        ),);
-               $seasonal_posts = new WP_Query($seasonal_args);
-
-               if($seasonal_posts->have_posts()) :
-                     $seasonal_posts->the_post();
-            ?>
-
-                 <h3><?php the_title() ?></h3>
-                 <div class="update-date"><?php echo get_the_date() ?> </div>
-                 <div class='post-content'><?php echo wp_trim_words(the_excerpt(), 5, '...')  ?></div>
-
-            <?php
-              endif;
-
-              ?>
-
-              <h3>Got a complex question? Need HR Experts?</h3>
-
-              <br>
-              <br>
-
-              Contact Tier 2 support team
-
-              <h3>Workday Security Roles</h3>
-
-              <a>Read about Workday Security roles and request the change -></a>
-
-
-              <div class="block-half last-block ">
-                  <div class="">
-                      <h3 class="widgettitle">Widget Title</h3>
-                      <div class="twitter-feed" data-name="uwnews" data-count="4">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus sagittis lorem dapibus, sit amet cursus metus feugiat. Morbi sagittis, ligula vitae tristique faucibus, sem metus ultrices mi, non consequat ante lacus ac sapien.
-                      </div>
-                  </div>
-              </div>
-
-
-            <div id="" class="">
-                <div class="contact-widget-inner">
-                    <h3 class="widgettitle">Widget Title</h3>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus sagittis lorem dapibus, sit amet cursus metus feugiat. Morbi sagittis, ligula vitae tristique faucibus, sem metus ultrices mi, non consequat ante lacus ac sapien.
+                      ?>
                 </div>
             </div>
+
+            <div class="contact-widget-inner isc-widget-white">
+                <h3 class="widgettitle">Seasonal Topics</h3>
+                <div>
+                    <?php
+
+                       $seasonal_args = array(
+                                'tax_query' => array(
+                                    array(
+                                        'taxonomy' => 'location',
+                                        'field'    => 'slug',
+                                        'terms'    => 'admin-corner-seasonal',
+                                    ),
+                                ),);
+                       $seasonal_posts = new WP_Query($seasonal_args);
+
+                       if($seasonal_posts->have_posts()) :
+                             $seasonal_posts->the_post();
+                    ?>
+
+                         <h3><?php the_title() ?></h3>
+                         <div class="update-date"><?php echo get_the_date() ?> </div>
+                         <div class='post-content'><?php echo wp_trim_words(the_excerpt(), 5, '...')  ?></div>
+
+                    <?php
+                      endif;
+                      ?>
+                </div>
+            </div>
+
+            <div class="contact-widget-inner isc-widget-gray">
+                <h3 class="widgettitle">Got a complex question? Need HR Experts?</h3>
+                <div>
+                    Contact Tier 2 support team
+                </div>
+            </div>
+
+
+              <div class="contact-widget-inner isc-widget-white">
+                  <h3 class="widgettitle">Workday Security Roles</h3>
+                  <div>
+                      <a href="">Read about Workday Security roles and request the change</a>
+                  </div>
+              </div>
 
 
         </div>
