@@ -7,7 +7,7 @@
 <?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/service-team.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="" style="background: #0f0403 url(<?php echo $url ?>); min-height:500px; background-size:65%; background-position:110%; background-repeat:no-repeat;">
+      <div class="" style="background: #0f0403 url(<?php echo $url ?>); min-height:500px; background-size:160%; background-position:90%; background-repeat:no-repeat;">
           <div class="container">
 
               <div class="row">
