@@ -8,6 +8,48 @@
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
+
+
+<div style="background:#e8e3d3;">
+
+  <div class="container">
+
+      <div class="row">
+
+          <div class="col-md-12">
+
+              <h2><?php the_title(); ?></h2>
+
+              <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
+                  <div>
+                      <label class="screen-reader-text" for="s">Search for:</label>
+                      <input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
+                      <input type="submit" id="searchsubmit" value="Search">
+                  </div>
+              </form>
+
+              <div style="padding: 20px 0;">
+                  <?php
+
+                  global $wpdb;
+
+                  $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
+                      FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
+                      "LIMIT 3 ;";
+                  $queries = $wpdb->get_results($query, ARRAY_N);
+                   ?>
+                  Popular searches:
+                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
+                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
+                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
+              </div>
+
+            </div>
+        </div>
+  </div>
+
+</div>
+
 <div class="container uw-body">
 
     <div class="row">
@@ -19,37 +61,7 @@
 
     <div class="row">
 
-        <div class="col-md-12" role="">
 
-            <div style="background:#e8e3d3; padding:30px;">
-                <h2><?php the_title(); ?></h2>
-
-                <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
-                    <div>
-                        <label class="screen-reader-text" for="s">Search for:</label>
-                        <input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
-                        <input type="submit" id="searchsubmit" value="Search">
-                    </div>
-                </form>
-
-                <div class="">
-                    <?php
-
-                    global $wpdb;
-
-                    $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
-                        FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
-                        "LIMIT 3 ;";
-                    $queries = $wpdb->get_results($query, ARRAY_N);
-                     ?>
-                    Popular searches:
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
-                </div>
-            </div>
-
-        </div>
 
         <div class="col-md-8 uw-content" role='main'>
 
