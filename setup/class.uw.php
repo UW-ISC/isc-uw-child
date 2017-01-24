@@ -19,7 +19,7 @@ class UW
         $parent = get_template_directory() . '/setup/';
         $child  = get_stylesheet_directory() . '/setup/';
         require_once($parent . 'class.install.php');
-        require_once($parent . 'class.uw-scripts.php');
+        require_once($child . 'class.uw-scripts.php');
         require_once($child . 'class.uw-styles.php');
         require_once($child . 'class.uw-dropdowns.php');
         require_once($parent . 'class.images.php');
@@ -45,6 +45,8 @@ class UW
         require_once($parent . 'class.uw-settings.php' );
         require_once($parent . 'class.uw-page-attributes-meta-box.php' );
 
+        require_once(get_stylesheet_directory() . '/inc/child-template-functions.php' );
+        require_once(get_stylesheet_directory() . '/inc/breadcrumbs.php' );
         require_once(get_template_directory() . '/inc/template-functions.php' );
         require_once(get_template_directory() . '/docs/class.uw-documentation.php' );
 
@@ -81,4 +83,3 @@ class UW
         $this->Settings          = new UW_Settings;
     }
 }
- 

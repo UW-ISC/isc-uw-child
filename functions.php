@@ -1,10 +1,5 @@
 <?php
 
-// functions to be used within templates
-include get_stylesheet_directory() . '/includes/template_functions.php';
-// breadcrumb functions
-include get_stylesheet_directory() . '/includes/breadcrumbs.php';
-
 function my_theme_enqueue_styles() {
 
     $parent_style = 'parent-style';
@@ -17,14 +12,7 @@ function my_theme_enqueue_styles() {
     );
 }
 
-function my_theme_enqueue_scripts() {
-    wp_enqueue_script( 'bootstrap-collapse', get_stylesheet_directory_uri() . '/assets/js/bootstrap-collapse.js' );
-    //wp_enqueue_script( 'sticky', get_stylesheet_directory_uri() . '/assets/js/sticky.js' );
-}
-
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
-add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_scripts' );
-// Remove any templates from the UW Marketing theme that will not be used
 
 /**
  * Set up the child / parent relationship and customize the UW object.
