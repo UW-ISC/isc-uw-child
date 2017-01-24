@@ -21,8 +21,6 @@ get_header();
 
     <div class="row">
 
-        article section
-
         <article class="uw-body-copy col-md-12">
 
             <?php
