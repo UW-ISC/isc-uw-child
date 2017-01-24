@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="pull-left">
-              <a href="/hrp-portal" title="ISC Home" class=""><h1 style="margin:0;">Integrated Service Center</h1></a>
+              <a href="<?php echo get_site_url() ?>" title="ISC Home" class=""><h1 style="margin:0;">Integrated Service Center</h1></a>
         </div>
 
     </div>
