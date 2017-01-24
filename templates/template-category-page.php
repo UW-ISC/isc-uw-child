@@ -35,6 +35,10 @@ get_header();
 
         </article>
 
+        <aside class="col-md-4">
+            this is a category page
+        </aside>
+
     </div>
 </section>
 
