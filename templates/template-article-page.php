@@ -21,7 +21,7 @@ get_header();
     </div>
 
     <div class="row">
-        <article id='main_content' class="uw-body-copy col-md-12" tabindex="-1">
+        <article id='main_content' class="uw-body-copy col-md-8" tabindex="-1">
 
             <?php
             while ( have_posts() ) : the_post();

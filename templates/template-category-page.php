@@ -22,7 +22,7 @@ get_header();
 
     <div class="row">
 
-        <article class="uw-content col-md-12">
+        <article class="uw-content col-md-8">
 
             <?php
             while ( have_posts() ) : the_post();
