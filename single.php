@@ -47,7 +47,7 @@
     </div>
 
     <div class="col-md-4" role="">
-    sidebar asldkfj asdlk ;lksadfj alskdfj
+    this template uses single.php
     </div>
 
   </div>
