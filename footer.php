@@ -5,7 +5,7 @@
     <a href="http://www.washington.edu" class="footer-wordmark">University of Washington</a>
     <a href="http://www.washington.edu/boundless/"><div class="be-boundless" style="margin-bottom:0;">Be boundless</div></a>
 
-    <div class="container" style="text-align:left; color:#fff; margin-bottom:30px;">
+    <div class="container isc-footer">
         <div class="row">
 
             <div class="col-md-4">

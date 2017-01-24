@@ -107,6 +107,18 @@ body, p {
       background-size: 160%;
       background-position: 90%; } }
 
+.isc-footer {
+  text-align: left;
+  color: #fff;
+  margin-bottom: 30px; }
+  .isc-footer ul {
+    list-style: none;
+    padding: 0; }
+    .isc-footer ul li a {
+      color: #fff; }
+      .isc-footer ul li a:hover {
+        color: yellow; }
+
 /*** hr accordian styles ***/
 .uw-body .uw-accordion-menu {
   margin-bottom: 3rem;
