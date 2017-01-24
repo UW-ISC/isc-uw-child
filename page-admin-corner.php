@@ -9,44 +9,43 @@
       $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
 
+<div class="isc-hero-banner" style="background-image:url('http://curry.aca.uw.edu:8080/hrp-portal/wp-content/themes/uw-2014/assets/headers/suzzallo.jpg');">
 
-<div style="background:#e8e3d3;">
+    <div class="container">
 
-  <div class="container">
+        <div class="row">
 
-      <div class="row">
+            <div class="col-md-12">
 
-          <div class="col-md-12">
+                <h2><?php the_title(); ?></h2>
 
-              <h2><?php the_title(); ?></h2>
+                <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
+                    <div>
+                        <label class="screen-reader-text" for="s">Search for:</label>
+                        <input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
+                        <input type="submit" id="searchsubmit" value="Search">
+                    </div>
+                </form>
 
-              <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
-                  <div>
-                      <label class="screen-reader-text" for="s">Search for:</label>
-                      <input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
-                      <input type="submit" id="searchsubmit" value="Search">
-                  </div>
-              </form>
+                <div style="padding: 30px 0;">
+                    <?php
 
-              <div style="padding: 20px 0;">
-                  <?php
+                    global $wpdb;
 
-                  global $wpdb;
+                    $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
+                        FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
+                        "LIMIT 3 ;";
+                    $queries = $wpdb->get_results($query, ARRAY_N);
+                     ?>
+                    Popular searches:
+                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
+                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
+                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
+                </div>
 
-                  $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
-                      FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
-                      "LIMIT 3 ;";
-                  $queries = $wpdb->get_results($query, ARRAY_N);
-                   ?>
-                  Popular searches:
-                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
-                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
-                  <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
               </div>
-
-            </div>
-        </div>
-  </div>
+          </div>
+    </div>
 
 </div>
 

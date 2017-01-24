@@ -107,6 +107,28 @@ body, p {
       background-size: 160%;
       background-position: 90%; } }
 
+.isc-hero-banner {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .isc-hero-banner:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    content: "";
+    opacity: .4;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgba(0, 0, 0, 0.8))) 0 0 no-repeat; }
+  .isc-hero-banner:after {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    content: "";
+    background: url("http://www.washington.edu/wp-content/themes/uw-2014/assets/images/stripes-dark-tile.svg");
+    opacity: .2; }
+
 .isc-footer {
   text-align: left;
   color: #fff;
