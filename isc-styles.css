@@ -78,7 +78,8 @@ body, p {
     margin-top: -5px !important;
     border-top: 4px solid #85754d !important; }
     #dawgdrops .dawgdrops-menu a {
-      color: inherit; }
+      color: inherit;
+      padding: 0 10px; }
 
 /*** uw body  ***/
 @media (min-width: 992px) {
