@@ -82,7 +82,14 @@ body, p { font-size: 16px !important; }
             &:after { background: none; display: none; }
 
             &:hover {
-                &:before { background: url('../isc-uw-child/assets/icons/arrow-down.png') no-repeat; height:20px; width:50px; right:-23px; top:8px; background-size:45%; } /** replace with new hover state image **/
+                &:before { background: url('../isc-uw-child/assets/icons/arrow-down.png') no-repeat; height:20px; width:50px; right:-23px; top:8px; background-size:45%;
+
+                    -o-transform: none;
+                    -webkit-transform: none;
+                    -ms-transform: none;
+                    transform: none;
+
+                } /** replace with new hover state image **/
             }
         }
     }

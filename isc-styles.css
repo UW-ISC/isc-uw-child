@@ -83,7 +83,11 @@ body, p {
         width: 50px;
         right: -23px;
         top: 8px;
-        background-size: 45%; }
+        background-size: 45%;
+        -o-transform: none;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none; }
   #dawgdrops .dawgdrops-menu {
     margin-top: -5px !important;
     border-top: 4px solid #85754d !important; }
