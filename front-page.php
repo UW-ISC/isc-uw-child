@@ -30,26 +30,21 @@
       <div class="isc-hero-image" style="background-color: #0f0403; background-image: url(<?php echo $url ?>);">
           <div class="container">
 
-              <div class="row">
-                  <div class="col-md-6">
-                      <h2 class="sr-only">Main Content</h2>
-                      <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;"> <?php the_title();?> </div>
-                      <span class="udub-slant"><span></span></span>
-                      <div>
-                      <?php
-                      while ( have_posts() ) : the_post();
-                        the_content();
-                    endwhile; ?></div>
-                      <a class="uw-btn" href="#">Sign in to Workday</a>
-                  </div>
-                  <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
-                      <h2 class="sr-only">Quicklinks</h2>
-                      <p>popular topics</p>
-                      <a class="btn-sm uw-btn" href="#">Ask for help!</a>
-                      <a class="btn-sm uw-btn" href="#">Learn about Timesheets</a>
-                      <a class="btn-sm uw-btn" href="#">New Hires: Stare here!</a>
-                  </div>
-              </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="sr-only">Main Content</h2>
+                    <?php $custom = get_post_meta(450); ?>
+                    <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;"> <?php echo $custom["isc-hero-title"][0]?> </div>
+                    <span class="udub-slant"><span></span></span>
+                    <div> <?php echo $custom["isc-hero-description"][0]; ?> </div>
+                    <a class="uw-btn" href="<?php echo $custom["isc-hero-link-url"][0]; ?>"><?php echo $custom["isc-hero-link-text"][0];?></a>
+                </div>
+                <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
+                    <h2 class="sr-only">Quicklinks</h2>
+                    <p>Popular Topics</p>
+                    <p> <?php get_quicklinks(); ?> </p>
+                </div>
+            </div>
         </div>
       </div>
 
@@ -62,19 +57,17 @@
                   <h2>Featured articles</h2>
 
                   <div class="row">
-                       <!-- loop -->
                        <?php
                        // Featured Pages
-                       // this query finds the pages marked featured page and lists their
-                       // title and summary on a card
+                       // Query finds the published pages marked featured page and lists their
+                       // title and description on a card
                        $args = array(
                          'post_type'	=> 'page',
+                         'post_status' => 'publish',
                          'meta_key'		=> 'isc-featured',
                          'meta_value'	=> 'YES'
                       );
-                      ?>
 
-                      <?php
                       $featured = get_pages( $args );
 
                       if (!$featured) {
@@ -85,21 +78,32 @@
                             <div style="background: #eee; padding: 20px; margin-bottom:30px;">
 
                                 <div style="margin:-20px; height:160px; overflow:hidden; margin-bottom:30px;">
-                                     <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg'?>">
+                                      <?php
+                                      $custom = get_post_custom($featured_page->ID);
+                                      if (array_key_exists("featured-image", $custom)) {
+                                          $image = $custom["featured-image"][0];
+                                      } else {
+                                        // default featured image?
+                                        $image = 'john_Vidale-1022-X3.jpg';
+                                      }
+                                      ?>
+                                     <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/' . $image ?>">
                                  </div>
 
                               <h3>
                                 <a href="<?php echo get_permalink($featured_page->ID); ?>">
                                 <?php echo get_the_title($featured_page->ID); ?></a>
                               </h3>
-
                               <?php
-                                $custom = get_post_custom($featured_page->ID);
-                                $summary = $custom["summary-text"][0];
+                                $description = $custom["isc-featured-description"][0];
+                                if (array_key_exists("cta", $custom)) {
+                                    $description_text = $custom["cta"][0];
+                                } else {
+                                    $description_text = "Learn More";
+                                }
                               ?>
-
-                              <p><?php echo $summary; ?></p>
-                              <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>">learn more</a></p>
+                              <p><?php echo $description; ?></p>
+                              <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>"><?php echo $description_text; ?></a></p>
 
                             </div>
                         </div>
@@ -118,7 +122,6 @@
                         Gets numberposts of the posts that have been
                         published, and have their location set to homepage
                   -->
-                  <!-- loop news posts here -->
 
                   <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;">
                       <?php

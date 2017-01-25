@@ -285,3 +285,36 @@ function add_ids_to_header_tags_auto( $content) {
   }
   return $content;
 }
+
+/**
+ * Displays the quicklinks by querying the metadata of
+ * the homepage
+ *
+ * @author Mason Gionet <mgionet@uw.edu>
+ * @copyright Copyright (c) 2016, University of Washington
+ * @since 0.2.0
+ *
+ * @global $post
+ */
+
+ if ( ! function_exists( 'get_quicklinks' ) ) :
+     function get_quicklinks() {
+        $custom = get_post_meta(450);
+        if (array_key_exists("isc-hero-quicklinks", $custom)) {
+          $string = $custom["isc-hero-quicklinks"];
+          $result = implode($string);
+          $data = unserialize($result);
+          if (sizeOf($data) >= 0) {
+              for ($i = 0; $i < sizeOf($data); $i++) {
+                ?>
+                <a class="btn-sm uw-btn" href="<?php echo $data[$i]["isc-hero-quicklink-url"]; ?>"><?php echo $data[$i]["isc-hero-quicklink-text"]; ?></a>
+                <?php
+              }
+          }
+        } else {
+          echo "No quicklinks found!";
+        }
+      }
+endif;
+
+ ?>
