@@ -121,6 +121,9 @@ body, p { font-size: 16px !important; }
 /*** uw body copy ***/
 .uw-body-copy { margin-top: 0;
 
+    // global link color for body content
+    a { color: $uw-purple !important; }
+
     /* custom body widget */
     .widgettitle {
 
@@ -331,7 +334,7 @@ body, p { font-size: 16px !important; }
     ul { list-style: none; padding: 0;
         li {
             a { color: #fff;
-                &:hover { color: yellow; }
+                &:hover { color: $uw-tan; }
             }
         }
     }

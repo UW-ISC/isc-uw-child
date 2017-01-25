@@ -110,6 +110,8 @@ body, p {
 .uw-body-copy {
   margin-top: 0;
   /* custom body widget */ }
+  .uw-body-copy a {
+    color: #4b2e83 !important; }
   .uw-body-copy .widgettitle {
     clear: left;
     font-weight: 900;
@@ -279,7 +281,7 @@ body, p {
     .isc-footer ul li a {
       color: #fff; }
       .isc-footer ul li a:hover {
-        color: yellow; }
+        color: #e8e3d3; }
 
 /*** hr accordian styles ***/
 .uw-body .uw-accordion-menu {
