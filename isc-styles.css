@@ -61,7 +61,7 @@ body, p {
 
 .dawgdrops-menu {
   margin-top: -5px !important;
-  border-top: 4px solid yellow !important; }
+  border-top: 4px solid #85754d !important; }
 
 /*** uw body  ***/
 @media (min-width: 992px) {
@@ -143,6 +143,16 @@ body, p {
   text-transform: uppercase;
   color: #fff;
   text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4); }
+.isc-homepage-body .isc-homepage-featured .isc-homepage-card {
+  background: #ece9e2;
+  padding: 40px;
+  margin-bottom: 30px; }
+.isc-homepage-body .isc-homepage-news .isc-homepage-news-content {
+  background: #fff;
+  padding: 40px;
+  -webkit-box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
+  box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
+  margin-bottom: 30px; }
 
 /*** admin corner ***/
 .isc-admin-hero {

@@ -1,5 +1,7 @@
 /*** sass variables ***/
 $uw-purple: #4b2e83;
+$uw-tan-light: #ece9e2;
+$uw-tan-dark: #85754d;
 
 /*** sass media query mixins ***/
 $tablet-width: 768px;
@@ -67,7 +69,7 @@ body, p { font-size: 16px !important; }
 #dawgdrops { background-color: $uw-purple; }
 .dawgdrops-item a { color: #fff; font-size: 16px !important; }
 
-.dawgdrops-menu { margin-top: -5px !important; border-top: 4px solid yellow !important; }
+.dawgdrops-menu { margin-top: -5px !important; border-top: 4px solid $uw-tan-dark !important; }
 
 /*** uw body  ***/
 .uw-body {
@@ -183,9 +185,13 @@ body, p { font-size: 16px !important; }
         text-shadow: 2px 1px 1px rgba(0,0,0,.4);
     }
 
-    .isc-homepage-featured { }
+    .isc-homepage-featured {
+        .isc-homepage-card { background: $uw-tan-light; padding: 40px; margin-bottom:30px; }
+    }
 
-    .isc-homepage-news { }
+    .isc-homepage-news {
+        .isc-homepage-news-content { background: #fff; padding: 40px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px; }
+    }
 }
 
 /*** admin corner ***/

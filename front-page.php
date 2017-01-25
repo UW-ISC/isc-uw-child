@@ -81,9 +81,9 @@
                       } else {
                         foreach ($featured as $featured_page) { ?>
                           <div class="col-md-6">
-                            <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+                            <div class="isc-homepage-card">
 
-                                <div style="margin:-20px; height:160px; overflow:hidden; margin-bottom:30px;">
+                                <div style="margin:-40px; height:160px; overflow:hidden; margin-bottom:30px;">
                                      <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg'?>">
                                  </div>
 
@@ -119,7 +119,7 @@
                   -->
                   <!-- loop news posts here -->
 
-                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;">
+                  <div class="isc-homepage-news-content">
                       <?php
 
                        $args = array(
