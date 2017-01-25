@@ -279,7 +279,7 @@ body, p {
     padding: 0; }
     .isc-footer ul li a {
       color: #fff; }
-      .isc-footer ul li a:hover {
+      .isc-footer ul li a:hover, .isc-footer ul li a:focus {
         color: #e8e3d3; }
   .isc-footer .map-container {
     padding-right: 0; }

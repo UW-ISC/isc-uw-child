@@ -334,7 +334,7 @@ body, p { font-size: 16px !important; }
     ul { list-style: none; padding: 0;
         li {
             a { color: #fff;
-                &:hover { color: $uw-tan; }
+                &:hover,&:focus { color: $uw-tan; }
             }
         }
     }
