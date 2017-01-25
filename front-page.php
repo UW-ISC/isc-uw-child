@@ -35,8 +35,8 @@
                     <?php $custom = get_post_meta(450); ?>
                     <div class="isc-homepage-title"> <?php echo $custom["isc-hero-title"][0]?> </div>
                     <span class="udub-slant"><span></span></span>
-                    <div> <?php echo $custom["isc-hero-description"][0]; ?> </div>
-                    <a class="uw-btn" href="<?php echo $custom["isc-hero-link-url"][0]; ?>"><?php echo $custom["isc-hero-link-text"][0];?></a>
+                    <div style="margin-bottom:2em;"> <?php echo $custom["isc-hero-description"][0]; ?></div>
+                    <p><a class="uw-btn" href="<?php echo $custom["isc-hero-link-url"][0]; ?>"><?php echo $custom["isc-hero-link-text"][0];?></a></p>
                 </div>
                 <div class="col-md-4 col-md-offset-2">
                     <div class="isc-homepage-shortcuts">

@@ -83,7 +83,11 @@ body, p {
         width: 50px;
         right: -23px;
         top: 8px;
-        background-size: 45%; }
+        background-size: 45%;
+        -o-transform: none;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none; }
   #dawgdrops .dawgdrops-menu {
     margin-top: -5px !important;
     border-top: 4px solid #85754d !important; }
@@ -106,6 +110,8 @@ body, p {
 .uw-body-copy {
   margin-top: 0;
   /* custom body widget */ }
+  .uw-body-copy a {
+    color: #4b2e83 !important; }
   .uw-body-copy .widgettitle {
     clear: left;
     font-weight: 900;
@@ -275,7 +281,7 @@ body, p {
     .isc-footer ul li a {
       color: #fff; }
       .isc-footer ul li a:hover {
-        color: yellow; }
+        color: #e8e3d3; }
   .isc-footer .map-container {
     padding-right: 0; }
 
