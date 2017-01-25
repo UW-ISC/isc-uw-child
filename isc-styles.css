@@ -63,8 +63,7 @@ body, p {
   #dawgdrops .dawgdrops-item a {
     color: #fff;
     font-size: 16px !important;
-    padding-left: 0;
-    /** new carat image. */ }
+    padding-left: 0; }
     #dawgdrops .dawgdrops-item a:before {
       background: url("../isc-uw-child/assets/icons/arrow-right.png") no-repeat;
       height: 20px;
@@ -75,9 +74,9 @@ body, p {
     #dawgdrops .dawgdrops-item a:after {
       background: none;
       display: none; }
-    #dawgdrops .dawgdrops-item a:hover {
+    #dawgdrops .dawgdrops-item a:hover, #dawgdrops .dawgdrops-item a:focus {
       /** replace with new hover state image **/ }
-      #dawgdrops .dawgdrops-item a:hover:before {
+      #dawgdrops .dawgdrops-item a:hover:before, #dawgdrops .dawgdrops-item a:focus:before {
         background: url("../isc-uw-child/assets/icons/arrow-down.png") no-repeat;
         height: 20px;
         width: 50px;

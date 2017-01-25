@@ -78,10 +78,10 @@ body, p { font-size: 16px !important; }
 
         a { color: #fff; font-size: 16px !important; padding-left: 0;
 
-            &:before { background: url('../isc-uw-child/assets/icons/arrow-right.png') no-repeat; height:20px; width:50px; right:-25px; top:8px; background-size:45%;} /** new carat image. */
+            &:before { background: url('../isc-uw-child/assets/icons/arrow-right.png') no-repeat; height:20px; width:50px; right:-25px; top:8px; background-size:45%;} 
             &:after { background: none; display: none; }
 
-            &:hover {
+            &:hover,&:focus {
                 &:before { background: url('../isc-uw-child/assets/icons/arrow-down.png') no-repeat; height:20px; width:50px; right:-23px; top:8px; background-size:45%;
 
                     -o-transform: none;
