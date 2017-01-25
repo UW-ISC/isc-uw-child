@@ -70,10 +70,31 @@ body, p { font-size: 16px !important; }
 .uw-mobile-menu-toggle { color: #fff !important; right: 0 !important; }
 
 /*** dawgdrops (drop down menu) ***/
-#dawgdrops { background-color: $uw-purple; }
-.dawgdrops-item a { color: #fff; font-size: 16px !important; }
+#dawgdrops { background-color: $uw-purple;
 
-.dawgdrops-menu { margin-top: -5px !important; border-top: 4px solid $uw-tan-dark !important; }
+    /* main menu */
+    .dawgdrops-item {
+
+        a { color: #fff; font-size: 16px !important; padding-left: 0;
+
+            &:before { background: yellow; } /** replace this with new carat image */
+            &:after { background: none; display: none; }
+
+            &:hover {
+                &:before { background: red; } /** replace with new hover state image **/
+            }
+        }
+    }
+
+    /* dropdown menu */
+    .dawgdrops-menu { margin-top: -5px !important; border-top: 4px solid $uw-tan-dark !important;
+
+        a { color: inherit; }
+    }
+
+
+}
+
 
 /*** uw body  ***/
 .uw-body {
