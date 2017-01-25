@@ -21,8 +21,9 @@ get_header();
 
     <div class="row">
 
-        <article class="uw-body-copy col-md-8">
+        <article class="uw-body-copy col-md-offset-1 col-md-10">
 
+            xxxx this is an article section template xxxx
             <?php
             while ( have_posts() ) : the_post();
                 the_title( '<h2 class="title">', '</h2>' );
@@ -33,11 +34,6 @@ get_header();
             ?>
 
         </article>
-
-        <aside class="col-md-4">
-            this is an article section
-        </aside>
-
 
     </div>
 </section>

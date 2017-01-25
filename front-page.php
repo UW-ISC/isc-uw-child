@@ -74,9 +74,10 @@
                       } else {
                         foreach ($featured as $featured_page) { ?>
                           <div class="col-md-6">
-                            <div style="background: #eee; padding: 20px; margin-bottom:30px;">
+                            <div class="isc-homepage-card">
 
-                                <div style="margin:-20px; height:160px; overflow:hidden; margin-bottom:30px;">
+
+                                <div style="margin:-40px; height:160px; overflow:hidden; margin-bottom:30px;">
                                       <?php
                                       $custom = get_post_custom($featured_page->ID);
                                       if (array_key_exists("featured-image", $custom)) {
@@ -87,6 +88,7 @@
                                       }
                                       ?>
                                      <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/' . $image ?>">
+
                                  </div>
 
                               <h3>
@@ -122,7 +124,7 @@
                         published, and have their location set to homepage
                   -->
 
-                  <div style="background: #fff; padding: 20px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;">
+                  <div class="isc-homepage-news-content">
                       <?php
 
                        $args = array(
