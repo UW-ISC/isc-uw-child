@@ -21,7 +21,10 @@ get_header();
     </div>
 
     <div class="row">
-        <article id='main_content' class="uw-body-copy col-md-8" tabindex="-1">
+
+        <article id='main_content' class="uw-body-copy col-md-offset-1 col-md-10" tabindex="-1">
+
+            xxxx this is an article page template xxxx
 
             <?php
             while ( have_posts() ) : the_post();
@@ -33,10 +36,6 @@ get_header();
             ?>
 
         </article>
-
-        <aside class="col-md-4">
-            this is an article page
-        </aside>
 
     </div>
 
