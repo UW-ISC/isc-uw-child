@@ -78,7 +78,7 @@ body, p { font-size: 16px !important; }
 
         a { color: #fff; font-size: 16px !important; padding-left: 0;
 
-            &:before { background: url('../isc-uw-child/assets/icons/arrow-right.png') no-repeat; height:20px; width:50px; right:-25px; top:8px; background-size:45%;} 
+            &:before { background: url('../isc-uw-child/assets/icons/arrow-right.png') no-repeat; height:20px; width:50px; right:-25px; top:8px; background-size:45%;}
             &:after { background: none; display: none; }
 
             &:hover,&:focus {
@@ -334,7 +334,7 @@ body, p { font-size: 16px !important; }
     ul { list-style: none; padding: 0;
         li {
             a { color: #fff;
-                &:hover,&:focus { color: $uw-tan; }
+                &:hover,&:focus { color: $uw-tan; text-decoration: underline; }
             }
         }
     }

@@ -280,7 +280,8 @@ body, p {
     .isc-footer ul li a {
       color: #fff; }
       .isc-footer ul li a:hover, .isc-footer ul li a:focus {
-        color: #e8e3d3; }
+        color: #e8e3d3;
+        text-decoration: underline; }
   .isc-footer .map-container {
     padding-right: 0; }
 
