@@ -9,7 +9,7 @@
       $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
 
-<div class="isc-admin-hero" style="background-image:url('http://curry.aca.uw.edu:8080/hrp-portal/wp-content/themes/uw-2014/assets/headers/suzzallo.jpg');">
+<div class="isc-admin-hero">
 
     <div class="container">
 
@@ -37,10 +37,6 @@
                         "LIMIT 3 ;";
                     $queries = $wpdb->get_results($query, ARRAY_N);
                      ?>
-                    Popular searches:
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[0][0] ?>"><?php echo $queries[0][0] ?> </a> |
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[1][0] ?>"><?php echo $queries[1][0] ?> </a>|
-                    <a href="<?php echo get_site_url(); echo "?s=" .$queries[2][0] ?>"><?php echo $queries[2][0] ?> </a>
                 </div>
 
               </div>
@@ -123,55 +119,55 @@
                       <h3>General</h3>
 
                       <ul>
-                          <li><a class="">For Employee as Self: view <?php echo get_guide_count('employee-as-self'); ?> User guides</a></li>
-                          <li><a class="">For I-9 Coordinators: view <?php echo get_guide_count('i-9-coordinator'); ?> User guides</a></li>
+                          <li>For Employee as Self: <a href="">view <?php echo get_guide_count('employee-as-self'); ?> User guides</a></li>
+                          <li>For I-9 Coordinators: <a href="">view <?php echo get_guide_count('i-9-coordinator'); ?> User guides</a></li>
                       </ul>
 
                       <h3>Time and Absence</h3>
 
                       <ul>
-                          <li><a class=" ">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
-                          <li><a class=" ">For Approvers: View all <?php echo get_guide_count(''); ?> User guides</a></li>
+                          <li>For Initiator 2s: <a href="">view <?php echo get_guide_count(''); ?> User guides</a></li>
+                          <li>For Approvers: <a href="">view all <?php echo get_guide_count(''); ?> User guides</a></li>
                       </ul>
 
                       <h3>HCM</h3>
 
                       <ul>
-                          <li><a class="">For Time and Absence Approvers: view <?php echo get_guide_count('ta-approver'); ?> User guides</a></li>
-                          <li><a class="">For Time and Abesence Initiates: View all <?php echo get_guide_count('ta-initiate'); ?> User guides</a></li>
-                          <li><a class="">For On-boarding coordinators: view all <?php echo get_guide_count(''); ?> User guides</a></li>
+                          <li>For Time and Absence Approvers: <a href="">view <?php echo get_guide_count('ta-approver'); ?> User guides</a></li>
+                          <li>For Time and Abesence Initiates: <a href="">view all <?php echo get_guide_count('ta-initiate'); ?> User guides</a></li>
+                          <li>For On-boarding coordinators: <a href="">view all <?php echo get_guide_count(''); ?> User guides</a></li>
                       </ul>
 
                       <h3>Academic Specific</h3>
 
                       <ul>
-                          <li><a class="">For Position and Job Requisition Initiates: view all <?php echo get_guide_count('pj-req-initiate'); ?> User guides</a></li>
-                          <li><a class="">For HCM Initiate 1s: view all <?php echo get_guide_count('hcm-initiate-1'); ?> User guides</a></li>
-                          <li><a class="">For HCM Initiate 2s: view <?php echo get_guide_count('hcm-initiate-2'); ?> User guides</a></li>
-                          <li><a class="">For HR Partners: view <?php echo get_guide_count('hr-partner'); ?> User guides</a></li>
-                          <li><a class="">For Additional Approver 1s: view <?php echo get_guide_count('addl-approver-1'); ?> User guides</a></li>
-                          <li><a class="">For Additional Approver 2s: view <?php echo get_guide_count('addl-approver-2'); ?> User guides</a></li>
-                          <li><a class="">For Costing Allocations Coordinators: view <?php echo get_guide_count('costing-allocations-coord'); ?> User guides</a></li>
-                          <li><a class="">For Academic Partners: view <?php echo get_guide_count('academic-partner'); ?> User guides</a></li>
-                          <li><a class="">For Academic Chair / Chair’s Delegates: view <?php echo get_guide_count('academic-chair'); ?> User guides</a></li>
-                          <li><a class="">For Academic Dean / Dean’s Delegates: view <?php echo get_guide_count('academic-dean'); ?> User guides</a></li>
+                          <li>For Position and Job Requisition Initiates: <a href="">view all <?php echo get_guide_count('pj-req-initiate'); ?> User guides</a></li>
+                          <li>For HCM Initiate 1s: <a href="">view all <?php echo get_guide_count('hcm-initiate-1'); ?> User guides</a></li>
+                          <li>For HCM Initiate 2s: <a href="">view <?php echo get_guide_count('hcm-initiate-2'); ?> User guides</a></li>
+                          <li>For HR Partners: <a href="">view <?php echo get_guide_count('hr-partner'); ?> User guides</a></li>
+                          <li>For Additional Approver 1s: <a href="">view <?php echo get_guide_count('addl-approver-1'); ?> User guides</a></li>
+                          <li>For Additional Approver 2s: <a href="">view <?php echo get_guide_count('addl-approver-2'); ?> User guides</a></li>
+                          <li>For Costing Allocations Coordinators: <a href="">view <?php echo get_guide_count('costing-allocations-coord'); ?> User guides</a></li>
+                          <li>For Academic Partners: <a href="">view <?php echo get_guide_count('academic-partner'); ?> User guides</a></li>
+                          <li>For Academic Chair / Chair’s Delegates: <a href="">view <?php echo get_guide_count('academic-chair'); ?> User guides</a></li>
+                          <li>For Academic Dean / Dean’s Delegates: <a href="">view <?php echo get_guide_count('academic-dean'); ?> User guides</a></li>
                       </ul>
 
                       <h3>Medical Center Specific</h3>
 
                       <ul>
-                          <li><a class="">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
-                          <li><a class="">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
+                          <li>For Initiator 2s: <a href="">view <?php echo get_guide_count(''); ?> User guides</a></li>
+                          <li>For Initiator 2s: <a href="">view <?php echo get_guide_count(''); ?> User guides</a></li>
                       </ul>
 
                       <ul>
-                          <li><a class="">For Medical Centers Job Requisitions Approvers 1s: view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides</a></li>
-                          <li><a class="">For Medical Centers Job Requisitions Approvers 2s: view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides</a></li>
-                          <li><a class="">For Medical Centers Job Requisitions Approvers 3s: view <?php echo get_guide_count('med-cent-job-req-approver-3'); ?> User guides</a></li>
-                          <li><a class="">For Medical Centers Managers: view <?php echo get_guide_count('	medical-centers-manager'); ?> User guides</a></li>
+                          <li>For Medical Centers Job Requisitions Approvers 1s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides</a></li>
+                          <li>For Medical Centers Job Requisitions Approvers 2s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides</a></li>
+                          <li>For Medical Centers Job Requisitions Approvers 3s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-3'); ?> User guides</a></li>
+                          <li>For Medical Centers Managers: <a href="">view <?php echo get_guide_count('	medical-centers-manager'); ?> User guides</a></li>
                       </ul>
 
-                      <a class="row" style="color: blue !important;">Go to the User guides library for other security roles ></a>
+                      <p><a href="">See full list of all User Guides...</a></p>
                   </div>
 
               </div>

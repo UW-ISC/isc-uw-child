@@ -1,5 +1,6 @@
 /*** sass variables ***/
 $uw-purple: #4b2e83;
+$uw-tan: #e8e3d3;
 $uw-tan-light: #ece9e2;
 $uw-tan-dark: #85754d;
 
@@ -254,6 +255,7 @@ body, p { font-size: 16px !important; }
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: $uw-tan;
 
     &:before {
         position: absolute;
@@ -262,8 +264,8 @@ body, p { font-size: 16px !important; }
         height: 80px;
         width: 100%;
         content: "";
-        opacity: .4;
-        background: -webkit-gradient(linear,0 0,0 100%,from(rgba(0,0,0,0)),to(rgba(0,0,0,.8))) 0 0 no-repeat;
+        //opacity: .4;
+        //background: -webkit-gradient(linear,0 0,0 100%,from(rgba(0,0,0,0)),to(rgba(0,0,0,.8))) 0 0 no-repeat;
     }
 
     &:after {
@@ -272,20 +274,27 @@ body, p { font-size: 16px !important; }
         height: 80px;
         width: 100%;
         content: "";
-        background: url('http://www.washington.edu/wp-content/themes/uw-2014/assets/images/stripes-dark-tile.svg');
-        opacity: .2;
+        //background: url('http://www.washington.edu/wp-content/themes/uw-2014/assets/images/stripes-dark-tile.svg');
+        //opacity: .2;
     }
 
 }
 
 .isc-admin-block {
     border: solid 1px #ddd; padding: 40px; margin-bottom: 1em;
+
+    h3 { margin-top: 0; }
+    ul { list-style: none; padding: 0;
+        li { }
+    }
 }
 
 /*** generic content and sidebar ***/
 .isc-content {  }
 
 .isc-sidebar { padding-top: 0 !important;
+
+    h3 { margin-top: 0; }
 
     /*** custom sidebar widget ***/
     .isc-widget-tan { background: #e8e3d3 !important; margin-top: 0; margin-bottom: 20px;
