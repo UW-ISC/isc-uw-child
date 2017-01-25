@@ -33,7 +33,7 @@ body, p {
         top: 0;
         right: 0; } }
     @media (min-width: 992px) {
-      .uw-thinstrip button.uw-search:hover {
+      .uw-thinstrip button.uw-search:hover, .uw-thinstrip button.uw-search:focus {
         background: yellow; } }
   .uw-thinstrip .uw-thin-links {
     display: none; }

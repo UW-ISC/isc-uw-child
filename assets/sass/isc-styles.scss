@@ -48,7 +48,7 @@ body, p { font-size: 16px !important; }
 
         @include desktop { top: 0; right: 0; }
 
-        &:hover {
+        &:hover,&:focus {
              @include desktop { background: yellow; }
         }
 
