@@ -33,14 +33,13 @@
                 <div class="col-md-6">
                     <h2 class="sr-only">Main Content</h2>
                     <?php $custom = get_post_meta(450); ?>
-                    <div style="font-size:50px; color:#fff; font-weight: 900; font-family:'Encode Sans Compressed', sans-serif; text-transform:uppercase; line-height: 50px; margin: 50px 0 20px 0;"> <?php echo $custom["isc-hero-title"][0]?> </div>
+                    <div class="isc-homepage-title"> <?php echo $custom["isc-hero-title"][0]?> </div>
                     <span class="udub-slant"><span></span></span>
                     <div> <?php echo $custom["isc-hero-description"][0]; ?> </div>
                     <a class="uw-btn" href="<?php echo $custom["isc-hero-link-url"][0]; ?>"><?php echo $custom["isc-hero-link-text"][0];?></a>
                 </div>
                 <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
-                    <h2 class="sr-only">Quicklinks</h2>
-                    <p>Popular Topics</p>
+                    <h2>Shortcuts</h2>
                     <p> <?php get_quicklinks(); ?> </p>
                 </div>
             </div>
