@@ -31,7 +31,7 @@ class UW_Styles
         'deps'    => array(),
         'version' => '3.6'
       ),
-      
+
        'isc-styles' => array (
          'id'       => 'isc-styles',
          'url'      => get_stylesheet_directory_uri() . '/isc-styles.css',

@@ -71,7 +71,8 @@ body, p {
 /*** uw breadcrumbs ***/
 .uw-breadcrumbs {
   margin: 1em 0;
-  padding: 0; }
+  padding: 0;
+  display: block; }
 
 /*** uw body copy ***/
 .uw-body-copy {
