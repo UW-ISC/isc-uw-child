@@ -76,7 +76,34 @@ body, p {
 
 /*** uw body copy ***/
 .uw-body-copy {
-  margin-top: 0; }
+  margin-top: 0;
+  /* custom body widget */ }
+  .uw-body-copy .widgettitle {
+    clear: left;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 20px; }
+    .uw-body-copy .widgettitle:before, .uw-body-copy .widgettitle:after {
+      position: absolute;
+      left: 0;
+      bottom: 5px;
+      content: "";
+      height: 4px; }
+    .uw-body-copy .widgettitle:before {
+      width: 100px;
+      background-color: #b7a57a; }
+    .uw-body-copy .widgettitle:after {
+      width: 40px;
+      -webkit-transform: skewX(-25deg) skewY(0);
+      -o-transform: skewX(-25deg) skewY(0);
+      transform: skewX(-25deg) skewY(0);
+      -webkit-transform: skew(-25deg, 0);
+      -ms-transform: skewX(-25deg) skewY(0);
+      transform: skew(-25deg, 0);
+      left: 80px;
+      background-color: white; }
 
 /*** homepage ***/
 .isc-homepage-hero {
@@ -142,47 +169,21 @@ body, p {
 
 .isc-admin-block {
   border: solid 1px #ddd;
-  padding: 20px;
+  padding: 40px;
   margin-bottom: 1em; }
-  .isc-admin-block .widgettitle {
-    font-weight: 900;
-    font-size: 22px;
-    text-transform: uppercase;
-    position: relative;
-    padding-bottom: 20px;
-    margin-bottom: 30px; }
-    .isc-admin-block .widgettitle:before {
-      width: 100px;
-      background-color: #b7a57a;
-      position: absolute;
-      left: 0;
-      bottom: 5px;
-      content: "";
-      height: 4px; }
-    .isc-admin-block .widgettitle:after {
-      transform: skew(-25deg, 0);
-      left: 80px;
-      background-color: #fff;
-      bottom: 3px;
-      height: 8px;
-      width: 40px;
-      position: absolute;
-      content: ""; }
 
 /*** generic content and sidebar ***/
 .isc-sidebar {
   padding-top: 0 !important;
-  /*** fancy widget ***/ }
+  /*** custom sidebar widget ***/ }
   .isc-sidebar .isc-widget-tan {
     background: #e8e3d3 !important;
-    padding: 20px;
     margin-top: 0;
     margin-bottom: 20px; }
     .isc-sidebar .isc-widget-tan .widgettitle:after {
       background-color: #e8e3d3; }
   .isc-sidebar .isc-widget-gray {
     background: #ccc;
-    padding: 20px;
     margin-top: 0;
     margin-bottom: 20px; }
     .isc-sidebar .isc-widget-gray .widgettitle:after {
@@ -190,7 +191,6 @@ body, p {
   .isc-sidebar .isc-widget-white {
     background: #fff;
     border: solid 1px #ddd;
-    padding: 20px;
     margin-top: 0;
     margin-bottom: 20px; }
     .isc-sidebar .isc-widget-white .widgettitle:after {
