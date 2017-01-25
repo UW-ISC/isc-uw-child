@@ -64,16 +64,26 @@ body, p {
     color: #fff;
     font-size: 16px !important;
     padding-left: 0;
-    /** replace this with new carat image */ }
+    /** new carat image. */ }
     #dawgdrops .dawgdrops-item a:before {
-      background: yellow; }
+      background: url("../isc-uw-child/assets/icons/arrow-right.png") no-repeat;
+      height: 20px;
+      width: 50px;
+      right: -25px;
+      top: 8px;
+      background-size: 45%; }
     #dawgdrops .dawgdrops-item a:after {
       background: none;
       display: none; }
     #dawgdrops .dawgdrops-item a:hover {
       /** replace with new hover state image **/ }
       #dawgdrops .dawgdrops-item a:hover:before {
-        background: red; }
+        background: url("../isc-uw-child/assets/icons/arrow-down.png") no-repeat;
+        height: 20px;
+        width: 50px;
+        right: -23px;
+        top: 8px;
+        background-size: 45%; }
   #dawgdrops .dawgdrops-menu {
     margin-top: -5px !important;
     border-top: 4px solid #85754d !important; }
