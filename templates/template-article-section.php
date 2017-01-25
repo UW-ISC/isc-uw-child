@@ -34,6 +34,11 @@ get_header();
 
         </article>
 
+        <aside class="col-md-4">
+            this is an article section
+        </aside>
+
+
     </div>
 </section>
 

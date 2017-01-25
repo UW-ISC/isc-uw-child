@@ -44,7 +44,7 @@
         </div>
 
         <div class="col-md-4" role="">
-            sidebar asldkfj asdlk ;lksadfj alskdfj
+            this template uses page.php (default template)
         </div>
 
     </div>

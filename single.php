@@ -21,9 +21,6 @@
 
     <div class="col-md-8 uw-content" role='main'>
 
-        <?php get_template_part( 'menu', 'mobile' ); ?>
-        <?php get_template_part( 'breadcrumbs' ); ?>
-
         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
             <h2><?php the_title(); ?></h2>
@@ -47,7 +44,7 @@
     </div>
 
     <div class="col-md-4" role="">
-    sidebar asldkfj asdlk ;lksadfj alskdfj
+    this template uses single.php
     </div>
 
   </div>
