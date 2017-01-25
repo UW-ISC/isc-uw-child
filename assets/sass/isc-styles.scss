@@ -30,6 +30,10 @@ body, p { font-size: 16px !important; }
     background: #fff;
     color: $uw-purple;
 
+    a { color: #fff;
+        &:hover { color: #eee; }
+    }
+    
     h1 { font-size: 18px; line-height: 45px;
          @include desktop { font-size: 37px; }
     }
