@@ -66,110 +66,113 @@
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-              <h3>Updates</h3>
+                <div class="isc-admin-block">
 
-                  <?php
+                  <h3 class="widgettitle">Updates</h3>
 
-                     $args = array(
-                          	'tax_query' => array(
-                          		array(
-                          			'taxonomy' => 'location',
-                          			'field'    => 'slug',
-                          			'terms'    => 'admin-corner-news',
-                          		),
-                          	),);
-                     $category_posts = new WP_Query($args);
-
-                     if($category_posts->have_posts()) :
-                        while($category_posts->have_posts()) :
-                           $category_posts->the_post();
-                  ?>
-
-                           <h3><?php the_title() ?></h3>
-                           <div class="update-date"><?php echo get_the_date() ?> </div>
-                           <div class='post-content'><?php the_excerpt() ?></div>
-
-                  <?php
-                        endwhile;
-                    else:
-                    endif;
-                  ?>
-
-                  <h3>Workday User Guides</h3>
-
-                  <?php
-
-                      function get_guide_count($name){
+                      <?php
 
                          $args = array(
                               	'tax_query' => array(
                               		array(
-                              			'taxonomy' => 'security-role',
+                              			'taxonomy' => 'location',
                               			'field'    => 'slug',
-                              			'terms'    => $name,
+                              			'terms'    => 'admin-corner-news',
                               		),
                               	),);
+                         $category_posts = new WP_Query($args);
 
-                         $guides = new WP_Query($args);
-                         return $guides->post_count;
-                      }
+                         if($category_posts->have_posts()) :
+                            while($category_posts->have_posts()) :
+                               $category_posts->the_post();
+                      ?>
 
-                  ?>
+                               <h3><?php the_title() ?></h3>
+                               <div class="update-date"><?php echo get_the_date() ?> </div>
+                               <div class='post-content'><?php the_excerpt() ?></div>
 
-                  <h3>General</h3>
+                      <?php
+                            endwhile;
+                        else:
+                        endif;
+                      ?>
+                  </div>
 
-                  <ul>
-                      <li><a class="">For Employee as Self: view <?php echo get_guide_count('employee-as-self'); ?> User guides</a></li>
-                      <li><a class="">For I-9 Coordinators: view <?php echo get_guide_count('i-9-coordinator'); ?> User guides</a></li>
-                  </ul>
+                  <div class="isc-admin-block">
+                      <h3 class="widgettitle">Workday User Guides</h3>
 
-                  <h3>Time and Absence</h3>
+                      <?php
 
-                  <ul>
-                      <li><a class=" ">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
-                      <li><a class=" ">For Approvers: View all <?php echo get_guide_count(''); ?> User guides</a></li>
-                  </ul>
+                          function get_guide_count($name){
 
-                  <h3>HCM</h3>
+                             $args = array(
+                                  	'tax_query' => array(
+                                  		array(
+                                  			'taxonomy' => 'security-role',
+                                  			'field'    => 'slug',
+                                  			'terms'    => $name,
+                                  		),
+                                  	),);
 
-                  <ul>
-                      <li><a class="">For Time and Absence Approvers: view <?php echo get_guide_count('ta-approver'); ?> User guides</a></li>
-                      <li><a class="">For Time and Abesence Initiates: View all <?php echo get_guide_count('ta-initiate'); ?> User guides</a></li>
-                      <li><a class="">For On-boarding coordinators: view all <?php echo get_guide_count(''); ?> User guides</a></li>
-                  </ul>
+                             $guides = new WP_Query($args);
+                             return $guides->post_count;
+                          }
 
-                  <h3>Academic Specific</h3>
+                      ?>
 
-                  <ul>
-                      <li><a class="">For Position and Job Requisition Initiates: view all <?php echo get_guide_count('pj-req-initiate'); ?> User guides</a></li>
-                      <li><a class="">For HCM Initiate 1s: view all <?php echo get_guide_count('hcm-initiate-1'); ?> User guides</a></li>
-                      <li><a class="">For HCM Initiate 2s: view <?php echo get_guide_count('hcm-initiate-2'); ?> User guides</a></li>
-                      <li><a class="">For HR Partners: view <?php echo get_guide_count('hr-partner'); ?> User guides</a></li>
-                      <li><a class="">For Additional Approver 1s: view <?php echo get_guide_count('addl-approver-1'); ?> User guides</a></li>
-                      <li><a class="">For Additional Approver 2s: view <?php echo get_guide_count('addl-approver-2'); ?> User guides</a></li>
-                      <li><a class="">For Costing Allocations Coordinators: view <?php echo get_guide_count('costing-allocations-coord'); ?> User guides</a></li>
-                      <li><a class="">For Academic Partners: view <?php echo get_guide_count('academic-partner'); ?> User guides</a></li>
-                      <li><a class="">For Academic Chair / Chair’s Delegates: view <?php echo get_guide_count('academic-chair'); ?> User guides</a></li>
-                      <li><a class="">For Academic Dean / Dean’s Delegates: view <?php echo get_guide_count('academic-dean'); ?> User guides</a></li>
-                  </ul>
+                      <h3>General</h3>
 
-                  <h3>Medical Center Specific</h3>
+                      <ul>
+                          <li><a class="">For Employee as Self: view <?php echo get_guide_count('employee-as-self'); ?> User guides</a></li>
+                          <li><a class="">For I-9 Coordinators: view <?php echo get_guide_count('i-9-coordinator'); ?> User guides</a></li>
+                      </ul>
 
-                  <ul>
-                      <li><a class="">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
-                      <li><a class="">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
-                  </ul>
+                      <h3>Time and Absence</h3>
 
-                  <a class="row" style="color: blue !important;">Go to the User guides library for other security roles ></a>
+                      <ul>
+                          <li><a class=" ">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
+                          <li><a class=" ">For Approvers: View all <?php echo get_guide_count(''); ?> User guides</a></li>
+                      </ul>
 
-                  <ul>
-                      <li><a class="">For Medical Centers Job Requisitions Approvers 1s: view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides</a></li>
-                      <li><a class="">For Medical Centers Job Requisitions Approvers 2s: view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides</a></li>
-                      <li><a class="">For Medical Centers Job Requisitions Approvers 3s: view <?php echo get_guide_count('med-cent-job-req-approver-3'); ?> User guides</a></li>
-                      <li><a class="">For Medical Centers Managers: view <?php echo get_guide_count('	medical-centers-manager'); ?> User guides</a></li>
-                  </ul>
+                      <h3>HCM</h3>
 
-                  <a class="row" style="color: blue !important;">Go to the User guides library for other security roles ></a>
+                      <ul>
+                          <li><a class="">For Time and Absence Approvers: view <?php echo get_guide_count('ta-approver'); ?> User guides</a></li>
+                          <li><a class="">For Time and Abesence Initiates: View all <?php echo get_guide_count('ta-initiate'); ?> User guides</a></li>
+                          <li><a class="">For On-boarding coordinators: view all <?php echo get_guide_count(''); ?> User guides</a></li>
+                      </ul>
+
+                      <h3>Academic Specific</h3>
+
+                      <ul>
+                          <li><a class="">For Position and Job Requisition Initiates: view all <?php echo get_guide_count('pj-req-initiate'); ?> User guides</a></li>
+                          <li><a class="">For HCM Initiate 1s: view all <?php echo get_guide_count('hcm-initiate-1'); ?> User guides</a></li>
+                          <li><a class="">For HCM Initiate 2s: view <?php echo get_guide_count('hcm-initiate-2'); ?> User guides</a></li>
+                          <li><a class="">For HR Partners: view <?php echo get_guide_count('hr-partner'); ?> User guides</a></li>
+                          <li><a class="">For Additional Approver 1s: view <?php echo get_guide_count('addl-approver-1'); ?> User guides</a></li>
+                          <li><a class="">For Additional Approver 2s: view <?php echo get_guide_count('addl-approver-2'); ?> User guides</a></li>
+                          <li><a class="">For Costing Allocations Coordinators: view <?php echo get_guide_count('costing-allocations-coord'); ?> User guides</a></li>
+                          <li><a class="">For Academic Partners: view <?php echo get_guide_count('academic-partner'); ?> User guides</a></li>
+                          <li><a class="">For Academic Chair / Chair’s Delegates: view <?php echo get_guide_count('academic-chair'); ?> User guides</a></li>
+                          <li><a class="">For Academic Dean / Dean’s Delegates: view <?php echo get_guide_count('academic-dean'); ?> User guides</a></li>
+                      </ul>
+
+                      <h3>Medical Center Specific</h3>
+
+                      <ul>
+                          <li><a class="">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
+                          <li><a class="">For Initiator 2s: view <?php echo get_guide_count(''); ?> User guides</a></li>
+                      </ul>
+
+                      <ul>
+                          <li><a class="">For Medical Centers Job Requisitions Approvers 1s: view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides</a></li>
+                          <li><a class="">For Medical Centers Job Requisitions Approvers 2s: view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides</a></li>
+                          <li><a class="">For Medical Centers Job Requisitions Approvers 3s: view <?php echo get_guide_count('med-cent-job-req-approver-3'); ?> User guides</a></li>
+                          <li><a class="">For Medical Centers Managers: view <?php echo get_guide_count('	medical-centers-manager'); ?> User guides</a></li>
+                      </ul>
+
+                      <a class="row" style="color: blue !important;">Go to the User guides library for other security roles ></a>
+                  </div>
 
               </div>
 
