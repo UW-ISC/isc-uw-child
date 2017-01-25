@@ -307,7 +307,7 @@ function add_ids_to_header_tags_auto( $content) {
           if (sizeOf($data) >= 0) {
               for ($i = 0; $i < sizeOf($data); $i++) {
                 ?>
-                <a class="btn-sm uw-btn" href="<?php echo $data[$i]["isc-hero-quicklink-url"]; ?>"><?php echo $data[$i]["isc-hero-quicklink-text"]; ?></a>
+                <li><a class="btn-sm uw-btn" target="_blank" href="<?php echo $data[$i]["isc-hero-quicklink-url"]; ?>"><?php echo $data[$i]["isc-hero-quicklink-text"]; ?></a></li>
                 <?php
               }
           }

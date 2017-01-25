@@ -38,9 +38,13 @@
                     <div> <?php echo $custom["isc-hero-description"][0]; ?> </div>
                     <a class="uw-btn" href="<?php echo $custom["isc-hero-link-url"][0]; ?>"><?php echo $custom["isc-hero-link-text"][0];?></a>
                 </div>
-                <div class="col-md-4 col-md-offset-2" style="margin-top:200px;">
-                    <h2>Shortcuts</h2>
-                    <p> <?php get_quicklinks(); ?> </p>
+                <div class="col-md-4 col-md-offset-2">
+                    <div class="isc-homepage-shortcuts">
+                        <h2>Shortcuts</h2>
+                        <ul>
+                            <?php get_quicklinks(); ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
