@@ -11,8 +11,8 @@
             <div class="col-md-4">
               <h3>Contact Information</h3>
               <div class="row">
-              <div class="col-md-6">
-                 ***map goes here***
+              <div class="col-md-6 map-container">
+                 <a href="https://goo.gl/maps/koRTixJW8D62" title="ISC location (Google Maps)"><img src="http://localhost:8080/hrp-portal/wp-content/themes/isc-uw-child/assets/images/map.png" alt="Map of ISC location" ></a>
               </div>
               <div class="col-md-6">
                 <ul>

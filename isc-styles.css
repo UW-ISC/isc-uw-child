@@ -276,6 +276,8 @@ body, p {
       color: #fff; }
       .isc-footer ul li a:hover {
         color: yellow; }
+  .isc-footer .map-container {
+    padding-right: 0; }
 
 /*** hr accordian styles ***/
 .uw-body .uw-accordion-menu {
