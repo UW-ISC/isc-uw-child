@@ -46,10 +46,16 @@ body, p {
 
 /*** main navigation (purple bar) ***/
 .uw-site-title {
-  height: 80px;
+  height: 70px;
   padding: 0;
   margin: 0 !important;
   background: #4b2e83; }
+  @media (min-width: 992px) {
+    .uw-site-title {
+      display: none; } }
+
+#mobile-relative {
+  margin-top: 0 !important; }
 
 .uw-mobile-menu-toggle {
   color: #fff !important;
