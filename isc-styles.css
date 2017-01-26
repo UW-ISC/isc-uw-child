@@ -275,6 +275,9 @@ body, p {
       background-color: #fff; }
 
 /*** footer ***/
+.uw-footer {
+  border-width: 3px; }
+
 .isc-footer {
   text-align: left;
   color: #fff;
@@ -286,7 +289,7 @@ body, p {
       padding-bottom: 25px; }
     .isc-footer ul li {
       font-size: 15px;
-      line-height: 2.2em; }
+      line-height: 2em; }
       .isc-footer ul li .icon-container {
         width: 50px;
         text-align: center;
@@ -309,9 +312,12 @@ body, p {
           color: #4b2e83;
           position: relative; }
   .isc-footer h3 {
-    font-size: 18px; }
+    font-size: 18px;
+    letter-spacing: .025em; }
   .isc-footer .map-container {
     padding-right: 0; }
+    .isc-footer .map-container img {
+      box-shadow: 0px 0px 26px #111111; }
 
 /*** hr accordian styles ***/
 .uw-body .uw-accordion-menu {
