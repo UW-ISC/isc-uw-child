@@ -332,12 +332,25 @@ body, p { font-size: 16px !important; }
     margin-bottom:30px;
 
     ul { list-style: none; padding: 0;
-        li {
+        &.footer-contact-container {
+            li {padding-bottom:25px;}
+        }
+        li { font-size: 15px; line-height: 2.2em;
+            .icon-container {width: 50px; text-align: center; float:left;
+                &.icons-stacked {position:relative;}
+            }
+            .text-container {
+                &.location-text {line-height:1.4em; padding-top:0;}
+            }
             a { color: #fff;
                 &:hover,&:focus { color: $uw-tan; }
             }
+            i {font-size: 33px; vertical-align: top;
+                &.fa-envelope {font-size:20px; color: $uw-purple; position: relative;}
+            }
         }
     }
+    h3 {font-size:18px;}
     .map-container {padding-right:0;}
 }
 
