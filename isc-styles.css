@@ -143,10 +143,22 @@ body, p {
 
 /*** homepage ***/
 .isc-homepage-hero {
-  position: relative;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 68%; }
+  background-image: none;
+  background-repeat: no-repeat; }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .isc-homepage-hero {
+      background-image: url("../isc-uw-child/assets/images/service-team_final.jpg");
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 68%; } }
+  @media (min-width: 992px) {
+    .isc-homepage-hero {
+      background-image: url("../isc-uw-child/assets/images/service-team_final.jpg");
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 68%; } }
   .isc-homepage-hero:before {
     position: absolute;
     bottom: 0;
@@ -167,17 +179,39 @@ body, p {
   @media (min-width: 992px) {
     .isc-homepage-hero {
       min-height: 500px;
-      background-size: 160%;
-      background-position: 90%; } }
+      background-position: 61%; } }
   .isc-homepage-hero .isc-homepage-title {
     font-size: 50px;
-    color: #fff;
+    color: #4b2e83;
     font-weight: 900;
     font-family: 'Encode Sans Compressed', sans-serif;
     text-transform: uppercase;
     line-height: 50px;
-    margin: 50px 0 20px 0;
+    padding: 50px 0 20px 0;
     text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4); }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .isc-homepage-hero .isc-homepage-title {
+        margin: 50px 0 20px 0;
+        padding: 0; } }
+    @media (min-width: 992px) {
+      .isc-homepage-hero .isc-homepage-title {
+        margin: 50px 0 20px 0;
+        padding: 0; } }
+  .isc-homepage-hero .hero-header-container {
+    background: rgba(232, 211, 162, 0.5);
+    padding: 0 30px 90px 30px; }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .isc-homepage-hero .hero-header-container {
+        border: #4b2e83 solid 2px;
+        border-top: none;
+        padding: 0 30px 30px;
+        float: right; } }
+    @media (min-width: 992px) {
+      .isc-homepage-hero .hero-header-container {
+        border: #4b2e83 solid 2px;
+        border-top: none;
+        padding: 0 30px 30px;
+        float: right; } }
   .isc-homepage-hero .isc-homepage-shortcuts ul {
     list-style: none;
     padding: 0; }

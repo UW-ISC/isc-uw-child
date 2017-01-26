@@ -169,11 +169,23 @@ body, p { font-size: 16px !important; }
 /*** homepage ***/
 
 .isc-homepage-hero {
-
+    background-image: none;
+    background-repeat: no-repeat;
+    
+    @include tablet {
+    background-image: url('../isc-uw-child/assets/images/service-team_final.jpg');
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 68%;
+    background-position: 68%;}
+    
+    @include desktop {
+    background-image: url('../isc-uw-child/assets/images/service-team_final.jpg');
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 68%;}
+
 
     &:before{
         position: absolute;
@@ -199,20 +211,42 @@ body, p { font-size: 16px !important; }
     @include desktop {
 
         min-height:500px;
-        background-size:160%;
-        background-position:90%;
+        background-position:61%;
 
     }
 
     .isc-homepage-title {
         font-size:50px;
-        color:#fff;
+        color:#4b2e83;
         font-weight: 900;
         font-family:'Encode Sans Compressed', sans-serif;
         text-transform:uppercase;
         line-height: 50px;
-        margin: 50px 0 20px 0;
+        padding: 50px 0 20px 0;
         text-shadow: 2px 1px 1px rgba(0,0,0,.4);
+        @include tablet {
+        margin: 50px 0 20px 0;
+        padding:0;
+        }
+        @include desktop {
+        margin: 50px 0 20px 0;
+        padding:0;
+        }
+    }
+    
+    .hero-header-container { 
+        background: rgba(232,211,162,.5);
+        padding:0 30px 90px 30px;
+        @include tablet {
+        border:#4b2e83 solid 2px;
+        border-top:none;
+        padding:0 30px 30px;
+        float:right; }
+        @include desktop {
+        border:#4b2e83 solid 2px;
+        border-top:none;
+        padding:0 30px 30px;
+        float:right; }
     }
 
     .isc-homepage-shortcuts {
