@@ -40,10 +40,18 @@
                 </div>
                 <div class="col-md-4 col-md-offset-2">
                     <div class="isc-homepage-shortcuts">
+
+                        <h2 class="sr-only">Main Content</h2>
+                        <?php $custom = get_post_meta(450); ?>
+                        <div class="isc-homepage-title"><?php the_title(); ?></div>
+                        <span class="udub-slant"><span></span></span>
+
                         <h2>Shortcuts</h2>
                         <ul>
+                            <li><a class="btn-sm uw-btn isc-btn-workday" target="_blank" href="">Sign in to Workday</a></li>
                             <?php get_quicklinks(); ?>
                         </ul>
+
                     </div>
                 </div>
             </div>
