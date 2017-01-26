@@ -78,7 +78,7 @@ body, p { font-size: 16px !important; }
 
         a { color: #fff; font-size: 16px !important; padding-left: 0;
 
-            &:before { background: url('../isc-uw-child/assets/icons/arrow-right.png') no-repeat; height:20px; width:50px; right:-25px; top:8px; background-size:45%;} 
+            &:before { background: url('../isc-uw-child/assets/icons/arrow-right.png') no-repeat; height:20px; width:50px; right:-25px; top:8px; background-size:45%;}
             &:after { background: none; display: none; }
 
             &:hover,&:focus {
@@ -214,13 +214,21 @@ body, p { font-size: 16px !important; }
         text-shadow: 2px 1px 1px rgba(0,0,0,.4);
     }
 
-    .isc-homepage-shortcuts { margin-top:200px;
+    .isc-homepage-shortcuts {
 
         ul { list-style: none; padding: 0;
             li {
                 a { display: block; margin-bottom: 5px; }
             }
+
+            .isc-btn-workday {
+                background-color: #eee !important;
+                color: orange;
+                font-size: 18px;
+                line-height: 25px;
+            }
         }
+
         h2 {
             font-size: 18px;
             font-family: "Encode Sans Compressed",sans-serif;
@@ -255,7 +263,10 @@ body, p { font-size: 16px !important; }
     }
 
     .isc-homepage-news {
-        .isc-homepage-news-content { background: #fff; padding: 40px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px; }
+        .isc-homepage-news-content { background: #fff; padding: 40px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;
+
+            h3 { margin-top: 0; }
+        }
     }
 }
 
@@ -343,7 +354,7 @@ body, p { font-size: 16px !important; }
                 &.location-text {line-height:1.4em; padding-top:0;}
             }
             a { color: #fff;
-                &:hover,&:focus { color: $uw-tan; }
+                &:hover, &:focus { color: $uw-tan-dark; text-decoration: underline; }
             }
             i {font-size: 33px; vertical-align: top;
                 &.fa-envelope {font-size:20px; color: $uw-purple; position: relative;}

@@ -305,7 +305,7 @@ function add_ids_to_header_tags_auto( $content) {
           $result = implode($string);
           $data = unserialize($result);
           if (sizeOf($data) >= 0) {
-              for ($i = 0; $i < sizeOf($data); $i++) {
+              for ($i = 0; $i < 3; $i++) {
                 ?>
                 <li><a class="btn-sm uw-btn" target="_blank" href="<?php echo $data[$i]["isc-hero-quicklink-url"]; ?>"><?php echo $data[$i]["isc-hero-quicklink-text"]; ?></a></li>
                 <?php
