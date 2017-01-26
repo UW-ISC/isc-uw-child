@@ -66,11 +66,18 @@ body, p { font-size: 16px !important; }
 }
 
 /*** main navigation (purple bar) ***/
-.uw-site-title { height: 70px; padding:0; margin: 0 !important; background: $uw-purple;
+.uw-site-title { height: 60px; padding:0; margin: 0 !important; background: $uw-purple;
     @include desktop { display: none; }
 }
 
-#mobile-relative { margin-top: 0 !important; }
+#mobile-relative { margin-top: 0 !important;
+
+    .uw-mobile-menu-toggle { margin-right: 20px !important; padding: 0 !important;
+        &:before { display: none; }
+    }
+
+
+}
 
 .uw-mobile-menu-toggle { color: #fff !important; right: 0 !important; }
 

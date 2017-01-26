@@ -46,7 +46,7 @@ body, p {
 
 /*** main navigation (purple bar) ***/
 .uw-site-title {
-  height: 70px;
+  height: 60px;
   padding: 0;
   margin: 0 !important;
   background: #4b2e83; }
@@ -56,6 +56,11 @@ body, p {
 
 #mobile-relative {
   margin-top: 0 !important; }
+  #mobile-relative .uw-mobile-menu-toggle {
+    margin-right: 20px !important;
+    padding: 0 !important; }
+    #mobile-relative .uw-mobile-menu-toggle:before {
+      display: none; }
 
 .uw-mobile-menu-toggle {
   color: #fff !important;
