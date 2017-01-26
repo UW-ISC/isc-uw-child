@@ -10,11 +10,13 @@
 get_header();
 ?>
 
+<?php uw_site_title(); ?>
+<?php get_template_part( 'menu', 'mobile' ); ?>
+
 <section class="uw-body container">
 
     <div class="row">
         <div class="col-md-12">
-            <?php get_template_part( 'menu', 'mobile' ); ?>
             <?php get_template_part( 'breadcrumbs' ); ?>
         </div>
     </div>
@@ -24,6 +26,7 @@ get_header();
         <article class="uw-body-copy col-md-offset-1 col-md-10">
 
             xxxx this is an article section template xxxx
+
             <?php
             while ( have_posts() ) : the_post();
                 the_title( '<h2 class="title">', '</h2>' );

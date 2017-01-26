@@ -11,17 +11,19 @@ get_header();
 
 ?>
 
-<section class="uw-body container">
+<?php uw_site_title(); ?>
+<?php get_template_part( 'menu', 'mobile' ); ?>
+
+
+<div class="uw-body container">
 
     <div class="row">
         <div class="col-md-12">
-            <?php get_template_part( 'menu', 'mobile' ); ?>
             <?php get_template_part( 'breadcrumbs' ); ?>
         </div>
     </div>
 
     <div class="row">
-
         <article class="uw-content col-md-offset-1 col-md-10">
 
             xxxx this is a category page template xxxx
@@ -37,6 +39,7 @@ get_header();
         </article>
 
     </div>
-</section>
+
+</div>
 
 <?php get_footer(); ?>
