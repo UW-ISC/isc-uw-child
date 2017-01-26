@@ -76,6 +76,13 @@ body, p { font-size: 16px !important; }
         &:before { display: none; }
     }
 
+    .uw-mobile-menu { margin-bottom: 0 !important;
+
+        a {
+            &:after { background: none !important; }
+        }
+    }
+
 
 }
 
