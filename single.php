@@ -19,12 +19,11 @@
 
   <div class="row">
 
-    <div class="col-md-8 uw-content" role='main'>
-
-        <?php get_template_part( 'menu', 'mobile' ); ?>
-        <?php get_template_part( 'breadcrumbs' ); ?>
+    <div class="uw-content col-md-offset-1 col-md-10" role='main'>
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
+
+            xxxx this template uses single.php xxxx
 
             <h2><?php the_title(); ?></h2>
 
@@ -44,10 +43,6 @@
 
         </div>
 
-    </div>
-
-    <div class="col-md-4" role="">
-    sidebar asldkfj asdlk ;lksadfj alskdfj
     </div>
 
   </div>

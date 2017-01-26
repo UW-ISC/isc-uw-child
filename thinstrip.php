@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="pull-left">
-              <a href="/hrp-portal" title="ISC Home" class=""><h1 style="margin:0;">Integrated Service Center</h1></a>
+              <a href="<?php echo get_site_url() ?>" title="ISC Home"><h1 style="margin:0;">Integrated Service Center</h1></a>
         </div>
 
     </div>
@@ -11,9 +11,9 @@
      <div style="position:absolute; right:30px; top: 20px;">
           <nav class="uw-thin-strip-nav" role='navigation' aria-label='audience based'>
               <ul class="uw-thin-links">
-                <li><a href="/hrp-portal/" title="Sign in to Workday"><img alt="" class="" style="width:30px; margin-top:-15px; margin-right:5px;" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/workday-w.png'?>"> Sign in to Workday</a></li>
-                <li><a href="/hrp-portal/admin-corner/" title="Admin Corner">Admin Corner</a></li>
-                <li><a href="/hrp-portal/" title="Contact Us">Contact Us</a></li>
+                <li><a href="https://www.workday.com/en-us/signin.html" target="_blank" title="Sign in to Workday"><img alt="" class="" style="width:30px; margin-top:-15px; margin-right:5px;" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/workday-w.png'?>"> Sign in to Workday</a></li>
+                <li><a href="<?php echo get_site_url() . '/admin-corner/'?>" title="Admin Corner">Admin Corner</a></li>
+                <li><a href="<?php echo get_site_url() . '/contact-us/'?>" title="Contact Us">Contact Us</a></li>
               </ul>
           </nav>
           <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>

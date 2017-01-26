@@ -12,17 +12,23 @@ get_header();
 ?>
 
 <section class="uw-body container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <?php get_template_part( 'menu', 'mobile' ); ?>
+            <?php get_template_part( 'breadcrumbs' ); ?>
+        </div>
+    </div>
+
     <div class="row">
 
-       <?php get_template_part( 'menu', 'mobile' ); ?>
-       <?php get_template_part( 'breadcrumbs' ); ?>
+        <article class="uw-content col-md-offset-1 col-md-10">
 
-        <article class="uw-content col-lg-12">
-
+            xxxx this is a category page template xxxx
             <?php
             while ( have_posts() ) : the_post();
-                get_template_part( 'content', 'page' );
-
+                the_title( '<h2 class="title">', '</h2>' );
+                the_content();
             endwhile;
 
             display_child_pages();
