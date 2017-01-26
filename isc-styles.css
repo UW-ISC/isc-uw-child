@@ -188,7 +188,7 @@ body, p {
     text-transform: uppercase;
     line-height: 50px;
     padding: 50px 0 20px 0;
-    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4); }
+    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2); }
     @media (min-width: 768px) and (max-width: 991px) {
       .isc-homepage-hero .isc-homepage-title {
         margin: 50px 0 20px 0;
@@ -204,7 +204,6 @@ body, p {
       .isc-homepage-hero .hero-header-container {
         border: #4b2e83 solid 2px;
         border-top: none;
-        padding: 0 30px 30px;
         float: right; } }
     @media (min-width: 992px) {
       .isc-homepage-hero .hero-header-container {
@@ -235,7 +234,7 @@ body, p {
     font-weight: 900;
     text-transform: uppercase;
     color: #4b2e83;
-    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4); }
+    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2); }
 
 .isc-homepage-body h2 {
   font-size: 18px;
@@ -245,7 +244,7 @@ body, p {
   font-weight: 900;
   text-transform: uppercase;
   color: #fff;
-  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4); }
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.6); }
 .isc-homepage-body .uw-btn {
   background-color: #d9d9d9 !important;
   -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
