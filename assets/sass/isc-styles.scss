@@ -73,6 +73,7 @@ body, p { font-size: 16px !important; }
 /*** dawgdrops (drop down menu) ***/
 #dawgdrops { background-color: $uw-purple;
 
+    .dawgdrops-nav { margin-left: 15px; margin-right: 15px; }
     /* main menu */
     .dawgdrops-item {
 
@@ -217,8 +218,13 @@ body, p { font-size: 16px !important; }
     .isc-homepage-shortcuts {
 
         ul { list-style: none; padding: 0;
+
             li {
                 a { display: block; margin-bottom: 5px; }
+            }
+
+            .uw-btn { width: 100%;
+                &:before, &:after { right: 0; }
             }
 
             .isc-btn-workday {
