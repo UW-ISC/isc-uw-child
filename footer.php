@@ -9,7 +9,7 @@
 
             <div class="col-md-5">
               <h3>Contact Information</h3>
-              <div class="row">
+              <div class="row  location-container">
               <div class="col-md-6 map-container">
                  <a href="https://goo.gl/maps/koRTixJW8D62" title="ISC location (Google Maps)"><img src="<?php echo get_site_url() . '/wp-content/themes//isc-uw-child/assets/images/map.png'?>" alt="Map of ISC location" ></a>
               </div>
