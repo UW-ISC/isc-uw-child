@@ -60,6 +60,9 @@ body, p {
   background-color: #4b2e83;
   /* main menu */
   /* dropdown menu */ }
+  #dawgdrops .dawgdrops-nav {
+    margin-left: 15px;
+    margin-right: 15px; }
   #dawgdrops .dawgdrops-item a {
     color: #fff;
     font-size: 16px !important;
@@ -181,6 +184,10 @@ body, p {
     .isc-homepage-hero .isc-homepage-shortcuts ul li a {
       display: block;
       margin-bottom: 5px; }
+    .isc-homepage-hero .isc-homepage-shortcuts ul .uw-btn {
+      width: 100%; }
+      .isc-homepage-hero .isc-homepage-shortcuts ul .uw-btn:before, .isc-homepage-hero .isc-homepage-shortcuts ul .uw-btn:after {
+        right: 0; }
     .isc-homepage-hero .isc-homepage-shortcuts ul .isc-btn-workday {
       background-color: #eee !important;
       color: orange;
@@ -205,6 +212,14 @@ body, p {
   text-transform: uppercase;
   color: #fff;
   text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4); }
+.isc-homepage-body .uw-btn {
+  background-color: #d9d9d9 !important;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  width: auto;
+  padding-right: 60px !important; }
+  .isc-homepage-body .uw-btn:before, .isc-homepage-body .uw-btn:after {
+    right: 0 !important; }
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card {
   background: #ece9e2;
   padding: 40px;
