@@ -213,7 +213,12 @@ body, p {
   color: #fff;
   text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.4); }
 .isc-homepage-body .uw-btn {
-  background-color: #d9d9d9 !important; }
+  background-color: #d9d9d9 !important;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  width: 150px; }
+  .isc-homepage-body .uw-btn:before, .isc-homepage-body .uw-btn:after {
+    right: 0 !important; }
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card {
   background: #ece9e2;
   padding: 40px;
