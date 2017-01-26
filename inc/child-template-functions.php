@@ -304,17 +304,23 @@ function add_ids_to_header_tags_auto( $content) {
           $string = $custom["isc-hero-quicklinks"];
           $result = implode($string);
           $data = unserialize($result);
-          if (sizeOf($data) >= 0) {
-              for ($i = 0; $i < 3; $i++) {
+          if (sizeOf($data) < 3 && sizeOf($data) > 0) {
+              for ($i = 0; $i < sizeOf($data) ; $i++) {
                 ?>
                 <li><a class="btn-sm uw-btn" target="_blank" href="<?php echo $data[$i]["isc-hero-quicklink-url"]; ?>"><?php echo $data[$i]["isc-hero-quicklink-text"]; ?></a></li>
                 <?php
               }
-          }
-        } else {
+          } else if (sizeOf($data) >= 3) {
+            for ($i = 0; $i < 3 ; $i++) {
+              ?>
+              <li><a class="btn-sm uw-btn" target="_blank" href="<?php echo $data[$i]["isc-hero-quicklink-url"]; ?>"><?php echo $data[$i]["isc-hero-quicklink-text"]; ?></a></li>
+              <?php
+            }
+          } else {
           echo "No quicklinks found!";
         }
       }
+    }
 endif;
 
  ?>
