@@ -72,7 +72,17 @@ body, p { font-size: 16px !important; }
 
 #mobile-relative { margin-top: 0 !important;
 
-    .uw-mobile-menu-toggle { margin-right: 20px !important; padding: 0 !important;
+    .uw-mobile-menu-toggle {
+
+        margin-right: 0 !important;
+        padding: 0 !important;
+        height: 60px !important;
+        top: -60px !important;
+        background: transparent !important;
+        width: 100% !important;
+        padding-right: 20px !important;
+        text-align: right !important;
+
         &:before { display: none; }
     }
 
