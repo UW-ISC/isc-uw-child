@@ -13,10 +13,12 @@
 get_header();
 ?>
 
+<?php uw_site_title(); ?>
+<?php get_template_part( 'menu', 'mobile' ); ?>
+
 <section class="uw-body container" id="toc">
     <div class="row">
 
-        <?php get_template_part( 'menu', 'mobile' ); ?>
         <?php get_template_part( 'breadcrumbs' ); ?>
         <?php user_guide_menu(); ?>
 

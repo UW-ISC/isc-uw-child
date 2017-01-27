@@ -66,9 +66,9 @@
                                $category_posts->the_post();
                       ?>
 
-                    <h3><?php the_title() ?></h3>
-                    <div class="update-date"><?php echo get_the_date() ?> </div>
-                    <div class='post-content'><?php the_excerpt() ?></div>
+                               <h4><?php the_title() ?></h4>
+                               <div class="update-date"><?php echo get_the_date() ?> </div>
+                               <div class='post-content'><?php the_excerpt() ?></div>
 
                       <?php
                             endwhile;
@@ -102,21 +102,21 @@
 
                       ?>
 
-                      <h3>General</h3>
+                      <h4>General</h4>
 
                       <ul>
                           <li>For Employee as Self: <a href="">view <?php echo get_guide_count('employee-as-self'); ?> User guides</a></li>
                           <li>For I-9 Coordinators: <a href="">view <?php echo get_guide_count('i-9-coordinator'); ?> User guides</a></li>
                       </ul>
 
-                      <h3>Time and Absence</h3>
+                      <h4>Time and Absence</h4>
 
                       <ul>
                           <li>For Initiator 2s: <a href="">view <?php echo get_guide_count(''); ?> User guides</a></li>
                           <li>For Approvers: <a href="">view all <?php echo get_guide_count(''); ?> User guides</a></li>
                       </ul>
 
-                      <h3>HCM</h3>
+                      <h4>HCM</h4>
 
                       <ul>
                           <li>For Time and Absence Approvers: <a href="">view <?php echo get_guide_count('ta-approver'); ?> User guides</a></li>
@@ -124,7 +124,7 @@
                           <li>For On-boarding coordinators: <a href="">view all <?php echo get_guide_count(''); ?> User guides</a></li>
                       </ul>
 
-                      <h3>Academic Specific</h3>
+                      <h4>Academic Specific</h4>
 
                       <ul>
                           <li>For Position and Job Requisition Initiates: <a href="">view all <?php echo get_guide_count('pj-req-initiate'); ?> User guides</a></li>
@@ -139,7 +139,7 @@
                           <li>For Academic Dean / Dean’s Delegates: <a href="">view <?php echo get_guide_count('academic-dean'); ?> User guides</a></li>
                       </ul>
 
-                      <h3>Medical Center Specific</h3>
+                      <h4>Medical Center Specific</h4>
 
                       <ul>
                           <li>For Initiator 2s: <a href="">view <?php echo get_guide_count(''); ?> User guides</a></li>
@@ -180,7 +180,7 @@
                        if($workshop_posts->have_posts()) :
                              $workshop_posts->the_post();
                     ?>
-                     <h3><?php the_title() ?></h3>
+                     <h4><?php the_title() ?></h4>
                      <div class='post-content'><?php the_excerpt(); ?></div>
 
                     <?php
@@ -194,23 +194,7 @@
             <div class="contact-widget-inner isc-widget-white">
                 <h3 class="widgettitle">Seasonal Topics</h3>
                 <div>
-                    <?php
-
-                       $seasonal_args = array(
-                                'post_type' => 'page',
-                                'post_status' => 'published',
-                                'pagename' => 'seasonal-topics',);
-                       $seasonal_posts = new WP_Query($seasonal_args);
-
-                       if($seasonal_posts->have_posts()) :
-                             $seasonal_posts->the_post();
-                    ?>
-                     <div class='post-content'><?php echo the_cfc_field('hl-seasonal', 'body') ?></div>
-
-                    <?php
-                      endif;
-                      ?>
-
+                      <div class='post-content'><?php echo the_cfc_field('hl-seasonal', 'body') ?></div>
                       <p><a href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Seasonal Topics</a></p>
                 </div>
             </div>

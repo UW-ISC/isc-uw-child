@@ -22,6 +22,10 @@
         echo get_post_meta( get_the_ID() , 'css' , 'true' );
         ?>
 
+        <script type="text/javascript">
+            var ISC_URL = "<?php echo get_site_url() ?>";
+        </script>
+
     </head>
     <!--[if lt IE 9]> <body <?php body_class('lt-ie9'); ?>> <![endif]-->
     <!--[if gt IE 8]><!-->

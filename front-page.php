@@ -31,7 +31,6 @@
           <div class="container">
             <div class="row">
                 <div class="col-md-6" style="display:none;" aria-hidden="true">
-                    <h2 class="sr-only">Main Content</h2>
                     <?php $custom = get_post_meta(450);?>
                     <div class="isc-homepage-title"> <?php //echo $custom["isc-hero-title"][0]?></div>
                     <span class="udub-slant"><span></span></span>
@@ -40,8 +39,6 @@
                 </div>
                 <div class="col-md-4 col-md-offset-8 hero-header-container">
                     <div class="isc-homepage-shortcuts">
-
-                        <h2 class="sr-only">Main Content</h2>
                         <div class="isc-homepage-title"><?php the_title(); ?></div>
                         <span class="udub-slant"><span></span></span>
 
@@ -57,7 +54,7 @@
         </div>
       </div>
 
-      <div id='main_content' class="container uw-body-copy isc-homepage-body" tabindex="-1" style="margin-top: -100px;">
+      <div id='main_content' class="container uw-body-copy isc-homepage-body" tabindex="-1">
 
           <div class="row">
 
