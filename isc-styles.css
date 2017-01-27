@@ -208,14 +208,15 @@ body, p {
     font-family: 'Encode Sans Compressed', sans-serif;
     text-transform: uppercase;
     line-height: 50px;
-    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2); }
+    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    padding: 20px 0 20px 0; }
     @media (min-width: 768px) and (max-width: 991px) {
       .isc-homepage-hero .isc-homepage-title {
         margin: 20px 0 20px 0;
         padding: 0; } }
     @media (min-width: 992px) {
       .isc-homepage-hero .isc-homepage-title {
-        margin: 50px 0 20px 0;
+        margin: 20px 0 20px 0;
         padding: 0; } }
   .isc-homepage-hero .hero-header-container {
     background: rgba(232, 211, 162, 0.5);
