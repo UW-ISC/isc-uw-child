@@ -85,13 +85,14 @@
                         foreach ($featured as $featured_page) { ?>
                           <div class="col-md-6">
                             <div class="isc-homepage-card">
-
-
                                 <div style="margin:-40px; height:160px; overflow:hidden; margin-bottom:30px;">
                                       <?php
                                       $custom = get_post_custom($featured_page->ID);
                                       if (array_key_exists("featured-image", $custom)) {
                                           $image = $custom["featured-image"][0];
+                                          if ($image == "") {
+                                              $image = 'john_Vidale-1022-X3.jpg';
+                                          }
                                       } else {
                                         // default featured image?
                                         $image = 'john_Vidale-1022-X3.jpg';
@@ -107,8 +108,14 @@
                               </h3>
                               <?php
                                 $description = $custom["isc-featured-description"][0];
+                                if ($description == "") {
+                                  $description = "[No description found]";
+                                }
                                 if (array_key_exists("cta", $custom)) {
                                     $description_text = $custom["cta"][0];
+                                    if ($description_text == "") {
+                                      $description_text = "Learn More";
+                                    }
                                 } else {
                                     $description_text = "Learn More";
                                 }
