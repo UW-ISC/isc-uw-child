@@ -21,4 +21,5 @@ function tfc_remove_page_templates( $templates ) {
 }
 
 add_filter( 'theme_page_templates', 'tfc_remove_page_templates' );
+
 ?>
