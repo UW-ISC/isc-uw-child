@@ -46,7 +46,7 @@
 
                 <div class="isc-admin-block">
 
-                  <h3 class="widgettitle">Updates</h3>
+                    <h3 class="widgettitle">Updates</h3>
 
                       <?php
 
@@ -66,14 +66,17 @@
                                $category_posts->the_post();
                       ?>
 
-                               <h3><?php the_title() ?></h3>
-                               <div class="update-date"><?php echo get_the_date() ?> </div>
-                               <div class='post-content'><?php the_excerpt() ?></div>
+                    <h3><?php the_title() ?></h3>
+                    <div class="update-date"><?php echo get_the_date() ?> </div>
+                    <div class='post-content'><?php the_excerpt() ?></div>
 
                       <?php
                             endwhile;
                         endif;
                       ?>
+
+                    <p><a href="">Read more news</a></p>
+
                   </div>
 
                   <div class="isc-admin-block">
@@ -177,9 +180,7 @@
                        if($workshop_posts->have_posts()) :
                              $workshop_posts->the_post();
                     ?>
-
                      <h3><?php the_title() ?></h3>
-                     <div class="update-date"><?php echo get_the_date() ?> </div>
                      <div class='post-content'><?php the_excerpt(); ?></div>
 
                     <?php
@@ -210,7 +211,7 @@
                       endif;
                       ?>
 
-                      <p><a href="">See all Seasonal Topics</a></p>
+                      <p><a href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Seasonal Topics</a></p>
                 </div>
             </div>
 
