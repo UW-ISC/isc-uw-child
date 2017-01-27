@@ -26,25 +26,8 @@
                         <input type="submit" id="searchsubmit" value="Search">
                     </div>
                 </form>
-<<<<<<< HEAD
             </div>
-=======
-
-                <div style="padding: 30px 0;">
-                    <?php
-
-                    global $wpdb;
-
-                    $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
-                        FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
-                        "LIMIT 3 ;";
-                    $queries = $wpdb->get_results($query, ARRAY_N);
-                     ?>
-                </div>
->>>>>>> cfa8a603b48bc48e493ec11d138e61971a783d80
-
-              </div>
-          </div>
+        </div>
     </div>
 
 </div>
@@ -79,7 +62,8 @@
                               			'field'    => 'slug',
                               			'terms'    => 'admin-corner-news',
                               		),
-                              	),);
+                              	),
+                                'post_status' => 'published');
                          $category_posts = new WP_Query($args);
 
                          if($category_posts->have_posts()) :
@@ -112,7 +96,8 @@
                                   			'field'    => 'slug',
                                   			'terms'    => $name,
                                   		),
-                                  	),);
+                                  	),
+                                    'post_status' => 'published');
 
                              $guides = new WP_Query($args);
                              return $guides->post_count;
@@ -191,7 +176,8 @@
                                         'field'    => 'slug',
                                         'terms'    => 'admin-corner-workshops',
                                     ),
-                                ),);
+                                ),
+                                'post_status' => 'published');
                        $workshop_posts = new WP_Query($workshop_args);
 
                        if($workshop_posts->have_posts()) :
@@ -208,8 +194,9 @@
 
                     <?php
                       endif;
-
                       ?>
+
+                    <p><a href="">See previous Workshops</a></p>
                 </div>
             </div>
 
@@ -219,13 +206,9 @@
                     <?php
 
                        $seasonal_args = array(
-                                'tax_query' => array(
-                                    array(
-                                        'taxonomy' => 'location',
-                                        'field'    => 'slug',
-                                        'terms'    => 'admin-corner-seasonal',
-                                    ),
-                                ),);
+                                'post_type' => 'page',
+                                'post_status' => 'published',
+                                'pagename' => 'seasonal-topics',);
                        $seasonal_posts = new WP_Query($seasonal_args);
 
                        if($seasonal_posts->have_posts()) :
@@ -234,11 +217,13 @@
 
                          <h3><?php the_title() ?></h3>
                          <div class="update-date"><?php echo get_the_date() ?> </div>
-                         <div class='post-content'><?php echo wp_trim_words(the_excerpt(), 5, '...')  ?></div>
+                         <div class='post-content'><?php the_cfc_field('my_meta_name', 'hl-seasonal') ?></div>
 
                     <?php
                       endif;
                       ?>
+
+                      <p><a href="">See all Seasonal Topics</a></p>
                 </div>
             </div>
 
