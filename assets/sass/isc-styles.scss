@@ -49,7 +49,7 @@ body, p { font-size: 16px !important; }
         @include desktop { top: 0; right: 0; }
 
         &:hover,&:focus {
-             @include desktop { background: yellow; }
+             @include desktop { background: $uw-tan-light; }
         }
 
     }
@@ -202,14 +202,14 @@ body, p { font-size: 16px !important; }
 .isc-homepage-hero {
     background-image: none;
     background-repeat: no-repeat;
-    
+
     @include tablet {
     background-image: url('../isc-uw-child/assets/images/service-team_final.jpg');
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 68%;}
-    
+
     @include desktop {
     background-image: url('../isc-uw-child/assets/images/service-team_final.jpg');
     position: relative;
@@ -264,8 +264,8 @@ body, p { font-size: 16px !important; }
         padding:0;
         }
     }
-    
-    .hero-header-container { 
+
+    .hero-header-container {
         background: rgba(232,211,162,.5);
         padding:0 30px 90px 30px;
         @include tablet {
@@ -287,10 +287,10 @@ body, p { font-size: 16px !important; }
                 a { display: block; margin-bottom: 5px; }
             }
 
-            .uw-btn { 
+            .uw-btn {
                 font-size: 18px;
                 line-height: 25px;
-                width: 270px; 
+                width: 270px;
                 box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
                 -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
                 padding-right:60px;
@@ -298,9 +298,9 @@ body, p { font-size: 16px !important; }
                 background:#fff;
                 border-radius:8px;
                 -moz-border-radius:8px;
-                -webkit-border-radius:8px; 
+                -webkit-border-radius:8px;
                 &:hover, &:focus { background-color: #ddd !important; text-decoration:underline; }
-                &:before, &:after { 
+                &:before, &:after {
                     right: 0;
                     border-radius:0 8px 8px 0;
                     -moz-border-radius:0 8px 8px 0;
@@ -351,11 +351,11 @@ body, p { font-size: 16px !important; }
         &:before, &:after { right: 0 !important; }
     }
 
-    .isc-homepage-featured { 
+    .isc-homepage-featured {
         .isc-homepage-card { background: $uw-tan-light; padding: 40px; margin-bottom:30px; }
     }
 
-    .isc-homepage-news { 
+    .isc-homepage-news {
         .isc-homepage-news-content { background: #fff; padding: 40px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;
 
             h3 { margin-top: 0; }
@@ -379,7 +379,7 @@ body, p { font-size: 16px !important; }
         height: 80px;
         width: 100%;
         content: "";
-        
+
     }
 
     &:after {
@@ -436,7 +436,7 @@ body, p { font-size: 16px !important; }
     text-align:center;
     color:#fff;
     margin-bottom:30px;
-    
+
     @include desktop {text-align:left;}
 
     ul { list-style: none; padding: 0;
@@ -467,7 +467,7 @@ body, p { font-size: 16px !important; }
     .map-container {padding-right:0; max-width:250px; margin-bottom: 30px;
         @include tablet {float:left; margin-right:20px;}
         @include desktop {max-width: 100%; margin-bottom: 0px;}
-        
+
         img {box-shadow: 0px 0px 26px #111111;}
     }
 }

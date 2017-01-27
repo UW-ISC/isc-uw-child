@@ -34,7 +34,7 @@ body, p {
         right: 0; } }
     @media (min-width: 992px) {
       .uw-thinstrip button.uw-search:hover, .uw-thinstrip button.uw-search:focus {
-        background: yellow; } }
+        background: #ece9e2; } }
   .uw-thinstrip .uw-thin-links {
     display: none; }
     @media (min-width: 992px) {
