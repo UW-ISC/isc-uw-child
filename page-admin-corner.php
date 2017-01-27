@@ -12,11 +12,8 @@
 <div class="isc-admin-hero">
 
     <div class="container">
-
         <div class="row">
-
             <div class="col-md-12">
-
                 <h2><?php the_title(); ?></h2>
 
                 <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
@@ -42,8 +39,6 @@
     </div>
 
     <div class="row">
-
-
 
         <div class="col-md-8 uw-content isc-content" role='main'>
 
@@ -77,7 +72,6 @@
 
                       <?php
                             endwhile;
-                        else:
                         endif;
                       ?>
                   </div>
@@ -153,7 +147,7 @@
                           <li>For Medical Centers Job Requisitions Approvers 1s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides</a></li>
                           <li>For Medical Centers Job Requisitions Approvers 2s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides</a></li>
                           <li>For Medical Centers Job Requisitions Approvers 3s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-3'); ?> User guides</a></li>
-                          <li>For Medical Centers Managers: <a href="">view <?php echo get_guide_count('	medical-centers-manager'); ?> User guides</a></li>
+                          <li>For Medical Centers Managers: <a href="">view <?php echo get_guide_count('medical-centers-manager'); ?> User guides</a></li>
                       </ul>
 
                       <p><a href="">See full list of all User Guides...</a></p>
@@ -184,13 +178,9 @@
                              $workshop_posts->the_post();
                     ?>
 
-                         <h3><?php the_title() ?></h3>
-                         <div class="update-date"><?php echo get_the_date() ?> </div>
-                         <div class='post-content'><?php
-                             $texdt = the_excerpt();
-                             wp_trim_words($texdt, 5, '...');
-                             echo $texdt;
-                          ?></div>
+                     <h3><?php the_title() ?></h3>
+                     <div class="update-date"><?php echo get_the_date() ?> </div>
+                     <div class='post-content'><?php the_excerpt(); ?></div>
 
                     <?php
                       endif;
@@ -214,10 +204,7 @@
                        if($seasonal_posts->have_posts()) :
                              $seasonal_posts->the_post();
                     ?>
-
-                         <h3><?php the_title() ?></h3>
-                         <div class="update-date"><?php echo get_the_date() ?> </div>
-                         <div class='post-content'><?php the_cfc_field('my_meta_name', 'hl-seasonal') ?></div>
+                     <div class='post-content'><?php echo the_cfc_field('hl-seasonal', 'body') ?></div>
 
                     <?php
                       endif;
@@ -234,14 +221,12 @@
                 </div>
             </div>
 
-
-              <div class="contact-widget-inner isc-widget-white">
-                  <h3 class="widgettitle">Workday Security Roles</h3>
-                  <div>
-                      <a href="">Read about Workday Security roles and request the change</a>
-                  </div>
-              </div>
-
+            <div class="contact-widget-inner isc-widget-white">
+                <h3 class="widgettitle">Workday Security Roles</h3>
+                <div>
+                    <a href="">Read about Workday Security roles and request the change</a>
+                </div>
+            </div>
 
         </div>
 
