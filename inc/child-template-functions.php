@@ -79,8 +79,7 @@ endif;
     function user_guide_menu( $return = false ) {
 
         // $exclude_ids = get_menu_excluded_ids();
-        // grabs all the h4s in the content
-
+        // grabs all the headers in the content
         $headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
         $pages = '';
         $subarray = array();
@@ -95,7 +94,7 @@ endif;
          foreach ($headers as $slug=>$header) {
            $content = substr($header, 1, strlen($header));
            $heading_type = substr($header, 0, 1);
-           if ($heading_type == '4') {
+           if ($heading_type == '3') {
              // it is a header!
              array_push($subarray, $temp_storage);
              // reset the temp_storage array to gather new subheaders under the new header
@@ -237,8 +236,8 @@ function build_page_navigation( $post_id ) {
 
         $links = array();
         $results = '';
-        // the header types we want to look for (4 and 5)
-        $options = "([45])";
+        // the header types we want to look for (3:header and 4:subheader)
+        $options = "([34])";
 				$regex = '/<h'. $options . '.*?>(.*?)<\/h\1>/';
 
         if ( preg_match_all($regex, $page_content, $matches) ) {
@@ -254,7 +253,7 @@ function build_page_navigation( $post_id ) {
             $results = '';
         }
 
-        // Slugs are added to h4s in a filter on the_content function
+        // Slugs are added to the h3s and h4s in a filter on the_content function
         update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
 }
 
@@ -268,8 +267,8 @@ function add_ids_to_header_tags_auto( $content) {
   if (empty($headers)) {
       return $content;
   }
-  // the header types we want to look for (h4 and h5)
-  $look_for = "(h4|h5)";
+  // the header types we want to look for (h3 and h4)
+  $look_for = "(h3|h4)";
   $pattern = '#(?P<full_tag><(?P<tag_name>'. $look_for .')>(?P<tag_contents>[^<]*)</'. $look_for .'>)#i';
   if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
       $find = array();
@@ -300,26 +299,24 @@ function add_ids_to_header_tags_auto( $content) {
  if ( ! function_exists( 'get_quicklinks' ) ) :
      function get_quicklinks() {
         $custom = get_post_meta(450);
+        $html = "";
         if (array_key_exists("isc-hero-quicklinks", $custom)) {
           $string = $custom["isc-hero-quicklinks"];
           $result = implode($string);
           $data = unserialize($result);
           if (sizeOf($data) < 3 && sizeOf($data) > 0) {
-              for ($i = 0; $i < sizeOf($data) ; $i++) {
-                ?>
-                <li><a class="btn-sm uw-btn" target="_blank" href="<?php echo $data[$i]["isc-hero-quicklink-url"]; ?>"><?php echo $data[$i]["isc-hero-quicklink-text"]; ?></a></li>
-                <?php
+              for ($i = 0; $i < sizeOf($data); $i++) {
+                $html .= '<li><a class="btn-sm uw-btn" target="_blank" href="' . $data[$i]["isc-hero-quicklink-url"] . '">'. $data[$i]["isc-hero-quicklink-text"] . '</a></li>';
               }
           } else if (sizeOf($data) >= 3) {
-            for ($i = 0; $i < 3 ; $i++) {
-              ?>
-              <li><a class="btn-sm uw-btn" target="_blank" href="<?php echo $data[$i]["isc-hero-quicklink-url"]; ?>"><?php echo $data[$i]["isc-hero-quicklink-text"]; ?></a></li>
-              <?php
+            for ($i = 0; $i < 3; $i++) {
+              $html .= '<li><a class="btn-sm uw-btn" target="_blank" href="' .  $data[$i]["isc-hero-quicklink-url"] . '">' . $data[$i]["isc-hero-quicklink-text"] . '</a></li>';
             }
           } else {
-          echo "No quicklinks found!";
+          $html = "No quicklinks found!";
         }
       }
+      echo $html;
     }
 endif;
 
