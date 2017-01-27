@@ -7,7 +7,7 @@
 <?php get_header( 'front' );
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/service-team.jpg";
+        $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/service-team_final.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
@@ -27,7 +27,7 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
-      <div class="isc-homepage-hero" style="background-color: #0f0403; background-image: url(<?php echo $url ?>);">
+      <div class="isc-homepage-hero" style="background-color: #fff;">
           <div class="container">
             <div class="row">
                 <div class="col-md-6" style="display:none;" aria-hidden="true">
@@ -38,7 +38,7 @@
                     <div style="margin-bottom:2em;"> <?php //echo $custom["isc-hero-description"][0]; ?></div>
                     <p><a class="uw-btn" href="<?php //echo $custom["isc-hero-link-url"][0]; ?>"><?php //echo $custom["isc-hero-link-text"][0];?></a></p>
                 </div>
-                <div class="col-md-4 col-md-offset-8">
+                <div class="col-md-4 col-md-offset-8 hero-header-container">
                     <div class="isc-homepage-shortcuts">
 
                         <h2 class="sr-only">Main Content</h2>
@@ -85,13 +85,14 @@
                         foreach ($featured as $featured_page) { ?>
                           <div class="col-md-6">
                             <div class="isc-homepage-card">
-
-
                                 <div style="margin:-40px; height:160px; overflow:hidden; margin-bottom:30px;">
                                       <?php
                                       $custom = get_post_custom($featured_page->ID);
                                       if (array_key_exists("featured-image", $custom)) {
                                           $image = $custom["featured-image"][0];
+                                          if ($image == "") {
+                                              $image = 'john_Vidale-1022-X3.jpg';
+                                          }
                                       } else {
                                         // default featured image?
                                         $image = 'john_Vidale-1022-X3.jpg';
@@ -107,8 +108,14 @@
                               </h3>
                               <?php
                                 $description = $custom["isc-featured-description"][0];
+                                if ($description == "") {
+                                  $description = "[No description found]";
+                                }
                                 if (array_key_exists("cta", $custom)) {
                                     $description_text = $custom["cta"][0];
+                                    if ($description_text == "") {
+                                      $description_text = "Learn More";
+                                    }
                                 } else {
                                     $description_text = "Learn More";
                                 }
