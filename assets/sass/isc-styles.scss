@@ -348,11 +348,11 @@ body, p { font-size: 16px !important; }
         &:before, &:after { right: 0 !important; }
     }
 
-    .isc-homepage-featured {
+    .isc-homepage-featured { margin-top: -100px;
         .isc-homepage-card { background: $uw-tan-light; padding: 40px; margin-bottom:30px; }
     }
 
-    .isc-homepage-news {
+    .isc-homepage-news { margin-top: -100px;
         .isc-homepage-news-content { background: #fff; padding: 40px; -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5); box-shadow: 0 0 4px rgba(164,164,164,.5); margin-bottom: 30px;
 
             h3 { margin-top: 0; }

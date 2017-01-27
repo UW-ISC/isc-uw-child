@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <div id='main_content' class="container uw-body-copy isc-homepage-body" tabindex="-1" style="margin-top: -100px;">
+      <div id='main_content' class="container uw-body-copy isc-homepage-body" tabindex="-1">
 
           <div class="row">
 
