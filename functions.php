@@ -22,9 +22,4 @@ function tfc_remove_page_templates( $templates ) {
 
 add_filter( 'theme_page_templates', 'tfc_remove_page_templates' );
 
-add_action( 'wp_enqueue_scripts', 'add_isc_js' );
-function add_is_js(){
-  wp_enqueue_script('isc-scripts', get_stylesheet_directory_uri() .'/assets/js/isc.js', array('jquery'), null,  true);
-}
-
 ?>
