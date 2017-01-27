@@ -326,8 +326,8 @@ body, p { font-size: 16px !important; }
 
 }
 
-.isc-homepage-body {margin-top:-100px;
-
+.isc-homepage-body {
+    .row {display:inline-block; margin-top:-100px; width:100%;}
     h2 {
         font-size: 18px;
         font-family: "Encode Sans Compressed",sans-serif;
