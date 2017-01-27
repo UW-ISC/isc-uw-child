@@ -12,11 +12,8 @@
 <div class="isc-admin-hero">
 
     <div class="container">
-
         <div class="row">
-
             <div class="col-md-12">
-
                 <h2><?php the_title(); ?></h2>
 
                 <form role="search" method="get" id="searchform" class="searchform" action="<?php echo get_site_url() ?>">
@@ -26,21 +23,8 @@
                         <input type="submit" id="searchsubmit" value="Search">
                     </div>
                 </form>
-
-                <div style="padding: 30px 0;">
-                    <?php
-
-                    global $wpdb;
-
-                    $query = "SELECT DISTINCT query, COUNT('query') AS 'query_occurence'
-                        FROM " . $wpdb->prefix . "relevanssi_log GROUP BY query ORDER BY query_occurence DESC " .
-                        "LIMIT 3 ;";
-                    $queries = $wpdb->get_results($query, ARRAY_N);
-                     ?>
-                </div>
-
-              </div>
-          </div>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -56,15 +40,13 @@
 
     <div class="row">
 
-
-
         <div class="col-md-8 uw-content isc-content" role='main'>
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
                 <div class="isc-admin-block">
 
-                  <h3 class="widgettitle">Updates</h3>
+                    <h3 class="widgettitle">Updates</h3>
 
                       <?php
 
@@ -75,7 +57,8 @@
                               			'field'    => 'slug',
                               			'terms'    => 'admin-corner-news',
                               		),
-                              	),);
+                              	),
+                                'post_status' => 'published');
                          $category_posts = new WP_Query($args);
 
                          if($category_posts->have_posts()) :
@@ -89,9 +72,11 @@
 
                       <?php
                             endwhile;
-                        else:
                         endif;
                       ?>
+
+                    <p><a href="">Read more news</a></p>
+
                   </div>
 
                   <div class="isc-admin-block">
@@ -108,7 +93,8 @@
                                   			'field'    => 'slug',
                                   			'terms'    => $name,
                                   		),
-                                  	),);
+                                  	),
+                                    'post_status' => 'published');
 
                              $guides = new WP_Query($args);
                              return $guides->post_count;
@@ -164,7 +150,7 @@
                           <li>For Medical Centers Job Requisitions Approvers 1s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides</a></li>
                           <li>For Medical Centers Job Requisitions Approvers 2s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides</a></li>
                           <li>For Medical Centers Job Requisitions Approvers 3s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-3'); ?> User guides</a></li>
-                          <li>For Medical Centers Managers: <a href="">view <?php echo get_guide_count('	medical-centers-manager'); ?> User guides</a></li>
+                          <li>For Medical Centers Managers: <a href="">view <?php echo get_guide_count('medical-centers-manager'); ?> User guides</a></li>
                       </ul>
 
                       <p><a href="">See full list of all User Guides...</a></p>
@@ -187,54 +173,29 @@
                                         'field'    => 'slug',
                                         'terms'    => 'admin-corner-workshops',
                                     ),
-                                ),);
+                                ),
+                                'post_status' => 'published');
                        $workshop_posts = new WP_Query($workshop_args);
 
                        if($workshop_posts->have_posts()) :
                              $workshop_posts->the_post();
                     ?>
-
-                         <h4><?php the_title() ?></h4>
-                         <div class="update-date"><?php echo get_the_date() ?> </div>
-                         <div class='post-content'><?php
-                             $texdt = the_excerpt();
-                             wp_trim_words($texdt, 5, '...');
-                             echo $texdt;
-                          ?></div>
+                     <h4><?php the_title() ?></h4>
+                     <div class='post-content'><?php the_excerpt(); ?></div>
 
                     <?php
                       endif;
-
                       ?>
+
+                    <p><a href="">See previous Workshops</a></p>
                 </div>
             </div>
 
             <div class="contact-widget-inner isc-widget-white">
                 <h3 class="widgettitle">Seasonal Topics</h3>
                 <div>
-                    <?php
-
-                       $seasonal_args = array(
-                                'tax_query' => array(
-                                    array(
-                                        'taxonomy' => 'location',
-                                        'field'    => 'slug',
-                                        'terms'    => 'admin-corner-seasonal',
-                                    ),
-                                ),);
-                       $seasonal_posts = new WP_Query($seasonal_args);
-
-                       if($seasonal_posts->have_posts()) :
-                             $seasonal_posts->the_post();
-                    ?>
-
-                         <h4><?php the_title() ?></h4>
-                         <div class="update-date"><?php echo get_the_date() ?> </div>
-                         <div class='post-content'><?php echo wp_trim_words(the_excerpt(), 5, '...')  ?></div>
-
-                    <?php
-                      endif;
-                      ?>
+                      <div class='post-content'><?php echo the_cfc_field('hl-seasonal', 'body') ?></div>
+                      <p><a href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Seasonal Topics</a></p>
                 </div>
             </div>
 
@@ -245,14 +206,12 @@
                 </div>
             </div>
 
-
-              <div class="contact-widget-inner isc-widget-white">
-                  <h3 class="widgettitle">Workday Security Roles</h3>
-                  <div>
-                      <a href="">Read about Workday Security roles and request the change</a>
-                  </div>
-              </div>
-
+            <div class="contact-widget-inner isc-widget-white">
+                <h3 class="widgettitle">Workday Security Roles</h3>
+                <div>
+                    <a href="">Read about Workday Security roles and request the change</a>
+                </div>
+            </div>
 
         </div>
 
