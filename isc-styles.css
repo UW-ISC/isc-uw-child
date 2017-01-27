@@ -280,7 +280,7 @@ body, p {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #e8e3d3; }
+  background-color: #e9e9e9; }
   .isc-admin-hero:before {
     position: absolute;
     bottom: 0;
@@ -291,9 +291,13 @@ body, p {
   .isc-admin-hero:after {
     position: absolute;
     bottom: 0;
-    height: 80px;
+    height: 30px;
     width: 100%;
-    content: ""; }
+    content: "";
+    background: #fff url("../uw-2014/assets/images/stripes-dark-tile.svg");
+    opacity: .5; }
+  .isc-admin-hero h2 {
+    color: #4b2e83; }
 
 .isc-admin-block {
   border: solid 1px #ddd;
