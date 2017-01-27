@@ -11,11 +11,13 @@
 get_header();
 ?>
 
+<?php uw_site_title(); ?>
+<?php get_template_part( 'menu', 'mobile' ); ?>
+
 <section class="uw-body container">
 
     <div class="row">
         <div class="col-md-12">
-            <?php get_template_part( 'menu', 'mobile' ); ?>
             <?php get_template_part( 'breadcrumbs' ); ?>
         </div>
     </div>
