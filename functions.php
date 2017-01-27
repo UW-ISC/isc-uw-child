@@ -22,4 +22,20 @@ function tfc_remove_page_templates( $templates ) {
 
 add_filter( 'theme_page_templates', 'tfc_remove_page_templates' );
 
+
+/**
+ * Developer function for logging to the browser console. Do not leave log statements lying around!
+ * We might want to remove this when we're done with development.
+ */
+function log_to_console($input) {
+$cleaned_string = '';
+if (!is_string($input))
+    $debug_output = print_r($input,true);
+    $str_len = strlen($debug_output);
+    for($i = 0; $i < $str_len; $i++) {
+        $cleaned_string .= '\\x' . sprintf('%02x', ord(substr($debug_output, $i, 1)));
+    }
+    $javascript_ouput = "<script>console.log('Debug Info: " .$cleaned_string. "');</script>";
+    echo $javascript_ouput;
+}
 ?>
