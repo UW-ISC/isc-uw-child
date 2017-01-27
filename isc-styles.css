@@ -307,7 +307,8 @@ body, p {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #e9e9e9; }
+  background-color: #e9e9e9;
+  min-height: 190px; }
   .isc-admin-hero:before {
     position: absolute;
     bottom: 0;
