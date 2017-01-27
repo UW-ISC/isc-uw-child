@@ -272,7 +272,13 @@ body, p { font-size: 16px !important; }
                 background-size:22px !important;
                 padding-left:41px;
                 border-radius:8px;
-                &.uw-btn:before {border-radius:0 8px 8px 0;}
+                -moz-border-radius:8px;
+                -webkit-border-radius:8px; 
+                &.uw-btn:before {
+                    border-radius:0 8px 8px 0;
+                    -moz-border-radius:0 8px 8px 0;
+                    -webkit-border-radius: 0 8px 8px 0; 
+                    }
             }
         }
 

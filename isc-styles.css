@@ -234,9 +234,13 @@ body, p {
       background: #fff url("../isc-uw-child/assets/images/workday-w.png") no-repeat 12px 7px !important;
       background-size: 22px !important;
       padding-left: 41px;
-      border-radius: 8px; }
+      border-radius: 8px;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px; }
       .isc-homepage-hero .isc-homepage-shortcuts ul .isc-btn-workday.uw-btn:before {
-        border-radius: 0 8px 8px 0; }
+        border-radius: 0 8px 8px 0;
+        -moz-border-radius: 0 8px 8px 0;
+        -webkit-border-radius: 0 8px 8px 0; }
   .isc-homepage-hero .isc-homepage-shortcuts h2 {
     font-size: 18px;
     font-family: "Encode Sans Compressed",sans-serif;
