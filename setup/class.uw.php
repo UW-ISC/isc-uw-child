@@ -16,6 +16,7 @@ class UW
 
     private function includes()
     {
+        log_to_console('test');
         $parent = get_template_directory() . '/setup/';
         $child  = get_stylesheet_directory() . '/setup/';
         require_once($parent . 'class.install.php');
