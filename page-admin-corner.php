@@ -6,7 +6,8 @@
 
 <?php get_header();
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-      $sidebar = get_post_meta($post->ID, "sidebar");   ?>
+      $sidebar = get_post_meta($post->ID, "sidebar");
+      $seasonal =  get_post_meta($post->ID); ?>
 
 
 <div class="isc-admin-hero">
@@ -195,6 +196,13 @@
                 <h3 class="widgettitle">Seasonal Topics</h3>
                 <div>
                       <div class='post-content'><?php echo the_cfc_field('hl-seasonal', 'body') ?></div>
+                      <?php 
+                      $summary_content = "No description found";
+                      if (array_key_exists("summary-text", $seasonal) && !$seasonal["summary-text"][0] == "") {
+                          $summary_content = $seasonal["summary-text"][0];
+                      }
+                      echo $summary_content;
+                      ?>
                       <p><a href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Seasonal Topics</a></p>
                 </div>
             </div>
