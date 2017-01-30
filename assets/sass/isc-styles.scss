@@ -67,6 +67,7 @@ body, p { font-size: 16px !important; }
 
 /*** main navigation (purple bar) ***/
 .uw-site-title { height: 60px; padding:0; margin: 0 !important; background: $uw-purple;
+    @include tablet { display: none; }
     @include desktop { display: none; }
 }
 
@@ -155,43 +156,6 @@ body, p { font-size: 16px !important; }
 
     // global link color for body content
     a { color: $uw-purple !important; }
-
-    /* custom body widget */
-    .widgettitle {
-
-        clear: left;
-        font-weight: 900;
-        font-size: 22px;
-        text-transform: uppercase;
-        position: relative;
-        padding-bottom: 20px;
-
-        &:before, &:after {
-          position: absolute;
-          left: 0;
-          bottom: 5px;
-          content: "";
-          height: 4px;
-        }
-
-        &:before {
-          width: 100px;
-          background-color: #b7a57a;
-        }
-
-        &:after {
-          width: 40px;
-          -webkit-transform: skewX(-25deg) skewY(0);
-          -o-transform: skewX(-25deg) skewY(0);
-          transform: skewX(-25deg) skewY(0);
-          -webkit-transform: skew(-25deg, 0);
-          -ms-transform: skewX(-25deg) skewY(0);
-          transform: skew(-25deg, 0);
-          left: 80px;
-          background-color: white;
-        }
-
-    }
 
 }
 
@@ -390,7 +354,7 @@ body, p { font-size: 16px !important; }
 
     .isc-admin-header {
         font-weight: 900 !important;
-        font-size: 22px;
+        font-size: 18px;
         text-transform: uppercase;
         position: absolute;
         top: -40px;
@@ -413,23 +377,17 @@ body, p { font-size: 16px !important; }
     h3 { margin-top: 0; }
 
     /*** custom sidebar widget ***/
-    .isc-widget-tan { background: #e8e3d3 !important; margin-bottom: 20px;
-        .widgettitle:after { background-color: #e8e3d3; }
-    }
+    .isc-widget-tan { background: #e8e3d3 !important; margin-bottom: 20px; }
 
-    .isc-widget-gray { background: #ccc; margin-bottom: 20px;
-        .widgettitle:after { background-color: #ccc; }
-    }
+    .isc-widget-gray { background: #ccc; margin-bottom: 20px; }
 
-    .isc-widget-white { background: #fff; border: solid 1px #ddd; margin-bottom: 20px;
-        .widgettitle:after { background-color: #fff; }
-    }
+    .isc-widget-white { background: #fff; border: solid 1px #ddd; margin-bottom: 20px; }
 
     // admin sidebar
 
     .isc-admin-header {
         font-weight: 900 !important;
-        font-size: 22px;
+        font-size: 18px;
         text-transform: uppercase;
         position: absolute;
         top: -40px;
