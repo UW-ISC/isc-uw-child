@@ -60,9 +60,9 @@
 
               <div class="col-md-8 isc-homepage-featured">
 
-                  <h2>Featured articles</h2>
-
                   <div class="row">
+
+                       <h2 class="col-md-12">Featured articles</h2>
                        <?php
                        // Featured Pages
                        // Query finds the published pages marked featured page and lists their
