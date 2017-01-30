@@ -278,9 +278,6 @@ body, p {
     text-transform: uppercase;
     color: #8a8a8a; }
 
-@media (min-width: 992px) {
-  .isc-homepage-body {
-    margin-top: -90px; } }
 .isc-homepage-body h2 {
   font-size: 18px;
   font-family: "Encode Sans Compressed",sans-serif;
@@ -297,10 +294,16 @@ body, p {
   padding-right: 60px !important; }
   .isc-homepage-body .uw-btn:before, .isc-homepage-body .uw-btn:after {
     right: 0 !important; }
+@media (min-width: 992px) {
+  .isc-homepage-body .isc-homepage-featured {
+    margin-top: -90px; } }
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card {
   background: #ece9e2;
   padding: 40px;
   margin-bottom: 30px; }
+@media (min-width: 992px) {
+  .isc-homepage-body .isc-homepage-news {
+    margin-top: -90px; } }
 .isc-homepage-body .isc-homepage-news .isc-homepage-news-content {
   background: #fff;
   padding: 40px;
