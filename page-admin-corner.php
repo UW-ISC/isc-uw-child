@@ -9,6 +9,8 @@
       $sidebar = get_post_meta($post->ID, "sidebar");
       $seasonal =  get_post_meta($post->ID); ?>
 
+      <?php uw_site_title(); ?>
+      <?php get_template_part( 'menu', 'mobile' ); ?>
 
 <div class="isc-admin-hero">
 
@@ -34,7 +36,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <?php get_template_part( 'menu', 'mobile' ); ?>
+
             <?php get_template_part( 'breadcrumbs' ); ?>
         </div>
     </div>
@@ -196,7 +198,7 @@
                 <h3 class="widgettitle">Seasonal Topics</h3>
                 <div>
                       <div class='post-content'><?php echo the_cfc_field('hl-seasonal', 'body') ?></div>
-                      <?php 
+                      <?php
                       $summary_content = "No description found";
                       if (array_key_exists("summary-text", $seasonal) && !$seasonal["summary-text"][0] == "") {
                           $summary_content = $seasonal["summary-text"][0];
