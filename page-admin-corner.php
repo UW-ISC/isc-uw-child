@@ -49,7 +49,7 @@
 
                 <div class="isc-admin-block">
 
-                    <h3 class="widgettitle">Updates</h3>
+                    <h3 class="isc-admin-header">Updates</h3>
 
                       <?php
 
@@ -83,8 +83,7 @@
                   </div>
 
                   <div class="isc-admin-block">
-                      <h3 class="widgettitle">Workday User Guides</h3>
-
+                      <h3 class="isc-admin-header">Workday User Guides</h3>
                       <?php
 
                           function get_guide_count($name){
@@ -165,8 +164,8 @@
 
         <div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
-            <div class="contact-widget-inner isc-widget-tan">
-                <h3 class="widgettitle">Workshops</h3>
+            <div class="contact-widget-inner isc-widget-tan isc-admin-block">
+                <h3 class="isc-admin-header">Workshops</h3>
                 <div>
                     <?php
                        $workshop_args = array(
@@ -194,8 +193,8 @@
                 </div>
             </div>
 
-            <div class="contact-widget-inner isc-widget-white">
-                <h3 class="widgettitle">Seasonal Topics</h3>
+            <div class="contact-widget-inner isc-widget-white isc-admin-block">
+                <h3 class="isc-admin-header">Seasonal Topics</h3>
                 <div>
                       <div class='post-content'><?php echo the_cfc_field('hl-seasonal', 'body') ?></div>
                       <?php
@@ -209,15 +208,15 @@
                 </div>
             </div>
 
-            <div class="contact-widget-inner isc-widget-gray">
-                <h3 class="widgettitle">Got a complex question? Need HR Experts?</h3>
+            <div class="contact-widget-inner isc-widget-gray isc-admin-block">
+                <h3 class="isc-admin-header">Need HR Experts?</h3>
                 <div>
                     Contact Tier 2 support team
                 </div>
             </div>
 
-            <div class="contact-widget-inner isc-widget-white">
-                <h3 class="widgettitle">Workday Security Roles</h3>
+            <div class="contact-widget-inner isc-widget-white isc-admin-block">
+                <h3 class="isc-admin-header">Workday Security Roles</h3>
                 <div>
                     <a href="">Read about Workday Security roles and request the change</a>
                 </div>

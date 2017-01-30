@@ -49,7 +49,7 @@ body, p { font-size: 16px !important; }
         @include desktop { top: 0; right: 0; }
 
         &:hover,&:focus {
-             background: $uw-tan-light; 
+             background: $uw-tan-light;
         }
 
     }
@@ -260,7 +260,7 @@ body, p { font-size: 16px !important; }
         @include desktop {
         box-shadow:0px 0px 10px #aaa;
         padding:0 30px 30px;
-        float:right; 
+        float:right;
         margin-bottom: 100px;}
         .udub-slant span {background-color: $uw-purple;}
         z-index: 1;
@@ -385,10 +385,21 @@ body, p { font-size: 16px !important; }
 
 }
 
-.isc-admin-block {
-    border: solid 1px #ddd; padding: 40px; margin-bottom: 1em;
 
-    h3 { margin-top: 0; }
+.isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 1em; position: relative; margin-top: 70px;
+
+    .isc-admin-header {
+        font-weight: 900 !important;
+        font-size: 22px;
+        text-transform: uppercase;
+        position: absolute;
+        top: -40px;
+        left: 0;
+        margin: 0;
+    }
+
+    h4 { margin-top: 0; }
+
     ul { list-style: none; padding: 0;
         li { }
     }
@@ -397,21 +408,33 @@ body, p { font-size: 16px !important; }
 /*** generic content and sidebar ***/
 .isc-content {  }
 
-.isc-sidebar { padding-top: 0 !important;
+.isc-sidebar { padding-top: 0 !important; position: relative;
 
     h3 { margin-top: 0; }
 
     /*** custom sidebar widget ***/
-    .isc-widget-tan { background: #e8e3d3 !important; margin-top: 0; margin-bottom: 20px;
+    .isc-widget-tan { background: #e8e3d3 !important; margin-bottom: 20px;
         .widgettitle:after { background-color: #e8e3d3; }
     }
 
-    .isc-widget-gray { background: #ccc; margin-top: 0; margin-bottom: 20px;
+    .isc-widget-gray { background: #ccc; margin-bottom: 20px;
         .widgettitle:after { background-color: #ccc; }
     }
 
-    .isc-widget-white { background: #fff; border: solid 1px #ddd; margin-top: 0; margin-bottom: 20px;
+    .isc-widget-white { background: #fff; border: solid 1px #ddd; margin-bottom: 20px;
         .widgettitle:after { background-color: #fff; }
+    }
+
+    // admin sidebar
+
+    .isc-admin-header {
+        font-weight: 900 !important;
+        font-size: 22px;
+        text-transform: uppercase;
+        position: absolute;
+        top: -40px;
+        left: 0;
+        margin: 0;
     }
 
 

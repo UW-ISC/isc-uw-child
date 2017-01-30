@@ -328,8 +328,18 @@ body, p {
 .isc-admin-block {
   border: solid 1px #ddd;
   padding: 40px;
-  margin-bottom: 1em; }
-  .isc-admin-block h3 {
+  margin-bottom: 1em;
+  position: relative;
+  margin-top: 70px; }
+  .isc-admin-block .isc-admin-header {
+    font-weight: 900 !important;
+    font-size: 22px;
+    text-transform: uppercase;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    margin: 0; }
+  .isc-admin-block h4 {
     margin-top: 0; }
   .isc-admin-block ul {
     list-style: none;
@@ -338,28 +348,34 @@ body, p {
 /*** generic content and sidebar ***/
 .isc-sidebar {
   padding-top: 0 !important;
+  position: relative;
   /*** custom sidebar widget ***/ }
   .isc-sidebar h3 {
     margin-top: 0; }
   .isc-sidebar .isc-widget-tan {
     background: #e8e3d3 !important;
-    margin-top: 0;
     margin-bottom: 20px; }
     .isc-sidebar .isc-widget-tan .widgettitle:after {
       background-color: #e8e3d3; }
   .isc-sidebar .isc-widget-gray {
     background: #ccc;
-    margin-top: 0;
     margin-bottom: 20px; }
     .isc-sidebar .isc-widget-gray .widgettitle:after {
       background-color: #ccc; }
   .isc-sidebar .isc-widget-white {
     background: #fff;
     border: solid 1px #ddd;
-    margin-top: 0;
     margin-bottom: 20px; }
     .isc-sidebar .isc-widget-white .widgettitle:after {
       background-color: #fff; }
+  .isc-sidebar .isc-admin-header {
+    font-weight: 900 !important;
+    font-size: 22px;
+    text-transform: uppercase;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    margin: 0; }
 
 /*** footer ***/
 .uw-footer {
