@@ -23,6 +23,10 @@ $desktop-width: 992px;
 /*** uw styles overrides ***/
 body, p { font-size: 16px !important; }
 
+.container {
+    @include tablet {width:100%;}
+}
+
 #uw-container { overflow-x: initial !important; }
 
 /*** top banner nav (white bar) ***/
@@ -30,7 +34,7 @@ body, p { font-size: 16px !important; }
 
     background: #fff;
     color: $uw-purple;
-
+    @include tablet {height:inherit;}
     a { color: #eee;
         &:hover { color: #eee; }
     }
@@ -49,7 +53,7 @@ body, p { font-size: 16px !important; }
         @include desktop { top: 0; right: 0; }
 
         &:hover,&:focus {
-             @include desktop { background: $uw-tan-light; }
+             background: $uw-tan-light; 
         }
 
     }
@@ -203,13 +207,6 @@ body, p { font-size: 16px !important; }
     background-image: none;
     background-repeat: no-repeat;
 
-    @include tablet {
-    background-image: url('../isc-uw-child/assets/images/service-team_final.jpg');
-    position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 68%;}
-
     @include desktop {
     background-image: url('../isc-uw-child/assets/images/service-team_final.jpg');
     position: relative;
@@ -255,10 +252,6 @@ body, p { font-size: 16px !important; }
         line-height: 50px;
         text-shadow: 2px 1px 1px rgba(0,0,0,.2);
         padding: 20px 0 20px 0;
-        @include tablet {
-        margin: 20px 0 20px 0;
-        padding:0;
-        }
         @include desktop {
         margin: 20px 0 20px 0;
         padding:0;
@@ -268,17 +261,13 @@ body, p { font-size: 16px !important; }
     .hero-header-container {
         background: rgba(232,211,162,.5);
         padding:0 30px 90px 30px;
-        @include tablet {
-        box-shadow:0px 0px 10px #aaa;
-        padding:0 30px 90px 30px;
-        float:right; }
         @include desktop {
         box-shadow:0px 0px 10px #aaa;
         padding:0 30px 30px;
-        float:right; }
+        float:right; 
+        margin-bottom: 100px;}
         .udub-slant span {background-color: $uw-purple;}
         z-index: 1;
-        margin-bottom: 100px;
     }
 
     .isc-homepage-shortcuts {
