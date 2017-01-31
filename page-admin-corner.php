@@ -155,7 +155,7 @@
                           <li>For Medical Centers Managers: <a href="">view <?php echo get_guide_count('medical-centers-manager'); ?> User guides</a></li>
                       </ul>
 
-                      <p><a href="">See full list of all User Guides...</a></p>
+                      <p><a href="<?php echo get_site_url() . '/user-guides/'?>">See full list of all User Guides...</a></p>
                   </div>
 
               </div>
