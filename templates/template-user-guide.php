@@ -17,24 +17,33 @@ get_header();
 <?php get_template_part( 'menu', 'mobile' ); ?>
 
 <section class="uw-body container" id="toc">
-    <div class="row">
 
-        <?php get_template_part( 'breadcrumbs' ); ?>
-        <?php user_guide_menu(); ?>
+        <div class="row">
+            <div class="col-md-12">
+                <?php get_template_part( 'breadcrumbs' ); ?>
+            </div>
+        </div>
 
-        <article class="uw-content float-content col-xs-9">
+        <div class="row">
 
-            <?php
-                while ( have_posts() ) : the_post();
-                    the_title( '<h3 class="title">', '</h3>' );
-                    the_content();
-                endwhile
-            ?>
+            <div class="col-md-4">
+                <?php user_guide_menu(); ?>
+            </div>
 
-        </article>
+            <article class="uw-content col-md-8">
 
+                xxxx this is a user guide template xxxx
 
-    </div>
+                <?php
+                    while ( have_posts() ) : the_post();
+                        the_title( '<h3 class="title">', '</h3>' );
+                        the_content();
+                    endwhile
+                ?>
+
+            </article>
+        </div>
+
 </section>
 
 <?php get_footer();
