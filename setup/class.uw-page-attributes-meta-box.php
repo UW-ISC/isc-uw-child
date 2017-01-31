@@ -21,11 +21,11 @@ class UW_Page_Attributes_Meta_Box
   function replace_meta_box()
   {
       remove_meta_box( 'pageparentdiv', 'page', 'side');
-      remove_meta_box('postcustom', 'post', 'normal');
-      remove_meta_box('formatdiv', 'post', 'side');
-      remove_meta_box('categorydiv', 'post', 'side');
-      remove_meta_box('tagsdiv-post_tag', 'post', 'side');
-      remove_meta_box('postimagediv', 'post', 'side');
+      remove_meta_box('postcustom', 'post', 'normal'); //wck custom fields editor meta box
+      remove_meta_box('formatdiv', 'post', 'side'); //format meta box
+      remove_meta_box('categorydiv', 'post', 'side'); //categories meta box
+      remove_meta_box('tagsdiv-post_tag', 'post', 'side'); //tags meta box
+      remove_meta_box('postimagediv', 'post', 'side'); //featured image meta box
 	    add_meta_box( 'uwpageparentdiv', 'Page Attributes', array( $this, 'page_attributes_meta_box' ), 'page', 'side', 'core' );
   }
 
