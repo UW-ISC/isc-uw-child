@@ -53,6 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                   <?php $args = array(
                           'parent' => get_the_ID(),
                           'hierarchical' => 0,
@@ -64,18 +65,17 @@
                             log_to_console(get_object_taxonomies($child));
                             $security_role = wp_get_post_terms($child->ID, 'sec_role');
                             if (empty($security_role)) {
-                              $security_role = "---";
+                                $security_role = "---";
                             } else {
-                             $security_role = $security_role[0]->name;
+                                $security_role = $security_role[0]->name;
                             }
                             log_to_console($security_role);
 
-
                             $topics = wp_get_post_terms($child->ID, 'ug-topic');
                             if (empty($topics)) {
-                              $topics = "---";
+                                $topics = "---";
                             } else {
-                             $topics = $topics[0]->name;
+                                $topics = $topics[0]->name;
                             }
                             log_to_console($topics);
 
@@ -93,38 +93,8 @@
                             $html .= '</tr>';
                         }
                         echo $html;
-                        ?>
-                    <!-- loop through all user guides -->
-                    <tr>
-                        <td><a href="<?php echo get_site_url() . '/user-guides/phil-demo/'?>">phil demo</a></th>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                    </tr>
-                    <tr>
-                        <td>xxxxx</th>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                    </tr>
-                    <tr>
-                        <td>xxxxx</th>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                    </tr>
-                    <tr>
-                        <td>xxxxx</th>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                    </tr>
-                    <tr>
-                        <td>xxxxx</th>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                        <td>xxxxx</td>
-                    </tr>
+                    ?>
+                    
                 </tbody>
 
             </table>
