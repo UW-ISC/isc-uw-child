@@ -53,6 +53,47 @@
                     </tr>
                 </thead>
                 <tbody>
+                  <?php $args = array(
+                          'parent' => get_the_ID(),
+                          'hierarchical' => 0,
+                          'sort_column' => 'menu_order',
+                          'sort_order' => 'asc'
+                        );
+                        $children_pages = get_pages($args);
+                        foreach ($children_pages as $child) {
+                            log_to_console(get_object_taxonomies($child));
+                            $security_role = wp_get_post_terms($child->ID, 'sec_role');
+                            if (empty($security_role)) {
+                              $security_role = "---";
+                            } else {
+                             $security_role = $security_role[0]->name;
+                            }
+                            log_to_console($security_role);
+
+
+                            $topics = wp_get_post_terms($child->ID, 'ug-topic');
+                            if (empty($topics)) {
+                              $topics = "---";
+                            } else {
+                             $topics = $topics[0]->name;
+                            }
+                            log_to_console($topics);
+
+                            $url = get_permalink($child);
+                            $html .= '<tr>';
+                            $html .= '<td><a href="'. $url .'">';
+                            $html .= $child->post_title;
+                            $html .= '</a></td>';
+
+                            $date_updated = new DateTime($child->post_modified_gmt);
+                            $html .= '<td>' . $topics . '</td>';
+                            $html .= '<td>' . $security_role . '</td>';
+                            $html .= '<td>' . date_format($date_updated, 'm.d.y') . '</td>';
+
+                            $html .= '</tr>';
+                        }
+                        echo $html;
+                        ?>
                     <!-- loop through all user guides -->
                     <tr>
                         <td><a href="<?php echo get_site_url() . '/user-guides/phil-demo/'?>">phil demo</a></th>
