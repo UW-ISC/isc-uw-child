@@ -26,18 +26,23 @@
             <h2><?php the_title(); ?></h2>
 
 
-            <div class="row">
-                <div class="col-md-4" style="background:#e9e9e9;margin-bottom:1em;">
-                    asfdasdf
+            <div style="background:#e9e9e9; padding: 20px; margin-bottom:1em;">
+                <h3 style="margin-top:0;">Filter by:</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        Topic: tbd
+                    </div>
+                    <div class="col-md-4">
+                        Security Role: tbd
+                    </div>
+                    <div class="col-md-4">
+                        Updated: tbd
+                    </div>
                 </div>
-                <div class="col-md-4" style="background:#e9e9e9;margin-bottom:1em;">
-                    asdfasdf
-                </div>
-                <div class="col-md-4" style="background:#e9e9e9;margin-bottom:1em;">
-                    asdfas
-                </div>
+
             </div>
 
+            <h3 class="sr-only">User Guides</h3>
             <table class="table table-bordered table-condensed table-hover table-striped">
                 <thead style="background:#4b2e83; color:#fff;">
                     <tr>
