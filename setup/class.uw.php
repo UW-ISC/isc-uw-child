@@ -28,7 +28,7 @@ class UW
         require_once($parent . 'class.uw-oembeds.php');
         require_once($parent . 'class.googleapps.php');
         require_once($parent . 'class.mimes.php');
-        require_once($parent . 'class.users.php');
+        require_once($child . 'class.users.php');
         require_once($parent . 'class.dropdowns_walker.php');  // no initialization needed because it extends a WP class
         require_once($parent . 'class.uw-basic-custom-post.php');  // no initialization needed unless a child theme makes one
         require_once($parent . 'class.uw-sidebar-menu-walker.php');  // sidebar menu will initialize for us
@@ -43,7 +43,7 @@ class UW
         require_once($parent . 'class.uw-enclosure.php' );
         require_once($parent . 'class.uw-carousel.php' );
         require_once($parent . 'class.uw-settings.php' );
-        require_once($parent . 'class.uw-page-attributes-meta-box.php' );
+        require_once($child . 'class.uw-page-attributes-meta-box.php' );
 
         require_once(get_stylesheet_directory() . '/inc/child-template-functions.php' );
         require_once(get_stylesheet_directory() . '/inc/breadcrumbs.php' );
