@@ -5,9 +5,7 @@
 ?>
 
 <?php get_header();
-      $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-      $sidebar = get_post_meta($post->ID, "sidebar");
-      $seasonal =  get_post_meta($post->ID); ?>
+      $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
 
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
@@ -24,7 +22,6 @@
     <div class="row">
         <div class="col-md-12">
             <h2><?php the_title(); ?></h2>
-
 
             <div style="background:#e9e9e9; padding: 20px; margin-bottom:1em;">
                 <h3 style="margin-top:0;">Filter by:</h3>
@@ -61,6 +58,9 @@
                           'sort_order' => 'asc'
                         );
                         $children_pages = get_pages($args);
+
+                        $html = '';
+                        
                         foreach ($children_pages as $child) {
                             log_to_console(get_object_taxonomies($child));
                             $security_role = wp_get_post_terms($child->ID, 'sec_role');
@@ -94,7 +94,7 @@
                         }
                         echo $html;
                     ?>
-                    
+
                 </tbody>
 
             </table>
