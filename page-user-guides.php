@@ -40,7 +40,14 @@
             </div>
 
             <h3 class="sr-only">User Guides</h3>
-            <table class="table table-bordered table-condensed table-hover table-striped">
+
+            <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                $('#user_guide_lib').DataTable();
+            } );
+            </script>
+
+            <table id="user_guide_lib" class="table table-striped table-bordered">
                 <thead style="background:#4b2e83; color:#fff;">
                     <tr>
                         <th>User Guide</th>
@@ -60,7 +67,7 @@
                         $children_pages = get_pages($args);
 
                         $html = '';
-                        
+
                         foreach ($children_pages as $child) {
                             log_to_console(get_object_taxonomies($child));
                             $security_role = wp_get_post_terms($child->ID, 'sec_role');
@@ -98,6 +105,8 @@
                 </tbody>
 
             </table>
+
+
 
         </div>
     </div>

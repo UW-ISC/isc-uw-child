@@ -24,12 +24,19 @@ class UW_Styles
           'version' => '3.6',
           'admin'   => true
       ),
-
+      
       'uw-master' => array (
         'id'      => 'uw-master',
         'url'     => get_bloginfo( 'template_url' ) . '/style' . $this->dev_stylesheet() . '.css',
         'deps'    => array(),
         'version' => '3.6'
+      ),
+
+      'datatables-bootstrap' => array (
+        'id'       => 'datatables-bootstrap',
+        'url'      => 'https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css',
+        'deps'     => array(),
+        'version'  => '1.10.13'
       ),
 
        'isc-styles' => array (
