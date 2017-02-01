@@ -423,6 +423,12 @@ body, p {
     .isc-footer .map-container img {
       box-shadow: 0px 0px 26px #111111; }
 
+/*** datatables overrides ***/
+.dataTables_wrapper .pagination {
+  list-style: none; }
+  .dataTables_wrapper .pagination .paginate_button {
+    display: inline-block; }
+
 /*** hr accordian styles ***/
 .uw-body .uw-accordion-menu {
   margin-bottom: 3rem;

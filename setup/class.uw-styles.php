@@ -32,6 +32,13 @@ class UW_Styles
         'version' => '3.6'
       ),
 
+      'datatables-bootstrap' => array (
+        'id'       => 'datatables-bootstrap',
+        'url'      => 'https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css',
+        'deps'     => array(),
+        'version'  => '1.10.13'
+      ),
+
        'isc-styles' => array (
          'id'       => 'isc-styles',
          'url'      => get_stylesheet_directory_uri() . '/isc-styles.css',

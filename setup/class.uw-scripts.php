@@ -22,9 +22,9 @@ class UW_Scripts
 
       'jquery' => array (
         'id'      => 'jquery',
-        'url'     => 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
+        'url'     => 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js',
         'deps'    => array(),
-        'version' => '1.11.3',
+        'version' => '1.12.4',
         'admin'   => false
       ),
 
@@ -51,6 +51,22 @@ class UW_Scripts
         'url'     => $child . '/assets/js/sticky.js',
         'deps'    => array( 'jquery' ),
         'version' => '1.0',
+        'admin'   => false
+      ),
+
+      'jquery-datatables' => array (
+        'id'      => 'jquery-datatables',
+        'url'     => 'https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js',
+        'deps'    => array( 'jquery' ),
+        'version' => '1.10.13',
+        'admin'   => false
+      ),
+
+      'datatables-bootstrap' => array (
+        'id'      => 'datatables-bootstrap',
+        'url'     => 'https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js',
+        'deps'    => array( 'jquery' ),
+        'version' => '1.10.13',
         'admin'   => false
       ),
 

@@ -16,8 +16,8 @@
                     }
                 });
             },
-            changeAction: function(){
-                $('.uw-search').each(function(){
+            changeAction: function() {
+                $('.uw-search').each(function() {
                     $this = $(this);
                     $this.attr('action', ISC_URL);
                 });
