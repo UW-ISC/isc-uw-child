@@ -41,13 +41,7 @@
 
             <h3 class="sr-only">User Guides</h3>
 
-            <script type="text/javascript" charset="utf-8">
-            $(document).ready(function() {
-                $('#user_guide_lib').DataTable();
-            } );
-            </script>
-
-            <table id="user_guide_lib" class="table table-striped table-bordered">
+            <table id="user_guide_lib" class="table table-condensed table-striped table-bordered table-hovered">
                 <thead style="background:#4b2e83; color:#fff;">
                     <tr>
                         <th>User Guide</th>
@@ -69,14 +63,14 @@
                         $html = '';
 
                         foreach ($children_pages as $child) {
-                            log_to_console(get_object_taxonomies($child));
+                            //log_to_console(get_object_taxonomies($child));
                             $security_role = wp_get_post_terms($child->ID, 'sec_role');
                             if (empty($security_role)) {
                                 $security_role = "---";
                             } else {
                                 $security_role = $security_role[0]->name;
                             }
-                            log_to_console($security_role);
+                            //log_to_console($security_role);
 
                             $topics = wp_get_post_terms($child->ID, 'ug-topic');
                             if (empty($topics)) {
@@ -84,7 +78,7 @@
                             } else {
                                 $topics = $topics[0]->name;
                             }
-                            log_to_console($topics);
+                            //log_to_console($topics);
 
                             $url = get_permalink($child);
                             $html .= '<tr>';
@@ -106,7 +100,11 @@
 
             </table>
 
-
+            <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                $('#user_guide_lib').DataTable();
+            });
+            </script>
 
         </div>
     </div>

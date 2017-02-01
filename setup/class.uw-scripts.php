@@ -55,7 +55,7 @@ class UW_Scripts
       ),
 
       'jquery-datatables' => array (
-        'id'      => 'datatables-bootstrap',
+        'id'      => 'jquery-datatables',
         'url'     => 'https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js',
         'deps'    => array( 'jquery' ),
         'version' => '1.10.13',

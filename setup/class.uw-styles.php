@@ -24,7 +24,7 @@ class UW_Styles
           'version' => '3.6',
           'admin'   => true
       ),
-      
+
       'uw-master' => array (
         'id'      => 'uw-master',
         'url'     => get_bloginfo( 'template_url' ) . '/style' . $this->dev_stylesheet() . '.css',
