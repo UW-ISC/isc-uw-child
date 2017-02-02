@@ -167,7 +167,7 @@ endif;
 endif;
 
 /**
- * Displays the child pages of the current page along with their excerpts
+ * Displays the child pages of the current page along with their body contents
  *
  * @author Kevin Zhao <zhaok24@uw.edu>
  * @copyright Copyright (c) 2016, University of Washington
@@ -186,46 +186,25 @@ if ( ! function_exists( 'display_child_pages' ) ) :
           'sort_order' => 'asc'
         );
         $children_pages = get_pages($args);
-
-        // Echoing/displaying each child page along with their excerpt
-        // and a list of "grandchildren" pages
-        // (If we call this method on the category page it would display the...
-        // 1) Article Page Title, 2) Article Page Excerpt 3) List of Article Sections under that Article Page)
+        $html = "";
+        // Echoing/displaying each child page along with their body content
         foreach ($children_pages as $article) {
             $page_url = get_permalink($article);
-            $metadata = get_post_custom($article->ID);
-            $summary = '';
-            if (array_key_exists('summary-content', $metadata)) {
-              $summary = $metadata['summary-content'][0];
-            }
-            echo '<div>';
-            echo '<h4 class="title"> <a href="'.$page_url.'">';
-            echo $article->post_title;
-            echo '</a></h4>';
+            // the content of the child
+            $body = $article->post_content;
+            $html .= '<div>';
+            $html .= '<h4 class="title"> <a href="'.$page_url.'">';
+            $html .= $article->post_title;
+            $html .= '</a></h4>';
 
-            if ($summary != '') {
-              echo '<p>';
-              echo $summary;
-              echo '</p>';
+            if ($body != '') {
+              // displaying the body of the child content
+              $html .= '<p> ' . $body . ' </p>';
             }
-
-            // grabbing the "grandchildren" pages
-            $args2 = array(
-              'parent' => $article->ID,
-              'hierarchical' => 0,
-              'sort_column' => 'menu_order',
-              'sort_order' => 'asc'
-            );
-            $article_sections = get_pages($args2);
-            // displaying them
-            foreach($article_sections as $section) {
-              $section_url = get_permalink($section);
-              echo '<p><a href="'.$section_url.'">';
-              echo $section->post_title;
-              echo '</a></p>';
-            }
-            echo '</div>';
+            $html .= '<a href="' . $page_url . '"> Read More </a>';
+            $html .= '</div>';
         }
+        echo $html;
     }
 endif;
 
