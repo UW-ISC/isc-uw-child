@@ -104,6 +104,7 @@
             $(document).ready(function() {
                 $('#user_guide_lib').DataTable( {
                     "paging":   false,
+                    "order": [[ 3, "desc" ]] // order user guide list by updated date (newest on top)
                 });
             });
             </script>
