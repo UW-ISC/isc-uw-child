@@ -102,7 +102,9 @@
 
             <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
-                $('#user_guide_lib').DataTable();
+                $('#user_guide_lib').DataTable( {
+                    "paging":   false,
+                });
             });
             </script>
 
