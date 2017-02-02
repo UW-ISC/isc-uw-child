@@ -140,13 +140,14 @@
                           <li>For Academic Dean / Dean’s Delegates: <a href="">view <?php echo get_guide_count('academic-dean'); ?> User guides</a></li>
                       </ul>
 
-                      <h4>Medical Center Specific</h4>
+                      <h4>Initiator 2s Specific</h4>
 
                       <ul>
                           <li>For Initiator 2s: <a href="">view <?php echo get_guide_count(''); ?> User guides</a></li>
                           <li>For Initiator 2s: <a href="">view <?php echo get_guide_count(''); ?> User guides</a></li>
                       </ul>
 
+                      <h4>Medical Center Specific</h4>
                       <ul>
                           <li>For Medical Centers Job Requisitions Approvers 1s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides</a></li>
                           <li>For Medical Centers Job Requisitions Approvers 2s: <a href="">view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides</a></li>
