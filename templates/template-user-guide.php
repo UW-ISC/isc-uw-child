@@ -30,7 +30,7 @@ get_header();
                 <?php user_guide_menu(); ?>
             </div>
 
-            <article class="uw-content col-md-8">
+            <article class="uw-content float-content col-md-8">
 
                 xxxx this is a user guide template xxxx
 
