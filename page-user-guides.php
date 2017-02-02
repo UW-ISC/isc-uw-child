@@ -27,13 +27,27 @@
                 <h3 style="margin-top:0;">Filter by:</h3>
                 <div class="row">
                     <div class="col-md-4">
-                        Topic: tbd
+                        Topic: parent topics only
+                        <select class="form-control input-sm">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        Security Role: tbd
+                        Security Role: child roles only
+                        <select class="form-control input-sm">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        Updated: tbd
+                        Last Updated: tbd - can't do
                     </div>
                 </div>
 
