@@ -470,6 +470,13 @@ body, p { font-size: 16px !important; }
     background-color: #fff;
 }
 
+@media (min-width: 992px) {
+    .uw-body .uw-accordion-menu-floater {
+      position: fixed;
+      top: 0px;
+    }
+}
+
 .uw-accordion-menu ul,.uw-accordion-menu li {
     list-style: none;
     padding: 0;

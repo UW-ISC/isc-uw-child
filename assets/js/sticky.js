@@ -5,18 +5,20 @@ $(document).ready(function() {
     var content = $(".float-content");
     // if these elements don't exist, don't bother with the following code
     if (toc.length > 0 && content.length > 0) {
-        var parent = $(".uw-body");
+        var parent = $(".row");
         var padding = toc.css("padding-left").slice(0, -2);
-        var menu_percentage = (toc.width() + padding * 2) / $(".row").width();
+
+        // if its col-md-4, the width should be 4 / 12 (based on bootstrap's grid system)
+        var menu_percentage = toc.parent().prop('className').slice(-1) / 12;
+
         var width_change = 991; // the width at which the table of contents is simply put on top of the content
 
         // getting the point at which to start the floating mechanism
         // we need to calculate both the potential padding and width
         // of a floating toc
         var change = true;
-        var pad_left = (content.offset().left - toc.width() - padding * 2);
-        var parent_width = parent.width();
-        var new_width = (parent_width * menu_percentage) + padding / 2;
+        var pad_left = (content.offset().left - toc.width() - padding * 3);
+        var new_width = (parent.width() * menu_percentage) - padding * 2;
 
         if ($(window).width() > width_change && change) {
             var height_change = $(".float-menu").offset().top;
@@ -28,9 +30,8 @@ $(document).ready(function() {
         $(window).resize(function() {
             // by resizing the window, the width and padding of a potentially
             // floating toc changes, so we have to recalculate it
-            parent_width = parent.width();
-            new_width = (parent_width * menu_percentage) + padding / 2;
-            pad_left = (content.offset().left - toc.width() - padding * 2);
+            new_width = (parent.width() * menu_percentage) - padding * 2;
+            pad_left = (content.offset().left - toc.width() - padding * 3);
 
             if ($(this).width() > width_change && change) {
                 // we don't wanna continually update this however, otherwise it will be wonky
