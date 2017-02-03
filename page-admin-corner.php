@@ -48,7 +48,7 @@
 
                 <div class="isc-admin-block">
 
-                    <h3 class="isc-admin-header">Updates</h3>
+                    <h3 class="isc-admin-header">Admins' News</h3>
 
                       <?php
 
@@ -82,80 +82,19 @@
                   </div>
 
                   <div class="isc-admin-block">
-                      <h3 class="isc-admin-header">Workday User Guides</h3>
-                      <?php
-
-                          function get_guide_count($name){
-
-                             $args = array(
-                                  	'tax_query' => array(
-                                  		array(
-                                  			'taxonomy' => 'security-role',
-                                  			'field'    => 'slug',
-                                  			'terms'    => $name,
-                                  		),
-                                  	),
-                                    'post_status' => 'published');
-
-                             $guides = new WP_Query($args);
-                             return $guides->post_count;
-                          }
-
-                      ?>
-
-                      <h4>General</h4>
-
+                      <h3 class="isc-admin-header">Workday Resources</h3>
                       <ul>
-                          <li>For Employee as Self: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('employee-as-self'); ?> User guides</a></li>
-                          <li>For I-9 Coordinators: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('i-9-coordinator'); ?> User guides</a></li>
+                          <li><a href="<?php echo get_site_url() . '/user-guides/'?>">User Guides</a></li>
+                          <li>Video Library</li>
+                          <li>Glossary</li>
                       </ul>
+                  </div>
 
-                      <h4>Time and Absence</h4>
-
-                      <ul>
-                          <li>For Initiator 2s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count(''); ?> User guides</a></li>
-                          <li>For Approvers: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view all <?php echo get_guide_count(''); ?> User guides</a></li>
-                      </ul>
-
-                      <h4>HCM</h4>
-
-                      <ul>
-                          <li>For Time and Absence Approvers: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('ta-approver'); ?> User guides</a></li>
-                          <li>For Time and Abesence Initiates: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view all <?php echo get_guide_count('ta-initiate'); ?> User guides</a></li>
-                          <li>For On-boarding coordinators: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view all <?php echo get_guide_count(''); ?> User guides</a></li>
-                      </ul>
-
-                      <h4>Academic Specific</h4>
-
-                      <ul>
-                          <li>For Position and Job Requisition Initiates: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view all <?php echo get_guide_count('pj-req-initiate'); ?> User guides</a></li>
-                          <li>For HCM Initiate 1s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view all <?php echo get_guide_count('hcm-initiate-1'); ?> User guides</a></li>
-                          <li>For HCM Initiate 2s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('hcm-initiate-2'); ?> User guides</a></li>
-                          <li>For HR Partners: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('hr-partner'); ?> User guides</a></li>
-                          <li>For Additional Approver 1s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('addl-approver-1'); ?> User guides</a></li>
-                          <li>For Additional Approver 2s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('addl-approver-2'); ?> User guides</a></li>
-                          <li>For Costing Allocations Coordinators: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('costing-allocations-coord'); ?> User guides</a></li>
-                          <li>For Academic Partners: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('academic-partner'); ?> User guides</a></li>
-                          <li>For Academic Chair / Chair’s Delegates: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('academic-chair'); ?> User guides</a></li>
-                          <li>For Academic Dean / Dean’s Delegates: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('academic-dean'); ?> User guides</a></li>
-                      </ul>
-
-                      <h4>Initiator 2s Specific</h4>
-
-                      <ul>
-                          <li>For Initiator 2s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count(''); ?> User guides</a></li>
-                          <li>For Initiator 2s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count(''); ?> User guides</a></li>
-                      </ul>
-
-                      <h4>Medical Center Specific</h4>
-                      <ul>
-                          <li>For Medical Centers Job Requisitions Approvers 1s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('med-cent-job-req-approver-1'); ?> User guides</a></li>
-                          <li>For Medical Centers Job Requisitions Approvers 2s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('med-cent-job-req-approver-2'); ?> User guides</a></li>
-                          <li>For Medical Centers Job Requisitions Approvers 3s: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('med-cent-job-req-approver-3'); ?> User guides</a></li>
-                          <li>For Medical Centers Managers: <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">view <?php echo get_guide_count('medical-centers-manager'); ?> User guides</a></li>
-                      </ul>
-
-                      <p><a href="<?php echo get_site_url() . '/user-guides/'?>">See full list of all User Guides...</a></p>
+                  <div class="isc-admin-block">
+                      <h3 class="isc-admin-header">Workday Support</h3>
+                      <div>
+                          <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">Read about Workday Security roles and request the change</a>
+                      </div>
                   </div>
 
               </div>
@@ -165,7 +104,7 @@
         <div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
-                <h3 class="isc-admin-header">Workshops</h3>
+                <h3 class="isc-admin-header">Events</h3>
                 <div>
                     <?php
                        $workshop_args = array(
@@ -209,18 +148,12 @@
             </div>
 
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
-                <h3 class="isc-admin-header">Need HR Experts?</h3>
+                <h3 class="isc-admin-header">Help for Admins</h3>
                 <div>
                     Contact Tier 2 support team
                 </div>
             </div>
 
-            <div class="contact-widget-inner isc-widget-white isc-admin-block">
-                <h3 class="isc-admin-header">Workday Security Roles</h3>
-                <div>
-                    <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">Read about Workday Security roles and request the change</a>
-                </div>
-            </div>
 
         </div>
 

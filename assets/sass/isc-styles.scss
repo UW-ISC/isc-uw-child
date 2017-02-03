@@ -368,8 +368,8 @@ body, p { font-size: 16px !important; }
     h4 { margin-top: 0; }
 
     ul { list-style: none; padding: 0;
-        li { clear: both;
-            a { float: right;
+        li {
+            a {
                 &:hover { border-bottom: none !important; text-decoration: underline; }
             }
         }
