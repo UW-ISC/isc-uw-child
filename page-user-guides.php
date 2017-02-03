@@ -87,43 +87,46 @@
                     "order": [[ 3, "desc" ]] // order user guide list by updated date (newest on top)
                 });
             });
-            $("#topic-dropdown").change(function() {
-                var value_selected = $("#topic-dropdown").val();
+            $("#topic-dropdown, #role-dropdown").change(function() {
+                var topic_value = $("#topic-dropdown").val();
+                var role_value = $("#role-dropdown").val();
                 var user_guides = $("[id=user-guide]");
+
                 for (i = 0; i < user_guides.length; i++) {
                   var guide = $(user_guides[i]);
                   var topics = guide.attr("data-topics");
-                  if (value_selected == "---") {
-                    guide.show();
-                  } else if (topics != undefined) {
-                    topics = topics.split(" ");
-                    if (topics.indexOf(value_selected) == -1) {
-                      guide.hide();
-                    } else {
-                      guide.show();
-                    }
-                  } else {
-                    guide.hide();
+                  var roles = guide.attr("data-roles");
+                  if (topics == undefined) {
+                    topics = "";
                   }
-                }
-            });
-            $("#role-dropdown").change(function() {
-                var value_selected = $("#role-dropdown").val();
-                var user_guides = $("[id=user-guide]");
-                for (i = 0; i < user_guides.length; i++) {
-                  var guide = $(user_guides[i]);
-                  var topics = guide.attr("data-roles");
-                  if (value_selected == "---") {
+                  if (roles == undefined) {
+                    roles = "";
+                  }
+                  topics = topics.split(" ");
+                  roles = roles.split(" ");
+                  if (topic_value == "---" && role_value == "---") {
                     guide.show();
-                  } else if (topics != undefined) {
-                    topics = topics.split(" ");
-                    if (topics.indexOf(value_selected) == -1) {
-                      guide.hide();
-                    } else {
-                      guide.show();
-                    }
+                  } else if (topic_value == "---") {
+                      // filter by roles
+                      if (roles.indexOf(role_value) != -1) {
+                        guide.show();
+                      } else {
+                        guide.hide();
+                      }
+                  } else if (role_value == "---") {
+                      // filter by topics
+                      if (topics.indexOf(topic_value) != -1) {
+                        guide.show();
+                      } else {
+                        guide.hide();
+                      }
                   } else {
-                    guide.hide();
+                    // filter by both
+                    if (topics.indexOf(topic_value) != -1 && roles.indexOf(role_value) != -1) {
+                      guide.show();
+                    } else {
+                      guide.hide();
+                    }
                   }
                 }
             });
