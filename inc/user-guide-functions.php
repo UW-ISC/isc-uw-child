@@ -15,6 +15,16 @@ class user_guide {
       $this->last_updated = $last_updated;
   }
 }
+
+if ( ! function_exists( 'sanitize_array' ) ) :
+    function sanitize_array($elements) {
+        $sanitized = array();
+        foreach($elements as $el) {
+          array_push($sanitized, sanitize_title($el));
+        }
+        return $sanitized;
+    }
+endif;
 // simply gets the child pages of the current page
 // when called on the user guide library page
 // will return all the user guides
@@ -58,17 +68,19 @@ if ( ! function_exists( 'user_guide_table' ) ) :
 
             $html = '';
             foreach ($user_guides as $guide) {
-                $html .= '<tr>';
-                $html .= '<td><a href="'. $guide->url .'">';
-                $html .= $guide->name;
-                $html .= '</a></td>';
-
+                $sanitized_topics = sanitize_array($guide->topics);
+                $sanitized_roles = sanitize_array($guide->roles);
+                $data_roles = empty($sanitized_roles) ? "" : 'data-roles="' . implode(" ", $sanitized_roles) . '"';
+                $data_topics = empty($sanitized_topics) ? "" : 'data-topics="' . implode(" ", $sanitized_topics) . '"';
                 $topics = count($guide->topics) == 0 ? ("---") : (implode(", ", $guide->topics));
                 $roles = count($guide->roles) == 0 ? ("---") : (implode(", ", $guide->roles));
 
+                $html .= '<tr id="user-guide" ' . $data_roles . $data_topics . '>';
+                $html .= '<td><a href="'. $guide->url .'">';
+                $html .= $guide->name;
+                $html .= '</a></td>';
                 $html .= '<td>' . $topics . '</td>';
                 $html .= '<td>' . $roles . '</td>';
-
                 $html .= '<td>' . date_format($guide->last_updated, 'm.d.y') . '</td>';
                 $html .= '</tr>';
             }

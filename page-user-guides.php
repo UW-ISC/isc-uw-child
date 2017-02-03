@@ -30,24 +30,24 @@
                 <div class="row">
                     <div class="col-md-4">
                         Topic: parent topics only
-                        <select class="form-control input-sm">
-                          <option> --- </option>
+                        <select class="form-control input-sm" id="topic-dropdown">
+                          <option value="---"> --- </option>
                             <?php
                               $topics = (get_all_topics($user_guides));
                               foreach($topics as $topic) {
-                                echo "<option> " . $topic . " </option>";
+                                echo '<option value = "' . sanitize_title($topic) .'"> ' . $topic . ' </option>';
                               }
                             ?>
                         </select>
                     </div>
                     <div class="col-md-4">
                         Security Role: child roles only
-                        <select class="form-control input-sm">
-                          <option> --- </option>
+                        <select class="form-control input-sm" id="role-dropdown">
+                          <option value="---"> --- </option>
                             <?php
                               $roles = (get_all_roles($user_guides));
                               foreach($roles as $role) {
-                                echo "<option> " . $role . " </option>";
+                                echo '<option value = "' . sanitize_title($role) .'"> ' . $role . ' </option>';
                               }
                             ?>
                         </select>
@@ -87,6 +87,48 @@
                     "order": [[ 3, "desc" ]] // order user guide list by updated date (newest on top)
                 });
             });
+            $("#topic-dropdown").change(function() {
+                var value_selected = $("#topic-dropdown").val();
+                var user_guides = $("[id=user-guide]");
+                for (i = 0; i < user_guides.length; i++) {
+                  var guide = $(user_guides[i]);
+                  var topics = guide.attr("data-topics");
+                  if (value_selected == "---") {
+                    guide.show();
+                  } else if (topics != undefined) {
+                    topics = topics.split(" ");
+                    if (topics.indexOf(value_selected) == -1) {
+                      guide.hide();
+                    } else {
+                      guide.show();
+                    }
+                  } else {
+                    guide.hide();
+                  }
+                }
+            });
+            $("#role-dropdown").change(function() {
+                var value_selected = $("#role-dropdown").val();
+                var user_guides = $("[id=user-guide]");
+                for (i = 0; i < user_guides.length; i++) {
+                  var guide = $(user_guides[i]);
+                  var topics = guide.attr("data-roles");
+                  if (value_selected == "---") {
+                    guide.show();
+                  } else if (topics != undefined) {
+                    topics = topics.split(" ");
+                    if (topics.indexOf(value_selected) == -1) {
+                      guide.hide();
+                    } else {
+                      guide.show();
+                    }
+                  } else {
+                    guide.hide();
+                  }
+                }
+            });
+
+
             </script>
 
         </div>
