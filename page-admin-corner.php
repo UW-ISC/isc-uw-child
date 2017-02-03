@@ -53,18 +53,18 @@
                       <?php
 
                          $args = array(
-                              	'tax_query' => array(
-                              		array(
-                              			'taxonomy' => 'location',
-                              			'field'    => 'slug',
-                              			'terms'    => 'admin-corner-news',
-                              		),
-                              	),
+                                  'tax_query' => array(
+                                      array(
+                                          'taxonomy' => 'location',
+                                          'field'    => 'slug',
+                                          'terms'    => 'admin-corner-news',
+                                      ),
+                                  ),
                                 'post_status' => 'published');
                          $category_posts = new WP_Query($args);
 
-                         if($category_posts->have_posts()) :
-                            while($category_posts->have_posts()) :
+                         if ($category_posts->have_posts()) :
+                            while ($category_posts->have_posts()) :
                                $category_posts->the_post();
                       ?>
 
@@ -120,7 +120,7 @@
                                 'post_status' => 'published');
                        $workshop_posts = new WP_Query($workshop_args);
 
-                       if($workshop_posts->have_posts()) :
+                       if ($workshop_posts->have_posts()) :
                              $workshop_posts->the_post();
                     ?>
                      <h4><?php the_title() ?></h4>
@@ -136,17 +136,17 @@
 
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <h3 class="isc-admin-header">Seasonal Topics</h3>
-                <div>
-                      <div class='post-content'><?php echo the_cfc_field('hl-seasonal', 'body') ?></div>
-                      <?php
-                      $summary_content = "No description found";
-                      if (array_key_exists("summary-text", $seasonal) && !$seasonal["summary-text"][0] == "") {
-                          $summary_content = $seasonal["summary-text"][0];
-                      }
-                      echo $summary_content;
-                      ?>
-                      <p><a href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Seasonal Topics</a></p>
+                <div class='post-content'>
+                    <?php
+                    $summary_content = "No description found";
+                    if (array_key_exists("summary-text", $seasonal) && !$seasonal["summary-text"][0] == "") {
+                      $summary_content = $seasonal["summary-text"][0];
+                    }
+                    echo $summary_content;
+                    ?>
+                    <?php echo the_cfc_field('hl-seasonal', 'body') ?>
                 </div>
+                <p><a href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Seasonal Topics</a></p>
             </div>
 
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
