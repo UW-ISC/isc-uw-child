@@ -46,6 +46,7 @@ class UW
         require_once($child . 'class.uw-page-attributes-meta-box.php' );
 
         require_once(get_stylesheet_directory() . '/inc/child-template-functions.php' );
+        require_once(get_stylesheet_directory() . '/inc/user-guide-functions.php' );
         require_once(get_stylesheet_directory() . '/inc/breadcrumbs.php' );
         require_once(get_template_directory() . '/inc/template-functions.php' );
         require_once(get_template_directory() . '/docs/class.uw-documentation.php' );
