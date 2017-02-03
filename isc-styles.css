@@ -320,6 +320,9 @@ body, p {
   .isc-admin-block ul {
     list-style: none;
     padding: 0; }
+    .isc-admin-block ul li a:hover {
+      border-bottom: none !important;
+      text-decoration: underline; }
 
 /*** generic content and sidebar ***/
 .isc-sidebar {

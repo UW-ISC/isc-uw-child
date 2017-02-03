@@ -10,6 +10,8 @@
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
 
+      <?php $user_guides = get_user_guides(); // grabs all the user guides ?>
+
 <div class="container uw-body">
 
     <div class="row">
@@ -27,13 +29,31 @@
                 <h3 style="margin-top:0;">Filter by:</h3>
                 <div class="row">
                     <div class="col-md-4">
-                        Topic: tbd
+                        Topic: parent topics only
+                        <select class="form-control input-sm" id="topic-dropdown">
+                          <option value="---"> --- </option>
+                            <?php
+                              $topics = (get_all_topics($user_guides));
+                              foreach($topics as $topic) {
+                                echo '<option value = "' . sanitize_title($topic) .'"> ' . $topic . ' </option>';
+                              }
+                            ?>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        Security Role: tbd
+                        Security Role: child roles only
+                        <select class="form-control input-sm" id="role-dropdown">
+                          <option value="---"> --- </option>
+                            <?php
+                              $roles = (get_all_roles($user_guides));
+                              foreach($roles as $role) {
+                                echo '<option value = "' . sanitize_title($role) .'"> ' . $role . ' </option>';
+                              }
+                            ?>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        Updated: tbd
+                        Last Updated: tbd - can't do
                     </div>
                 </div>
 
@@ -52,49 +72,9 @@
                 </thead>
                 <tbody>
 
-                  <?php $args = array(
-                          'parent' => get_the_ID(),
-                          'hierarchical' => 0,
-                          'sort_column' => 'menu_order',
-                          'sort_order' => 'asc'
-                        );
-                        $children_pages = get_pages($args);
-
-                        $html = '';
-
-                        foreach ($children_pages as $child) {
-                            //log_to_console(get_object_taxonomies($child));
-                            $security_role = wp_get_post_terms($child->ID, 'sec_role');
-                            if (empty($security_role)) {
-                                $security_role = "---";
-                            } else {
-                                $security_role = $security_role[0]->name;
-                            }
-                            //log_to_console($security_role);
-
-                            $topics = wp_get_post_terms($child->ID, 'ug-topic');
-                            if (empty($topics)) {
-                                $topics = "---";
-                            } else {
-                                $topics = $topics[0]->name;
-                            }
-                            //log_to_console($topics);
-
-                            $url = get_permalink($child);
-                            $html .= '<tr>';
-                            $html .= '<td><a href="'. $url .'">';
-                            $html .= $child->post_title;
-                            $html .= '</a></td>';
-
-                            $date_updated = new DateTime($child->post_modified_gmt);
-                            $html .= '<td>' . $topics . '</td>';
-                            $html .= '<td>' . $security_role . '</td>';
-                            $html .= '<td>' . date_format($date_updated, 'm.d.y') . '</td>';
-
-                            $html .= '</tr>';
-                        }
-                        echo $html;
-                    ?>
+                  <?php
+                    user_guide_table($user_guides);
+                  ?>
 
                 </tbody>
 
@@ -102,8 +82,56 @@
 
             <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
-                $('#user_guide_lib').DataTable();
+                $('#user_guide_lib').DataTable( {
+                    "paging":   false,
+                    "order": [[ 3, "desc" ]] // order user guide list by updated date (newest on top)
+                });
             });
+            $("#topic-dropdown, #role-dropdown").change(function() {
+                var topic_value = $("#topic-dropdown").val();
+                var role_value = $("#role-dropdown").val();
+                var user_guides = $("[id=user-guide]");
+
+                for (i = 0; i < user_guides.length; i++) {
+                  var guide = $(user_guides[i]);
+                  var topics = guide.attr("data-topics");
+                  var roles = guide.attr("data-roles");
+                  if (topics == undefined) {
+                    topics = "";
+                  }
+                  if (roles == undefined) {
+                    roles = "";
+                  }
+                  topics = topics.split(" ");
+                  roles = roles.split(" ");
+                  if (topic_value == "---" && role_value == "---") {
+                    guide.show();
+                  } else if (topic_value == "---") {
+                      // filter by roles
+                      if (roles.indexOf(role_value) != -1) {
+                        guide.show();
+                      } else {
+                        guide.hide();
+                      }
+                  } else if (role_value == "---") {
+                      // filter by topics
+                      if (topics.indexOf(topic_value) != -1) {
+                        guide.show();
+                      } else {
+                        guide.hide();
+                      }
+                  } else {
+                    // filter by both
+                    if (topics.indexOf(topic_value) != -1 && roles.indexOf(role_value) != -1) {
+                      guide.show();
+                    } else {
+                      guide.hide();
+                    }
+                  }
+                }
+            });
+
+
             </script>
 
         </div>
