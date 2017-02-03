@@ -122,6 +122,17 @@ body, p {
       color: inherit;
       padding: 0 10px; }
 
+/*** uw button ***/
+.uw-btn {
+  background-color: #d9d9d9 !important;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  width: auto;
+  padding-right: 60px !important;
+  margin-bottom: 0 !important; }
+  .uw-btn:before, .uw-btn:after {
+    right: 0 !important; }
+
 /*** uw body  ***/
 @media (min-width: 992px) {
   .uw-body {
@@ -215,7 +226,7 @@ body, p {
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
       -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
       padding-right: 60px;
-      margin-bottom: 14px;
+      margin-bottom: 14px !important;
       background: #fff;
       border-radius: 8px;
       -moz-border-radius: 8px;
@@ -249,14 +260,6 @@ body, p {
   font-weight: 900;
   text-transform: uppercase;
   color: #85754d; }
-.isc-homepage-body .uw-btn {
-  background-color: #d9d9d9 !important;
-  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  width: auto;
-  padding-right: 60px !important; }
-  .isc-homepage-body .uw-btn:before, .isc-homepage-body .uw-btn:after {
-    right: 0 !important; }
 @media (min-width: 992px) {
   .isc-homepage-body .isc-homepage-featured {
     margin-top: -90px; } }
@@ -323,6 +326,8 @@ body, p {
     .isc-admin-block ul li a:hover {
       border-bottom: none !important;
       text-decoration: underline; }
+  .isc-admin-block .post-content {
+    margin-bottom: 1em; }
 
 /*** generic content and sidebar ***/
 .isc-content-block {
@@ -332,14 +337,6 @@ body, p {
   .isc-content-block h3 {
     margin-top: 0;
     color: #4b2e83; }
-  .isc-content-block .uw-btn {
-    background-color: #d9d9d9 !important;
-    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    width: auto;
-    padding-right: 60px !important; }
-    .isc-content-block .uw-btn:before, .isc-content-block .uw-btn:after {
-      right: 0 !important; }
 
 .isc-sidebar {
   padding-top: 0 !important;

@@ -77,26 +77,8 @@
                         endif;
                       ?>
 
-                    <p><a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">Read more news</a></p>
+                    <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">Read more news</a>
 
-                  </div>
-
-                  <div class="isc-admin-block">
-                      <h3 class="isc-admin-header">Workday Resources</h3>
-                      <ul>
-                          <li><a href="<?php echo get_site_url() . '/user-guides/'?>">User Guides</a></li>
-                          <li>Link</li>
-                          <li>Link</li>
-                      </ul>
-                  </div>
-
-                  <div class="isc-admin-block">
-                      <h3 class="isc-admin-header">Workday Support</h3>
-                      <ul>
-                          <li>Link</li>
-                          <li>Link</li>
-                          <li>Link</li>
-                      </ul>
                   </div>
 
               </div>
@@ -106,7 +88,7 @@
         <div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
-                <h3 class="isc-admin-header">Events</h3>
+                <h3 class="isc-admin-header">Next Event</h3>
                 <div>
                     <?php
                        $workshop_args = array(
@@ -130,7 +112,7 @@
                       endif;
                       ?>
 
-                    <p><a href="<?php echo get_site_url() . '/admin-events'?>">See all Events</a></p>
+                    <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/admin-events'?>">See previous</a>
                 </div>
             </div>
 
@@ -146,11 +128,11 @@
                     ?>
                     <?php echo the_cfc_field('hl-seasonal', 'body') ?>
                 </div>
-                <p><a href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Seasonal Topics</a></p>
+                <p><a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a></p>
             </div>
 
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
-                <h3 class="isc-admin-header">Help for Admins</h3>
+                <h3 class="isc-admin-header">Workday Support</h3>
                 <ul>
                     <li>Link</li>
                     <li>Link</li>
@@ -158,6 +140,14 @@
                 </ul>
             </div>
 
+            <div class="contact-widget-inner isc-widget-white isc-admin-block">
+                <h3 class="isc-admin-header">Workday Resources</h3>
+                <ul>
+                    <li><a href="<?php echo get_site_url() . '/user-guides/'?>">User Guides</a></li>
+                    <li>Link</li>
+                    <li>Link</li>
+                </ul>
+            </div>
 
         </div>
 

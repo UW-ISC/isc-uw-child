@@ -131,6 +131,17 @@ body, p { font-size: 16px !important; }
 
 }
 
+/*** uw button ***/
+.uw-btn {
+    background-color: #d9d9d9 !important;
+    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    width: auto;
+    padding-right: 60px !important;
+    margin-bottom: 0 !important;
+
+    &:before, &:after { right: 0 !important; }
+}
 
 /*** uw body  ***/
 .uw-body {
@@ -248,11 +259,12 @@ body, p { font-size: 16px !important; }
                 box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
                 -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
                 padding-right:60px;
-                margin-bottom: 14px;
+                margin-bottom: 14px !important;
                 background:#fff;
                 border-radius:8px;
                 -moz-border-radius:8px;
                 -webkit-border-radius:8px;
+
                 &:hover, &:focus { background-color: #ddd !important; text-decoration:underline; }
                 &:before, &:after {
                     right: 0;
@@ -283,6 +295,8 @@ body, p { font-size: 16px !important; }
 
 }
 
+
+
 .isc-homepage-body {
 
 
@@ -296,15 +310,7 @@ body, p { font-size: 16px !important; }
         color: $uw-tan-dark;
     }
 
-    .uw-btn {
-        background-color: #d9d9d9 !important;
-        -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-        width: auto;
-        padding-right: 60px !important;
 
-        &:before, &:after { right: 0 !important; }
-    }
 
     .isc-homepage-featured {
         @include desktop  { margin-top: -90px; };
@@ -352,7 +358,6 @@ body, p { font-size: 16px !important; }
 
 }
 
-
 .isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 1em; position: relative; margin-top: 70px;
 
     .isc-admin-header {
@@ -374,6 +379,8 @@ body, p { font-size: 16px !important; }
             }
         }
     }
+
+    .post-content { margin-bottom: 1em; }
 }
 
 /*** generic content and sidebar ***/
@@ -381,15 +388,6 @@ body, p { font-size: 16px !important; }
 
     h3 { margin-top: 0; color: $uw-purple; }
 
-    .uw-btn {
-        background-color: #d9d9d9 !important;
-        -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-        width: auto;
-        padding-right: 60px !important;
-
-        &:before, &:after { right: 0 !important; }
-    }
 }
 
 .isc-sidebar { padding-top: 0 !important; position: relative;
@@ -417,8 +415,6 @@ body, p { font-size: 16px !important; }
 
 
 }
-
-
 
 /*** footer ***/
 .uw-footer {border-width: 3px;}
