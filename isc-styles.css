@@ -325,6 +325,13 @@ body, p {
       text-decoration: underline; }
 
 /*** generic content and sidebar ***/
+.isc-content-block {
+  padding: 40px;
+  background: #ece9e2;
+  margin-bottom: 1em; }
+  .isc-content-block h3 {
+    margin-top: 0; }
+
 .isc-sidebar {
   padding-top: 0 !important;
   position: relative;

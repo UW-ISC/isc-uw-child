@@ -377,7 +377,9 @@ body, p { font-size: 16px !important; }
 }
 
 /*** generic content and sidebar ***/
-.isc-content {  }
+.isc-content-block { padding: 40px; background: $uw-tan-light; margin-bottom: 1em;
+    h3 { margin-top: 0; }
+}
 
 .isc-sidebar { padding-top: 0 !important; position: relative;
 

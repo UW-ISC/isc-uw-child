@@ -192,16 +192,16 @@ if ( ! function_exists( 'display_child_pages' ) ) :
             $page_url = get_permalink($article);
             // the content of the child
             $body = $article->post_content;
-            $html .= '<div>';
-            $html .= '<h4 class="title"> <a href="'.$page_url.'">';
+            $html .= '<div class="isc-content-block">';
+            $html .= '<h3 class="title"><a href="'.$page_url.'">';
             $html .= $article->post_title;
-            $html .= '</a></h4>';
+            $html .= '</a></h3>';
 
             if ($body != '') {
               // displaying the body of the child content
               $html .= '<p> ' . $body . ' </p>';
             }
-            $html .= '<a href="' . $page_url . '"> Read More </a>';
+            $html .= '<a class="uw-btn btn-sm" href="'.$page_url.'">Read More</a>';
             $html .= '</div>';
         }
         echo $html;
