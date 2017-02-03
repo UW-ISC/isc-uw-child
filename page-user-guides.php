@@ -9,7 +9,8 @@
 
       <?php uw_site_title(); ?>
       <?php get_template_part( 'menu', 'mobile' ); ?>
-      <?php $user_guides = get_user_guides(); ?>
+
+      <?php $user_guides = get_user_guides(); // grabs all the user guides ?>
 
 <div class="container uw-body">
 
@@ -30,21 +31,25 @@
                     <div class="col-md-4">
                         Topic: parent topics only
                         <select class="form-control input-sm">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                          <option> --- </option>
+                            <?php
+                              $topics = (get_all_topics($user_guides));
+                              foreach($topics as $topic) {
+                                echo "<option> " . $topic . " </option>";
+                              }
+                            ?>
                         </select>
                     </div>
                     <div class="col-md-4">
                         Security Role: child roles only
                         <select class="form-control input-sm">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                          <option> --- </option>
+                            <?php
+                              $roles = (get_all_roles($user_guides));
+                              foreach($roles as $role) {
+                                echo "<option> " . $role . " </option>";
+                              }
+                            ?>
                         </select>
                     </div>
                     <div class="col-md-4">

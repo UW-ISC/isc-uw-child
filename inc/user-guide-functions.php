@@ -75,3 +75,28 @@ if ( ! function_exists( 'user_guide_table' ) ) :
             echo $html;
       }
 endif;
+
+
+if ( ! function_exists( 'get_all_topics' ) ) :
+    function get_all_topics($user_guides) {
+      $topics = array();
+      foreach($user_guides as $guide) {
+          foreach($guide->topics as $topic) {
+            array_push($topics, $topic);
+          }
+      }
+      return array_unique($topics);
+    }
+endif;
+
+if ( ! function_exists( 'get_all_roles' ) ) :
+    function get_all_roles($user_guides) {
+      $topics = array();
+      foreach($user_guides as $guide) {
+          foreach($guide->roles as $role) {
+            array_push($topics, $role);
+          }
+      }
+      return array_unique($topics);
+    }
+endif;
