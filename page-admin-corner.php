@@ -85,16 +85,18 @@
                       <h3 class="isc-admin-header">Workday Resources</h3>
                       <ul>
                           <li><a href="<?php echo get_site_url() . '/user-guides/'?>">User Guides</a></li>
-                          <li>Video Library</li>
-                          <li>Glossary</li>
+                          <li>Link</li>
+                          <li>Link</li>
                       </ul>
                   </div>
 
                   <div class="isc-admin-block">
                       <h3 class="isc-admin-header">Workday Support</h3>
-                      <div>
-                          <a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">Read about Workday Security roles and request the change</a>
-                      </div>
+                      <ul>
+                          <li>Link</li>
+                          <li>Link</li>
+                          <li>Link</li>
+                      </ul>
                   </div>
 
               </div>
@@ -128,7 +130,7 @@
                       endif;
                       ?>
 
-                    <p><a href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">See previous Workshops</a></p>
+                    <p><a href="<?php echo get_site_url() . '/admin-events'?>">See all Events</a></p>
                 </div>
             </div>
 
@@ -149,9 +151,11 @@
 
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                 <h3 class="isc-admin-header">Help for Admins</h3>
-                <div>
-                    Contact Tier 2 support team
-                </div>
+                <ul>
+                    <li>Link</li>
+                    <li>Link</li>
+                    <li>Link</li>
+                </ul>
             </div>
 
 
