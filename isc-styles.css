@@ -144,9 +144,12 @@ body, p {
 
 /*** uw breadcrumbs ***/
 .uw-breadcrumbs {
-  margin: 1em 0;
-  padding: 0;
-  display: block; }
+  margin: 1em 0 !important;
+  padding: 0 !important;
+  display: block !important; }
+  .uw-breadcrumbs ul li {
+    float: none !important;
+    display: inline-block; }
 
 /*** uw body copy ***/
 .uw-body-copy {
