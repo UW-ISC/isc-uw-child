@@ -37,8 +37,10 @@
                     <div style="margin-bottom:2em;"> <?php //echo $custom["isc-hero-description"][0]; ?></div>
                     <p><a class="uw-btn" href="<?php //echo $custom["isc-hero-link-url"][0]; ?>"><?php //echo $custom["isc-hero-link-text"][0];?></a></p>
                 </div>
-                <div class="col-md-4 col-md-offset-8 hero-header-container">
-                    <div class="isc-homepage-shortcuts">
+                <div class="col-md-4 col-md-offset-8">
+
+
+                    <div class="isc-homepage-shortcuts hero-header-container">
                         <div class="isc-homepage-title"><?php the_title(); ?></div>
                         <span class="udub-slant"><span></span></span>
 
@@ -49,6 +51,7 @@
                         </ul>
 
                     </div>
+
                 </div>
             </div>
         </div>
