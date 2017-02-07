@@ -27,6 +27,8 @@
 
             xxxx this template uses index.php xxxx
 
+            <h2>News Archive</h2>
+
           <?php
               // Start the Loop.
               while ( have_posts() ) : the_post();
