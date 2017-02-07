@@ -100,16 +100,6 @@
                                         <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/' . $image ;?>">
                                         <?php
                                       }
-
-                                      (array_key_exists("featured-image", $custom)) {
-                                          $image = $custom["featured-image"][0];
-                                          if ($image == "") {
-                                              $image = 'john_Vidale-1022-X3.jpg';
-                                          }
-                                      } else {
-                                        // default featured image?
-                                        $image = 'john_Vidale-1022-X3.jpg';
-                                      }
                                       ?>
                                      <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/' . $image ?>">
 
