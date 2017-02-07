@@ -124,15 +124,7 @@
             <h3 class="isc-admin-header">Seasonal Topics</h3>
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <div class='post-content'>
-                    <?php
-                    $page = get_page_by_title("Seasonal Topics");
-                    $description = get_cfc_field('hl-seasonal', 'body', $page->ID);
-                    if ($description == "") {
-                      echo "No summary text has been entered for seasonal topics page.";
-                    } else {
-                      echo $description;
-                    }
-                    ?>
+                  <p><?php get_seasonal_description(); ?></p>
                 </div>
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>
