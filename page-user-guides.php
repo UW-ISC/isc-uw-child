@@ -81,8 +81,9 @@
             </table>
 
             <script type="text/javascript" charset="utf-8">
+            var table;
             $(document).ready(function() {
-                $('#user_guide_lib').DataTable( {
+                table = $('#user_guide_lib').DataTable( {
                     "paging":   false,
                     "order": [[ 3, "desc" ]] // order user guide list by updated date (newest on top)
                 });
@@ -91,47 +92,36 @@
                 var topic_value = $("#topic-dropdown").val();
                 var role_value = $("#role-dropdown").val();
                 var user_guides = $("[id=user-guide]");
-
-                for (i = 0; i < user_guides.length; i++) {
-                  var guide = $(user_guides[i]);
-                  var topics = guide.attr("data-topics");
-                  var roles = guide.attr("data-roles");
-                  if (topics == undefined) {
-                    topics = "";
-                  }
-                  if (roles == undefined) {
-                    roles = "";
-                  }
-                  topics = topics.split(" ");
-                  roles = roles.split(" ");
-                  if (topic_value == "---" && role_value == "---") {
-                    guide.show();
-                  } else if (topic_value == "---") {
-                      // filter by roles
-                      if (roles.indexOf(role_value) != -1) {
-                        guide.show();
-                      } else {
-                        guide.hide();
-                      }
-                  } else if (role_value == "---") {
-                      // filter by topics
-                      if (topics.indexOf(topic_value) != -1) {
-                        guide.show();
-                      } else {
-                        guide.hide();
-                      }
-                  } else {
-                    // filter by both
-                    if (topics.indexOf(topic_value) != -1 && roles.indexOf(role_value) != -1) {
-                      guide.show();
+                $.fn.dataTable.ext.search.pop();
+                $.fn.dataTable.ext.search.push(
+                  function(settings, data, dataIndex) {
+                    var topics = $(table.row(dataIndex).node()).attr('data-topics');
+                    var roles = $(table.row(dataIndex).node()).attr('data-roles');
+                    if (topics == undefined) {
+                      topics = "";
+                    }
+                    if (roles == undefined) {
+                      roles = "";
+                    }
+                    topics = topics.split(" ");
+                    roles = roles.split(" ");
+                    if (role_value == "---" && topic_value == "---") {
+                      // return everything
+                      return true;
+                    } else if (role_value == "---") {
+                      // filter by topic
+                      return topics.indexOf(topic_value) != -1;
+                    } else if (topic_value == "---") {
+                      // filter by role
+                      return roles.indexOf(role_value) != -1;
                     } else {
-                      guide.hide();
+                      // filter by both
+                      return topics.indexOf(topic_value) != -1 && roles.indexOf(role_value) != -1;
                     }
                   }
-                }
+                );
+                table.draw();
             });
-
-
             </script>
 
         </div>
