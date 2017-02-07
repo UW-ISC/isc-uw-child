@@ -416,8 +416,7 @@ endif;
 
      if ( ! function_exists( 'get_resource_links' ) ) :
        function get_resource_links() {
-         $id = get_the_ID();
-         $custom = get_post_custom(1594); // gets custom meta of admin-corner 1594
+         $custom = get_post_custom(1594); // gets custom meta of admin-corner
          $content = unserialize($custom['workday-resource-links'][0]);
          if (count($content) == 0) {
            ?>
