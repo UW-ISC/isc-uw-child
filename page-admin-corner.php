@@ -71,13 +71,15 @@
                                <h4><?php the_title() ?></h4>
                                <div class="update-date"><?php echo get_the_date() ?> </div>
                                <div class='post-content'><?php the_excerpt() ?></div>
-
+                               <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">Read more news</a>
                       <?php
                             endwhile;
+                        else:
+                            echo "<p>No admin news available.</p>";
                         endif;
                       ?>
 
-                    <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">Read more news</a>
+
 
                   </div>
 
@@ -89,38 +91,42 @@
 
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
                 <h3 class="isc-admin-header">Next Event</h3>
-                <div>
-                    <?php
-                       $workshop_args = array(
-                                'tax_query' => array(
-                                    array(
-                                        'taxonomy' => 'location',
-                                        'field'    => 'slug',
-                                        'terms'    => 'admin-corner-workshops',
-                                    ),
+
+                <?php
+                   $workshop_args = array(
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'location',
+                                    'field'    => 'slug',
+                                    'terms'    => 'admin-corner-workshops',
                                 ),
-                                'post_status' => 'published');
-                       $workshop_posts = new WP_Query($workshop_args);
+                            ),
+                            'post_status' => 'published');
+                   $workshop_posts = new WP_Query($workshop_args);
 
-                       if ($workshop_posts->have_posts()) :
-                             $workshop_posts->the_post();
-                    ?>
-                     <h4><?php the_title() ?></h4>
-                     <div class='post-content'><?php the_excerpt(); ?></div>
+                   if ($workshop_posts->have_posts()) :
+                         $workshop_posts->the_post();
+                ?>
+                 <h4><?php the_title() ?></h4>
 
-                    <?php
-                      endif;
-                      ?>
+                 <div class='post-content'>
+                     <?php the_excerpt(); ?>
+                 </div>
 
-                    <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/admin-events'?>">See previous</a>
-                </div>
+                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/admin-events'?>">See previous</a>
+                <?php
+                    else:
+                        echo "<p>No events available.</p>";
+                  endif;
+                ?>
             </div>
 
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <h3 class="isc-admin-header">Seasonal Topics</h3>
+
                 <div class='post-content'>
                     <?php
-                    $summary_content = "No description found";
+                    $summary_content = "No summary text has been entered for seasonal topics page.";
                     if (array_key_exists("summary-text", $seasonal) && !$seasonal["summary-text"][0] == "") {
                       $summary_content = $seasonal["summary-text"][0];
                     }
@@ -128,15 +134,17 @@
                     ?>
                     <?php echo the_cfc_field('hl-seasonal', 'body') ?>
                 </div>
-                <p><a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a></p>
+                <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>
 
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                 <h3 class="isc-admin-header">Workday Support</h3>
                 <ul>
-                    <li>Link</li>
-                    <li>Link</li>
-                    <li>Link</li>
+                    <li>Supervisory Organizations</li>
+                    <li>Security Roles</li>
+                    <li>Workday Reports</li>
+                    <li>Change Requests</li>
+                    <li>Contact Help</li>
                 </ul>
             </div>
 
@@ -144,8 +152,8 @@
                 <h3 class="isc-admin-header">Workday Resources</h3>
                 <ul>
                     <li><a href="<?php echo get_site_url() . '/user-guides/'?>">User Guides</a></li>
-                    <li>Link</li>
-                    <li>Link</li>
+                    <li>Video Library</li>
+                    <li>Workday Glossary</li>
                 </ul>
             </div>
 
