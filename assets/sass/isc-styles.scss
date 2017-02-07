@@ -447,11 +447,57 @@ body, p { font-size: 16px !important; }
 
 
 /*** datatables overrides ***/
+$color_1: #ddd;
+$font_family_1: FontAwesome;
 
 .dataTables_wrapper {
 
     .pagination { list-style: none;
         .paginate_button { display: inline-block; }
+    }
+    
+    table.dataTable {
+    	thead {
+    		th {
+    			position: relative;
+    			background-image: none !important;
+    		}
+    		th.sorting {
+    			&:after {
+    				position: absolute;
+    				//top: 12px;
+    				right: 8px;
+    				display: block;
+    				font-family: $font_family_1;
+    				content: "\f0dc";
+    				color: $color_1;
+    				//font-size: 0.8em;
+    				//padding-top: 0.12em;
+    			}
+    		}
+    		th.sorting_asc {
+    			&:after {
+    				position: absolute;
+    				//top: 12px;
+    				right: 8px;
+    				display: block;
+    				font-family: $font_family_1;
+                    //font-size: 0.8em;
+    				content: "\f0de";
+    			}
+    		}
+    		th.sorting_desc {
+    			&:after {
+    				position: absolute;
+    				//top: 12px;
+    				right: 8px;
+    				display: block;
+    				font-family: $font_family_1;
+                    //font-size: 0.8em;
+    				content: "\f0dd";
+    			}
+    		}
+    	}
     }
 
 }

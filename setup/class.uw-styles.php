@@ -25,13 +25,6 @@ class UW_Styles
           'admin'   => true
       ),
 
-      'bootstrap-glyphicons' => array (
-        'id'       => 'bootstrap-glyphicons',
-        'url'      => '//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css',
-        'deps'     => array(),
-        'version'  => '3.0.0'
-      ),
-
       'font-awesome' => array (
         'id'       => 'font-awesome',
         'url'      => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
