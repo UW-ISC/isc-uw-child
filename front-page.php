@@ -177,7 +177,7 @@
                         echo "No news posts found.";
                       endif;
                     ?>
-                      <p><a class="uw-btn btn-sm" href="#">See all news</a></p>
+                      <p><a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/news'?>">See all news</a></p>
                   </div>
 
                   <!-- end loop -->

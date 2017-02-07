@@ -73,7 +73,7 @@
                       <?php
                             endwhile;
                             ?>
-                            <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/admin-corner-news'?>">Read older news</a>
+                            <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/news'?>">Read older news</a>
                     <?php
                         else:
                             echo "<p>No admin news available.</p>";
