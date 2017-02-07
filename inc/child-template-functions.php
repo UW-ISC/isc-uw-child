@@ -416,7 +416,8 @@ endif;
 
      if ( ! function_exists( 'get_resource_links' ) ) :
        function get_resource_links() {
-         $custom = get_post_custom(1594); // gets custom meta of admin-corner
+         $id = get_the_ID();
+         $custom = get_post_custom(1594); // gets custom meta of admin-corner 1594
          $content = unserialize($custom['workday-resource-links'][0]);
          if (count($content) == 0) {
            ?>
@@ -433,5 +434,27 @@ endif;
          }
        }
      endif;
+
+
+     /**
+      * This function returns the text that is the
+      * description of the seasonal topic
+      *
+      * @author Mason Gionet <mgionet@uw.edu>
+      * @copyright Copyright (c) 2016, University of Washington
+      * @since 0.2.0
+      */
+
+
+      if ( ! function_exists( 'get_seasonal_description' ) ) :
+        function get_seasonal_description() {
+          $description = get_cfc_field('hl-seasonal', 'body', 1673); //seasonal topics page ID
+          if ($description == "") {
+            echo "No summary text has been entered for seasonal topics page.";
+          } else {
+            echo $description;
+          }
+        }
+      endif;
 
 ?>
