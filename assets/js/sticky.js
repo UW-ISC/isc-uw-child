@@ -17,7 +17,7 @@ $(document).ready(function() {
         var change = true;
         if ($(window).width() > width_change && change) {
             var height_change = $(".float-menu").offset().top - top_padding;
-            var temp = temp = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
+            var footer_barrier = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
             change = false;
         }
 
@@ -31,13 +31,13 @@ $(document).ready(function() {
             if ($(this).width() > width_change && change) {
                 // we don't wanna continually update this
                 height_change = toc.offset().top - top_padding;
-                temp = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
+                footer_barrier = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
                 change = false;
             }
             // if a user resizes the page to activate the floating thingy, we have to be ready and
             // account for their location on the page
             if ($(this).width() > width_change) {
-                if ($(this).scrollTop() > height_change && temp > 0) {
+                if ($(this).scrollTop() > height_change && footer_barrier > 0) {
                     toc.addClass("uw-accordion-menu-floater");
                     content.addClass("uw-content-floater");
                     toc.css("width", new_width);
@@ -48,7 +48,7 @@ $(document).ready(function() {
                   toc.addClass("uw-accordion-menu-floater");
                   content.addClass("uw-content-floater");
                   toc.css("width", new_width);
-                    toc.css("top", parseInt(temp) + parseInt(top_padding));
+                    toc.css("top", parseInt(footer_barrier) + parseInt(top_padding));
                 } else {
                     toc.removeClass("uw-accordion-menu-floater");
                     content.removeClass("uw-content-floater");
@@ -75,10 +75,10 @@ $(document).ready(function() {
         // document - scrollTop
 
         $(window).scroll(function() {
-            temp = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
+            footer_barrier = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
             // if the page is more than 991 px, it can follow the floating behavior
             if ($(this).width() > width_change) {
-                if ($(this).scrollTop() > height_change && temp > 0) {
+                if ($(this).scrollTop() > height_change && footer_barrier > 0) {
                     toc.addClass("uw-accordion-menu-floater");
                     content.addClass("uw-content-floater");
                     toc.css("width", new_width);
@@ -89,7 +89,7 @@ $(document).ready(function() {
                   toc.addClass("uw-accordion-menu-floater");
                   content.addClass("uw-content-floater");
                   toc.css("width", new_width);
-                    toc.css("top", parseInt(temp) + parseInt(top_padding));
+                    toc.css("top", parseInt(footer_barrier) + parseInt(top_padding));
                 }
                 else {
                     toc.removeClass("uw-accordion-menu-floater");
@@ -105,7 +105,6 @@ $(document).ready(function() {
         });
     }
 });
-
 
 var getCSS = function (prop, fromClass) {
     var $inspector = $("<div>").css('display', 'none').addClass(fromClass);
