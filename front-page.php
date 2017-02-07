@@ -88,14 +88,17 @@
                                 <div style="margin:-40px; height:160px; overflow:hidden; margin-bottom:30px;">
                                       <?php
                                       $custom = get_post_custom($featured_page->ID);
-                                      if (array_key_exists("featured-image", $custom)) {
-                                          $image = $custom["featured-image"][0];
-                                          if ($image == "") {
-                                              $image = 'john_Vidale-1022-X3.jpg';
-                                          }
+                                      if (has_post_thumbnail($featured_page->ID)) {
+                                        $image = get_the_post_thumbnail_url($featured_page->ID);
+                                        ?>
+                                        <img alt="" class="" src="<?php echo $image; ?>">
+                                        <?php
                                       } else {
-                                        // default featured image?
+                                        //default image
                                         $image = 'john_Vidale-1022-X3.jpg';
+                                        ?>
+                                        <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/' . $image ;?>">
+                                        <?php
                                       }
                                       ?>
                                      <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/' . $image ?>">
