@@ -357,17 +357,14 @@ body, p { font-size: 16px !important; }
 
 }
 
-.isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 1em; position: relative; margin-top: 70px;
+.isc-admin-header {
+    font-weight: 900 !important;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0 !important;
+}
 
-    .isc-admin-header {
-        font-weight: 900 !important;
-        font-size: 18px;
-        text-transform: uppercase;
-        position: absolute;
-        top: -40px;
-        left: 0;
-        margin: 0;
-    }
+.isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 2em; position: relative; margin-top: 0;
 
     h4 { margin-top: 0; }
 
@@ -379,7 +376,9 @@ body, p { font-size: 16px !important; }
         }
     }
 
-    .post-content { margin-bottom: 1em; }
+    .update-date { font-weight: bold; margin-bottom: .5em; }
+    .post-content { margin-bottom: 2em; }
+
 }
 
 /*** generic content and sidebar ***/
@@ -394,24 +393,11 @@ body, p { font-size: 16px !important; }
     h3 { margin-top: 0; }
 
     /*** custom sidebar widget ***/
-    .isc-widget-tan { background: #e8e3d3 !important; margin-bottom: 20px; }
+    .isc-widget-tan { background: #e8e3d3 !important;  }
 
-    .isc-widget-gray { background: #ccc; margin-bottom: 20px; }
+    .isc-widget-gray { background: #ccc; }
 
-    .isc-widget-white { background: #fff; border: solid 1px #ddd; margin-bottom: 20px; }
-
-    // admin sidebar
-
-    .isc-admin-header {
-        font-weight: 900 !important;
-        font-size: 18px;
-        text-transform: uppercase;
-        position: absolute;
-        top: -40px;
-        left: 0;
-        margin: 0;
-    }
-
+    .isc-widget-white { background: #fff; border: solid 1px #ddd; }
 
 }
 
