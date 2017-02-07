@@ -6,22 +6,18 @@ $(document).ready(function() {
     // if these elements don't exist, don't bother with the following code
     if (toc.length > 0 && content.length > 0) {
         var parent = $(".row");
-        var padding = toc.css("padding-left").slice(0, -2);
-
+        var padding = content.css("padding-left").slice(0, -2);
         // if its col-md-4, the width should be 4 / 12 (based on bootstrap's grid system)
         var menu_percentage = toc.parent().prop('className').slice(-1) / 12;
-
         var width_change = 991; // the width at which the table of contents is simply put on top of the content
-
-        // getting the point at which to start the floating mechanism
-        // we need to calculate both the potential padding and width
-        // of a floating toc
-        var change = true;
-        var pad_left = (content.offset().left - toc.width() - padding * 3);
         var new_width = (parent.width() * menu_percentage) - padding * 2;
+        // where the floating menu should be placed from the top
+        var top_padding = getCSS('top', 'uw-accordion-menu-floater').slice(0, -2);
 
+        var change = true;
         if ($(window).width() > width_change && change) {
-            var height_change = $(".float-menu").offset().top;
+            var height_change = $(".float-menu").offset().top - top_padding;
+            var temp = temp = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
             change = false;
         }
 
@@ -31,23 +27,28 @@ $(document).ready(function() {
             // by resizing the window, the width and padding of a potentially
             // floating toc changes, so we have to recalculate it
             new_width = (parent.width() * menu_percentage) - padding * 2;
-            pad_left = (content.offset().left - toc.width() - padding * 3);
 
             if ($(this).width() > width_change && change) {
-                // we don't wanna continually update this however, otherwise it will be wonky
-                // the function is continually updating/implementing it's changes which causes a jumpy toc
-                // just wanna get it once we have the opportunity and it should never change really...
-                height_change = toc.offset().top;
+                // we don't wanna continually update this
+                height_change = toc.offset().top - top_padding;
+                temp = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
                 change = false;
             }
             // if a user resizes the page to activate the floating thingy, we have to be ready and
             // account for their location on the page
             if ($(this).width() > width_change) {
-                if ($(this).scrollTop() > height_change) {
+                if ($(this).scrollTop() > height_change && temp > 0) {
                     toc.addClass("uw-accordion-menu-floater");
                     content.addClass("uw-content-floater");
                     toc.css("width", new_width);
-                    toc.css("left", pad_left);
+                    toc.css({
+                      'top': ''
+                    });
+                } else if ($(this).scrollTop() > height_change) {
+                  toc.addClass("uw-accordion-menu-floater");
+                  content.addClass("uw-content-floater");
+                  toc.css("width", new_width);
+                    toc.css("top", parseInt(temp) + parseInt(top_padding));
                 } else {
                     toc.removeClass("uw-accordion-menu-floater");
                     content.removeClass("uw-content-floater");
@@ -55,7 +56,7 @@ $(document).ready(function() {
                         'width': ''
                     });
                     toc.css({
-                        'left': ''
+                      'top': ''
                     });
                 }
             } else { // the case in which the page is expanded beyond 991px
@@ -66,30 +67,52 @@ $(document).ready(function() {
                     'width': ''
                 });
                 toc.css({
-                    'left': ''
+                    'top': ''
                 });
             }
         });
 
+        // document - scrollTop
+
         $(window).scroll(function() {
+            temp = $(document).height() - $(this).scrollTop() - top_padding * 2 - toc.height() - $(".uw-footer").height() - 35;
             // if the page is more than 991 px, it can follow the floating behavior
             if ($(this).width() > width_change) {
-                if ($(this).scrollTop() > height_change) {
+                if ($(this).scrollTop() > height_change && temp > 0) {
                     toc.addClass("uw-accordion-menu-floater");
                     content.addClass("uw-content-floater");
                     toc.css("width", new_width);
-                    toc.css("left", pad_left);
-                } else {
+                    toc.css({
+                        'top': ''
+                    });
+                } else if ($(this).scrollTop() > height_change) {
+                  toc.addClass("uw-accordion-menu-floater");
+                  content.addClass("uw-content-floater");
+                  toc.css("width", new_width);
+                    toc.css("top", parseInt(temp) + parseInt(top_padding));
+                }
+                else {
                     toc.removeClass("uw-accordion-menu-floater");
                     content.removeClass("uw-content-floater");
                     toc.css({
                         'width': ''
                     });
                     toc.css({
-                        'left': ''
+                        'top': ''
                     });
                 }
             }
         });
     }
 });
+
+
+var getCSS = function (prop, fromClass) {
+    var $inspector = $("<div>").css('display', 'none').addClass(fromClass);
+    $("body").append($inspector); // add to DOM, in order to read the CSS property
+    try {
+        return $inspector.css(prop);
+    } finally {
+        $inspector.remove(); // and remove from DOM
+    }
+};

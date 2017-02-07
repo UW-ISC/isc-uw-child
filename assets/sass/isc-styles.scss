@@ -609,9 +609,8 @@ body, p { font-size: 16px !important; }
     @include desktop {
 
         position: fixed;
-        top: 20px !important;
+        top: 20px;
         left: inherit !important;
-        width: 360px !important;
     }
 
 }

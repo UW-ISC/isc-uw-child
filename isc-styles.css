@@ -528,8 +528,7 @@ body, p {
 @media (min-width: 992px) {
   .uw-accordion-menu-floater {
     position: fixed;
-    top: 20px !important;
-    left: inherit !important;
-    width: 360px !important; } }
+    top: 20px;
+    left: inherit !important; } }
 
 /*# sourceMappingURL=isc-styles.css.map */
