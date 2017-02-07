@@ -19,10 +19,24 @@ class UW_Styles
 
       'google-font-open' => array(
           'id'      => 'google-font-open',
-          'url'     => 'https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700',
+          'url'     => '//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700',
           'deps'    => array(),
           'version' => '3.6',
           'admin'   => true
+      ),
+
+      'bootstrap-glyphicons' => array (
+        'id'       => 'bootstrap-glyphicons',
+        'url'      => '//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css',
+        'deps'     => array(),
+        'version'  => '3.0.0'
+      ),
+
+      'font-awesome' => array (
+        'id'       => 'font-awesome',
+        'url'      => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        'deps'     => array(),
+        'version'  => '4.7.0'
       ),
 
       'uw-master' => array (
@@ -34,7 +48,7 @@ class UW_Styles
 
       'datatables-bootstrap' => array (
         'id'       => 'datatables-bootstrap',
-        'url'      => 'https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css',
+        'url'      => '//cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css',
         'deps'     => array(),
         'version'  => '1.10.13'
       ),
