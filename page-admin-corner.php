@@ -125,13 +125,14 @@
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <div class='post-content'>
                     <?php
-                    $summary_content = "No summary text has been entered for seasonal topics page.";
-                    if (array_key_exists("summary-text", $seasonal) && !$seasonal["summary-text"][0] == "") {
-                      $summary_content = $seasonal["summary-text"][0];
+                    $page = get_page_by_title("Seasonal Topics");
+                    $description = get_cfc_field('hl-seasonal', 'body', $page->ID);
+                    if ($description == "") {
+                      echo "No summary text has been entered for seasonal topics page.";
+                    } else {
+                      echo $description;
                     }
-                    echo $summary_content;
                     ?>
-                    <?php echo the_cfc_field('hl-seasonal', 'body') ?>
                 </div>
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>
@@ -139,20 +140,18 @@
             <h3 class="isc-admin-header">Workday Support</h3>
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                 <ul>
-                    <li>Supervisory Organizations</li>
-                    <li>Security Roles</li>
-                    <li>Workday Reports</li>
-                    <li>Change Requests</li>
-                    <li>Contact Help</li>
+                  <?php
+                  get_support_links();
+                  ?>
                 </ul>
             </div>
 
             <h3 class="isc-admin-header">Workday Resources</h3>
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <ul>
-                    <li><a href="<?php echo get_site_url() . '/user-guides/'?>">User Guides</a></li>
-                    <li>Video Library</li>
-                    <li>Workday Glossary</li>
+                    <?php
+                      get_resource_links();
+                      ?>
                 </ul>
             </div>
 
