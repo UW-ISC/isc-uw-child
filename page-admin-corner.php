@@ -143,9 +143,13 @@
                   <?php
                   $custom = get_post_custom(1594); // gets custom meta of admin-corner
                   $quicklinks = unserialize($custom['workday-support-links'][0]);
-                  foreach ( $quicklinks as $link ) {
-                    $listitem = "<li><a href='%s'>%s</a></li>";
-                    echo sprintf($listitem, $link['support-url'], $link['support-text']);
+                  if ( !empty( $quicklinks ) ) {
+                      foreach ( $quicklinks as $link ) {
+                        $listitem = "<li><a href='%s'>%s</a></li>";
+                        echo sprintf($listitem, $link['support-url'], $link['support-text']);
+                      }
+                  } else {
+                    echo "<li>No quicklinks found</li>";
                   }
                   ?>
                 </ul>
