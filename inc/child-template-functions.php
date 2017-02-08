@@ -424,8 +424,8 @@ if ( ! function_exists( 'output_quicklinks' ) ) :
       if ( isset( $quicklinks ) && !empty( $quicklinks ) ) {
           echo "<ul>";
           foreach ( $quicklinks as $link ) {
-            $listitem = "<li><a href='%s'>%s</a></li>";
-            echo sprintf($listitem, $link[$url_key], $link[$text_key]);
+            $format = "<li><a href='%s'>%s</a></li>";
+            echo sprintf($format, $link[$url_key], $link[$text_key]);
           }
           echo "</ul>";
       } else {
