@@ -640,11 +640,9 @@ $font_family_1: FontAwesome;
 .uw-accordion-menu-floater {
 
     @include desktop {
-
         position: fixed;
         top: 20px !important;
         left: inherit !important;
-        width: 360px !important;
     }
 
 }

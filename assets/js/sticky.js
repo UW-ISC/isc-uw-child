@@ -77,7 +77,7 @@ $(document).ready(function() {
                 if ($(this).scrollTop() > height_change) {
                     toc.addClass("uw-accordion-menu-floater");
                     content.addClass("uw-content-floater");
-                    toc.css("width", new_width);
+                    toc.css("width", new_width - 30); // subtract 30px for padding
                     toc.css("left", pad_left);
                 } else {
                     toc.removeClass("uw-accordion-menu-floater");
