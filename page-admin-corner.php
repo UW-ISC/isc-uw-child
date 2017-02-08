@@ -133,6 +133,9 @@
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                 <ul>
                   <?php
+                  $custom = get_post_custom(1594); // gets custom meta of admin-corner
+                  $content = unserialize($custom['workday-support-links'][0]);
+                  log_to_console($custom);
                   get_reference_links("support");
                   ?>
                 </ul>

@@ -387,12 +387,12 @@ endif;
     if ( ! function_exists( 'get_reference_links' ) ) :
       function get_reference_links($input) {
         $custom = get_post_custom(1594); // gets custom meta of admin-corner
-        $content = unserialize($custom['workday-' . $input .'-links'][0]);
-        if (empty($custom) || count($content) == 0) {
+        if (!array_key_exists('workday-' . $input .'-links', $custom) || empty($custom['workday-' . $input .'-links'][0])) {
           ?>
-          <p>No <?php echo $input; ?> links found.</p>
+          <p>No links found.</p>
           <?php
         } else {
+          $content = unserialize($custom['workday-' . $input .'-links'][0]);
           for ($i = 0; $i < count($content); $i++) {
             $url = $content[$i][$input . '-url'];
             $text = $content[$i][$input . '-text']
