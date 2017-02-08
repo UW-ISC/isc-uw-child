@@ -142,9 +142,11 @@
                 <ul>
                   <?php
                   $custom = get_post_custom(1594); // gets custom meta of admin-corner
-                  $content = unserialize($custom['workday-support-links'][0]);
-                  log_to_console($custom);
-                  get_reference_links("support");
+                  $quicklinks = unserialize($custom['workday-support-links'][0]);
+                  foreach ( $quicklinks as $link ) {
+                    $listitem = "<li><a href='%s'>%s</a></li>";
+                    echo sprintf($listitem, $link['support-url'], $link['support-text']);
+                  }
                   ?>
                 </ul>
             </div>
