@@ -29,26 +29,14 @@
 
             <h2>News Archive</h2>
 
-          <?php
-              // Start the Loop.
-              while ( have_posts() ) : the_post();
+            <?php while ( have_posts() ) : the_post(); ?>
 
-                  /*
-                   * Include the post format-specific template for the content. If you want to
-                   * use this in a child theme, then include a file called called content-___.php
-                   * (where ___ is the post format) and that will be used instead.
-                   */
-                  get_template_part( 'content', get_post_format() );
+                <h3><?php the_title() ?></h3>
+                <div class="update-date"><?php echo get_the_date() ?> </div>
+                <div class='post-content'><?php the_excerpt() ?></div>
 
-                  // If comments are open or we have at least one comment, load up the comment template.
-                  if ( comments_open() || get_comments_number() ) {
-                      comments_template();
-                  }
+            <?php endwhile ?>
 
-              endwhile;
-          ?>
-
-          <span class="next-page"><?php next_posts_link( 'Next page', '' ); ?></span>
 
         </div>
 
