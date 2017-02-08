@@ -129,8 +129,16 @@
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>
 
-            <h3 class="isc-admin-header">Workday Support</h3>
+            <h3 class="isc-admin-header">Help for Admins</h3>
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
+                <ul>
+                    <li>Contact the ISC</li>
+                    <li>See Aligned Admin Contact List</li>
+                </ul>
+            </div>
+
+            <h3 class="isc-admin-header">Workday Support</h3>
+            <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <ul>
                   <?php
                   $custom = get_post_custom(1594); // gets custom meta of admin-corner
@@ -142,7 +150,7 @@
             </div>
 
             <h3 class="isc-admin-header">Workday Resources</h3>
-            <div class="contact-widget-inner isc-widget-white isc-admin-block">
+            <div class="contact-widget-inner isc-widget-tan isc-admin-block">
                 <ul>
                   <?php
                   get_reference_links("resource")
