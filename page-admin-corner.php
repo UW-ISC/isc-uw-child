@@ -141,27 +141,16 @@
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <ul>
                   <?php
-                  $custom = get_post_custom(1594); // gets custom meta of admin-corner
-                  $quicklinks = unserialize($custom['workday-support-links'][0]);
-                  if ( !empty( $quicklinks ) ) {
-                      foreach ( $quicklinks as $link ) {
-                        $listitem = "<li><a href='%s'>%s</a></li>";
-                        echo sprintf($listitem, $link['support-url'], $link['support-text']);
-                      }
-                  } else {
-                    echo "<li>No quicklinks found</li>";
-                  }
+                  support_quicklinks();
                   ?>
                 </ul>
             </div>
 
             <h3 class="isc-admin-header">Workday Resources</h3>
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
-                <ul>
                   <?php
-                  get_reference_links("resource")
+                  resource_quicklinks();
                   ?>
-                </ul>
             </div>
 
         </div>
