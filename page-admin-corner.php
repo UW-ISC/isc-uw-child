@@ -133,7 +133,7 @@
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                 <ul>
                   <?php
-                  get_support_links();
+                  get_reference_links("support");
                   ?>
                 </ul>
             </div>
@@ -141,9 +141,9 @@
             <h3 class="isc-admin-header">Workday Resources</h3>
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <ul>
-                    <?php
-                      get_resource_links();
-                      ?>
+                  <?php
+                  get_reference_links("resource")
+                  ?>
                 </ul>
             </div>
 

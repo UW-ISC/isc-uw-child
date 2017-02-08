@@ -375,8 +375,8 @@ endif;
 
 
  /**
-  * This function returns the Workday Support
-  * links as a list.
+  * This function returns the
+  * links of the passed srting as a list.
   *
   * @author Mason Gionet <mgionet@uw.edu>
   * @copyright Copyright (c) 2016, University of Washington
@@ -384,18 +384,18 @@ endif;
   */
 
 
-    if ( ! function_exists( 'get_support_links' ) ) :
-      function get_support_links() {
+    if ( ! function_exists( 'get_reference_links' ) ) :
+      function get_reference_links($input) {
         $custom = get_post_custom(1594); // gets custom meta of admin-corner
-        $content = unserialize($custom['workday-support-links'][0]);
-        if (count($content) == 0) {
+        $content = unserialize($custom['workday-' . $input .'-links'][0]);
+        if (empty($custom) || count($content) == 0) {
           ?>
-          <p>No Support links found.</p>
+          <p>No <?php echo $input; ?> links found.</p>
           <?php
         } else {
           for ($i = 0; $i < count($content); $i++) {
-            $url = $content[$i]['support-url'];
-            $text = $content[$i]['support-text']
+            $url = $content[$i][$input . '-url'];
+            $text = $content[$i][$input . '-text']
             ?>
             <li><a href="<?php echo $url; ?>"><?php echo $text; ?></a></li>
             <?php
@@ -403,36 +403,6 @@ endif;
         }
       }
     endif;
-
-
-    /**
-     * This function returns the Workday Resource
-     * links as a list.
-     *
-     * @author Mason Gionet <mgionet@uw.edu>
-     * @copyright Copyright (c) 2016, University of Washington
-     * @since 0.2.0
-     */
-
-     if ( ! function_exists( 'get_resource_links' ) ) :
-       function get_resource_links() {
-         $custom = get_post_custom(1594); // gets custom meta of admin-corner
-         $content = unserialize($custom['workday-resource-links'][0]);
-         if (count($content) == 0) {
-           ?>
-           <p>No Resource links found.</p>
-           <?php
-         } else {
-           for ($i = 0; $i < count($content); $i++) {
-             $url = $content[$i]['resource-url'];
-             $text = $content[$i]['resource-text']
-             ?>
-             <li><a href="<?php echo $url; ?>"><?php echo $text; ?></a></li>
-             <?php
-           }
-         }
-       }
-     endif;
 
 
      /**
