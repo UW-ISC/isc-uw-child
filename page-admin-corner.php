@@ -90,28 +90,34 @@
 
             <h3 class="isc-admin-header">Next Event</h3>
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
-              <?php // Retrieve the next 5 upcoming events
+              <div class='post-content'>
+                <?php
                 $event = tribe_get_events( array(
                     'posts_per_page' => 1,
                     'start_date' => date( 'Y-m-d H:i:s' )
                 ) );
-                $current = $event[0];
-                $title = $current->post_title;
-                ?>
+                // if $event is an empty array then
+                if (empty($event)) {
+                  echo "No events found.";
+                } else {
+                  $current = $event[0];
+                  $title = $current->post_title;
+                  ?>
 
-                 <div class='post-content'>
-                     <?php
-                     $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
-                     $html .= "<p>" . tribe_get_start_date($current) . "</p>";
-                     if (tribe_has_venue($current->ID)) {
-                       $details = tribe_get_venue_details($current->ID);
-                       log_to_console($details);
-                       $html .= "<p>" . $details["linked_name"] . "</p>";
-                       $html .= $details["address"];
-                     }
-                     $html .= "<p>" . $current->post_excerpt . "</p>";
-                     echo $html;
-                     ?>
+
+                       <?php
+                       $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
+                       $html .= "<p>" . tribe_get_start_date($current) . "</p>";
+                       if (tribe_has_venue($current->ID)) {
+                         $details = tribe_get_venue_details($current->ID);
+                         //log_to_console($details);
+                         $html .= "<p>" . $details["linked_name"] . "</p>";
+                         $html .= $details["address"];
+                       }
+                       $html .= "<p>" . $current->post_excerpt . "</p>";
+                       echo $html;
+                }
+                ?>
                  </div>
 
 
@@ -127,15 +133,22 @@
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>
 
-            <h3 class="isc-admin-header">Workday Support</h3>
+            <h3 class="isc-admin-header">Help for Admins</h3>
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
+                  <?php
+                  adminhelp_quicklinks();
+                  ?>
+            </div>
+
+            <h3 class="isc-admin-header">Workday Support</h3>
+            <div class="contact-widget-inner isc-widget-white isc-admin-block">
                   <?php
                   support_quicklinks();
                   ?>
             </div>
 
             <h3 class="isc-admin-header">Workday Resources</h3>
-            <div class="contact-widget-inner isc-widget-white isc-admin-block">
+            <div class="contact-widget-inner isc-widget-tan isc-admin-block">
                   <?php
                   resource_quicklinks();
                   ?>
