@@ -24,7 +24,7 @@ get_header();
     </div>
 
     <div class="row">
-        <article class="uw-content col-md-10">
+        <article class="uw-content col-md-9">
 
             xxxx this is a category page template xxxx
 

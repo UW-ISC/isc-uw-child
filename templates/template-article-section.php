@@ -23,7 +23,7 @@ get_header();
 
     <div class="row">
 
-        <article class="uw-body-copy col-md-offset-1 col-md-10">
+        <article class="uw-body-copy col-md-9">
 
             xxxx this is an article section template xxxx
 

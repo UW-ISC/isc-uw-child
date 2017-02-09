@@ -24,7 +24,7 @@ get_header();
 
     <div class="row">
 
-        <article id='main_content' class="uw-body-copy col-md-offset-1 col-md-10" tabindex="-1">
+        <article id='main_content' class="uw-body-copy col-md-9" tabindex="-1">
 
             xxxx this is an article page template xxxx
 

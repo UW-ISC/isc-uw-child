@@ -127,22 +127,15 @@
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>
 
-            <h3 class="isc-admin-header">Help for Admins</h3>
-            <div class="contact-widget-inner isc-widget-gray isc-admin-block">
-                  <?php
-                  adminhelp_quicklinks();
-                  ?>
-            </div>
-
             <h3 class="isc-admin-header">Workday Support</h3>
-            <div class="contact-widget-inner isc-widget-white isc-admin-block">
+            <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                   <?php
                   support_quicklinks();
                   ?>
             </div>
 
             <h3 class="isc-admin-header">Workday Resources</h3>
-            <div class="contact-widget-inner isc-widget-tan isc-admin-block">
+            <div class="contact-widget-inner isc-widget-white isc-admin-block">
                   <?php
                   resource_quicklinks();
                   ?>

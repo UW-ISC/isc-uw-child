@@ -21,7 +21,7 @@
 
   <div class="row">
 
-    <div class="uw-content col-md-offset-1 col-md-10" role='main'>
+    <div class="uw-content col-md-9" role='main'>
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
