@@ -16,11 +16,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 ?>
-<div id="tribe-events-pg-template">
-HEIFHLEJLLKFWJLKWFEKLJEFW
-	<?php tribe_events_before_html(); ?>
-	<?php tribe_get_view(); ?>
-	<?php tribe_events_after_html(); ?>
-</div> <!-- #tribe-events-pg-template -->
+<div class="uw-body container">
+	<div class="row">
+		<div class="col-md-12"> <?php tribe_breadcrumbs(); ?></div>
+	</div>
+
+	<div class="row">
+		<div id="tribe-events-pg-template">
+			<?php tribe_events_before_html(); ?>
+			<?php tribe_get_view(); ?>
+			<?php tribe_events_after_html(); ?>
+		</div> <!-- #tribe-events-pg-template -->
+	</div>
+</div>
+
 <?php
 get_footer();
