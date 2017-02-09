@@ -95,14 +95,11 @@
                                         <?php
                                       } else {
                                         //default image
-                                        $image = 'john_Vidale-1022-X3.jpg';
                                         ?>
-                                        <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/' . $image ;?>">
+                                        <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg';?>">
                                         <?php
                                       }
                                       ?>
-                                     <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/' . $image ?>">
-
                                  </div>
 
                               <h3>
