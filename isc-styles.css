@@ -460,6 +460,9 @@ body, p {
 .post-content {
   margin-bottom: 2em; }
 
+.more {
+  font-size: 15px; }
+
 /*** uwhr accordian styles ***/
 .uw-accordion-menu {
   margin-bottom: 3rem;

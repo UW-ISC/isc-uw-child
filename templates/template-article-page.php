@@ -29,12 +29,13 @@ get_header();
             xxxx this is an article page template xxxx
 
             <?php
-            while ( have_posts() ) : the_post();
-                the_title( '<h2 class="title">', '</h2>' );
-                the_content();
-            endwhile;
 
-            display_child_pages_with_toc();
+                while ( have_posts() ) : the_post();
+                    the_title( '<h2 class="title">', '</h2>' );
+                    the_content();
+                endwhile;
+
+                display_child_pages_with_toc();
             ?>
 
         </article>

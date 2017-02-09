@@ -115,7 +115,7 @@
                  <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/admin-events'?>">See previous</a>
                 <?php
                     else:
-                        echo "<p>No events available.</p>";
+                        echo "<p>No events available</p>";
                   endif;
                 ?>
             </div>

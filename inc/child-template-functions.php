@@ -35,9 +35,9 @@ if ( ! function_exists( 'display_child_pages_with_toc' ) ) :
       foreach ($children_pages as $child) {
           // Displaying the title of a child page
           $url = get_permalink($child);
-          $html .= '<h4 class="title" id="'.$child->post_name.'"> <a href="'.$url.'">';
+          $html .= '<h3 class="title" id="'.$child->post_name.'"> <a href="'.$url.'">';
           $html .= $child->post_title;
-          $html .= '</a> </h4>';
+          $html .= '</a> </h3>';
           // Displaying the date the page was last updated
           $date_updated = new DateTime($child->post_modified_gmt);
           $html .= '<div id="date_updated"> Updated: ';
