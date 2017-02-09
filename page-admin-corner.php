@@ -131,31 +131,23 @@
 
             <h3 class="isc-admin-header">Help for Admins</h3>
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
-                <ul>
-                    <li>Contact the ISC</li>
-                    <li>See Aligned Admin Contact List</li>
-                </ul>
+                  <?php
+                  adminhelp_quicklinks();
+                  ?>
             </div>
 
             <h3 class="isc-admin-header">Workday Support</h3>
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
-                <ul>
                   <?php
-                  $custom = get_post_custom(1594); // gets custom meta of admin-corner
-                  $content = unserialize($custom['workday-support-links'][0]);
-                  log_to_console($custom);
-                  get_reference_links("support");
+                  support_quicklinks();
                   ?>
-                </ul>
             </div>
 
             <h3 class="isc-admin-header">Workday Resources</h3>
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
-                <ul>
                   <?php
-                  get_reference_links("resource")
+                  resource_quicklinks();
                   ?>
-                </ul>
             </div>
 
         </div>

@@ -275,8 +275,8 @@ function add_ids_to_header_tags_auto( $content) {
  * @global $post
  */
 
- if ( ! function_exists( 'get_quicklinks' ) ) :
-     function get_quicklinks() {
+ if ( ! function_exists( 'isc_front_get_quicklinks' ) ) :
+     function isc_front_get_quicklinks() {
         $custom = get_post_meta(450);
         $html = "";
         if (array_key_exists("isc-hero-quicklinks", $custom)) {
@@ -375,35 +375,67 @@ endif;
 
 
  /**
-  * This function returns the
-  * links of the passed srting as a list.
+  * This private function returns a ul of quicklinks. It should be called via
+  * wrapper functions below.
   *
-  * @author Mason Gionet <mgionet@uw.edu>
+  * @author Craig M. Stimmel <cstimmel@uw.edu>
+  * @author Charlon Palacay <charlon@uw.edu>
   * @copyright Copyright (c) 2016, University of Washington
   * @since 0.2.0
   */
 
-
-    if ( ! function_exists( 'get_reference_links' ) ) :
-      function get_reference_links($input) {
-        $custom = get_post_custom(1594); // gets custom meta of admin-corner
-        if (!array_key_exists('workday-' . $input .'-links', $custom) || empty($custom['workday-' . $input .'-links'][0])) {
-          ?>
-          <p>No links found.</p>
-          <?php
-        } else {
-          $content = unserialize($custom['workday-' . $input .'-links'][0]);
-          for ($i = 0; $i < count($content); $i++) {
-            $url = $content[$i][$input . '-url'];
-            $text = $content[$i][$input . '-text']
-            ?>
-            <li><a href="<?php echo $url; ?>"><?php echo $text; ?></a></li>
-            <?php
-          }
-        }
+if ( ! function_exists( 'output_quicklinks' ) ) :
+    function output_quicklinks( $post_id, $field, $url_key, $text_key ) {
+      $quicklinks = array();
+      $custom = get_post_custom( $post_id ); // gets custom meta of admin-corner
+      if ( array_key_exists( $field, $custom ) ) {
+        $quicklinks = unserialize($custom[$field][0]);
       }
-    endif;
+      if ( isset( $quicklinks ) && !empty( $quicklinks ) ) {
+          echo "<ul>";
+          foreach ( $quicklinks as $link ) {
+            $format = "<li><a href='%s'>%s</a></li>";
+            echo sprintf($format, $link[$url_key], $link[$text_key]);
+          }
+          echo "</ul>";
+      } else {
+        echo "<p>No quicklinks found</p>";
+      }
+    }
+endif;
 
+/* Wrapper function for 'Help For Admins' on Admin's Corner */
+if ( ! function_exists( 'adminhelp_quicklinks' ) ) :
+    function adminhelp_quicklinks() {
+        $post_id = 1594;
+        $field = 'admin-help-links';
+        $url_key = 'admin-help-url';
+        $text_key = 'admin-help-text';
+        output_quicklinks($post_id, $field, $url_key, $text_key);
+    }
+endif;
+
+/* Wrapper function for 'Workday Support' on Admin's Corner */
+if ( ! function_exists( 'support_quicklinks' ) ) :
+    function support_quicklinks() {
+        $post_id = 1594;
+        $field = 'workday-support-links';
+        $url_key = 'support-url';
+        $text_key = 'support-text';
+        output_quicklinks($post_id, $field, $url_key, $text_key);
+    }
+endif;
+
+/* Wrapper function for 'Workday Resources' on Admin's Corner */
+if ( ! function_exists( 'resource_quicklinks' ) ) :
+    function resource_quicklinks() {
+        $post_id = 1594;
+        $field = 'workday-resource-links';
+        $url_key = 'resource-url';
+        $text_key = 'resource-text';
+        output_quicklinks($post_id, $field, $url_key, $text_key);
+    }
+endif;
 
      /**
       * This function returns the text that is the
