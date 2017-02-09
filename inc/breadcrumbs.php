@@ -56,7 +56,13 @@ function get_uw_breadcrumbs()
       {
         $thecat = get_the_category( $post->ID  );
         $category = array_shift( $thecat ) ;
-        $html .=  '<li><a href="'  . get_category_link( $category->term_id ) .'" title="'. get_cat_name( $category->term_id ).'">'. get_cat_name($category->term_id ) . '</a>';
+        $category_name = get_cat_name( $category->term_id );
+        if ( $category_name == 'Uncategorized' )
+        {
+            $category_name = 'News';
+            $category_link = get_site_url() . '/news/';
+        }
+        $html .=  '<li><a href="'  . $category_link .'" title="'. $category_name .'">'. $category_name . '</a>';
       }
       if ( uw_is_custom_post_type() )
       {

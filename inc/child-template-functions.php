@@ -372,4 +372,58 @@ endif;
 
  remove_filter('get_the_excerpt', 'wp_trim_excerpt');
  add_filter('get_the_excerpt', 'isc_custom_wp_trim_excerpt');
- ?>
+
+
+ /**
+  * This function returns the
+  * links of the passed srting as a list.
+  *
+  * @author Mason Gionet <mgionet@uw.edu>
+  * @copyright Copyright (c) 2016, University of Washington
+  * @since 0.2.0
+  */
+
+
+    if ( ! function_exists( 'get_reference_links' ) ) :
+      function get_reference_links($input) {
+        $custom = get_post_custom(1594); // gets custom meta of admin-corner
+        if (!array_key_exists('workday-' . $input .'-links', $custom) || empty($custom['workday-' . $input .'-links'][0])) {
+          ?>
+          <p>No links found.</p>
+          <?php
+        } else {
+          $content = unserialize($custom['workday-' . $input .'-links'][0]);
+          for ($i = 0; $i < count($content); $i++) {
+            $url = $content[$i][$input . '-url'];
+            $text = $content[$i][$input . '-text']
+            ?>
+            <li><a href="<?php echo $url; ?>"><?php echo $text; ?></a></li>
+            <?php
+          }
+        }
+      }
+    endif;
+
+
+     /**
+      * This function returns the text that is the
+      * description of the seasonal topic
+      *
+      * @author Mason Gionet <mgionet@uw.edu>
+      * @copyright Copyright (c) 2016, University of Washington
+      * @since 0.2.0
+      */
+
+
+      if ( ! function_exists( 'get_seasonal_description' ) ) :
+        function get_seasonal_description() {
+          $description = get_cfc_field('hl-seasonal', 'body', 1673); //seasonal topics page ID
+          if ($description == "") {
+            echo "No summary text has been entered for seasonal topics page.";
+          } else {
+            echo $description;
+          }
+        }
+      endif;
+
+?>

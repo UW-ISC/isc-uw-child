@@ -175,11 +175,12 @@ body, p { font-size: 16px !important; }
     background-repeat: no-repeat;
     position: relative;
     @include desktop {
-    background-image: url('../isc-uw-child/assets/images/service-team_final.jpg');
-    position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 68%;}
+        background-image: url('../isc-uw-child/assets/images/service-team_final.jpg');
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 68%;
+    }
 
     &:before{
         position: absolute;
@@ -259,7 +260,7 @@ body, p { font-size: 16px !important; }
                 -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
                 padding-right:60px;
                 margin-bottom: 14px !important;
-                background:#fff;
+                background:#fff !important;
                 border-radius:8px;
                 -moz-border-radius:8px;
                 -webkit-border-radius:8px;
@@ -357,17 +358,14 @@ body, p { font-size: 16px !important; }
 
 }
 
-.isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 1em; position: relative; margin-top: 70px;
+.isc-admin-header {
+    font-weight: 900 !important;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0 !important;
+}
 
-    .isc-admin-header {
-        font-weight: 900 !important;
-        font-size: 18px;
-        text-transform: uppercase;
-        position: absolute;
-        top: -40px;
-        left: 0;
-        margin: 0;
-    }
+.isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 2em; position: relative; margin-top: 0;
 
     h4 { margin-top: 0; }
 
@@ -379,7 +377,9 @@ body, p { font-size: 16px !important; }
         }
     }
 
-    .post-content { margin-bottom: 1em; }
+    .update-date { font-weight: bold; margin-bottom: .5em; }
+    .post-content { margin-bottom: 2em; }
+
 }
 
 /*** generic content and sidebar ***/
@@ -394,24 +394,11 @@ body, p { font-size: 16px !important; }
     h3 { margin-top: 0; }
 
     /*** custom sidebar widget ***/
-    .isc-widget-tan { background: #e8e3d3 !important; margin-bottom: 20px; }
+    .isc-widget-tan { background: #e8e3d3 !important;  }
 
-    .isc-widget-gray { background: #ccc; margin-bottom: 20px; }
+    .isc-widget-gray { background: #ccc; }
 
-    .isc-widget-white { background: #fff; border: solid 1px #ddd; margin-bottom: 20px; }
-
-    // admin sidebar
-
-    .isc-admin-header {
-        font-weight: 900 !important;
-        font-size: 18px;
-        text-transform: uppercase;
-        position: absolute;
-        top: -40px;
-        left: 0;
-        margin: 0;
-    }
-
+    .isc-widget-white { background: #fff; border: solid 1px #ddd; }
 
 }
 
@@ -461,11 +448,57 @@ body, p { font-size: 16px !important; }
 
 
 /*** datatables overrides ***/
+$color_1: #ddd;
+$font_family_1: FontAwesome;
 
 .dataTables_wrapper {
 
     .pagination { list-style: none;
         .paginate_button { display: inline-block; }
+    }
+
+    table.dataTable {
+    	thead {
+    		th {
+    			position: relative;
+    			background-image: none !important;
+    		}
+    		th.sorting {
+    			&:after {
+    				position: absolute;
+    				//top: 12px;
+    				right: 8px;
+    				display: block;
+    				font-family: $font_family_1;
+    				content: "\f0dc";
+    				color: $color_1;
+    				//font-size: 0.8em;
+    				//padding-top: 0.12em;
+    			}
+    		}
+    		th.sorting_asc {
+    			&:after {
+    				position: absolute;
+    				//top: 12px;
+    				right: 8px;
+    				display: block;
+    				font-family: $font_family_1;
+                    //font-size: 0.8em;
+    				content: "\f0de";
+    			}
+    		}
+    		th.sorting_desc {
+    			&:after {
+    				position: absolute;
+    				//top: 12px;
+    				right: 8px;
+    				display: block;
+    				font-family: $font_family_1;
+                    //font-size: 0.8em;
+    				content: "\f0dd";
+    			}
+    		}
+    	}
     }
 
 }
@@ -607,7 +640,6 @@ body, p { font-size: 16px !important; }
 .uw-accordion-menu-floater {
 
     @include desktop {
-
         position: fixed;
         top: 20px;
         left: inherit !important;

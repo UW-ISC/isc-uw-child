@@ -46,9 +46,8 @@
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
+                <h3 class="isc-admin-header">Admins' News</h3>
                 <div class="isc-admin-block">
-
-                    <h3 class="isc-admin-header">Admins' News</h3>
 
                       <?php
 
@@ -71,15 +70,15 @@
                                <h4><?php the_title() ?></h4>
                                <div class="update-date"><?php echo get_the_date() ?> </div>
                                <div class='post-content'><?php the_excerpt() ?></div>
-                               <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/user-guides/?foo=bar'?>">Read more news</a>
                       <?php
                             endwhile;
+                            ?>
+                            <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/news'?>">Read older news</a>
+                    <?php
                         else:
                             echo "<p>No admin news available.</p>";
                         endif;
                       ?>
-
-
 
                   </div>
 
@@ -89,8 +88,8 @@
 
         <div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
+            <h3 class="isc-admin-header">Next Event</h3>
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
-                <h3 class="isc-admin-header">Next Event</h3>
 
                 <?php
                    $workshop_args = array(
@@ -121,39 +120,41 @@
                 ?>
             </div>
 
-            <div class="contact-widget-inner isc-widget-white isc-admin-block">
-                <h3 class="isc-admin-header">Seasonal Topics</h3>
 
+            <h3 class="isc-admin-header">Seasonal Topics</h3>
+            <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <div class='post-content'>
-                    <?php
-                    $summary_content = "No summary text has been entered for seasonal topics page.";
-                    if (array_key_exists("summary-text", $seasonal) && !$seasonal["summary-text"][0] == "") {
-                      $summary_content = $seasonal["summary-text"][0];
-                    }
-                    echo $summary_content;
-                    ?>
-                    <?php echo the_cfc_field('hl-seasonal', 'body') ?>
+                  <p><?php get_seasonal_description(); ?></p>
                 </div>
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>
 
+            <h3 class="isc-admin-header">Help for Admins</h3>
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
-                <h3 class="isc-admin-header">Workday Support</h3>
                 <ul>
-                    <li>Supervisory Organizations</li>
-                    <li>Security Roles</li>
-                    <li>Workday Reports</li>
-                    <li>Change Requests</li>
-                    <li>Contact Help</li>
+                    <li>Contact the ISC</li>
+                    <li>See Aligned Admin Contact List</li>
                 </ul>
             </div>
 
+            <h3 class="isc-admin-header">Workday Support</h3>
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
-                <h3 class="isc-admin-header">Workday Resources</h3>
                 <ul>
-                    <li><a href="<?php echo get_site_url() . '/user-guides/'?>">User Guides</a></li>
-                    <li>Video Library</li>
-                    <li>Workday Glossary</li>
+                  <?php
+                  $custom = get_post_custom(1594); // gets custom meta of admin-corner
+                  $content = unserialize($custom['workday-support-links'][0]);
+                  log_to_console($custom);
+                  get_reference_links("support");
+                  ?>
+                </ul>
+            </div>
+
+            <h3 class="isc-admin-header">Workday Resources</h3>
+            <div class="contact-widget-inner isc-widget-tan isc-admin-block">
+                <ul>
+                  <?php
+                  get_reference_links("resource")
+                  ?>
                 </ul>
             </div>
 

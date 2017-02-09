@@ -228,7 +228,7 @@ body, p {
       -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
       padding-right: 60px;
       margin-bottom: 14px !important;
-      background: #fff;
+      background: #fff !important;
       border-radius: 8px;
       -moz-border-radius: 8px;
       -webkit-border-radius: 8px; }
@@ -305,20 +305,18 @@ body, p {
   .isc-admin-hero h2 {
     color: #4b2e83; }
 
+.isc-admin-header {
+  font-weight: 900 !important;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-top: 0 !important; }
+
 .isc-admin-block {
   border: solid 1px #ddd;
   padding: 40px;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   position: relative;
-  margin-top: 70px; }
-  .isc-admin-block .isc-admin-header {
-    font-weight: 900 !important;
-    font-size: 18px;
-    text-transform: uppercase;
-    position: absolute;
-    top: -40px;
-    left: 0;
-    margin: 0; }
+  margin-top: 0; }
   .isc-admin-block h4 {
     margin-top: 0; }
   .isc-admin-block ul {
@@ -327,8 +325,11 @@ body, p {
     .isc-admin-block ul li a:hover {
       border-bottom: none !important;
       text-decoration: underline; }
+  .isc-admin-block .update-date {
+    font-weight: bold;
+    margin-bottom: .5em; }
   .isc-admin-block .post-content {
-    margin-bottom: 1em; }
+    margin-bottom: 2em; }
 
 /*** generic content and sidebar ***/
 .isc-content-block {
@@ -346,23 +347,12 @@ body, p {
   .isc-sidebar h3 {
     margin-top: 0; }
   .isc-sidebar .isc-widget-tan {
-    background: #e8e3d3 !important;
-    margin-bottom: 20px; }
+    background: #e8e3d3 !important; }
   .isc-sidebar .isc-widget-gray {
-    background: #ccc;
-    margin-bottom: 20px; }
+    background: #ccc; }
   .isc-sidebar .isc-widget-white {
     background: #fff;
-    border: solid 1px #ddd;
-    margin-bottom: 20px; }
-  .isc-sidebar .isc-admin-header {
-    font-weight: 900 !important;
-    font-size: 18px;
-    text-transform: uppercase;
-    position: absolute;
-    top: -40px;
-    left: 0;
-    margin: 0; }
+    border: solid 1px #ddd; }
 
 /*** footer ***/
 .uw-footer {
@@ -444,6 +434,28 @@ body, p {
   list-style: none; }
   .dataTables_wrapper .pagination .paginate_button {
     display: inline-block; }
+.dataTables_wrapper table.dataTable thead th {
+  position: relative;
+  background-image: none !important; }
+.dataTables_wrapper table.dataTable thead th.sorting:after {
+  position: absolute;
+  right: 8px;
+  display: block;
+  font-family: FontAwesome;
+  content: "\f0dc";
+  color: #ddd; }
+.dataTables_wrapper table.dataTable thead th.sorting_asc:after {
+  position: absolute;
+  right: 8px;
+  display: block;
+  font-family: FontAwesome;
+  content: "\f0de"; }
+.dataTables_wrapper table.dataTable thead th.sorting_desc:after {
+  position: absolute;
+  right: 8px;
+  display: block;
+  font-family: FontAwesome;
+  content: "\f0dd"; }
 
 /*** uwhr accordian styles ***/
 .uw-accordion-menu {
