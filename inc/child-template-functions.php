@@ -399,17 +399,6 @@ if ( ! function_exists( 'output_quicklinks' ) ) :
     }
 endif;
 
-/* Wrapper function for 'Help For Admins' on Admin's Corner */
-if ( ! function_exists( 'adminhelp_quicklinks' ) ) :
-    function adminhelp_quicklinks() {
-        $post_id = 1594;
-        $field = 'admin-help-links';
-        $url_key = 'admin-help-url';
-        $text_key = 'admin-help-text';
-        output_quicklinks($post_id, $field, $url_key, $text_key);
-    }
-endif;
-
 /* Wrapper function for 'Workday Support' on Admin's Corner */
 if ( ! function_exists( 'support_quicklinks' ) ) :
     function support_quicklinks() {
