@@ -375,36 +375,6 @@ endif;
 
 
  /**
-  * This function returns the
-  * links of the passed srting as a list.
-  *
-  * @author Mason Gionet <mgionet@uw.edu>
-  * @copyright Copyright (c) 2016, University of Washington
-  * @since 0.2.0
-  */
-
-
-    if ( ! function_exists( 'get_reference_links' ) ) :
-      function get_reference_links($input) {
-        $custom = get_post_custom(1594); // gets custom meta of admin-corner
-        if (!array_key_exists('workday-' . $input .'-links', $custom) || empty($custom['workday-' . $input .'-links'][0])) {
-          ?>
-          <p>No links found.</p>
-          <?php
-        } else {
-          $content = unserialize($custom['workday-' . $input .'-links'][0]);
-          for ($i = 0; $i < count($content); $i++) {
-            $url = $content[$i][$input . '-url'];
-            $text = $content[$i][$input . '-text']
-            ?>
-            <li><a href="<?php echo $url; ?>"><?php echo $text; ?></a></li>
-            <?php
-          }
-        }
-      }
-    endif;
-
- /**
   * This private function returns a ul of quicklinks. It should be called via
   * wrapper functions below.
   *
@@ -431,7 +401,17 @@ if ( ! function_exists( 'output_quicklinks' ) ) :
       } else {
         echo "<p>No quicklinks found</p>";
       }
+    }
+endif;
 
+/* Wrapper function for 'Help For Admins' on Admin's Corner */
+if ( ! function_exists( 'adminhelp_quicklinks' ) ) :
+    function adminhelp_quicklinks() {
+        $post_id = 1594;
+        $field = 'admin-help-links';
+        $url_key = 'admin-help-url';
+        $text_key = 'admin-help-text';
+        output_quicklinks($post_id, $field, $url_key, $text_key);
     }
 endif;
 
