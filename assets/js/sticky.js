@@ -8,10 +8,13 @@ $(document).ready(function() {
         var new_width = $('.col-md-4').width(); // width of the menu
         var top_padding = getCSS('top', 'uw-accordion-menu-floater').slice(0, -2); // where the floating menu should be placed from the top
         var change = true;
+        var nav = $("#menu-main-navigation");
+        var top_tracker = nav.height();
+
 
         if ($(window).width() > width_change && change) {
             // this is information we need, but it will never change so we need to find it once (when it is ok to get it)
-            var height_change = toc.offset().top - top_padding;
+            var height_change = content.offset().top - top_padding;
             var footer_barrier = content.height() + content.offset().top - $(this).scrollTop() - toc.height() - top_padding * 2;
             change = false;
         }
@@ -20,9 +23,13 @@ $(document).ready(function() {
         $(window).resize(function() {
             // by resizing the window, the width of a potentially floating toc changes, so we have to recalculate it
             new_width = $('.col-md-4').width();
+            if (top_tracker != nav.height() && $(this).width() > width_change) {
+              top_tracker = nav.height();
+              height_change = content.offset().top - top_padding;
+            }
             if ($(this).width() > width_change && change) {
                 // we don't wanna continually update this
-                height_change = toc.offset().top - top_padding;
+                height_change = content.offset().top - top_padding;
                 footer_barrier = content.height() + content.offset().top - $(this).scrollTop() - toc.height() - top_padding * 2;
                 change = false;
             }
