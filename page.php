@@ -26,6 +26,8 @@
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
+              xxxx this template uses page.php (default template) xxxx
+
                 <h2><?php the_title(); ?></h2>
 
                 <?php
