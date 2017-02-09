@@ -90,34 +90,32 @@
 
             <h3 class="isc-admin-header">Next Event</h3>
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
-
-                <?php
-                   $workshop_args = array(
-                            'tax_query' => array(
-                                array(
-                                    'taxonomy' => 'location',
-                                    'field'    => 'slug',
-                                    'terms'    => 'admin-corner-workshops',
-                                ),
-                            ),
-                            'post_status' => 'published');
-                   $workshop_posts = new WP_Query($workshop_args);
-
-                   if ($workshop_posts->have_posts()) :
-                         $workshop_posts->the_post();
+              <?php // Retrieve the next 5 upcoming events
+                $event = tribe_get_events( array(
+                    'posts_per_page' => 1,
+                    'start_date' => date( 'Y-m-d H:i:s' )
+                ) );
+                $current = $event[0];
+                $title = $current->post_title;
                 ?>
-                 <h4><?php the_title() ?></h4>
 
                  <div class='post-content'>
-                     <?php the_excerpt(); ?>
+                     <?php
+                     $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
+                     $html .= "<p>" . tribe_get_start_date($current) . "</p>";
+                     if (tribe_has_venue($current->ID)) {
+                       $details = tribe_get_venue_details($current->ID);
+                       log_to_console($details);
+                       $html .= "<p>" . $details["linked_name"] . "</p>";
+                       $html .= $details["address"];
+                     }
+                     $html .= "<p>" . $current->post_excerpt . "</p>";
+                     echo $html;
+                     ?>
                  </div>
 
-                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/admin-events'?>">See previous</a>
-                <?php
-                    else:
-                        echo "<p>No events available</p>";
-                  endif;
-                ?>
+
+                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">See all Events</a>
             </div>
 
 
