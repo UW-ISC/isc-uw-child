@@ -275,8 +275,8 @@ function add_ids_to_header_tags_auto( $content) {
  * @global $post
  */
 
- if ( ! function_exists( 'get_quicklinks' ) ) :
-     function get_quicklinks() {
+ if ( ! function_exists( 'isc_front_get_quicklinks' ) ) :
+     function isc_front_get_quicklinks() {
         $custom = get_post_meta(450);
         $html = "";
         if (array_key_exists("isc-hero-quicklinks", $custom)) {
