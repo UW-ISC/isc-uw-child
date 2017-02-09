@@ -35,7 +35,7 @@ get_header();
             endwhile;
 
             ?>
-
+            <div>Last updated: <?php echo get_the_date() ?></div>
         </article>
 
     </div>

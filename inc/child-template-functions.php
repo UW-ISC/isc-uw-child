@@ -38,11 +38,6 @@ if ( ! function_exists( 'display_child_pages_with_toc' ) ) :
           $html .= '<h3 class="title" id="'.$child->post_name.'"> <a href="'.$url.'">';
           $html .= $child->post_title;
           $html .= '</a> </h3>';
-          // Displaying the date the page was last updated
-          $date_updated = new DateTime($child->post_modified_gmt);
-          $html .= '<div id="date_updated"> Updated: ';
-          $html .= date_format($date_updated, 'm.d.y');
-          $html .= '</div>';
           // Displaying the tags of a child page
           $posttags = get_the_tags($child->ID);
           if ($posttags) {
