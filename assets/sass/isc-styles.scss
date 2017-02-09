@@ -376,11 +376,9 @@ body, p { font-size: 16px !important; }
             }
         }
     }
-
-    .update-date { font-weight: bold; margin-bottom: .5em; }
-    .post-content { margin-bottom: 2em; }
-
 }
+
+
 
 /*** generic content and sidebar ***/
 .isc-content-block { padding: 40px; background: $uw-tan; margin-bottom: 1em;
@@ -502,6 +500,10 @@ $font_family_1: FontAwesome;
     }
 
 }
+
+/*** global post date/content styles ***/
+.update-date { font-weight: bold; margin-bottom: .5em; }
+.post-content { margin-bottom: 2em; }
 
 /*** uwhr accordian styles ***/
 

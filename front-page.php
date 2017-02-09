@@ -165,11 +165,9 @@
                                <a href="<?php echo get_post_permalink($recent['ID']); ?>">
                                <?php echo the_title(); ?></a>
                              </h3>
-                             <p>
-                             <?php echo get_the_date() ?>
-                             <p><?php echo
-                             the_excerpt() ?></p>
-                           </p>
+                             <div class="update-date"><?php echo get_the_date() ?></div>
+                             <div class="post-content"><?php echo the_excerpt() ?></div>
+
 
                     <?php
                           endwhile;
@@ -177,7 +175,7 @@
                         echo "No news posts found.";
                       endif;
                     ?>
-                      <p><a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/news'?>">See all news</a></p>
+                      <div><a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/news'?>">See all news</a></div>
                   </div>
 
                   <!-- end loop -->

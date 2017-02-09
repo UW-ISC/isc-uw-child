@@ -325,11 +325,6 @@ body, p {
     .isc-admin-block ul li a:hover {
       border-bottom: none !important;
       text-decoration: underline; }
-  .isc-admin-block .update-date {
-    font-weight: bold;
-    margin-bottom: .5em; }
-  .isc-admin-block .post-content {
-    margin-bottom: 2em; }
 
 /*** generic content and sidebar ***/
 .isc-content-block {
@@ -456,6 +451,14 @@ body, p {
   display: block;
   font-family: FontAwesome;
   content: "\f0dd"; }
+
+/*** global post date/content styles ***/
+.update-date {
+  font-weight: bold;
+  margin-bottom: .5em; }
+
+.post-content {
+  margin-bottom: 2em; }
 
 /*** uwhr accordian styles ***/
 .uw-accordion-menu {

@@ -29,19 +29,22 @@
 
             <h2><?php the_title(); ?></h2>
 
-            <?php
-              // Start the Loop.
-              while ( have_posts() ) : the_post();
+            <div class="update-date"><?php echo get_the_date() ?></div>
+            <div class="post-content">
+                <?php
+                  // Start the Loop.
+                  while ( have_posts() ) : the_post();
 
-                the_content();
+                    the_content();
 
-                // If comments are open or we have at least one comment, load up the comment template.
-                if ( comments_open() || get_comments_number() ) {
-                  comments_template();
-                }
+                    // If comments are open or we have at least one comment, load up the comment template.
+                    if ( comments_open() || get_comments_number() ) {
+                      comments_template();
+                    }
 
-              endwhile;
-            ?>
+                  endwhile;
+                ?>
+            </div>
 
         </div>
 
