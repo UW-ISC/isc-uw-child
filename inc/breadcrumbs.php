@@ -39,10 +39,7 @@ function get_uw_breadcrumbs()
     if ( is_post_type_archive() )
     {
       $posttype = get_post_type_object( get_post_type() );
-      //$html .=  '<li class="current"><a href="'  . get_post_type_archive_link( $posttype->query_var ) .'" title="'. $posttype->labels->menu_name .'">'. $posttype->labels->menu_name  . '</a>';
-      log_to_console("hi");
-      log_to_console($post );
-      $html .=  '<li class="current"><span>EVENTS</span>';
+      $html .=  '<li class="current"><a href="'  . get_post_type_archive_link( $posttype->query_var ) .'" title="'. $posttype->labels->menu_name .'">'. $posttype->labels->menu_name  . '</a>';
     }
 
     if ( is_category() )
