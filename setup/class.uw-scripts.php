@@ -72,7 +72,7 @@ class UW_Scripts
 
       'bootstrap-collapse' => array (
         'id'      => 'bootstrap-collapse',
-        'url'     => $child . '/assets/js/bootstrap-collapse.js',
+        'url'     => $child . '/vendor/js/bootstrap-collapse.js',
         'deps'    => array( 'jquery' ),
         'version' => '2.0.4',
         'admin'   => false
