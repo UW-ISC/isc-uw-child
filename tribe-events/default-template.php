@@ -10,25 +10,52 @@
  *
  */
 
+?>
+<?php
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
 get_header();
-?>
-<div class="uw-body container">
-	<div class="row">
-		<div class="col-md-12"> <?php tribe_breadcrumbs(); ?></div>
-	</div>
+      $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+      $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
-	<div class="row">
-		<div id="tribe-events-pg-template">
-			<?php tribe_events_before_html(); ?>
-			<?php tribe_get_view(); ?>
-			<?php tribe_events_after_html(); ?>
-		</div> <!-- #tribe-events-pg-template -->
-	</div>
+<?php uw_site_title(); ?>
+<?php get_template_part( 'menu', 'mobile' ); ?>
+
+<div class="container uw-body">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <?php get_template_part( 'breadcrumbs' ); ?>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="uw-content col-md-9 " role='main'>
+
+            <div id='main_content' class="uw-body-copy" tabindex="-1">
+
+              xxxx this template uses tribe-template.php (default template) xxxx
+
+                <h2><?php //the_title(); ?></h2>
+
+								<div id="tribe-events-pg-template">
+									<?php tribe_events_before_html(); ?>
+									<?php tribe_get_view(); ?>
+									<?php tribe_events_after_html(); ?>
+								</div> <!-- #tribe-events-pg-template -->
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 <?php
 get_footer();
+?>

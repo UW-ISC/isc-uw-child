@@ -102,20 +102,18 @@
                 } else {
                   $current = $event[0];
                   $title = $current->post_title;
-                  ?>
-
-
-                       <?php
-                       $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
-                       $html .= "<p>" . tribe_get_start_date($current) . "</p>";
-                       if (tribe_has_venue($current->ID)) {
-                         $details = tribe_get_venue_details($current->ID);
-                         //log_to_console($details);
-                         $html .= "<p>" . $details["linked_name"] . "</p>";
-                         $html .= $details["address"];
-                       }
-                       $html .= "<p>" . $current->post_excerpt . "</p>";
-                       echo $html;
+                  $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
+                  $html .= "<p>" . tribe_get_start_date($current) . "</p>";
+                  if (tribe_has_venue($current->ID)) {
+                    $details = tribe_get_venue_details($current->ID);
+                    //log_to_console($details);
+                    $html .= "<p>" . $details["linked_name"] . "</p>";
+                    $html .= $details["address"];
+                  } else {
+                    $html .= "<p>Location to be determined.</p>";
+                  }
+                  $html .= "<p>" . $current->post_excerpt . "</p>";
+                  echo $html;
                 }
                 ?>
                  </div>
