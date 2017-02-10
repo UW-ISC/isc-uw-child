@@ -17,6 +17,10 @@ if (!function_exists('setup_uw_object')){
  **/
 function tfc_remove_page_templates( $templates ) {
     unset( $templates['templates/template-no-title.php'] );
+    unset( $templates['templates/template-big-hero.php'] );
+    unset( $templates['templates/template-no-hero.php'] );
+    unset( $templates['templates/template-no-sidebar.php'] );
+    unset( $templates['templates/template-small-hero.php'] );
     return $templates;
 }
 
