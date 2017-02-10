@@ -27,7 +27,6 @@ get_header();
 
     <div class="row">
         <div class="col-md-12">
-
             <?php get_template_part( 'breadcrumbs' ); ?>
         </div>
     </div>
@@ -38,15 +37,11 @@ get_header();
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-              xxxx this template uses tribe-template.php (default template) xxxx
+                xxxx this template uses default-template.php (inside tribe-events directory) xxxx
 
-                <h2><?php //the_title(); ?></h2>
-
-								<div id="tribe-events-pg-template">
-									<?php tribe_events_before_html(); ?>
-									<?php tribe_get_view(); ?>
-									<?php tribe_events_after_html(); ?>
-								</div> <!-- #tribe-events-pg-template -->
+				<div id="tribe-events-pg-template">
+					<?php tribe_get_view(); ?>
+				</div>
 
             </div>
 
