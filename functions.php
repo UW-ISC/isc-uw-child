@@ -26,6 +26,22 @@ function tfc_remove_page_templates( $templates ) {
 
 add_filter( 'theme_page_templates', 'tfc_remove_page_templates' );
 
+/**
+* Remove unwanted metaboxes from special pages.
+**/
+function remove_special_page_template_metabox()
+{
+    global $post;
+    $specials = array('homepage', 'user-guides', 'admin-corner');
+    if( isset($post) && $post->post_type == 'page' && in_array($post->post_name, $specials)) {
+        // I guess its a hacky way!
+        remove_meta_box( 'uwpageparentdiv', 'page', 'side' );
+        remove_meta_box( 'sec_rolediv', 'page', 'side' );
+        remove_meta_box( 'ug-topicdiv', 'page', 'side' );
+        remove_meta_box( 'md-tagsdiv', 'page', 'side' );
+    }
+}
+add_action('admin_head', 'remove_special_page_template_metabox');
 
 /**
  * Developer function for logging to the browser console. Do not leave log statements lying around!
