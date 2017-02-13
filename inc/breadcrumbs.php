@@ -39,7 +39,12 @@ function get_uw_breadcrumbs()
     if ( is_post_type_archive() )
     {
       $posttype = get_post_type_object( get_post_type() );
-      $html .=  '<li class="current"><a href="'  . get_post_type_archive_link( $posttype->query_var ) .'" title="'. $posttype->labels->menu_name .'">'. $posttype->labels->menu_name  . '</a>';
+	  if ( tribe_is_past() || tribe_is_upcoming() && !is_tax() )
+	  {
+        $html .=  '<li class="current"><span>Events</span>';
+	  } else {
+        $html .=  '<li class="current"><a href="'  . get_post_type_archive_link( $posttype->query_var ) .'" title="'. $posttype->labels->menu_name .'">'. $posttype->labels->menu_name  . '</a>';
+	  }
     }
 
     if ( is_category() )
