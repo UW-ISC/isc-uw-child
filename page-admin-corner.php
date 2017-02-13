@@ -1,16 +1,10 @@
-<?php
-/**
- * Template Name: No image
- */
-?>
-
 <?php get_header();
-      $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+      $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
       $sidebar = get_post_meta($post->ID, "sidebar");
       $seasonal =  get_post_meta($post->ID); ?>
 
-      <?php uw_site_title(); ?>
-      <?php get_template_part( 'menu', 'mobile' ); ?>
+        <?php uw_site_title(); ?>
+        <?php get_template_part('menu', 'mobile'); ?>
 
 <div class="isc-admin-hero">
 
@@ -36,7 +30,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <?php get_template_part( 'breadcrumbs' ); ?>
+            <?php get_template_part('breadcrumbs'); ?>
         </div>
     </div>
 
@@ -49,7 +43,7 @@
                 <h3 class="isc-admin-header">Admins' News</h3>
                 <div class="isc-admin-block">
 
-                      <?php
+                        <?php
 
                          $args = array(
                                   'tax_query' => array(
@@ -63,22 +57,22 @@
                          $category_posts = new WP_Query($args);
 
                          if ($category_posts->have_posts()) :
-                            while ($category_posts->have_posts()) :
-                               $category_posts->the_post();
-                      ?>
+                             while ($category_posts->have_posts()) :
+                                 $category_posts->the_post();
+                        ?>
 
                                <h4><?php the_title() ?></h4>
                                <div class="update-date"><?php echo get_the_date() ?> </div>
                                <div class='post-content'><?php the_excerpt() ?></div>
-                      <?php
-                            endwhile;
+                        <?php
+                             endwhile;
                             ?>
                             <a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/news'?>">Read older news</a>
                     <?php
                         else:
                             echo "<p>No admin news available.</p>";
                         endif;
-                      ?>
+                        ?>
 
                   </div>
 
@@ -118,7 +112,6 @@
                 ?>
                  </div>
 
-
                  <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">See all Events</a>
             </div>
 
@@ -131,22 +124,15 @@
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>
 
-            <h3 class="isc-admin-header">Help for Admins</h3>
-            <div class="contact-widget-inner isc-widget-gray isc-admin-block">
-                  <?php
-                  adminhelp_quicklinks();
-                  ?>
-            </div>
-
             <h3 class="isc-admin-header">Workday Support</h3>
-            <div class="contact-widget-inner isc-widget-white isc-admin-block">
+            <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                   <?php
                   support_quicklinks();
                   ?>
             </div>
 
             <h3 class="isc-admin-header">Workday Resources</h3>
-            <div class="contact-widget-inner isc-widget-tan isc-admin-block">
+            <div class="contact-widget-inner isc-widget-white isc-admin-block">
                   <?php
                   resource_quicklinks();
                   ?>

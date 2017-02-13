@@ -1,22 +1,16 @@
-<?php
-/**
- * Template Name: No image
- */
-?>
-
 <?php get_header();
-      $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+      $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>
 
-      <?php uw_site_title(); ?>
-      <?php get_template_part( 'menu', 'mobile' ); ?>
+        <?php uw_site_title(); ?>
+        <?php get_template_part('menu', 'mobile'); ?>
 
-      <?php $user_guides = get_user_guides(); // grabs all the user guides ?>
+        <?php $user_guides = get_user_guides(); // grabs all the user guides ?>
 
 <div class="container uw-body">
 
     <div class="row">
         <div class="col-md-12">
-            <?php get_template_part( 'breadcrumbs' ); ?>
+            <?php get_template_part('breadcrumbs'); ?>
         </div>
     </div>
 
@@ -34,9 +28,9 @@
                           <option value="---"> --- </option>
                             <?php
                               $topics = (get_all_topics($user_guides));
-                              foreach($topics as $topic) {
+                            foreach($topics as $topic) {
                                 echo '<option value = "' . sanitize_title($topic) .'"> ' . $topic . ' </option>';
-                              }
+                            }
                             ?>
                         </select>
                     </div>
@@ -46,9 +40,9 @@
                           <option value="---"> --- </option>
                             <?php
                               $roles = (get_all_roles($user_guides));
-                              foreach($roles as $role) {
+                            foreach($roles as $role) {
                                 echo '<option value = "' . sanitize_title($role) .'"> ' . $role . ' </option>';
-                              }
+                            }
                             ?>
                         </select>
                     </div>
@@ -72,9 +66,9 @@
                 </thead>
                 <tbody>
 
-                  <?php
+                    <?php
                     user_guide_table($user_guides);
-                  ?>
+                    ?>
 
                 </tbody>
 
