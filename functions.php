@@ -16,12 +16,13 @@ if (!function_exists('setup_uw_object')) {
 /**
  * Remove any templates from the UW Marketing theme that will not be used
  **/
-function tfc_remove_page_templates( $templates ) {
-    unset( $templates['templates/template-no-title.php'] );
-    unset( $templates['templates/template-big-hero.php'] );
-    unset( $templates['templates/template-no-hero.php'] );
-    unset( $templates['templates/template-no-sidebar.php'] );
-    unset( $templates['templates/template-small-hero.php'] );
+function tfc_remove_page_templates( $templates ) 
+{
+    unset($templates['templates/template-no-title.php']);
+    unset($templates['templates/template-big-hero.php']);
+    unset($templates['templates/template-no-hero.php']);
+    unset($templates['templates/template-no-sidebar.php']);
+    unset($templates['templates/template-small-hero.php']);
     return $templates;
 }
 
@@ -34,12 +35,12 @@ function remove_special_page_template_metabox()
 {
     global $post;
     $specials = array('homepage', 'user-guides', 'admin-corner');
-    if( isset($post) && $post->post_type == 'page' && in_array($post->post_name, $specials)) {
+    if(isset($post) && $post->post_type == 'page' && in_array($post->post_name, $specials)) {
         // I guess its a hacky way!
-        remove_meta_box( 'uwpageparentdiv', 'page', 'side' );
-        remove_meta_box( 'sec_rolediv', 'page', 'side' );
-        remove_meta_box( 'ug-topicdiv', 'page', 'side' );
-        remove_meta_box( 'md-tagsdiv', 'page', 'side' );
+        remove_meta_box('uwpageparentdiv', 'page', 'side');
+        remove_meta_box('sec_rolediv', 'page', 'side');
+        remove_meta_box('ug-topicdiv', 'page', 'side');
+        remove_meta_box('md-tagsdiv', 'page', 'side');
     }
 }
 add_action('admin_head', 'remove_special_page_template_metabox');
