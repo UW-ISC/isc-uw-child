@@ -1,9 +1,3 @@
-<?php
-/**
- * Template Name: No image
- */
-?>
-
 <?php get_header();
       $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
       $sidebar = get_post_meta($post->ID, "sidebar");   ?>

@@ -1,9 +1,3 @@
-<?php
-/**
-  * Template Name: Front Page
-  */
-?>
-
 <?php get_header('front');
       $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
 if(!$url) {
