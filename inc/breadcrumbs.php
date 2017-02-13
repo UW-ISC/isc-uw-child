@@ -34,8 +34,11 @@ if (! function_exists('get_uw_breadcrumbs') ) :
 
             if (is_post_type_archive() ) {
                 $posttype = get_post_type_object(get_post_type());
-                //$html .=  '<li class="current"><a href="'  . get_post_type_archive_link( $posttype->query_var ) .'" title="'. $posttype->labels->menu_name .'">'. $posttype->labels->menu_name  . '</a>';
-                $html .=  '<li class="current"><span>'. $posttype->labels->menu_name  . '</span>';
+                if (tribe_is_past() || tribe_is_upcoming() && !is_tax() ) {
+                    $html .=  '<li class="current"><span>Events</span>';
+                } else {
+                    $html .=  '<li class="current"><a href="'  . get_post_type_archive_link($posttype->query_var) .'" title="'. $posttype->labels->menu_name .'">'. $posttype->labels->menu_name  . '</a>';
+                }
             }
 
             if (is_category() ) {
@@ -108,3 +111,84 @@ if (! function_exists('uw_breadcrumbs') ) :
     }
 
 endif;
+
+// Check if page is direct child
+function is_child( $page_id ) 
+{
+    global $post;
+    if(is_page() && ($post->post_parent != '') ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Breadcrumb Logic
+function tribe_breadcrumbs() 
+{
+    global $post;
+
+    $separator = " &raquo; ";
+
+    echo "<nav class='uw-breadcrumbs' role='navigation' aria-label='breadcrumbs'><ul>";
+    echo '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url('/') . '" title="Home"> Home </a></li>';
+
+    if(tribe_is_month() && !is_tax() ) { // The Main Calendar Page
+        echo $separator;
+        echo 'The Events Calendar';
+    } elseif(tribe_is_month() && is_tax() ) { // Calendar Category Pages
+        global $wp_query;
+        $term_slug = $wp_query->query_vars['tribe_events_cat'];
+        $term = get_term_by('slug', $term_slug, 'tribe_events_cat');
+        get_term($term_id, 'tribe_events_cat');
+        $name = $term->name;
+        echo $separator;
+        echo '<a href="'.tribe_get_events_link().'">Events</a>';
+        echo $separator;
+        echo $name;
+    } elseif(tribe_is_event() && !tribe_is_day() && !is_single() ) { // The Main Events List
+        echo $separator;
+        echo 'Events List';
+    } elseif(tribe_is_event() && is_single() ) { // Single Events
+        echo '<li> <a href="'.tribe_get_events_link().'">Events</a> </li>';
+        echo '<li class="current"> <a>' . get_the_title() . '</a> </li>';
+    } elseif(tribe_is_day() ) { // Single Event Days
+        global $wp_query;
+        echo $separator;
+        echo '<a href="'.tribe_get_events_link().'">Events</a>';
+        echo $separator;
+        echo 'Events on: ' . date('F j, Y', strtotime($wp_query->query_vars['eventDate']));
+    } elseif(tribe_is_venue() ) { // Single Venues
+        echo $separator;
+        echo '<a href="'.tribe_get_events_link().'">Events</a>';
+        echo $separator;
+        the_title();
+    } elseif (is_category() || is_single() ) {
+        echo $separator;
+        the_category(' &bull; ');
+
+        if (is_single() ) {
+            echo ' '.$separator.' ';
+            the_title();
+        }
+    } elseif (is_page() ) {
+        if(is_child(get_the_ID()) ) {
+            echo $separator;
+            echo '<a href="' . get_permalink($post->post_parent) . '">' . get_the_title($post->post_parent) . '</a>';
+            echo $separator;
+            echo the_title();
+        } else {
+            echo $separator;
+            echo the_title();
+        }
+    } elseif (is_search()) {
+        echo $separator.'Search Results for... ';
+        echo '"<em>';
+        echo the_search_query();
+        echo '</em>"';
+    } else {
+          echo '<li class="current"> <a> Events </a> </li>';
+    }
+
+    echo '</ul></nav>';
+}
