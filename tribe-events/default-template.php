@@ -60,7 +60,7 @@ get_header();
 					 foreach ($events as $event) {
 						 $title = $event->post_title;
 						 $html = "<li>";
-						 $html .= '<h3><a href="' . get_post_permalink($event->ID) . '">' . $title . '</a> </h3>';
+						 $html .= '<h3>' . $title . '</h3>';
 						 $html .= "<p>" . tribe_get_start_date($event) . "</p>";
 						 if (tribe_has_venue($event->ID)) {
 							 $details = tribe_get_venue_details($event->ID);
@@ -70,6 +70,7 @@ get_header();
 							 $html .= "<p>Location to be determined.</p>";
 						 }
 						 $html .= "<p>" . $event->post_content . "</p>";
+                         $html .= '<p><a href="' . get_post_permalink($event->ID) . '">read more</a></p>';
 						 $html .= "</li>";
 						 echo $html;
 					 }
