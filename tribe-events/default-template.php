@@ -38,9 +38,10 @@ get_header();
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
                 xxxx this template uses default-template.php (inside tribe-events directory) xxxx
+                <h2>Upcoming Events</h2>
 
 				<div id="tribe-events-pg-template">
-					<ul>
+					<ol>
 					<?php
 					//tribe_get_view();
 					//'post_type' => 'tribe_events'
@@ -58,8 +59,8 @@ get_header();
 				 } else {
 					 foreach ($events as $event) {
 						 $title = $event->post_title;
-						 $html = "<ol>";
-						 $html .= '<h4><a href="' . get_post_permalink($event->ID) . '">' . $title . '</a> </h4>';
+						 $html = "<li>";
+						 $html .= '<h3><a href="' . get_post_permalink($event->ID) . '">' . $title . '</a> </h3>';
 						 $html .= "<p>" . tribe_get_start_date($event) . "</p>";
 						 if (tribe_has_venue($event->ID)) {
 							 $details = tribe_get_venue_details($event->ID);
@@ -69,12 +70,12 @@ get_header();
 							 $html .= "<p>Location to be determined.</p>";
 						 }
 						 $html .= "<p>" . $event->post_content . "</p>";
-						 $html .= "</ol>";
+						 $html .= "</li>";
 						 echo $html;
 					 }
 				 }
 					?>
-					</ul>
+                </ol>
 				</div>
 
             </div>
