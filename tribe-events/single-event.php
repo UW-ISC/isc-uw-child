@@ -41,30 +41,31 @@ get_header();
 
                 xxxx this is tribe-events/single-event.php xxxx
 
-                <div id="tribe-events-content" class="tribe-events-single">
+                <div id="tribe-events-content" class="">
 
 
 
                 	<!-- Notices -->
                 	<?php tribe_the_notices() ?>
 
-                	<?php the_title( '<h2 class="tribe-events-single-event-title">', '</h2>' ); ?>
+                	<?php the_title( '<h2>', '</h2>' ); ?>
 
-                	<div class="tribe-events-schedule tribe-clearfix">
+                	<div class="">
                 		<?php echo tribe_events_event_schedule_details( $event_id, '<h3>', '</h3>' ); ?>
                 		<?php if ( tribe_get_cost() ) : ?>
-                			<span class="tribe-events-cost"><?php echo tribe_get_cost( null, true ) ?></span>
+                			<span class=""><?php echo tribe_get_cost( null, true ) ?></span>
                 		<?php endif; ?>
                 	</div>
 
                 	<?php while ( have_posts() ) :  the_post(); ?>
                 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                			<!-- Event featured image, but exclude link -->
+
+                            <!-- Event featured image, but exclude link -->
                 			<?php echo tribe_event_featured_image( $event_id, 'full', false ); ?>
 
                 			<!-- Event content -->
                 			<?php do_action( 'tribe_events_single_event_before_the_content' ) ?>
-                			<div class="tribe-events-single-event-description tribe-events-content">
+                			<div class="">
                 				<?php the_content(); ?>
                 			</div>
 
