@@ -34,7 +34,7 @@ get_header();
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-                xxxx this template uses default-template.php (inside tribe-events directory) xxxx
+                xxxx this template uses tribe-events/list.php xxxx
 
 
                 <?php
