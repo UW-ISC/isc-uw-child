@@ -12,13 +12,13 @@ get_header();
 ?>
 
 <?php uw_site_title(); ?>
-<?php get_template_part( 'menu', 'mobile' ); ?>
+<?php get_template_part('menu', 'mobile'); ?>
 
 <section class="uw-body container">
 
     <div class="row">
         <div class="col-md-12">
-            <?php get_template_part( 'breadcrumbs' ); ?>
+            <?php get_template_part('breadcrumbs'); ?>
         </div>
     </div>
 
@@ -30,10 +30,10 @@ get_header();
 
             <?php
 
-                while ( have_posts() ) : the_post();
-                    the_title( '<h2 class="title">', '</h2>' );
-                    the_content();
-                endwhile;
+            while ( have_posts() ) : the_post();
+                the_title('<h2 class="title">', '</h2>');
+                the_content();
+            endwhile;
 
                 display_child_pages_with_toc();
             ?>

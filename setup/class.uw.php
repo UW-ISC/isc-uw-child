@@ -18,40 +18,40 @@ class UW
     {
         $parent = get_template_directory() . '/setup/';
         $child  = get_stylesheet_directory() . '/setup/';
-        require_once($parent . 'class.install.php');
-        require_once($child . 'class.uw-scripts.php');
-        require_once($child . 'class.uw-styles.php');
-        require_once($child . 'class.uw-dropdowns.php');
-        require_once($parent . 'class.images.php');
-        require_once($parent . 'class.squish_bugs.php');
-        require_once($parent . 'class.filters.php');
-        require_once($parent . 'class.uw-oembeds.php');
-        require_once($parent . 'class.googleapps.php');
-        require_once($parent . 'class.mimes.php');
-        require_once($child . 'class.users.php');
-        require_once($parent . 'class.dropdowns_walker.php');  // no initialization needed because it extends a WP class
-        require_once($parent . 'class.uw-basic-custom-post.php');  // no initialization needed unless a child theme makes one
-        require_once($parent . 'class.uw-sidebar-menu-walker.php');  // sidebar menu will initialize for us
-        require_once($parent . 'class.uw-quicklinks.php' );
-        require_once($parent . 'class.uw-iframes.php');
-        require_once($parent . 'class.uw-shortcodes.php' );
-        require_once($parent . 'class.uw-media-credit.php' );
-        require_once($parent . 'class.uw-media-caption.php' );
-        require_once($parent . 'class.uw-replace-media.php' );
-        require_once($parent . 'class.uw-tinymce.php' );
+        include_once $parent . 'class.install.php';
+        include_once $child . 'class.uw-scripts.php';
+        include_once $child . 'class.uw-styles.php';
+        include_once $child . 'class.uw-dropdowns.php';
+        include_once $parent . 'class.images.php';
+        include_once $parent . 'class.squish_bugs.php';
+        include_once $parent . 'class.filters.php';
+        include_once $parent . 'class.uw-oembeds.php';
+        include_once $parent . 'class.googleapps.php';
+        include_once $parent . 'class.mimes.php';
+        include_once $child . 'class.users.php';
+        include_once $parent . 'class.dropdowns_walker.php';  // no initialization needed because it extends a WP class
+        include_once $parent . 'class.uw-basic-custom-post.php';  // no initialization needed unless a child theme makes one
+        include_once $parent . 'class.uw-sidebar-menu-walker.php';  // sidebar menu will initialize for us
+        include_once $parent . 'class.uw-quicklinks.php';
+        include_once $parent . 'class.uw-iframes.php';
+        include_once $parent . 'class.uw-shortcodes.php';
+        include_once $parent . 'class.uw-media-credit.php';
+        include_once $parent . 'class.uw-media-caption.php';
+        include_once $parent . 'class.uw-replace-media.php';
+        include_once $parent . 'class.uw-tinymce.php';
         // require_once($parent . 'class.uw-documentation-dashboard-widget.php' );
-        require_once($parent . 'class.uw-enclosure.php' );
-        require_once($parent . 'class.uw-carousel.php' );
-        require_once($parent . 'class.uw-settings.php' );
-        require_once($child . 'class.uw-page-attributes-meta-box.php' );
+        include_once $parent . 'class.uw-enclosure.php';
+        include_once $parent . 'class.uw-carousel.php';
+        include_once $parent . 'class.uw-settings.php';
+        include_once $child . 'class.uw-page-attributes-meta-box.php';
 
-        require_once(get_stylesheet_directory() . '/inc/child-template-functions.php' );
-        require_once(get_stylesheet_directory() . '/inc/user-guide-functions.php' );
-        require_once(get_stylesheet_directory() . '/inc/breadcrumbs.php' );
-        require_once(get_template_directory() . '/inc/template-functions.php' );
-        require_once(get_template_directory() . '/docs/class.uw-documentation.php' );
+        include_once get_stylesheet_directory() . '/inc/child-template-functions.php';
+        include_once get_stylesheet_directory() . '/inc/user-guide-functions.php';
+        include_once get_stylesheet_directory() . '/inc/breadcrumbs.php';
+        include_once get_template_directory() . '/inc/template-functions.php';
+        include_once get_template_directory() . '/docs/class.uw-documentation.php';
 
-        foreach (glob( get_template_directory() . "/widgets/*.php") as $filename)
+        foreach (glob(get_template_directory() . "/widgets/*.php") as $filename)
         {
             include $filename;
         }
