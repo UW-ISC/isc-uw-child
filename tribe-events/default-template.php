@@ -35,46 +35,57 @@ get_header();
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
                 xxxx this template uses default-template.php (inside tribe-events directory) xxxx
-                <h2>Upcoming Events</h2>
+
+
+                <?php
+                if( tribe_is_event() && is_single() ) { // Single Events
+                    echo '<h2>Name of Event Goes Here</h2>';
+                }
+                else {
+                    echo '<h2>Upcoming Events</h2>';
+                }
+                ?>
 
                 <div id="tribe-events-pg-template">
                     <ol>
-        <?php
-        //tribe_get_view();
-        //'post_type' => 'tribe_events'
+                        <?php
+                        //tribe_get_view();
+                        //'post_type' => 'tribe_events'
 
-        $args = array(
-        'post_type' => 'tribe_events',
-        'post_status' => 'publish'
-        );
-        //if ()
-        //log_to_console($events);
-        $events = get_posts($args);
-        //log_to_console($events);
-        if (empty($events)) {
-            echo "<div class='col-md-6'>No events found!</div>";
-        } else {
-            foreach ($events as $event) {
-                $title = $event->post_title;
-                $html = "<li>";
-                $html .= '<h3>' . $title . '</h3>';
-                $html .= "<p>" . tribe_get_start_date($event) . "</p>";
-                if (tribe_has_venue($event->ID)) {
-                    $details = tribe_get_venue_details($event->ID);
-                    $html .= "<p>" . $details["linked_name"] . "</p>";
-                    $html .= "<p>" . $details["address"] . "</p>";
-                } else {
-                    $html .= "<p>Location to be determined.</p>";
-                }
-                $html .= "<p>" . $event->post_content . "</p>";
-                         $html .= '<p><a href="' . get_post_permalink($event->ID) . '">read more</a></p>';
-                $html .= "</li>";
-                echo $html;
-            }
-        }
-        ?>
+                        $args = array(
+                        'post_type' => 'tribe_events',
+                        'post_status' => 'publish'
+                        );
+                        //if ()
+                        //log_to_console($events);
+                        $events = get_posts($args);
+                        //log_to_console($events);
+                        if (empty($events)) {
+                            echo "<div class='col-md-6'>No events found!</div>";
+                        } else {
+                            foreach ($events as $event) {
+                                $title = $event->post_title;
+                                $html = "<li>";
+                                $html .= '<h3>' . $title . '</h3>';
+                                $html .= "<p>" . tribe_get_start_date($event) . "</p>";
+                                if (tribe_has_venue($event->ID)) {
+                                    $details = tribe_get_venue_details($event->ID);
+                                    $html .= "<p>" . $details["linked_name"] . "</p>";
+                                    $html .= "<p>" . $details["address"] . "</p>";
+                                } else {
+                                    $html .= "<p>Location to be determined.</p>";
+                                }
+                                $html .= "<p>" . $event->post_content . "</p>";
+                                         $html .= '<p><a href="' . get_post_permalink($event->ID) . '">read more</a></p>';
+                                $html .= "</li>";
+                                echo $html;
+                            }
+                        }
+                        ?>
                 </ol>
                 </div>
+
+
 
             </div>
 
