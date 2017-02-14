@@ -46,7 +46,7 @@ get_header();
                 }
                 ?>
 
-                <div id="tribe-events-pg-template">
+                <div id="tribe-events-pg-template" class="isc-events">
                     <ol>
                         <?php
                         //tribe_get_view();
@@ -67,16 +67,17 @@ get_header();
                                 $title = $event->post_title;
                                 $html = "<li>";
                                 $html .= '<h3>' . $title . '</h3>';
-                                $html .= "<p>" . tribe_get_start_date($event) . "</p>";
+                                $html .= "<div class='event-date'>" . tribe_get_start_date($event) . "</div>";
                                 if (tribe_has_venue($event->ID)) {
                                     $details = tribe_get_venue_details($event->ID);
-                                    $html .= "<p>" . $details["linked_name"] . "</p>";
-                                    $html .= "<p>" . $details["address"] . "</p>";
+                                    $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
+                                    $html .= $details["address"];
+                                    $html .= "</div>";
                                 } else {
-                                    $html .= "<p>Location to be determined.</p>";
+                                    $html .= "<div class='event-location'>Location to be determined.</div>";
                                 }
-                                $html .= "<p>" . $event->post_content . "</p>";
-                                         $html .= '<p><a href="' . get_post_permalink($event->ID) . '">read more</a></p>';
+                                $html .= "<div class='event-content'>" . $event->post_content . "</div>";
+                                         $html .= '<p><a class="more" href="' . get_post_permalink($event->ID) . '">read more</a></p>';
                                 $html .= "</li>";
                                 echo $html;
                             }

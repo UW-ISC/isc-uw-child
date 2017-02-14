@@ -84,7 +84,7 @@
 
             <h3 class="isc-admin-header">Next Event</h3>
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
-              <div class='post-content'>
+              <div class='post-content isc-events'>
                 <?php
                 $event = tribe_get_events(
                     array(

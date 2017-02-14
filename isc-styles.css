@@ -316,8 +316,7 @@ body, p {
   padding: 40px;
   margin-bottom: 2em;
   position: relative;
-  margin-top: 0;
-  /* event overrides */ }
+  margin-top: 0; }
   .isc-admin-block h4 {
     margin-top: 0;
     margin-bottom: 1em; }
@@ -330,16 +329,6 @@ body, p {
     .isc-admin-block ul li a:hover {
       border-bottom: none !important;
       text-decoration: underline; }
-  .isc-admin-block .event-date {
-    margin-bottom: 0;
-    font-weight: 800; }
-  .isc-admin-block .event-location {
-    margin-bottom: 20px;
-    font-size: 15px !important; }
-    .isc-admin-block .event-location * {
-      font-size: 15px !important; }
-    .isc-admin-block .event-location .tribe-address {
-      display: block; }
 
 /*** generic content and sidebar ***/
 .isc-content-block {
@@ -438,6 +427,24 @@ body, p {
         margin-bottom: 0px; } }
     .isc-footer .map-container img {
       box-shadow: 0px 0px 26px #111111; }
+
+/*** event overrides ***/
+.isc-events ol {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+.isc-events .event-date {
+  margin-bottom: 0;
+  font-weight: 800; }
+.isc-events .event-location {
+  margin-bottom: 20px;
+  font-size: 15px !important; }
+  .isc-events .event-location * {
+    font-size: 15px !important; }
+  .isc-events .event-location .tribe-address {
+    display: block; }
+.isc-events .event-content {
+  margin-bottom: 1em; }
 
 /*** datatables overrides ***/
 .dataTables_wrapper .pagination {
