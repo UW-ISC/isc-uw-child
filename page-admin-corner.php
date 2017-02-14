@@ -100,13 +100,20 @@
                     $title = $current->post_title;
                     $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
                     $html .= "<div class='event-date'>" . tribe_get_start_date($current) . "</div>";
+
                     if (tribe_has_venue($current->ID)) {
                         $details = tribe_get_venue_details($current->ID);
                         //log_to_console($details);
                         //log_to_console($current);
                         $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
                         $html .= $details["address"];
+
+                        if (tribe_show_google_map_link($current)){
+                            $html .= tribe_get_map_link_html($current);
+                        }
+
                         $html .= "</div>";
+
                     } else {
                         $html .= "<div class='event-location'>Location to be determined.</div>";
                     }

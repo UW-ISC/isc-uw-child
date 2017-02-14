@@ -72,7 +72,13 @@ get_header();
                                     $details = tribe_get_venue_details($event->ID);
                                     $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
                                     $html .= $details["address"];
+
+                                    if (tribe_show_google_map_link($event->ID)){
+                                        $html .= tribe_get_map_link_html($event->ID);
+                                    }
+                                    
                                     $html .= "</div>";
+
                                 } else {
                                     $html .= "<div class='event-location'>Location to be determined.</div>";
                                 }
