@@ -4,7 +4,7 @@
  * Set up the child / parent relationship and customize the UW object.
  */
 if (!function_exists('setup_uw_object')) {
-    function setup_uw_object() 
+    function setup_uw_object()
     {
         include get_stylesheet_directory() . '/setup/class.uw.php';
         $UW = new UW();
@@ -16,7 +16,7 @@ if (!function_exists('setup_uw_object')) {
 /**
  * Remove any templates from the UW Marketing theme that will not be used
  **/
-function tfc_remove_page_templates( $templates ) 
+function tfc_remove_page_templates( $templates )
 {
     unset($templates['templates/template-no-title.php']);
     unset($templates['templates/template-big-hero.php']);
@@ -47,19 +47,22 @@ add_action('admin_head', 'remove_special_page_template_metabox');
 
 /**
  * Developer function for logging to the browser console. Do not leave log statements lying around!
- * We might want to remove this when we're done with development.
+ * We might want to remove this when we're done with development. (Will only work if WP_DEBUG === true)
  */
-function log_to_console($debug_output) 
+function log_to_console($debug_output)
 {
-    $cleaned_string = '';
-    if (!is_string($debug_output)) {
-        $debug_output = print_r($debug_output, true);
-    }
-    $str_len = strlen($debug_output);
-    for($i = 0; $i < $str_len; $i++) {
-        $cleaned_string .= '\\x' . sprintf('%02x', ord(substr($debug_output, $i, 1)));
-    }
-    $javascript_ouput = "<script>console.log('Debug Info: " .$cleaned_string. "');</script>";
-    echo $javascript_ouput;
+  if (defined('WP_DEBUG') && WP_DEBUG) {
+      // only echo if WP_DEBUG exists and is True
+      $cleaned_string = '';
+      if (!is_string($debug_output)) {
+          $debug_output = print_r($debug_output, true);
+      }
+      $str_len = strlen($debug_output);
+      for($i = 0; $i < $str_len; $i++) {
+          $cleaned_string .= '\\x' . sprintf('%02x', ord(substr($debug_output, $i, 1)));
+      }
+      $javascript_ouput = "<script>console.log('Debug Info: " .$cleaned_string. "');</script>";
+      echo $javascript_ouput;
+  }
 }
 ?>
