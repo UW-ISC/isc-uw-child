@@ -61,7 +61,7 @@
                                  $category_posts->the_post();
                         ?>
 
-                               <h4><?php the_title() ?></h4>
+                               <h4><a href="<?php echo get_post_field( 'post_name', get_post() ); ?>"><?php the_title() ?></a></h4>
                                <div class="update-date"><?php echo get_the_date() ?> </div>
                                <div class='post-content'><?php the_excerpt() ?></div>
                         <?php
