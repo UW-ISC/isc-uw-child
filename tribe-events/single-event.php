@@ -41,12 +41,7 @@ get_header();
 
                 xxxx this is tribe-events/single-event.php xxxx
 
-                <div id="tribe-events-content" class="">
-
-
-
-                	<!-- Notices -->
-                	<?php tribe_the_notices() ?>
+                <div id="tribe-events-content" class="isc-events">
 
                 	<?php the_title( '<h2>', '</h2>' ); ?>
 
@@ -60,11 +55,7 @@ get_header();
                 	<?php while ( have_posts() ) :  the_post(); ?>
                 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-                            <!-- Event featured image, but exclude link -->
-                			<?php echo tribe_event_featured_image( $event_id, 'full', false ); ?>
-
                 			<!-- Event content -->
-                			<?php do_action( 'tribe_events_single_event_before_the_content' ) ?>
                 			<div class="">
                 				<?php the_content(); ?>
                 			</div>
@@ -74,7 +65,6 @@ get_header();
 
                 		</div> <!-- #post-x -->
                 	<?php endwhile; ?>
-
 
                 </div><!-- #tribe-events-content -->
 
