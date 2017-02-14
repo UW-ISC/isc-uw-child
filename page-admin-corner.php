@@ -90,7 +90,7 @@
                     array(
                     'posts_per_page' => 1,
                     'start_date' => date('Y-m-d H:i:s')
-                    ) 
+                    )
                 );
                 // if $event is an empty array then
                 if (empty($event)) {
@@ -99,16 +99,18 @@
                     $current = $event[0];
                     $title = $current->post_title;
                     $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
-                    $html .= "<p>" . tribe_get_start_date($current) . "</p>";
+                    $html .= "<div class='event-date'>" . tribe_get_start_date($current) . "</div>";
                     if (tribe_has_venue($current->ID)) {
                         $details = tribe_get_venue_details($current->ID);
                         //log_to_console($details);
-                        $html .= "<p>" . $details["linked_name"] . "</p>";
+                        //log_to_console($current);
+                        $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
                         $html .= $details["address"];
+                        $html .= "</div>";
                     } else {
-                        $html .= "<p>Location to be determined.</p>";
+                        $html .= "<div class='event-location'>Location to be determined.</div>";
                     }
-                    $html .= "<p>" . $current->post_excerpt . "</p>";
+                    $html .= "<div class='event-content'>" . $current->post_excerpt . "</div>";
                     echo $html;
                 }
                 ?>

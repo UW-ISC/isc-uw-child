@@ -367,7 +367,9 @@ body, p { font-size: 16px !important; }
 
 .isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 2em; position: relative; margin-top: 0;
 
-    h4 { margin-top: 0; }
+    h4 { margin-top: 0; margin-bottom: 1em;
+        a { color: $uw-purple; font-size: 21px; }
+    }
 
     ul { list-style: none; padding: 0;
         li {
@@ -376,6 +378,14 @@ body, p { font-size: 16px !important; }
             }
         }
     }
+
+    /* event overrides */
+    .event-date { margin-bottom: 0; font-weight: 800; }
+    .event-location { margin-bottom: 20px; font-size: 15px !important;
+        * { font-size: 15px !important; }
+        .tribe-address { display: block; }
+    }
+    .event-content { }
 }
 
 
