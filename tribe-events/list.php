@@ -56,10 +56,9 @@ get_header();
                         'post_type' => 'tribe_events',
                         'post_status' => 'publish'
                         );
-                        //if ()
-                        //log_to_console($events);
+
                         $events = get_posts($args);
-                        //log_to_console($events);
+
                         if (empty($events)) {
                             echo "<div class='col-md-6'>No events found!</div>";
                         } else {
@@ -71,16 +70,15 @@ get_header();
                                 if (tribe_has_venue($event->ID)) {
                                     $details = tribe_get_venue_details($event->ID);
                                     $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
-                                    $html .= $details["address"];
-
+                                    //$html .= $details["address"];
                                     if (tribe_show_google_map_link($event->ID)){
-                                        $html .= tribe_get_map_link_html($event->ID);
+                                        $html .= "<br/>" . tribe_get_map_link_html($event->ID);
                                     }
-                                    
+
                                     $html .= "</div>";
 
                                 } else {
-                                    $html .= "<div class='event-location'>Location to be determined.</div>";
+                                    $html .= "<div class='event-location'>Location: TBD</div>";
                                 }
                                 //$html .= "<div class='event-content'>" . $event->post_content . "</div>";
                                 $html .= "<div class='event-content'>" . $event->post_excerpt . "</div>";
@@ -90,10 +88,8 @@ get_header();
                             }
                         }
                         ?>
-                </ol>
+                    </ol>
                 </div>
-
-
 
             </div>
 

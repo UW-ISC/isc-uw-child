@@ -15,11 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-$events_label_singular = tribe_get_event_label_singular();
-$events_label_plural = tribe_get_event_label_plural();
-
-$event_id = get_the_ID();
-
 get_header();
 ?>
 <?php uw_site_title(); ?>
@@ -43,61 +38,27 @@ get_header();
 
                 <div id="tribe-events-content" class="isc-events">
 
-                	<?php the_title( '<h2>', '</h2>' ); ?>
-
-                	<div class="">
-                		<?php echo tribe_events_event_schedule_details( $event_id, '<h3>', '</h3>' ); ?>
-                		<?php if ( tribe_get_cost() ) : ?>
-                			<span class=""><?php echo tribe_get_cost( null, true ) ?></span>
-                		<?php endif; ?>
-                	</div>
-
-                	<?php while ( have_posts() ) :  the_post(); ?>
-                		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-                			<!-- Event content -->
-                			<div class="">
-                				<?php the_content(); ?>
-                			</div>
-
-                			<!-- Event meta -->
-                			<?php tribe_get_template_part( 'modules/meta' ); ?>
-
-                		</div> <!-- #post-x -->
-                	<?php endwhile; ?>
-
-                    <hr/>
-
                     <?php
-                    $event = tribe_get_events(
-                        array(
-                        'posts_per_page' => 1,
-                        'start_date' => date('Y-m-d H:i:s')
-                        )
-                    );
-                    // if $event is an empty array then
-                    if (empty($event)) {
-                        echo "No events found.";
-                    } else {
-                        $current = $event[0];
+
+                        $current = tribe_events_get_event();
                         $title = $current->post_title;
-                        $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
+                        $html = '<h2><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h2>';
                         $html .= "<div class='event-date'>" . tribe_get_start_date($current) . "</div>";
                         if (tribe_has_venue($current->ID)) {
                             $details = tribe_get_venue_details($current->ID);
-                            //log_to_console($details);
-                            //log_to_console($current);
                             $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
-                            $html .= $details["address"];
+                            //$html .= $details["address"];
+                            if (tribe_show_google_map_link($current->ID)){
+                                $html .= "<br/>" . tribe_get_map_link_html($current->ID);
+                            }
                             $html .= "</div>";
                         } else {
-                            $html .= "<div class='event-location'>Location to be determined.</div>";
+                            $html .= "<div class='event-location'>Location : TBD</div>";
                         }
-                        $html .= "<div class='event-content'>" . $current->post_excerpt . "</div>";
+                        $html .= "<div class='event-content'>" . $current->post_content . "</div>";
                         echo $html;
-                    }
-                    ?>
 
+                    ?>
 
                 </div><!-- #tribe-events-content -->
 

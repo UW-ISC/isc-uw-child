@@ -103,8 +103,6 @@
 
                     if (tribe_has_venue($current->ID)) {
                         $details = tribe_get_venue_details($current->ID);
-                        //log_to_console($details);
-                        //log_to_console($current);
                         $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
                         $html .= $details["address"];
 
@@ -115,7 +113,7 @@
                         $html .= "</div>";
 
                     } else {
-                        $html .= "<div class='event-location'>Location to be determined.</div>";
+                        $html .= "<div class='event-location'>Location: TBD</div>";
                     }
                     $html .= "<div class='event-content'>" . $current->post_excerpt . "</div>";
                     echo $html;
