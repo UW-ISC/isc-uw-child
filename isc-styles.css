@@ -150,6 +150,12 @@ body, p {
   .uw-breadcrumbs ul li {
     float: none !important;
     display: inline-block; }
+    @media print {
+      .uw-breadcrumbs ul li:first-child {
+        display: none; } }
+  @media print {
+    .uw-breadcrumbs ul .current span {
+      font-weight: bold; } }
 
 /*** uw body copy ***/
 .uw-body-copy {
@@ -485,12 +491,15 @@ body, p {
 .more {
   font-size: 15px; }
 
-/*** uwhr accordian styles ***/
+/*** uwhr accordian (table of contents) styles ***/
 .uw-accordion-menu {
   margin-bottom: 3rem;
   position: relative;
   min-height: 1px;
   background-color: #fff; }
+  @media print {
+    .uw-accordion-menu {
+      margin-top: 3rem; } }
   .uw-accordion-menu li,
   .uw-accordion-menu ul {
     list-style: none;
@@ -502,6 +511,9 @@ body, p {
     color: white; }
     .uw-accordion-menu .first:focus, .uw-accordion-menu .first:hover {
       background-color: #35215d; }
+    @media print {
+      .uw-accordion-menu .first {
+        font-weight: bold; } }
   .uw-accordion-menu .depth-1 a,
   .uw-accordion-menu .depth-1 button {
     background-color: #fff;
@@ -524,6 +536,10 @@ body, p {
     outline: none;
     width: 100%;
     text-align: left; }
+    @media print {
+      .uw-accordion-menu a,
+      .uw-accordion-menu button {
+        padding-left: 0 !important; } }
   .uw-accordion-menu a:focus, .uw-accordion-menu a:hover {
     color: #85754d;
     background-color: #e2ddd3;
@@ -564,11 +580,27 @@ body, p {
     margin-right: -.2rem; }
     .uw-accordion-menu .has-children.is-open > button > i:before {
       content: "\f107"; }
+  @media print {
+    .uw-accordion-menu .has-children i {
+      display: none; }
+    .uw-accordion-menu .has-children ul {
+      height: auto !important; }
+      .uw-accordion-menu .has-children ul a {
+        padding-left: 2.5em !important; } }
 
 @media (min-width: 992px) {
   .uw-accordion-menu-floater {
     position: fixed;
     top: 20px;
     left: inherit !important; } }
+
+/*** uw accordion (user guide body) ***/
+@media print {
+  .uw-accordion-shortcode .uw-accordion-shortcode__header {
+    margin-bottom: 20px !important; }
+  .uw-accordion-shortcode .uw-accordion-shortcode__panel {
+    display: block !important; }
+  .uw-accordion-shortcode .uw-accordion-shortcode__title {
+    height: auto !important; } }
 
 /*# sourceMappingURL=isc-styles.css.map */

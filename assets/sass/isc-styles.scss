@@ -20,6 +20,12 @@ $desktop-width: 992px;
     }
 }
 
+@mixin print {
+    @media print {
+        @content;
+    }
+}
+
 /*** uw styles overrides ***/
 body, p { font-size: 16px !important; }
 
@@ -158,7 +164,16 @@ body, p { font-size: 16px !important; }
 /*** uw breadcrumbs ***/
 .uw-breadcrumbs { margin: 1em 0 !important; padding:0 !important; display: block !important;
     ul {
-        li { float: none !important; display: inline-block; }
+        li { float: none !important; display: inline-block;
+
+            &:first-child {
+                @include print { display:none };
+            }
+        }
+
+        .current span {
+            @include print { font-weight: bold; }
+        }
     }
 }
 
@@ -522,13 +537,17 @@ $font_family_1: FontAwesome;
 .post-content { margin-bottom: 2em; }
 .more { font-size: 15px; }
 
-/*** uwhr accordian styles ***/
+/*** uwhr accordian (table of contents) styles ***/
 
 .uw-accordion-menu {
     margin-bottom: 3rem;
     position: relative;
     min-height: 1px;
     background-color: #fff;
+
+    @include print {
+        margin-top: 3rem;
+    }
 
     li,
     ul {
@@ -546,6 +565,8 @@ $font_family_1: FontAwesome;
         &:hover {
             background-color: #35215d;
         }
+
+        @include print { font-weight: bold; };
     }
 
     .depth-1 {
@@ -581,6 +602,8 @@ $font_family_1: FontAwesome;
         outline: none;
         width: 100%;
         text-align: left;
+
+        @include print { padding-left: 0 !important; };
     }
 
     a {
@@ -652,6 +675,17 @@ $font_family_1: FontAwesome;
                 content: "\f107";
             }
         }
+
+
+        @include print {
+            i { display: none; }
+            ul {
+                height: auto !important;
+                a { padding-left: 2.5em !important; }
+            }
+
+        };
+
     }
 }
 
@@ -662,6 +696,16 @@ $font_family_1: FontAwesome;
         position: fixed;
         top: 20px;
         left: inherit !important;
+    }
+}
+
+/*** uw accordion (user guide body) ***/
+.uw-accordion-shortcode {
+
+    @include print {
+        .uw-accordion-shortcode__header { margin-bottom: 20px !important; }
+        .uw-accordion-shortcode__panel { display: block !important; }
+        .uw-accordion-shortcode__title { height: auto !important; }
     }
 
 }
