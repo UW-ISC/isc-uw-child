@@ -128,7 +128,7 @@
             <h3 class="isc-admin-header">Seasonal Topic</h3>
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <div class='post-content'>
-                    <h4><a href="#">This is a seasonal topic title</a></h4>
+                    <h4><a href="#">This is a seasonal topic title that links to its itself</a></h4>
                     <div>this is the featured seasonal topic description... Nullam vitae leo sodales ipsum vehicula hendrerit ut porttitor ex. Fusce finibus lectus et enim dapibus, at auctor risus consectetur.</div>
                     <!--<p><?php get_seasonal_description(); ?></p>-->
                 </div>
