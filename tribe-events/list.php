@@ -76,8 +76,9 @@ get_header();
                                 } else {
                                     $html .= "<div class='event-location'>Location to be determined.</div>";
                                 }
-                                $html .= "<div class='event-content'>" . $event->post_content . "</div>";
-                                         $html .= '<p><a class="more" href="' . get_post_permalink($event->ID) . '">read more</a></p>';
+                                //$html .= "<div class='event-content'>" . $event->post_content . "</div>";
+                                $html .= "<div class='event-content'>" . $event->post_excerpt . "</div>";
+                                $html .= '<p><a class="more" href="' . get_post_permalink($event->ID) . '">read more</a></p>';
                                 $html .= "</li>";
                                 echo $html;
                             }

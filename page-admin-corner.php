@@ -116,7 +116,7 @@
                 ?>
                  </div>
 
-                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">See all Events</a>
+                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">Upcoming Events</a>
             </div>
 
 
