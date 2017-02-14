@@ -36,15 +36,7 @@ get_header();
 
                 xxxx this template uses tribe-events/list.php xxxx
 
-
-                <?php
-                if( tribe_is_event() && is_single() ) { // Single Events
-                    echo '<h2>Name of Event Goes Here</h2>';
-                }
-                else {
-                    echo '<h2>Upcoming Events</h2>';
-                }
-                ?>
+                <h2>Upcoming Events</h2>
 
                 <div id="tribe-events-pg-template" class="isc-events">
                     <ol>
@@ -60,7 +52,7 @@ get_header();
                         $events = get_posts($args);
 
                         if (empty($events)) {
-                            echo "<div class='col-md-6'>No events found!</div>";
+                            echo "No events found!";
                         } else {
                             foreach ($events as $event) {
                                 $title = $event->post_title;
