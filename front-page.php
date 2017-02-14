@@ -65,6 +65,7 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
                         // Query finds the published pages marked featured page and lists their
                         // title and description on a card
                         $args = array(
+                         'hierarchical' => false,
                          'post_type'    => 'page',
                          'post_status' => 'publish',
                          'meta_key'        => 'isc-featured',
