@@ -571,7 +571,7 @@ body, p {
   .uw-accordion-menu .has-children i {
     position: absolute;
     right: 1rem;
-    top: 50%;
+    top: 30%;
     height: 2rem;
     margin-top: -1rem; }
     .uw-accordion-menu .has-children i:before {
@@ -598,7 +598,7 @@ body, p {
 @media print {
   .uw-accordion-shortcode .uw-accordion-shortcode__header {
     margin-bottom: 20px !important; }
-    .uw-accordion-shortcode .uw-accordion-shortcode__header:before {
+    .uw-accordion-shortcode .uw-accordion-shortcode__header i {
       display: none; }
   .uw-accordion-shortcode .uw-accordion-shortcode__panel {
     display: block !important; }

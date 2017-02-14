@@ -659,7 +659,7 @@ $font_family_1: FontAwesome;
         i {
             position: absolute;
             right: 1rem;
-            top: 50%;
+            top: 30%;
             height: 2rem;
             margin-top: -1rem;
 
@@ -704,7 +704,7 @@ $font_family_1: FontAwesome;
 
     @include print {
         .uw-accordion-shortcode__header { margin-bottom: 20px !important;
-            &:before { display: none; }
+            i { display: none; }
          }
         .uw-accordion-shortcode__panel { display: block !important;
             table { width: 100% !important;
