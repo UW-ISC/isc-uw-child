@@ -598,8 +598,16 @@ body, p {
 @media print {
   .uw-accordion-shortcode .uw-accordion-shortcode__header {
     margin-bottom: 20px !important; }
+    .uw-accordion-shortcode .uw-accordion-shortcode__header:before {
+      display: none; }
   .uw-accordion-shortcode .uw-accordion-shortcode__panel {
     display: block !important; }
+    .uw-accordion-shortcode .uw-accordion-shortcode__panel table {
+      width: 100% !important; }
+      .uw-accordion-shortcode .uw-accordion-shortcode__panel table td {
+        width: 50% !important; }
+        .uw-accordion-shortcode .uw-accordion-shortcode__panel table td img {
+          width: 100% !important; }
   .uw-accordion-shortcode .uw-accordion-shortcode__title {
     height: auto !important; } }
 
