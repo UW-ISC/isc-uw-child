@@ -69,11 +69,11 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
                          'post_type'    => 'page',
                          'post_status' => 'publish',
                          'meta_key'        => 'isc-featured',
-                         'meta_value'    => 'YES'
+                         'meta_value'    => 'Homepage'
                         );
 
                         $featured = get_pages($args);
-
+                        log_to_console($featured);
                         if (!$featured) {
                             echo "<div class='col-md-6'>No featured pages found!</div>";
                         } else {
@@ -83,6 +83,7 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
                                       <div style="margin:-40px; height:160px; overflow:hidden; margin-bottom:30px;">
                                             <?php
                                             $custom = get_post_custom($featured_page->ID);
+                                            log_to_console($custom);
                                             if (has_post_thumbnail($featured_page->ID)) {
                                                 $image = get_the_post_thumbnail_url($featured_page->ID);
                                             ?>

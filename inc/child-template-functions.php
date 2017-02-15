@@ -8,7 +8,7 @@
  */
 
 if (! function_exists('display_child_pages_with_toc') ) :
-    function display_child_pages_with_toc() 
+    function display_child_pages_with_toc()
     {
         // The following lines grab all the children pages of the current page
         $args = array(
@@ -72,7 +72,7 @@ endif;
  * @author Abhishek Chauhan <abhi3@uw.edu>
  */
 if (! function_exists('user_guide_menu') ) :
-    function user_guide_menu( $return = false ) 
+    function user_guide_menu( $return = false )
     {
 
         // $exclude_ids = get_menu_excluded_ids();
@@ -175,7 +175,7 @@ endif;
  */
 
 if (! function_exists('display_child_pages') ) :
-    function display_child_pages() 
+    function display_child_pages()
     {
         // The following lines grab all the children pages of the current page
         $args = array(
@@ -207,7 +207,7 @@ if (! function_exists('display_child_pages') ) :
     }
 endif;
 
-function build_page_navigation( $post_id ) 
+function build_page_navigation( $post_id )
 {
         // Grab the post and post_content
         $page_data = get_post($post_id);
@@ -236,7 +236,7 @@ function build_page_navigation( $post_id )
         update_post_meta($post_id, '_uwhr_page_anchor_links', $links);
 }
 
-function add_ids_to_header_tags_auto( $content) 
+function add_ids_to_header_tags_auto( $content)
 {
     // making sure the headers have been gathered first
     build_page_navigation(get_the_ID());
@@ -277,7 +277,7 @@ function add_ids_to_header_tags_auto( $content)
  */
 
 if (! function_exists('isc_front_get_quicklinks') ) :
-    function isc_front_get_quicklinks() 
+    function isc_front_get_quicklinks()
     {
         $custom = get_post_meta(450);
         $html = "";
@@ -308,7 +308,7 @@ endif;
  * @copyright Copyright (c) 2016, University of Washington
  * @since     0.2.0
  */
-function isc_allowedtags() 
+function isc_allowedtags()
 {
     // Add custom tags to this string
        return '<p>,<br>,<a>,<strong>,<em>,<hr>';
@@ -316,7 +316,7 @@ function isc_allowedtags()
 
 if (! function_exists('isc_custom_wp_trim_excerpt') ) :
 
-    function isc_custom_wp_trim_excerpt($isc_excerpt) 
+    function isc_custom_wp_trim_excerpt($isc_excerpt)
     {
         global $post;
         $raw_excerpt = $isc_excerpt;
@@ -389,7 +389,7 @@ endif;
   */
 
 if (! function_exists('output_quicklinks') ) :
-    function output_quicklinks( $post_id, $field, $url_key, $text_key ) 
+    function output_quicklinks( $post_id, $field, $url_key, $text_key )
     {
         $quicklinks = array();
         $custom = get_post_custom($post_id); // gets custom meta of admin-corner
@@ -411,7 +411,7 @@ endif;
 
 /* Wrapper function for 'Workday Support' on Admin's Corner */
 if (! function_exists('support_quicklinks') ) :
-    function support_quicklinks() 
+    function support_quicklinks()
     {
         $post_id = 1594;
         $field = 'workday-support-links';
@@ -423,35 +423,13 @@ endif;
 
 /* Wrapper function for 'Workday Resources' on Admin's Corner */
 if (! function_exists('resource_quicklinks') ) :
-    function resource_quicklinks() 
+    function resource_quicklinks()
     {
         $post_id = 1594;
         $field = 'workday-resource-links';
         $url_key = 'resource-url';
         $text_key = 'resource-text';
         output_quicklinks($post_id, $field, $url_key, $text_key);
-    }
-endif;
-
-     /**
-      * This function returns the text that is the
-      * description of the seasonal topic
-      *
-      * @author    Mason Gionet <mgionet@uw.edu>
-      * @copyright Copyright (c) 2016, University of Washington
-      * @since     0.2.0
-      */
-
-
-if (! function_exists('get_seasonal_description') ) :
-    function get_seasonal_description() 
-    {
-        $description = get_cfc_field('hl-seasonal', 'body', 1673); //seasonal topics page ID
-        if ($description == "") {
-            echo "No summary text has been entered for seasonal topics page.";
-        } else {
-            echo $description;
-        }
     }
 endif;
 
