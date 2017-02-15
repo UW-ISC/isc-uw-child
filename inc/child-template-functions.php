@@ -294,7 +294,7 @@ if (! function_exists('isc_front_get_quicklinks') ) :
                     $html .= '<li><a class="btn-sm uw-btn" href="' .  $data[$i]["isc-hero-quicklink-url"] . '">' . $data[$i]["isc-hero-quicklink-text"] . '</a></li>';
                 }
             } else {
-                $html = "No quicklinks found!";
+                $html = "No quicklinks found.";
             }
         }
         echo $html;
@@ -404,7 +404,7 @@ if (! function_exists('output_quicklinks') ) :
             }
             echo "</ul>";
         } else {
-            echo "<p>No quicklinks found</p>";
+            echo "<p>No quicklinks found.</p>";
         }
     }
 endif;

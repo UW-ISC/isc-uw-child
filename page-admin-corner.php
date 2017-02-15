@@ -125,7 +125,7 @@
                 ?>
                  </div>
 
-                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">Upcoming Events</a>
+                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">See Upcoming Events</a>
             </div>
 
 
@@ -143,7 +143,7 @@
                     $seasonal_featured = get_pages($args);
                     log_to_console($seasonal_featured);
                     if (!$seasonal_featured) {
-                        echo "<div class='col-md-6'>No seasonal topic pages found.</div>";
+                        echo "<p>No featured seasonal topics found.</p>";
                     } else {
                         foreach ($seasonal_featured as $featured_page) {
                             $html = '<h4><a href="' . get_post_permalink($featured_page->ID) . '">' . get_the_title($featured_page->ID) . '</a></h4>';
