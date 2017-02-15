@@ -115,22 +115,47 @@
                     } else {
                         $html .= "<div class='event-location'>Location: TBD</div>";
                     }
-                    $html .= "<div class='event-content'>" . $current->post_excerpt . "</div>";
+                    if (has_excerpt($event->ID)) {
+                        $html .= "<div class='event-content'>" . $event->post_excerpt . "</div>";
+                    } else {
+                      $html .= "<div class='event-content'>No description found.</div>";
+                    }
                     echo $html;
                 }
                 ?>
                  </div>
 
-                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">Upcoming Events</a>
+                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">See Upcoming Events</a>
             </div>
 
 
             <h3 class="isc-admin-header">Seasonal Topic</h3>
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                 <div class='post-content'>
-                    <h4><a href="#">This is a seasonal topic title that links to its itself</a></h4>
-                    <div>this is the featured seasonal topic description... Nullam vitae leo sodales ipsum vehicula hendrerit ut porttitor ex. Fusce finibus lectus et enim dapibus, at auctor risus consectetur.</div>
-                    <!--<p><?php get_seasonal_description(); ?></p>-->
+                    <?php
+                    $args = array(
+                     'hierarchical' => false,
+                     'post_type'    => 'page',
+                     'post_status'  => 'publish',
+                     'meta_key'     => 'isc-featured',
+                     'meta_value'   => 'seasonal'
+                    );
+                    $seasonal_featured = get_pages($args);
+                    log_to_console($seasonal_featured);
+                    if (!$seasonal_featured) {
+                        echo "<p>No featured seasonal topics found.</p>";
+                    } else {
+                        foreach ($seasonal_featured as $featured_page) {
+                            $html = '<h4><a href="' . get_post_permalink($featured_page->ID) . '">' . get_the_title($featured_page->ID) . '</a></h4>';
+                            $html .= "<div>";
+                            $custom = get_post_custom($featured_page->ID);
+                            $description = $custom["isc-featured-description"][0];
+                            $html .= $description;
+                            $html .= "</div>";
+                            echo $html;
+                        }
+                      }
+                    ?>
                 </div>
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
             </div>

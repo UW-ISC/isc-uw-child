@@ -46,10 +46,11 @@ get_header();
 
                         $args = array(
                         'post_type' => 'tribe_events',
-                        'post_status' => 'publish'
+                        'post_status' => 'publish',
+                        'start_date' => date('Y-m-d H:i:s')
                         );
 
-                        $events = get_posts($args);
+                        $events = tribe_get_events($args);
 
                         if (empty($events)) {
                             echo "No events found!";
@@ -72,8 +73,11 @@ get_header();
                                 } else {
                                     $html .= "<div class='event-location'>Location: TBD</div>";
                                 }
-                                //$html .= "<div class='event-content'>" . $event->post_content . "</div>";
-                                $html .= "<div class='event-content'>" . $event->post_excerpt . "</div>";
+                                if (has_excerpt($event->ID)) {
+                                    $html .= "<div class='event-content'>" . $event->post_excerpt . "</div>";
+                                } else {
+                                  $html .= "<div class='event-content'>No description found.</div>";
+                                }
                                 $html .= '<p><a class="more" href="' . get_post_permalink($event->ID) . '">read more</a></p>';
                                 $html .= "</li>";
                                 echo $html;
