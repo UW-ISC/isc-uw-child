@@ -597,8 +597,9 @@ body, p {
 /*** uw accordion (user guide body) ***/
 @media print {
   .uw-accordion-shortcode .uw-accordion-shortcode__header {
-    margin-bottom: 20px !important; }
-    .uw-accordion-shortcode .uw-accordion-shortcode__header i {
+    margin-bottom: 20px !important;
+    border-bottom: none; }
+    .uw-accordion-shortcode .uw-accordion-shortcode__header:before {
       display: none; }
   .uw-accordion-shortcode .uw-accordion-shortcode__panel {
     display: block !important; }
@@ -609,6 +610,6 @@ body, p {
         .uw-accordion-shortcode .uw-accordion-shortcode__panel table td img {
           width: 100% !important; }
   .uw-accordion-shortcode .uw-accordion-shortcode__title {
-    height: auto !important; } }
+    display: none; } }
 
 /*# sourceMappingURL=isc-styles.css.map */
