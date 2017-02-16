@@ -399,7 +399,13 @@ body, p { font-size: 16px !important; }
 
 }
 
-
+/*** toc for article pages ***/
+.isc-toc { background: $uw-tan-light; padding: 20px; }
+.isc-toc-tags { font-size: 12px; margin-bottom: 10px;
+    .isc-toc-updated { margin-right: 10px; display: inline-block; }
+    a { background-color: $uw-purple; color: $uw-tan-light !important; padding: 2px 5px; border-radius: .25em; font-size: 11px; }
+}
+.isc-toc-top-btn { margin-top: 10px; }
 
 /*** generic content and sidebar ***/
 .isc-content-block { padding: 40px; background: $uw-tan; margin-bottom: 1em;

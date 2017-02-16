@@ -41,8 +41,11 @@ if (! function_exists('display_child_pages_with_toc') ) :
             $html .= '</a> </h3>';
             // Displaying the tags of a child page
             $posttags = get_the_tags($child->ID);
+
+            $html .= '<div class="isc-toc-tags" id="tags"><span class="isc-toc-updated">Last Updated: XXXXXXXXXXXXXXXX</span>';
+
             if ($posttags) {
-                $html .= '<div id="tags"> Tags: ';
+
                 for ($x = 0; $x < count($posttags) - 1; $x++) {
                     $tag =  $posttags[$x];
                     $link = get_tag_link($tag);
@@ -50,13 +53,16 @@ if (! function_exists('display_child_pages_with_toc') ) :
                 }
                 $finaltag = $posttags[count($posttags) - 1];
                 $html .= '<a id="tag" href='.get_tag_link($finaltag).'>'.$finaltag->name.' </a>';
-                $html .= '<br>';
+
             }
+
+            $html .= '</div>';
+
             // Displaying the content
             $html .= $child->post_content;
             $html .= '<br>';
             if ($toc) {
-                $html .= '<p class="isc-toc-top-btn"><a href="#toc">Return to top</a></p>';
+                $html .= '<p class="isc-toc-top-btn"><a class="more" href="#toc">Return to top</a></p>';
             }
         }
         echo $html;

@@ -338,6 +338,27 @@ body, p {
       border-bottom: none !important;
       text-decoration: underline; }
 
+/*** toc for article pages ***/
+.isc-toc {
+  background: #ece9e2;
+  padding: 20px; }
+
+.isc-toc-tags {
+  font-size: 12px;
+  margin-bottom: 10px; }
+  .isc-toc-tags .isc-toc-updated {
+    margin-right: 10px;
+    display: inline-block; }
+  .isc-toc-tags a {
+    background-color: #4b2e83;
+    color: #ece9e2 !important;
+    padding: 2px 5px;
+    border-radius: .25em;
+    font-size: 11px; }
+
+.isc-toc-top-btn {
+  margin-top: 10px; }
+
 /*** generic content and sidebar ***/
 .isc-content-block {
   padding: 40px;
