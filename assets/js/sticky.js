@@ -9,12 +9,28 @@ $(document).ready(function() {
         var top_padding = getCSS('top', 'uw-accordion-menu-floater').slice(0, -2); // where the floating menu should be placed from the top
         var change = true;
         var nav = $("#menu-main-navigation");
-        var top_tracker = nav.height();
+        var alert_height = 0;
+        var height_change = 0;
+        jQuery(document).delegate('#uwalert-alert-message', 'DOMNodeInserted', function () {
+            // There's an alert!
+            if (height_change !== 0) {
+              // if we already set the height to change variable, simply add on to it
+              height_change += $("#uwalert-alert-message").height() + parseInt(top_padding) * 2;
+            } else {
+              // else try to play catch up and add it later when height_change is set
+              alert_height = $("#uwalert-alert-message").height() + parseInt(top_padding) * 2;
+            }
+        });
 
+        var top_tracker = nav.height();
 
         if ($(window).width() > width_change && change) {
             // this is information we need, but it will never change so we need to find it once (when it is ok to get it)
-            var height_change = content.offset().top - top_padding;
+            height_change = content.offset().top - top_padding;
+            if (alert_height > 0) {
+              // account for the alert
+              height_change += alert_height;
+            }
             var footer_barrier = content.height() + content.offset().top - $(this).scrollTop() - toc.height() - top_padding * 2;
             change = false;
         }
@@ -26,10 +42,16 @@ $(document).ready(function() {
             if (top_tracker != nav.height() && $(this).width() > width_change) {
               top_tracker = nav.height();
               height_change = content.offset().top - top_padding;
+              if (alert_height > 0) {
+                height_change += alert_height;
+              }
             }
             if ($(this).width() > width_change && change) {
                 // we don't wanna continually update this
                 height_change = content.offset().top - top_padding;
+                if (alert_height > 0) {
+                  height_change += alert_height;
+                }
                 footer_barrier = content.height() + content.offset().top - $(this).scrollTop() - toc.height() - top_padding * 2;
                 change = false;
             }
