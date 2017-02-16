@@ -14,7 +14,7 @@
 if (! function_exists('isc_front_get_quicklinks') ) :
     function isc_front_get_quicklinks()
     {
-        $custom = get_post_meta(450);
+        $custom = get_post_meta(get_the_ID());
         $html = "";
         if (array_key_exists("isc-hero-quicklinks", $custom)) {
             $string = $custom["isc-hero-quicklinks"];

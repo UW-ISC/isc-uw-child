@@ -140,7 +140,6 @@
                      'meta_value'   => 'seasonal'
                     );
                     $seasonal_featured = get_pages($args);
-                    log_to_console($seasonal_featured);
                     if (!$seasonal_featured) {
                         echo "<p>No featured seasonal topics found.</p>";
                     } else {

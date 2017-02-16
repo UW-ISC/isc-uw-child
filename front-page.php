@@ -41,7 +41,9 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
                         <h2>Shortcuts</h2>
                         <ul>
                             <li><a class="btn-sm uw-btn isc-btn-workday" target="_blank" href="https://www.workday.com/en-us/signin.html">Sign in to Workday</a></li>
-                            <?php isc_front_get_quicklinks(); ?>
+                            <?php
+                            isc_front_get_quicklinks();
+                             ?>
                         </ul>
 
                     </div>
