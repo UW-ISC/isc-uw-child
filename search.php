@@ -25,13 +25,16 @@
 
                 <?php
                   if ( have_posts() ) :
-                    while ( have_posts() ) : the_post();
-                      get_template_part( 'content', 'archive' );
-                    endwhile;
+                    while ( have_posts() ) : the_post(); ?>
+
+                        <h3><?php the_title() ?></h3>
+                        <div class="update-date"><?php echo get_the_date() ?> </div>
+                        <div class='post-content'><?php the_excerpt() ?></div>
+
+                    <?php endwhile;
                   else :
                     echo '<h3 class=\'no-results\'>Sorry, no results matched your criteria.</h3>';
-                  endif;
-                ?>
+                  endif; ?>
 
                 <div><?php posts_nav_link(' '); ?></div>
 
