@@ -5,6 +5,9 @@
     "grunt": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-sass": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "grunt-newer": "*",
+    "grunt-phpcs": "*",
+    "jshint": "*"
   }
 }
