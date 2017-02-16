@@ -25,7 +25,7 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
           <div class="container">
             <div class="row">
                 <div class="col-md-6" style="display:none;" aria-hidden="true">
-                    <?php $custom = get_post_meta(450);?>
+                    <?php $custom = get_post_meta(get_the_ID());?>
                     <div class="isc-homepage-title"> <?php //echo $custom["isc-hero-title"][0]?></div>
                     <span class="udub-slant"><span></span></span>
                     <div style="margin-bottom:2em;"> <?php //echo $custom["isc-hero-description"][0]; ?></div>
