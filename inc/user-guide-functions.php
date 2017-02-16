@@ -31,8 +31,8 @@ endif;
 // simply gets the child pages of the current page
 // when called on the user guide library page
 // will return all the user guides
-if (! function_exists('get_user_guides') ) :
-    function get_user_guides()
+if (! function_exists('isc_get_user_guides') ) :
+    function isc_get_user_guides()
     {
           $args = array(
             'parent' => get_the_ID(),
@@ -67,8 +67,8 @@ if (! function_exists('get_user_guides') ) :
 endif;
 
 
-if (! function_exists('user_guide_table') ) :
-    function user_guide_table($user_guides)
+if (! function_exists('isc_user_guide_table') ) :
+    function isc_user_guide_table($user_guides)
     {
 
             $html = '';
@@ -94,8 +94,8 @@ if (! function_exists('user_guide_table') ) :
 endif;
 
 
-if (! function_exists('get_all_topics') ) :
-    function get_all_topics($user_guides)
+if (! function_exists('isc_get_all_topics') ) :
+    function isc_get_all_topics($user_guides)
     {
         $topics = array();
         foreach($user_guides as $guide) {
@@ -107,8 +107,8 @@ if (! function_exists('get_all_topics') ) :
     }
 endif;
 
-if (! function_exists('get_all_roles') ) :
-    function get_all_roles($user_guides)
+if (! function_exists('isc_get_all_roles') ) :
+    function isc_get_all_roles($user_guides)
     {
         $topics = array();
         foreach($user_guides as $guide) {
@@ -129,8 +129,8 @@ endif;
  *
  * @author Abhishek Chauhan <abhi3@uw.edu>
  */
-if (! function_exists('user_guide_menu') ) :
-    function user_guide_menu( $return = false )
+if (! function_exists('isc_user_guide_menu') ) :
+    function isc_user_guide_menu( $return = false )
     {
 
         // $exclude_ids = get_menu_excluded_ids();

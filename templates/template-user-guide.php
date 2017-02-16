@@ -27,7 +27,7 @@ get_header();
         <div class="row">
 
             <div class="col-md-4">
-                <?php user_guide_menu(); ?>
+                <?php isc_user_guide_menu(); ?>
             </div>
 
             <article class="uw-content float-content col-md-8">

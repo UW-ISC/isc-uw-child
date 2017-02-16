@@ -7,8 +7,8 @@
  * @author Abhishek Chauhan <abhi3@uw.edu>
  */
 
-if (! function_exists('display_child_pages_with_toc') ) :
-    function display_child_pages_with_toc()
+if (! function_exists('isc_display_child_pages_with_toc') ) :
+    function isc_display_child_pages_with_toc()
     {
         // The following lines grab all the children pages of the current page
         $args = array(
@@ -73,8 +73,8 @@ endif;
  * @global $post
  */
 
-if (! function_exists('display_child_pages') ) :
-    function display_child_pages()
+if (! function_exists('isc_display_child_pages') ) :
+    function isc_display_child_pages()
     {
         // The following lines grab all the children pages of the current page
         $args = array(

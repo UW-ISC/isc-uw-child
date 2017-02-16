@@ -37,14 +37,3 @@ if (! function_exists('isc_front_get_quicklinks') ) :
 endif;
 
 ?>
-
-
-
-
-
-
-
-
-
-
- ?>

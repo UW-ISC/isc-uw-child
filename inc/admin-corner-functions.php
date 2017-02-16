@@ -32,8 +32,8 @@ if (! function_exists('output_quicklinks') ) :
 endif;
 
 /* Wrapper function for 'Workday Support' on Admin's Corner */
-if (! function_exists('support_quicklinks') ) :
-    function support_quicklinks()
+if (! function_exists('isc_support_quicklinks') ) :
+    function isc_support_quicklinks()
     {
         $post_id = 1594;
         $field = 'workday-support-links';
@@ -44,8 +44,8 @@ if (! function_exists('support_quicklinks') ) :
 endif;
 
 /* Wrapper function for 'Workday Resources' on Admin's Corner */
-if (! function_exists('resource_quicklinks') ) :
-    function resource_quicklinks()
+if (! function_exists('isc_resource_quicklinks') ) :
+    function isc_resource_quicklinks()
     {
         $post_id = 1594;
         $field = 'workday-resource-links';
