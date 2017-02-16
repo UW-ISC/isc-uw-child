@@ -137,6 +137,8 @@ body, p {
 @media (min-width: 992px) {
   .uw-body {
     padding-top: 0; } }
+.uw-body h2 {
+  color: #85754d; }
 .uw-body h3, .uw-body h4 {
   margin-top: 40px; }
   .uw-body h3 a, .uw-body h4 a {

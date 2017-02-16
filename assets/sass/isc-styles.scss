@@ -155,6 +155,8 @@ body, p { font-size: 16px !important; }
     @include desktop {
         padding-top: 0;
     }
+
+    h2 { color: $uw-tan-dark; }
     h3, h4 {margin-top:40px;
         a {color: inherit;}
     }
@@ -706,7 +708,7 @@ $font_family_1: FontAwesome;
         .uw-accordion-shortcode__header {
             margin-bottom: 20px !important;
             border-bottom: none;
-            
+
             &:before { display: none; }
          }
         .uw-accordion-shortcode__panel { display: block !important;
