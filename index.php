@@ -21,7 +21,9 @@
 
             xxxx this template uses index.php xxxx
 
-            <h2>News Archive</h2>
+            <h2>
+              <?php echo get_the_title(get_option( 'page_for_posts' ));?>
+            </h2>
 
             <?php while ( have_posts() ) : the_post(); ?>
 
