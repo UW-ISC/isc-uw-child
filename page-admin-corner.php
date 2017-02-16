@@ -92,7 +92,6 @@
                     'start_date' => date('Y-m-d H:i:s')
                     )
                 );
-                // if $event is an empty array then
                 if (empty($event)) {
                     echo "No events found.";
                 } else {
