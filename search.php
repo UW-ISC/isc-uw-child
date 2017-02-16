@@ -26,9 +26,7 @@
                 <?php
                   if ( have_posts() ) :
                     while ( have_posts() ) : the_post(); ?>
-
                         <h3><?php the_title() ?></h3>
-                        <div class="update-date"><?php echo get_the_date() ?> </div>
                         <div class='post-content'><?php the_excerpt() ?></div>
 
                     <?php endwhile;
