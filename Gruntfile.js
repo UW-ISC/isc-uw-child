@@ -26,18 +26,18 @@ module.exports = function(grunt) {
 			},
             javascript: {
                 files: ['<%= jshint.files %>'],
-                tasks: ['newer:jshint']
+                tasks: ['changed:jshint']
             },
             php: {
                 files: ['*.php','**/*.php'],
-                tasks: ['phpcs']
+                tasks: ['changed:phpcs']
             }
 		}
 	});
+	grunt.loadNpmTasks('grunt-changed');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.registerTask('default',['watch']);
 };
