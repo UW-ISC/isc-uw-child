@@ -7,8 +7,8 @@
  * @author Abhishek Chauhan <abhi3@uw.edu>
  */
 
-if (! function_exists('display_child_pages_with_toc') ) :
-    function display_child_pages_with_toc()
+if (! function_exists('isc_display_child_pages_with_toc') ) :
+    function isc_display_child_pages_with_toc()
     {
         // The following lines grab all the children pages of the current page
         $args = array(
@@ -42,7 +42,8 @@ if (! function_exists('display_child_pages_with_toc') ) :
             // Displaying the tags of a child page
             $posttags = get_the_tags($child->ID);
 
-            $html .= '<div class="isc-toc-tags" id="tags"><span class="isc-toc-updated">Last Updated: XXXXXXXXXXXXXXXX</span>';
+            log_to_console( $child );
+            $html .= '<div class="isc-toc-tags" id="tags"><span class="isc-toc-updated">Last Updated: ' . $child->post_modified . '</span>';
 
             if ($posttags) {
 
