@@ -48,7 +48,7 @@ add_action('admin_head', 'remove_special_page_template_metabox');
 /**
  * Rename Posts to News
  */
-function revcon_change_post_label() {
+function isc_change_post_label() {
     global $menu;
     global $submenu;
     $menu[5][0] = 'News';
@@ -56,7 +56,7 @@ function revcon_change_post_label() {
     $submenu['edit.php'][10][0] = 'Add News';
     $submenu['edit.php'][16][0] = 'News Tags';
 }
-function revcon_change_post_object() {
+function isc_change_post_object() {
     global $wp_post_types;
     $labels = &$wp_post_types['post']->labels;
     $labels->name = 'News';
@@ -74,8 +74,8 @@ function revcon_change_post_object() {
     $labels->name_admin_bar = 'News';
 }
  
-add_action( 'admin_menu', 'revcon_change_post_label' );
-add_action( 'init', 'revcon_change_post_object' );
+add_action( 'admin_menu', 'isc_change_post_label' );
+add_action( 'init', 'isc_change_post_object' );
 
 /**
  * Developer function for logging to the browser console. Do not leave log statements lying around!
