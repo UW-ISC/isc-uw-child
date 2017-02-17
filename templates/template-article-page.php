@@ -26,7 +26,7 @@ get_header();
 
         <article id='main_content' class="uw-body-copy col-md-9" tabindex="-1">
 
-            xxxx this is an article page template xxxx
+            <?php log_to_console("template-article-page.php") ?>
 
             <?php
 

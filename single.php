@@ -20,7 +20,7 @@
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-            xxxx this template uses single.php xxxx
+            <?php log_to_console("single.php") ?>
 
             <h2><?php the_title(); ?></h2>
 

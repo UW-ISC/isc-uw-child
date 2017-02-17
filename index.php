@@ -19,7 +19,7 @@
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-            xxxx this template uses index.php xxxx
+            <?php log_to_console("index.php") ?>
 
             <h2>
               <?php echo get_the_title(get_option( 'page_for_posts' ));?>
