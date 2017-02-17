@@ -9,7 +9,8 @@ module.exports = function(grunt) {
                 src: ['*.php', '**/*.php']
             },
             options: {
-                bin: '/usr/bin/phpcs'
+                bin: '/usr/bin/phpcs',
+                standard: 'Wordpress'
             }
         },
 		sass: {
