@@ -42,8 +42,10 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
             // Displaying the tags of a child page
             $posttags = get_the_tags($child->ID);
 
-            log_to_console( $child );
-            $html .= '<div class="isc-toc-tags" id="tags"><span class="isc-toc-updated">Last Updated: ' . $child->post_modified . '</span>';
+            $modified = $child->post_modified;
+            $modified = strtotime( $modified );
+            $modified = date( 'F j, Y g:iA e', $modified );
+            $html .= '<div class="isc-toc-tags" id="tags"><span class="isc-toc-updated">Last Updated: ' . $modified . '</span>';
 
             if ($posttags) {
 
