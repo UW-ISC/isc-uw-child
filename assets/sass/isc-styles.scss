@@ -155,6 +155,8 @@ body, p { font-size: 16px !important; }
     @include desktop {
         padding-top: 0;
     }
+
+    h2 { color: $uw-tan-dark; }
     h3, h4 {margin-top:40px;
         a {color: inherit;}
     }
@@ -397,7 +399,13 @@ body, p { font-size: 16px !important; }
 
 }
 
-
+/*** toc for article pages ***/
+.isc-toc { background: $uw-tan-light; padding: 20px; }
+.isc-toc-tags { font-size: 12px; margin-bottom: 10px;
+    .isc-toc-updated { margin-right: 10px; display: inline-block; }
+    a { background-color: $uw-purple; color: $uw-tan-light !important; padding: 2px 5px; border-radius: .25em; font-size: 11px; }
+}
+.isc-toc-top-btn { margin-top: 10px; }
 
 /*** generic content and sidebar ***/
 .isc-content-block { padding: 40px; background: $uw-tan; margin-bottom: 1em;
@@ -706,7 +714,7 @@ $font_family_1: FontAwesome;
         .uw-accordion-shortcode__header {
             margin-bottom: 20px !important;
             border-bottom: none;
-            
+
             &:before { display: none; }
          }
         .uw-accordion-shortcode__panel { display: block !important;

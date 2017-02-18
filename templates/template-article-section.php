@@ -25,7 +25,7 @@ get_header();
 
         <article class="uw-body-copy col-md-9">
 
-            xxxx this is an article section template xxxx
+            <?php log_to_console("template-article-section.php") ?>
 
             <?php
             while ( have_posts() ) : the_post();
@@ -35,7 +35,6 @@ get_header();
             endwhile;
 
             ?>
-            <div>Last updated: <?php echo get_the_date() ?></div>
         </article>
 
     </div>

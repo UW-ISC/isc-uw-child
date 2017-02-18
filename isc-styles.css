@@ -137,6 +137,8 @@ body, p {
 @media (min-width: 992px) {
   .uw-body {
     padding-top: 0; } }
+.uw-body h2 {
+  color: #85754d; }
 .uw-body h3, .uw-body h4 {
   margin-top: 40px; }
   .uw-body h3 a, .uw-body h4 a {
@@ -335,6 +337,27 @@ body, p {
     .isc-admin-block ul li a:hover {
       border-bottom: none !important;
       text-decoration: underline; }
+
+/*** toc for article pages ***/
+.isc-toc {
+  background: #ece9e2;
+  padding: 20px; }
+
+.isc-toc-tags {
+  font-size: 12px;
+  margin-bottom: 10px; }
+  .isc-toc-tags .isc-toc-updated {
+    margin-right: 10px;
+    display: inline-block; }
+  .isc-toc-tags a {
+    background-color: #4b2e83;
+    color: #ece9e2 !important;
+    padding: 2px 5px;
+    border-radius: .25em;
+    font-size: 11px; }
+
+.isc-toc-top-btn {
+  margin-top: 10px; }
 
 /*** generic content and sidebar ***/
 .isc-content-block {

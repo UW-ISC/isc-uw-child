@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "devDependencies": {
     "grunt": "*",
+    "grunt-changed": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-sass": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "grunt-phpcs": "*",
+    "jshint": "*"
   }
 }

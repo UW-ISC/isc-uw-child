@@ -32,7 +32,7 @@ get_header();
 
             <article class="uw-content float-content col-md-8">
 
-                xxxx this is a user guide template xxxx
+                <?php log_to_console("template-user-guide.php") ?>
 
                 <?php
                 while ( have_posts() ) : the_post();

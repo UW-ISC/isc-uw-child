@@ -114,11 +114,13 @@
                     } else {
                         $html .= "<div class='event-location'>Location: TBD</div>";
                     }
-                    if (has_excerpt($event->ID)) {
-                        $html .= "<div class='event-content'>" . $event->post_excerpt . "</div>";
+
+                    if (has_excerpt($current->ID)) {
+                        $html .= "<div class='event-content'>" . $current->post_excerpt . "</div>";
                     } else {
                       $html .= "<div class='event-content'>No description found.</div>";
                     }
+
                     echo $html;
                 }
                 ?>

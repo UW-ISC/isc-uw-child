@@ -19,7 +19,7 @@
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-            xxxx this template uses index.php xxxx
+            <?php log_to_console("index.php") ?>
 
             <h2>
               <?php echo get_the_title( get_option('page_for_posts', true) );?>
@@ -27,7 +27,7 @@
 
             <?php while ( have_posts() ) : the_post(); ?>
 
-                <h3><?php the_title() ?></h3>
+                <h3><a href="<?php echo get_permalink(); ?>"><?php the_title() ?></a></h3>
                 <div class="update-date"><?php echo get_the_date() ?> </div>
                 <div class='post-content'><?php the_excerpt() ?></div>
 

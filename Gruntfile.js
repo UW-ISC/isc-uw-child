@@ -4,6 +4,15 @@ module.exports = function(grunt) {
         jshint: {
             files: ['Gruntfile.js', 'assets/js/*.js', 'package.json'],
         },
+        phpcs: {
+            application: {
+                src: ['*.php', '**/*.php']
+            },
+            options: {
+                bin: '/usr/bin/phpcs',
+                standard: 'Wordpress'
+            }
+        },
 		sass: {
 			dist: {
 				files: {
@@ -18,12 +27,18 @@ module.exports = function(grunt) {
 			},
             javascript: {
                 files: ['<%= jshint.files %>'],
-                tasks: ['jshint']
+                tasks: ['changed:jshint']
+            },
+            php: {
+                files: ['*.php','**/*.php'],
+                tasks: ['changed:phpcs']
             }
 		}
 	});
+	grunt.loadNpmTasks('grunt-changed');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.registerTask('default',['watch']);
 };

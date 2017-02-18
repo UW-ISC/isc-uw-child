@@ -34,7 +34,7 @@ get_header();
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-                xxxx this is tribe-events/single-event.php xxxx
+                <?php log_to_console("tribe-events/single-event.php") ?>
 
                 <div id="tribe-events-content" class="isc-events">
 
@@ -42,7 +42,7 @@ get_header();
 
                         $current = tribe_events_get_event();
                         $title = $current->post_title;
-                        $html = '<h2><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h2>';
+                        $html = '<h2>' . $title . '</h2>';
                         $html .= "<div class='event-date'>" . tribe_get_start_date($current) . "</div>";
                         if (tribe_has_venue($current->ID)) {
                             $details = tribe_get_venue_details($current->ID);
