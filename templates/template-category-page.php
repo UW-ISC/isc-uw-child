@@ -33,7 +33,7 @@ get_header();
                 the_content();
             endwhile;
 
-            display_child_pages();
+            isc_display_child_pages();
             ?>
 
         </article>

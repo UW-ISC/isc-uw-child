@@ -4,7 +4,7 @@
         <?php uw_site_title(); ?>
         <?php get_template_part('menu', 'mobile'); ?>
 
-        <?php $user_guides = get_user_guides(); // grabs all the user guides ?>
+        <?php $user_guides = isc_get_user_guides(); // grabs all the user guides ?>
 
 <div class="container uw-body">
 
@@ -27,7 +27,7 @@
                         <select class="form-control input-sm" id="topic-dropdown">
                           <option value="---"> --- </option>
                             <?php
-                              $topics = (get_all_topics($user_guides));
+                              $topics = (isc_get_all_topics($user_guides));
                             foreach($topics as $topic) {
                                 echo '<option value = "' . sanitize_title($topic) .'"> ' . $topic . ' </option>';
                             }
@@ -39,7 +39,7 @@
                         <select class="form-control input-sm" id="role-dropdown">
                           <option value="---"> --- </option>
                             <?php
-                              $roles = (get_all_roles($user_guides));
+                              $roles = (isc_get_all_roles($user_guides));
                             foreach($roles as $role) {
                                 echo '<option value = "' . sanitize_title($role) .'"> ' . $role . ' </option>';
                             }
@@ -67,7 +67,7 @@
                 <tbody>
 
                     <?php
-                    user_guide_table($user_guides);
+                    isc_user_guide_table($user_guides);
                     ?>
 
                 </tbody>

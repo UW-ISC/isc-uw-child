@@ -25,7 +25,7 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
           <div class="container">
             <div class="row">
                 <div class="col-md-6" style="display:none;" aria-hidden="true">
-                    <?php $custom = get_post_meta(450);?>
+                    <?php $custom = get_post_meta(get_the_ID());?>
                     <div class="isc-homepage-title"> <?php //echo $custom["isc-hero-title"][0]?></div>
                     <span class="udub-slant"><span></span></span>
                     <div style="margin-bottom:2em;"> <?php //echo $custom["isc-hero-description"][0]; ?></div>
@@ -41,7 +41,9 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
                         <h2>Shortcuts</h2>
                         <ul>
                             <li><a class="btn-sm uw-btn isc-btn-workday" target="_blank" href="https://www.workday.com/en-us/signin.html">Sign in to Workday</a></li>
-                            <?php isc_front_get_quicklinks(); ?>
+                            <?php
+                            isc_front_get_quicklinks();
+                             ?>
                         </ul>
 
                     </div>
@@ -73,7 +75,7 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
                         );
 
                         $featured = get_pages($args);
-                        log_to_console($featured);
+
                         if (!$featured) {
                             echo "<div class='col-md-6'>No featured pages found!</div>";
                         } else {
@@ -83,7 +85,6 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
                                       <div style="margin:-40px; height:160px; overflow:hidden; margin-bottom:30px;">
                                             <?php
                                             $custom = get_post_custom($featured_page->ID);
-                                            log_to_console($custom);
                                             if (has_post_thumbnail($featured_page->ID)) {
                                                 $image = get_the_post_thumbnail_url($featured_page->ID);
                                             ?>

@@ -47,6 +47,8 @@ class UW
 
         include_once get_stylesheet_directory() . '/inc/child-template-functions.php';
         include_once get_stylesheet_directory() . '/inc/user-guide-functions.php';
+        include_once get_stylesheet_directory() . '/inc/front-page-functions.php';
+        include_once get_stylesheet_directory() . '/inc/admin-corner-functions.php';
         include_once get_stylesheet_directory() . '/inc/breadcrumbs.php';
         include_once get_template_directory() . '/inc/template-functions.php';
         include_once get_template_directory() . '/docs/class.uw-documentation.php';
