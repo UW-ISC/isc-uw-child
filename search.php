@@ -17,7 +17,7 @@
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-            xxxx this template uses search.php xxxx
+            <?php log_to_console("search.php") ?>
 
             <h2>Search Results</h2>
 
@@ -26,7 +26,7 @@
                 <?php
                   if ( have_posts() ) :
                     while ( have_posts() ) : the_post(); ?>
-                        <h3><?php the_title() ?></h3>
+                        <h3><a href="<?php echo get_permalink(); ?>"><?php the_title() ?></a></h3>
                         <div class='post-content'><?php the_excerpt() ?></div>
 
                     <?php endwhile;
