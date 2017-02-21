@@ -406,8 +406,8 @@ body, p { font-size: 16px !important; }
 /*** toc for article pages ***/
 .isc-toc { background: $uw-tan-light; padding: 20px; }
 .isc-toc-tags { font-size: 14px; margin-bottom: 10px;
-    .isc-toc-updated { margin-right: 10px; display: inline-block; }
-    a { background-color: $uw-purple; color: $uw-tan-light !important; padding: 2px 5px; border-radius: .25em; font-size: 13px; }
+    .isc-toc-updated { margin-right: 10px; display: inline-block; font-weight: bold; }
+    a { background-color: $uw-purple; color: $uw-tan-light !important; padding: 2px 5px; border-radius: .25em; font-size: 12px; margin-right: 5px; text-transform: uppercase; }
 }
 .isc-toc-top-btn { margin-top: 10px; }
 

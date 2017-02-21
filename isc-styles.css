@@ -364,13 +364,16 @@ body, p {
   margin-bottom: 10px; }
   .isc-toc-tags .isc-toc-updated {
     margin-right: 10px;
-    display: inline-block; }
+    display: inline-block;
+    font-weight: bold; }
   .isc-toc-tags a {
     background-color: #4b2e83;
     color: #ece9e2 !important;
     padding: 2px 5px;
     border-radius: .25em;
-    font-size: 13px; }
+    font-size: 12px;
+    margin-right: 5px;
+    text-transform: uppercase; }
 
 .isc-toc-top-btn {
   margin-top: 10px; }

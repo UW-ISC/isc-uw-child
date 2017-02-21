@@ -49,14 +49,14 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
             $modified = $child->post_modified;
             $modified = strtotime($modified);
             $modified = date('F j, Y g:iA', $modified);
-            $html .= '<div class="isc-toc-tags" id="tags"><span class="isc-toc-updated">Last Updated: ' . $modified . '</span>';
+            $html .= '<div class="isc-toc-tags" id="tags">Last Updated: <span class="isc-toc-updated">' . $modified . '</span>';
 
             if ($posttags) {
 
                 for ($x = 0; $x < count($posttags) - 1; $x++) {
                     $tag =  $posttags[$x];
                     $link = get_tag_link($tag);
-                    $html .= '<a id="tag" href='.$link.'>'.$tag->name.', </a>';
+                    $html .= '<a id="tag" href='.$link.'>'.$tag->name.'</a>';
                 }
                 $finaltag = $posttags[count($posttags) - 1];
                 $html .= '<a id="tag" href='.get_tag_link($finaltag).'>'.$finaltag->name.' </a>';
