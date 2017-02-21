@@ -92,7 +92,6 @@
                     'start_date' => date('Y-m-d H:i:s')
                     )
                 );
-                // if $event is an empty array then
                 if (empty($event)) {
                     echo "No events found.";
                 } else {
@@ -115,11 +114,13 @@
                     } else {
                         $html .= "<div class='event-location'>Location: TBD</div>";
                     }
-                    if (has_excerpt($event->ID)) {
-                        $html .= "<div class='event-content'>" . $event->post_excerpt . "</div>";
+
+                    if (has_excerpt($current->ID)) {
+                        $html .= "<div class='event-content'>" . $current->post_excerpt . "</div>";
                     } else {
                       $html .= "<div class='event-content'>No description found.</div>";
                     }
+
                     echo $html;
                 }
                 ?>
@@ -141,7 +142,6 @@
                      'meta_value'   => 'seasonal'
                     );
                     $seasonal_featured = get_pages($args);
-                    log_to_console($seasonal_featured);
                     if (!$seasonal_featured) {
                         echo "<p>No featured seasonal topics found.</p>";
                     } else {
@@ -163,14 +163,14 @@
             <h3 class="isc-admin-header">Workday Support</h3>
             <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                     <?php
-                    support_quicklinks();
+                    isc_support_quicklinks();
                     ?>
             </div>
 
             <h3 class="isc-admin-header">Workday Resources</h3>
             <div class="contact-widget-inner isc-widget-white isc-admin-block">
                     <?php
-                    resource_quicklinks();
+                    isc_resource_quicklinks();
                     ?>
             </div>
 

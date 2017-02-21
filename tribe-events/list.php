@@ -34,7 +34,7 @@ get_header();
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-                xxxx this template uses tribe-events/list.php xxxx
+                <?php log_to_console("tribe-events/list.php") ?>
 
                 <h2>Upcoming Events</h2>
 
@@ -58,7 +58,7 @@ get_header();
                             foreach ($events as $event) {
                                 $title = $event->post_title;
                                 $html = "<li>";
-                                $html .= '<h3>' . $title . '</h3>';
+                                $html = '<h3><a href="' . get_post_permalink($event->ID) . '">' . $title . '</a> </h3>';
                                 $html .= "<div class='event-date'>" . tribe_get_start_date($event) . "</div>";
                                 if (tribe_has_venue($event->ID)) {
                                     $details = tribe_get_venue_details($event->ID);
@@ -73,11 +73,13 @@ get_header();
                                 } else {
                                     $html .= "<div class='event-location'>Location: TBD</div>";
                                 }
+
                                 if (has_excerpt($event->ID)) {
                                     $html .= "<div class='event-content'>" . $event->post_excerpt . "</div>";
                                 } else {
                                   $html .= "<div class='event-content'>No description found.</div>";
                                 }
+                                
                                 $html .= '<p><a class="more" href="' . get_post_permalink($event->ID) . '">read more</a></p>';
                                 $html .= "</li>";
                                 echo $html;

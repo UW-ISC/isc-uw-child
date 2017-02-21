@@ -27,12 +27,12 @@ get_header();
         <div class="row">
 
             <div class="col-md-4">
-                <?php user_guide_menu(); ?>
+                <?php isc_user_guide_menu(); ?>
             </div>
 
             <article class="uw-content float-content col-md-8">
 
-                xxxx this is a user guide template xxxx
+                <?php log_to_console("template-user-guide.php") ?>
 
                 <?php
                 while ( have_posts() ) : the_post();

@@ -25,7 +25,7 @@ get_header();
     <div class="row">
         <article class="uw-content col-md-9">
 
-            xxxx this is a category page template xxxx
+            <?php log_to_console("template-category-page.php") ?>
 
             <?php
             while ( have_posts() ) : the_post();
@@ -33,7 +33,7 @@ get_header();
                 the_content();
             endwhile;
 
-            display_child_pages();
+            isc_display_child_pages();
             ?>
 
         </article>

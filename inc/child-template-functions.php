@@ -21,15 +21,19 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
         $toc = count($children_pages) > 0;
         $html = '';
         if ($toc) {
-            // Fancy title of Table of Contents
-            $html = '<div class="isc-toc" id="toc"><p class="h4 beefy gold">Table of Contents</p><span class="slant xs short gold"></span>';
 
+            // Fancy title of Table of Contents
+            $html .= "<h3 class='isc-admin-header' style='margin-top:2em !important;'>Table of Contents</h3>";
+            $html .= "<div class='contact-widget-inner isc-widget-tan' style='width:350px;' id='toc'>";
+            $html .= "<ul>";
             // Echoing each children page's title
             foreach ($children_pages as $child) {
-                $html .= '<div><a href="#'.$child->post_name.'">';
+                $html .= '<li><a href="#'.$child->post_name.'">';
                 $html .= $child->post_title;
-                $html .= '</a></div>';
+                $html .= '</a></li>';
             }
+            $html .= '</ul>';
+
             // Ending the Table of Contents
             $html .= '</div>';
         }
@@ -40,19 +44,19 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
             $html .= $child->post_title;
             $html .= '</a> </h3>';
             // Displaying the tags of a child page
-            $posttags = get_the_tags($child->ID);
+            $posttags = get_the_terms($child->ID, 'md-tags');
 
             $modified = $child->post_modified;
-            $modified = strtotime( $modified );
-            $modified = date( 'F j, Y g:iA', $modified );
-            $html .= '<div class="isc-toc-tags" id="tags"><span class="isc-toc-updated">Last Updated: ' . $modified . '</span>';
+            $modified = strtotime($modified);
+            $modified = date('F j, Y g:iA', $modified);
+            $html .= '<div class="isc-toc-tags" id="tags">Last Updated: <span class="isc-toc-updated">' . $modified . '</span>';
 
             if ($posttags) {
 
                 for ($x = 0; $x < count($posttags) - 1; $x++) {
                     $tag =  $posttags[$x];
                     $link = get_tag_link($tag);
-                    $html .= '<a id="tag" href='.$link.'>'.$tag->name.', </a>';
+                    $html .= '<a id="tag" href='.$link.'>'.$tag->name.'</a>';
                 }
                 $finaltag = $posttags[count($posttags) - 1];
                 $html .= '<a id="tag" href='.get_tag_link($finaltag).'>'.$finaltag->name.' </a>';
@@ -73,107 +77,6 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
 endif;
 
 /**
- * User Guide Menu
- *
- * Lists all User Guides in the sidebar and also builds an
- * in-page navigation.
- *
- * @author Abhishek Chauhan <abhi3@uw.edu>
- */
-if (! function_exists('user_guide_menu') ) :
-    function user_guide_menu( $return = false )
-    {
-
-        // $exclude_ids = get_menu_excluded_ids();
-        // grabs all the headers in the content
-        $headers = get_post_meta(get_the_ID(), '_uwhr_page_anchor_links', true);
-        $pages = '';
-        $subarray = array();
-        $temp_storage = array();
-        $headarray = array();
-
-        // filters the content to add ids to the headers so that the menu will work
-        add_filter('the_content', 'add_ids_to_header_tags_auto');
-
-        // parse through all the headers and sift/sort headers/subheaders
-        if (!empty($headers)) {
-            foreach ($headers as $slug=>$header) {
-                 $content = substr($header, 1, strlen($header));
-                 $heading_type = substr($header, 0, 1);
-                if ($heading_type == '3') {
-                    // it is a header!
-                    array_push($subarray, $temp_storage);
-                    // reset the temp_storage array to gather new subheaders under the new header
-                    $temp_storage = array();
-                    // add the header to the headarray
-                    array_push($headarray, array($slug, $content));
-                } else {
-                    // it is a subheader, store it until we see the next header... or the content ends
-                    array_push($temp_storage, array($slug, $content));
-                }
-            }
-        }
-
-        // pushing on the subheaders under the last header
-        array_push($subarray, $temp_storage);
-        // ignoring all the subheaders that occured before the first header
-        array_shift($subarray);
-
-        // iterate through the headers
-        for ($i = 0; $i < sizeof($headarray); $i++){
-            // the subheaders (if any) under the current header
-            $subheaders = $subarray[$i];
-            // slug of the current header
-            $slug = $headarray[$i][0];
-            // title of the current header
-            $title = $headarray[$i][1];
-            if (sizeof($subheaders) > 0) {
-                // means there are subheaders under the current header
-                $pages .= '<li class="nav-item has-children"> <button class="nav-link children-toggle collapsed" data-toggle="collapse" data-target="#'.$slug.'" aria-controls="#'.$slug.'" aria-expanded="false">'.$title.'<i class="fa fa-2x"></i></button>';
-                $pages .= '<ul class="children depth-1 collapse" id="'.$slug.'" aria-expanded="false" style="height: 0px;">';
-                // iterate through the subheaders under the current header
-                for ($j = 0; $j < sizeof($subheaders); $j++) {
-                    // slug of the current subheader
-                    $subslug = $subheaders[$j][0];
-                    // title of the current subtitle
-                    $subtitle = $subheaders[$j][1];
-                    // Append the subheaders
-                    $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$subtitle.'" href="#'.$subslug.'">'.$subtitle.'</a></li>';
-                }
-                $pages .= "</ul></li>";
-            } else {
-                // if there are no subheaders under the current header, just put the header link
-                $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$title.'" href="#'.$slug.'">'.$title.'</a></li>';
-            }
-        }
-
-        // add the title of the table of contents (first element)
-        $first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo('name') . '"> Table of Contents </a></li>';
-
-        $html = sprintf(
-            '<ul>%s%s</ul>',
-            $first_li,
-            $pages
-        );
-
-        if (empty($pages) ) {
-            if ($return ) {
-                return false;
-            } else {
-                echo '';
-            }
-        } else {
-            $menu = '<nav class="uw-accordion-menu float-menu" id="pageNav toc" aria-label="Site Menu" tabindex="-1" >' . $html . '</nav>';
-            if ($return ) {
-                return $menu;
-            } else {
-                echo $menu;
-            }
-        }
-    }
-endif;
-
-/**
  * Displays the child pages of the current page along with their body contents
  *
  * @author    Kevin Zhao <zhaok24@uw.edu>
@@ -183,8 +86,8 @@ endif;
  * @global $post
  */
 
-if (! function_exists('display_child_pages') ) :
-    function display_child_pages()
+if (! function_exists('isc_display_child_pages') ) :
+    function isc_display_child_pages()
     {
         // The following lines grab all the children pages of the current page
         $args = array(
@@ -211,100 +114,6 @@ if (! function_exists('display_child_pages') ) :
             }
             $html .= '<a class="uw-btn btn-sm" href="'.$page_url.'">Read More</a>';
             $html .= '</div>';
-        }
-        echo $html;
-    }
-endif;
-
-function build_page_navigation( $post_id )
-{
-        // Grab the post and post_content
-        $page_data = get_post($post_id);
-        $page_content = $page_data ? $page_data->post_content : '';
-
-        $links = array();
-        $results = '';
-        // the header types we want to look for (3:header and 4:subheader)
-        $options = "([34])";
-                $regex = '/<h'. $options . '.*?>(.*?)<\/h\1>/';
-
-    if (preg_match_all($regex, $page_content, $matches) ) {
-        $results = $matches[2];
-        $results2 = $matches[0];
-        for ($i = 0; $i < sizeof($results); $i++) {
-            $header_type = substr($results2[$i], 2, 1);
-            $heading = $results[$i];
-            $slug = sanitize_title($heading);
-            $links[$slug] = $header_type . $heading;
-        }
-    } else {
-        $results = '';
-    }
-
-        // Slugs are added to the h3s and h4s in a filter on the_content function
-        update_post_meta($post_id, '_uwhr_page_anchor_links', $links);
-}
-
-function add_ids_to_header_tags_auto( $content)
-{
-    // making sure the headers have been gathered first
-    build_page_navigation(get_the_ID());
-
-    // _uwhr_page_anchor_links represents if a post contains these anchor links, so if there
-    // are no links we don't want to bother with this method...
-    $headers = get_post_meta(get_the_ID(), '_uwhr_page_anchor_links', true);
-    if (empty($headers)) {
-        return $content;
-    }
-    // the header types we want to look for (h3 and h4)
-    $look_for = "(h3|h4)";
-    $pattern = '#(?P<full_tag><(?P<tag_name>'. $look_for .')>(?P<tag_contents>[^<]*)</'. $look_for .'>)#i';
-    if (preg_match_all($pattern, $content, $matches, PREG_SET_ORDER) ) {
-        $find = array();
-        $replace = array();
-        $top = '';
-        foreach( $matches as $match ) {
-            $find[]    = $match['full_tag'];
-            $id        = sanitize_title($match['tag_contents']);
-            $id_attr   = sprintf(' id="%s"', $id);
-            $replace[] = sprintf('%1$s<%2$s%3$s>%4$s</%2$s>', $top, $match['tag_name'], $id_attr, $match['tag_contents']);
-        }
-        $content = str_replace($find, $replace, $content);
-    }
-    return $content;
-}
-
-/**
- * Displays the quicklinks by querying the metadata of
- * the homepage
- *
- * @author    Mason Gionet <mgionet@uw.edu>
- * @copyright Copyright (c) 2016, University of Washington
- * @since     0.2.0
- *
- * @global $post
- */
-
-if (! function_exists('isc_front_get_quicklinks') ) :
-    function isc_front_get_quicklinks()
-    {
-        $custom = get_post_meta(450);
-        $html = "";
-        if (array_key_exists("isc-hero-quicklinks", $custom)) {
-            $string = $custom["isc-hero-quicklinks"];
-            $result = implode($string);
-            $data = unserialize($result);
-            if (sizeOf($data) < 3 && sizeOf($data) > 0) {
-                for ($i = 0; $i < sizeOf($data); $i++) {
-                    $html .= '<li><a class="btn-sm uw-btn" href="' . $data[$i]["isc-hero-quicklink-url"] . '">'. $data[$i]["isc-hero-quicklink-text"] . '</a></li>';
-                }
-            } else if (sizeOf($data) >= 3) {
-                for ($i = 0; $i < 3; $i++) {
-                    $html .= '<li><a class="btn-sm uw-btn" href="' .  $data[$i]["isc-hero-quicklink-url"] . '">' . $data[$i]["isc-hero-quicklink-text"] . '</a></li>';
-                }
-            } else {
-                $html = "No quicklinks found.";
-            }
         }
         echo $html;
     }
@@ -385,61 +194,5 @@ endif;
 
  remove_filter('get_the_excerpt', 'wp_trim_excerpt');
  add_filter('get_the_excerpt', 'isc_custom_wp_trim_excerpt');
-
-
- /**
-  * This private function returns a ul of quicklinks. It should be called via
-  * wrapper functions below.
-  *
-  * @author    Craig M. Stimmel <cstimmel@uw.edu>
-  * @author    Charlon Palacay <charlon@uw.edu>
-  * @copyright Copyright (c) 2016, University of Washington
-  * @since     0.2.0
-  */
-
-if (! function_exists('output_quicklinks') ) :
-    function output_quicklinks( $post_id, $field, $url_key, $text_key )
-    {
-        $quicklinks = array();
-        $custom = get_post_custom($post_id); // gets custom meta of admin-corner
-        if (array_key_exists($field, $custom) ) {
-            $quicklinks = unserialize($custom[$field][0]);
-        }
-        if (isset($quicklinks) && !empty($quicklinks) ) {
-            echo "<ul>";
-            foreach ( $quicklinks as $link ) {
-                $format = "<li><a href='%s'>%s</a></li>";
-                echo sprintf($format, $link[$url_key], $link[$text_key]);
-            }
-            echo "</ul>";
-        } else {
-            echo "<p>No quicklinks found.</p>";
-        }
-    }
-endif;
-
-/* Wrapper function for 'Workday Support' on Admin's Corner */
-if (! function_exists('support_quicklinks') ) :
-    function support_quicklinks()
-    {
-        $post_id = 1594;
-        $field = 'workday-support-links';
-        $url_key = 'support-url';
-        $text_key = 'support-text';
-        output_quicklinks($post_id, $field, $url_key, $text_key);
-    }
-endif;
-
-/* Wrapper function for 'Workday Resources' on Admin's Corner */
-if (! function_exists('resource_quicklinks') ) :
-    function resource_quicklinks()
-    {
-        $post_id = 1594;
-        $field = 'workday-resource-links';
-        $url_key = 'resource-url';
-        $text_key = 'resource-text';
-        output_quicklinks($post_id, $field, $url_key, $text_key);
-    }
-endif;
 
 ?>
