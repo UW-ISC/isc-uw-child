@@ -26,7 +26,7 @@ class UW_Page_Attributes_Meta_Box
         remove_meta_box('categorydiv', 'post', 'side'); //categories meta box
         remove_meta_box('tagsdiv-post_tag', 'post', 'side'); //tags meta box
         remove_meta_box('postimagediv', 'post', 'side'); //featured image meta box
-         add_meta_box('uwpageparentdiv', 'Page Attributes', array( $this, 'page_attributes_meta_box' ), 'page', 'side', 'core');
+        add_meta_box('uwpageparentdiv', 'Page Attributes', array( $this, 'page_attributes_meta_box' ), 'page', 'side', 'core');
     }
 
     function page_attributes_meta_box( $post )
@@ -69,7 +69,7 @@ class UW_Page_Attributes_Meta_Box
                 wp_nonce_field('parent_nonce', 'parent_name');
             ?>
 
-            <p><input type="checkbox" id="parent_id" name="parentcheck" value="on" <?php if(!empty($parent) ) { ?>checked="checked"<?php 
+            <p><input type="checkbox" id="parent_id" name="parentcheck" value="on" <?php if(!empty($parent) ) { ?>checked="checked"<?php
 } ?> /><?php _e('Hide from menu') ?></p>
 
             <?php
@@ -96,7 +96,7 @@ class UW_Page_Attributes_Meta_Box
 
       <label class="screen-reader-text" for="sidebar"><?php _e('Sidebar') ?></label>
 
-      <p><input type="checkbox" id="sidebar_id" name="sidebarcheck" value="on" <?php if(!empty($sidebar) ) { ?>checked="checked"<?php 
+      <p><input type="checkbox" id="sidebar_id" name="sidebarcheck" value="on" <?php if(!empty($sidebar) ) { ?>checked="checked"<?php
 } ?> /><?php _e('No Sidebar') ?></p>
 
       <p><strong><?php _e('Order') ?></strong></p>
@@ -109,7 +109,7 @@ class UW_Page_Attributes_Meta_Box
         <?php
     }
 
-    function page_template_dropdown( $default = '' , $post) 
+    function page_template_dropdown( $default = '' , $post)
     {
 
         $previews = array('Big Hero' => '/assets/images/template-big-hero.jpg', 'Small Hero' => '/assets/images/template-small-hero.jpg', 'No image' => '/assets/images/template-no-image.jpg', 'No title/image' => '/assets/images/template-no-title.jpg', 'Default Template' => '/assets/images/template-default.jpg');
@@ -154,7 +154,7 @@ class UW_Page_Attributes_Meta_Box
         }
     }
 
-    function custom_style() 
+    function custom_style()
     {
         wp_enqueue_style('uw-admin-template', get_template_directory_uri() . '/assets/admin/css/uw.admin.template.css');
     }
