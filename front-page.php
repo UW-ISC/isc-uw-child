@@ -117,7 +117,7 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
                                         $description_text = "Learn More";
                                     }
                                     ?>
-                                    <p><?php echo $description; ?></p>
+                                    <p class="isc-homepage-excerpt"><?php echo $description; ?></p>
                                     <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>"><?php echo $description_text; ?></a></p>
 
                                   </div>

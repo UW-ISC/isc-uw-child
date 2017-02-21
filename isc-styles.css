@@ -276,6 +276,10 @@ body, p {
   background: #ece9e2;
   padding: 40px;
   margin-bottom: 30px; }
+  .isc-homepage-body .isc-homepage-featured .isc-homepage-card .isc-homepage-excerpt {
+    height: 350px;
+    max-height: 350px;
+    overflow: hidden; }
 @media (min-width: 992px) {
   .isc-homepage-body .isc-homepage-news {
     margin-top: -90px; } }
@@ -287,6 +291,10 @@ body, p {
   margin-bottom: 30px; }
   .isc-homepage-body .isc-homepage-news .isc-homepage-news-content h3 {
     margin-top: 0; }
+  .isc-homepage-body .isc-homepage-news .isc-homepage-news-content .post-content {
+    height: 472px;
+    max-height: 472px;
+    overflow: hidden; }
 
 /*** admin corner ***/
 .isc-admin-hero {
