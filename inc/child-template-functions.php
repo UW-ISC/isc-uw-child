@@ -48,7 +48,7 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
 
             $modified = $child->post_modified;
             $modified = strtotime($modified);
-            $modified = date('F j, Y g:iA e', $modified);
+            $modified = date('F j, Y g:iA', $modified);
             $html .= '<div class="isc-toc-tags" id="tags"><span class="isc-toc-updated">Last Updated: ' . $modified . '</span>';
 
             if ($posttags) {
