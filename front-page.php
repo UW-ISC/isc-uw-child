@@ -21,7 +21,7 @@ if(!empty($mobileimage) && $mobileimage[0] !== "") {
         <?php uw_site_title(); ?>
         <?php get_template_part('menu', 'mobile'); ?>
 
-      <div class="isc-homepage-hero" style="background-color: #fff;">
+      <div class="isc-homepage-hero" style="background-image: url('<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/service-team_final.jpg';?>');">
           <div class="container">
             <div class="row">
                 <div class="col-md-6" style="display:none;" aria-hidden="true">

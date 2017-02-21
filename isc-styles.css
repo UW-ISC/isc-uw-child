@@ -172,7 +172,6 @@ body, p {
   position: relative; }
   @media (min-width: 992px) {
     .isc-homepage-hero {
-      background-image: url("../isc-uw-child/assets/images/service-team_final.jpg");
       position: relative;
       background-size: cover;
       background-repeat: no-repeat;
