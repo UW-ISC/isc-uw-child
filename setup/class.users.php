@@ -29,7 +29,7 @@ class UW_Users
         return $contactmethods;
     }
 
-    function custom_admin_menu() 
+    function custom_admin_menu()
     {
         $user = new WP_User(get_current_user_id());
         if (!empty($user->roles) && is_array($user->roles)) {
@@ -38,11 +38,14 @@ class UW_Users
             }
         }
 
+        // removes the comment option on the menu for all users
+        remove_menu_page( 'edit-comments.php' );
         if(isset($role) && $role == "editor") {
+             // if the user has an editor role
              remove_submenu_page('themes.php', 'themes.php');
-             // disable on the menu
+             // disable WCK on the menu
              remove_menu_page('wck-page');
-             // removing the custom fields box that appears when editing a page
+             // removing the custom fields metabox that appears when editing a page
              remove_meta_box('postcustom', 'page', 'normal');
              remove_submenu_page('themes.php', 'nav-menus.php');
              global $submenu;

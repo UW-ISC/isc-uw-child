@@ -45,6 +45,21 @@ function remove_special_page_template_metabox()
 }
 add_action('admin_head', 'remove_special_page_template_metabox');
 
+
+function remove_comment_support() {
+    remove_post_type_support( 'post', 'comments' );
+    remove_post_type_support( 'page', 'comments' );
+}
+// Removes comment support from post and pages
+add_action('init', 'remove_comment_support', 100);
+
+function isc_admin_bar_render() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+}
+// Removes comments from admin bar
+add_action( 'wp_before_admin_bar_render', 'isc_admin_bar_render' );
+
 /**
  * Rename Posts to News
  */
@@ -73,7 +88,7 @@ function isc_change_post_object() {
     $labels->menu_name = 'News';
     $labels->name_admin_bar = 'News';
 }
- 
+
 add_action( 'admin_menu', 'isc_change_post_label' );
 add_action( 'init', 'isc_change_post_object' );
 
