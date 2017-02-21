@@ -390,20 +390,24 @@ body, p { font-size: 16px !important; }
 
     ul { list-style: none; padding: 0;
         li {
-            a {
+            a { color: $uw-purple; font-size: 16px;
                 &:hover { border-bottom: none !important; text-decoration: underline; }
             }
         }
     }
 
-
 }
+
+/*** custom widget colors  ***/
+.isc-widget-tan { background: #e8e3d3 !important; border:none; }
+.isc-widget-gray { background: #ccc; border: none; }
+.isc-widget-white { background: #fff; border: solid 1px #ddd; }
 
 /*** toc for article pages ***/
 .isc-toc { background: $uw-tan-light; padding: 20px; }
-.isc-toc-tags { font-size: 12px; margin-bottom: 10px;
+.isc-toc-tags { font-size: 14px; margin-bottom: 10px;
     .isc-toc-updated { margin-right: 10px; display: inline-block; }
-    a { background-color: $uw-purple; color: $uw-tan-light !important; padding: 2px 5px; border-radius: .25em; font-size: 11px; }
+    a { background-color: $uw-purple; color: $uw-tan-light !important; padding: 2px 5px; border-radius: .25em; font-size: 13px; }
 }
 .isc-toc-top-btn { margin-top: 10px; }
 
@@ -417,14 +421,6 @@ body, p { font-size: 16px !important; }
 .isc-sidebar { padding-top: 0 !important; position: relative;
 
     h3 { margin-top: 0; }
-
-    /*** custom sidebar widget ***/
-    .isc-widget-tan { background: #e8e3d3 !important;  }
-
-    .isc-widget-gray { background: #ccc; }
-
-    .isc-widget-white { background: #fff; border: solid 1px #ddd; }
-
 }
 
 /*** footer ***/

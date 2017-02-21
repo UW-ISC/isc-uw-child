@@ -21,15 +21,19 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
         $toc = count($children_pages) > 0;
         $html = '';
         if ($toc) {
-            // Fancy title of Table of Contents
-            $html = '<div class="isc-toc" id="toc"><p class="h4 beefy gold">Table of Contents</p><span class="slant xs short gold"></span>';
 
+            // Fancy title of Table of Contents
+            $html .= "<h3 class='isc-admin-header' style='margin-top:2em !important;'>Table of Contents</h3>";
+            $html .= "<div class='contact-widget-inner isc-widget-tan' style='width:350px;' id='toc'>";
+            $html .= "<ul>";
             // Echoing each children page's title
             foreach ($children_pages as $child) {
-                $html .= '<div><a href="#'.$child->post_name.'">';
+                $html .= '<li><a href="#'.$child->post_name.'">';
                 $html .= $child->post_title;
-                $html .= '</a></div>';
+                $html .= '</a></li>';
             }
+            $html .= '</ul>';
+
             // Ending the Table of Contents
             $html .= '</div>';
         }

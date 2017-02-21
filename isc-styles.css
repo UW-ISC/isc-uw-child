@@ -334,9 +334,25 @@ body, p {
   .isc-admin-block ul {
     list-style: none;
     padding: 0; }
-    .isc-admin-block ul li a:hover {
-      border-bottom: none !important;
-      text-decoration: underline; }
+    .isc-admin-block ul li a {
+      color: #4b2e83;
+      font-size: 16px; }
+      .isc-admin-block ul li a:hover {
+        border-bottom: none !important;
+        text-decoration: underline; }
+
+/*** custom widget colors  ***/
+.isc-widget-tan {
+  background: #e8e3d3 !important;
+  border: none; }
+
+.isc-widget-gray {
+  background: #ccc;
+  border: none; }
+
+.isc-widget-white {
+  background: #fff;
+  border: solid 1px #ddd; }
 
 /*** toc for article pages ***/
 .isc-toc {
@@ -344,7 +360,7 @@ body, p {
   padding: 20px; }
 
 .isc-toc-tags {
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 10px; }
   .isc-toc-tags .isc-toc-updated {
     margin-right: 10px;
@@ -354,7 +370,7 @@ body, p {
     color: #ece9e2 !important;
     padding: 2px 5px;
     border-radius: .25em;
-    font-size: 11px; }
+    font-size: 13px; }
 
 .isc-toc-top-btn {
   margin-top: 10px; }
@@ -370,17 +386,9 @@ body, p {
 
 .isc-sidebar {
   padding-top: 0 !important;
-  position: relative;
-  /*** custom sidebar widget ***/ }
+  position: relative; }
   .isc-sidebar h3 {
     margin-top: 0; }
-  .isc-sidebar .isc-widget-tan {
-    background: #e8e3d3 !important; }
-  .isc-sidebar .isc-widget-gray {
-    background: #ccc; }
-  .isc-sidebar .isc-widget-white {
-    background: #fff;
-    border: solid 1px #ddd; }
 
 /*** footer ***/
 .uw-footer {
