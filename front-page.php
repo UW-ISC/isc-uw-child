@@ -1,27 +1,26 @@
 <?php get_header('front');
-      $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+  $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
 if(!$url) {
-    $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/service-team_final.jpg";
+  $url = get_site_url() . "/wp-content/themes/isc-uw-child/assets/images/service-team_final.jpg";
 }
-      $mobileimage = get_post_meta($post->ID, "mobileimage");
-      $hasmobileimage = '';
+$mobileimage = get_post_meta($post->ID, "mobileimage");
+$hasmobileimage = '';
 if(!empty($mobileimage) && $mobileimage[0] !== "") {
     $mobileimage = $mobileimage[0];
     $hasmobileimage = 'hero-mobile-image';
 }
-      $banner = get_post_meta($post->ID, "banner");
-      $buttontext = get_post_meta($post->ID, "buttontext");
-      $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
-
+$banner = get_post_meta($post->ID, "banner");
+$buttontext = get_post_meta($post->ID, "buttontext");
+$buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 <div class="uw-body" style="padding:0;">
 
-    <div class="uw-content" role='main'>
+  <div class="uw-content" role='main'>
 
-        <?php uw_site_title(); ?>
-        <?php get_template_part('menu', 'mobile'); ?>
+    <?php uw_site_title(); ?>
+    <?php get_template_part('menu', 'mobile'); ?>
 
-      <div class="isc-homepage-hero" style="background-image: url('<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/service-team_final.jpg';?>');">
+      <div class="isc-homepage-hero" style="background-image: url('<?php echo $url;?>');">
           <div class="container">
             <div class="row">
                 <div class="col-md-6" style="display:none;" aria-hidden="true">
