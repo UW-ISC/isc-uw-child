@@ -40,6 +40,29 @@
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <h3 class="isc-admin-header">Workday Support</h3>
+                        <div class="contact-widget-inner isc-widget-white isc-admin-block" style="min-height: 250px;">
+                                <?php
+                                isc_support_quicklinks();
+                                ?>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3 class="isc-admin-header">Workday Resources</h3>
+                        <div class="contact-widget-inner isc-widget-white isc-admin-block" style="min-height: 250px;">
+                                <?php
+                                isc_resource_quicklinks();
+                                ?>
+                        </div>
+                    </div>
+
+                </div>
+
+
                 <h3 class="isc-admin-header">Admins' News</h3>
                 <div class="isc-admin-block">
 
@@ -82,7 +105,7 @@
 
         <div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
-            <h3 class="isc-admin-header">Next Event</h3>
+            <h3 class="isc-admin-header">Upcoming Event</h3>
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
               <div class='post-content isc-events'>
                 <?php
@@ -126,7 +149,7 @@
                 ?>
                  </div>
 
-                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">See Upcoming Events</a>
+                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">See All Events</a>
             </div>
 
 
@@ -158,20 +181,6 @@
                     ?>
                 </div>
                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/seasonal-topics"?>">See all Topics</a>
-            </div>
-
-            <h3 class="isc-admin-header">Workday Support</h3>
-            <div class="contact-widget-inner isc-widget-gray isc-admin-block">
-                    <?php
-                    isc_support_quicklinks();
-                    ?>
-            </div>
-
-            <h3 class="isc-admin-header">Workday Resources</h3>
-            <div class="contact-widget-inner isc-widget-white isc-admin-block">
-                    <?php
-                    isc_resource_quicklinks();
-                    ?>
             </div>
 
         </div>
