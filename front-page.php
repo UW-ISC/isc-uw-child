@@ -37,7 +37,7 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                         <div class="isc-homepage-title"><?php the_title(); ?></div>
                         <span class="udub-slant"><span></span></span>
 
-                        <h2>Shortcuts</h2>
+                        <h2 class="sr-only">Quicklinks</h2>
                         <ul>
                             <li><a class="btn-sm uw-btn isc-btn-workday" target="_blank" href="https://wd5.myworkday.com/uw/login.htmld">Sign in to Workday</a></li>
                             <?php
