@@ -162,8 +162,10 @@ body, p {
 /*** uw body copy ***/
 .uw-body-copy {
   margin-top: 0; }
-  .uw-body-copy a {
+  .uw-body-copy h3 a {
     color: #4b2e83 !important; }
+    .uw-body-copy h3 a:hover {
+      border-color: #4b2e83 !important; }
 
 /*** homepage ***/
 .isc-homepage-hero {
