@@ -46,10 +46,7 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
             // Displaying the tags of a child page
             $posttags = get_the_terms($child->ID, 'md-tags');
 
-            $modified = $child->post_modified;
-            $modified = strtotime($modified);
-            $modified = date('F j, Y g:iA', $modified);
-            $html .= '<div class="isc-toc-tags" id="tags">Last Updated: <span class="isc-toc-updated">' . $modified . '</span>';
+            $html .= '<div class="isc-toc-tags" id="tags">';
 
             if ($posttags) {
 
@@ -66,8 +63,10 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
             $html .= '</div>';
 
             // Displaying the content
+            $html .= '<div class="isc-article-content">';
             $html .= $child->post_content;
-            $html .= '<br>';
+            $html .= '</div>';
+            
             if ($toc) {
                 $html .= '<p class="isc-toc-top-btn"><a class="more" href="#toc">Return to top</a></p>';
             }
