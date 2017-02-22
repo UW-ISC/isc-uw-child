@@ -79,6 +79,14 @@ class UW_Scripts
             'admin'   => false
             ),
 
+            'jquery-succinct' => array (
+            'id'      => 'jquery-succinct',
+            'url'     => $child . '/vendor/js/jquery.succinct.min.js',
+            'deps'    => array( 'jquery' ),
+            'version' => '1.1.0',
+            'admin'   => false
+            ),
+
             'isc-js' => array (
             'id'      => 'isc-js',
             'url'     => $child .'/assets/js/isc.js',
@@ -87,7 +95,7 @@ class UW_Scripts
             'admin'   => false
             ),
 
-            ), $this->get_child_theme_scripts() 
+            ), $this->get_child_theme_scripts()
         );
 
         add_action('wp_enqueue_scripts', array( $this, 'uw_register_default_scripts' ));

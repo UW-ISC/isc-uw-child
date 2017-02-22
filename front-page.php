@@ -39,7 +39,7 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
                         <h2>Shortcuts</h2>
                         <ul>
-                            <li><a class="btn-sm uw-btn isc-btn-workday" target="_blank" href="https://www.workday.com/en-us/signin.html">Sign in to Workday</a></li>
+                            <li><a class="btn-sm uw-btn isc-btn-workday" target="_blank" href="https://wd5.myworkday.com/uw/login.htmld">Sign in to Workday</a></li>
                             <?php
                             isc_front_get_quicklinks();
                              ?>
@@ -126,7 +126,15 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                         }
                         ?>
 
-                  </div>
+                        <script>
+                            $(function(){
+                                $('.isc-homepage-excerpt').succinct({
+                                    size: 200
+                                });
+                            });
+                        </script>
+
+                    </div>
 
               </div>
               <div class="col-md-4 isc-homepage-news">
@@ -162,9 +170,8 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                                     <?php echo the_title(); ?></a>
                                 </h3>
                                 <div class="update-date"><?php echo get_the_date() ?></div>
-                                <div class="post-content"><?php echo the_excerpt() ?></div>
-
-
+                                <div class="post-content"><?php echo the_content() ?></div>
+                                <p><a class="more" href="">Read more</a></p>
                         <?php
                             endwhile;
                       else:
@@ -172,6 +179,15 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                       endif;
                     ?>
                       <div><a class="uw-btn btn-sm" href="<?php echo get_site_url() . '/news'?>">See all news</a></div>
+
+                      <script>
+                          $(function(){
+                              $('.isc-homepage-news-content .post-content').succinct({
+                                  size: 300
+                              });
+                          });
+                      </script>
+
                   </div>
 
                   <!-- end loop -->
