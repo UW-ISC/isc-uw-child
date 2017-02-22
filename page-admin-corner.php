@@ -154,7 +154,7 @@
 
 
             <h3 class="isc-admin-header">Seasonal Topic</h3>
-            <div class="contact-widget-inner isc-widget-white isc-admin-block">
+            <div class="contact-widget-inner isc-widget-gray isc-admin-block">
                 <div class='post-content'>
                     <?php
                     $args = array(

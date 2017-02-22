@@ -24,7 +24,7 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
 
             // Fancy title of Table of Contents
             $html .= "<h3 class='isc-admin-header sr-only'>Table of Contents</h3>";
-            $html .= "<div class='contact-widget-inner isc-widget-tan' style='width:350px;' id='toc'>";
+            $html .= "<div class='contact-widget-inner isc-widget-white isc-toc' id='toc'>";
             $html .= "<ul>";
             // Echoing each children page's title
             foreach ($children_pages as $child) {
