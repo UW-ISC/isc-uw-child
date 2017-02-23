@@ -449,6 +449,33 @@ body, p {
           position: relative; }
     .isc-footer ul.footer-contact-container {
       text-align: left; }
+  .isc-footer .menu {
+    clear: both;
+    margin: 0; }
+  @media (min-width: 992px) {
+    .isc-footer .menu-item-has-children {
+      width: 33.33333333%;
+      float: left; } }
+  .isc-footer .menu-item-has-children a:first-child {
+    display: block;
+    font-size: 18px !important;
+    font-family: "Encode Sans Compressed", sans-serif;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: .025em;
+    font-size: 24px;
+    margin-top: 29px;
+    margin-bottom: 14.5px; }
+    .isc-footer .menu-item-has-children a:first-child:hover {
+      color: inherit;
+      text-decoration: none;
+      border: none;
+      cursor: default; }
+  .isc-footer .menu-item-has-children .sub-menu a {
+    font-size: 15px !important;
+    font-weight: normal;
+    margin: 0;
+    display: inline-block; }
   .isc-footer h3 {
     font-size: 18px;
     letter-spacing: .025em; }
