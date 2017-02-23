@@ -533,6 +533,8 @@ body, p {
 
 .more {
   font-size: 15px; }
+  .more:after {
+    background: none !important; }
 
 /*** uwhr accordian (table of contents) styles ***/
 .uw-accordion-menu {

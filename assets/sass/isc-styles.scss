@@ -560,7 +560,9 @@ $font_family_1: FontAwesome;
 /*** global post date/content styles ***/
 .update-date { font-weight: bold; margin-bottom: .5em; }
 .post-content { margin-bottom: 2em; }
-.more { font-size: 15px; }
+.more { font-size: 15px;
+    &:after { background: none !important; }
+}
 
 /*** uwhr accordian (table of contents) styles ***/
 
