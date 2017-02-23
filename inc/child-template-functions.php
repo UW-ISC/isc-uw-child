@@ -64,9 +64,10 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
 
             // Displaying the content
             $html .= '<div class="isc-article-content">';
-            $html .= $child->post_content;
+            // making sure paragraphs are added in place of double line breaks
+            $html .= wpautop($child->post_content);
             $html .= '</div>';
-            
+
             if ($toc) {
                 $html .= '<p class="isc-toc-top-btn"><a class="more" href="#toc">Return to top</a></p>';
             }
