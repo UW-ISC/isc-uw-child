@@ -38,8 +38,6 @@ class UW_Users
             }
         }
 
-        // removes the comment option on the menu for all users
-        remove_menu_page( 'edit-comments.php' );
         if(isset($role) && $role == "editor") {
              // if the user has an editor role
              remove_submenu_page('themes.php', 'themes.php');
