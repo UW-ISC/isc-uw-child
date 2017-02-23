@@ -11,9 +11,12 @@
      <div style="position:absolute; right:30px; top: 20px;">
           <nav class="uw-thin-strip-nav" role='navigation' aria-label='audience based'>
               <ul class="uw-thin-links">
+                <?php wp_nav_menu( array( 'theme_location' => 'white-bar-links' ) );?>
+                <!--
                 <li><a href="https://wd5.myworkday.com/uw/login.htmld" target="_blank" title="Sign in to Workday"><img alt="" class="" style="width:30px; margin-top:-15px; margin-right:5px;" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/workday-w.png'?>"> Sign in to Workday</a></li>
                 <li><a href="<?php echo get_site_url() . '/admin-corner/'?>" title="Administrators Corner">Administrators' Corner</a></li>
                 <li><a href="<?php echo get_site_url() . '/contact-us/'?>" title="Contact Us">Contact Us</a></li>
+              -->
               </ul>
           </nav>
           <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
