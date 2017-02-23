@@ -32,7 +32,6 @@ class UW
         include_once $parent . 'class.dropdowns_walker.php';  // no initialization needed because it extends a WP class
         include_once $parent . 'class.uw-basic-custom-post.php';  // no initialization needed unless a child theme makes one
         include_once $parent . 'class.uw-sidebar-menu-walker.php';  // sidebar menu will initialize for us
-        include_once $child . 'class.isc-footer-links.php';
         include_once $parent . 'class.uw-iframes.php';
         include_once $parent . 'class.uw-shortcodes.php';
         include_once $parent . 'class.uw-media-credit.php';
@@ -44,6 +43,8 @@ class UW
         include_once $parent . 'class.uw-carousel.php';
         include_once $parent . 'class.uw-settings.php';
         include_once $child . 'class.uw-page-attributes-meta-box.php';
+        include_once $child . 'class.isc-footer-links.php';
+        include_once $child . 'class.isc-white-bar-links.php';
 
         include_once get_stylesheet_directory() . '/inc/child-template-functions.php';
         include_once get_stylesheet_directory() . '/inc/user-guide-functions.php';
@@ -72,7 +73,6 @@ class UW
         $this->Users             = new UW_Users;
         $this->SidebarMenuWalker = new UW_Sidebar_Menu_Walker;
         $this->Dropdowns         = new UW_Dropdowns;
-        $this->FooterLinks       = new ISC_FooterLinks;
         $this->Shortcodes        = new UW_Shortcodes;
         $this->MediaCredit       = new UW_Media_Credit;
         $this->MediaCaption      = new UW_Media_Caption;
@@ -84,5 +84,8 @@ class UW
         $this->Enclosure         = new UW_Enclosure;
         $this->Carousel          = new UW_Carousel;
         $this->Settings          = new UW_Settings;
+        $this->FooterLinks       = new ISC_FooterLinks;
+        $this->WhiteBarLinks       = new ISC_WhiteBarLinks;
+
     }
 }
