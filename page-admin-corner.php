@@ -42,7 +42,14 @@
 
                 <div class="row">
                     <div class="col-md-12" style="margin-bottom: 2em;">
-                        <?php wp_nav_menu( array( 'theme_location' => 'admin-corner-links' ) );?>
+                        <?php
+                        wp_nav_menu(
+                          array(
+                            'theme_location' => 'admin-corner-links',
+                            'fallback_cb'    => false
+                          )
+                        );
+                        ?>
                     </div>
                 </div>
 
