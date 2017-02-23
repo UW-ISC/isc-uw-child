@@ -100,47 +100,56 @@
             <div class="contact-widget-inner isc-widget-tan isc-admin-block">
               <div class='post-content isc-events'>
                 <?php
-                $event = tribe_get_events(
-                    array(
-                    'posts_per_page' => 1,
-                    'start_date' => date('Y-m-d H:i:s')
-                    )
-                );
-                if (empty($event)) {
-                    echo "No events found.";
+                  if (function_exists('tribe_get_events')) {
+                      $event = tribe_get_events(
+                            array(
+                            'posts_per_page' => 1,
+                            'start_date' => date('Y-m-d H:i:s')
+                            )
+                      );
+                      if (empty($event)) {
+                          echo "No events found.";
+                      } else {
+                          $current = $event[0];
+                          $title = $current->post_title;
+                          $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
+                          $html .= "<div class='event-date'>" . tribe_get_start_date($current) . "</div>";
+
+                          if (tribe_has_venue($current->ID)) {
+                              $details = tribe_get_venue_details($current->ID);
+                              $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
+                              $html .= $details["address"];
+
+                              if (tribe_show_google_map_link($current)){
+                                  $html .= tribe_get_map_link_html($current);
+                              }
+
+                              $html .= "</div>";
+
+                          } else {
+                              $html .= "<div class='event-location'>Location: TBD</div>";
+                          }
+
+                          if (has_excerpt($current->ID)) {
+                              $html .= "<div class='event-content'>" . $current->post_excerpt . "</div>";
+                          } else {
+                            $html .= "<div class='event-content'>No description found.</div>";
+                          }
+                          echo $html;
+                      }
                 } else {
-                    $current = $event[0];
-                    $title = $current->post_title;
-                    $html = '<h4><a href="' . get_post_permalink($current->ID) . '">' . $title . '</a> </h4>';
-                    $html .= "<div class='event-date'>" . tribe_get_start_date($current) . "</div>";
-
-                    if (tribe_has_venue($current->ID)) {
-                        $details = tribe_get_venue_details($current->ID);
-                        $html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
-                        $html .= $details["address"];
-
-                        if (tribe_show_google_map_link($current)){
-                            $html .= tribe_get_map_link_html($current);
-                        }
-
-                        $html .= "</div>";
-
-                    } else {
-                        $html .= "<div class='event-location'>Location: TBD</div>";
-                    }
-
-                    if (has_excerpt($current->ID)) {
-                        $html .= "<div class='event-content'>" . $current->post_excerpt . "</div>";
-                    } else {
-                      $html .= "<div class='event-content'>No description found.</div>";
-                    }
-
-                    echo $html;
+                  // we cannot find the plugin as the function tribe_get_events does not exist
+                  echo "The Event Calendar plugin cannot be found!";
                 }
-                ?>
-                 </div>
+              ?>
+              </div>
 
-                 <a class="uw-btn btn-sm" href="<?php echo get_site_url() . "/events"?>">See All Events</a>
+               <?php
+                 if (!empty($event)) {
+                   // we only want to show the See All Events button if a future event exists
+                   echo '<a class="uw-btn btn-sm" href="' . get_site_url() . '"/events"?>See All Events</a>';
+                 }
+               ?>
             </div>
 
 
