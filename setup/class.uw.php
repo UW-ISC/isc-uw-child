@@ -45,6 +45,7 @@ class UW
         include_once $child . 'class.uw-page-attributes-meta-box.php';
         include_once $child . 'class.isc-footer-links.php';
         include_once $child . 'class.isc-white-bar-links.php';
+        include_once $child . 'class.isc-hero-quicklinks.php';
 
         include_once get_stylesheet_directory() . '/inc/child-template-functions.php';
         include_once get_stylesheet_directory() . '/inc/user-guide-functions.php';
@@ -86,6 +87,7 @@ class UW
         $this->Settings          = new UW_Settings;
         $this->FooterLinks       = new ISC_FooterLinks;
         $this->WhiteBarLinks       = new ISC_WhiteBarLinks;
+        $this->HeroQuickLinks       = new ISC_HeroQuicklinks;
 
     }
 }
