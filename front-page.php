@@ -39,9 +39,12 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
                         <h2 class="sr-only">Quicklinks</h2>
                         <ul>
+                            <!--
                             <li><a class="btn-sm uw-btn isc-btn-workday" target="_blank" href="https://wd5.myworkday.com/uw/login.htmld">Sign in to Workday</a></li>
+                          -->
                             <?php
-                            isc_front_get_quicklinks();
+                            wp_nav_menu( array( 'theme_location' => 'hero-quicklinks' ) );
+                            //isc_front_get_quicklinks();
                              ?>
                         </ul>
 
