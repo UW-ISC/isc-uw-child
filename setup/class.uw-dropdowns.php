@@ -11,8 +11,6 @@ class UW_Dropdowns
 
     const NAME              = 'Purple Bar';
     const LOCATION       = 'purple-bar';
-    const DISPLAY_NAME = 'Dropdowns';
-    const DEFAULT_STATUS = 'publish';
 
     function __construct()
     {
