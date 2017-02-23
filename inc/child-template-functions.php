@@ -45,11 +45,8 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
             $html .= '</a> </h3>';
             // Displaying the tags of a child page
             $posttags = get_the_terms($child->ID, 'md-tags');
-
-            $html .= '<div class="isc-toc-tags" id="tags">';
-
-            if ($posttags) {
-
+            if (!is_wp_error($posttags) && !empty($posttags)) {
+                $html .= '<div class="isc-toc-tags" id="tags">';
                 for ($x = 0; $x < count($posttags) - 1; $x++) {
                     $tag =  $posttags[$x];
                     $link = get_tag_link($tag);
@@ -57,10 +54,8 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
                 }
                 $finaltag = $posttags[count($posttags) - 1];
                 $html .= '<a id="tag" href='.get_tag_link($finaltag).'>'.$finaltag->name.' </a>';
-
+                $html .= '</div>';
             }
-
-            $html .= '</div>';
 
             // Displaying the content
             $html .= '<div class="isc-article-content">';
