@@ -1,8 +1,8 @@
 <?php
 
 /**
- * UW Dropdowns
- * This installs the default dropdowns for the UW Theme
+ * ISC FooterLinks
+ * This installs the footer menu location.
  */
 
 // TODO: remove unused functions!
