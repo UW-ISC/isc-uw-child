@@ -43,9 +43,10 @@ class UW
         include_once $parent . 'class.uw-carousel.php';
         include_once $parent . 'class.uw-settings.php';
         include_once $child . 'class.uw-page-attributes-meta-box.php';
+        include_once $child . 'class.isc-admin-corner-links.php';
         include_once $child . 'class.isc-footer-links.php';
-        include_once $child . 'class.isc-white-bar-links.php';
         include_once $child . 'class.isc-hero-quicklinks.php';
+        include_once $child . 'class.isc-white-bar-links.php';
 
         include_once get_stylesheet_directory() . '/inc/child-template-functions.php';
         include_once get_stylesheet_directory() . '/inc/user-guide-functions.php';
@@ -85,9 +86,10 @@ class UW
         $this->Enclosure         = new UW_Enclosure;
         $this->Carousel          = new UW_Carousel;
         $this->Settings          = new UW_Settings;
+        $this->WhiteBarLinks     = new ISC_WhiteBarLinks;
         $this->FooterLinks       = new ISC_FooterLinks;
-        $this->WhiteBarLinks       = new ISC_WhiteBarLinks;
-        $this->HeroQuickLinks       = new ISC_HeroQuicklinks;
+        $this->HeroQuickLinks    = new ISC_HeroQuicklinks;
+        $this->AdminCornerLinks  = new ISC_AdminCornerlinks;
 
     }
 }
