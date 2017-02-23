@@ -376,8 +376,8 @@ body, p {
     display: inline-block;
     font-weight: bold; }
   .isc-toc-tags a {
-    background-color: #4b2e83;
-    color: #ece9e2 !important;
+    background-color: #ece9e2;
+    color: #333 !important;
     padding: 2px 5px;
     border-radius: .25em;
     font-size: 12px;
