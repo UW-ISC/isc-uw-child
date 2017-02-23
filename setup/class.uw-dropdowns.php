@@ -9,8 +9,8 @@
 class UW_Dropdowns
 {
 
-    const NAME              = 'White Bar';
-    const LOCATION       = 'white-bar';
+    const NAME              = 'Purple Bar';
+    const LOCATION       = 'purple-bar';
     const DISPLAY_NAME = 'Dropdowns';
     const DEFAULT_STATUS = 'publish';
 
@@ -19,7 +19,6 @@ class UW_Dropdowns
         $this->menu_items = array();
         add_action('after_setup_theme', array( $this, 'register_white_bar_menu'));
         //add_action( 'after_setup_theme', array( $this, 'install_default_white_bar_menu') );
-        //add_action( 'wp_update_nav_menu', array( $this, 'save_white_bar') );
     }
 
     function register_white_bar_menu()
@@ -127,7 +126,7 @@ class UW_Dropdowns
         $this->add_menu_item('Support the UW', 'http://uw.edu/giving');
         $this->add_menu_item('Give to the UW', 'https://www.washington.edu/giving/make-a-gift/', $parent = 'Support the UW');
         // $this->add_menu_item( 'Volunteer', 'http://www.washington.edu/alumni/act/volunteer.html', $parent = 'Support the UW' );
-        
+
 
 
     }
@@ -145,16 +144,6 @@ class UW_Dropdowns
             $this->menu_items[$name] = $item;
         }
 
-    }
-
-    function save_white_bar($menu_id)
-    {
-        $menu_object = wp_get_nav_menu_object($menu_id);
-        if($menu_object->slug === 'dropdowns') {
-            if (!current_user_can('Super Admin')) {
-                wp_die('Insufficient permission: can not edit the default dropdowns menu.');
-            } 
-        } 
     }
 
 }
