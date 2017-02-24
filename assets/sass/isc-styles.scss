@@ -277,7 +277,6 @@ body, p { font-size: 16px !important; }
 
             .uw-btn {
                 font-size: 16px;
-                //line-height: 25px;
                 width: 270px;
                 box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
                 -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -311,6 +310,70 @@ body, p { font-size: 16px !important; }
             font-weight: 900;
             text-transform: uppercase;
             color: #8a8a8a;
+        }
+
+        // menu hero quicklinks overrides
+        .menu-quicklinks-container {
+            .menu {
+                .menu-item {
+                    a {
+
+                        font-size: 16px;
+                        //line-height: 25px;
+                        width: 270px;
+                        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+                        -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+                        padding-right:60px;
+                        margin-bottom: 14px !important;
+                        background:#fff !important;
+                        border-radius:8px;
+                        -moz-border-radius:8px;
+                        -webkit-border-radius:8px;
+                        display: block;
+                        padding: 8px 14px;
+                        font-weight: 800;
+                        font-family: "Encode Sans Compressed", sans-serif;
+                        color: #5a5a5a;
+                        border-bottom: none;
+                        line-height: 24px;
+                        text-transform: uppercase;
+                        position: relative;
+
+                        &:hover, &:focus { background-color: #ddd !important; text-decoration:underline; }
+                        &:before, &:after {
+                            right: 0;
+                            border-radius:0 8px 8px 0;
+                            -moz-border-radius:0 8px 8px 0;
+                            -webkit-border-radius: 0 8px 8px 0;
+                        }
+
+                        &:before {
+                            width: 43px;
+                            content: "";
+                            top: 0;
+                            bottom: 0;
+                            position: absolute;
+                            background-color: #4b2e83;
+                            border-left: 5px solid rgba(0, 0, 0, 0.3);
+                        }
+
+                        &:after {
+                            width: 45px;
+                            height: 45px;
+                            top: 50%;
+                            right: 3px;
+                            margin-top: -26px;
+                            background-size: 740px;
+                            background-position: -32px -410px;
+                            content: "";
+                            position: absolute;
+                            background: url('../uw-2014/assets/svg/uw-sprite.svg') no-repeat -36px -475px transparent;
+                        }
+
+                        &:hover { color: $uw-tan-dark; }
+                    }
+                }
+            }
         }
 
     }
@@ -417,7 +480,7 @@ body, p { font-size: 16px !important; }
 
 }
 
-// menu link overrides
+// admin corner workday link overrides
 .menu-workday-links-container {
     .menu { clear: both; margin:0; padding: 0; list-style: none; }
     .menu-item-has-children {
@@ -503,7 +566,7 @@ body, p { font-size: 16px !important; }
         &.footer-contact-container {text-align: left;}
     }
 
-    // menu link overrides
+    // footer menu link overrides
     .menu-footer-links-container {
         .menu { clear: both; margin:0; }
         .menu-item-has-children {

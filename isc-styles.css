@@ -261,6 +261,55 @@ body, p {
     font-weight: 900;
     text-transform: uppercase;
     color: #8a8a8a; }
+  .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a {
+    font-size: 16px;
+    width: 270px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    padding-right: 60px;
+    margin-bottom: 14px !important;
+    background: #fff !important;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    display: block;
+    padding: 8px 14px;
+    font-weight: 800;
+    font-family: "Encode Sans Compressed", sans-serif;
+    color: #5a5a5a;
+    border-bottom: none;
+    line-height: 24px;
+    text-transform: uppercase;
+    position: relative; }
+    .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a:hover, .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a:focus {
+      background-color: #ddd !important;
+      text-decoration: underline; }
+    .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a:before, .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a:after {
+      right: 0;
+      border-radius: 0 8px 8px 0;
+      -moz-border-radius: 0 8px 8px 0;
+      -webkit-border-radius: 0 8px 8px 0; }
+    .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a:before {
+      width: 43px;
+      content: "";
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      background-color: #4b2e83;
+      border-left: 5px solid rgba(0, 0, 0, 0.3); }
+    .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a:after {
+      width: 45px;
+      height: 45px;
+      top: 50%;
+      right: 3px;
+      margin-top: -26px;
+      background-size: 740px;
+      background-position: -32px -410px;
+      content: "";
+      position: absolute;
+      background: url("../uw-2014/assets/svg/uw-sprite.svg") no-repeat -36px -475px transparent; }
+    .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a:hover {
+      color: #85754d; }
 
 .isc-homepage-body h2 {
   font-size: 18px;

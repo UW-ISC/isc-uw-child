@@ -38,20 +38,16 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                         <span class="udub-slant"><span></span></span>
 
                         <h2 class="sr-only">Quicklinks</h2>
-                        <ul>
-                            <!--
-                            <li><a class="btn-sm uw-btn isc-btn-workday" target="_blank" href="https://wd5.myworkday.com/uw/login.htmld">Sign in to Workday</a></li>
-                          -->
-                            <?php
-                            wp_nav_menu(
-                              array(
-                                'theme_location' => 'hero-quicklinks',
-                                'fallback_cb'    => false
-                              )
-                            );
-                             ?>
-                        </ul>
 
+                        <?php
+                        wp_nav_menu(
+                          array(
+                            'theme_location' => 'hero-quicklinks',
+                            'fallback_cb'    => false,
+                          )
+                        );
+                         ?>
+    
                     </div>
 
                 </div>
