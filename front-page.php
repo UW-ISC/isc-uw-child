@@ -47,7 +47,7 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                           )
                         );
                          ?>
-    
+
                     </div>
 
                 </div>
@@ -84,43 +84,45 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                             foreach ($featured as $featured_page) { ?>
                                 <div class="col-md-6">
                                   <div class="isc-homepage-card">
-                                      <div style="margin:-40px; height:160px; overflow:hidden; margin-bottom:30px;">
-                                            <?php
-                                            $custom = get_post_custom($featured_page->ID);
-                                            if (has_post_thumbnail($featured_page->ID)) {
-                                                $image = get_the_post_thumbnail_url($featured_page->ID);
-                                            ?>
-                                            <img alt="" class="" src="<?php echo $image; ?>">
-                                            <?php
-                                            } else {
-                                                //default image
-                                            ?>
-                                            <img alt="" class="" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg';?>">
-                                            <?php
-                                            }
-                                            ?>
-                                       </div>
 
-                                    <h3>
-                                      <a href="<?php echo get_permalink($featured_page->ID); ?>">
-                                        <?php echo get_the_title($featured_page->ID); ?></a>
-                                    </h3>
                                     <?php
-                                    $description = $custom["isc-featured-description"][0];
-                                    if ($description == "") {
-                                        $description = "[No description found]";
-                                    }
-                                    if (array_key_exists("cta", $custom)) {
-                                        $description_text = $custom["cta"][0];
-                                        if ($description_text == "") {
-                                            $description_text = "Learn More";
-                                        }
+                                    $custom = get_post_custom($featured_page->ID);
+                                    if (has_post_thumbnail($featured_page->ID)) {
+                                    $image = get_the_post_thumbnail_url($featured_page->ID);
+                                    ?>
+                                    <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
+                                    <?php
                                     } else {
-                                        $description_text = "Learn More";
+                                    //default image
+                                    ?>
+                                    <div class="isc-homepage-image" style="background-image:url('<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg';?>')">
+                                    <?php
                                     }
                                     ?>
-                                    <p class="isc-homepage-excerpt"><?php echo $description; ?></p>
-                                    <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>"><?php echo $description_text; ?></a></p>
+                                    </div>
+
+                                    <div style="padding:40px;">
+                                        <h3>
+                                          <a href="<?php echo get_permalink($featured_page->ID); ?>">
+                                            <?php echo get_the_title($featured_page->ID); ?></a>
+                                        </h3>
+                                        <?php
+                                        $description = $custom["isc-featured-description"][0];
+                                        if ($description == "") {
+                                            $description = "[No description found]";
+                                        }
+                                        if (array_key_exists("cta", $custom)) {
+                                            $description_text = $custom["cta"][0];
+                                            if ($description_text == "") {
+                                                $description_text = "Learn More";
+                                            }
+                                        } else {
+                                            $description_text = "Learn More";
+                                        }
+                                        ?>
+                                        <p class="isc-homepage-excerpt"><?php echo $description; ?></p>
+                                        <p><a class="uw-btn btn-sm" href="<?php echo get_permalink($featured_page->ID); ?>"><?php echo $description_text; ?></a></p>
+                                    </div>
 
                                   </div>
                               </div>
