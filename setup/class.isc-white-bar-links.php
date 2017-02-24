@@ -1,26 +1,34 @@
 <?php
-
 /**
- * ISC WhiteBarLinks
+ * ISC_WhiteBarLinks
+ *
  * This installs the white bar menu location.
+ *
+ * @package isc-uw-child
  */
 
-// TODO: remove unused functions!
-class ISC_WhiteBarLinks
-{
+/**
+ * ISC_WhiteBarLinks
+ */
+class ISC_WhiteBarLinks {
 
-    const NAME              = 'White Bar Links';
-    const LOCATION       = 'white-bar-links';
 
-    function __construct()
-    {
-        $this->menu_items = array();
-        add_action('after_setup_theme', array( $this, 'register_white_bar_links'));
-    }
+	const NAME              = 'White Bar Links';
+	const LOCATION       = 'white-bar-links';
 
-    function register_white_bar_links()
-    {
-        register_nav_menu(self::LOCATION, __(self::NAME));
-    }
+	/**
+	 * Constructor method
+	 */
+	function __construct() {
+		$this->menu_items = array();
+		add_action( 'after_setup_theme', array( $this, 'register_white_bar_links' ) );
+	}
+
+	/**
+	 * Registration method
+	 */
+	function register_white_bar_links() {
+		register_nav_menu( self::LOCATION, __( self::NAME ) );
+	}
 
 }
