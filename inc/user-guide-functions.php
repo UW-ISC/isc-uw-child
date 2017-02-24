@@ -43,19 +43,23 @@ if (! function_exists('isc_get_user_guides') ) :
           $children_pages = get_pages($args);
           $user_guides = array();
         foreach ($children_pages as $child) {
-            //log_to_console(get_object_taxonomies($child));
             $security_query = wp_get_post_terms($child->ID, 'sec_role');
             $sec_roles = array();
-            foreach($security_query as $role) {
-                array_push($sec_roles, $role->name);
+            log_to_console($security_query);
+            if (!is_wp_error($security_query)) {
+              foreach($security_query as $role) {
+                  array_push($sec_roles, $role->name);
+              }
             }
-            //log_to_console($security_role);
 
             $topic_query = wp_get_post_terms($child->ID, 'ug-topic');
             $topics = array();
-            foreach($topic_query as $topic) {
-                array_push($topics, $topic->name);
+            if (!is_wp_error($topic_query)) {
+              foreach($topic_query as $topic) {
+                  array_push($topics, $topic->name);
+              }
             }
+
             $url = get_permalink($child);
             $date_updated = new DateTime($child->post_modified_gmt);
             $temp_user_guide = new user_guide($child->post_title, $url, $topics, $sec_roles, $date_updated);
