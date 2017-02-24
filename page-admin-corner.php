@@ -41,25 +41,16 @@
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
                 <div class="row">
-
-                    <div class="col-md-6">
-                        <h3 class="isc-admin-header">Workday Support</h3>
-                        <div class="contact-widget-inner isc-widget-white isc-admin-block" style="min-height: 250px;">
-                                <?php
-                                isc_support_quicklinks();
-                                ?>
-                        </div>
+                    <div class="col-md-12" style="margin-bottom: 2em;">
+                        <?php
+                        wp_nav_menu(
+                          array(
+                            'theme_location' => 'admin-corner-links',
+                            'fallback_cb'    => false
+                          )
+                        );
+                        ?>
                     </div>
-
-                    <div class="col-md-6">
-                        <h3 class="isc-admin-header">Workday Resources</h3>
-                        <div class="contact-widget-inner isc-widget-white isc-admin-block" style="min-height: 250px;">
-                                <?php
-                                isc_resource_quicklinks();
-                                ?>
-                        </div>
-                    </div>
-
                 </div>
 
 

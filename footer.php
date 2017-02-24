@@ -25,6 +25,16 @@
 
             <div class="col-md-7">
                 <div class="row">
+                  <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'footer-links',
+                      'fallback_cb'    => false
+                    )
+                  );
+                  ?>
+
+                  <!--
                     <div class="col-md-4">
                         <h3>HR Resources</h3>
                         <ul>
@@ -55,6 +65,7 @@
                           <li> <a href="https://my.uw.edu/">MyUW</a> </li>
                         </ul>
                 </div>
+              -->
                 </div>
 
 
