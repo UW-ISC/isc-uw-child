@@ -45,7 +45,6 @@ if (! function_exists('isc_get_user_guides') ) :
         foreach ($children_pages as $child) {
             $security_query = wp_get_post_terms($child->ID, 'sec_role');
             $sec_roles = array();
-            log_to_console($security_query);
             if (!is_wp_error($security_query)) {
               foreach($security_query as $role) {
                   array_push($sec_roles, $role->name);
