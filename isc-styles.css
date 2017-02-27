@@ -44,6 +44,12 @@ body, p {
     @media (min-width: 992px) {
       .uw-thinstrip .uw-thin-links a {
         color: #4b2e83 !important; } }
+    .uw-thinstrip .uw-thin-links a.work-day-link {
+      background-image: url("../isc-uw-child/assets/images/workday-w.png");
+      background-size: 20px;
+      background-position: left 10px;
+      background-repeat: no-repeat;
+      padding-left: 25px; }
 
 /*** main navigation (purple bar) ***/
 .uw-site-title {
@@ -310,6 +316,12 @@ body, p {
       background: url("../uw-2014/assets/svg/uw-sprite.svg") no-repeat -36px -475px transparent; }
     .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a:hover {
       color: #85754d; }
+  .isc-homepage-hero .isc-homepage-shortcuts .menu-quicklinks-container .menu .menu-item a.work-day-link {
+    background-image: url("../isc-uw-child/assets/images/workday-w.png") !important;
+    background-size: 25px !important;
+    background-position: 10px 6px !important;
+    background-repeat: no-repeat !important;
+    padding-left: 42px !important; }
 
 .isc-homepage-body h2 {
   font-size: 18px;

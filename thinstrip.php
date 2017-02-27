@@ -25,6 +25,13 @@
                 <li><a href="<?php echo get_site_url() . '/contact-us/'?>" title="Contact Us">Contact Us</a></li>
               -->
               </ul>
+
+              <script>
+              $(function(){
+                 $("a:contains('Sign in to Workday')").addClass("work-day-link");
+              });
+              </script>
+
           </nav>
           <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
           <button class='uw-search' aria-owns='uwsearcharea' aria-controls='uwsearcharea' aria-expanded='false' aria-label='open search area' aria-haspopup='true'>
