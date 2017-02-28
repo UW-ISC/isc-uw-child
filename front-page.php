@@ -100,15 +100,11 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                                         //log_to_console($file_headers);
                                         if(!$file_headers || $file_headers[0] == 'HTTP/1.0 404 Not Found') {
                                             log_to_console("does not exist in uploads");
-                                    ?>
-                                    <div class="isc-homepage-image">
-                                    <?php
+                                            echo '<div class="isc-homepage-image">';
                                         }
                                         else {
                                             log_to_console("exists in uploads");
-                                    ?>
-                                    <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
-                                    <?php
+                                            echo '<div class="isc-homepage-image" style="background-image:url('.$image.')">';
                                         }
                                     ?>
                                     &nbsp;
