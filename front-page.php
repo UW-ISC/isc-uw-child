@@ -85,29 +85,22 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                                 <div class="col-md-6">
                                   <div class="isc-homepage-card">
 
-                                    <?php
-
-                                        // get the featured image url for a given page
+                                      <?php
                                         $custom = get_post_custom($featured_page->ID);
                                         if (has_post_thumbnail($featured_page->ID)) {
                                             $image = get_the_post_thumbnail_url($featured_page->ID);
-                                        }
-
-                                        // check to see if the image exists in the uploads directory, if not,
-                                        // don't don't display an image
-                                        $file_headers = @get_headers($image);
-                                        if(!$file_headers || $file_headers[0] == 'HTTP/1.0 404 Not Found') {
-                                            log_to_console("does not exist in uploads");
-                                            echo '<div class="isc-homepage-image">';
-
-                                        }
-                                        else {
-                                            log_to_console("exists in uploads");
-                                            echo '<div class="isc-homepage-image" style="background-image:url('.$image.')">';
-                                        }
-                                    ?>
-                                    &nbsp;
-                                    </div>
+                                      ?>
+                                      <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
+                                      <?php
+                                      } else {
+                                      //default image
+                                      ?>
+                                      <div class="isc-homepage-image">
+                                      <?php
+                                      }
+                                      ?>
+                                      &nbsp;
+                                      </div>
 
                                     <div style="padding:40px;">
                                         <h3>
