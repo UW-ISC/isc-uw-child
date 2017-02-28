@@ -95,12 +95,11 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
                                         // check to see if the image exists in the uploads directory, if not,
                                         // don't don't display an image
-                                        log_to_console($image);
                                         $file_headers = @get_headers($image);
-                                        //log_to_console($file_headers);
                                         if(!$file_headers || $file_headers[0] == 'HTTP/1.0 404 Not Found') {
                                             log_to_console("does not exist in uploads");
                                             echo '<div class="isc-homepage-image">';
+
                                         }
                                         else {
                                             log_to_console("exists in uploads");
