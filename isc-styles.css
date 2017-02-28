@@ -343,7 +343,8 @@ body, p {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    background-color: #5a5a5a; }
+    background-color: #999;
+    background-image: url("../isc-uw-child/assets/images/john_Vidale-1022-X3.jpg"); }
   .isc-homepage-body .isc-homepage-featured .isc-homepage-card h3 {
     margin-top: 0; }
   .isc-homepage-body .isc-homepage-featured .isc-homepage-card .isc-homepage-excerpt {

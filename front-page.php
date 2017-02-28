@@ -95,10 +95,11 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                                     } else {
                                     //default image
                                     ?>
-                                    <div class="isc-homepage-image" style="background-image:url('<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/john_Vidale-1022-X3.jpg';?>')">
+                                    <div class="isc-homepage-image">
                                     <?php
                                     }
                                     ?>
+                                    &nbsp;
                                     </div>
 
                                     <div style="padding:40px;">
