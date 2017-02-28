@@ -42,6 +42,29 @@ get_header();
                 ?>
 
             </article>
+
+            <script>
+            $(function(){
+                $('.uw-accordion-shortcode table').each(function() {
+                    // add responsive table class and clear all other inline styles
+                    $(this).addClass("table-responsive");
+                    $(this).removeProp("style");
+
+                    // clean each td by removing all inline styles
+                    $("td").each(function() {
+                        $(this).removeProp("style");
+                    });
+
+                    // clean img tags by removing all inline styles
+                    $("img").each(function() {
+                        $(this).removeProp("width");
+                        $(this).removeProp("height");
+                    });
+
+                });
+            });
+            </script>
+
         </div>
 
 </section>

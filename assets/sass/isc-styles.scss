@@ -850,7 +850,12 @@ $font_family_1: FontAwesome;
 }
 
 /*** uw accordion (user guide body) ***/
+
 .uw-accordion-shortcode {
+
+    table {
+        td { width: 50% !important; text-align: left !important; vertical-align: top !important; }
+    }
 
     @include print {
         .uw-accordion-shortcode__header {
