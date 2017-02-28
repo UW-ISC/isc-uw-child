@@ -86,28 +86,29 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                                   <div class="isc-homepage-card">
 
                                     <?php
+
+                                        // get the featured image url for a given page
                                         $custom = get_post_custom($featured_page->ID);
                                         if (has_post_thumbnail($featured_page->ID)) {
                                             $image = get_the_post_thumbnail_url($featured_page->ID);
                                         }
-                                    ?>
 
-                                    <?php
-
+                                        // check to see if the image exists in the uploads directory, if not,
+                                        // don't don't display an image
                                         log_to_console($image);
                                         $file_headers = @get_headers($image);
                                         //log_to_console($file_headers);
                                         if(!$file_headers || $file_headers[0] == 'HTTP/1.0 404 Not Found') {
-                                            log_to_console("not exists");
-                                            ?>
-                                            <div class="isc-homepage-image">
-                                            <?php
+                                            log_to_console("does not exist in uploads");
+                                    ?>
+                                    <div class="isc-homepage-image">
+                                    <?php
                                         }
                                         else {
-                                            log_to_console("exists");
-                                            ?>
-                                            <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
-                                            <?php
+                                            log_to_console("exists in uploads");
+                                    ?>
+                                    <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
+                                    <?php
                                         }
                                     ?>
                                     &nbsp;
