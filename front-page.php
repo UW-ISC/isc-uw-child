@@ -94,17 +94,15 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
                                     <?php
 
-                                        log_to_console($image);
                                         $file_headers = @get_headers($image);
-                                        //log_to_console($file_headers);
                                         if(!$file_headers || $file_headers[0] == 'HTTP/1.0 404 Not Found') {
-                                            log_to_console("not exists");
+                                            // does not exist
                                             ?>
                                             <div class="isc-homepage-image">
                                             <?php
                                         }
                                         else {
-                                            log_to_console("exists");
+                                            // exists
                                             ?>
                                             <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
                                             <?php
