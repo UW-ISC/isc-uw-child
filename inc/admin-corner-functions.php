@@ -10,8 +10,8 @@
   * @since     0.2.0
   */
 
-if (! function_exists('output_quicklinks') ) :
-    function output_quicklinks( $post_id, $field, $url_key, $text_key )
+if (! function_exists('isc_output_quicklinks') ) :
+    function isc_output_quicklinks( $post_id, $field, $url_key, $text_key )
     {
         $quicklinks = array();
         $custom = get_post_custom($post_id); // gets custom meta of admin-corner
@@ -39,7 +39,7 @@ if (! function_exists('isc_support_quicklinks') ) :
         $field = 'workday-support-links';
         $url_key = 'support-url';
         $text_key = 'support-text';
-        output_quicklinks($post_id, $field, $url_key, $text_key);
+        isc_output_quicklinks($post_id, $field, $url_key, $text_key);
     }
 endif;
 
@@ -51,7 +51,7 @@ if (! function_exists('isc_resource_quicklinks') ) :
         $field = 'workday-resource-links';
         $url_key = 'resource-url';
         $text_key = 'resource-text';
-        output_quicklinks($post_id, $field, $url_key, $text_key);
+        isc_output_quicklinks($post_id, $field, $url_key, $text_key);
     }
 endif;
  ?>
