@@ -16,7 +16,7 @@ if (!function_exists('setup_uw_object')) {
 /**
  * Remove any templates from the UW Marketing theme that will not be used
  **/
-function tfc_remove_page_templates( $templates )
+function isc_remove_page_templates( $templates )
 {
     unset($templates['templates/template-no-title.php']);
     unset($templates['templates/template-big-hero.php']);
@@ -26,12 +26,12 @@ function tfc_remove_page_templates( $templates )
     return $templates;
 }
 
-add_filter('theme_page_templates', 'tfc_remove_page_templates');
+add_filter('theme_page_templates', 'isc_remove_page_templates');
 
 /**
 * Remove unwanted metaboxes from special pages.
 **/
-function remove_special_page_template_metabox()
+function isc_remove_special_page_template_metabox()
 {
     global $post;
     $specials = array('homepage', 'user-guides', 'admin-corner');
@@ -43,7 +43,7 @@ function remove_special_page_template_metabox()
         remove_meta_box('md-tagsdiv', 'page', 'side');
     }
 }
-add_action('admin_head', 'remove_special_page_template_metabox');
+add_action('admin_head', 'isc_remove_special_page_template_metabox');
 
 /**
  * Rename Posts to News

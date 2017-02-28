@@ -1,6 +1,6 @@
 <?php
 
-class user_guide
+class isc_user_guide
 {
     public $name;
     public $url;
@@ -61,7 +61,7 @@ if (! function_exists('isc_get_user_guides') ) :
 
             $url = get_permalink($child);
             $date_updated = new DateTime($child->post_modified_gmt);
-            $temp_user_guide = new user_guide($child->post_title, $url, $topics, $sec_roles, $date_updated);
+            $temp_user_guide = new isc_user_guide($child->post_title, $url, $topics, $sec_roles, $date_updated);
 
             array_push($user_guides, $temp_user_guide);
         }
@@ -145,7 +145,7 @@ if (! function_exists('isc_user_guide_menu') ) :
         $headarray = array();
 
         // filters the content to add ids to the headers so that the menu will work
-        add_filter('the_content', 'add_ids_to_header_tags_auto');
+        add_filter('the_content', 'isc_add_ids_to_header_tags_auto');
 
         // parse through all the headers and sift/sort headers/subheaders
         if (!empty($headers)) {
@@ -226,7 +226,7 @@ if (! function_exists('isc_user_guide_menu') ) :
 endif;
 
 
-function build_page_navigation( $post_id )
+function isc_build_page_navigation( $post_id )
 {
         // Grab the post and post_content
         $page_data = get_post($post_id);
@@ -255,10 +255,10 @@ function build_page_navigation( $post_id )
         update_post_meta($post_id, '_uwhr_page_anchor_links', $links);
 }
 
-function add_ids_to_header_tags_auto( $content)
+function isc_add_ids_to_header_tags_auto($content)
 {
     // making sure the headers have been gathered first
-    build_page_navigation(get_the_ID());
+    isc_build_page_navigation(get_the_ID());
 
     // _uwhr_page_anchor_links represents if a post contains these anchor links, so if there
     // are no links we don't want to bother with this method...
