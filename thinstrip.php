@@ -19,12 +19,14 @@
                   )
                 );
                 ?>
-                <!--
-                <li><a href="https://wd5.myworkday.com/uw/login.htmld" target="_blank" title="Sign in to Workday"><img alt="" class="" style="width:30px; margin-top:-15px; margin-right:5px;" src="<?php echo get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/workday-w.png'?>"> Sign in to Workday</a></li>
-                <li><a href="<?php echo get_site_url() . '/admin-corner/'?>" title="Administrators Corner">Administrators' Corner</a></li>
-                <li><a href="<?php echo get_site_url() . '/contact-us/'?>" title="Contact Us">Contact Us</a></li>
-              -->
               </ul>
+
+              <script>
+              $(function(){
+                 $("a:contains('Sign in to Workday')").addClass("work-day-link");
+              });
+              </script>
+
           </nav>
           <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
           <button class='uw-search' aria-owns='uwsearcharea' aria-controls='uwsearcharea' aria-expanded='false' aria-label='open search area' aria-haspopup='true'>
