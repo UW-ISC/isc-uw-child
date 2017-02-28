@@ -787,6 +787,10 @@ body, p {
     left: inherit !important; } }
 
 /*** uw accordion (user guide body) ***/
+.uw-accordion-shortcode table td {
+  width: 50% !important;
+  text-align: left !important;
+  vertical-align: top !important; }
 @media print {
   .uw-accordion-shortcode .uw-accordion-shortcode__header {
     margin-bottom: 20px !important;
