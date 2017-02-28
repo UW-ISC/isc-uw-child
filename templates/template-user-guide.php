@@ -48,6 +48,7 @@ get_header();
                 $('.uw-accordion-shortcode table').each(function() {
                     // add responsive table class and clear all other inline styles
                     $(this).addClass("table-responsive");
+                    $(this).addClass("table-condensed");
                     $(this).removeProp("style");
 
                     // clean each td by removing all inline styles

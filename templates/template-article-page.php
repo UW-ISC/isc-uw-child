@@ -45,6 +45,7 @@ get_header();
             $('.isc-article-content table').each(function() {
                 // add responsive table class and clear all other inline styles
                 $(this).addClass("table-responsive");
+                $(this).addClass("table-condensed");
                 $(this).removeProp("style");
 
                 // clean each td by removing all inline styles
