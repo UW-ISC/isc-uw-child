@@ -5,7 +5,7 @@ $(document).ready(function() {
     var content = $(".float-content");
     if (toc.length > 0 && content.length > 0) {
         var width_change = 991; // the width at which the table of contents is simply put on top of the content
-        var new_width = $('.col-md-4').width(); // width of the menu
+        var new_width = $('.col-md-3').width(); // width of the menu
         var top_padding = getCSS('top', 'uw-accordion-menu-floater').slice(0, -2); // where the floating menu should be placed from the top
         var change = true;
         var nav = $("#menu-main-navigation");
@@ -38,7 +38,7 @@ $(document).ready(function() {
         // There are two ways the user could potentially activate the floating behavior, by resizing the page or by scrolling
         $(window).resize(function() {
             // by resizing the window, the width of a potentially floating toc changes, so we have to recalculate it
-            new_width = $('.col-md-4').width();
+            new_width = $('.col-md-3').width();
             if (top_tracker != nav.height() && $(this).width() > width_change) {
               top_tracker = nav.height();
               height_change = content.offset().top - top_padding;
