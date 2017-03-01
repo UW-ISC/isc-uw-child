@@ -15,6 +15,9 @@ module.exports = function(grunt) {
         },
 		sass: {
 			dist: {
+                options: {
+                    style: 'compressed'
+                },
 				files: {
 					'isc-styles.css' : 'assets/sass/isc-styles.scss'
 				}
