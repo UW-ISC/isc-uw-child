@@ -511,7 +511,15 @@ body, p { font-size: 16px !important; }
 
 // admin corner workday link overrides
 .menu-workday-links-container {
-    .menu { clear: both; margin:0; padding: 0; list-style: none; }
+    .menu { clear: both; margin:0; padding: 0; list-style: none;
+
+        .menu-item:first-child {
+            ul {  background-color: $uw-tan-light; border: none; }
+        }
+        .menu-item:nth-child(2) {
+            ul { background-color: #e9e9e9; border: none; }
+        }
+    }
     .menu-item-has-children {
 
         @include desktop { width: 50%; float: left; }
