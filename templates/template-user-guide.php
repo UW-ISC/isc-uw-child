@@ -26,21 +26,18 @@ get_header();
 
         <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <?php isc_user_guide_menu(); ?>
             </div>
 
-            <article class="uw-content float-content col-md-8">
-
+            <article class="uw-content float-content col-md-9">
                 <?php log_to_console("template-user-guide.php") ?>
-
                 <?php
                 while ( have_posts() ) : the_post();
                     the_title('<h2 class="title">', '</h2>');
                     the_content();
                 endwhile
                 ?>
-
             </article>
 
             <script>

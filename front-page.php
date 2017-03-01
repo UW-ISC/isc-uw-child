@@ -85,22 +85,22 @@ $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
                                 <div class="col-md-6">
                                   <div class="isc-homepage-card">
 
-                                    <?php
-                                    $custom = get_post_custom($featured_page->ID);
-                                    if (has_post_thumbnail($featured_page->ID)) {
-                                    $image = get_the_post_thumbnail_url($featured_page->ID);
-                                    ?>
-                                    <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
-                                    <?php
-                                    } else {
-                                    //default image
-                                    ?>
-                                    <div class="isc-homepage-image">
-                                    <?php
-                                    }
-                                    ?>
-                                    &nbsp;
-                                    </div>
+                                      <?php
+                                        $custom = get_post_custom($featured_page->ID);
+                                        if (has_post_thumbnail($featured_page->ID)) {
+                                            $image = get_the_post_thumbnail_url($featured_page->ID);
+                                      ?>
+                                      <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
+                                      <?php
+                                      } else {
+                                      //default image
+                                      ?>
+                                      <div class="isc-homepage-image">
+                                      <?php
+                                      }
+                                      ?>
+                                      &nbsp;
+                                      </div>
 
                                     <div style="padding:40px;">
                                         <h3>
