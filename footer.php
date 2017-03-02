@@ -15,7 +15,7 @@
               </div>
               <div class="col-md-6">
                 <ul class="footer-contact-container">
-                  <?php $options = get_option("footer_fields"); ?>
+                  <?php $options = get_option("isc_footer_fields"); ?>
                   <li><div class="icon-container"><i class="fa fa-map-marker" aria-hidden="true"></i></div><div class="text-container location-text"><a href="<?php echo $options['map'] ?>">   <?php echo $options['location'] ?></a></div></li>
                   <li><div class="icon-container"><i class="fa fa-phone-square " aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo "tel:1-". $options['phone'] ?>"> <?php echo $options['phone'] ?>   </a></div></li>
                   <li><div class="icon-container icons-stacked"><i class="fa fa-square fa-stack-2x" aria-hidden="true"></i><i class="fa fa-envelope fa-stack-1x" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo "mailto:" . $options['email'] ?>"> <?php echo $options['email']?> </a></div></li>
