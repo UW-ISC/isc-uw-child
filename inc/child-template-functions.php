@@ -90,9 +90,6 @@ if (! function_exists('isc_display_child_pages') ) :
             $html .= '<h3 class="title"><a href="'.$page_url.'">';
             $html .= $article->post_title;
             $html .= '</a></h3>';
-            // Getting the tags of the article
-            $html .= isc_get_tags($article);
-
             if ($body != '') {
                 // displaying the body of the child content
                 $html .= '<p> ' . $body . ' </p>';
