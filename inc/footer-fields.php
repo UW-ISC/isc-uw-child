@@ -41,7 +41,6 @@ function isc_cb() {
 
 function isc_display_map() {
     $options = get_option('isc_footer_fields');
-    log_to_console($options);
     $url_pattern = '(http|https|ftp):\/\/[a-zA-Z0-9_\-\.\+]+\.[a-zA-Z0-9]+([\/a-zA-z0-9_\-\.\+\?=%@,!:]*)?';
     $warning = 'Example: http://example.com/page';
     echo "<input name='isc_footer_fields[map]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['map']}' />";
