@@ -126,8 +126,8 @@ function build_footer_settings() {
   add_settings_section('main_section', 'Options', 'section_cb', 'footer_content');
   add_settings_field('footer_email', 'Email', 'display_email', 'footer_content', 'main_section');
   add_settings_field('footer_phone', 'Phone', 'display_phone', 'footer_content', 'main_section');
-  // add_settings_field('footer_location', 'Location', 'display_location', 'footer_content', 'main_section');
-  // add_settings_field('footer_map', 'Map', 'display_map', 'footer_content', 'main_section');
+  add_settings_field('footer_location', 'Location', 'display_location', 'footer_content', 'main_section');
+  add_settings_field('footer_map', 'Map', 'display_map', 'footer_content', 'main_section');
 }
 
 function validate_options($footer_fields) {
@@ -165,7 +165,7 @@ function display_email() {
 
 function display_phone() {
     $options = get_option('footer_fields');
-    $phone_pattern = '(\d{3}?\-?\d{3}\-?\d{4})';
+    $phone_pattern = '(\d{3}?-?\d{3}-?\d{4})';
     $warning = 'Example: 999-999-9999';
     echo "<input name='footer_fields[phone]' pattern='$phone_pattern' title='$warning' type='text'  value='{$options['phone']}' />";
 }
