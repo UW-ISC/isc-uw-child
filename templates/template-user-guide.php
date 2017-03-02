@@ -61,6 +61,19 @@ get_header();
 
                 });
             });
+
+            $(document).on("keydown", function(e){
+                // cntrl-f or command-f
+                if((event.ctrlKey || event.metaKey) && event.which == 70) {
+                    console.log("slkfdjlkasjdlkfdsaj");
+                    $('.uw-accordion-shortcode__header').attr( "aria-expanded", "true" );
+                    $('.uw-accordion-shortcode__panel').attr( "aria-hidden", "false" );
+                    $('.uw-accordion-shortcode__title').hide();
+                    $('.uw-accordion-shortcode__title').attr( "aria-hidden", "true" );
+                };
+
+            });
+
             </script>
 
         </div>
