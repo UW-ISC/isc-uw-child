@@ -122,12 +122,13 @@ function build_options_page() {
 <?php
 
 function build_footer_settings() {
+  delete_option('footer_options');
   register_setting('footer_fields', 'footer_fields', 'validate_options');
   add_settings_section('main_section', 'Options', 'section_cb', 'footer_content');
-  add_settings_field('footer_email', 'Email', 'display_email', 'footer_content', 'main_section');
-  add_settings_field('footer_phone', 'Phone', 'display_phone', 'footer_content', 'main_section');
-  add_settings_field('footer_location', 'Location', 'display_location', 'footer_content', 'main_section');
-  add_settings_field('footer_map', 'Map', 'display_map', 'footer_content', 'main_section');
+  add_settings_field('footer_email', 'Email <br/><em style="font-weight: 300;">Example: user@uw.edu</em>', 'display_email', 'footer_content', 'main_section');
+  add_settings_field('footer_phone', 'Phone <br/><em style="font-weight: 300;">Example: 999-999-9999</em>', 'display_phone', 'footer_content', 'main_section');
+  add_settings_field('footer_location', 'Location Name <br/><em style="font-weight: 300;">Example: UW Tower</em> ', 'display_location', 'footer_content', 'main_section');
+  add_settings_field('footer_map', 'Map URL <br/><em style="font-weight: 300;">A link to a map showing the location of the given name </em>', 'display_map', 'footer_content', 'main_section');
 }
 
 function validate_options($footer_fields) {
@@ -143,15 +144,15 @@ function display_map() {
     $url_pattern = '(http|https|ftp)://[a-zA-Z0-9_\-\.\+]+\.[a-zA-Z0-9]+([/a-zA-z0-9_\-\.\+\?=%]*)?';
     $warning = 'Example: http://example.com/page';
     log_to_console(wp_load_alloptions());
-    echo "<input name='footer_fields[online]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['map']}' />";
+    echo "<input name='footer_fields[map]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['map']}' />";
 }
 
 function display_location() {
     $options = get_option('footer_fields');
     $url_pattern = '.*';
-    $warning = 'Example: http://example.com/page';
+    $warning = 'Example: UW Tower';
     log_to_console($options);
-    echo "<input name='footer_fields[online]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['location']}' />";
+    echo "<input name='footer_fields[location]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['location']}' />";
 }
 
 function display_email() {
