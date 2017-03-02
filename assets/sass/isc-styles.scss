@@ -555,8 +555,17 @@ body, p { font-size: 16px !important; }
     @include desktop { width: 50%; }
 }
 .isc-toc-tags { font-size: 14px; margin-bottom: 10px;
-    .isc-toc-updated { margin-right: 10px; display: inline-block; font-weight: bold; }
-    a { background-color: $uw-tan-light; color: #333 !important; padding: 2px 5px; border-radius: .25em; font-size: 12px; margin-right: 5px; text-transform: uppercase; }
+    a {
+        background-color: $uw-tan-light;
+        color: #333 !important;
+        padding: 2px 5px;
+        border-radius: .25em;
+        font-size: 12px;
+        margin-right: 5px;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
 }
 .isc-toc-top-btn { margin-top: 10px; }
 
