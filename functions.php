@@ -141,7 +141,7 @@ function section_cb() {
 
 function display_map() {
     $options = get_option('footer_fields');
-    $url_pattern = '(http|https|ftp)://[a-zA-Z0-9_\-\.\+]+\.[a-zA-Z0-9]+([/a-zA-z0-9_\-\.\+\?=%]*)?';
+    $url_pattern = '(http|https|ftp):\/\/[a-zA-Z0-9_\-\.\+]+\.[a-zA-Z0-9]+([\/a-zA-z0-9_\-\.\+\?\/=%@\/\,]*)?';
     $warning = 'Example: http://example.com/page';
     log_to_console(wp_load_alloptions());
     echo "<input name='footer_fields[map]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['map']}' />";
