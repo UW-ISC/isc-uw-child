@@ -21,7 +21,6 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
         $toc = count($children_pages) > 0;
         $html = '';
         if ($toc) {
-
             // Fancy title of Table of Contents
             $html .= "<h3 class='isc-admin-header sr-only'>Table of Contents</h3>";
             $html .= "<div class='contact-widget-inner isc-widget-tan isc-toc' id='toc'>";
@@ -43,23 +42,11 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
             $html .= '<h3 class="title" id="'.$child->post_name.'"> <a href="'.$url.'">';
             $html .= $child->post_title;
             $html .= '</a> </h3>';
-            // Displaying the tags of a child page
-            $posttags = get_the_terms($child->ID, 'md-tags');
-            if (!is_wp_error($posttags) && !empty($posttags)) {
-                $html .= '<div class="isc-toc-tags" id="tags">';
-                for ($x = 0; $x < count($posttags) - 1; $x++) {
-                    $tag =  $posttags[$x];
-                    $link = get_tag_link($tag);
-                    $html .= '<a id="tag" href='.$link.'>'.$tag->name.'</a>';
-                }
-                $finaltag = $posttags[count($posttags) - 1];
-                $html .= '<a id="tag" href='.get_tag_link($finaltag).'>'.$finaltag->name.' </a>';
-                $html .= '</div>';
-            }
-
+            // Displaying the tags
+            $html .= isc_get_tags($child);
             // Displaying the content
             $html .= '<div class="isc-article-content">';
-            // making sure paragraphs are added in place of double line breaks
+            // Making sure paragraphs are added in place of double line breaks
             $html .= wpautop($child->post_content);
             $html .= '</div>';
 
@@ -70,6 +57,7 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
         echo $html;
     }
 endif;
+
 
 /**
  * Displays the child pages of the current page along with their body contents
@@ -96,12 +84,14 @@ if (! function_exists('isc_display_child_pages') ) :
         // Echoing/displaying each child page along with their body content
         foreach ($children_pages as $article) {
             $page_url = get_permalink($article);
-            // the content of the child
+            // Getting the content of the article
             $body = $article->post_content;
             $html .= '<div class="isc-content-block">';
             $html .= '<h3 class="title"><a href="'.$page_url.'">';
             $html .= $article->post_title;
             $html .= '</a></h3>';
+            // Getting the tags of the article
+            $html .= isc_get_tags($article);
 
             if ($body != '') {
                 // displaying the body of the child content
@@ -113,6 +103,34 @@ if (! function_exists('isc_display_child_pages') ) :
         echo $html;
     }
 endif;
+
+
+/**
+* Get the tags of the given page object and return all the tags within a isc-toc-tags div
+* in a elements with id tag
+* @author    Kevin Zhao <zhaok24@uw.edu>
+* @copyright Copyright (c) 2017, University of Washington
+* @since     0.7.0
+*/
+
+  if (! function_exists('isc_get_tags')) :
+    function isc_get_tags($child) {
+        $html = "";
+        $posttags = get_the_terms($child->ID, 'md-tags');
+        if (!is_wp_error($posttags) && !empty($posttags)) {
+            $html .= '<div class="isc-toc-tags" id="tags">';
+            for ($x = 0; $x < count($posttags) - 1; $x++) {
+                $tag =  $posttags[$x];
+                $link = get_tag_link($tag);
+                $html .= '<a id="tag" href='.$link.'>'.$tag->name.'</a>';
+            }
+            $finaltag = $posttags[count($posttags) - 1];
+            $html .= '<a id="tag" href='.get_tag_link($finaltag).'>'.$finaltag->name.' </a>';
+            $html .= '</div>';
+        }
+        return $html;
+    }
+  endif;
 
 /**
  * Allow tags in excerpts
