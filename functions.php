@@ -100,64 +100,73 @@ function log_to_console($debug_output)
 
 //Footer Options
 add_action('admin_menu', 'custom_footer_fields');
+add_action('admin_init', 'build_footer_settings');
 
 function custom_footer_fields() {
-    add_submenu_page('options-general.php','Footer Content', 'Footer Content', 'administrator', __FILE__, 'build_options_page');
+    add_options_page('Footer Content', 'Footer Content', 'manage_options', "footer_content", 'build_options_page');
 }
-
-add_action('admin_init', 'reg_build_options');
 
 function build_options_page() {
    ?>
    <div>
     <h2>Footer Content</h2>
-    <p>Change ITConnect footer content here. Please <b>do not</b> enter any HTML in to the fields</p>
+    <p>Edit fields which appear within the footer</p>
     <form method="POST" action="options.php" enctype="multipart/form-data">
-        <?php settings_fields('footer_options'); ?>
-        <?php do_settings_sections(__FILE__); ?>
+        <?php settings_fields('footer_fields'); ?>
+        <?php do_settings_sections("footer_content"); ?>
         <input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" />
     </form>
    </div>
    <?php
+}?>
+<?php
+
+function build_footer_settings() {
+  register_setting('footer_fields', 'footer_fields', 'validate_options');
+  add_settings_section('main_section', 'Options', 'section_cb', 'footer_content');
+  add_settings_field('footer_email', 'Email', 'display_email', 'footer_content', 'main_section');
+  add_settings_field('footer_phone', 'Phone', 'display_phone', 'footer_content', 'main_section');
+  // add_settings_field('footer_location', 'Location', 'display_location', 'footer_content', 'main_section');
+  // add_settings_field('footer_map', 'Map', 'display_map', 'footer_content', 'main_section');
 }
 
-function reg_build_options() {
-    register_setting('footer_options', 'footer_options', 'validate_setting');
-    add_settings_section('main_section', 'Options', 'section_cb', __FILE__);
-    add_settings_field('onlinea', 'Contact form (URL) <br /><em style="font-weight: 300;">Example: https://www.google.com/maps/</em>', 'set_online_map_url', __FILE__, 'main_section');
-    add_settings_field('email', 'Email <br /><em style="font-weight: 300;">Example: user@uw.edu</em>', 'set_email', __FILE__, 'main_section');
-    add_settings_field('phone', 'Phone <br /><em style="font-weight: 300;">Example: 999-999-9999', 'set_phone', __FILE__, 'main_section');
-}
-
-function validate_setting($footer_options) {
-    return $footer_options;
+function validate_options($footer_fields) {
+    return $footer_fields;
 }
 
 function section_cb() {
 //empty callback, just needed for function argument
 }
 
-function set_online_map_url() {
-    $options = get_option('footer_options');
+function display_map() {
+    $options = get_option('footer_fields');
     $url_pattern = '(http|https|ftp)://[a-zA-Z0-9_\-\.\+]+\.[a-zA-Z0-9]+([/a-zA-z0-9_\-\.\+\?=%]*)?';
     $warning = 'Example: http://example.com/page';
-    log_to_console($options);
-    echo "<input name='footer_options[online]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['onlinea']}' />";
+    log_to_console(wp_load_alloptions());
+    echo "<input name='footer_fields[online]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['map']}' />";
 }
 
-function set_email() {
-    $options = get_option('footer_options');
+function display_location() {
+    $options = get_option('footer_fields');
+    $url_pattern = '.*';
+    $warning = 'Example: http://example.com/page';
+    log_to_console($options);
+    echo "<input name='footer_fields[online]' pattern='$url_pattern' title='$warning' type='text' size='45' value='{$options['location']}' />";
+}
+
+function display_email() {
+    $options = get_option('footer_fields');
     $email_pattern = '[a-zA-Z0-9_\.\-]+@([a-zA-Z0-9_\.\-]+\.[a-zA-Z0-9]+)';
     $warning = 'Example: user@uw.edu';
-    echo "<input name='footer_options[email]' pattern='$email_pattern' title='$warning'type='text' value='{$options['email']}' />";
+    log_to_console(wp_load_alloptions());
+
+    echo "<input name='footer_fields[email]' pattern='$email_pattern' title='$warning'type='text' value='{$options['email']}' />";
 }
 
-function set_phone() {
-    $options = get_option('footer_options');
+function display_phone() {
+    $options = get_option('footer_fields');
     $phone_pattern = '(\d{3}?\-?\d{3}\-?\d{4})';
     $warning = 'Example: 999-999-9999';
-    echo "<input name='footer_options[phone]' pattern='$phone_pattern' title='$warning' type='text'  value='{$options['phone']}' />";
+    echo "<input name='footer_fields[phone]' pattern='$phone_pattern' title='$warning' type='text'  value='{$options['phone']}' />";
 }
-//End Footer Options
-
 ?>
