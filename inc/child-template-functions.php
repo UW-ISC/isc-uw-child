@@ -118,7 +118,7 @@ endif;
             $html .= '<div class="isc-toc-tags" id="tags">';
             for ($x = 0; $x < count($posttags) - 1; $x++) {
                 $tag =  $posttags[$x];
-                $link = get_tag_link($tag);
+                $link = get_term_link($tag);
                 $html .= '<a id="tag" href='.$link.'>'.$tag->name.'</a>';
             }
             $finaltag = $posttags[count($posttags) - 1];
