@@ -1,7 +1,4 @@
-
-<?php get_header();
-      $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
-      $sidebar = get_post_meta($post->ID, "sidebar");   ?>
+<?php get_header(); ?>
 
 <?php uw_site_title(); ?>
 <?php get_template_part('menu', 'mobile'); ?>
@@ -20,25 +17,25 @@
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
-            <?php log_to_console("you are using the template: taxonomy-md-tags.php"); ?>
+            <?php log_to_console("taxonomy-md-tags.php"); // log_to_console(get_queried_object()); ?>
 
-            <h2><?php the_title(); ?></h2>
+            <h2> <?php single_term_title()  ?> </h2>
 
-            <div class="update-date"><?php echo get_the_date() ?></div>
-            <div class="post-content">
+            <div>
+
                 <?php
-                  // Start the Loop.
-                while ( have_posts() ) : the_post();
+                  if ( have_posts() ) :
+                    while ( have_posts() ) : the_post(); ?>
+                        <h3><a href="<?php echo get_permalink(); ?>"><?php the_title() ?></a></h3>
+                        <div class='post-content'><?php the_excerpt() ?></div>
 
-                    the_content();
+                    <?php endwhile;
+                  else :
+                    echo '<h3 class=\'no-results\'>Sorry, no results matched your criteria.</h3>';
+                  endif; ?>
 
-                    // If comments are open or we have at least one comment, load up the comment template.
-                    if (comments_open() || get_comments_number() ) {
-                        comments_template();
-                    }
+                <div><?php posts_nav_link(' '); ?></div>
 
-                endwhile;
-                ?>
             </div>
 
         </div>
