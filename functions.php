@@ -97,4 +97,5 @@ function log_to_console($debug_output)
       echo $javascript_ouput;
   }
 }
+
 ?>
