@@ -203,6 +203,7 @@ body, p { font-size: 16px !important; }
 /*** homepage ***/
 
 .isc-homepage-hero {
+    background-color: #ddd;
     background-image: none;
     background-repeat: no-repeat;
     position: relative;
@@ -411,6 +412,7 @@ body, p { font-size: 16px !important; }
         font-weight: 900;
         text-transform: uppercase;
         color: #fff;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     }
 
 
