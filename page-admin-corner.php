@@ -170,11 +170,11 @@
                     } else {
                         foreach ($seasonal_featured as $featured_page) {
                             $html = '<h4><a href="' . get_post_permalink($featured_page->ID) . '">' . get_the_title($featured_page->ID) . '</a></h4>';
-                            $html .= "<div>";
+                            $html .= "<p style='margin-bottom:1.5em;'>";
                             $custom = get_post_custom($featured_page->ID);
                             $description = $custom["isc-featured-description"][0];
                             $html .= $description;
-                            $html .= "</div>";
+                            $html .= "</p>";
                             echo $html;
                         }
                       }
