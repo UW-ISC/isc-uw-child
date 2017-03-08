@@ -2,9 +2,8 @@
 /**
  * This template is unique to the front page of the site
  *
- * @author Mason Gionet <mgionet@uw.edu>
- * @license ?
- * @package not sure
+ * @package isc-uw-child
+ * @author UW-IT AXDD
  */
 
 get_header( 'front' );
