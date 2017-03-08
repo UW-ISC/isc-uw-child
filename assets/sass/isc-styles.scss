@@ -414,7 +414,7 @@ body, p { font-size: 16px !important; }
 
         color: $uw-purple;
         @include desktop { color: #fff; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); }
-        
+
     }
 
 
@@ -673,6 +673,8 @@ $font_family_1: FontAwesome;
 
 .dataTables_wrapper {
 
+    .dataTables_filter { display: none; }
+    
     .pagination { list-style: none;
         .paginate_button { display: inline-block; }
     }

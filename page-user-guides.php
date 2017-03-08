@@ -22,7 +22,7 @@
             <div style="background:#e9e9e9; padding: 20px; margin-bottom:1em;">
                 <h3 style="margin-top:0;">Filter by:</h3>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         Topic:
                         <select class="form-control input-sm" id="topic-dropdown">
                           <option value="---"> --- </option>
@@ -34,7 +34,7 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         Security Role:
                         <select class="form-control input-sm" id="role-dropdown">
                           <option value="---"> --- </option>
@@ -45,6 +45,10 @@
                             }
                             ?>
                         </select>
+                    </div>
+                    <div class="col-md-4">
+                        Search:
+                        <input class="form-control input-sm" type="text" id="myInputTextField">
                     </div>
                 </div>
 
@@ -58,15 +62,10 @@
                         <th>User Guide</th>
                         <th>Topic</th>
                         <th>Security Role</th>
-                        <th>Last Updated</th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    <?php
-                    isc_user_guide_table($user_guides);
-                    ?>
-
+                    <?php isc_user_guide_table($user_guides); ?>
                 </tbody>
 
             </table>
@@ -76,8 +75,13 @@
             $(document).ready(function() {
                 table = $('#user_guide_lib').DataTable( {
                     "paging":   false,
-                    "order": [[ 3, "desc" ]] // order user guide list by updated date (newest on top)
+                    "order": [[ 0, "asc" ]], // order user guide list by user guide name (newest on top)
                 });
+
+                $('#myInputTextField').keyup(function(){
+                      table.search($(this).val()).draw() ;
+                });
+
             });
             $("#topic-dropdown, #role-dropdown").change(function() {
                 var topic_value = $("#topic-dropdown").val();

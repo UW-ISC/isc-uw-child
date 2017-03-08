@@ -84,12 +84,11 @@ if (! function_exists('isc_user_guide_table') ) :
             $roles = count($guide->roles) == 0 ? ("---") : (implode(", ", $guide->roles));
 
             $html .= '<tr id="user-guide" ' . $data_roles . $data_topics . '>';
-            $html .= '<td><a href="'. $guide->url .'">';
+            $html .= '<td width="33%"><a href="'. $guide->url .'">';
             $html .= $guide->name;
             $html .= '</a></td>';
-            $html .= '<td>' . $topics . '</td>';
-            $html .= '<td>' . $roles . '</td>';
-            $html .= '<td>' . date_format($guide->last_updated, 'm.d.y') . '</td>';
+            $html .= '<td width="33%">' . $topics . '</td>';
+            $html .= '<td width="33%">' . $roles . '</td>';
             $html .= '</tr>';
         }
             echo $html;
