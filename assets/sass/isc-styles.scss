@@ -80,7 +80,7 @@ body, p { font-size: 16px !important; }
 }
 
 /*** main navigation (purple bar) ***/
-.uw-site-title { height: 60px; padding:0; margin: 0 !important; background: $uw-purple; text-shadow: none !important;
+.uw-site-title { height: 60px; padding:0; margin: 0 !important; background: $uw-purple; text-shadow: none !important; color: $uw-purple;
     @include tablet { display: none; }
     @include desktop { display: none; }
 }
@@ -245,30 +245,30 @@ body, p { font-size: 16px !important; }
     .isc-homepage-title {
         font-size:35px;
         line-height: 40px;
-        color:$uw-purple;
+
         font-weight: 900;
         font-family:'Encode Sans Compressed', sans-serif;
         text-transform:uppercase;
         text-shadow: 2px 1px 1px rgba(0,0,0,.2);
         padding: 30px 0 20px 0;
-        @include desktop {
-        margin: 0 0 20px 0;
-        padding:0;
-        }
+
+        color: rgba(232,211,162,1);
+
+        @include desktop { margin: 0 0 20px 0; padding:0; color:$uw-purple; }
     }
 
-    .hero-header-container {
-        background: rgba(232,211,162,.75);
-        padding: 30px;
+    .hero-header-container { padding: 30px;
 
         @include desktop {
-            //box-shadow:0px 0px 10px #aaa;
-            //padding:0 30px 30px;
-            //float:right;
+            background: rgba(232,211,162,.75);
             margin-bottom: 100px;
         }
 
-        .udub-slant span {background-color: $uw-purple;}
+        .udub-slant span {
+            margin-bottom: 30px;
+            background-color: rgba(232,211,162,1);
+            @include desktop { background-color: $uw-purple; }
+        }
         z-index: 1;
     }
 
