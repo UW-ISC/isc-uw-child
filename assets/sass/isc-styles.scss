@@ -674,7 +674,8 @@ $font_family_1: FontAwesome;
 .dataTables_wrapper {
 
     .dataTables_filter { display: none; }
-    
+    .dataTables_info { font-size: 14px; color:#555; }
+
     .pagination { list-style: none;
         .paginate_button { display: inline-block; }
     }

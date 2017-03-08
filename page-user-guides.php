@@ -19,35 +19,42 @@
         <div class="col-md-12">
             <h2><?php the_title(); ?></h2>
 
-            <div style="background:#e9e9e9; padding: 20px; margin-bottom:1em;">
-                <h3 style="margin-top:0;">Filter by:</h3>
+            <div style="background:#f9f9f9; padding: 20px; margin-bottom:1em; font-size: 14px;">
+
                 <div class="row">
-                    <div class="col-md-4">
-                        Topic:
-                        <select class="form-control input-sm" id="topic-dropdown">
-                          <option value="---"> --- </option>
-                            <?php
-                              $topics = (isc_get_all_topics($user_guides));
-                            foreach($topics as $topic) {
-                                echo '<option value = "' . sanitize_title($topic) .'"> ' . $topic . ' </option>';
-                            }
-                            ?>
-                        </select>
+
+                    <div class="col-md-8">
+                        <h3 class="sr-only">Filter by:</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Topic:</label>
+                                <select class="form-control input-sm" id="topic-dropdown">
+                                  <option value="---"> --- </option>
+                                    <?php
+                                      $topics = (isc_get_all_topics($user_guides));
+                                    foreach($topics as $topic) {
+                                        echo '<option value = "' . sanitize_title($topic) .'"> ' . $topic . ' </option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Security Role:</label>
+                                <select class="form-control input-sm" id="role-dropdown">
+                                  <option value="---"> --- </option>
+                                    <?php
+                                      $roles = (isc_get_all_roles($user_guides));
+                                    foreach($roles as $role) {
+                                        echo '<option value = "' . sanitize_title($role) .'"> ' . $role . ' </option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-4">
-                        Security Role:
-                        <select class="form-control input-sm" id="role-dropdown">
-                          <option value="---"> --- </option>
-                            <?php
-                              $roles = (isc_get_all_roles($user_guides));
-                            foreach($roles as $role) {
-                                echo '<option value = "' . sanitize_title($role) .'"> ' . $role . ' </option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        Search:
+                        <h3 class="sr-only">Search by:</h3>
+                        <label>Keyword:</label>
                         <input class="form-control input-sm" type="text" id="myInputTextField">
                     </div>
                 </div>
@@ -56,8 +63,8 @@
 
             <h3 class="sr-only">User Guides</h3>
 
-            <table id="user_guide_lib" class="table table-condensed table-striped table-bordered table-hovered">
-                <thead style="background:#4b2e83; color:#fff;">
+            <table id="user_guide_lib" class="table table-striped" style="border:none !important;">
+                <thead style="font-size:14px;">
                     <tr>
                         <th>User Guide</th>
                         <th>Topic</th>
