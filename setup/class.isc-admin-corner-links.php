@@ -28,7 +28,7 @@ class ISC_AdminCornerLinks {
 	 * Menu registration method
 	 */
 	function register_admin_corner_links() {
-		register_nav_menu( self::LOCATION, __( self::NAME ) );
+		register_nav_menu( self::LOCATION, __( 'self::NAME' ) );
 	}
 
 }
