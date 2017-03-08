@@ -18,19 +18,19 @@
 	<div class="container isc-footer">
 		<div class="row">
 
-            <?php $options = get_option( 'isc_footer_fields' );?>
+			<?php $options = get_option( 'isc_footer_fields' );?>
 
 			<div class="col-md-6">
 			  <h3>Contact Information</h3>
 			  <div class="row  location-container">
 			  <div class="col-md-6 map-container">
-				 <a href="<?php echo $options['map'] ?>" title="<?php echo $options['location'] ?>"><img src="<?php echo esc_url( get_site_url() ) . '/wp-content/themes//isc-uw-child/assets/images/map.png'?>" alt="Map of ISC location" ></a>
+				 <a href="<?php echo esc_url( $options['map'] ) ?>" title="<?php echo esc_html( $options['location'] ) ?>"><img src="<?php echo esc_url( get_site_url() . '/wp-content/themes/isc-uw-child/assets/images/map.png' ) ?>" alt="Map of ISC location" ></a>
 			  </div>
 			  <div class="col-md-6">
 				<ul class="footer-contact-container">
-				  <li><div class="icon-container"><i class="fa fa-map-marker" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo $options['map'] ?>">   <?php echo $options['location'] ?></a></div></li>
-				  <li><div class="icon-container"><i class="fa fa-phone-square " aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo 'tel:1-' . $options['phone'] ?>"> <?php echo $options['phone'] ?>   </a></div></li>
-				  <li><div class="icon-container icons-stacked"><i class="fa fa-square fa-stack-2x" aria-hidden="true"></i><i class="fa fa-envelope fa-stack-1x" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo 'mailto:' . $options['email'] ?>"> <?php echo $options['email']?> </a></div></li>
+				  <li><div class="icon-container"><i class="fa fa-map-marker" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_url( $options['map'] ) ?>">   <?php echo esc_html( $options['location'] ) ?></a></div></li>
+				  <li><div class="icon-container"><i class="fa fa-phone-square " aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_html( 'tel:1-' . $options['phone'] ) ?>"> <?php echo esc_html( $options['phone'] ) ?>   </a></div></li>
+				  <li><div class="icon-container icons-stacked"><i class="fa fa-square fa-stack-2x" aria-hidden="true"></i><i class="fa fa-envelope fa-stack-1x" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_url( 'mailto:' . $options['email'] ) ?>"> <?php echo esc_html( $options['email'] ) ?> </a></div></li>
 				</ul>
 			  </div>
 			</div>
