@@ -51,7 +51,7 @@
 		</div>
 	</div>
 
-	<p>&copy; <?php echo wp_kses( date( 'Y' ) ); ?> University of Washington  |  Seattle, WA</p>
+	<p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> University of Washington  |  Seattle, WA</p>
 
 </div>
 
