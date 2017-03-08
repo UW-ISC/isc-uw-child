@@ -74,8 +74,10 @@ function isc_change_post_object() {
     $labels->name_admin_bar = 'News';
 }
 
-add_action( 'admin_menu', 'isc_change_post_label' );
-add_action( 'init', 'isc_change_post_object' );
+if (current_user_can( 'edit_posts' ) ) {
+    add_action( 'admin_menu', 'isc_change_post_label' );
+    add_action( 'init', 'isc_change_post_object' );
+}
 
 /**
  * Developer function for logging to the browser console. Do not leave log statements lying around!
