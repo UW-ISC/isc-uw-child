@@ -22,8 +22,8 @@
             <div style="background:#e9e9e9; padding: 20px; margin-bottom:1em;">
                 <h3 style="margin-top:0;">Filter by:</h3>
                 <div class="row">
-                    <div class="col-md-4">
-                        Topic: parent topics only
+                    <div class="col-md-6">
+                        Topic:
                         <select class="form-control input-sm" id="topic-dropdown">
                           <option value="---"> --- </option>
                             <?php
@@ -34,8 +34,8 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-md-4">
-                        Security Role: child roles only
+                    <div class="col-md-6">
+                        Security Role:
                         <select class="form-control input-sm" id="role-dropdown">
                           <option value="---"> --- </option>
                             <?php
@@ -45,9 +45,6 @@
                             }
                             ?>
                         </select>
-                    </div>
-                    <div class="col-md-4">
-                        Last Updated: tbd - can't do
                     </div>
                 </div>
 
