@@ -1,6 +1,6 @@
 <?php
 /**
- * Default page template
+ * Fall back template if one is not specified
  *
  * @package isc-uw-child
  * @author UW-IT AXDD

@@ -1,17 +1,25 @@
 <?php
 /**
- * Unique template for Admin Corner page
+ * This class contains methods used to interact with the scripts of the
+ * child theme
  * This is where all the JS files are registered
  *    - bloginfo('template_directory')  gives you the url to the parent theme
  *    - bloginfo('stylesheet_directory')  gives you the url to the child theme
  *
  * @package isc-uw-child
- * @author UW-IT AXDD
  */
+
+	/**
+	 * This file overrides that of the parent theme
+	 *
+	 * @author UW-IT AXDD
+	 */
 class UW_Scripts {
 
 	/**
-	 * @var $SCRIPTS defines ..
+	 * This variable is used to to store the scripts to use
+	 *
+	 * @var $SCRIPTS
 	 */
 	public $SCRIPTS;
 
