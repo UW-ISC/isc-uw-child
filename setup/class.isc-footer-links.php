@@ -28,7 +28,7 @@ class ISC_FooterLinks {
 	 * Registration method
 	 */
 	function register_footer_links() {
-		register_nav_menu( self::LOCATION, __( self::NAME ) );
+		register_nav_menu( self::LOCATION, __( 'self::NAME' ) );
 	}
 
 }

@@ -28,7 +28,7 @@ class ISC_WhiteBarLinks {
 	 * Registration method
 	 */
 	function register_white_bar_links() {
-		register_nav_menu( self::LOCATION, __( self::NAME ) );
+		register_nav_menu( self::LOCATION, __( 'self::NAME' ) );
 	}
 
 }
