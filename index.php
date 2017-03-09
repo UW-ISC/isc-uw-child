@@ -1,6 +1,7 @@
 <?php
 /**
  * Fall back template if one is not specified
+ * and single.php does not exist
  *
  * @package isc-uw-child
  * @author UW-IT AXDD
