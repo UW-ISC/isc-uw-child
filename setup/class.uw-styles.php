@@ -1,8 +1,12 @@
 <?php
 /**
+ * Unique template for Admin Corner page
  * Install stylesheets
  *    - bloginfo('template_directory')  gives you the url to the parent theme
  *    - bloginfo('stylesheet_directory')  gives you the url to the child theme
+ *
+ * @package isc-uw-child
+ * @author UW-IT AXDD
  */
 class UW_Styles {
 
