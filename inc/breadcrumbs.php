@@ -30,8 +30,10 @@ if (! function_exists('get_uw_breadcrumbs') ) :
         }
 
           // If the current view is a post type other than page or attachment then the breadcrumbs will be taxonomies.
-        if(is_category() || is_single() || is_post_type_archive() ) {
-
+        if(is_category() || is_single() || is_post_type_archive() || is_tax()) {
+            if (is_tax()) {
+              $html .=  '<li class="current"><span> '. get_queried_object()->name . ' </span>';
+            }
             if (is_post_type_archive() ) {
                 $posttype = get_post_type_object(get_post_type());
                 if (tribe_is_past() || tribe_is_upcoming() && !is_tax() ) {
@@ -113,7 +115,7 @@ if (! function_exists('uw_breadcrumbs') ) :
 endif;
 
 // Check if page is direct child
-function is_child( $page_id ) 
+function is_child( $page_id )
 {
     global $post;
     if(is_page() && ($post->post_parent != '') ) {
@@ -124,7 +126,7 @@ function is_child( $page_id )
 }
 
 // Breadcrumb Logic
-function tribe_breadcrumbs() 
+function tribe_breadcrumbs()
 {
     global $post;
 
