@@ -1,9 +1,14 @@
 <?php
-
 /**
  * Set up the child / parent relationship and customize the UW object.
+ *
+ * @package isc-uw-child
  */
+
 if ( ! function_exists( 'setup_uw_object' ) ) {
+	/**
+	 * Initialize the UW object.
+	 */
 	function setup_uw_object() {
 		include get_stylesheet_directory() . '/setup/class.uw.php';
 		$UW = new UW();
@@ -14,6 +19,8 @@ if ( ! function_exists( 'setup_uw_object' ) ) {
 
 /**
  * Remove any templates from the UW Marketing theme that will not be used
+ *
+ * @param array $templates Array of all the page templates.
  **/
 function isc_remove_page_templates( $templates ) {
 	unset( $templates['templates/template-no-title.php'] );
@@ -32,7 +39,7 @@ add_filter( 'theme_page_templates', 'isc_remove_page_templates' );
 function isc_remove_special_page_template_metabox() {
 	global $post;
 	$specials = array( 'homepage', 'user-guides', 'admin-corner' );
-	if ( isset( $post ) && $post->post_type == 'page' && in_array( $post->post_name, $specials ) ) {
+	if ( isset( $post ) && 'page' === $post->post_type && in_array( $post->post_name, $specials ) ) {
 		// I guess its a hacky way!
 		remove_meta_box( 'uwpageparentdiv', 'page', 'side' );
 		remove_meta_box( 'sec_rolediv', 'page', 'side' );
@@ -53,6 +60,9 @@ function isc_change_post_label() {
 	$submenu['edit.php'][10][0] = 'Add News';
 	$submenu['edit.php'][16][0] = 'News Tags';
 }
+/**
+ * Rename Post labels for News
+ */
 function isc_change_post_object() {
 	global $wp_post_types;
 	$labels = &$wp_post_types['post']->labels;
@@ -79,10 +89,12 @@ if ( current_user_can( 'edit_posts' ) ) {
 /**
  * Developer function for logging to the browser console. Do not leave log statements lying around!
  * We might want to remove this when we're done with development. (Will only work if WP_DEBUG === true)
+ *
+ * @param mixed $debug_output String, array, int, bool, or object to print to the javascript console.
  */
 function log_to_console( $debug_output ) {
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-		// only echo if WP_DEBUG exists and is True
+		// only echo if WP_DEBUG exists and is True.
 		$cleaned_string = '';
 		if ( ! is_string( $debug_output ) ) {
 			$debug_output = print_r( $debug_output, true );
