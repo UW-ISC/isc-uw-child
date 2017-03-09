@@ -28,7 +28,7 @@ class ISC_HeroQuicklinks {
 	 * Registration method
 	 */
 	function register_hero_quicklinks() {
-		register_nav_menu( self::LOCATION, __( self::NAME ) );
+		register_nav_menu( self::LOCATION, __( 'self::NAME' ) );
 	}
 
 }
