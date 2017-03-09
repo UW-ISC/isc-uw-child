@@ -182,7 +182,11 @@ get_header();
 							$html .= "<p style='margin-bottom:1.5em;'>";
 							$custom = get_post_custom( $featured_page->ID );
 							$description = $custom['isc-featured-description'][0];
-							$html .= $description;
+							if ($description !== "") {
+								$html .= $description;
+							} else {
+						  	$html .= "No description found.";
+							}
 							$html .= '</p>';
 							echo $html;
 						}
