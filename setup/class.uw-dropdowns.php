@@ -28,7 +28,7 @@ class UW_Dropdowns {
 	 * Menu registration method
 	 */
 	function register_purple_bar_menu() {
-		register_nav_menu( self::LOCATION, __( self::NAME ) );
+		register_nav_menu( self::LOCATION, __( 'self::NAME' ) );
 	}
 
 }
