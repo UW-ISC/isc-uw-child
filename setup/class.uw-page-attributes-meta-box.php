@@ -83,7 +83,19 @@ class UW_Page_Attributes_Meta_Box {
 			<p><strong><?php esc_html_e( 'Parent' ) ?></strong></p>
 			<label class="screen-reader-text" for="parent_id"><?php esc_html_e( 'Parent' ) ?></label>
 
-			<?php echo $pages;
+			<?php
+			$allowed_els = array(
+					'select' => array(
+			  'name' => array(),
+			  'id'   => array(),
+			),
+					'option' => array(
+			  'class' => array(),
+			  'value' => array(),
+			  'selected' => array(),
+			),
+				  );
+			echo wp_kses( $pages, $allowed_els );
 				$parent = get_post_meta( $post->ID, 'parent', true );
 				wp_nonce_field( 'parent_nonce', 'parent_name' );
 			?>
