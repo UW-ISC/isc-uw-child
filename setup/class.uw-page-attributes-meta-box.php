@@ -209,11 +209,11 @@ class UW_Page_Attributes_Meta_Box {
 			return $post_id;
 		}
 
-		if ( isset( $_POST['banner_name'] ) ) {
-			if ( ! empty( $_POST ) && check_admin_referer( 'banner_nonce', 'banner_name' ) ) { // limit to only pages.
+		if ( isset( $_POST['banner_name'] ) ) { // Input var okay.
+			if ( ! empty( $_POST ) && check_admin_referer( 'banner_nonce', 'banner_name' ) ) { // limit to only pages. Input var okay.
 				if ( $post_type ) {
-					if ( isset( $_POST['bannertext'] ) ) {
-						update_post_meta( $post_id, 'banner', sanitize_text_field( wp_unslash( $_POST['bannertext'] ) ) );
+					if ( isset( $_POST['bannertext'] ) ) { // Input var okay.
+						update_post_meta( $post_id, 'banner', sanitize_text_field( wp_unslash( $_POST['bannertext'] ) ) ); // Input var okay.
 					} else {
 						update_post_meta( $post_id, 'banner', null );
 					}
@@ -221,11 +221,11 @@ class UW_Page_Attributes_Meta_Box {
 			}
 		}
 
-		if ( isset( $_POST['buttontext_name'] ) ) {
-			if ( ! empty( $_POST ) && check_admin_referer( 'buttontext_nonce', 'buttontext_name' ) ) { // limit to only pages.
+		if ( isset( $_POST['buttontext_name'] ) ) { // Input var okay.
+			if ( ! empty( $_POST ) && check_admin_referer( 'buttontext_nonce', 'buttontext_name' ) ) { // limit to only pages. Input var okay.
 				if ( $post_type ) {
-					if ( isset( $_POST['buttontext'] ) ) {
-						update_post_meta( $post_id, 'buttontext', sanitize_text_field( wp_unslash( $_POST['buttontext'] ) ) );
+					if ( isset( $_POST['buttontext'] ) ) { // Input var okay.
+						update_post_meta( $post_id, 'buttontext', sanitize_text_field( wp_unslash( $_POST['buttontext'] ) ) ); // Input var okay.
 					} else {
 						update_post_meta( $post_id, 'buttontext', null );
 					}
@@ -233,11 +233,11 @@ class UW_Page_Attributes_Meta_Box {
 			}
 		}
 
-		if ( isset( $_POST['buttonlink_name'] ) ) {
-			if ( ! empty( $_POST ) && check_admin_referer( 'buttonlink_nonce', 'buttonlink_name' ) ) { // limit to only pages.
+		if ( isset( $_POST['buttonlink_name'] ) ) { // Input var okay.
+			if ( ! empty( $_POST ) && check_admin_referer( 'buttonlink_nonce', 'buttonlink_name' ) ) { // limit to only pages. Input var okay.
 				if ( $post_type ) {
-					if ( isset( $_POST['buttonlink'] ) ) {
-						update_post_meta( $post_id, 'buttonlink', sanitize_text_field( wp_unslash( $_POST['buttonlink'] ) ) );
+					if ( isset( $_POST['buttonlink'] ) ) { // Input var okay.
+						update_post_meta( $post_id, 'buttonlink', sanitize_text_field( wp_unslash( $_POST['buttonlink'] ) ) ); // Input var okay.
 					} else {
 						update_post_meta( $post_id, 'buttonlink', null );
 					}
@@ -245,11 +245,11 @@ class UW_Page_Attributes_Meta_Box {
 			}
 		}
 
-		if ( isset( $_POST['mobileimage_name'] ) ) {
-			if ( ! empty( $_POST ) && check_admin_referer( 'mobileimage_nonce', 'mobileimage_name' ) ) { // limit to only pages.
+		if ( isset( $_POST['mobileimage_name'] ) ) { // Input var okay.
+			if ( ! empty( $_POST ) && check_admin_referer( 'mobileimage_nonce', 'mobileimage_name' ) ) { // limit to only pages. Input var okay.
 				if ( $post_type ) {
-					if ( isset( $_POST['mobileimagetext'] ) ) {
-						update_post_meta( $post_id, 'mobileimage', sanitize_text_field( wp_unslash( $_POST['mobileimagetext'] ) ) );
+					if ( isset( $_POST['mobileimagetext'] ) ) { // Input var okay.
+						update_post_meta( $post_id, 'mobileimage', sanitize_text_field( wp_unslash( $_POST['mobileimagetext'] ) ) ); // Input var okay.
 					} else {
 						update_post_meta( $post_id, 'mobileimage', null );
 					}
@@ -257,11 +257,11 @@ class UW_Page_Attributes_Meta_Box {
 			}
 		}
 
-		if ( isset( $_POST['sidebar_name'] ) ) {
-			if ( ! empty( $_POST ) && check_admin_referer( 'sidebar_nonce', 'sidebar_name' ) ) { // limit to only pages.
+		if ( isset( $_POST['sidebar_name'] ) ) { // Input var okay.
+			if ( ! empty( $_POST ) && check_admin_referer( 'sidebar_nonce', 'sidebar_name' ) ) { // limit to only pages. Input var okay.
 				if ( $post_type ) {
-					if ( isset( $_POST['sidebarcheck'] ) ) {
-						update_post_meta( $post_id, 'sidebar', sanitize_text_field( wp_unslash( $_POST['sidebarcheck'] ) ) );
+					if ( isset( $_POST['sidebarcheck'] ) ) { // Input var okay.
+						update_post_meta( $post_id, 'sidebar', sanitize_text_field( wp_unslash( $_POST['sidebarcheck'] ) ) ); // Input var okay.
 					} else {
 						update_post_meta( $post_id, 'sidebar', null );
 					}
@@ -269,11 +269,11 @@ class UW_Page_Attributes_Meta_Box {
 			}
 		}
 
-		if ( isset( $_POST['parent_name'] ) ) {
-			if ( ! empty( $_POST ) && check_admin_referer( 'parent_nonce', 'parent_name' ) ) { // limit to only pages.
+		if ( isset( $_POST['parent_name'] ) ) { // Input var okay.
+			if ( ! empty( $_POST ) && check_admin_referer( 'parent_nonce', 'parent_name' ) ) { // limit to only pages. Input var okay.
 				if ( $post_type ) {
-					if ( isset( $_POST['parentcheck'] ) ) {
-						update_post_meta( $post_id, 'parent', sanitize_text_field( wp_unslash( $_POST['parentcheck'] ) ) );
+					if ( isset( $_POST['parentcheck'] ) ) { // Input var okay.
+						update_post_meta( $post_id, 'parent', sanitize_text_field( wp_unslash( $_POST['parentcheck'] ) ) ); // Input var okay.
 					} else {
 						update_post_meta( $post_id, 'parent', null );
 					}
