@@ -615,6 +615,17 @@ body, p { font-size: 16px !important; }
     h3 { margin-top: 0; }
 }
 
+/*** user guide styling ***/
+
+.isc-user-guide {
+
+    ol { padding-left: 20px;
+        > li { margin-bottom: 20px; padding-left: 1em;
+            ol, ul { margin-top: 20px; margin-bottom: 20px; margin-left: 20px; }
+        }
+    }
+}
+
 /*** footer ***/
 .uw-footer {border-width: 3px;}
 .isc-footer {

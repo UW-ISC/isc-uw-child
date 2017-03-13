@@ -30,7 +30,7 @@ get_header();
                 <?php isc_user_guide_menu(); ?>
             </div>
 
-            <article class="uw-content float-content col-md-9">
+            <article class="uw-content float-content col-md-9 isc-user-guide">
                 <?php log_to_console("template-user-guide.php") ?>
                 <?php
                 while ( have_posts() ) : the_post();
