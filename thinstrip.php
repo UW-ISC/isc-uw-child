@@ -14,7 +14,7 @@
 	<div class="container">
 
 		<div class="pull-left isc-logo">
-			  <a href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><h1 class="sr-only"><?php  bloginfo( 'name' ); ?></h1></a>
+			  <a href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><h1><?php  bloginfo( 'name' ); ?></h1></a>
 		</div>
 
 	</div>
