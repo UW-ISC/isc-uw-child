@@ -53,8 +53,8 @@ get_header();
                         $(this).removeProp("style");
                     });
 
-                    // clean img tags by removing all inline styles
-                    $("img").each(function() {
+                    // set img widths (inside of table tds)
+                    $("td img").each(function() {
                         //$(this).removeProp("width");
                         $(this).attr('width', '100%');
                         $(this).removeProp("height");
