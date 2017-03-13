@@ -41,7 +41,7 @@ get_header();
 									<?php
 									  $topics = (isc_get_all_topics( $user_guides ));
 									foreach ( $topics as $topic ) {
-										echo '<option value = "' . esc_html( $topic ) . '"> ' . esc_html( $topic ) . ' </option>';
+										echo '<option value = "' . esc_attr( sanitize_title( $topic ) ) . '"> ' . esc_html( $topic ) . ' </option>';
 									}
 									?>
 								</select>
@@ -53,7 +53,7 @@ get_header();
 									<?php
 									  $roles = (isc_get_all_roles( $user_guides ));
 									foreach ( $roles as $role ) {
-										echo '<option value = "' . esc_html( $role ) . '"> ' . esc_html( $role ) . ' </option>';
+										echo '<option value = "' . esc_attr( sanitize_title( $role ) ) . '"> ' . esc_html( $role ) . ' </option>';
 									}
 									?>
 								</select>
