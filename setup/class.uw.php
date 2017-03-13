@@ -53,7 +53,6 @@ class UW {
 		include_once $parent . 'class.uw-media-caption.php';
 		include_once $parent . 'class.uw-replace-media.php';
 		include_once $parent . 'class.uw-tinymce.php';
-		// require_once($parent . 'class.uw-documentation-dashboard-widget.php' );
 		include_once $parent . 'class.uw-enclosure.php';
 		include_once $parent . 'class.uw-carousel.php';
 		include_once $parent . 'class.uw-settings.php';
@@ -97,7 +96,6 @@ class UW {
 		$this->MediaCaption      = new UW_Media_Caption;
 		$this->ReplaceMedia      = new UW_Replace_Media;
 		$this->TinyMCE           = new UW_TinyMCE;
-		// $this->Documentation     = new UW_Documentation_Dashboard_Widget;
 		$this->IFrames           = new UW_Iframes;
 		$this->GoogleApps        = new UW_GoogleApps;
 		$this->Enclosure         = new UW_Enclosure;

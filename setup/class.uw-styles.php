@@ -1,6 +1,7 @@
 <?php
 /**
- * Unique template for Admin Corner page
+ * Child theme style class
+ *
  * Install stylesheets
  *    - bloginfo('template_directory')  gives you the url to the parent theme
  *    - bloginfo('stylesheet_directory')  gives you the url to the child theme
@@ -8,9 +9,15 @@
  * @package isc-uw-child
  * @author UW-IT AXDD
  */
+
+/**
+ * Child theme styles
+ */
 class UW_Styles {
 
 	/**
+	 * Stores theme style data
+	 *
 	 * @var $STYLES is an array of
 	 * theme style arrays
 	 */
