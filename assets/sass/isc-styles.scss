@@ -36,13 +36,22 @@ body, p { font-size: 16px !important; }
 
     background: #fff;
     color: $uw-purple;
+    padding-top: 0 !important;
+
     @include tablet {height:inherit;}
-    a { color: #eee;
+
+    a { color: $uw-purple;
         &:hover { color: #eee; }
     }
 
-    h1 { font-size: 18px; line-height: 45px;
-         @include desktop { font-size: 37px; }
+    h1 {
+
+        margin: 0;
+        font-size: 18px;
+        line-height: 45px;
+
+        @include tablet { visibility: hidden; }
+        @include desktop { visibility: hidden; }
     }
 
     button.uw-search {
@@ -52,6 +61,7 @@ body, p { font-size: 16px !important; }
         top: -22px;
         right: -22px;
 
+        @include tablet { top:0; }
         @include desktop { top: 0; right: 0; }
 
         &:hover,&:focus {
@@ -74,6 +84,25 @@ body, p { font-size: 16px !important; }
             background-position: left 10px;
             background-repeat: no-repeat;
             padding-left: 25px;
+        }
+    }
+
+    .isc-logo {
+
+        @include tablet {
+            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr.jpg');
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 300px; height: 90px;
+        }
+
+        @include desktop {
+            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr.jpg');
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 450px; height: 90px;
         }
     }
 
