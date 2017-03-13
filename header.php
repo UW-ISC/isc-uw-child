@@ -22,10 +22,9 @@
 		<?php wp_head(); ?>
 
 		<!--[if lt IE 9]>
-			<script src="<?php bloginfo( 'template_directory' ); ?>/assets/ie/js/html5shiv.js" type="text/javascript"></script>
-	  <script type="text/javascript"><?php wp_enqueue_script( 'template_directory', 'template_directory/assets/ie/js/html5shiv.js' );?></script>
-			<script src="<?php bloginfo( 'template_directory' ); ?>/assets/ie/js/respond.js" type="text/javascript"></script>
-			<link rel='stylesheet' href='<?php bloginfo( 'template_directory' ); ?>/assets/ie/css/ie.css' type='text/css' media='all' />
+				<script src="<?php bloginfo( 'template_directory' ); ?>/assets/ie/js/html5shiv.js" type="text/javascript"></script>
+				<script src="<?php bloginfo( 'template_directory' ); ?>/assets/ie/js/respond.js" type="text/javascript"></script>
+				<link rel='stylesheet' href='<?php bloginfo( 'template_directory' ); ?>/assets/ie/css/ie.css' type='text/css' media='all' />
 		<![endif]-->
 
 		<?php
