@@ -13,8 +13,8 @@
 
 	<div class="container">
 
-		<div class="pull-left">
-			  <a href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><h1 style="margin:0;"><?php  bloginfo( 'name' ); ?></h1></a>
+		<div class="pull-left isc-logo">
+			  <a href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><h1><?php  bloginfo( 'name' ); ?></h1></a>
 		</div>
 
 	</div>
