@@ -55,7 +55,8 @@ get_header();
 
                     // clean img tags by removing all inline styles
                     $("img").each(function() {
-                        $(this).removeProp("width");
+                        //$(this).removeProp("width");
+                        $(this).attr('width', '100%');
                         $(this).removeProp("height");
                     });
 
