@@ -172,7 +172,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								?>
 
 								<h3>
-                                    <a href="<?php echo esc_url( get_post_permalink() ); ?>"><?php echo the_title(); ?></a>
+									<a href="<?php echo esc_url( get_post_permalink() ); ?>"><?php echo the_title(); ?></a>
 								</h3>
 								<div class="update-date"><?php echo get_the_date() ?></div>
 								<div class="post-content"><?php echo the_content() ?></div>
