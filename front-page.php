@@ -89,7 +89,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 										if ( has_post_thumbnail( $featured_page->ID ) ) {
 											$image = get_the_post_thumbnail_url( $featured_page->ID );
 										?>
-									  <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
+									  <div class="isc-homepage-image" style="background-image:url('<?php echo esc_url( $image ); ?>')">
 										<?php
 										} else {
 											// Use the default image.
