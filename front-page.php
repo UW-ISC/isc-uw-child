@@ -121,7 +121,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 										}
 										?>
 										<p class="isc-homepage-excerpt"><?php echo esc_textarea( $description ); ?></p>
-										<p><a class="uw-btn btn-sm" href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>"><?php echo esc_textarea( $description_text ); ?></a></p>
+										<p><a class="uw-btn btn-sm" href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>"><?php echo esc_textarea( $description_text ); ?><span class="sr-only">: <?php echo get_the_title( $featured_page->ID ); ?></span></a></p>
 									</div>
 
 								  </div>
