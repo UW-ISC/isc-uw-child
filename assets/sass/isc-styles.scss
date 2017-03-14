@@ -90,7 +90,7 @@ body, p { font-size: 16px !important; }
     .isc-logo {
 
         @include tablet {
-            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr.jpg');
+            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
             background-position: left center;
             background-repeat: no-repeat;
             background-size: contain;
@@ -98,7 +98,7 @@ body, p { font-size: 16px !important; }
         }
 
         @include desktop {
-            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr.jpg');
+            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
             background-position: left center;
             background-repeat: no-repeat;
             background-size: contain;
