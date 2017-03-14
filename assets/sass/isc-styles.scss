@@ -96,7 +96,8 @@ body, p { font-size: 16px !important; }
             background-position: left center;
             background-repeat: no-repeat;
             background-size: contain;
-            width: 300px; height: 90px;
+            width: 400px;
+            height: 90px;
         }
 
         @include desktop {
@@ -104,7 +105,13 @@ body, p { font-size: 16px !important; }
             background-position: left center;
             background-repeat: no-repeat;
             background-size: contain;
-            width: 450px; height: 90px;
+            width: 410px;
+            height: 90px;
+        }
+
+        a { display: block;
+            @include tablet { height: 90px; }
+            @include desktop { height: 90px; }
         }
     }
 
