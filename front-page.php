@@ -89,7 +89,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 										if ( has_post_thumbnail( $featured_page->ID ) ) {
 											$image = get_the_post_thumbnail_url( $featured_page->ID );
 										?>
-									  <div class="isc-homepage-image" style="background-image:url('<?php echo $image; ?>')">
+									  <div class="isc-homepage-image" style="background-image:url('<?php echo esc_url( $image ); ?>')">
 										<?php
 										} else {
 											// Use the default image.
@@ -172,11 +172,11 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								?>
 
 								<h3>
-                                    <a href="<?php echo esc_url( get_post_permalink( $recent['ID'] ) ); ?>"><?php echo the_title(); ?></a>
+									<a href="<?php echo esc_url( get_post_permalink() ); ?>"><?php echo the_title(); ?></a>
 								</h3>
 								<div class="update-date"><?php echo get_the_date() ?></div>
 								<div class="post-content"><?php echo the_content() ?></div>
-								<p><a class="more" href="<?php echo esc_url( get_post_permalink( $recent['ID'] ) ); ?>">Read more</a></p>
+								<p><a class="more" href="<?php echo esc_url( get_post_permalink() ); ?>">Read more</a></p>
 						<?php
 							endwhile;
 					  else :
