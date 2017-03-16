@@ -12,8 +12,6 @@
  */
 class ISC_AdminCornerLinks {
 
-
-	const NAME              = 'Admin Corner Links';
 	const LOCATION       = 'admin-corner-links';
 
 	/**
@@ -28,7 +26,7 @@ class ISC_AdminCornerLinks {
 	 * Menu registration method
 	 */
 	function register_admin_corner_links() {
-		register_nav_menu( self::LOCATION, __( 'self::NAME' ) );
+		register_nav_menu( self::LOCATION, __( 'Admin Corner Links' ) );
 	}
 
 }
