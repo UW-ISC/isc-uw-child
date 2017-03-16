@@ -102,5 +102,8 @@ class UW {
 		$this->WhiteBarLinks     = new ISC_WhiteBarLinks;
 		$this->FooterLinks       = new ISC_FooterLinks;
 		$this->HeroQuickLinks    = new ISC_HeroQuicklinks;
+		remove_shortcode( 'subsection' );
+		remove_shortcode( 'section' );
+		remove_shortcode( 'accordion' );
 	}
 }
