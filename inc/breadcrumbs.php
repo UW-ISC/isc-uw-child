@@ -1,11 +1,22 @@
 <?php
+/**
+ * Breadcrumb functions
+ *
+ * Various functions that output a breadcrumb trail.
+ *
+ * @package isc-uw-child
+ */
+
 if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
+    /**
+     * This is the main breadcrumb function.
+     */
 	function get_uw_breadcrumbs() {
 
 		  global $post;
 		  $blog_title = get_bloginfo( 'title' );
 		  $html = '';
-		if ( $blog_title == '' ) {
+		if ( '' === $blog_title ) {
 			$html .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url( '/' ) . '" title="Home"> Home </a><li>';
 		} else {
 			$html .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'title' ) . '">' . get_bloginfo( 'title' ) . '</a><li>';
@@ -38,7 +49,6 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 
 			if ( is_category() ) {
 				$category = get_category( get_query_var( 'cat' ) );
-				// $html .=  '<li class="current"><a href="'  . get_category_link( $category->term_id ) .'" title="'. get_cat_name( $category->term_id ).'">'. get_cat_name($category->term_id ) . '</a>';
 				$html .= '<li class="current"><span>' . get_cat_name( $category->term_id ) . '</span>';
 			}
 
@@ -47,7 +57,7 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 					$thecat = get_the_category( $post->ID );
 					$category = array_shift( $thecat );
 					$category_name = get_cat_name( $category->term_id );
-					if ( $category_name == 'Uncategorized' ) {
+					if ( 'Uncategorized' === $category_name ) {
 						  $category_name = 'News';
 						  $category_link = get_site_url() . '/news/';
 					}
@@ -74,7 +84,7 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 
 			if ( ! is_front_page() ) {
 				foreach ( array_filter( $ancestors ) as $index => $ancestor ) {
-					$class      = $index + 1 == count( $ancestors ) ? ' class="current" ' : '';
+					$class      = $index + 1 === count( $ancestors ) ? ' class="current" ' : '';
 					$page       = get_post( $ancestor );
 					$url        = get_permalink( $page->ID );
 					$title_attr = esc_attr( $page->post_title );
@@ -93,17 +103,24 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 endif;
 
 if ( ! function_exists( 'uw_breadcrumbs' ) ) :
-
+    /**
+     * Returns the breadcrumb html.
+     * This overrides the function in the parent theme.
+     */
 	function uw_breadcrumbs() {
 		echo get_uw_breadcrumbs();
 	}
 
 endif;
 
-// Check if page is direct child
+/**
+ * Check if page is direct child.
+ *
+ * @param int $page_id The ID of the post.
+ */
 function is_child( $page_id ) {
 	global $post;
-	if ( is_page() && ($post->post_parent != '') ) {
+	if ( is_page() && ( '' !== $post->post_parent ) ) {
 		return true;
 	} else {
 		return false;
