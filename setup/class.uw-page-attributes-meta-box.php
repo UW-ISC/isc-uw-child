@@ -65,16 +65,6 @@ class UW_Page_Attributes_Meta_Box {
 			'echo'             => 0,
 			);
 
-			  /**
-		   * Filter the arguments used to generate a Pages drop-down element.
-		   *
-		   * @since 3.3.0
-		   *
-		   * @see wp_dropdown_pages()
-		   *
-		   * @param array   $dropdown_args Array of arguments used to generate the pages drop-down.
-		   * @param WP_Post $post          The current WP_Post object.
-		   */
 			  $dropdown_args = apply_filters( 'page_attributes_dropdown_pages_args', $dropdown_args, $post );
 			  $pages = wp_dropdown_pages( $dropdown_args );
 
