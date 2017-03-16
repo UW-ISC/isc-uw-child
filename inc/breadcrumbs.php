@@ -8,9 +8,9 @@
  */
 
 if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
-    /**
-     * This is the main breadcrumb function.
-     */
+	/**
+	 * This is the main breadcrumb function.
+	 */
 	function get_uw_breadcrumbs() {
 
 		  global $post;
@@ -103,10 +103,10 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 endif;
 
 if ( ! function_exists( 'uw_breadcrumbs' ) ) :
-    /**
-     * Returns the breadcrumb html.
-     * This overrides the function in the parent theme.
-     */
+	/**
+	 * Returns the breadcrumb html.
+	 * This overrides the function in the parent theme.
+	 */
 	function uw_breadcrumbs() {
 		echo get_uw_breadcrumbs();
 	}
