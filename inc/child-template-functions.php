@@ -51,7 +51,7 @@ if (! function_exists('isc_display_child_pages_with_toc') ) :
             $html .= '</div>';
 
             if ($toc) {
-                $html .= '<p class="isc-toc-top-btn"><a class="more" href="#toc">Return to top</a></p>';
+                $html .= '<p class="isc-toc-top-btn"><a class="more" href="#top">Return to top</a></p>';
             }
         }
         echo $html;
