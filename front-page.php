@@ -154,7 +154,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 						<?php
 
 						$args = array(
-							  'numberposts' => '5',
+							  'posts_per_page' => '3',
 							  'post_status' => 'publish',
 							  'tax_query' => array(
 								array(
