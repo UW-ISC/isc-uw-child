@@ -487,8 +487,7 @@ body, p { font-size: 16px !important; }
             -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5);
             box-shadow: 0 0 4px rgba(164,164,164,.5);
             margin-bottom: 30px;
-            height: 532px;
-            max-height: 532px;
+            min-height: 532px;
 
             h3 { margin-top: 0; }
             .post-content { margin-bottom: 0; }
