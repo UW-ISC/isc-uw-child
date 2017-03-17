@@ -75,7 +75,8 @@ get_header();
 										  'terms'    => 'admin-corner-news',
 									  ),
 								  ),
-								'post_status' => 'published',
+                                  'posts_per_page' => 5,
+                                  'post_status' => 'published',
 						 );
 						 $category_posts = new WP_Query( $args );
 
