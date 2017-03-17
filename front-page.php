@@ -175,7 +175,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 									<a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo the_title(); ?></a>
 								</h3>
 								<div class="update-date"><?php echo get_the_date() ?></div>
-								<div class="post-content"><?php echo the_content() ?></div>
+								<div class="post-content"><?php echo wp_strip_all_tags( get_the_content() ) ?></div>
 								<p><a class="more" href="<?php echo esc_url( get_permalink() ); ?>">Read more</a></p>
 						<?php
 							endwhile;
@@ -188,7 +188,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 					  <script>
 						  $(function(){
 							  $('.isc-homepage-news-content .post-content').succinct({
-								  size: 300
+								  size: 250
 							  });
 						  });
 					  </script>
