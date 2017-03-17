@@ -61,7 +61,6 @@ get_header();
 					</div>
 				</div>
 
-
 				<h3 class="isc-admin-header">Admins' News</h3>
 				<div class="isc-admin-block">
 
@@ -75,8 +74,8 @@ get_header();
 										  'terms'    => 'admin-corner-news',
 									  ),
 								  ),
-                                  'posts_per_page' => 5,
-                                  'post_status' => 'published',
+								  'posts_per_page' => 5,
+								  'post_status' => 'published',
 						 );
 						 $category_posts = new WP_Query( $args );
 
@@ -157,8 +156,8 @@ get_header();
 				<?php
 				if ( ! empty( $event ) ) {
 					// we only want to show the See All Events button if a future event exists.
-                    $events_url = get_site_url()  . '/events/';
-					echo '<a class="uw-btn btn-sm" href="' . esc_url($events_url) . '"?>See All Events</a>';
+					$events_url = get_site_url() . '/events/';
+					echo '<a class="uw-btn btn-sm" href="' . esc_url( $events_url ) . '"?>See All Events</a>';
 				}
 				?>
 			</div>
