@@ -156,7 +156,8 @@ get_header();
 				<?php
 				if ( ! empty( $event ) ) {
 					// we only want to show the See All Events button if a future event exists.
-					echo '<a class="uw-btn btn-sm" href="' . esc_url( get_site_url() ) . '"/events"?>See All Events</a>';
+                    $events_url = get_site_url()  . '/events/';
+					echo '<a class="uw-btn btn-sm" href="' . esc_url($events_url) . '"?>See All Events</a>';
 				}
 				?>
 			</div>
