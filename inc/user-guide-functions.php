@@ -176,7 +176,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 			foreach ( $headers as $slug => $header ) {
 				 $content = substr( $header, 1, strlen( $header ) );
 				 $heading_type = substr( $header, 0, 1 );
-				if ( $heading_type == '3' ) {
+				if ( '3' === $heading_type ) {
 					// It is a header!
 					array_push( $subarray, $temp_storage );
 					// Reset the temp_storage array to gather new subheaders under the new header.
