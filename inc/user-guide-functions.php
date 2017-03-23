@@ -1,5 +1,15 @@
 <?php
+/**
+ * User Guide Functions
+ *
+ * Miscellaneous user guide template functions
+ *
+ * @package isc-uw-child
+ */
 
+/**
+ * ISC User Guide
+ */
 class isc_user_guide {
 
 	public $name;
@@ -8,6 +18,9 @@ class isc_user_guide {
 	public $roles;
 	public $last_updated;
 
+    /**
+     * Constructor method
+     */
 	function __construct( $name, $url, $topics, $roles, $last_updated ) {
 		$this->name = $name;
 		$this->url = $url;
