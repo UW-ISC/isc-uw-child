@@ -175,9 +175,9 @@ if (! function_exists('isc_user_guide_menu') ) :
             // the subheaders (if any) under the current header
             $subheaders = $subarray[$i];
             // slug of the current header
-            $slug = $headarray[$i][0];
+            $slug = wp_strip_all_tags( $headarray[$i][0] );
             // title of the current header
-            $title = $headarray[$i][1];
+            $title = wp_strip_all_tags( $headarray[$i][1]);
             if (sizeof($subheaders) > 0) {
                 // means there are subheaders under the current header
                 $pages .= '<li class="nav-item has-children"> <button class="nav-link children-toggle collapsed" data-toggle="collapse" data-target="#'.$slug.'" aria-controls="#'.$slug.'" aria-expanded="false">'.$title.'<i class="fa fa-2x"></i></button>';
@@ -185,9 +185,9 @@ if (! function_exists('isc_user_guide_menu') ) :
                 // iterate through the subheaders under the current header
                 for ($j = 0; $j < sizeof($subheaders); $j++) {
                     // slug of the current subheader
-                    $subslug = $subheaders[$j][0];
+                    $subslug = wp_strip_all_tags( $subheaders[$j][0] );
                     // title of the current subtitle
-                    $subtitle = $subheaders[$j][1];
+                    $subtitle = wp_strip_all_tags( $subheaders[$j][1] );
                     // Append the subheaders
                     $pages .= '<li class="nav-item"> <a class="nav-link" title="'.$subtitle.'" href="#'.$subslug.'">'.$subtitle.'</a></li>';
                 }
@@ -267,7 +267,7 @@ function isc_add_ids_to_header_tags_auto($content)
     }
     // the header types we want to look for (h3 and h4)
     $look_for = "(h3|h4)";
-    $pattern = '#(?P<full_tag><(?P<tag_name>'. $look_for .')>(?P<tag_contents>[^<]*)</'. $look_for .'>)#i';
+    $pattern = '#(?P<full_tag><(?P<tag_name>'. $look_for .')>(?P<tag_contents>.*)<\/'. $look_for .'>)#i';
     if (preg_match_all($pattern, $content, $matches, PREG_SET_ORDER) ) {
         $find = array();
         $replace = array();
