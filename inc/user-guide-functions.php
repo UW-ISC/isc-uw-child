@@ -120,6 +120,9 @@ endif;
 
 
 if ( ! function_exists( 'isc_get_all_topics' ) ) :
+    /**
+     * Gets all of the taxonomy terms for Topics.
+     */
 	function isc_get_all_topics( $user_guides ) {
 		$topics = array();
 		foreach ( $user_guides as $guide ) {
@@ -132,6 +135,9 @@ if ( ! function_exists( 'isc_get_all_topics' ) ) :
 endif;
 
 if ( ! function_exists( 'isc_get_all_roles' ) ) :
+    /**
+     * Gets all of the taxonomy terms for Security Roles.
+     */
 	function isc_get_all_roles( $user_guides ) {
 		$topics = array();
 		foreach ( $user_guides as $guide ) {
@@ -144,18 +150,17 @@ if ( ! function_exists( 'isc_get_all_roles' ) ) :
 endif;
 
 
-/**
- * User Guide Menu
- *
- * Lists all User Guides in the sidebar and also builds an
- * in-page navigation.
- *
- * @author Abhishek Chauhan <abhi3@uw.edu>
- */
 if ( ! function_exists( 'isc_user_guide_menu' ) ) :
+   /**
+    * User Guide Menu
+    *
+    * Lists all User Guides in the sidebar and also builds an
+    * in-page navigation.
+    *
+    * @author Abhishek Chauhan <abhi3@uw.edu>
+    */
 	function isc_user_guide_menu( $return = false ) {
 
-		// $exclude_ids = get_menu_excluded_ids();
 		// Grabs all the headers in the content.
 		$headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
 		$pages = '';
