@@ -64,17 +64,17 @@ if ( ! function_exists( 'isc_get_user_guides' ) ) :
 		  $children_pages = get_pages( $args );
 		  $user_guides = array();
 		foreach ( $children_pages as $child ) {
-			$security_query = wp_get_post_terms( $child->ID, 'sec_role' );
+			$security_query = get_the_terms( $child->ID, 'sec_role' );
 			$sec_roles = array();
-			if ( ! is_wp_error( $security_query ) ) {
+			if ( ! empty( $security_query ) ) {
 				foreach ( $security_query as $role ) {
 					array_push( $sec_roles, $role->name );
 				}
 			}
 
-			$topic_query = wp_get_post_terms( $child->ID, 'ug-topic' );
+			$topic_query = get_the_terms( $child->ID, 'ug-topic' );
 			$topics = array();
-			if ( ! is_wp_error( $topic_query ) ) {
+			if ( ! empty( $topic_query ) ) {
 				foreach ( $topic_query as $topic ) {
 					array_push( $topics, $topic->name );
 				}
