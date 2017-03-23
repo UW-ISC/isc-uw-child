@@ -18,15 +18,15 @@ class isc_user_guide {
 	public $roles;
 	public $last_updated;
 
-    /**
-     * Constructor method
-     *
-     * @param string $name The title of the User Guide.
-     * @param string $url The permalink of the User Guide.
-     * @param array $topics Taxonomy terms representing the topics that apply to the User Guide.
-     * @param array $roles Taxonomy terms representing the security roles that apply to the User Guide.
-     * @param \DateTime $last_updated The last modified date and time of the User Guide.
-     */
+	/**
+	 * Constructor method
+	 *
+	 * @param string    $name The title of the User Guide.
+	 * @param string    $url The permalink of the User Guide.
+	 * @param array     $topics Taxonomy terms representing the topics that apply to the User Guide.
+	 * @param array     $roles Taxonomy terms representing the security roles that apply to the User Guide.
+	 * @param \DateTime $last_updated The last modified date and time of the User Guide.
+	 */
 	function __construct( $name, $url, $topics, $roles, $last_updated ) {
 		$this->name = $name;
 		$this->url = $url;
@@ -37,11 +37,11 @@ class isc_user_guide {
 }
 
 if ( ! function_exists( 'sanitize_array' ) ) :
-    /**
-     * Sluggifies an array of taxonomy terms.
-     *
-     * @param array $elements An array of taxonomy terms assigned to the Post.
-     */
+	/**
+	 * Sluggifies an array of taxonomy terms.
+	 *
+	 * @param array $elements An array of taxonomy terms assigned to the Post.
+	 */
 	function sanitize_array( $elements ) {
 		$sanitized = array();
 		foreach ( $elements as $el ) {
@@ -51,9 +51,9 @@ if ( ! function_exists( 'sanitize_array' ) ) :
 	}
 endif;
 if ( ! function_exists( 'isc_get_user_guides' ) ) :
-    /**
-     * Simply gets the child pages of the current page when called on the user guide library page, and returns all of the user guides.
-     */
+	/**
+	 * Simply gets the child pages of the current page when called on the user guide library page, and returns all of the user guides.
+	 */
 	function isc_get_user_guides() {
 		  $args = array(
 			'parent' => get_the_ID(),
