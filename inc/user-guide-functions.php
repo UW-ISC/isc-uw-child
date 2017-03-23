@@ -39,7 +39,7 @@ if ( ! function_exists( 'sanitize_array' ) ) :
 		return $sanitized;
 	}
 endif;
-// simply gets the child pages of the current page
+// Simply gets the child pages of the current page
 // when called on the user guide library page
 // will return all the user guides
 if ( ! function_exists( 'isc_get_user_guides' ) ) :
@@ -142,69 +142,69 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 	function isc_user_guide_menu( $return = false ) {
 
 		// $exclude_ids = get_menu_excluded_ids();
-		// grabs all the headers in the content
+		// Grabs all the headers in the content.
 		$headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
 		$pages = '';
 		$subarray = array();
 		$temp_storage = array();
 		$headarray = array();
 
-		// filters the content to add ids to the headers so that the menu will work
+		// Filters the content to add ids to the headers so that the menu will work.
 		add_filter( 'the_content', 'isc_add_ids_to_header_tags_auto' );
 
-		// parse through all the headers and sift/sort headers/subheaders
+		// Parse through all the headers and sift/sort headers/subheaders.
 		if ( ! empty( $headers ) ) {
 			foreach ( $headers as $slug => $header ) {
 				 $content = substr( $header, 1, strlen( $header ) );
 				 $heading_type = substr( $header, 0, 1 );
 				if ( $heading_type == '3' ) {
-					// it is a header!
+					// It is a header!
 					array_push( $subarray, $temp_storage );
-					// reset the temp_storage array to gather new subheaders under the new header
+					// Reset the temp_storage array to gather new subheaders under the new header.
 					$temp_storage = array();
-					// add the header to the headarray
+					// Add the header to the headarray.
 					array_push( $headarray, array( $slug, $content ) );
 				} else {
-					// it is a subheader, store it until we see the next header... or the content ends
+					// It is a subheader, store it until we see the next header... or the content ends.
 					array_push( $temp_storage, array( $slug, $content ) );
 				}
 			}
 		}
 
-		// pushing on the subheaders under the last header
+		// Push the subheaders under the last header.
 		array_push( $subarray, $temp_storage );
-		// ignoring all the subheaders that occured before the first header
+		// Ignoring all the subheaders that occured before the first header.
 		array_shift( $subarray );
 
-		// iterate through the headers
+		// Iterate through the headers.
 		for ( $i = 0; $i < sizeof( $headarray ); $i++ ) {
-			// the subheaders (if any) under the current header
+			// The subheaders (if any) under the current header.
 			$subheaders = $subarray[ $i ];
-			// slug of the current header
+			// The slug of the current header.
 			$slug = wp_strip_all_tags( $headarray[ $i ][0] );
-			// title of the current header
+			// Title of the current header.
 			$title = wp_strip_all_tags( $headarray[ $i ][1] );
 			if ( sizeof( $subheaders ) > 0 ) {
-				// means there are subheaders under the current header
+				// This means there are subheaders under the current header.
 				$pages .= '<li class="nav-item has-children"> <button class="nav-link children-toggle collapsed" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $title . '<i class="fa fa-2x"></i></button>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" aria-expanded="false" style="height: 0px;">';
-				// iterate through the subheaders under the current header
+				// Iterate through the subheaders under the current header.
 				for ( $j = 0; $j < sizeof( $subheaders ); $j++ ) {
-					// slug of the current subheader
+					// The slug of the current subheader.
 					$subslug = wp_strip_all_tags( $subheaders[ $j ][0] );
-					// title of the current subtitle
+					// The title of the current subtitle.
 					$subtitle = wp_strip_all_tags( $subheaders[ $j ][1] );
-					// Append the subheaders
+					// Append the subheaders.
 					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . $subtitle . '" href="#' . $subslug . '">' . $subtitle . '</a></li>';
 				}
 				$pages .= '</ul></li>';
 			} else {
-				// if there are no subheaders under the current header, just put the header link
+				// If there are no subheaders under the current header, just put the header link.
 				$pages .= '<li class="nav-item"> <a class="nav-link" title="' . $title . '" href="#' . $slug . '">' . $title . '</a></li>';
 			}
 		}
 
-		// add the title of the table of contents (first element)
+		// Add the title of the table of contents (first element.)
 		$first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo( 'name' ) . '"> Table of Contents </a></li>';
 
 		$html = sprintf(
@@ -232,13 +232,13 @@ endif;
 
 
 function isc_build_page_navigation( $post_id ) {
-		// Grab the post and post_content
+		// Grab the post and post_content.
 		$page_data = get_post( $post_id );
 		$page_content = $page_data ? $page_data->post_content : '';
 
 		$links = array();
 		$results = '';
-		// the header types we want to look for (3:header and 4:subheader)
+		// The header types we want to look for (3:header, and 4:subheader.)
 		$options = '([34])';
 				$regex = '/<h' . $options . '.*?>(.*?)<\/h\1>/';
 
@@ -255,16 +255,15 @@ function isc_build_page_navigation( $post_id ) {
 		$results = '';
 	}
 
-		// Slugs are added to the h3s and h4s in a filter on the_content function
+		// Slugs are added to the h3s and h4s in a filter on the_content function.
 		update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
 }
 
 function isc_add_ids_to_header_tags_auto( $content ) {
-	// making sure the headers have been gathered first
+	// Making sure the headers have been gathered first.
 	isc_build_page_navigation( get_the_ID() );
 
-	// _uwhr_page_anchor_links represents if a post contains these anchor links, so if there
-	// are no links we don't want to bother with this method...
+	// _uwhr_page_anchor_links represents if a post contains these anchor links, so if there are no links we don't want to bother with this method...
 	$headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
 	if ( empty( $headers ) ) {
 		return $content;
