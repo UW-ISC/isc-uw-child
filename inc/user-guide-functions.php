@@ -100,8 +100,8 @@ if ( ! function_exists( 'isc_user_guide_table' ) ) :
 			$sanitized_roles = sanitize_array( $guide->roles );
 			$data_roles = empty( $sanitized_roles ) ? '' : 'data-roles="' . implode( ' ', $sanitized_roles ) . '"';
 			$data_topics = empty( $sanitized_topics ) ? '' : 'data-topics="' . implode( ' ', $sanitized_topics ) . '"';
-			$topics = count( $guide->topics ) == 0 ? ('---') : (implode( ', ', $guide->topics ));
-			$roles = count( $guide->roles ) == 0 ? ('---') : (implode( ', ', $guide->roles ));
+			$topics = count( $guide->topics ) === 0 ? ('---') : (implode( ', ', $guide->topics ));
+			$roles = count( $guide->roles ) === 0 ? ('---') : (implode( ', ', $guide->roles ));
 
 			$html .= '<tr id="user-guide" ' . $data_roles . $data_topics . '>';
 			$html .= '<td width="33%"><a href="' . $guide->url . '">';
