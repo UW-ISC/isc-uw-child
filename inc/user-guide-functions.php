@@ -92,6 +92,9 @@ endif;
 
 
 if ( ! function_exists( 'isc_user_guide_table' ) ) :
+    /**
+     * Generates HTML for the table of User Guides on the User Guide index.
+     */
 	function isc_user_guide_table( $user_guides ) {
 
 			$html = '';
