@@ -10,7 +10,7 @@
 /**
  * ISC User Guide
  */
-class isc_user_guide {
+class ISCUserGuide {
 
 	/**
 	 * User Guide title
@@ -111,7 +111,7 @@ if ( ! function_exists( 'isc_get_user_guides' ) ) :
 
 			$url = get_permalink( $child );
 			$date_updated = new DateTime( $child->post_modified_gmt );
-			$temp_user_guide = new isc_user_guide( $child->post_title, $url, $topics, $sec_roles, $date_updated );
+			$temp_user_guide = new ISCUserGuide( $child->post_title, $url, $topics, $sec_roles, $date_updated );
 
 			array_push( $user_guides, $temp_user_guide );
 		}
