@@ -94,10 +94,11 @@ endif;
 if ( ! function_exists( 'isc_user_guide_table' ) ) :
 	/**
 	 * Generates HTML for the table of User Guides on the User Guide index.
+	 *
+	 * @param array $user_guides An array of User Guide Posts.
 	 */
 	function isc_user_guide_table( $user_guides ) {
-
-			$html = '';
+		$html = '';
 		foreach ( $user_guides as $guide ) {
 			$sanitized_topics = sanitize_array( $guide->topics );
 			$sanitized_roles = sanitize_array( $guide->roles );
@@ -122,6 +123,8 @@ endif;
 if ( ! function_exists( 'isc_get_all_topics' ) ) :
 	/**
 	 * Gets all of the taxonomy terms for Topics.
+	 *
+	 * @param array $user_guides An array of User Guide Posts.
 	 */
 	function isc_get_all_topics( $user_guides ) {
 		$topics = array();
@@ -137,6 +140,8 @@ endif;
 if ( ! function_exists( 'isc_get_all_roles' ) ) :
 	/**
 	 * Gets all of the taxonomy terms for Security Roles.
+	 *
+	 * @param array $user_guides An array of User Guide Posts.
 	 */
 	function isc_get_all_roles( $user_guides ) {
 		$topics = array();
@@ -225,7 +230,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 			}
 		}
 
-		// Add the title of the table of contents (first element.)
+		// Add the title of the table of contents, this is the first element.
 		$first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo( 'name' ) . '"> Table of Contents </a></li>';
 
 		$html = sprintf(
@@ -252,6 +257,11 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 endif;
 
 
+	/**
+	 * Build an array of <h3> and <h4> nodes from the Post content.
+	 *
+	 * @param int $post_id The ID of the Post.
+	 */
 function isc_build_page_navigation( $post_id ) {
 		// Grab the post and post_content.
 		$page_data = get_post( $post_id );
@@ -259,7 +269,7 @@ function isc_build_page_navigation( $post_id ) {
 
 		$links = array();
 		$results = '';
-		// The header types we want to look for (3:header, and 4:subheader.)
+		// The header types we want to look for (3:header, and 4:subheader).
 		$options = '([34])';
 				$regex = '/<h' . $options . '.*?>(.*?)<\/h\1>/';
 
@@ -281,6 +291,11 @@ function isc_build_page_navigation( $post_id ) {
 		update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
 }
 
+/**
+ * Add CSS ids to every <h3> and <h4> node.
+ *
+ * @param string $content HTML content to be modified.
+ */
 function isc_add_ids_to_header_tags_auto( $content ) {
 	// Making sure the headers have been gathered first.
 	isc_build_page_navigation( get_the_ID() );
@@ -290,7 +305,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 	if ( empty( $headers ) ) {
 		return $content;
 	}
-	// the header types we want to look for (h3 and h4)
+	// the header types we want to look for (h3 and h4).
 	$look_for = '(h3|h4)';
 	$pattern = '#(?P<full_tag><(?P<tag_name>' . $look_for . ')>(?P<tag_contents>.*)<\/' . $look_for . '>)#i';
 	if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
