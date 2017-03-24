@@ -196,14 +196,15 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 		array_shift( $subarray );
 
 		// Iterate through the headers.
-		for ( $i = 0; $i < sizeof( $headarray ); $i++ ) {
+        $headarray_count = count( $headarray );
+		for ( $i = 0; $i < $headarray_count; $i++ ) {
 			// The subheaders (if any) under the current header.
 			$subheaders = $subarray[ $i ];
 			// The slug of the current header.
 			$slug = wp_strip_all_tags( $headarray[ $i ][0] );
 			// Title of the current header.
 			$title = wp_strip_all_tags( $headarray[ $i ][1] );
-			if ( sizeof( $subheaders ) > 0 ) {
+			if ( count( $subheaders ) > 0 ) {
 				// This means there are subheaders under the current header.
 				$pages .= '<li class="nav-item has-children"> <button class="nav-link children-toggle collapsed" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $title . '<i class="fa fa-2x"></i></button>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" aria-expanded="false" style="height: 0px;">';
