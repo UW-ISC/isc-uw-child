@@ -57,20 +57,18 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 	}
 endif;
 
-
-/**
- * Displays the child pages of the current page along with their body contents
- *
- * @author    Kevin Zhao <zhaok24@uw.edu>
- * @copyright Copyright (c) 2016, University of Washington
- * @since     0.2.0
- *
- * @global $post
- */
-
 if ( ! function_exists( 'isc_display_child_pages' ) ) :
+	/**
+	 * Displays the child pages of the current page along with their body contents
+	 *
+	 * @author    Kevin Zhao <zhaok24@uw.edu>
+	 * @copyright Copyright (c) 2016, University of Washington
+	 * @since     0.2.0
+	 *
+	 * @global $post
+	 */
 	function isc_display_child_pages() {
-		// The following lines grab all the children pages of the current page
+		// The following lines grab all the children pages of the current page.
 		$args = array(
 		  'parent' => get_the_ID(),
 		  'hierarchical' => 0,
@@ -79,10 +77,10 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 		);
 		$children_pages = get_pages( $args );
 		$html = '';
-		// Echoing/displaying each child page along with their body content
+		// Echoing/displaying each child page along with their body content.
 		foreach ( $children_pages as $article ) {
 			$page_url = get_permalink( $article );
-			// Getting the content of the article
+			// Getting the content of the article.
 			$body = $article->post_content;
 			$html .= '<div class="isc-content-block">';
 			$html .= '<h3 class="title"><a href="' . $page_url . '">';
@@ -99,17 +97,14 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 	}
 endif;
 
-
-/**
-* Get the tags of the given page object and return all the tags within a isc-toc-tags div
-* in a elements with id tag
- *
-* @author    Kevin Zhao <zhaok24@uw.edu>
-* @copyright Copyright (c) 2017, University of Washington
-* @since     0.7.0
-*/
-
 if ( ! function_exists( 'isc_get_tags' ) ) :
+	/**
+	 * Get the tags of the given page object and return all the tags within a isc-toc-tags div in a elements with id tag.
+	 *
+	 * @author    Kevin Zhao <zhaok24@uw.edu>
+	 * @copyright Copyright (c) 2017, University of Washington
+	 * @since     0.7.0
+	 */
 	function isc_get_tags( $child ) {
 		$html = '';
 		$posttags = get_the_terms( $child->ID, 'md-tags' );
@@ -160,21 +155,21 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 				$excerptOutput = '';
 				$count = 0;
 
-				// Divide the string into tokens; HTML tags, or words, followed by any whitespace
+				// Divide the string into tokens; HTML tags, or words, followed by any whitespace.
 				preg_match_all( '/(<[^>]+>|[^<>\s]+)\s*/u', $isc_excerpt, $tokens );
 
 			foreach ( $tokens[0] as $token ) {
 
 				if ( $count >= $excerpt_word_count && preg_match( '/[\,\;\?\.\!]\s*$/uS', $token ) ) {
-					// Limit reached, continue until , ; ? . or ! occur at the end
+					// Limit reached, continue until , ; ? . or ! occur at the end.
 					$excerptOutput .= trim( $token );
 					break;
 				}
 
-				// Add words to complete sentence
+				// Add words to complete sentence.
 				$count++;
 
-				// Append what's left of the token
+				// Append what's left of the token.
 				$excerptOutput .= $token;
 			}
 
@@ -183,8 +178,6 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 				$excerpt_end = '';
 				$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
 
-				// $pos = strrpos($isc_excerpt, '</');
-				// if ($pos !== false)
 				// Inside last HTML tag
 				// $isc_excerpt = substr_replace($isc_excerpt, $excerpt_end, $pos, 0); /* Add read more next to last word */
 				// else
