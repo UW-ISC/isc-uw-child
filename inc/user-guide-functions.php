@@ -12,15 +12,15 @@
  */
 class isc_user_guide {
 
-    /** @var string The title of the User Guide. */
+	/** @var string The title of the User Guide. */
 	public $name;
-    /** @var string The permalink of the User Guide */
+	/** @var string The permalink of the User Guide */
 	public $url;
-    /** @var array Taxonomy terms representing the topics that apply to the User Guide. */
+	/** @var array Taxonomy terms representing the topics that apply to the User Guide. */
 	public $topics;
-    /** @var array Taxonomy terms representing the security roles that apply to the User Guide. */
+	/** @var array Taxonomy terms representing the security roles that apply to the User Guide. */
 	public $roles;
-    /** @var \DateTime The last modified date and time of the User Guide. */
+	/** @var \DateTime The last modified date and time of the User Guide. */
 	public $last_updated;
 
 	/**
