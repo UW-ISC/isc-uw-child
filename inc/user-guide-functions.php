@@ -330,7 +330,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 	$headers = isc_build_page_navigation( get_the_ID() );
 
 	// Update the isc_anchor_links metafield to store these headers to be accessed later
-  update_post_meta( get_the_ID(), 'isc_anchor_links', $headers );
+	update_post_meta( get_the_ID(), 'isc_anchor_links', $headers );
 
 	if ( empty( $headers ) ) {
 		return $content;
