@@ -90,7 +90,7 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 				// displaying the body of the child content
 				$html .= '<p> ' . $body . ' </p>';
 			}
-			$html .= '<a class="uw-btn btn-sm" href="' . $page_url . '">Read More</a>';
+			$html .= '<a class="uw-btn btn-sm" title="'. $article->post_title . '" href="' . $page_url . '">Read More</a>';
 			$html .= '</div>';
 		}
 		echo $html;
