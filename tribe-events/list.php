@@ -80,7 +80,7 @@ get_header();
                                   $html .= "<div class='event-content'>No description found.</div>";
                                 }
                                 
-                                $html .= '<p><a class="more" href="' . get_post_permalink($event->ID) . '">read more</a></p>';
+                                $html .= '<p><a class="more" title="' . $event->post_title . '"href="' . get_post_permalink($event->ID) . '">Read more</a></p>';
                                 $html .= "</li>";
                                 echo $html;
                             }
