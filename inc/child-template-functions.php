@@ -195,4 +195,19 @@ endif;
 	remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
 	add_filter( 'get_the_excerpt', 'isc_custom_wp_trim_excerpt' );
 
+/**
+ * Used for mobile navigation.
+ * This overrides the function in the parent theme.
+ */
+if ( !function_exists('uw_site_title')):
 
+    function uw_site_title()
+    {
+        $classes = 'uw-site-title';
+        if (get_option('overly_long_title')){
+            $classes .= ' long-title';
+        }
+        echo '<a href="' . home_url('/') . '" title="' . esc_attr( get_bloginfo() ) . '"><div class="' . $classes . '">' . get_bloginfo() . '</div></a>';
+    }
+
+endif;
