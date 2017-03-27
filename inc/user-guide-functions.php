@@ -196,7 +196,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 	function isc_user_guide_menu( $return = false ) {
 
 		// Gather all the headers within the isc_anchor_links metafield of the current page
-		// which we will use to make the user guide menu
+		// which we will use to make the user guide menu.
 		$headers = get_post_meta( get_the_ID(), 'isc_anchor_links', true );
 		$pages = '';
 		$subarray = array();
@@ -326,10 +326,10 @@ function isc_build_page_navigation( $post_id ) {
  * @param string $content HTML content to be modified.
  */
 function isc_add_ids_to_header_tags_auto( $content ) {
-	// Gathering the appropriate headers within the content of the page
+	// Gathering the appropriate headers within the content of the page.
 	$headers = isc_build_page_navigation( get_the_ID() );
 
-	// Update the isc_anchor_links metafield to store these headers to be accessed later
+	// Update the isc_anchor_links metafield to store these headers under the current page.
 	update_post_meta( get_the_ID(), 'isc_anchor_links', $headers );
 
 	if ( empty( $headers ) ) {
