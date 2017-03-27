@@ -192,6 +192,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 	 * in-page navigation.
 	 *
 	 * @author Abhishek Chauhan <abhi3@uw.edu>
+	 * @param boolean $return If true, returns the html of the user guide menu. If false, echoes it instead.
 	 */
 	function isc_user_guide_menu( $return = false ) {
 
