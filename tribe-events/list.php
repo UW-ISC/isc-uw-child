@@ -20,7 +20,7 @@ get_header();
 <?php uw_site_title(); ?>
 <?php get_template_part('menu', 'mobile'); ?>
 
-<div class="container uw-body">
+<div class="container uw-body" role="main">
 
     <div class="row">
         <div class="col-md-12">
@@ -30,7 +30,7 @@ get_header();
 
     <div class="row">
 
-        <div class="uw-content col-md-9 " role='main'>
+        <div class="uw-content col-md-9'>
 
             <div id='main_content' class="uw-body-copy" tabindex="-1">
 
@@ -79,7 +79,7 @@ get_header();
                                 } else {
                                   $html .= "<div class='event-content'>No description found.</div>";
                                 }
-                                
+
                                 $html .= '<p><a class="more" title="' . $event->post_title . '"href="' . get_post_permalink($event->ID) . '">Read more</a></p>';
                                 $html .= "</li>";
                                 echo $html;

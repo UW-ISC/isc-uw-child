@@ -13,7 +13,7 @@ get_header();
 <?php uw_site_title(); ?>
 <?php get_template_part('menu', 'mobile'); ?>
 
-<section class="uw-body container">
+<section class="uw-body container" role="main">
 
     <div class="row">
         <div class="col-md-12">

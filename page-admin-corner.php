@@ -34,7 +34,7 @@ get_header();
 
 </div>
 
-<div class="container uw-body">
+<div class="container uw-body" role="main">
 
 	<div class="row">
 		<div class="col-md-12">
