@@ -90,7 +90,7 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 				// displaying the body of the child content
 				$html .= '<p> ' . $body . ' </p>';
 			}
-			$html .= '<a class="uw-btn btn-sm" title="'. $article->post_title . '" href="' . $page_url . '">Read More</a>';
+			$html .= '<a class="uw-btn btn-sm" title="' . $article->post_title . '" href="' . $page_url . '">Read More</a>';
 			$html .= '</div>';
 		}
 		echo $html;
@@ -199,15 +199,15 @@ endif;
  * Used for mobile navigation.
  * This overrides the function in the parent theme.
  */
-if ( !function_exists('uw_site_title')):
 
-    function uw_site_title()
-    {
-        $classes = 'uw-site-title';
-        if (get_option('overly_long_title')){
-            $classes .= ' long-title';
-        }
-        echo '<a aria-hidden="true" href="' . home_url('/') . '" title="' . esc_attr( get_bloginfo() ) . '"><div class="' . $classes . '">' . get_bloginfo() . '</div></a>';
-    }
+if ( ! function_exists( 'uw_site_title' ) ) :
+
+	function uw_site_title() {
+		$classes = 'uw-site-title';
+		if ( get_option( 'overly_long_title' ) ) {
+			$classes .= ' long-title';
+		}
+		echo '<a aria-hidden="true" href="' . home_url( '/' ) . '" title="' . esc_attr( get_bloginfo() ) . '"><div class="' . $classes . '">' . get_bloginfo() . '</div></a>';
+	}
 
 endif;
