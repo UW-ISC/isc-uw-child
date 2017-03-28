@@ -192,11 +192,13 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 	 * in-page navigation.
 	 *
 	 * @author Abhishek Chauhan <abhi3@uw.edu>
+	 * @param boolean $return If true, returns the html of the user guide menu. If false, echoes it instead.
 	 */
 	function isc_user_guide_menu( $return = false ) {
 
-		// Grabs all the headers in the content.
-		$headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
+		// Gather all the headers within the isc_anchor_links metafield of the current page
+		// which we will use to make the user guide menu.
+		$headers = get_post_meta( get_the_ID(), 'isc_anchor_links', true );
 		$pages = '';
 		$subarray = array();
 		$temp_storage = array();
@@ -316,8 +318,7 @@ function isc_build_page_navigation( $post_id ) {
 		$results = '';
 	}
 
-		// Slugs are added to the h3s and h4s in a filter on the_content function.
-		update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
+		return $links;
 }
 
 /**
@@ -326,14 +327,16 @@ function isc_build_page_navigation( $post_id ) {
  * @param string $content HTML content to be modified.
  */
 function isc_add_ids_to_header_tags_auto( $content ) {
-	// Making sure the headers have been gathered first.
-	isc_build_page_navigation( get_the_ID() );
+	// Gathering the appropriate headers within the content of the page.
+	$headers = isc_build_page_navigation( get_the_ID() );
 
-	// _uwhr_page_anchor_links represents if a post contains these anchor links, so if there are no links we don't want to bother with this method...
-	$headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
+	// Update the isc_anchor_links metafield to store these headers under the current page.
+	update_post_meta( get_the_ID(), 'isc_anchor_links', $headers );
+
 	if ( empty( $headers ) ) {
 		return $content;
 	}
+
 	// the header types we want to look for (h3 and h4).
 	$look_for = '(h3|h4)';
 	$pattern = '#(?P<full_tag><(?P<tag_name>' . $look_for . ')>(?P<tag_contents>.*)<\/' . $look_for . '>)#i';
@@ -351,5 +354,3 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 	}
 	return $content;
 }
-
-
