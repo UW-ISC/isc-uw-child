@@ -298,11 +298,11 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$type = $header_type[ $i ];
 			$name = $header_name[ $i ];
 			$slug = '';
-			if ( $type === 'h3' ) {
+			if ( 'h3' === $type ) {
 				$slug = strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name );
 				$current_header = new Header( $name, $slug );
 				array_push( $header_list, $current_header );
-			} elseif ( $type === 'h4' && $current_header !== null ) {
+			} elseif ( 'h4' === $type && null !== $current_header ) {
 				$slug = strval( count( $header_list ) ) . '-' . sanitize_title( $name );
 				$current_header->subheaders[ $name ] = $slug;
 			}
@@ -315,7 +315,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 		$header_count = count( $find );
 		for ( $i = 0; $i < $header_count; $i++ ) {
 			$pos = strpos( $content, $find[ $i ] );
-			if ( $pos !== false ) {
+			if ( false !== $pos ) {
 					// replacing only the first instance that we find (in case of duplicate headers/subheaders).
 			    $content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
 			}
