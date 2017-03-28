@@ -220,9 +220,9 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 		$header_count = count( $headers );
 		for ( $i = 0; $i < $header_count; $i++ ) {
 			$cur = $headers[ $i ];
-			// slug of the current header
+			// slug of the current header.
 			$slug = $cur->slug;
-			// name of the current header
+			// name of the current header.
 			$name = $cur->name;
 
 			if ( count( $cur->subheaders ) > 0 ) {
@@ -285,12 +285,12 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 
 	if ( preg_match_all( $regex, $page_content, $matches ) ) {
 		$header_type = $matches['tag_name']; // header or subheader.
-		$header_name = $matches['tag_contents']; // name of the header
+		$header_name = $matches['tag_contents']; // name of the header.
 		$current_header = null;
 		$results_count = count( $header_name );
-		// html tags we need to replace
+		// html tags we need to replace.
 		$find = array();
-		// the replacements
+		// the replacements with an added id slug.
 		$replace = array();
 		$top = '';
 
@@ -315,7 +315,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 		for ( $i = 0; $i < count( $find ); $i++ ) {
 			$pos = strpos( $content, $find[ $i ] );
 			if ( $pos !== false ) {
-					// replacing only the first instance that we find (in case of duplicate headers/subheaders)
+					// replacing only the first instance that we find (in case of duplicate headers/subheaders).
 			    $content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
 			}
 		}
