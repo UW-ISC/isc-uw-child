@@ -109,11 +109,15 @@ function log_to_console( $debug_output ) {
 }
 
 /**
- * Overrides the parent theme, to add the title element to the read more
+ * Adds a title element to the read more
  * links, to achieve better accessiblilty
+ *
+ * @param String $excerpt is the excerpt from the post object.
  */
-function remove_parent_excerpt() {
-		remove_filter( 'the_excerpt', array( $Filters, 'excerpt_more_override' ) );
+function isc_excerpt_more( $excerpt ) {
+		$post = get_post();
+		$excerpt .= '<a class="more" title="' . get_the_title() . '" href="' . get_permalink( $post->ID ) . '"> Read more</a>';
+		return $excerpt;
 }
 
 add_filter( 'the_excerpt', 'isc_excerpt_more' );
