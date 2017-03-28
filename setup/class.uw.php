@@ -105,6 +105,6 @@ class UW {
 		remove_shortcode( 'subsection' );
 		remove_shortcode( 'section' );
 		remove_shortcode( 'accordion' );
-		remove_filter( 'the_excerpt', array($this->Filters, 'excerpt_more_override') );
+		remove_filter( 'the_excerpt', array( $this->Filters, 'excerpt_more_override' ) );
 	}
 }
