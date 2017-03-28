@@ -108,12 +108,6 @@ function log_to_console( $debug_output ) {
 	}
 }
 
-function isc_excerpt_more( $excerpt ) {
-		$post = get_post();
-	$excerpt .= '<a class="more" title="' . get_the_title() . '" href="' . get_permalink( $post->ID ) . '"> Read more</a>';
-		return $excerpt;
-}
-
 /**
  * Overrides the parent theme, to add the title element to the read more
  * links, to achieve better accessiblilty
