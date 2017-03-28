@@ -108,4 +108,16 @@ function log_to_console( $debug_output ) {
 	}
 }
 
+/**
+ * Adds a title element to the read more
+ * links, to achieve better accessiblilty
+ *
+ * @param String $excerpt is the excerpt from the post object.
+ */
+function isc_excerpt_more( $excerpt ) {
+		$post = get_post();
+		$excerpt .= '<a class="more" title="' . get_the_title() . '" href="' . get_permalink( $post->ID ) . '"> Read more</a>';
+		return $excerpt;
+}
 
+add_filter( 'the_excerpt', 'isc_excerpt_more' );
