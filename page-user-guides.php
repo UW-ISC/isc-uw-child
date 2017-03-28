@@ -14,7 +14,7 @@ get_header();
 
 		<?php $user_guides = isc_get_user_guides(); // grabs all the user guides. ?>
 
-<div class="container uw-body">
+<div class="container uw-body" role="main">
 
 	<div class="row">
 		<div class="col-md-12">

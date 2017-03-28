@@ -21,8 +21,8 @@ get_header();
 			<div class="col-md-12">
 				<h2><?php the_title(); ?></h2>
 
-				<form role="search" method="get" id="searchform" class="searchform" action="<?php echo esc_url( get_site_url() ); ?>">
-					<div>
+				<form method="get" id="searchform" class="searchform" action="<?php echo esc_url( get_site_url() ); ?>">
+					<div role="search">
 						<label class="screen-reader-text" for="s">Search for:</label>
 						<input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
 						<input type="submit" id="searchsubmit" value="Search">
@@ -34,7 +34,7 @@ get_header();
 
 </div>
 
-<div class="container uw-body">
+<div class="container uw-body" role="main">
 
 	<div class="row">
 		<div class="col-md-12">

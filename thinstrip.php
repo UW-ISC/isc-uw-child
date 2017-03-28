@@ -35,6 +35,7 @@
 			  <script>
 			  $(function(){
 				 $("a:contains('Sign in to Workday')").addClass("work-day-link");
+                 $("a:contains('Sign in to Workday')").attr('target', '_blank');
 			  });
 			  </script>
 

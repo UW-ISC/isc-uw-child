@@ -7,6 +7,42 @@
  * @package isc-uw-child
  */
 
+	/**
+	 * Object representing a Header on the user guide page
+	 */
+class Header {
+	/**
+	 * Header name
+	 *
+	 * @var string The name of the Header.
+	 */
+	public $name;
+	/**
+	 * Header slug
+	 *
+	 * @var string The slug of the Header.
+	 */
+	public $slug;
+	/**
+	 * The subheaders under the current Header
+	 *
+	 * @var array The subheaders under the current Header.
+	 */
+	public $subheaders;
+	/**
+	 * Constructor method
+	 *
+	 * @param string $name The name of the current Header.
+	 * @param string $slug The slug of the current Header.
+	 * @param array  $subheaders An array of subheaders (name mapped to the slug) under the current Header.
+	 */
+	function __construct( $name, $slug, $subheaders = array() ) {
+		$this->name = $name;
+		$this->slug = $slug;
+		$this->subheaders = $subheaders;
+	}
+}
+
 /**
  * ISC User Guide
  */
@@ -192,70 +228,39 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 	 * in-page navigation.
 	 *
 	 * @author Abhishek Chauhan <abhi3@uw.edu>
+	 * @param boolean $return If true, returns the html of the user guide menu. If false, echoes it instead.
 	 */
 	function isc_user_guide_menu( $return = false ) {
 
-		// Grabs all the headers in the content.
-		$headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
+		// Gather all the headers within the isc_anchor_links metafield of the current page
+		// which we will use to make the user guide menu.
+		$headers = get_post_meta( get_the_ID(), 'isc_anchor_links', true );
 		$pages = '';
-		$subarray = array();
-		$temp_storage = array();
-		$headarray = array();
 
 		// Filters the content to add ids to the headers so that the menu will work.
 		add_filter( 'the_content', 'isc_add_ids_to_header_tags_auto' );
 
-		// Parse through all the headers and sift/sort headers/subheaders.
-		if ( ! empty( $headers ) ) {
-			foreach ( $headers as $slug => $header ) {
-				 $content = substr( $header, 1, strlen( $header ) );
-				 $heading_type = substr( $header, 0, 1 );
-				if ( '3' === $heading_type ) {
-					// It is a header!
-					array_push( $subarray, $temp_storage );
-					// Reset the temp_storage array to gather new subheaders under the new header.
-					$temp_storage = array();
-					// Add the header to the headarray.
-					array_push( $headarray, array( $slug, $content ) );
-				} else {
-					// It is a subheader, store it until we see the next header... or the content ends.
-					array_push( $temp_storage, array( $slug, $content ) );
-				}
-			}
-		}
-
-		// Push the subheaders under the last header.
-		array_push( $subarray, $temp_storage );
-		// Ignoring all the subheaders that occured before the first header.
-		array_shift( $subarray );
-
 		// Iterate through the headers.
-		$headarray_count = count( $headarray );
-		for ( $i = 0; $i < $headarray_count; $i++ ) {
-			// The subheaders (if any) under the current header.
-			$subheaders = $subarray[ $i ];
-			// The slug of the current header.
-			$slug = wp_strip_all_tags( $headarray[ $i ][0] );
-			// Title of the current header.
-			$title = wp_strip_all_tags( $headarray[ $i ][1] );
-			if ( count( $subheaders ) > 0 ) {
+		$header_count = count( $headers );
+		for ( $i = 0; $i < $header_count; $i++ ) {
+			$cur = $headers[ $i ];
+			// slug of the current header.
+			$slug = $cur->slug;
+			// name of the current header.
+			$name = $cur->name;
+
+			if ( count( $cur->subheaders ) > 0 ) {
 				// This means there are subheaders under the current header.
-				$pages .= '<li class="nav-item has-children"> <button class="nav-link children-toggle collapsed" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $title . '<i class="fa fa-2x"></i></button>';
+				$pages .= '<li class="nav-item has-children"> <button class="nav-link children-toggle collapsed" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></button>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" aria-expanded="false" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
-				$subheaders_count = count( $subheaders );
-				for ( $j = 0; $j < $subheaders_count ; $j++ ) {
-					// The slug of the current subheader.
-					$subslug = wp_strip_all_tags( $subheaders[ $j ][0] );
-					// The title of the current subtitle.
-					$subtitle = wp_strip_all_tags( $subheaders[ $j ][1] );
-					// Append the subheaders.
-					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . $subtitle . '" href="#' . $subslug . '">' . $subtitle . '</a></li>';
+				foreach ( $cur->subheaders as $subname => $subslug ) {
+					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . $subname . '" href="#' . $subslug . '">' . $subname . '</a></li>';
 				}
 				$pages .= '</ul></li>';
 			} else {
 				// If there are no subheaders under the current header, just put the header link.
-				$pages .= '<li class="nav-item"> <a class="nav-link" title="' . $title . '" href="#' . $slug . '">' . $title . '</a></li>';
+				$pages .= '<li class="nav-item"> <a class="nav-link" title="' . $name . '" href="#' . $slug . '">' . $name . '</a></li>';
 			}
 		}
 
@@ -285,71 +290,62 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 	}
 endif;
 
-
-	/**
-	 * Build an array of <h3> and <h4> nodes from the Post content.
-	 *
-	 * @param int $post_id The ID of the Post.
-	 */
-function isc_build_page_navigation( $post_id ) {
-		// Grab the post and post_content.
-		$page_data = get_post( $post_id );
-		$page_content = $page_data ? $page_data->post_content : '';
-
-		$links = array();
-		$results = '';
-		// The header types we want to look for (3:header, and 4:subheader).
-		$options = '([34])';
-				$regex = '/<h' . $options . '.*?>(.*?)<\/h\1>/';
-
-	if ( preg_match_all( $regex, $page_content, $matches ) ) {
-		$results = $matches[2];
-		$results2 = $matches[0];
-		$results_count = count( $results );
-		for ( $i = 0; $i < $results_count; $i++ ) {
-			$header_type = substr( $results2[ $i ], 2, 1 );
-			$heading = $results[ $i ];
-			$slug = sanitize_title( $heading );
-			$links[ $slug ] = $header_type . $heading;
-		}
-	} else {
-		$results = '';
-	}
-
-		// Slugs are added to the h3s and h4s in a filter on the_content function.
-		update_post_meta( $post_id, '_uwhr_page_anchor_links', $links );
-}
-
 /**
- * Add CSS ids to every <h3> and <h4> node.
+ * Add CSS ids to every <h3> and <h4> node. Saves the headers it finds
+ * as a metadata field for the current page.
  *
  * @param string $content HTML content to be modified.
  */
 function isc_add_ids_to_header_tags_auto( $content ) {
-	// Making sure the headers have been gathered first.
-	isc_build_page_navigation( get_the_ID() );
+		// Grab the post and post_content.
+		$page_data = get_post( get_the_ID() );
+		$page_content = $page_data ? $page_data->post_content : '';
 
-	// _uwhr_page_anchor_links represents if a post contains these anchor links, so if there are no links we don't want to bother with this method...
-	$headers = get_post_meta( get_the_ID(), '_uwhr_page_anchor_links', true );
-	if ( empty( $headers ) ) {
-		return $content;
-	}
-	// the header types we want to look for (h3 and h4).
-	$look_for = '(h3|h4)';
-	$pattern = '#(?P<full_tag><(?P<tag_name>' . $look_for . ')>(?P<tag_contents>.*)<\/' . $look_for . '>)#i';
-	if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
+		$header_list = array();
+
+		// The header types we want to look for (3:header, and 4:subheader).
+		$look_for = '(h3|h4)';
+		$regex = '#(?P<full_tag><(?P<tag_name>' . $look_for . ')>(?P<tag_contents>.*)<\/' . $look_for . '>)#i';
+
+	if ( preg_match_all( $regex, $page_content, $matches ) ) {
+		$header_type = $matches['tag_name']; // header or subheader.
+		$header_name = $matches['tag_contents']; // name of the header.
+		$current_header = null;
+		$results_count = count( $header_name );
+		// html tags we need to replace.
 		$find = array();
+		// the replacements with an added id slug.
 		$replace = array();
 		$top = '';
-		foreach ( $matches as $match ) {
-			$find[]    = $match['full_tag'];
-			$id        = sanitize_title( $match['tag_contents'] );
-			$id_attr   = sprintf( ' id="%s"', $id );
-			$replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $match['tag_name'], $id_attr, $match['tag_contents'] );
+
+		for ( $i = 0; $i < $results_count; $i++ ) {
+			$type = $header_type[ $i ];
+			$name = $header_name[ $i ];
+			$slug = '';
+			if ( 'h3' === $type ) {
+				$slug = strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name );
+				$current_header = new Header( $name, $slug );
+				array_push( $header_list, $current_header );
+			} elseif ( 'h4' === $type && null !== $current_header ) {
+				$slug = strval( count( $header_list ) ) . '-' . sanitize_title( $name );
+				$current_header->subheaders[ $name ] = $slug;
+			}
+
+			$find[]    = $matches['full_tag'][ $i ];
+			$id_attr   = sprintf( ' id="%s"', $slug );
+			$replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $type, $id_attr, $matches['tag_contents'][ $i ] );
 		}
-		$content = str_replace( $find, $replace, $content );
-	}
+
+		$header_count = count( $find );
+		for ( $i = 0; $i < $header_count; $i++ ) {
+			$pos = strpos( $content, $find[ $i ] );
+			if ( false !== $pos ) {
+					// replacing only the first instance that we find (in case of duplicate headers/subheaders).
+			    $content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
+			}
+		}
+	}// End if().
+	// Update the isc_anchor_links metafield to store these headers under the current page.
+	update_post_meta( get_the_ID(), 'isc_anchor_links', $header_list );
 	return $content;
 }
-
-

@@ -14,7 +14,7 @@ get_header();
 <?php get_template_part('menu', 'mobile'); ?>
 
 
-<div class="uw-body container">
+<div class="uw-body container" role="main">
 
     <div class="row">
         <div class="col-md-12">
