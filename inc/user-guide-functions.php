@@ -8,16 +8,16 @@
  */
 
 
-class Header {
-	public $name;
-	public $slug;
-	public $subheaders;
-	function __construct( $name, $slug, $subheaders = array() ) {
-		$this->name = $name;
-		$this->slug = $slug;
-		$this->subheaders = $subheaders;
-	}
-}
+ class Header {
+ 	public $name;
+ 	public $slug;
+ 	public $subheaders;
+ 	function __construct($name, $slug, $subheaders = array()) {
+ 		$this->name = $name;
+ 		$this->slug = $slug;
+ 		$this->subheaders = $subheaders;
+ 	}
+ }
 
 /**
  * ISC User Guide
@@ -230,7 +230,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 				$pages .= '<li class="nav-item has-children"> <button class="nav-link children-toggle collapsed" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></button>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" aria-expanded="false" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
-				foreach ( $cur->subheaders as $subname => $subslug ) {
+				foreach ($cur->subheaders as $subname => $subslug) {
 					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . $subname . '" href="#' . $subslug . '">' . $subname . '</a></li>';
 				}
 				$pages .= '</ul></li>';
@@ -297,29 +297,29 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 		for ( $i = 0; $i < $results_count; $i++ ) {
 			$type = $header_type[ $i ];
 			$name = $header_name[ $i ];
-			$slug = '';
-			if ( $type === 'h3' ) {
-				$slug = strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name );
-				$current_header = new Header( $name, $slug );
-				array_push( $header_list, $current_header );
-			} elseif ( $type === 'h4' && $current_header !== null ) {
-				$slug = strval( count( $header_list ) ) . '-' . sanitize_title( $name );
-				$current_header->subheaders[ $name ] = $slug;
+			$slug = "";
+			if ($type === 'h3') {
+				$slug = strval(count( $header_list ) + 1) . "-" . sanitize_title( $name );
+				$current_header = new Header($name, $slug);
+				array_push($header_list, $current_header);
+			} else if ($type === 'h4' && $current_header !== null) {
+				$slug = strval(count( $header_list )) . "-" . sanitize_title( $name );
+				$current_header->subheaders[$name] = $slug;
 			}
 
-			$find[]    = $matches['full_tag'][ $i ];
+			$find[]    = $matches['full_tag'][$i];
 			$id_attr   = sprintf( ' id="%s"', $slug );
 			$replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $type, $id_attr, $matches['tag_contents'][ $i ] );
 		}
 
 		for ( $i = 0; $i < count( $find ); $i++ ) {
-			$pos = strpos( $content, $find[ $i ] );
-			if ( $pos !== false ) {
+			$pos = strpos($content, $find[ $i ]);
+			if ($pos !== false) {
 					// replacing only the first instance that we find (in case of duplicate headers/subheaders)
-			    $content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
+			    $content = substr_replace($content, $replace[ $i ], $pos, strlen($find[ $i ]));
 			}
-		}
-	}// End if().
+	  }
+	}
 	// Update the isc_anchor_links metafield to store these headers under the current page.
 	update_post_meta( get_the_ID(), 'isc_anchor_links', $header_list );
 	return $content;
