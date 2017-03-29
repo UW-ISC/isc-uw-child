@@ -7,35 +7,11 @@
  * @package isc-uw-child
  */
 
-	/**
-	 * Object representing a Header on the user guide page
-	 */
+
 class Header {
-	/**
-	 * Header name
-	 *
-	 * @var string The name of the Header.
-	 */
 	public $name;
-	/**
-	 * Header slug
-	 *
-	 * @var string The slug of the Header.
-	 */
 	public $slug;
-	/**
-	 * The subheaders under the current Header
-	 *
-	 * @var array The subheaders under the current Header.
-	 */
 	public $subheaders;
-	/**
-	 * Constructor method
-	 *
-	 * @param string $name The name of the current Header.
-	 * @param string $slug The slug of the current Header.
-	 * @param array  $subheaders An array of subheaders (name mapped to the slug) under the current Header.
-	 */
 	function __construct( $name, $slug, $subheaders = array() ) {
 		$this->name = $name;
 		$this->slug = $slug;
