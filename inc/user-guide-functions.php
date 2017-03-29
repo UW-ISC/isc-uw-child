@@ -312,8 +312,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $type, $id_attr, $matches['tag_contents'][ $i ] );
 		}
 
-		$header_count = count( $find );
-		for ( $i = 0; $i < $header_count; $i++ ) {
+		for ( $i = 0; $i < count( $find ); $i++ ) {
 			$pos = strpos( $content, $find[ $i ] );
 			if ( $pos !== false ) {
 					// replacing only the first instance that we find (in case of duplicate headers/subheaders).
