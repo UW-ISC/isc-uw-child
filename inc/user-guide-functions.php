@@ -320,14 +320,14 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 
 		for ( $i = 0; $i < $results_count; $i++ ) {
 			$type = $header_type[ $i ];
-			$name = $header_name[ $i ];
+			$name = wp_strip_all_tags($header_name[ $i ]);
 			$slug = '';
 			if ( 'h3' === $type ) {
-				$slug = strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name );
+				$slug = wp_strip_all_tags(strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ));
 				$current_header = new Header( $name, $slug );
 				array_push( $header_list, $current_header );
 			} elseif ( 'h4' === $type && null !== $current_header ) {
-				$slug = strval( count( $header_list ) ) . '-' . sanitize_title( $name );
+				$slug = wp_strip_all_tags(strval( count( $header_list ) ) . '-' . sanitize_title( $name ));
 				$current_header->subheaders[ $name ] = $slug;
 			}
 
