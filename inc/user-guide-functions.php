@@ -239,7 +239,9 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 		// Filters the content to add ids to the headers so that the menu will work.
 		add_filter( 'the_content', 'isc_add_ids_to_header_tags_auto' );
-
+		if (empty($headers)) {
+			return;
+		}
 		// Iterate through the headers.
 		$header_count = count( $headers );
 		for ( $i = 0; $i < $header_count; $i++ ) {
@@ -297,17 +299,13 @@ endif;
  * @param string $content HTML content to be modified.
  */
 function isc_add_ids_to_header_tags_auto( $content ) {
-		// Grab the post and post_content.
-		$page_data = get_post( get_the_ID() );
-		$page_content = $page_data ? $page_data->post_content : '';
 
 		$header_list = array();
-
 		// The header types we want to look for (3:header, and 4:subheader).
 		$look_for = '(h3|h4)';
 		$regex = '#(?P<full_tag><(?P<tag_name>' . $look_for . ')>(?P<tag_contents>.*)<\/' . $look_for . '>)#i';
 
-	if ( preg_match_all( $regex, $page_content, $matches ) ) {
+	if ( preg_match_all( $regex, $content, $matches ) ) {
 		$header_type = $matches['tag_name']; // header or subheader.
 		$header_name = $matches['tag_contents']; // name of the header.
 		$current_header = null;
@@ -330,7 +328,6 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 				$slug = wp_strip_all_tags(strval( count( $header_list ) ) . '-' . sanitize_title( $name ));
 				$current_header->subheaders[ $name ] = $slug;
 			}
-
 			$find[]    = $matches['full_tag'][ $i ];
 			$id_attr   = sprintf( ' id="%s"', $slug );
 			$replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $type, $id_attr, $matches['tag_contents'][ $i ] );
