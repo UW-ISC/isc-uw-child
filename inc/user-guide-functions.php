@@ -239,7 +239,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 		// Filters the content to add ids to the headers so that the menu will work.
 		add_filter( 'the_content', 'isc_add_ids_to_header_tags_auto' );
-		if (empty($headers)) {
+		if ( empty( $headers ) ) {
 			return;
 		}
 		// Iterate through the headers.
@@ -299,7 +299,6 @@ endif;
  * @param string $content HTML content to be modified.
  */
 function isc_add_ids_to_header_tags_auto( $content ) {
-
 		$header_list = array();
 		// The header types we want to look for (3:header, and 4:subheader).
 		$look_for = '(h3|h4)';
@@ -315,17 +314,16 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 		// the replacements with an added id slug.
 		$replace = array();
 		$top = '';
-
 		for ( $i = 0; $i < $results_count; $i++ ) {
 			$type = $header_type[ $i ];
-			$name = wp_strip_all_tags($header_name[ $i ]);
+			$name = wp_strip_all_tags( $header_name[ $i ] );
 			$slug = '';
 			if ( 'h3' === $type ) {
-				$slug = wp_strip_all_tags(strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ));
+				$slug = wp_strip_all_tags( strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ) );
 				$current_header = new Header( $name, $slug );
 				array_push( $header_list, $current_header );
 			} elseif ( 'h4' === $type && null !== $current_header ) {
-				$slug = wp_strip_all_tags(strval( count( $header_list ) ) . '-' . sanitize_title( $name ));
+				$slug = wp_strip_all_tags( strval( count( $header_list ) ) . '-' . sanitize_title( $name ) );
 				$current_header->subheaders[ $name ] = $slug;
 			}
 			$find[]    = $matches['full_tag'][ $i ];
