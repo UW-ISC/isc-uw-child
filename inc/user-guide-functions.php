@@ -302,7 +302,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 		$header_list = array();
 		// The header types we want to look for (3:header, and 4:subheader).
 		$look_for = '(h3|h4)';
-		$regex = '#(?P<full_tag><(?P<tag_name>' . $look_for . ')>(?P<tag_contents>.*)<\/' . $look_for . '>)#i';
+		$regex = '#(?P<full_tag><(?P<tag_name>' . $look_for . ')>(?P<tag_contents>[\s\S]*)<\/' . $look_for . '>)#Ui';
 
 	if ( preg_match_all( $regex, $content, $matches ) ) {
 		$header_type = $matches['tag_name']; // header or subheader.
