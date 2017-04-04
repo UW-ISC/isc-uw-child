@@ -101,6 +101,10 @@ class ISCUserGuide {
 	}
 }
 
+
+// Filters the content to add ids to the headers so that the menu will work.
+add_filter( 'content_save_pre', 'isc_add_ids_to_header_tags_auto' );
+
 if ( ! function_exists( 'sanitize_array' ) ) :
 	/**
 	 * Sluggifies an array of taxonomy terms.
@@ -237,9 +241,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 		$headers = get_post_meta( get_the_ID(), 'isc_anchor_links', true );
 		$pages = '';
 
-		// Filters the content to add ids to the headers so that the menu will work.
-		add_filter( 'the_content', 'isc_add_ids_to_header_tags_auto' );
-		if ( empty( $headers ) ) {
+		if ( empty( $headers ) ||  !array_key_exists(0, $headers)) {
 			return;
 		}
 		// Iterate through the headers.
@@ -257,7 +259,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" aria-expanded="false" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
 				foreach ( $cur->subheaders as $subname => $subslug ) {
-					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . $subname . '" href="#' . $subslug . '">' . $subname . '</a></li>';
+					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . stripslashes($subname) . '" href="#' . $subslug . '">' . stripslashes($subname) . '</a></li>';
 				}
 				$pages .= '</ul></li>';
 			} else {
@@ -302,7 +304,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 		$header_list = array();
 		// The header types we want to look for (3:header, and 4:subheader).
 		$look_for = '(h3|h4)';
-		$regex = '#(?P<full_tag><(?P<tag_name>' . $look_for . ')>(?P<tag_contents>[\s\S]*)<\/' . $look_for . '>)#Ui';
+		$regex = '#(?P<full_tag><(?P<tag_name>' . $look_for . ').*>(?P<tag_contents>[\s\S]*)<\/' . $look_for . '>)#Ui';
 
 	if ( preg_match_all( $regex, $content, $matches ) ) {
 		$header_type = $matches['tag_name']; // header or subheader.
