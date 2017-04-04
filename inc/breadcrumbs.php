@@ -29,7 +29,7 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 		} elseif ( is_author() ) {
 			  $author = get_queried_object();
 			  $html .= '<li class="current"><span> Author: ' . $author->display_name . '</span>';
-		} elseif ( get_queried_object_id() === (Int) get_option( 'page_for_posts' )   ) {
+		} elseif ( get_queried_object_id() === (Int) get_option( 'page_for_posts' ) ) {
 			  $html .= '<li class="current"><span> ' . get_the_title( get_queried_object_id() ) . ' </span>';
 		}
 
@@ -74,7 +74,7 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 				}
 				$html .= '<li class="current"><span>' . get_the_title( $post->ID ) . '</span>';
 			}
-		} // If the current view is a page then the breadcrumbs will be parent pages.
+		} // End if().
 		elseif ( is_page() ) {
 
 			if ( ! is_home() || ! is_front_page() ) {
