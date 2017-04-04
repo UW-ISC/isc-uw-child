@@ -3,13 +3,16 @@
  * Displays the child pages of the current page as well as presenting a
  * table of contents that links to each individual child page's content
  *
- * @author Kevin Zhao <zhaok24@uw.edu>
- * @author Abhishek Chauhan <abhi3@uw.edu>
+ * @author UW-IT AXDD
+ * @package isc-uw-child
  */
 
 if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
+	/**
+	 * Display table of contents and child pages within the Page.
+	 */
 	function isc_display_child_pages_with_toc() {
-		// The following lines grab all the children pages of the current page
+		// The following lines grab all the children pages of the current page.
 		$args = array(
 		'parent' => get_the_ID(),
 		'hierarchical' => 0,
@@ -20,11 +23,11 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 		$toc = count( $children_pages ) > 0;
 		$html = '';
 		if ( $toc ) {
-			// Fancy title of Table of Contents
+			// Fancy title of Table of Contents.
 			$html .= "<h3 class='isc-admin-header sr-only'>Table of Contents</h3>";
 			$html .= "<div class='contact-widget-inner isc-widget-tan isc-toc' id='toc'>";
 			$html .= '<ul>';
-			// Echoing each children page's title
+			// Echoing each children page's title.
 			foreach ( $children_pages as $child ) {
 				$html .= '<li><a href="#' . $child->post_name . '">';
 				$html .= $child->post_title;
@@ -32,20 +35,20 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 			}
 			$html .= '</ul>';
 
-			// Ending the Table of Contents
+			// Ending the Table of Contents.
 			$html .= '</div>';
 		}
 		foreach ( $children_pages as $child ) {
-			// Displaying the title of a child page
+			// Displaying the title of a child page.
 			$url = get_permalink( $child );
 			$html .= '<h3 class="title" id="' . $child->post_name . '"> <a href="' . $url . '">';
 			$html .= $child->post_title;
 			$html .= '</a> </h3>';
-			// Displaying the tags
+			// Displaying the tags.
 			$html .= isc_get_tags( $child );
-			// Displaying the content
+			// Displaying the content.
 			$html .= '<div class="isc-article-content">';
-			// Making sure paragraphs are added in place of double line breaks
+			// Making sure paragraphs are added in place of double line breaks.
 			$html .= wpautop( $child->post_content );
 			$html .= '</div>';
 
@@ -87,7 +90,7 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 			$html .= $article->post_title;
 			$html .= '</a></h3>';
 			if ( $body != '' ) {
-				// displaying the body of the child content
+				// Display the body of the child content.
 				$html .= '<p> ' . $body . ' </p>';
 			}
 			$html .= '<a class="uw-btn btn-sm" title="' . $article->post_title . '" href="' . $page_url . '">Read More</a>';
@@ -104,6 +107,7 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
 	 * @author    Kevin Zhao <zhaok24@uw.edu>
 	 * @copyright Copyright (c) 2017, University of Washington
 	 * @since     0.7.0
+	 * @param object $child The child Page to get associated tags from.
 	 */
 	function isc_get_tags( $child ) {
 		$html = '';
@@ -131,12 +135,16 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
  * @since     0.2.0
  */
 function isc_allowedtags() {
-	// Add custom tags to this string
+	// Add custom tags to this string.
 	   return '<p>,<br>,<a>,<strong>,<em>,<hr>';
 }
 
 if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
-
+	/**
+	 * Customize the excerpt that is returned for the Page content.
+	 *
+	 * @param string $isc_excerpt string HTML representing trimmed content of the Page.
+	 */
 	function isc_custom_wp_trim_excerpt( $isc_excerpt ) {
 		global $post;
 		$raw_excerpt = $isc_excerpt;
@@ -177,16 +185,11 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 
 				$excerpt_end = '';
 				$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
-
-				// Inside last HTML tag
-				// $isc_excerpt = substr_replace($isc_excerpt, $excerpt_end, $pos, 0); /* Add read more next to last word */
-				// else
-				// After the content
 				$isc_excerpt .= $excerpt_end; /*Add read more in new paragraph */
 
 			return $isc_excerpt;
 
-		}
+		}// End if().
 		return apply_filters( 'isc_custom_wp_trim_excerpt', $isc_excerpt, $raw_excerpt );
 	}
 
@@ -201,7 +204,9 @@ endif;
  */
 
 if ( ! function_exists( 'uw_site_title' ) ) :
-
+	/**
+	 * Output title HTML for the header.
+	 */
 	function uw_site_title() {
 		$classes = 'uw-site-title';
 		if ( get_option( 'overly_long_title' ) ) {
