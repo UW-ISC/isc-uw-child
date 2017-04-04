@@ -14,12 +14,12 @@ $(document).ready(function() {
       $(this).on('show', function () {
         $(this).attr('aria-expanded', 'true');
         $(currentLink).attr('aria-expanded', 'true');
-      })
+      });
 
       $(this).on('hide', function () {
         $(this).attr('aria-expanded', 'false');
         $(currentLink).attr('aria-expanded', 'false');
-      })
+      });
 
-    })
-})
+    });
+});
