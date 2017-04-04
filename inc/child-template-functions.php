@@ -213,7 +213,7 @@ if ( ! function_exists( 'uw_site_title' ) ) :
 		if ( get_option( 'overly_long_title' ) ) {
 			$classes .= ' long-title';
 		}
-		echo '<a aria-hidden="true" href="' . home_url( '/' ) . '" title="' . esc_attr( get_bloginfo() ) . '"><div class="' . $classes . '">' . get_bloginfo() . '</div></a>';
+		echo '<a aria-hidden="true" href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo() ) . '"><div class="' . $classes . '">' . get_bloginfo() . '</div></a>';
 	}
 
 endif;
