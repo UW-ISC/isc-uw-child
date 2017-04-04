@@ -9,19 +9,16 @@ $(document).ready(function() {
 
     $(".has-children").each( function () {
 
-      var currentButton = ($(this).children("button"));
-      var currentUl = ($(this).children("ul"));
+      var currentLink = ($(this).children("a"));
 
       $(this).on('show', function () {
         $(this).attr('aria-expanded', 'true');
-        $(currentButton).attr('aria-expanded', 'true');
-        $(currentUl).attr('aria-expanded', 'true');
+        $(currentLink).attr('aria-expanded', 'true');
       })
 
       $(this).on('hide', function () {
         $(this).attr('aria-expanded', 'false');
-        $(currentButton).attr('aria-expanded', 'false');
-        $(currentUl).attr('aria-expanded', 'false');
+        $(currentLink).attr('aria-expanded', 'false');
       })
 
     })

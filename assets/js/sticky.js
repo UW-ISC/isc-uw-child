@@ -26,7 +26,7 @@ $(document).ready(function() {
         });
 
         $('.has-children').on('click', function() {
-              var multiplier = ($(this).children(".children")[0].getAttribute("aria-expanded") == "false") ? 1 : -1;
+              var multiplier = ($(this).children("a")[0].getAttribute("aria-expanded") == "false") ? 1 : -1;
               var totalHeight = toc.height();
               $(this).find(".children li").each(function() {
                 var previousCss  = $(this).attr("style");
