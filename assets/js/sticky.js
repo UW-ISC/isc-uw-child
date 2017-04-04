@@ -1,8 +1,10 @@
+/*
+ * Code for the user-guide template table of contents' "sticky" scrolling behavior
+ */
 $(document).ready(function() {
-    /* CODE FOR THE FLOATING MENU TO BE USED ON THE USER GUIDE TEMPLATE (CLASS float-menu) */
     // gathering the necessary elements we need
-    var toc = $(".float-menu");
-    var content = $(".float-content");
+    var toc = $(".float-menu"); // the table of contents
+    var content = $(".float-content"); // the content of the user guide page
     if (toc.length > 0 && content.length > 0) {
         var width_change = 991; // the width at which the table of contents is simply put on top of the content
         var new_width = $('.col-md-3').width(); // width of the menu
@@ -11,6 +13,7 @@ $(document).ready(function() {
         var nav = $("#menu-main-navigation");
         var alert_height = 0;
         var height_change = 0;
+        var top_tracker = nav.height();
         jQuery(document).delegate('#uwalert-alert-message', 'DOMNodeInserted', function () {
             // There's an alert!
             if (height_change !== 0) {
@@ -22,7 +25,52 @@ $(document).ready(function() {
             }
         });
 
-        var top_tracker = nav.height();
+        $('.has-children').on('click', function() {
+              var multiplier = ($(this).children("a")[0].getAttribute("aria-expanded") == "false") ? 1 : -1;
+              var totalHeight = toc.height();
+              $(this).find(".children li").each(function() {
+                var previousCss  = $(this).attr("style");
+                $(this).css({
+                        position:   'absolute',
+                        visibility: 'hidden',
+                        display:    'block'
+                    });
+
+                totalHeight += ($(this).height() + 1) * multiplier;
+                $(this).attr("style", previousCss ? previousCss : "");
+              });
+
+              footer_barrier = content.height() + content.offset().top - $(window).scrollTop() - totalHeight - top_padding * 2;
+              // if the page is more than 991 px, it can follow the floating behavior
+              if ($(window).width() > width_change) {
+                  if ($(window).scrollTop() > height_change && footer_barrier > 0) {
+                      // in the sweet spot to activate floating behavior
+                      toc.addClass("uw-accordion-menu-floater");
+                      content.addClass("uw-content-floater");
+                      toc.css("width", new_width);
+                      toc.css({
+                          'top': ''
+                      });
+                  } else if ($(window).scrollTop() > height_change) {
+                      // hit the footer barrier
+                      toc.addClass("uw-accordion-menu-floater");
+                      content.addClass("uw-content-floater");
+                      toc.css("width", new_width);
+                      toc.css("top", parseInt(footer_barrier) + parseInt(top_padding));
+                  }
+                  else {
+                      // no floating behavior
+                      toc.removeClass("uw-accordion-menu-floater");
+                      content.removeClass("uw-content-floater");
+                      toc.css({
+                          'width': ''
+                      });
+                      toc.css({
+                          'top': ''
+                      });
+                  }
+              }
+        });
 
         if ($(window).width() > width_change && change) {
             // this is information we need, but it will never change so we need to find it once (when it is ok to get it)

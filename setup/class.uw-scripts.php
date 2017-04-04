@@ -92,6 +92,14 @@ class UW_Scripts {
 			'admin'   => false,
 			),
 
+			'isc-collapse-additions' => array(
+			'id'      => 'isc-collapse-additions',
+			'url'     => $child . '/assets/js/isc-collapse-additions.js',
+			'deps'    => array( 'jquery' ),
+			'version' => '1.0.0',
+			'admin'   => false,
+			),
+
 			'jquery-succinct' => array(
 			'id'      => 'jquery-succinct',
 			'url'     => $child . '/vendor/js/jquery.succinct.min.js',
