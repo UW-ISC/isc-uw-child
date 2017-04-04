@@ -241,7 +241,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 		$headers = get_post_meta( get_the_ID(), 'isc_anchor_links', true );
 		$pages = '';
 
-		if ( empty( $headers ) ||  !array_key_exists(0, $headers)) {
+		if ( empty( $headers ) || ! array_key_exists( 0, $headers ) ) {
 			return;
 		}
 		// Iterate through the headers.
@@ -259,7 +259,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" aria-expanded="false" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
 				foreach ( $cur->subheaders as $subname => $subslug ) {
-					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . stripslashes($subname) . '" href="#' . $subslug . '">' . stripslashes($subname) . '</a></li>';
+					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . stripslashes( $subname ) . '" href="#' . $subslug . '">' . stripslashes( $subname ) . '</a></li>';
 				}
 				$pages .= '</ul></li>';
 			} else {
