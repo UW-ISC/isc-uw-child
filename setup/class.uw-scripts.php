@@ -94,7 +94,7 @@ class UW_Scripts {
 
 			'isc-collapse-additions' => array(
 			'id'      => 'isc-collapse-additions',
-			'url'     => $child . '/assets/js/isc-collapse-addtions.js',
+			'url'     => $child . '/assets/js/isc-collapse-additions.js',
 			'deps'    => array( 'jquery' ),
 			'version' => '1.0.0',
 			'admin'   => false,
