@@ -89,7 +89,7 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 			$html .= '<h3 class="title"><a href="' . $page_url . '">';
 			$html .= $article->post_title;
 			$html .= '</a></h3>';
-			if ( $body != '' ) {
+			if ( '' !== $body ) {
 				// Display the body of the child content.
 				$html .= '<p> ' . $body . ' </p>';
 			}
@@ -148,7 +148,7 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 	function isc_custom_wp_trim_excerpt( $isc_excerpt ) {
 		global $post;
 		$raw_excerpt = $isc_excerpt;
-		if ( '' == $isc_excerpt ) {
+		if ( '' === $isc_excerpt ) {
 
 			$isc_excerpt = get_the_content( '' );
 			$isc_excerpt = strip_shortcodes( $isc_excerpt );
