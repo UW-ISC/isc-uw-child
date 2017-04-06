@@ -631,7 +631,7 @@ body, p { font-size: 16px !important; }
     color:#fff;
     margin-bottom:30px;
 
-    //@include desktop {text-align:left;}
+    @include desktop {text-align:left;}
 
     ul { list-style: none; padding: 0;
         &.footer-contact-container {
@@ -678,9 +678,11 @@ body, p { font-size: 16px !important; }
 
     h3 {font-size:18px; letter-spacing: .025em;}
     .location-container {width:250px; margin:auto;
+        @include tablet {width:250px;}
         @include desktop {width:100%; margin-left:-12px;}
     }
     .map-container {padding-right:0; max-width:250px; margin-bottom: 30px;
+        @include tablet {float:left; margin-right:20px;}
         @include desktop {max-width: 100%; margin-bottom: 0px;}
 
         img {box-shadow: 0px 0px 26px #111111;}
