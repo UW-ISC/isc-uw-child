@@ -124,15 +124,15 @@ function isc_excerpt_more( $excerpt ) {
  * Echoes the title of a page in an h2
  * (removing any potential html elements)
  *
- * @param boolean $echo if true then echoes the title, else returns the title.
+ * @param boolean $echo if true then echoes the title, else returns the title
  */
-function isc_title( $echo = true ) {
-	 $title = '<h2 class="title">' . esc_html( get_the_title() ) . '</h2>';
-	if ( $echo ) {
-		echo $title;
-	} else {
-		return $title;
-	}
+function isc_title($echo = true) {
+	 $title = '<h2 class="title">' . esc_html(get_the_title()) . '</h2>';
+	 if ($echo) {
+		 echo $title;
+	 } else {
+		 return $title;
+	 }
 }
 
 add_filter( 'the_excerpt', 'isc_excerpt_more' );
