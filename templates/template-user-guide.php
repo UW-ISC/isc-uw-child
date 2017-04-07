@@ -34,7 +34,7 @@ get_header();
                 <?php log_to_console("template-user-guide.php") ?>
                 <?php
                 while ( have_posts() ) : the_post();
-                    isc_title();
+                    the_title('<h2 class="title">', '</h2>');
                     the_content();
                 endwhile
                 ?>
