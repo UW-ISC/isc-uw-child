@@ -682,7 +682,7 @@ body, p { font-size: 16px !important; }
 
     h3 {font-size:18px; letter-spacing: .025em;}
     .location-container {width:250px; margin:auto;
-        @include tablet {width:460px;}
+        @include tablet {width:250px;}
         @include desktop {width:100%; margin-left:-12px;}
     }
     .map-container {padding-right:0; max-width:250px; margin-bottom: 30px;
