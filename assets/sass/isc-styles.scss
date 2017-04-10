@@ -31,7 +31,7 @@ a { color: #0B6EAD; }
 /*** uw styles overrides ***/
 body, p { font-size: 16px !important; }
 
-#uw-container { overflow-x: initial !important; }
+#uw-container { overflow-x: hidden !important; }
 
 /*** top banner nav (white bar) ***/
 .uw-thinstrip {
@@ -118,7 +118,7 @@ body, p { font-size: 16px !important; }
 }
 
 /*** main navigation (purple bar) ***/
-.uw-site-title { height: 60px; padding:0; margin: 0 !important; background: $uw-purple; text-shadow: none !important; color: $uw-purple;
+.uw-site-title { height: 60px; padding:0; margin: 0 !important; background: $uw-purple; text-shadow: none !important; color: transparent !important;
     @include tablet { display: none; }
     @include desktop { display: none; }
 }
@@ -245,7 +245,7 @@ body, p { font-size: 16px !important; }
     background-repeat: no-repeat;
     position: relative;
     background-size: cover;
-    min-height: 580px;
+    min-height: 600px;
 
     @include desktop {
         position: relative;
@@ -291,9 +291,11 @@ body, p { font-size: 16px !important; }
         @include desktop { margin: 0 0 20px 0; padding:0; color:$uw-purple; }
     }
 
-    .hero-header-container { padding: 30px;
+    .hero-header-container { padding: 10px;
 
+        @include tablet { padding: 30px; }
         @include desktop {
+            padding: 30px;
             background: rgba(232,211,162,.75);
             margin-bottom: 100px;
         }
@@ -624,12 +626,14 @@ body, p { font-size: 16px !important; }
 }
 
 /*** footer ***/
-.uw-footer {border-width: 3px;}
+.uw-footer { border-width: 3px; }
 .isc-footer {
-
+    padding: 0 20px;
     text-align:center;
     color:#fff;
     margin-bottom:30px;
+
+    p { font-size: 12px !important; }
 
     @include desktop {text-align:left;}
 
