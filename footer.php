@@ -49,7 +49,7 @@
 				</div>
 			</div>
 
-            <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> University of Washington, Seattle, WA</p>
+			<p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> University of Washington, Seattle, WA</p>
 
 		</div>
 	</div>
@@ -62,6 +62,26 @@
 </div><!-- #uw-container -->
 
 <?php wp_footer(); ?>
+<!-- Google Analytics modification to track page prints -->
+<!-- http://www.blastam.com/blog/tracking-print-page-action-google-analytics -->
+<script type="text/javascript">
+try{
+	(function() {
+		var afterPrint = function() {
+		ga('send', 'event', 'Print Intent', document.location.pathname); //for Universal GA
+	};
+	if (window.matchMedia) {
+		var mediaQueryList = window.matchMedia('print');
+		mediaQueryList.addListener(function(mql) {
+			if (!mql.matches)
+			afterPrint();
+		});
+	}
+	window.onafterprint = afterPrint;
+	}());
+} catch(e) {}
+</script>
+<!-- end Google Analytics for page prints -->
 
 </body>
 </html>
