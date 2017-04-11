@@ -210,13 +210,20 @@ body, p { font-size: 16px !important; }
 }
 
 /*** uw breadcrumbs ***/
-.uw-breadcrumbs { margin: 1em 0 !important; padding:0 !important; display: block !important;
-    ul {
-        li { float: none !important; display: inline-block;
+.uw-breadcrumbs { margin: 1em 0 0 0 !important; padding:0 !important; display: block !important;
+    ul { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        li { float: none !important; display: inline-block; line-height: 38px;
 
             &:first-child {
+
+                a { padding: 0; background: url('../uw-2014/assets/svg/uw-sprite.svg') no-repeat -249px 2px; }
+
+                &:after { top: 13px; }
+
                 @include print { display:none };
             }
+
+            &:after { top: 13px; }
         }
 
         .current span {
