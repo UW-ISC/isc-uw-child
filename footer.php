@@ -83,5 +83,16 @@ try{
 </script>
 <!-- end Google Analytics for page prints -->
 
+<!-- track outbound links with Google Analytics -->
+<script>
+    var trackOutboundLink = function(url) 
+    {
+        ga('send', 'event', 'outbound', 'click', url, {'hitCallback':
+            function () { document.location = url; }
+        });
+    }
+<script>
+<!-- end track outbound links -->
+
 </body>
 </html>
