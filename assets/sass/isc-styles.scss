@@ -42,20 +42,6 @@ body, p { font-size: 16px !important; }
 
     @include tablet {height:inherit;}
 
-    a { color: $uw-purple;
-        &:hover { color: #eee; }
-    }
-
-    h1 {
-
-        margin: 0;
-        font-size: 18px;
-        line-height: 45px;
-
-        @include tablet { visibility: hidden; }
-        @include desktop { visibility: hidden; }
-    }
-
     button.uw-search {
         border-color: $uw-purple !important;
         background: #fff;
@@ -109,9 +95,20 @@ body, p { font-size: 16px !important; }
             height: 90px;
         }
 
-        a { display: block;
-            @include tablet { height: 90px; }
-            @include desktop { height: 90px; }
+        a {
+
+            display: block;
+            color: $uw-purple;
+            margin: 0;
+            font-size: 18px;
+            font-family: "Encode Sans Compressed",sans-serif;
+            font-weight: 800;
+            line-height: 45px;
+
+            &:hover { color: #eee; }
+
+            @include tablet {  height: 90px; text-indent: -9999px; }
+            @include desktop { height: 90px; text-indent: -9999px; }
         }
     }
 
