@@ -22,7 +22,7 @@ try{
 	function _gaLt(event) {
 
 		/* If GA is blocked or not loaded, or not main|middle|touch click then don't track */
-		if (!ga.hasOwnProperty("loaded") || ga.loaded != true || (event.which != 1 && event.which != 2)) {
+		if (!ga.hasOwnProperty("loaded") || ga.loaded !== true || (event.which != 1 && event.which != 2)) {
 			return;
 		}
 
