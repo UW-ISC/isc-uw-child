@@ -1,5 +1,5 @@
-<!-- Google Analytics modification to track page prints -->
-<!-- http://www.blastam.com/blog/tracking-print-page-action-google-analytics -->
+/* Google Analytics modification to track page prints
+   http://www.blastam.com/blog/tracking-print-page-action-google-analytics */
 try{
 	(function() {
 		var afterPrint = function() {
@@ -15,10 +15,10 @@ try{
 	window.onafterprint = afterPrint;
 	}());
 } catch(e) {}
-<!-- end Google Analytics for page prints -->
+/* end Google Analytics for page prints */
 
-<!-- track outbound links with Google Analytics -->
-<!-- https://www.axllent.org/docs/view/track-outbound-links-with-analytics-js/ -->
+/* track outbound links with Google Analytics
+   https://www.axllent.org/docs/view/track-outbound-links-with-analytics-js/ */
 	function _gaLt(event) {
 
 		/* If GA is blocked or not loaded, or not main|middle|touch click then don't track */
@@ -87,5 +87,4 @@ try{
 	/* Attach the event to all clicks in the document after page has loaded */
 	_w.addEventListener ? _w.addEventListener("load", function() {document.body.addEventListener(_gaLtEvt, _gaLt, !1)}, !1)
 		: _w.attachEvent && _w.attachEvent("onload", function() {document.body.attachEvent("on" + _gaLtEvt, _gaLt)});
-<!-- end track outbound links -->
-
+/* end track outbound links */
