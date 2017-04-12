@@ -29,7 +29,7 @@ get_header();
 
 			<?php log_to_console( 'single.php' ) ?>
 
-			<h2><?php the_title(); ?></h2>
+			<h1><?php the_title(); ?></h1>
 
 			<div class="update-date"><?php echo get_the_date() ?></div>
 			<div class="post-content">

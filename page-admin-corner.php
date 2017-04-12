@@ -19,7 +19,7 @@ get_header();
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><?php the_title(); ?></h2>
+				<h1><?php the_title(); ?></h1>
 
 				<form method="get" id="searchform" class="searchform" action="<?php echo esc_url( get_site_url() ); ?>">
 					<div role="search">
@@ -61,7 +61,7 @@ get_header();
 					</div>
 				</div>
 
-				<h3 class="isc-admin-header">Admins' News</h3>
+				<h2 class="isc-admin-header">Admins' News</h2>
 				<div class="isc-admin-block">
 
 						<?php
@@ -84,7 +84,7 @@ get_header();
 								 $category_posts->the_post();
 						?>
 
-							   <h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h4>
+							   <h3><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h3>
 							   <div class="update-date"><?php echo get_the_date() ?> </div>
 							   <div class='post-content'><?php the_excerpt() ?></div>
 						<?php
@@ -105,7 +105,7 @@ get_header();
 
 		<div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
-			<h3 class="isc-admin-header">Upcoming Event</h3>
+			<h2 class="isc-admin-header">Upcoming Event</h2>
 			<div class="contact-widget-inner isc-widget-tan isc-admin-block">
 			  <div class='post-content isc-events'>
 				<?php
@@ -121,7 +121,7 @@ get_header();
 					} else {
 						$current = $event[0];
 						$title = $current->post_title;
-						$html = '<h4><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h4>';
+						$html = '<h3><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h3>';
 						$html .= "<div class='event-date'>" . tribe_get_start_date( $current ) . '</div>';
 
 						if ( tribe_has_venue( $current->ID ) ) {
@@ -163,7 +163,7 @@ get_header();
 			</div>
 
 
-			<h3 class="isc-admin-header">Seasonal Topic</h3>
+			<h2 class="isc-admin-header">Seasonal Topic</h2>
 			<div class="contact-widget-inner isc-widget-gray isc-admin-block">
 				<div class='post-content'>
 					<?php
@@ -179,7 +179,7 @@ get_header();
 						echo '<p>No featured seasonal topics found.</p>';
 					} else {
 						foreach ( $seasonal_featured as $featured_page ) {
-							$html = '<h4><a href="' . get_post_permalink( $featured_page->ID ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
+							$html = '<h3><a href="' . get_post_permalink( $featured_page->ID ) . '">' . get_the_title( $featured_page->ID ) . '</a></h3>';
 							$html .= "<p style='margin-bottom:1.5em;'>";
 							$custom = get_post_custom( $featured_page->ID );
 							$description = $custom['isc-featured-description'][0];
