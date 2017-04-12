@@ -115,13 +115,13 @@ class UW_Scripts {
 			'version' => '1.0.0',
 			'admin'   => false,
 			),
-            
-            'isc-analytics-js' => array(
+
+			'isc-analytics-js' => array(
 			'id'      => 'isc-analytics-js',
 			'url'     => $child . '/assets/js/isc-analytics.js',
 			'deps'    => array(),
 			'version' => '1.0.0',
-            'footer'  => true,
+			'footer'  => true,
 			'admin'   => false,
 			),
 
