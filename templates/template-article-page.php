@@ -31,7 +31,7 @@ get_header();
             <?php
 
             while ( have_posts() ) : the_post();
-                the_title('<h2 class="title">', '</h2>');
+                the_title('<h1 class="title">', '</h1>');
                 the_content();
             endwhile;
 

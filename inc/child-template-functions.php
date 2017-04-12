@@ -24,7 +24,7 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 		$html = '';
 		if ( $toc ) {
 			// Fancy title of Table of Contents.
-			$html .= "<h3 class='isc-admin-header sr-only'>Table of Contents</h3>";
+			$html .= "<h2 class='isc-admin-header sr-only'>Table of Contents</h2>";
 			$html .= "<div class='contact-widget-inner isc-widget-tan isc-toc' id='toc'>";
 			$html .= '<ul>';
 			// Echoing each children page's title.
@@ -41,9 +41,9 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 		foreach ( $children_pages as $child ) {
 			// Displaying the title of a child page.
 			$url = get_permalink( $child );
-			$html .= '<h3 class="title" id="' . $child->post_name . '"> <a href="' . $url . '">';
+			$html .= '<h2 class="title" id="' . $child->post_name . '"> <a href="' . $url . '">';
 			$html .= $child->post_title;
-			$html .= '</a> </h3>';
+			$html .= '</a> </h2>';
 			// Displaying the tags.
 			$html .= isc_get_tags( $child );
 			// Displaying the content.
@@ -86,9 +86,9 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 			// Getting the content of the article.
 			$body = $article->post_content;
 			$html .= '<div class="isc-content-block">';
-			$html .= '<h3 class="title"><a href="' . $page_url . '">';
+			$html .= '<h2 class="title"><a href="' . $page_url . '">';
 			$html .= $article->post_title;
-			$html .= '</a></h3>';
+			$html .= '</a></h2>';
 			if ( '' !== $body ) {
 				// Display the body of the child content.
 				$html .= '<p> ' . $body . ' </p>';
