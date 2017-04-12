@@ -42,7 +42,7 @@ get_header();
 
                         $current = tribe_events_get_event();
                         $title = $current->post_title;
-                        $html = '<h2>' . $title . '</h2>';
+                        $html = isc_title(false);
                         $html .= "<div class='event-date'>" . tribe_get_start_date($current) . "</div>";
                         if (tribe_has_venue($current->ID)) {
                             $details = tribe_get_venue_details($current->ID);
