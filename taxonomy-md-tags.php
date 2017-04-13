@@ -39,7 +39,7 @@ get_header(); ?>
 
 					<?php endwhile;
 				  else :
-						echo '<h3 class=\'no-results\'>Sorry, no results matched your criteria.</h3>';
+						echo '<h2 class=\'no-results\'>Sorry, no results matched your criteria.</h2>';
 				  endif; ?>
 
 				<div><?php posts_nav_link( ' ' ); ?></div>
