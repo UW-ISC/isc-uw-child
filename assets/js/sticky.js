@@ -25,17 +25,17 @@ $(document).ready(function() {
             }
         });
 
-        $('.has-children').on('click', function() {
-              var multiplier = ($(this).children("a")[0].getAttribute("aria-expanded") == "false") ? 1 : -1;
+        $('.has-children > a').on('click', function() {
+              var multiplier = ($(this).attr("aria-expanded") == "false") ? 1 : -1;
               var totalHeight = toc.height();
-              $(this).find(".children li").each(function() {
+              // Calculating the new height of the toc, by determining the height of all the subheaders.
+              $($(this).parent()[0]).find(".children li").each(function() {
                 var previousCss  = $(this).attr("style");
                 $(this).css({
                         position:   'absolute',
                         visibility: 'hidden',
                         display:    'block'
                     });
-
                 totalHeight += ($(this).height() + 1) * multiplier;
                 $(this).attr("style", previousCss ? previousCss : "");
               });

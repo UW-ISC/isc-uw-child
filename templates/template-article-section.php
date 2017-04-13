@@ -29,7 +29,7 @@ get_header();
 
             <?php
             while ( have_posts() ) : the_post();
-                the_title('<h1 class="title">', '</h1>');
+                isc_title();
                 // echoing the tags
                 echo isc_get_tags(get_queried_object());
                 the_content();

@@ -30,7 +30,7 @@ get_header();
 
 				<?php log_to_console( 'page.php' ) ?>
 
-				<h1><?php the_title(); ?></h1>
+				<?php isc_title(); ?>
 
 				<?php
 				// Start the Loop.

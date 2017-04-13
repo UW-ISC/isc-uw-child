@@ -29,7 +29,7 @@ get_header();
 
 			<?php log_to_console( 'single-glossary.php' ) ?>
 
-			<h1><?php the_title(); ?></h1>
+			<?php isc_title(); ?>
 
 			<div>
 				<?php

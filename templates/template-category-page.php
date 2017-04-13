@@ -29,7 +29,7 @@ get_header();
 
             <?php
             while ( have_posts() ) : the_post();
-                the_title('<h1 class="title">', '</h1>');
+                isc_title();
                 the_content();
             endwhile;
 

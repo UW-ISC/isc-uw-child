@@ -25,8 +25,8 @@ get_header();
 
 	<div class="row">
 		<div class="col-md-12">
-			<h1><?php the_title(); ?></h1>
 
+            <?php isc_title(); ?>
 
             <h2 class="sr-only">Search Options</h2>
 			<div style="background:#f9f9f9; padding: 20px; margin-bottom:1em; font-size: 14px;">

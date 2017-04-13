@@ -19,7 +19,8 @@ get_header();
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1><?php the_title(); ?></h1>
+
+                <?php isc_title(); ?>
 
 				<form method="get" id="searchform" class="searchform" action="<?php echo esc_url( get_site_url() ); ?>">
 					<div role="search">

@@ -28,7 +28,7 @@ get_header(); ?>
 
 			<?php log_to_console( 'taxonomy-md-tags.php' ); ?>
 
-			<h1><?php single_term_title()  ?></h1>
+			<h1><?php single_term_title() ?></h1>
 
 			<div>
 				<?php
