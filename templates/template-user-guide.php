@@ -42,7 +42,7 @@ get_header();
 
             <script>
             $(function(){
-                $('.uw-accordion-shortcode table').each(function() {
+                $('.isc-user-guide table').each(function() {
                     // add responsive table class and clear all other inline styles
                     $(this).addClass("table-responsive");
                     $(this).addClass("table-condensed");
@@ -66,13 +66,11 @@ get_header();
             $(document).on("keydown", function(e){
                 // cntrl-f or command-f
                 if((event.ctrlKey || event.metaKey) && event.which == 70) {
-                    console.log("slkfdjlkasjdlkfdsaj");
                     $('.uw-accordion-shortcode__header').attr( "aria-expanded", "true" );
                     $('.uw-accordion-shortcode__panel').attr( "aria-hidden", "false" );
                     $('.uw-accordion-shortcode__title').hide();
                     $('.uw-accordion-shortcode__title').attr( "aria-hidden", "true" );
                 };
-
             });
 
             </script>
