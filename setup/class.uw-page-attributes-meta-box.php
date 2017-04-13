@@ -94,8 +94,8 @@ class UW_Page_Attributes_Meta_Box {
 } ?> /><?php esc_html_e( 'Hide from menu' ) ?></p>
 
 			<?php
-			} // end empty pages check
-		} // end hierarchical check.
+			} // End if().
+		} // End if().
 
 		if ( 'page' === $post->post_type && 0 !== count( get_page_templates( $post ) ) ) {
 			$template = ! empty( $post->page_template ) ? $post->page_template : 'default';
@@ -138,7 +138,13 @@ class UW_Page_Attributes_Meta_Box {
 	 */
 	function page_template_dropdown( $default = '', $post ) {
 
-		$previews = array( 'Big Hero' => '/assets/images/template-big-hero.jpg', 'Small Hero' => '/assets/images/template-small-hero.jpg', 'No image' => '/assets/images/template-no-image.jpg', 'No title/image' => '/assets/images/template-no-title.jpg', 'Default Template' => '/assets/images/template-default.jpg' );
+		$previews = array(
+			'Big Hero' => '/assets/images/template-big-hero.jpg',
+			'Small Hero' => '/assets/images/template-small-hero.jpg',
+			'No image' => '/assets/images/template-no-image.jpg',
+			'No title/image' => '/assets/images/template-no-title.jpg',
+			'Default Template' => '/assets/images/template-default.jpg',
+		);
 
 		$templates = get_page_templates( get_post() );
 
