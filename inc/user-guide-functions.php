@@ -295,15 +295,15 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 endif;
 
 /**
- * Add CSS ids to every <h3> and <h4> node. Saves the headers it finds
+ * Add CSS ids to every <h2> and <h3> node. Saves the headers it finds
  * as a metadata field for the current page.
  *
  * @param string $content HTML content to be modified.
  */
 function isc_add_ids_to_header_tags_auto( $content ) {
 		$header_list = array();
-		// The header types we want to look for (3:header, and 4:subheader).
-		$look_for = '(h3|h4)';
+		// The header types we want to look for (2:header, and 3:subheader).
+		$look_for = '(h2|h3)';
 		$regex = '#(?P<full_tag><(?P<tag_name>' . $look_for . ').*>(?P<tag_contents>[\s\S]*)<\/' . $look_for . '>)#Ui';
 
 	if ( preg_match_all( $regex, $content, $matches ) ) {
@@ -320,11 +320,11 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$type = $header_type[ $i ];
 			$name = wp_strip_all_tags( $header_name[ $i ] );
 			$slug = '';
-			if ( 'h3' === $type ) {
+			if ( 'h2' === $type ) {
 				$slug = wp_strip_all_tags( strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ) );
 				$current_header = new Header( $name, $slug );
 				array_push( $header_list, $current_header );
-			} elseif ( 'h4' === $type && null !== $current_header ) {
+			} elseif ( 'h3' === $type && null !== $current_header ) {
 				$slug = wp_strip_all_tags( strval( count( $header_list ) ) . '-' . sanitize_title( $name ) );
 				$current_header->subheaders[ $name ] = $slug;
 			}
