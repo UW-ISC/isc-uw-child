@@ -33,7 +33,11 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 			<div class="row">
 				<div class="col-md-4 col-md-offset-8">
 					<div class="isc-homepage-shortcuts hero-header-container">
-						<div class="isc-homepage-title"><?php the_title(); ?></div>
+
+                        <h1 class="sr-only"><?php wp_title( ' | ', true, 'right' );
+                		bloginfo( 'name' ); ?></h1>
+
+                        <div class="isc-homepage-title"><?php the_title(); ?></div>
 						<span class="udub-slant"><span></span></span>
 
 						<h2 class="sr-only">Quicklinks</h2>

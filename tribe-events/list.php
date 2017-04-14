@@ -36,7 +36,7 @@ get_header();
 
                 <?php log_to_console("tribe-events/list.php") ?>
 
-                <h2>Upcoming Events</h2>
+                <h1>Upcoming Events</h1>
 
                 <div id="tribe-events-pg-template" class="isc-events">
                     <ol>
@@ -58,7 +58,7 @@ get_header();
                             foreach ($events as $event) {
                                 $title = $event->post_title;
                                 $html = "<li>";
-                                $html = '<h3><a href="' . get_post_permalink($event->ID) . '">' . $title . '</a> </h3>';
+                                $html = '<h2><a href="' . get_post_permalink($event->ID) . '">' . $title . '</a> </h2>';
                                 $html .= "<div class='event-date'>" . tribe_get_start_date($event) . "</div>";
                                 if (tribe_has_venue($event->ID)) {
                                     $details = tribe_get_venue_details($event->ID);

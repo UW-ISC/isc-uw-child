@@ -27,6 +27,8 @@ $desktop-width: 992px;
 }
 
 a { color: #0B6EAD; }
+h1 { font-size: 28px; }
+h2 { font-size: 23px; }
 
 /*** uw styles overrides ***/
 body, p { font-size: 16px !important; }
@@ -41,20 +43,6 @@ body, p { font-size: 16px !important; }
     padding-top: 0 !important;
 
     @include tablet {height:inherit;}
-
-    a { color: $uw-purple;
-        &:hover { color: #eee; }
-    }
-
-    h1 {
-
-        margin: 0;
-        font-size: 18px;
-        line-height: 45px;
-
-        @include tablet { visibility: hidden; }
-        @include desktop { visibility: hidden; }
-    }
 
     button.uw-search {
         border-color: $uw-purple !important;
@@ -109,9 +97,20 @@ body, p { font-size: 16px !important; }
             height: 90px;
         }
 
-        a { display: block;
-            @include tablet { height: 90px; }
-            @include desktop { height: 90px; }
+        a {
+
+            display: block;
+            color: $uw-purple;
+            margin: 0;
+            font-size: 18px;
+            font-family: "Encode Sans Compressed",sans-serif;
+            font-weight: 800;
+            line-height: 45px;
+
+            &:hover { color: #eee; }
+
+            @include tablet {  height: 90px; text-indent: -9999px; }
+            @include desktop { height: 90px; text-indent: -9999px; }
         }
     }
 
@@ -202,8 +201,9 @@ body, p { font-size: 16px !important; }
         padding-top: 0;
     }
 
-    h2 { color: $uw-tan-dark; }
-    h3, h4 {margin-top:40px;
+    h1 { color: $uw-tan-dark; }
+
+    h2, h4 {margin-top:40px;
         a { color: $uw-purple; }
     }
 
@@ -528,7 +528,8 @@ body, p { font-size: 16px !important; }
         background-image: url('../uw-2014/assets/images/stripes-dark-tile.svg');
         opacity: .9;
     }
-    h2 {color:$uw-purple;}
+
+    h1 { color:$uw-purple; }
 
 }
 
@@ -537,12 +538,13 @@ body, p { font-size: 16px !important; }
     font-size: 18px;
     text-transform: uppercase;
     margin-top: 0 !important;
+    color: #3d3d3d !important;
 }
 
 .isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 2em; position: relative; margin-top: 0;
 
-    h4 { margin-top: 0; margin-bottom: 1em;
-        a { font-size: 21px; }
+    h3 { margin-top: 0; margin-bottom: 1em;
+        a { font-size: 21px; color: $uw-purple; font-weight: 800; }
     }
 
     ul { list-style: none; padding: 0;

@@ -29,7 +29,7 @@ get_header();
 
 			<?php log_to_console( 'single-glossary.php' ) ?>
 
-			<h2><?php the_title(); ?></h2>
+			<?php isc_title(); ?>
 
 			<div>
 				<?php
@@ -38,7 +38,7 @@ get_header();
 						<div class='post-content'><?php the_content() ?></div>
 					<?php endwhile;
 				  else :
-						echo '<h3 class=\'no-results\'>Sorry, no results matched your criteria.</h3>';
+						echo '<h2 class=\'no-results\'>Sorry, no results matched your criteria.</h2>';
 				  endif; ?>
 			</div>
 

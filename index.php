@@ -30,13 +30,11 @@ get_header();
 
 			<?php log_to_console( 'index.php' ) ?>
 
-			<h2>
-				<?php echo get_the_title( get_option( 'page_for_posts', true ) );?>
-			</h2>
+			<h1><?php echo get_the_title( get_option( 'page_for_posts', true ) );?></h1>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<h3><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h3>
+				<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
 				<div class="update-date"><?php echo get_the_date() ?> </div>
 				<div class='post-content'><?php the_excerpt() ?></div>
 
