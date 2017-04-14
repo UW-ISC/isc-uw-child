@@ -25,14 +25,16 @@ get_header();
 
 	<div class="row">
 		<div class="col-md-12">
-			<h2><?php the_title(); ?></h2>
 
+            <?php isc_title(); ?>
+
+            <h2 class="sr-only">Search Options</h2>
 			<div style="background:#f9f9f9; padding: 20px; margin-bottom:1em; font-size: 14px;">
 
 				<div class="row">
 
 					<div class="col-md-8">
-						<h3 class="sr-only">Filter by:</h3>
+						<div class="sr-only">Filter by:</div>
 						<div class="row">
 							<div class="col-md-6">
 								<label>Topic:</label>
@@ -61,7 +63,7 @@ get_header();
 						</div>
 					</div>
 					<div class="col-md-4">
-						<h3 class="sr-only">Search by:</h3>
+						<div class="sr-only">Search by:</div>
 						<label>Keyword:</label>
 						<input class="form-control input-sm" type="text" id="myInputTextField">
 					</div>
@@ -69,7 +71,7 @@ get_header();
 
 			</div>
 
-			<h3 class="sr-only">User Guides</h3>
+			<h2 class="sr-only">User Guides</h2>
 
 			<table id="user_guide_lib" class="table table-striped" style="border:none !important;">
 				<thead style="font-size:14px;">

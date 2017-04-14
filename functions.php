@@ -127,7 +127,7 @@ function isc_excerpt_more( $excerpt ) {
  * @param boolean $echo if true then echoes the title, else returns the title.
  */
 function isc_title( $echo = true ) {
-	 $title = '<h2 class="title">' . esc_html( get_the_title() ) . '</h2>';
+	 $title = '<h1 class="title">' . esc_html( get_the_title() ) . '</h1>';
 	if ( $echo ) {
 		echo $title;
 	} else {

@@ -27,19 +27,19 @@ get_header(); ?>
 
 			<?php log_to_console( 'search.php' ) ?>
 
-			<h2>Search Results</h2>
+			<h1>Search Results</h1>
 
 			<div>
 
 				<?php
 				if ( have_posts() ) :
 					while ( have_posts() ) : the_post(); ?>
-						<h3><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h3>
+						<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
 						<div class='post-content'><?php the_excerpt() ?></div>
 
 					<?php endwhile;
 				  else :
-						echo '<h3 class=\'no-results\'>Sorry, no results matched your criteria.</h3>';
+						echo '<h2 class=\'no-results\'>Sorry, no results matched your criteria.</h2>';
 				  endif; ?>
 
 				<div><?php posts_nav_link( ' ' ); ?></div>
