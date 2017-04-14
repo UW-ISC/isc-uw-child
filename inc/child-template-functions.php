@@ -87,13 +87,13 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 			$body = $article->post_content;
 			$html .= '<div class="isc-content-block">';
 			$html .= '<h2 class="title"><a href="' . $page_url . '">';
-			$html .= $article->post_title;
+			$html .= esc_html( $article->post_title );
 			$html .= '</a></h2>';
 			if ( '' !== $body ) {
 				// Display the body of the child content.
 				$html .= '<p> ' . $body . ' </p>';
 			}
-			$html .= '<a class="uw-btn btn-sm" title="' . $article->post_title . '" href="' . $page_url . '">Read More</a>';
+			$html .= '<a class="uw-btn btn-sm" title="' . esc_attr( $article->post_title ) . '" href="' . $page_url . '">Read More</a>';
 			$html .= '</div>';
 		}
 		echo $html;
