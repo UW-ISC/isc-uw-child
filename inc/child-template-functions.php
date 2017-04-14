@@ -29,8 +29,8 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 			$html .= '<ul>';
 			// Echoing each children page's title.
 			foreach ( $children_pages as $child ) {
-				$html .= '<li><a href="#' . $child->post_name . '">';
-				$html .= $child->post_title;
+				$html .= '<li><a href="#' . esc_attr( $child->post_name ) . '">';
+				$html .= esc_html( $child->post_title );
 				$html .= '</a></li>';
 			}
 			$html .= '</ul>';
@@ -41,8 +41,8 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 		foreach ( $children_pages as $child ) {
 			// Displaying the title of a child page.
 			$url = get_permalink( $child );
-			$html .= '<h3 class="title" id="' . $child->post_name . '"> <a href="' . $url . '">';
-			$html .= $child->post_title;
+			$html .= '<h3 class="title" id="' . esc_attr( $child->post_name ) . '"> <a href="' . $url . '">';
+			$html .= esc_html( $child->post_title );
 			$html .= '</a> </h3>';
 			// Displaying the tags.
 			$html .= isc_get_tags( $child );
