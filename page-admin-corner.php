@@ -75,7 +75,7 @@ get_header();
 										  ),
 									  ),
 									  'posts_per_page' => 5,
-									  'post_status' => 'published',
+									  'post_status' => 'publish',
 							 );
 							 $category_posts = new WP_Query( $args );
 
@@ -86,7 +86,13 @@ get_header();
 
 								   <h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h4>
 								   <div class="update-date"><?php echo get_the_date() ?> </div>
-								   <div class='post-content'><?php the_excerpt() ?></div>
+									 <?php
+									 $excerpt = get_the_excerpt();
+									 if ($excerpt == "") {
+										 $excerpt .= "No promotional text available.";
+									 }
+									 ?>
+								   <div class='post-content'><?php echo $excerpt; ?></div>
 							<?php
 								 endwhile;
 								?>
@@ -110,16 +116,17 @@ get_header();
 				  <div class='post-content isc-events'>
 					<?php
 					if ( function_exists( 'tribe_get_events' ) ) {
-						$event = tribe_get_events(
+						$events = tribe_get_events(
 							array(
 							'posts_per_page' => 1,
 							'start_date' => date( 'Y-m-d H:i:s' ),
 							)
 						);
-						if ( empty( $event ) ) {
+						log_to_console($events);
+						if ( empty( $events ) ) {
 							echo 'No events found.';
 						} else {
-							$current = $event[0];
+							$current = $events[0];
 							$title = $current->post_title;
 							$html = '<h4><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h4>';
 							$html .= "<div class='event-date'>" . tribe_get_start_date( $current ) . '</div>';
@@ -154,7 +161,7 @@ get_header();
 				  </div>
 
 					<?php
-					if ( ! empty( $event ) ) {
+					if ( ! empty( $events ) ) {
 						// we only want to show the See All Events button if a future event exists.
 						$events_url = get_site_url() . '/events/';
 						echo '<a class="uw-btn btn-sm" href="' . esc_url( $events_url ) . '"?>See All Events</a>';
