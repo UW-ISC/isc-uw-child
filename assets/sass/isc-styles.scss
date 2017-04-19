@@ -543,7 +543,7 @@ body, p { font-size: 16px !important; }
 
 .isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 2em; position: relative; margin-top: 0;
 
-    h3 { margin-top: 0; margin-bottom: 1em;
+    h4 { margin-top: 0; margin-bottom: 10px;
         a { font-size: 21px; color: $uw-purple; font-weight: 800; }
     }
 
@@ -625,13 +625,13 @@ body, p { font-size: 16px !important; }
 /*** generic content and sidebar ***/
 .isc-content-block { padding: 40px; background: $uw-tan; margin-bottom: 1em;
 
-    h3 { margin-top: 0; color: $uw-purple; }
+    h2 { margin-top: 0; color: $uw-purple; }
 
 }
 
 .isc-sidebar { padding-top: 0 !important; position: relative;
 
-    h3 { margin-top: 0; }
+    h4 { margin-top: 0; }
 }
 
 /*** footer ***/
