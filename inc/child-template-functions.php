@@ -29,8 +29,8 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 			$html .= '<ul>';
 			// Echoing each children page's title.
 			foreach ( $children_pages as $child ) {
-				$html .= '<li><a href="#' . $child->post_name . '">';
-				$html .= $child->post_title;
+				$html .= '<li><a href="#' . esc_attr( $child->post_name ) . '">';
+				$html .= esc_html( $child->post_title );
 				$html .= '</a></li>';
 			}
 			$html .= '</ul>';
@@ -41,8 +41,8 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 		foreach ( $children_pages as $child ) {
 			// Displaying the title of a child page.
 			$url = get_permalink( $child );
-			$html .= '<h2 class="title" id="' . $child->post_name . '"> <a href="' . $url . '">';
-			$html .= $child->post_title;
+			$html .= '<h2 class="title" id="' . esc_attr( $child->post_name ) . '"> <a href="' . $url . '">';
+			$html .= esc_html( $child->post_title );
 			$html .= '</a> </h2>';
 			// Displaying the tags.
 			$html .= isc_get_tags( $child );
@@ -87,13 +87,13 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 			$body = $article->post_content;
 			$html .= '<div class="isc-content-block">';
 			$html .= '<h2 class="title"><a href="' . $page_url . '">';
-			$html .= $article->post_title;
+			$html .= esc_html( $article->post_title );
 			$html .= '</a></h2>';
 			if ( '' !== $body ) {
 				// Display the body of the child content.
 				$html .= '<p> ' . $body . ' </p>';
 			}
-			$html .= '<a class="uw-btn btn-sm" title="' . $article->post_title . '" href="' . $page_url . '">Read More</a>';
+			$html .= '<a class="uw-btn btn-sm" title="' . esc_attr( $article->post_title ) . '" href="' . $page_url . '">Read More</a>';
 			$html .= '</div>';
 		}
 		echo $html;

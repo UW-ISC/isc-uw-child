@@ -108,6 +108,8 @@ function log_to_console( $debug_output ) {
 	}
 }
 
+add_filter( 'the_excerpt', 'isc_excerpt_more' );
+
 /**
  * Adds a title element to the read more
  * links, to achieve better accessiblilty
@@ -135,4 +137,15 @@ function isc_title( $echo = true ) {
 	}
 }
 
-add_filter( 'the_excerpt', 'isc_excerpt_more' );
+add_filter( 'the_title', 'esc_html_title' );
+
+if ( ! function_exists( 'esc_html_title' ) ) :
+	/**
+	 * Escape html from the title function.
+	 *
+	 * @param String $title from which to escape html.
+	 */
+	function esc_html_title( $title ) {
+	    return esc_html( $title );
+	}
+endif;
