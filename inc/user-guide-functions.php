@@ -255,11 +255,11 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 			if ( count( $cur->subheaders ) > 0 ) {
 				// This means there are subheaders under the current header.
-				$pages .= '<li class="nav-item has-children" aria-expanded="false"> <a class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
+				$pages .= '<li class="nav-item has-children"><a href="javascript:void();" class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
 				foreach ( $cur->subheaders as $subname => $subslug ) {
-					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . stripslashes( $subname ) . '" href="#' . $subslug . '">' . stripslashes( $subname ) . '</a></li>';
+					$pages .= '<li class="nav-item"><a class="nav-link" title="' . stripslashes( $subname ) . '" href="#' . $subslug . '">' . stripslashes( $subname ) . '</a></li>';
 				}
 				$pages .= '</ul></li>';
 			} else {
