@@ -119,6 +119,7 @@ get_header();
 						$events = tribe_get_events(
 							array(
 							'posts_per_page' => 1,
+							'post_status' => 'publish',
 							'start_date' => date( 'Y-m-d' ),
 							)
 						);
