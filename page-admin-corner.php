@@ -122,7 +122,6 @@ get_header();
 							'start_date' => date( 'Y-m-d' ),
 							)
 						);
-						// log_to_console($events);
 						if ( empty( $events ) ) {
 							echo 'No events found.';
 						} else {
