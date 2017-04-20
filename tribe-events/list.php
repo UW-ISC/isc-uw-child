@@ -41,13 +41,10 @@ get_header();
                 <div id="tribe-events-pg-template" class="isc-events">
                     <ol>
                         <?php
-                        //tribe_get_view();
-                        //'post_type' => 'tribe_events'
-
                         $args = array(
                         'post_type' => 'tribe_events',
                         'post_status' => 'publish',
-                        'start_date' => date('Y-m-d H:i:s')
+                        'start_date' => date('Y-m-d')
                         );
 
                         $events = tribe_get_events($args);
