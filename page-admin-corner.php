@@ -122,12 +122,12 @@ get_header();
 							'start_date' => date( 'Y-m-d' ),
 							)
 						);
-						//log_to_console($events);
+						// log_to_console($events);
 						if ( empty( $events ) ) {
 							echo 'No events found.';
 						} else {
 							$current = $events[0];
-							log_to_console($current);
+							log_to_console( $current );
 							$title = $current->post_title;
 							$html = '<h4><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h4>';
 							$html .= "<div class='event-date'>" . tribe_get_start_date( $current ) . '</div>';
