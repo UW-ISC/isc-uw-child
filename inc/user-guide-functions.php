@@ -326,8 +326,8 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 				array_push( $header_list, $current_header );
 			} elseif ( 'h3' === $type && null !== $current_header ) {
 				$slug = wp_strip_all_tags( strval( count( $header_list ) ) . '-' . sanitize_title( $name ) );
-				while (array_key_exists( $slug, $current_header->subheaders)) {
-					$slug .= "-";
+				while ( array_key_exists( $slug, $current_header->subheaders ) ) {
+					$slug .= '-';
 				}
 				$current_header->subheaders[ $slug ] = $name;
 			}
