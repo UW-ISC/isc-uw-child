@@ -108,6 +108,7 @@ body, p { font-size: 16px !important; }
             line-height: 45px;
 
             &:hover { color: #eee; }
+            &:focus { outline: 5px auto -webkit-focus-ring-color !important; }
 
             @include tablet {  height: 90px; text-indent: -9999px; }
             @include desktop { height: 90px; text-indent: -9999px; }
