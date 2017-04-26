@@ -217,7 +217,9 @@ body, p { font-size: 16px !important; }
 
             &:first-child {
 
-                a { padding: 0; background: url('../uw-2014/assets/svg/uw-sprite.svg') no-repeat -249px 2px; }
+                a { padding: 0; background: url('../uw-2014/assets/svg/uw-sprite.svg') no-repeat -250px 2px; border-bottom: solid 1px #fff;
+                    &:hover { border-bottom: solid 1px #857533; }
+                }
 
                 &:after { top: 13px; }
 
