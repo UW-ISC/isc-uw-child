@@ -65,7 +65,9 @@ body, p { font-size: 16px !important; }
         @include desktop  {display: block; }
 
         a {
-             @include desktop { color: $uw-purple !important;  }
+             @include desktop { color: $uw-purple !important;
+                 &:hover { color: #85754d !important; }
+             }
         }
 
         a.work-day-link {
@@ -163,7 +165,8 @@ body, p { font-size: 16px !important; }
             &:before { background: url('../isc-uw-child/assets/icons/arrow-right.png') no-repeat; height:20px; width:50px; right:-25px; top:8px; background-size:45%;}
             &:after { background: none; display: none; }
 
-            &:hover,&:focus {
+            &:hover,&:focus { color: #b7a57a;
+
                 &:before { background: url('../isc-uw-child/assets/icons/arrow-down.png') no-repeat; height:20px; width:50px; right:-23px; top:8px; background-size:45%;
 
                     -o-transform: none;
