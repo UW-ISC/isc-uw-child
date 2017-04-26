@@ -54,8 +54,8 @@ body, p { font-size: 16px !important; }
         @include tablet { top:0; }
         @include desktop { top: 0; right: 0; }
 
-        &:hover,&:focus {
-             background: $uw-tan-light;
+        &:hover, &:focus {
+             background: #b7a57a;
         }
 
     }
