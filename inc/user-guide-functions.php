@@ -258,7 +258,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 				$pages .= '<li class="nav-item has-children"><a href="javascript:void();" class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
-				foreach ( $cur->subheaders as $subname => $subslug ) {
+				foreach ( $cur->subheaders as $subslug => $subname ) {
 					$pages .= '<li class="nav-item"><a class="nav-link" title="' . stripslashes( $subname ) . '" href="#' . $subslug . '">' . stripslashes( $subname ) . '</a></li>';
 				}
 				$pages .= '</ul></li>';
@@ -326,7 +326,10 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 				array_push( $header_list, $current_header );
 			} elseif ( 'h3' === $type && null !== $current_header ) {
 				$slug = wp_strip_all_tags( strval( count( $header_list ) ) . '-' . sanitize_title( $name ) );
-				$current_header->subheaders[ $name ] = $slug;
+				while ( array_key_exists( $slug, $current_header->subheaders ) ) {
+					$slug .= '-';
+				}
+				$current_header->subheaders[ $slug ] = $name;
 			}
 			$find[]    = $matches['full_tag'][ $i ];
 			$id_attr   = sprintf( ' id="%s"', $slug );
