@@ -87,7 +87,7 @@ get_header();
 								   <h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h4>
 								   <div class="update-date"><?php echo get_the_date() ?> </div>
 										<?php
-										$excerpt = get_the_excerpt();
+										$excerpt = wp_strip_all_tags( get_the_excerpt() );
 										if ( '' === $excerpt ) {
 											$excerpt .= 'No promotional text available.';
 										}
