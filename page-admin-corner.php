@@ -87,12 +87,12 @@ get_header();
 								   <h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h4>
 								   <div class="update-date"><?php echo get_the_date() ?> </div>
 										<?php
-										$excerpt = esc_html( get_the_excerpt() );
+										$excerpt = strip_tags( get_the_excerpt(), '<p><a><strong><b><em><i>' );
 										if ( '' === $excerpt ) {
 											$excerpt .= 'No promotional text available.';
 										}
 										?>
-								   <div class='post-content'><?php echo esc_html( $excerpt ); ?></div>
+								   <div class='post-content'><?php echo $excerpt; ?></div>
 							<?php
 								 endwhile;
 								?>
