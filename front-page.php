@@ -34,7 +34,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 				<div class="col-md-4 col-md-offset-8">
 					<div class="isc-homepage-shortcuts hero-header-container">
 
-                        <h1 class="isc-homepage-title"><?php the_title(); ?></h1>
+						<h1 class="isc-homepage-title"><?php the_title(); ?></h1>
 						<span class="udub-slant"><span></span></span>
 
 						<h2 class="sr-only">Quicklinks</h2>
@@ -128,8 +128,8 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								  </div>
 							  </div>
 								<?php
-							}
-						}
+							}// End foreach().
+						}// End if().
 						?>
 
 						<script>
@@ -176,7 +176,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 									<a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo the_title(); ?></a>
 								</h3>
 								<div class="update-date"><?php echo get_the_date() ?></div>
-								<div class="post-content"><?php echo wp_strip_all_tags( get_the_content('') ) ?></div>
+								<div class="post-content"><?php echo wp_strip_all_tags( get_the_content( '' ) ) ?></div>
 								<p><a class="more" href="<?php echo esc_url( get_permalink() ); ?>">Read more</a></p>
 						<?php
 							endwhile;
