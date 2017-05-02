@@ -90,6 +90,8 @@ get_header();
 										$excerpt = strip_tags( get_the_excerpt(), '<p><a><strong><b><em><i>' );
 										if ( '' === $excerpt ) {
 											$excerpt .= 'No promotional text available.';
+										} else {
+											$excerpt .= '<a class="more" title="' . get_the_title() . '" href="' . get_permalink( $post->ID ) . '"> Read more</a>';
 										}
 										?>
 								   <div class='post-content'><?php echo $excerpt; ?></div>
