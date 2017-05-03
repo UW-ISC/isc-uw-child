@@ -49,12 +49,12 @@
 				</div>
 			</div>
 
-            
+
 
 		</div>
-        <div style="text-align:center;">
-            <p><span><a href="http://www.washington.edu/online/privacy/" target="_blank">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/" target="_blank">Terms</a></span></p>	
-            <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> University of Washington, Seattle, WA</p>
+        <div style="text-align:center; font-size:13px;">
+            <div><span style="display:inline-block; border-right:solid 1px #999; padding-right:13px; margin-right:10px;"><a href="http://www.washington.edu/online/privacy/" target="_blank">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/" target="_blank">Terms</a></span></div>
+            <div>&copy; <?php echo esc_html( date( 'Y' ) ); ?> University of Washington, Seattle, WA</div>
         </div>
 	</div>
 
