@@ -579,7 +579,7 @@ body, p { font-size: 16px !important; }
         @include desktop { width: 50%; float: left; padding-left: 15px; }
 
         &:first-child {
-          @include desktop { padding-right: 15px; }
+          @include desktop { padding-right: 15px; padding-left: 0; }
         }
         &:last-child { padding-top: 25px;
           @include desktop { padding-top: 0px; }
