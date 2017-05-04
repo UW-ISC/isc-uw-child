@@ -86,10 +86,7 @@ get_header();
 
 								   <h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h4>
 								   <div class="update-date"><?php echo get_the_date() ?> </div>
-										<?php
-										$excerpt = strip_tags( the_excerpt(), '<p><a><strong><b><em><i>' );
-										?>
-								   <div class='post-content'><?php echo $excerpt; ?></div>
+								   <div class='post-content'><?php the_excerpt() ?></div>
 							<?php
 								 endwhile;
 								?>
