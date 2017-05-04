@@ -959,6 +959,12 @@ $font_family_1: FontAwesome;
     }
 }
 
+// dynamically generating width of the inputs for the
+// contact form, to respond to window size changes
+.wpcf7-form-control-wrap {
+   input, textarea { width: 100% !important; }
+}
+
 /*** uw accordion (user guide body) ***
 
 .uw-accordion-shortcode {
