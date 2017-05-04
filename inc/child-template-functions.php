@@ -91,7 +91,7 @@ if ( ! function_exists( 'isc_display_child_pages' ) ) :
 			$html .= '</a></h2>';
 			if ( '' !== $body ) {
 				// Display the body of the child content.
-				$html .= '<p> ' . $body . ' </p>';
+				$html .= wpautop( $body );
 			}
 			$html .= '<a class="uw-btn btn-sm" title="' . esc_attr( $article->post_title ) . '" href="' . $page_url . '">Read More</a>';
 			$html .= '</div>';
