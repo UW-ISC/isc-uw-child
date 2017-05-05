@@ -118,7 +118,7 @@ add_filter( 'the_excerpt', 'isc_excerpt_more' );
  */
 function isc_excerpt_more( $excerpt ) {
 		$post = get_post();
-		$excerpt .= '<a class="more" title="' . get_the_title() . '" href="' . get_permalink( $post->ID ) . '"> Read more</a>';
+		$excerpt .= '<p> <a class="more" title="' . get_the_title() . '" href="' . get_permalink( $post->ID ) . '"> Read more</a> </p>';
 		return $excerpt;
 }
 

@@ -137,7 +137,7 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
  */
 function isc_allowedtags() {
 	// Add custom tags to this string.
-	   return '<p>,<br>,<a>,<strong>,<em>,<hr>';
+	   return '<strong>,<em>';
 }
 
 if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
