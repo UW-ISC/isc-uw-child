@@ -32,15 +32,30 @@ get_header(); ?>
 			<div>
 
 				<?php
-				if ( have_posts() ) :
-					while ( have_posts() ) : the_post(); ?>
+				$i = 0;
+				$terms = rawurlencode( get_search_query() );
+				$url = 'http://www.washington.edu/search/?q=' . $terms;
+				if ( have_posts() ) {
+					while ( have_posts() ) : the_post();?>
 						<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
 						<div class='post-content'><?php the_excerpt() ?></div>
-
-					<?php endwhile;
-				  else :
-						echo '<h2 class=\'no-results\'>Sorry, no results matched your criteria.</h2>';
-				  endif; ?>
+						<?php
+						$i++;
+					endwhile;
+					if ( $i <= 1 ) {
+						$html = "<h2 class=\'little-results\'>";
+						$html .= 'Try searching ';
+						$html .= "<a href ='$url'>" . get_search_query() . ' on uw.edu</a>';
+						$html .= ' for additional results.</h2>';
+						echo $html;
+					}
+				} else {
+					$html = "<h2 class=\'no-results\'>";
+					$html .= 'Sorry, no results matched your criteria. Try searching ';
+					$html .= "<a href ='$url'>" . get_search_query() . ' on uw.edu</a>';
+					$html .= ' .</h2>';
+					echo $html;
+				} ?>
 
 				<div><?php posts_nav_link( ' ' ); ?></div>
 
