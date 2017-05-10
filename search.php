@@ -43,17 +43,17 @@ get_header(); ?>
 						$i++;
 					endwhile;
 					if ( $i <= 1 ) {
-						$html = "<h2 class=\'little-results\'>";
-						$html .= 'Try searching ';
-						$html .= "<a href ='$url'>" . get_search_query() . ' on uw.edu</a>';
-						$html .= ' for additional results.</h2>';
+						$html = "<p class=\'little-results\'>";
+						$html .= 'Try searching for ';
+						$html .= "<a href ='$url'>'" . get_search_query() . "'</a>";
+						$html .= ' across all of the UW for additional results.</p>';
 						echo $html;
 					}
 				} else {
-					$html = "<h2 class=\'no-results\'>";
-					$html .= 'Sorry, no results matched your criteria. Try searching ';
-					$html .= "<a href ='$url'>" . get_search_query() . ' on uw.edu</a>';
-					$html .= ' .</h2>';
+					$html = "<p class=\'no-results\'>";
+					$html .= 'Sorry, no results matched your criteria. Try searching for ';
+					$html .= "<a href ='$url'>'" . get_search_query() . "'</a>";
+					$html .= ' across all of the UW.</p>';
 					echo $html;
 				} ?>
 
