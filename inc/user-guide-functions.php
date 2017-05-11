@@ -202,7 +202,9 @@ if ( ! function_exists( 'isc_get_all_topics' ) ) :
 				array_push( $topics, $topic );
 			}
 		}
-		return array_unique( $topics );
+		$topics = array_unique( $topics );
+		sort( $topics );
+		return $topics;
 	}
 endif;
 
@@ -219,7 +221,9 @@ if ( ! function_exists( 'isc_get_all_roles' ) ) :
 				array_push( $topics, $role );
 			}
 		}
-		return array_unique( $topics );
+		$topics = array_unique( $topics );
+		sort( $topics );
+		return $topics;
 	}
 endif;
 
