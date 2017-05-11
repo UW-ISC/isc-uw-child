@@ -81,26 +81,7 @@ body, p { font-size: 16px !important; }
 
     .isc-logo {
 
-        @include tablet {
-            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
-            background-position: left center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            width: 400px;
-            height: 90px;
-        }
-
-        @include desktop {
-            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
-            background-position: left center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            width: 410px;
-            height: 90px;
-        }
-
         a {
-
             display: block;
             color: $uw-purple;
             margin: 0;
@@ -109,11 +90,33 @@ body, p { font-size: 16px !important; }
             font-weight: 800;
             line-height: 45px;
 
-            &:hover { color: #eee; }
+            &:hover { color: $uw-tan-dark; }
             &:focus { outline: 5px auto -webkit-focus-ring-color !important; }
 
-            @include tablet {  height: 90px; text-indent: -9999px; }
-            @include desktop { height: 90px; text-indent: -9999px; }
+            @include tablet {
+                height: 90px; text-indent: -9999px;
+                background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
+                background-position: left center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 400px;
+                height: 90px;
+
+                &:hover, &:focus { background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg'); }
+            }
+            
+            @include desktop {
+                height: 90px; text-indent: -9999px;
+                background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
+                background-position: left center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 400px;
+                height: 90px;
+
+                &:hover, &:focus { background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg'); }
+
+            }
         }
     }
 
