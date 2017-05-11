@@ -51,7 +51,7 @@ body, p { font-size: 16px !important; }
         top: -22px;
         right: -22px;
 
-        @include tablet { top:0; }
+        @include tablet { top:0; right: 0; }
         @include desktop { top: 0; right: 0; }
 
         &:hover, &:focus {
