@@ -23,7 +23,7 @@ get_header();
 
     <div class="row">
 
-        <article class="uw-body-copy col-md-9">
+        <article class="uw-body-copy col-md-9" id="main_content">
 
             <?php log_to_console("template-article-section.php") ?>
 
