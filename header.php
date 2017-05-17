@@ -16,6 +16,7 @@
 		<meta charset="utf-8">
 		<meta name="description" content="<?php bloginfo( 'description', 'display' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-site-verification" content="vQxLCtJqEqcWtnoJ6kpuxDN52HbONpgCTKpE6UWwv8U" />
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
