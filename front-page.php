@@ -69,11 +69,13 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 						// Query finds the published pages marked featured page and lists their
 						// title and description on a card.
 						$args = array(
-						 'hierarchical' => false,
-						 'post_type'    => 'page',
-						 'post_status' => 'publish',
-						 'meta_key'        => 'isc-featured',
-						 'meta_value'    => 'Homepage',
+						 'hierarchical'	=> false,
+						 'post_type'	=> 'page',
+						 'post_status'	=> 'publish',
+						 'meta_key'	=> 'isc-featured',
+						 'meta_value'	=> 'Homepage',
+						 'sort_column'  => 'post_date',
+						 'sort_order'   => 'desc',
 						);
 
 						$featured = get_pages( $args );
