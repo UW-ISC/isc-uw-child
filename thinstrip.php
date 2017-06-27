@@ -63,3 +63,5 @@
 	  </div>
 
 </header>
+<div id="uwalert-alert-message" class=" advisories  uwalert-steel "><div class="container"><span class="close">Close</span><h1>Armed robbery near U-Village</h1><p></p><p>An armed robbery occurred about 10:30 a.m. at the Safeway in the 3000 block of 45th St. near University Village. The suspect is described as a black male, 20-30 years-old, wearing a dark blue hoodie with white Nike lettering and blue jeans. Call 911 if seen.</p>
+<a class="more" href="http://emergency.uw.edu" title="Armed robbery near U-Village">More info</a><p></p></div></div>
