@@ -35,7 +35,7 @@
 			  <script>
 			  $(function(){
 				 $("a:contains('Sign in to Workday')").addClass("work-day-link");
-                 $("a:contains('Sign in to Workday')").attr('target', '_blank');
+				 $("a:contains('Sign in to Workday')").attr('target', '_blank');
 			  });
 			  </script>
 
@@ -66,16 +66,9 @@
 
 <?php
 $args = array(
-	'posts_per_page'=> '1',
+	'posts_per_page' => '1',
 	'post_status'	=> 'publish',
 	'meta_key'		=> 'isc_alert',
-	'tax_query' 	=> array(
-		array(
-			'taxonomy' => 'location',
-			'field'    => 'slug',
-	  		'terms'    => 'homepage',
-		),
-	),
 );
 $news_post = new WP_Query( $args );
 
