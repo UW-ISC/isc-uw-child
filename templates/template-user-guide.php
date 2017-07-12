@@ -71,11 +71,12 @@ get_header();
                     $(this).attr('aria-controls', 'target-' + $(this).attr('id'));
                 });
 
-                // set aria initial state based on container
+                // set aria initial state based to be false if collapsed
                 $(".collapseomatic").each(function() {
                     $(this).attr('aria-expanded', 'false');
                 });
 
+                // if expanded, set aria initial state to be true
                 $(".colomat-close").each(function() {
                     $(this).attr('aria-expanded', 'true');
                 });
