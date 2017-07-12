@@ -31,6 +31,7 @@ get_header();
             </div>
 
             <article class="uw-content float-content col-md-9 isc-user-guide" id="main_content">
+
                 <?php log_to_console("template-user-guide.php") ?>
                 <?php
                 while ( have_posts() ) : the_post();
@@ -59,8 +60,57 @@ get_header();
                         $(this).attr('width', '100%');
                         $(this).removeProp("height");
                     });
+                });
+
+                // collapse-o-matic plugin overrides
+                $(".isc-expand").before( "<div class='isc-collapse'><a href='#' onclick='return false;' class='collapseall' title='Hide all collapsible page content' role='button'>Collapse All</a><a href='#' onclick='return false;' class='expandall' style='display:none;' title='Show all hidden page content' role='button'>Expand All</a></div>" );
+
+                $(".isc-expand a").each(function() {
+                    // add a11y stuff
+                    $(this).attr('role', 'button');
+                    $(this).attr('aria-controls', 'target-' + $(this).attr('id'));
+                });
+
+                // set aria initial state based on container
+                $(".collapseomatic").each(function() {
+                    $(this).attr('aria-expanded', 'false');
+                });
+
+                $(".colomat-close").each(function() {
+                    $(this).attr('aria-expanded', 'true');
+                });
+
+                // update state when clicked
+                $(".isc-expand a").on( "click", function() {
+                    console.log("clicked");
+
+                    // get the previous state of the container
+                    if($(this).next("div").css('display') == 'none')
+                    {
+                        //console.log("now being shown " + $(this).attr('id'));
+                        $(this).attr('aria-expanded', 'true');
+                    }
+                    else {
+                        //console.log("going to be hidden " + $(this).attr('id'))
+                        $(this).attr('aria-expanded', 'false');
+                    }
 
                 });
+
+                // handle expandall and collapseall
+                $(".collapseall").on( "click", function() {
+                    $(".collapseall").hide();
+                    $(".expandall").show();
+                    $(".collapseomatic").attr('aria-expanded', 'false');
+
+                });
+
+                $(".expandall").on( "click", function() {
+                    $(".expandall").hide();
+                    $(".collapseall").show();
+                    $(".collapseomatic").attr('aria-expanded', 'true');
+                });
+
             });
 
             $(document).on("keydown", function(e){
