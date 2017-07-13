@@ -104,7 +104,7 @@ body, p { font-size: 16px !important; }
 
                 &:hover, &:focus { background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg'); }
             }
-            
+
             @include desktop {
                 height: 90px; text-indent: -9999px;
                 background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
@@ -290,6 +290,7 @@ body, p { font-size: 16px !important; }
         content: "";
         background-image: url('../uw-2014/assets/images/stripes-dark-tile.svg');
         opacity: .2;
+        z-index: 1;
     }
 
     .isc-homepage-title {
@@ -307,7 +308,7 @@ body, p { font-size: 16px !important; }
         @include desktop { margin: 0 0 20px 0; padding:0; color:$uw-purple; }
     }
 
-    .hero-header-container { padding: 10px;
+    .hero-header-container { padding: 10px; z-index: 999; position: relative;
 
         @include tablet { padding: 30px; }
         @include desktop {
@@ -321,7 +322,7 @@ body, p { font-size: 16px !important; }
             background-color: rgba(232,211,162,1);
             @include desktop { background-color: $uw-purple; }
         }
-        z-index: 1;
+
     }
 
     .isc-homepage-shortcuts {
