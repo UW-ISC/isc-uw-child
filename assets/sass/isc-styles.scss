@@ -290,6 +290,7 @@ body, p { font-size: 16px !important; }
         content: "";
         background-image: url('../uw-2014/assets/images/stripes-dark-tile.svg');
         opacity: .2;
+        z-index: 1;
     }
 
     .isc-homepage-title {
@@ -307,7 +308,7 @@ body, p { font-size: 16px !important; }
         @include desktop { margin: 0 0 20px 0; padding:0; color:$uw-purple; }
     }
 
-    .hero-header-container { padding: 10px;
+    .hero-header-container { padding: 10px; z-index: 999; position: relative;
 
         @include tablet { padding: 30px; }
         @include desktop {
@@ -321,7 +322,7 @@ body, p { font-size: 16px !important; }
             background-color: rgba(232,211,162,1);
             @include desktop { background-color: $uw-purple; }
         }
-        z-index: 1;
+
     }
 
     .isc-homepage-shortcuts {
@@ -468,8 +469,6 @@ body, p { font-size: 16px !important; }
         @include desktop { color: #fff; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); }
 
     }
-
-
 
     .isc-homepage-featured {
         @include desktop  { margin-top: -90px; };
