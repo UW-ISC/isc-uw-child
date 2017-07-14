@@ -6,8 +6,8 @@
  * additionally with a table of contents automatically generated
  * from the headers
  *
- * @author Kevin Zhao <zhaok24@uw.edu>
- * @author Abhishek Chauhan <abhi3@uw.edu>
+ * @author UW-IT AXDD
+ * @package isc-uw-child
  */
 
 get_header();
