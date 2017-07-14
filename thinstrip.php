@@ -35,7 +35,7 @@
 			  <script>
 			  $(function(){
 				 $("a:contains('Sign in to Workday')").addClass("work-day-link");
-                 $("a:contains('Sign in to Workday')").attr('target', '_blank');
+				 $("a:contains('Sign in to Workday')").attr('target', '_blank');
 			  });
 			  </script>
 
@@ -63,3 +63,23 @@
 	  </div>
 
 </header>
+
+<?php
+$args = array(
+	'posts_per_page' => '1',
+	'post_status'	=> 'publish',
+	'meta_key'		=> 'isc_alert',
+);
+$news_post = new WP_Query( $args );
+
+if ( $news_post->have_posts() ) :
+	$news_post->the_post(); ?>
+	<div id="uwalert-alert-message" class="advisories  uwalert-steel">
+		<div class="container">
+			<h1><?php the_title(); ?></h1>
+			<p></p>
+			<p><?php the_excerpt(); ?></p>
+			<p></p>
+		</div>
+	</div>
+<?php endif; ?>
