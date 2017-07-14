@@ -80,9 +80,9 @@ if ( $alert_news_posts ) :
 		<div class="container">
 			<h1><?php echo get_the_title($alert_news_post); ?></h1>
 			<p></p>
-			<p><?php echo get_post_field('post_content', $alert_news_post->ID); ?></p>
+			<p><?php echo wp_strip_all_tags(get_post_field('post_content', $alert_news_post->ID)); ?></p>
 			<p></p>
-			<a class="more" href="<?php echo get_post_permalink($alert_news_post->ID); ?>" title="More Info">More Info</a>
+			<a class="more" href="<?php echo esc_url(get_post_permalink($alert_news_post->ID)); ?>" title="More Info">More Info</a>
 		</div>
 	</div>
 <?php endif; ?>
