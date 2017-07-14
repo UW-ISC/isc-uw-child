@@ -51,11 +51,11 @@ body, p { font-size: 16px !important; }
         top: -22px;
         right: -22px;
 
-        @include tablet { top:0; }
+        @include tablet { top:0; right: 0; }
         @include desktop { top: 0; right: 0; }
 
-        &:hover,&:focus {
-             background: $uw-tan-light;
+        &:hover, &:focus {
+             background: #b7a57a;
         }
 
     }
@@ -65,7 +65,9 @@ body, p { font-size: 16px !important; }
         @include desktop  {display: block; }
 
         a {
-             @include desktop { color: $uw-purple !important;  }
+             @include desktop { color: $uw-purple !important;
+                 &:hover { color: #85754d !important; }
+             }
         }
 
         a.work-day-link {
@@ -79,26 +81,7 @@ body, p { font-size: 16px !important; }
 
     .isc-logo {
 
-        @include tablet {
-            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
-            background-position: left center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            width: 400px;
-            height: 90px;
-        }
-
-        @include desktop {
-            background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
-            background-position: left center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            width: 410px;
-            height: 90px;
-        }
-
         a {
-
             display: block;
             color: $uw-purple;
             margin: 0;
@@ -107,10 +90,33 @@ body, p { font-size: 16px !important; }
             font-weight: 800;
             line-height: 45px;
 
-            &:hover { color: #eee; }
+            &:hover { color: $uw-tan-dark; }
+            &:focus { outline: 5px auto -webkit-focus-ring-color !important; }
 
-            @include tablet {  height: 90px; text-indent: -9999px; }
-            @include desktop { height: 90px; text-indent: -9999px; }
+            @include tablet {
+                height: 90px; text-indent: -9999px;
+                background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
+                background-position: left center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 400px;
+                height: 90px;
+
+                &:hover, &:focus { background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg'); }
+            }
+
+            @include desktop {
+                height: 90px; text-indent: -9999px;
+                background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg');
+                background-position: left center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 400px;
+                height: 90px;
+
+                &:hover, &:focus { background-image: url('../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg'); }
+
+            }
         }
     }
 
@@ -162,7 +168,8 @@ body, p { font-size: 16px !important; }
             &:before { background: url('../isc-uw-child/assets/icons/arrow-right.png') no-repeat; height:20px; width:50px; right:-25px; top:8px; background-size:45%;}
             &:after { background: none; display: none; }
 
-            &:hover,&:focus {
+            &:hover,&:focus { color: #b7a57a;
+
                 &:before { background: url('../isc-uw-child/assets/icons/arrow-down.png') no-repeat; height:20px; width:50px; right:-23px; top:8px; background-size:45%;
 
                     -o-transform: none;
@@ -216,7 +223,9 @@ body, p { font-size: 16px !important; }
 
             &:first-child {
 
-                a { padding: 0; background: url('../uw-2014/assets/svg/uw-sprite.svg') no-repeat -249px 2px; }
+                a { padding: 0; background: url('../uw-2014/assets/svg/uw-sprite.svg') no-repeat -250px 2px; border-bottom: solid 1px #fff;
+                    &:hover, &:focus { border-bottom: solid 1px #857533 !important; }
+                }
 
                 &:after { top: 13px; }
 
@@ -281,6 +290,7 @@ body, p { font-size: 16px !important; }
         content: "";
         background-image: url('../uw-2014/assets/images/stripes-dark-tile.svg');
         opacity: .2;
+        z-index: 1;
     }
 
     .isc-homepage-title {
@@ -298,7 +308,7 @@ body, p { font-size: 16px !important; }
         @include desktop { margin: 0 0 20px 0; padding:0; color:$uw-purple; }
     }
 
-    .hero-header-container { padding: 10px;
+    .hero-header-container { padding: 10px; z-index: 999; position: relative;
 
         @include tablet { padding: 30px; }
         @include desktop {
@@ -312,7 +322,7 @@ body, p { font-size: 16px !important; }
             background-color: rgba(232,211,162,1);
             @include desktop { background-color: $uw-purple; }
         }
-        z-index: 1;
+
     }
 
     .isc-homepage-shortcuts {
@@ -460,8 +470,6 @@ body, p { font-size: 16px !important; }
 
     }
 
-
-
     .isc-homepage-featured {
         @include desktop  { margin-top: -90px; };
         .isc-homepage-card { background: $uw-tan-light; margin-bottom: 30px;
@@ -543,7 +551,7 @@ body, p { font-size: 16px !important; }
 
 .isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 2em; position: relative; margin-top: 0;
 
-    h3 { margin-top: 0; margin-bottom: 1em;
+    h4 { margin-top: 0; margin-bottom: 10px;
         a { font-size: 21px; color: $uw-purple; font-weight: 800; }
     }
 
@@ -573,7 +581,7 @@ body, p { font-size: 16px !important; }
         @include desktop { width: 50%; float: left; padding-left: 15px; }
 
         &:first-child {
-          @include desktop { padding-right: 15px; }
+          @include desktop { padding-right: 15px; padding-left: 0; }
         }
         &:last-child { padding-top: 25px;
           @include desktop { padding-top: 0px; }
@@ -625,13 +633,13 @@ body, p { font-size: 16px !important; }
 /*** generic content and sidebar ***/
 .isc-content-block { padding: 40px; background: $uw-tan; margin-bottom: 1em;
 
-    h3 { margin-top: 0; color: $uw-purple; }
+    h2 { margin-top: 0; color: $uw-purple; }
 
 }
 
 .isc-sidebar { padding-top: 0 !important; position: relative;
 
-    h3 { margin-top: 0; }
+    h4 { margin-top: 0; }
 }
 
 /*** footer ***/
@@ -641,6 +649,10 @@ body, p { font-size: 16px !important; }
     text-align:center;
     color:#fff;
     margin-bottom:30px;
+
+    a { color:#fff;
+        &:hover {  color: $uw-tan-dark; text-decoration: underline; cursor: pointer; }
+    }
 
     p { font-size: 12px !important; }
 
@@ -714,6 +726,14 @@ body, p { font-size: 16px !important; }
         .tribe-address { display: block; }
     }
     .event-content { margin-bottom: 1em; }
+}
+
+
+/*** collapse-o-matic ***/
+
+.isc-collapse { text-align: right; font-size: 13px; }
+.isc-expand { background: #eee !important;
+    p, span { font-size: 16px !important; }
 }
 
 /*** datatables overrides ***/
@@ -947,6 +967,12 @@ $font_family_1: FontAwesome;
         top: 20px;
         left: inherit !important;
     }
+}
+
+// dynamically generating width of the inputs for the
+// contact form, to respond to window size changes
+.wpcf7-form-control-wrap {
+   input, textarea { width: 100% !important; }
 }
 
 /*** uw accordion (user guide body) ***

@@ -23,7 +23,7 @@ get_header();
     </div>
 
     <div class="row">
-        <article class="uw-content col-md-9">
+        <article class="uw-content col-md-9" id="main_content">
 
             <?php log_to_console("template-category-page.php") ?>
 

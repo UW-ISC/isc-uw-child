@@ -34,10 +34,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 				<div class="col-md-4 col-md-offset-8">
 					<div class="isc-homepage-shortcuts hero-header-container">
 
-                        <h1 class="sr-only"><?php wp_title( ' | ', true, 'right' );
-                		bloginfo( 'name' ); ?></h1>
-
-                        <div class="isc-homepage-title"><?php the_title(); ?></div>
+						<h1 class="isc-homepage-title"><?php the_title(); ?></h1>
 						<span class="udub-slant"><span></span></span>
 
 						<h2 class="sr-only">Quicklinks</h2>
@@ -72,11 +69,13 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 						// Query finds the published pages marked featured page and lists their
 						// title and description on a card.
 						$args = array(
-						 'hierarchical' => false,
-						 'post_type'    => 'page',
-						 'post_status' => 'publish',
-						 'meta_key'        => 'isc-featured',
-						 'meta_value'    => 'Homepage',
+						 'hierarchical'	=> false,
+						 'post_type'	=> 'page',
+						 'post_status'	=> 'publish',
+						 'meta_key'	=> 'isc-featured',
+						 'meta_value'	=> 'Homepage',
+						 'sort_column'  => 'post_date',
+						 'sort_order'   => 'desc',
 						);
 
 						$featured = get_pages( $args );
@@ -125,14 +124,14 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 										}
 										?>
 										<p class="isc-homepage-excerpt"><?php echo esc_textarea( $description ); ?></p>
-										<p><a class="uw-btn btn-sm" href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>"><?php echo esc_textarea( $description_text ); ?><span class="sr-only">: <?php echo get_the_title( $featured_page->ID ); ?></span></a></p>
+										<p><a class="uw-btn btn-sm" title="<?php echo get_the_title( $featured_page->ID ); ?>" href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>"><?php echo esc_textarea( $description_text ); ?><span class="sr-only">: <?php echo get_the_title( $featured_page->ID ); ?></span></a></p>
 									</div>
 
 								  </div>
 							  </div>
 								<?php
-							}
-						}
+							}// End foreach().
+						}// End if().
 						?>
 
 						<script>
@@ -178,9 +177,8 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								<h3>
 									<a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo the_title(); ?></a>
 								</h3>
-								<div class="update-date"><?php echo get_the_date() ?></div>
-								<div class="post-content"><?php echo wp_strip_all_tags( get_the_content() ) ?></div>
-								<p><a class="more" href="<?php echo esc_url( get_permalink() ); ?>">Read more</a></p>
+								<div class="update-date"><?php echo get_the_date(); ?></div>
+								<div class="post-content"><?php the_excerpt(); ?></div>
 						<?php
 							endwhile;
 					  else :
@@ -188,15 +186,6 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 					  endif;
 					?>
 					  <div><a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() ) . '/news'?>">See all news</a></div>
-
-					  <script>
-						  $(function(){
-							  $('.isc-homepage-news-content .post-content').succinct({
-								  size: 250
-							  });
-						  });
-					  </script>
-
 				  </div>
 
 				  <!-- end loop -->

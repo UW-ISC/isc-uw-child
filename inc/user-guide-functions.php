@@ -202,7 +202,9 @@ if ( ! function_exists( 'isc_get_all_topics' ) ) :
 				array_push( $topics, $topic );
 			}
 		}
-		return array_unique( $topics );
+		$topics = array_unique( $topics );
+		sort( $topics );
+		return $topics;
 	}
 endif;
 
@@ -219,7 +221,9 @@ if ( ! function_exists( 'isc_get_all_roles' ) ) :
 				array_push( $topics, $role );
 			}
 		}
-		return array_unique( $topics );
+		$topics = array_unique( $topics );
+		sort( $topics );
+		return $topics;
 	}
 endif;
 
@@ -255,11 +259,11 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 			if ( count( $cur->subheaders ) > 0 ) {
 				// This means there are subheaders under the current header.
-				$pages .= '<li class="nav-item has-children" aria-expanded="false"> <a class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
+				$pages .= '<li class="nav-item has-children"><a href="javascript:void(0);" class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
-				foreach ( $cur->subheaders as $subname => $subslug ) {
-					$pages .= '<li class="nav-item"> <a class="nav-link" title="' . stripslashes( $subname ) . '" href="#' . $subslug . '">' . stripslashes( $subname ) . '</a></li>';
+				foreach ( $cur->subheaders as $subslug => $subname ) {
+					$pages .= '<li class="nav-item"><a class="nav-link" title="' . stripslashes( $subname ) . '" href="#' . $subslug . '">' . stripslashes( $subname ) . '</a></li>';
 				}
 				$pages .= '</ul></li>';
 			} else {
@@ -320,17 +324,22 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$type = $header_type[ $i ];
 			$name = wp_strip_all_tags( $header_name[ $i ] );
 			$slug = '';
-			if ( 'h2' === $type ) {
-				$slug = wp_strip_all_tags( strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ) );
-				$current_header = new Header( $name, $slug );
-				array_push( $header_list, $current_header );
-			} elseif ( 'h3' === $type && null !== $current_header ) {
-				$slug = wp_strip_all_tags( strval( count( $header_list ) ) . '-' . sanitize_title( $name ) );
-				$current_header->subheaders[ $name ] = $slug;
+			if ( ! (ctype_space( $name ) || $name === '') ) {
+				if ( 'h2' === $type ) {
+					$slug = wp_strip_all_tags( strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ) );
+					$current_header = new Header( $name, $slug );
+					array_push( $header_list, $current_header );
+				} elseif ( 'h3' === $type && null !== $current_header ) {
+					$slug = wp_strip_all_tags( strval( count( $header_list ) ) . '-' . sanitize_title( $name ) );
+					while ( array_key_exists( $slug, $current_header->subheaders ) ) {
+						$slug .= '-';
+					}
+					$current_header->subheaders[ $slug ] = $name;
+				}
+				$find[]    = $matches['full_tag'][ $i ];
+				$id_attr   = sprintf( ' id="%s"', $slug );
+				$replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $type, $id_attr, $matches['tag_contents'][ $i ] );
 			}
-			$find[]    = $matches['full_tag'][ $i ];
-			$id_attr   = sprintf( ' id="%s"', $slug );
-			$replace[] = sprintf( '%1$s<%2$s%3$s>%4$s</%2$s>', $top, $type, $id_attr, $matches['tag_contents'][ $i ] );
 		}
 
 		$header_count = count( $find );

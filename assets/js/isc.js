@@ -2,6 +2,8 @@
     ISC = {
         search: {
             switchDefault: function() {
+                // Swaps UW to Current Site as the default for searches on mobile.
+                $("#mobile-search-select").val('site');
                 // Swaps UW to Current Site as the default for searches
                 $('#search-labels input[type="radio"]').each(function() {
                     $this = $(this);

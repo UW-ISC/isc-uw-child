@@ -88,10 +88,11 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 					$page       = get_post( $ancestor );
 					$url        = get_permalink( $page->ID );
 					$title_attr = esc_attr( $page->post_title );
+					$title      = esc_html( $page->post_title );
 					if ( ! empty( $class ) ) {
-						$html .= "<li $class><span>{$page->post_title}</span></li>";
+						$html .= "<li $class><span>{$title}</span></li>";
 					} else {
-						$html .= "<li><a href=\"$url\" title=\"{$title_attr}\">{$page->post_title}</a></li>";
+						$html .= "<li><a href=\"$url\" title=\"{$title_attr}\">{$title}</a></li>";
 					}
 				}
 			}

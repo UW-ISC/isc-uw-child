@@ -24,7 +24,7 @@ get_header();
 
     <div class="row" id="top">
 
-        <article id='main_content' class="uw-body-copy col-md-9" tabindex="-1">
+        <article id='main_content' class="uw-body-copy col-md-9" tabindex="-1" id="main_content">
 
             <?php log_to_console("template-article-page.php") ?>
 

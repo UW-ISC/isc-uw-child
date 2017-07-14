@@ -24,8 +24,8 @@ get_header();
 
 					<form method="get" id="searchform" class="searchform" action="<?php echo esc_url( get_site_url() ); ?>">
 						<div role="search">
-							<label class="screen-reader-text" for="s">Search for:</label>
-							<input type="text" value="" name="s" id="s" placeholder="Search for:" autocomplete="off">
+							<label class="screen-reader-text" for="s">Search the ISC:</label>
+							<input type="text" value="" name="s" id="s" placeholder="Search the ISC:" autocomplete="off">
 							<input type="submit" id="searchsubmit" value="Search">
 						</div>
 					</form>
@@ -75,7 +75,7 @@ get_header();
 										  ),
 									  ),
 									  'posts_per_page' => 5,
-									  'post_status' => 'published',
+									  'post_status' => 'publish',
 							 );
 							 $category_posts = new WP_Query( $args );
 
@@ -110,16 +110,17 @@ get_header();
 				  <div class='post-content isc-events'>
 					<?php
 					if ( function_exists( 'tribe_get_events' ) ) {
-						$event = tribe_get_events(
+						$events = tribe_get_events(
 							array(
 							'posts_per_page' => 1,
-							'start_date' => date( 'Y-m-d H:i:s' ),
+							'post_status' => 'publish',
+							'start_date' => date( 'Y-m-d' ),
 							)
 						);
-						if ( empty( $event ) ) {
+						if ( empty( $events ) ) {
 							echo 'No events found.';
 						} else {
-							$current = $event[0];
+							$current = $events[0];
 							$title = $current->post_title;
 							$html = '<h4><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h4>';
 							$html .= "<div class='event-date'>" . tribe_get_start_date( $current ) . '</div>';
@@ -154,7 +155,7 @@ get_header();
 				  </div>
 
 					<?php
-					if ( ! empty( $event ) ) {
+					if ( ! empty( $events ) ) {
 						// we only want to show the See All Events button if a future event exists.
 						$events_url = get_site_url() . '/events/';
 						echo '<a class="uw-btn btn-sm" href="' . esc_url( $events_url ) . '"?>See All Events</a>';
@@ -179,7 +180,7 @@ get_header();
 							echo '<p>No featured seasonal topics found.</p>';
 						} else {
 							foreach ( $seasonal_featured as $featured_page ) {
-								$html = '<h4><a href="' . get_post_permalink( $featured_page->ID ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
+								$html = '<h4><a href="' . esc_url(get_post_permalink( $featured_page->ID )) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
 								$html .= "<p style='margin-bottom:1.5em;'>";
 								$custom = get_post_custom( $featured_page->ID );
 								$description = $custom['isc-featured-description'][0];
