@@ -35,7 +35,7 @@
 			  <script>
 			  $(function(){
 				 $("a:contains('Sign in to Workday')").addClass("work-day-link");
-                 $("a:contains('Sign in to Workday')").attr('target', '_blank');
+				 $("a:contains('Sign in to Workday')").attr('target', '_blank');
 			  });
 			  </script>
 
@@ -78,11 +78,11 @@ if ( $alert_news_posts ) :
 	$alert_news_post = $alert_news_posts[0] ?>
 	<div id="uwalert-alert-message" class="advisories  uwalert-steel">
 		<div class="container">
-			<h1><?php echo get_the_title($alert_news_post); ?></h1>
+			<h1><?php echo get_the_title( $alert_news_post ); ?></h1>
 			<p></p>
-			<p><?php echo get_post_field('post_content', $alert_news_post->ID); ?></p>
+			<p><?php echo get_post_field( 'post_content', $alert_news_post->ID ); ?></p>
 			<p></p>
-			<a class="more" href="<?php echo get_post_permalink($alert_news_post->ID); ?>" title="More Info">More Info</a>
+			<a class="more" href="<?php echo get_post_permalink( $alert_news_post->ID ); ?>" title="More Info">More Info</a>
 		</div>
 	</div>
 <?php endif; ?>
