@@ -65,21 +65,24 @@
 </header>
 
 <?php
-$args = array(
+$alert_args = array(
+	'hierarchical' => false,
 	'posts_per_page' => '1',
 	'post_status'	=> 'publish',
 	'meta_key'		=> 'isc_alert',
+	'meta_value'    => 1,
 );
-$news_post = new WP_Query( $args );
+$alert_news_posts = get_posts( $alert_args );
 
-if ( $news_post->have_posts() ) :
-	$news_post->the_post(); ?>
+if ( $alert_news_posts ) :
+	$alert_news_post = $alert_news_posts[0] ?>
 	<div id="uwalert-alert-message" class="advisories  uwalert-steel">
 		<div class="container">
-			<h1><?php the_title(); ?></h1>
+			<h1><?php echo get_the_title($alert_news_post); ?></h1>
 			<p></p>
-			<p><?php the_excerpt(); ?></p>
+			<p><?php echo get_post_field('post_content', $alert_news_post->ID); ?></p>
 			<p></p>
+			<a class="more" href="<?php echo get_post_permalink($alert_news_post->ID); ?>" title="More Info">More Info</a>
 		</div>
 	</div>
 <?php endif; ?>
