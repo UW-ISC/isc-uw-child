@@ -501,6 +501,8 @@ body, p { font-size: 16px !important; }
             box-shadow: 0 0 4px rgba(164,164,164,.5);
             margin-bottom: 30px;
             min-height: 532px;
+            position: relative;
+            z-index: 5;
 
             h3 { margin-top: 0; }
             .post-content { margin-bottom: 0; }
