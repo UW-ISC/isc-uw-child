@@ -472,7 +472,7 @@ body, p { font-size: 16px !important; }
 
     .isc-homepage-featured {
         @include desktop  { margin-top: -90px; };
-        .isc-homepage-card { background: $uw-tan-light; margin-bottom: 30px;
+        .isc-homepage-card { background: $uw-tan-light; margin-bottom: 30px; position: relative; z-index: 5;
 
             .isc-homepage-image {
                 height:160px;
@@ -501,6 +501,8 @@ body, p { font-size: 16px !important; }
             box-shadow: 0 0 4px rgba(164,164,164,.5);
             margin-bottom: 30px;
             min-height: 532px;
+            position: relative;
+            z-index: 5;
 
             h3 { margin-top: 0; }
             .post-content { margin-bottom: 0; }
@@ -732,10 +734,6 @@ body, p { font-size: 16px !important; }
 /*** collapse-o-matic ***/
 
 .isc-collapse { text-align: right; font-size: 13px; }
-
-.isc-expand { background: #eee !important;
-    p, span { font-size: 16px !important; }
-}
 
 /*** custom collapse ***/
 .isc-expander { background: #eee !important; margin-top: 10px; padding: 10px 16px;
