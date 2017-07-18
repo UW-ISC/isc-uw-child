@@ -738,15 +738,15 @@ body, p { font-size: 16px !important; }
 }
 
 /*** custom collapse ***/
-.isc-expander { background: #eee !important; margin-top: 10px; padding: 16px;
+.isc-expander { background: #eee !important; margin-top: 10px; padding: 10px 16px;
 
-    a {
+    a[role=button] {
         color: #4b2e83;
         font-weight: bold;
         font-size: 18px;
         background-image: none;
         display: block;
-        line-height: 32px;
+        border-bottom: none !important;
 
         &:after {
             font-family: FontAwesome;
@@ -764,7 +764,13 @@ body, p { font-size: 16px !important; }
         content: "\f077";
     }
 
-    .isc-expander-content { padding: 0; font-size: 16px !important; }
+    .isc-expander-content { padding: 0; font-size: 16px !important; overflow: hidden;
+        p, span { font-size: 16px !important; }
+    }
+
+    .isc-expander-inner {
+        padding-top: 8px;
+    }
 }
 
 /*** datatables overrides ***/
