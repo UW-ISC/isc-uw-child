@@ -135,18 +135,6 @@ get_header();
 
 			</script>
 
-
-            <div class="isc-expand">
-
-                <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Link with href
-</a>
-                <div class="collapse in" id="collapseExample" style="overflow:hidden !important;">
-                        ajsdflfklads alskdfjal skdjflaks dfjals;kjasdflkj akl;fdsa
-                        ;lasdkf;l asd;lfk al sadlfkj lksjadf lksajdf lk asldkfj lk asldkf ;kjasdfl lkasj
-                </div>
-            </div>
-
 		</div>
 
 </section>

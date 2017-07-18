@@ -732,8 +732,39 @@ body, p { font-size: 16px !important; }
 /*** collapse-o-matic ***/
 
 .isc-collapse { text-align: right; font-size: 13px; }
+
 .isc-expand { background: #eee !important;
     p, span { font-size: 16px !important; }
+}
+
+/*** custom collapse ***/
+.isc-expander { background: #eee !important; margin-top: 10px; padding: 16px;
+
+    a {
+        color: #4b2e83;
+        font-weight: bold;
+        font-size: 18px;
+        background-image: none;
+        display: block;
+        line-height: 32px;
+
+        &:after {
+            font-family: FontAwesome;
+            right: -10px;
+            position: relative;
+        }
+
+    }
+
+    a.collapsed:after {
+        content: "\f078";
+    }
+
+    a.expanded:after {
+        content: "\f077";
+    }
+
+    .isc-expander-content { padding: 0; font-size: 16px !important; }
 }
 
 /*** datatables overrides ***/
