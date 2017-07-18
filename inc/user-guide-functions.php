@@ -355,3 +355,32 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 	update_post_meta( get_the_ID(), 'isc_anchor_links', $header_list );
 	return $content;
 }
+
+/**
+ * ISC Expand Shortcode
+ */
+// Add Shortcode
+function isc_expander( $atts , $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'title' => 'replace this text w/ descriptive title',
+			'alt' => 'same text as title',
+		),
+		$atts
+	);
+
+	static $i = 1;
+	
+	$out = '<div class="isc-expander">
+		<a role="button" data-toggle="collapse" class="expanded" title="' . $atts['alt'] . '" href="#isc_expand_' . $i . '" aria-expanded="false" aria-controls="isc_expand_' . $i . '">' . $atts['title'] . '</a>
+		<div class="collapse in isc-expander-content" id="isc_expand_' . $i . '">'. $content . '</div>
+	</div>';
+
+	$i++;
+	
+	return $out;
+
+}
+add_shortcode( 'expand', 'isc_expander' );
