@@ -472,7 +472,7 @@ body, p { font-size: 16px !important; }
 
     .isc-homepage-featured {
         @include desktop  { margin-top: -90px; };
-        .isc-homepage-card { background: $uw-tan-light; margin-bottom: 30px;
+        .isc-homepage-card { background: $uw-tan-light; margin-bottom: 30px; position: relative; z-index: 5;
 
             .isc-homepage-image {
                 height:160px;
