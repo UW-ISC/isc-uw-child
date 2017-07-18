@@ -65,38 +65,47 @@ get_header();
 				// collapse-o-matic plugin overrides
 				$(".isc-expand").before( "<div class='isc-collapse'><a href='#' onclick='return false;' class='collapseall' title='Hide all collapsible page content' role='button'>Collapse All</a><a href='#' onclick='return false;' class='expandall' style='display:none;' title='Show all hidden page content' role='button'>Expand All</a></div>" );
 
-				$(".isc-expand a").each(function() {
+                // set initial aria state
+				$(".collapseomatic").each(function() {
 					// add a11y stuff
 					$(this).attr('role', 'button');
 					$(this).attr('aria-controls', 'target-' + $(this).attr('id'));
+
+                    // if expanded (colomat-close)... set to true, else false
+                    if ($( this).hasClass( "colomat-close" ) ) {
+                        $(this).attr('aria-expanded', 'true');
+                    }
+                    else {
+                        $(this).attr('aria-expanded', 'false');
+                    }
+
 				});
 
-				// set aria initial state based to be false if collapsed
-				$(".collapseomatic").each(function() {
-					$(this).attr('aria-expanded', 'false');
-				});
-
-				// if expanded, set aria initial state to be true
-				$(".colomat-close").each(function() {
-					$(this).attr('aria-expanded', 'true');
-				});
 
 				// update state when clicked
-				$(".isc-expand a").on( "click", function() {
-					console.log("clicked");
 
-					// get the previous state of the container
-					if($(this).next("div").css('display') == 'none')
-					{
-						//console.log("now being shown " + $(this).attr('id'));
-						$(this).attr('aria-expanded', 'true');
-					}
-					else {
-						//console.log("going to be hidden " + $(this).attr('id'))
-						$(this).attr('aria-expanded', 'false');
-					}
+				$(".collapseomatic").on( "click", function() {
+
+
+                    if ($( this).hasClass( "colomat-close" ) ) {
+
+                        console.log("going to close");
+                        $(this).attr('aria-expanded', 'false');
+                    }
+                    else {
+                        console.log("going to open");
+                        $(this).attr('aria-expanded', 'true');
+                    }
+
 
 				});
+
+
+                $(".isc-expand a").on( "show", function() {
+                    console.log("sadhfkjasdlfj");
+                    $(this).attr('aria-expanded', 'true');
+                });
+
 
 				// handle expandall and collapseall
 				$(".collapseall").on( "click", function() {
@@ -125,6 +134,18 @@ get_header();
 			});
 
 			</script>
+
+
+            <div class="isc-expand">
+
+                <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Link with href
+</a>
+                <div class="collapse in" id="collapseExample" style="overflow:hidden !important;">
+                        ajsdflfklads alskdfjal skdjflaks dfjals;kjasdflkj akl;fdsa
+                        ;lasdkf;l asd;lfk al sadlfkj lksjadf lksajdf lk asldkfj lk asldkf ;kjasdfl lkasj
+                </div>
+            </div>
 
 		</div>
 
