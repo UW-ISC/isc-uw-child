@@ -137,7 +137,7 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
  */
 function isc_allowedtags() {
 	// Add custom tags to this string.
-	   return '<strong>,<em>,<li>';
+	return '<strong>,<em>,<li>';
 }
 
 if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
@@ -146,10 +146,12 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 	 *
 	 * @param string $isc_excerpt string HTML representing trimmed content of the Page.
 	 */
-	function isc_custom_wp_trim_excerpt( $raw_excerpt ) {
+	function isc_custom_wp_trim_excerpt( $isc_excerpt ) {
 		global $post;
-		$isc_excerpt = $raw_excerpt;
-		if ( '' !== $isc_excerpt ) {
+		$raw_excerpt = $isc_excerpt;
+		if ( '' === $isc_excerpt ) {
+
+			$isc_excerpt = get_the_content( '' );
 			$isc_excerpt = strip_shortcodes( $isc_excerpt );
 			$isc_excerpt = apply_filters( 'the_content', $isc_excerpt );
 			$isc_excerpt = str_replace( ']]>', ']]&gt;', $isc_excerpt );
@@ -166,31 +168,31 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 			preg_match_all( '/(<[^>]+>|[^<>\s]+)\s*/u', $isc_excerpt, $tokens );
 
 			foreach ( $tokens[0] as $token ) {
-
 				if ( $count >= $excerpt_word_count && preg_match( '/[\,\;\?\.\!]\s*$/uS', $token ) ) {
 					// Limit reached, continue until , ; ? . or ! occur at the end.
 					$excerptOutput .= trim( $token );
 					break;
 				}
-
 				// Add words to complete sentence.
 				$count++;
-
 				// Append what's left of the token.
 				$excerptOutput .= $token;
 			}
 
 			$isc_excerpt = trim( force_balance_tags( $excerptOutput ) );
-			$isc_excerpt .= isc_excerpt_more(''); /*Add read more in new paragraph */
+			$excerpt_end = '';
+			$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
+			$isc_excerpt .= $excerpt_end; /*Add read more in new paragraph */
+			return $isc_excerpt;
 
-		}
-		return $isc_excerpt;
+		}// End if().
+		return apply_filters( 'isc_custom_wp_trim_excerpt', $isc_excerpt, $raw_excerpt );
 	}
 
 endif;
 
-remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
-add_filter( 'get_the_excerpt', 'isc_custom_wp_trim_excerpt' );
+	remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
+	add_filter( 'get_the_excerpt', 'isc_custom_wp_trim_excerpt' );
 
 /**
  * Used for mobile navigation.
