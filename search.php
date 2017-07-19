@@ -38,7 +38,7 @@ get_header(); ?>
 				if ( have_posts() ) {
 					while ( have_posts() ) : the_post();?>
 						<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
-						<div class='post-content'><?php the_excerpt() ?></div>
+						<div class='post-content'><?php echo isc_custom_wp_trim_excerpt(get_the_content()) ?></div>
 						<?php
 						$i++;
 					endwhile;

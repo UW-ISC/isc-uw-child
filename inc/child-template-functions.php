@@ -137,7 +137,7 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
  */
 function isc_allowedtags() {
 	// Add custom tags to this string.
-	   return '<strong>,<em>';
+	   return '<strong>,<em>,<li>';
 }
 
 if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
@@ -146,26 +146,24 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 	 *
 	 * @param string $isc_excerpt string HTML representing trimmed content of the Page.
 	 */
-	function isc_custom_wp_trim_excerpt( $isc_excerpt ) {
+	function isc_custom_wp_trim_excerpt( $raw_excerpt ) {
 		global $post;
-		$raw_excerpt = $isc_excerpt;
-		if ( '' === $isc_excerpt ) {
-
-			$isc_excerpt = get_the_content( '' );
+		$isc_excerpt = $raw_excerpt;
+		if ( '' !== $isc_excerpt ) {
 			$isc_excerpt = strip_shortcodes( $isc_excerpt );
 			$isc_excerpt = apply_filters( 'the_content', $isc_excerpt );
 			$isc_excerpt = str_replace( ']]>', ']]&gt;', $isc_excerpt );
 			$isc_excerpt = strip_tags( $isc_excerpt, isc_allowedtags() ); /*IF you need to allow just certain tags. Delete if all tags are allowed */
 
 			// Set the excerpt word count and only break after sentence is complete.
-				$excerpt_word_count = 55;
-				$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
-				$tokens = array();
-				$excerptOutput = '';
-				$count = 0;
+			$excerpt_word_count = 55;
+			$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
+			$tokens = array();
+			$excerptOutput = '';
+			$count = 0;
 
-				// Divide the string into tokens; HTML tags, or words, followed by any whitespace.
-				preg_match_all( '/(<[^>]+>|[^<>\s]+)\s*/u', $isc_excerpt, $tokens );
+			// Divide the string into tokens; HTML tags, or words, followed by any whitespace.
+			preg_match_all( '/(<[^>]+>|[^<>\s]+)\s*/u', $isc_excerpt, $tokens );
 
 			foreach ( $tokens[0] as $token ) {
 
@@ -183,21 +181,16 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 			}
 
 			$isc_excerpt = trim( force_balance_tags( $excerptOutput ) );
+			$isc_excerpt .= isc_excerpt_more(''); /*Add read more in new paragraph */
 
-				$excerpt_end = '';
-				$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
-				$isc_excerpt .= $excerpt_end; /*Add read more in new paragraph */
-
-			return $isc_excerpt;
-
-		}// End if().
-		return apply_filters( 'isc_custom_wp_trim_excerpt', $isc_excerpt, $raw_excerpt );
+		}
+		return $isc_excerpt;
 	}
 
 endif;
 
-	remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
-	add_filter( 'get_the_excerpt', 'isc_custom_wp_trim_excerpt' );
+remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
+add_filter( 'get_the_excerpt', 'isc_custom_wp_trim_excerpt' );
 
 /**
  * Used for mobile navigation.
