@@ -11,10 +11,10 @@ get_header();
 	  $sidebar = get_post_meta( $post->ID, 'sidebar' );
 	  $seasonal = get_post_meta( $post->ID ); ?>
 
-		<?php uw_site_title(); ?>
-		<?php get_template_part( 'menu', 'mobile' ); ?>
-
 <div role="main">
+
+	<?php uw_site_title(); ?>
+	<?php get_template_part( 'menu', 'mobile' ); ?>
 
 	<div class="isc-admin-hero">
 		<div class="container">

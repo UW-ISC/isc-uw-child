@@ -11,40 +11,44 @@ get_header();
 	  $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
 	  $sidebar = get_post_meta( $post->ID, 'sidebar' );   ?>
 
-<?php uw_site_title(); ?>
-<?php get_template_part( 'menu', 'mobile' ); ?>
+<div role="main">
 
-<div class="container uw-body" role="main">
+    <?php uw_site_title(); ?>
+    <?php get_template_part( 'menu', 'mobile' ); ?>
 
-	<div class="row">
-		<div class="col-md-12">
-			<?php get_template_part( 'breadcrumbs' ); ?>
-		</div>
-	</div>
+    <div class="container uw-body">
 
-	<div class="row">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<?php get_template_part( 'breadcrumbs' ); ?>
+    		</div>
+    	</div>
 
-	<div class="uw-content col-md-9">
+    	<div class="row">
 
-		<div id='main_content' class="uw-body-copy" tabindex="-1">
+        	<div class="uw-content col-md-9">
 
-			<?php log_to_console( 'index.php' ) ?>
+        		<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-			<h1><?php echo get_the_title( get_option( 'page_for_posts', true ) );?></h1>
+        			<?php log_to_console( 'index.php' ) ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+        			<h1><?php echo get_the_title( get_option( 'page_for_posts', true ) );?></h1>
 
-				<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
-				<div class="update-date"><?php echo get_the_date() ?> </div>
-				<div class='post-content'><?php the_excerpt() ?></div>
+        			<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php endwhile ?>
+        				<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
+        				<div class="update-date"><?php echo get_the_date() ?> </div>
+        				<div class='post-content'><?php the_excerpt() ?></div>
 
-		</div>
+        			<?php endwhile ?>
 
-	</div>
+        		</div>
 
-	</div>
+        	</div>
+
+    	</div>
+
+    </div>
 
 </div>
 

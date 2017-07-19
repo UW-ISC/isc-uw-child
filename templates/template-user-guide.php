@@ -13,10 +13,12 @@
 get_header();
 ?>
 
-<?php uw_site_title(); ?>
-<?php get_template_part( 'menu', 'mobile' ); ?>
+<div role="main">
 
-<section class="uw-body container" id="toc" role="main">
+    <?php uw_site_title(); ?>
+    <?php get_template_part( 'menu', 'mobile' ); ?>
+
+    <section class="uw-body container" id="toc">
 
 		<div class="row">
 			<div class="col-md-12">
@@ -137,6 +139,8 @@ get_header();
 
 		</div>
 
-</section>
+    </section>
+
+</div>
 
 <?php get_footer();
