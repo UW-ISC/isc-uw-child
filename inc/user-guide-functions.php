@@ -347,7 +347,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$pos = strpos( $content, $find[ $i ] );
 			if ( false !== $pos ) {
 					// replacing only the first instance that we find (in case of duplicate headers/subheaders).
-			    $content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
+				$content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
 			}
 		}
 	}// End if().
@@ -355,3 +355,32 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 	update_post_meta( get_the_ID(), 'isc_anchor_links', $header_list );
 	return $content;
 }
+
+/**
+ * ISC Expand Shortcode
+ */
+// Add Shortcode
+function isc_expander( $atts, $content = null ) {
+
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'title' => 'replace this text w/ descriptive title',
+			'alt' => 'same text as title',
+		),
+		$atts
+	);
+
+	static $i = 1;
+
+	$out = '<div class="isc-expander">
+		<a role="button" data-toggle="collapse" class="expanded" title="' . $atts['alt'] . '" href="#isc_expand_' . $i . '" aria-expanded="true" aria-controls="isc_expand_' . $i . '">' . $atts['title'] . '</a>
+		<div class="collapse in isc-expander-content" id="isc_expand_' . $i . '"><div  class="isc-expander-inner">' . $content . '</div></div>
+	</div>';
+
+	$i++;
+
+	return $out;
+
+}
+add_shortcode( 'expand', 'isc_expander' );
