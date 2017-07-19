@@ -347,7 +347,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$pos = strpos( $content, $find[ $i ] );
 			if ( false !== $pos ) {
 					// replacing only the first instance that we find (in case of duplicate headers/subheaders).
-			    $content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
+				$content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
 			}
 		}
 	}// End if().
@@ -360,7 +360,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
  * ISC Expand Shortcode
  */
 // Add Shortcode
-function isc_expander( $atts , $content = null ) {
+function isc_expander( $atts, $content = null ) {
 
 	// Attributes
 	$atts = shortcode_atts(
