@@ -14,7 +14,7 @@
 	<div class="container">
 
 		<div class="pull-left isc-logo">
-			  <a href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><?php  bloginfo( 'name' ); ?></a>
+			  <a aria-hidden="true" href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><?php  bloginfo( 'name' ); ?></a>
 		</div>
 
 	</div>
