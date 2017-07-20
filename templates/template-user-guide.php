@@ -15,10 +15,10 @@ get_header();
 
 <div role="main">
 
-    <?php uw_site_title(); ?>
-    <?php get_template_part( 'menu', 'mobile' ); ?>
+	<?php uw_site_title(); ?>
+	<?php get_template_part( 'menu', 'mobile' ); ?>
 
-    <section class="uw-body container" id="toc">
+	<section class="uw-body container" id="toc">
 
 		<div class="row">
 			<div class="col-md-12">
@@ -67,19 +67,19 @@ get_header();
 				// collapse-o-matic plugin overrides
 				$(".isc-expand").before( "<div class='isc-collapse'><a href='#' onclick='return false;' class='collapseall' title='Hide all collapsible page content' role='button'>Collapse All</a><a href='#' onclick='return false;' class='expandall' style='display:none;' title='Show all hidden page content' role='button'>Expand All</a></div>" );
 
-                // set initial aria state
+				// set initial aria state
 				$(".collapseomatic").each(function() {
 					// add a11y stuff
 					$(this).attr('role', 'button');
 					$(this).attr('aria-controls', 'target-' + $(this).attr('id'));
 
-                    // if expanded (colomat-close)... set to true, else false
-                    if ($( this).hasClass( "colomat-close" ) ) {
-                        $(this).attr('aria-expanded', 'true');
-                    }
-                    else {
-                        $(this).attr('aria-expanded', 'false');
-                    }
+					// if expanded (colomat-close)... set to true, else false
+					if ($( this).hasClass( "colomat-close" ) ) {
+						$(this).attr('aria-expanded', 'true');
+					}
+					else {
+						$(this).attr('aria-expanded', 'false');
+					}
 
 				});
 
@@ -89,24 +89,24 @@ get_header();
 				$(".collapseomatic").on( "click", function() {
 
 
-                    if ($( this).hasClass( "colomat-close" ) ) {
+					if ($( this).hasClass( "colomat-close" ) ) {
 
-                        console.log("going to close");
-                        $(this).attr('aria-expanded', 'false');
-                    }
-                    else {
-                        console.log("going to open");
-                        $(this).attr('aria-expanded', 'true');
-                    }
+						console.log("going to close");
+						$(this).attr('aria-expanded', 'false');
+					}
+					else {
+						console.log("going to open");
+						$(this).attr('aria-expanded', 'true');
+					}
 
 
 				});
 
 
-                $(".isc-expand a").on( "show", function() {
-                    console.log("sadhfkjasdlfj");
-                    $(this).attr('aria-expanded', 'true');
-                });
+				$(".isc-expand a").on( "show", function() {
+					console.log("sadhfkjasdlfj");
+					$(this).attr('aria-expanded', 'true');
+				});
 
 
 				// handle expandall and collapseall
@@ -139,7 +139,7 @@ get_header();
 
 		</div>
 
-    </section>
+	</section>
 
 </div>
 
