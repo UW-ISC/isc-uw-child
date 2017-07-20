@@ -4,6 +4,8 @@
  *
  * A full-width template, that displays the description of a specific category
  * as well as listing the children pages within it
+ *
+ * @package isc-uw-child
  */
 
 get_header();
