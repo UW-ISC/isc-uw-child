@@ -5,6 +5,7 @@
  * A full-width template, that displays the description of a specific article
  *
  * @author Abhishek Chauhan <abhi3@uw.edu>
+ * @package isc-uw-child
  */
 
 get_header();
@@ -32,7 +33,7 @@ get_header();
 				<?php
 				while ( have_posts() ) : the_post();
 					isc_title();
-					// echoing the tags
+					// Echoing the tags.
 					echo isc_get_tags( get_queried_object() );
 					the_content();
 					edit_post_link();
