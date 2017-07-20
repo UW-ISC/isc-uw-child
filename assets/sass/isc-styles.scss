@@ -308,7 +308,7 @@ body, p { font-size: 16px !important; }
         @include desktop { margin: 0 0 20px 0; padding:0; color:$uw-purple; }
     }
 
-    .hero-header-container { padding: 10px; z-index: 999; position: relative;
+    .hero-header-container { padding: 10px; z-index: 2; position: relative;
 
         @include tablet { padding: 30px; }
         @include desktop {
@@ -472,7 +472,7 @@ body, p { font-size: 16px !important; }
 
     .isc-homepage-featured {
         @include desktop  { margin-top: -90px; };
-        .isc-homepage-card { background: $uw-tan-light; margin-bottom: 30px;
+        .isc-homepage-card { background: $uw-tan-light; margin-bottom: 30px; position: relative; z-index: 5;
 
             .isc-homepage-image {
                 height:160px;
@@ -501,6 +501,8 @@ body, p { font-size: 16px !important; }
             box-shadow: 0 0 4px rgba(164,164,164,.5);
             margin-bottom: 30px;
             min-height: 532px;
+            position: relative;
+            z-index: 5;
 
             h3 { margin-top: 0; }
             .post-content { margin-bottom: 0; }
@@ -732,8 +734,41 @@ body, p { font-size: 16px !important; }
 /*** collapse-o-matic ***/
 
 .isc-collapse { text-align: right; font-size: 13px; }
-.isc-expand { background: #eee !important;
-    p, span { font-size: 16px !important; }
+
+/*** custom collapse ***/
+.isc-expander { background: #eee !important; margin-top: 10px; padding: 10px 16px;
+
+    a[role=button] {
+        color: #4b2e83;
+        font-weight: bold;
+        font-size: 18px;
+        background-image: none;
+        display: block;
+        border-bottom: none !important;
+
+        &:after {
+            font-family: FontAwesome;
+            right: -10px;
+            position: relative;
+        }
+
+    }
+
+    a.collapsed:after {
+        content: "\f078";
+    }
+
+    a.expanded:after {
+        content: "\f077";
+    }
+
+    .isc-expander-content { padding: 0; font-size: 16px !important; overflow: hidden;
+        p, span { font-size: 16px !important; }
+    }
+
+    .isc-expander-inner {
+        padding-top: 8px;
+    }
 }
 
 /*** datatables overrides ***/

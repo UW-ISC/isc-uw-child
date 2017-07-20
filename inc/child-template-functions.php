@@ -137,7 +137,7 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
  */
 function isc_allowedtags() {
 	// Add custom tags to this string.
-	   return '<strong>,<em>';
+	return '<strong>,<em>,<li>';
 }
 
 if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
@@ -158,36 +158,31 @@ if ( ! function_exists( 'isc_custom_wp_trim_excerpt' ) ) :
 			$isc_excerpt = strip_tags( $isc_excerpt, isc_allowedtags() ); /*IF you need to allow just certain tags. Delete if all tags are allowed */
 
 			// Set the excerpt word count and only break after sentence is complete.
-				$excerpt_word_count = 55;
-				$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
-				$tokens = array();
-				$excerptOutput = '';
-				$count = 0;
+			$excerpt_word_count = 55;
+			$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
+			$tokens = array();
+			$excerptOutput = '';
+			$count = 0;
 
-				// Divide the string into tokens; HTML tags, or words, followed by any whitespace.
-				preg_match_all( '/(<[^>]+>|[^<>\s]+)\s*/u', $isc_excerpt, $tokens );
+			// Divide the string into tokens; HTML tags, or words, followed by any whitespace.
+			preg_match_all( '/(<[^>]+>|[^<>\s]+)\s*/u', $isc_excerpt, $tokens );
 
 			foreach ( $tokens[0] as $token ) {
-
 				if ( $count >= $excerpt_word_count && preg_match( '/[\,\;\?\.\!]\s*$/uS', $token ) ) {
 					// Limit reached, continue until , ; ? . or ! occur at the end.
 					$excerptOutput .= trim( $token );
 					break;
 				}
-
 				// Add words to complete sentence.
 				$count++;
-
 				// Append what's left of the token.
 				$excerptOutput .= $token;
 			}
 
 			$isc_excerpt = trim( force_balance_tags( $excerptOutput ) );
-
-				$excerpt_end = '';
-				$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
-				$isc_excerpt .= $excerpt_end; /*Add read more in new paragraph */
-
+			$excerpt_end = '';
+			$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
+			$isc_excerpt .= $excerpt_end; /*Add read more in new paragraph */
 			return $isc_excerpt;
 
 		}// End if().
@@ -213,7 +208,7 @@ if ( ! function_exists( 'uw_site_title' ) ) :
 		if ( get_option( 'overly_long_title' ) ) {
 			$classes .= ' long-title';
 		}
-		echo '<a aria-hidden="true" href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo() ) . '"><div class="' . esc_attr( $classes ) . '">' . get_bloginfo() . '</div></a>';
+		echo '<a href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo() ) . '"><div class="' . esc_attr( $classes ) . '">' . get_bloginfo() . '</div></a>';
 	}
 
 endif;
