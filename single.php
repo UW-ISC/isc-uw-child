@@ -12,51 +12,51 @@ get_header();
 
 <div role="main">
 
-    <?php uw_site_title(); ?>
-    <?php get_template_part( 'menu', 'mobile' ); ?>
+	<?php uw_site_title(); ?>
+	<?php get_template_part( 'menu', 'mobile' ); ?>
 
-    <div class="container uw-body">
+	<div class="container uw-body">
 
-    	<div class="row">
-    		<div class="col-md-12">
-    			<?php get_template_part( 'breadcrumbs' ); ?>
-    		</div>
-    	</div>
+		<div class="row">
+			<div class="col-md-12">
+				<?php get_template_part( 'breadcrumbs' ); ?>
+			</div>
+		</div>
 
-    	<div class="row">
+		<div class="row">
 
-        	<div class="uw-content col-md-9">
+			<div class="uw-content col-md-9">
 
-        		<div id='main_content' class="uw-body-copy" tabindex="-1">
+				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-        			<?php log_to_console( 'single.php' ) ?>
+					<?php log_to_console( 'single.php' ) ?>
 
-        			<?php isc_title(); ?>
+					<?php isc_title(); ?>
 
-        			<div class="update-date"><?php echo get_the_date() ?></div>
-        			<div class="post-content">
-        				<?php
-        				  // Start the Loop.
-        				while ( have_posts() ) : the_post();
+					<div class="update-date"><?php echo get_the_date() ?></div>
+					<div class="post-content">
+						<?php
+						  // Start the Loop.
+						while ( have_posts() ) : the_post();
 
-        					the_content();
+							the_content();
 
-        					// If comments are open or we have at least one comment, load up the comment template.
-        					if ( comments_open() || get_comments_number() ) {
-        						comments_template();
-        					}
+							// If comments are open or we have at least one comment, load up the comment template.
+							if ( comments_open() || get_comments_number() ) {
+								comments_template();
+							}
 
-        				endwhile;
-        				?>
-        			</div>
+						endwhile;
+						?>
+					</div>
 
-        		</div>
+				</div>
 
-        	</div>
+			</div>
 
-    	</div>
+		</div>
 
-    </div>
+	</div>
 
 </div>
 
