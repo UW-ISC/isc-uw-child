@@ -180,7 +180,7 @@ get_header();
 							echo '<p>No featured seasonal topics found.</p>';
 						} else {
 							foreach ( $seasonal_featured as $featured_page ) {
-								$html = '<h4><a href="' . esc_url(get_post_permalink( $featured_page->ID )) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
+								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
 								$html .= "<p style='margin-bottom:1.5em;'>";
 								$custom = get_post_custom( $featured_page->ID );
 								$description = $custom['isc-featured-description'][0];
