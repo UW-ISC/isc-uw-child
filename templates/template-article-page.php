@@ -6,6 +6,7 @@
  * as well as listing the children pages within it
  *
  * @author Abhishek Chauhan <abhi3@uw.edu>
+ * @package isc-uw-child
  */
 
 get_header();
