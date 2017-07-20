@@ -12,45 +12,45 @@ get_header();
 
 <div role="main">
 
-    <?php uw_site_title(); ?>
-    <?php get_template_part( 'menu', 'mobile' ); ?>
+	<?php uw_site_title(); ?>
+	<?php get_template_part( 'menu', 'mobile' ); ?>
 
-    <div class="container uw-body">
+	<div class="container uw-body">
 
-    	<div class="row">
-    		<div class="col-md-12">
-    			<?php get_template_part( 'breadcrumbs' ); ?>
-    		</div>
-    	</div>
+		<div class="row">
+			<div class="col-md-12">
+				<?php get_template_part( 'breadcrumbs' ); ?>
+			</div>
+		</div>
 
-    	<div class="row">
+		<div class="row">
 
-        	<div class="uw-content col-md-9">
+			<div class="uw-content col-md-9">
 
-        		<div id='main_content' class="uw-body-copy" tabindex="-1">
+				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-        			<?php log_to_console( 'single-glossary.php' ) ?>
+					<?php log_to_console( 'single-glossary.php' ) ?>
 
-        			<?php isc_title(); ?>
+					<?php isc_title(); ?>
 
-        			<div>
-        				<?php
-        				if ( have_posts() ) :
-        					while ( have_posts() ) : the_post(); ?>
-        						<div class='post-content'><?php the_content() ?></div>
-        					<?php endwhile;
-        				  else :
-        						echo '<h2 class=\'no-results\'>Sorry, no results matched your criteria.</h2>';
-        				  endif; ?>
-        			</div>
+					<div>
+						<?php
+						if ( have_posts() ) :
+							while ( have_posts() ) : the_post(); ?>
+								<div class='post-content'><?php the_content() ?></div>
+							<?php endwhile;
+						  else :
+								echo '<h2 class=\'no-results\'>Sorry, no results matched your criteria.</h2>';
+						  endif; ?>
+					</div>
 
-        		</div>
+				</div>
 
-        	</div>
+			</div>
 
-    	</div>
+		</div>
 
-    </div>
+	</div>
 
 </div>
 
