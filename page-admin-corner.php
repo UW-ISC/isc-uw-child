@@ -114,7 +114,7 @@ get_header();
 							array(
 							'posts_per_page' => 1,
 							'post_status' => 'publish',
-							'start_date' => date( 'Y-m-d' ),
+							'start_date' => current_time( 'Y-m-d H:i' ),
 							)
 						);
 						if ( empty( $events ) ) {
