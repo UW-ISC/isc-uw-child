@@ -45,6 +45,7 @@ get_header();
 
 			<script>
 			$(function(){
+
 				$('.isc-user-guide table').each(function() {
 					// add responsive table class and clear all other inline styles
 					$(this).addClass("table-responsive");
@@ -64,64 +65,15 @@ get_header();
 					});
 				});
 
-				// collapse-o-matic plugin overrides
-				$(".isc-expand").before( "<div class='isc-collapse'><a href='#' onclick='return false;' class='collapseall' title='Hide all collapsible page content' role='button'>Collapse All</a><a href='#' onclick='return false;' class='expandall' style='display:none;' title='Show all hidden page content' role='button'>Expand All</a></div>" );
-
-				// set initial aria state
-				$(".collapseomatic").each(function() {
-					// add a11y stuff
-					$(this).attr('role', 'button');
-					$(this).attr('aria-controls', 'target-' + $(this).attr('id'));
-
-					// if expanded (colomat-close)... set to true, else false
-					if ($( this).hasClass( "colomat-close" ) ) {
-						$(this).attr('aria-expanded', 'true');
-					}
-					else {
-						$(this).attr('aria-expanded', 'false');
-					}
-
-				});
-
-
-				// update state when clicked
-
-				$(".collapseomatic").on( "click", function() {
-
-
-					if ($( this).hasClass( "colomat-close" ) ) {
-
-						console.log("going to close");
-						$(this).attr('aria-expanded', 'false');
-					}
-					else {
-						console.log("going to open");
-						$(this).attr('aria-expanded', 'true');
-					}
-
-
-				});
-
-
-				$(".isc-expand a").on( "show", function() {
-					console.log("sadhfkjasdlfj");
-					$(this).attr('aria-expanded', 'true');
-				});
-
-
-				// handle expandall and collapseall
-				$(".collapseall").on( "click", function() {
-					$(".collapseall").hide();
-					$(".expandall").show();
-					$(".collapseomatic").attr('aria-expanded', 'false');
-
-				});
-
-				$(".expandall").on( "click", function() {
-					$(".expandall").hide();
-					$(".collapseall").show();
-					$(".collapseomatic").attr('aria-expanded', 'true');
-				});
+                $('.isc-expander a[role=button]').on('show', function () {
+                    // Handle setting display here before show transition starts
+                    $(this).show();
+                    console.log("sadhfkjasdlfj");
+                }).on('hidden', function () {
+                    // Handle adding display:none or visibility: hidden here after element is done transitioning
+                    $(this).hide();
+                    console.log("ssssdfs");
+                });
 
 			});
 
