@@ -65,14 +65,20 @@ get_header();
 					});
 				});
 
-                $('.isc-expander a[role=button]').on('show', function () {
-                    // Handle setting display here before show transition starts
-                    $(this).show();
-                    console.log("sadhfkjasdlfj");
-                }).on('hidden', function () {
-                    // Handle adding display:none or visibility: hidden here after element is done transitioning
-                    $(this).hide();
-                    console.log("ssssdfs");
+                // user guide collapse content
+                $(".isc-expander").each( function () {
+
+                  var thisLink = ($(this).children("a"));
+
+                  $(this).on('show', function () {
+                      // show the content for THIS button
+                      //$(".isc-expander-content").show();
+                  });
+
+                  $(this).on('hide', function () {
+                      //$(".isc-expander-content").hide();
+                  });
+
                 });
 
 			});
