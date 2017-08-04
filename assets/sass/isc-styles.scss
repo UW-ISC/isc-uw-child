@@ -746,6 +746,8 @@ body, p { font-size: 16px !important; }
         display: block;
         border-bottom: none !important;
 
+        &:hover, &:focus { color: #857551 !important; text-decoration: underline !important; }
+
         &:after {
             font-family: FontAwesome;
             right: -10px;
