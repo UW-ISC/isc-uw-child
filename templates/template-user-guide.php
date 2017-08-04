@@ -65,22 +65,22 @@ get_header();
 					});
 				});
 
-                // user guide collapse content
-                $(".isc-expander").each( function () {
+				// user guide collapse content
+				$(".isc-expander").each( function () {
 
-                  var thisLink = ($(this).children("a"));
+				  var thisLink = ($(this).children("a"));
 
-                  $(this).on('show', function () {
-                      // find the nearest content container and show it (display:block)
-                      $(this).find('.isc-expander-content').show();
-                  });
+				  $(this).on('show', function () {
+					  // find the nearest content container and show it (display:block)
+					  $(this).find('.isc-expander-content').show();
+				  });
 
-                  $(this).on('hide', function () {
-                      // find the nearest content container and hide it (display:none)
-                       $(this).find('.isc-expander-content').hide();
-                  });
+				  $(this).on('hide', function () {
+					  // find the nearest content container and hide it (display:none)
+					   $(this).find('.isc-expander-content').hide();
+				  });
 
-                });
+				});
 
 			});
 
