@@ -71,12 +71,13 @@ get_header();
                   var thisLink = ($(this).children("a"));
 
                   $(this).on('show', function () {
-                      // show the content for THIS button
-                      //$(".isc-expander-content").show();
+                      // find the nearest content container and show it (display:block)
+                      $(this).find('.isc-expander-content').show();
                   });
 
                   $(this).on('hide', function () {
-                      //$(".isc-expander-content").hide();
+                      // find the nearest content container and hide it (display:none)
+                       $(this).find('.isc-expander-content').hide();
                   });
 
                 });
