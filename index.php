@@ -43,8 +43,8 @@ get_header();
 					<?php endwhile ?>
 
                     <!-- pagination functions -->
-                    <div class="nav-previous alignleft"><?php previous_posts_link( 'Previous Page' ); ?></div>
-                    <div class="nav-next alignright"><?php next_posts_link( 'Next Page' ); ?></div>
+                    <div class="nav-previous alignleft"><?php previous_posts_link( 'Previous' ); ?></div>
+                    <div class="nav-next alignright"><?php next_posts_link( 'Next' ); ?></div>
 
 				</div>
 
