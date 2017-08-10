@@ -65,24 +65,7 @@ get_header();
 					});
 				});
 
-				// user guide collapse content
-				$(".isc-expander").each( function () {
-
-				  var thisLink = ($(this).children("a"));
-
-				  $(this).on('show', function () {
-					  // find the nearest content container and show it (display:block)
-					  $(this).find('.isc-expander-content').show();
-				  });
-
-				  $(this).on('hide', function () {
-					  // find the nearest content container and hide it (display:none)
-					   $(this).find('.isc-expander-content').hide();
-				  });
-
-				});
-
-			});
+							});
 
 			$(document).on("keydown", function(e){
 				// cntrl-f or command-f
