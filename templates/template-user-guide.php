@@ -64,8 +64,8 @@ get_header();
 						$(this).removeProp("height");
 					});
 				});
-                
-			});
+
+							});
 
 			$(document).on("keydown", function(e){
 				// cntrl-f or command-f
