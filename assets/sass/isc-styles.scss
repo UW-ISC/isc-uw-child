@@ -607,6 +607,18 @@ body, p { font-size: 16px !important; }
     }
 }
 
+/*** user guide content ***/
+
+.isc-user-guide {
+
+    a { display: inline-block;
+        &:hover, &:focus {
+            img { outline: -webkit-focus-ring-color auto 5px; }
+        }
+    }
+
+}
+
 /*** custom widget colors  ***/
 .isc-widget-tan { background: #ece9e2 !important; border:none; }
 .isc-widget-gray { background: #e9e9e9; border: none; }
