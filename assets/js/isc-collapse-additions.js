@@ -14,10 +14,12 @@ $(document).ready(function() {
 
       $(this).on('show', function () {
         $(currentLink).attr('aria-expanded', 'true');
+        $(this).find('.children').show();
       });
 
       $(this).on('hide', function () {
         $(currentLink).attr('aria-expanded', 'false');
+        $(this).find('.children').hide();
       });
 
     });
@@ -29,14 +31,14 @@ $(document).ready(function() {
 
       $(this).on('show', function () {
           $(thisLink).attr('aria-expanded', 'true');
-          $(thisLink).removeClass("collapsed");
-          $(thisLink).addClass("expanded");
+          // find the nearest content container and show it (display:block)
+          $(this).find('.isc-expander-content').show();
       });
 
       $(this).on('hide', function () {
           $(thisLink).attr('aria-expanded', 'false');
-          $(thisLink).addClass("collapsed");
-          $(thisLink).removeClass("expanded");
+          // find the nearest content container and hide it (display:none)
+          $(this).find('.isc-expander-content').hide();
       });
 
     });
