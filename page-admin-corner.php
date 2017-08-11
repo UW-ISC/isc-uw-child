@@ -164,7 +164,7 @@ get_header();
 				</div>
 
 
-				<h3 class="isc-admin-header">Seasonal Topic</h3>
+				<h3 class="isc-admin-header">Known Issues</h3>
 				<div class="contact-widget-inner isc-widget-gray isc-admin-block">
 					<div class='post-content'>
 						<?php
