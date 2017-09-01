@@ -358,11 +358,12 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 
 /**
  * ISC Expand Shortcode
+ *
+ * @param string $atts Title and alt tag values for the link.
+ * @param string $content The content to show when expanded.
  */
-// Add Shortcode
 function isc_expander( $atts, $content = null ) {
 
-	// Attributes
 	$atts = shortcode_atts(
 		array(
 			'title' => 'replace this text w/ descriptive title',
