@@ -259,7 +259,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 			if ( count( $cur->subheaders ) > 0 ) {
 				// This means there are subheaders under the current header.
-				$pages .= '<li class="nav-item has-children"><a href="javascript:void(0);" class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
+				$pages .= '<li class="nav-item has-children"><a href="javascript:void(0);" class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
 				foreach ( $cur->subheaders as $subslug => $subname ) {
@@ -324,7 +324,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$type = $header_type[ $i ];
 			$name = wp_strip_all_tags( $header_name[ $i ] );
 			$slug = '';
-			if ( ! (ctype_space( $name ) || $name === '') ) {
+			if ( ! (ctype_space( $name ) || '' === $name ) ) {
 				if ( 'h2' === $type ) {
 					$slug = wp_strip_all_tags( strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ) );
 					$current_header = new Header( $name, $slug );
@@ -358,11 +358,12 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 
 /**
  * ISC Expand Shortcode
+ *
+ * @param string $atts Title and alt tag values for the link.
+ * @param string $content The content to show when expanded.
  */
-// Add Shortcode
 function isc_expander( $atts, $content = null ) {
 
-	// Attributes
 	$atts = shortcode_atts(
 		array(
 			'title' => 'replace this text w/ descriptive title',

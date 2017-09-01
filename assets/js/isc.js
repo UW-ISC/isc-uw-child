@@ -28,6 +28,19 @@
         init: function() {
             this.search.switchDefault();
             this.search.changeAction();
+            $('.glossaryLink').each( function() {
+                $(this).focusin(function () {
+                    tooltipContent = $(this).data('cmtooltip');
+                    console.log('focus in');
+                    clearTimeout(CM_Tooltip.timeoutId);
+                    CM_Tooltip.glossaryTip.show(tooltipContent, this);
+                }).focusout(function () {
+                    console.log('focus out');
+                    CM_Tooltip.timeoutId = setTimeout(function () {
+                        CM_Tooltip.glossaryTip.hide();
+                    }, 500);
+                });
+            });
         }
     };
 
