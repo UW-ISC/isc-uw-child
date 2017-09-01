@@ -324,7 +324,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$type = $header_type[ $i ];
 			$name = wp_strip_all_tags( $header_name[ $i ] );
 			$slug = '';
-			if ( ! (ctype_space( $name ) || $name === '') ) {
+			if ( ! (ctype_space( $name ) || '' === $name ) ) {
 				if ( 'h2' === $type ) {
 					$slug = wp_strip_all_tags( strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ) );
 					$current_header = new Header( $name, $slug );
