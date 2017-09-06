@@ -5,41 +5,46 @@
  * A full-width template, that displays the description of a specific article
  *
  * @author Abhishek Chauhan <abhi3@uw.edu>
+ * @package isc-uw-child
  */
 
 get_header();
 ?>
 
-<?php uw_site_title(); ?>
-<?php get_template_part('menu', 'mobile'); ?>
+<div role="main">
 
-<section class="uw-body container" role="main">
+	<?php uw_site_title(); ?>
+	<?php get_template_part( 'menu', 'mobile' ); ?>
 
-    <div class="row">
-        <div class="col-md-12">
-            <?php get_template_part('breadcrumbs'); ?>
-        </div>
-    </div>
+	<section class="uw-body container">
 
-    <div class="row">
+		<div class="row">
+			<div class="col-md-12">
+				<?php get_template_part( 'breadcrumbs' ); ?>
+			</div>
+		</div>
 
-        <article class="uw-body-copy col-md-9" id="main_content">
+		<div class="row">
 
-            <?php log_to_console("template-article-section.php") ?>
+			<article class="uw-body-copy col-md-9" id="main_content">
 
-            <?php
-            while ( have_posts() ) : the_post();
-                isc_title();
-                // echoing the tags
-                echo isc_get_tags(get_queried_object());
-                the_content();
-                edit_post_link();
-            endwhile;
+				<?php log_to_console( 'template-article-section.php' ) ?>
 
-            ?>
-        </article>
+				<?php
+				while ( have_posts() ) : the_post();
+					isc_title();
+					// Echoing the tags.
+					echo isc_get_tags( get_queried_object() );
+					the_content();
+					edit_post_link();
+				endwhile;
 
-    </div>
-</section>
+				?>
+			</article>
+
+		</div>
+	</section>
+
+</div>
 
 <?php get_footer();

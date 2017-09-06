@@ -11,10 +11,10 @@ get_header();
 	  $sidebar = get_post_meta( $post->ID, 'sidebar' );
 	  $seasonal = get_post_meta( $post->ID ); ?>
 
-		<?php uw_site_title(); ?>
-		<?php get_template_part( 'menu', 'mobile' ); ?>
-
 <div role="main">
+
+	<?php uw_site_title(); ?>
+	<?php get_template_part( 'menu', 'mobile' ); ?>
 
 	<div class="isc-admin-hero">
 		<div class="container">
@@ -114,7 +114,7 @@ get_header();
 							array(
 							'posts_per_page' => 1,
 							'post_status' => 'publish',
-							'start_date' => date( 'Y-m-d' ),
+							'start_date' => current_time( 'Y-m-d H:i' ),
 							)
 						);
 						if ( empty( $events ) ) {
@@ -180,7 +180,7 @@ get_header();
 							echo '<p>No featured seasonal topics found.</p>';
 						} else {
 							foreach ( $seasonal_featured as $featured_page ) {
-								$html = '<h4><a href="' . get_post_permalink( $featured_page->ID ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
+								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
 								$html .= "<p style='margin-bottom:1.5em;'>";
 								$custom = get_post_custom( $featured_page->ID );
 								$description = $custom['isc-featured-description'][0];

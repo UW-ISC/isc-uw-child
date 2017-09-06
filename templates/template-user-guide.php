@@ -6,77 +6,83 @@
  * additionally with a table of contents automatically generated
  * from the headers
  *
- * @author Kevin Zhao <zhaok24@uw.edu>
- * @author Abhishek Chauhan <abhi3@uw.edu>
+ * @author UW-IT AXDD
+ * @package isc-uw-child
  */
 
 get_header();
 ?>
 
-<?php uw_site_title(); ?>
-<?php get_template_part('menu', 'mobile'); ?>
+<div role="main">
 
-<section class="uw-body container" id="toc" role="main">
+	<?php uw_site_title(); ?>
+	<?php get_template_part( 'menu', 'mobile' ); ?>
 
-        <div class="row">
-            <div class="col-md-12">
-                <?php get_template_part('breadcrumbs'); ?>
-            </div>
-        </div>
+	<section class="uw-body container" id="toc">
 
-        <div class="row">
+		<div class="row">
+			<div class="col-md-12">
+				<?php get_template_part( 'breadcrumbs' ); ?>
+			</div>
+		</div>
 
-            <div class="col-md-3">
-                <?php isc_user_guide_menu(); ?>
-            </div>
+		<div class="row">
 
-            <article class="uw-content float-content col-md-9 isc-user-guide" id="main_content">
-                <?php log_to_console("template-user-guide.php") ?>
-                <?php
-                while ( have_posts() ) : the_post();
-                    isc_title();
-                    the_content();
-                endwhile
-                ?>
-            </article>
+			<div class="col-md-3">
+				<?php isc_user_guide_menu(); ?>
+			</div>
 
-            <script>
-            $(function(){
-                $('.isc-user-guide table').each(function() {
-                    // add responsive table class and clear all other inline styles
-                    $(this).addClass("table-responsive");
-                    $(this).addClass("table-condensed");
-                    $(this).removeProp("style");
+			<article class="uw-content float-content col-md-9 isc-user-guide" id="main_content">
 
-                    // clean each td by removing all inline styles
-                    $("td").each(function() {
-                        $(this).removeProp("style");
-                    });
+				<?php log_to_console( 'template-user-guide.php' ) ?>
+				<?php
+				while ( have_posts() ) : the_post();
+					isc_title();
+					the_content();
+				endwhile
+				?>
+			</article>
 
-                    // set img widths (inside of table tds)
-                    $("td img").each(function() {
-                        //$(this).removeProp("width");
-                        $(this).attr('width', '100%');
-                        $(this).removeProp("height");
-                    });
+			<script>
+			$(function(){
 
-                });
-            });
+				$('.isc-user-guide table').each(function() {
+					// add responsive table class and clear all other inline styles
+					$(this).addClass("table-responsive");
+					$(this).addClass("table-condensed");
+					$(this).removeProp("style");
 
-            $(document).on("keydown", function(e){
-                // cntrl-f or command-f
-                if((event.ctrlKey || event.metaKey) && event.which == 70) {
-                    $('.uw-accordion-shortcode__header').attr( "aria-expanded", "true" );
-                    $('.uw-accordion-shortcode__panel').attr( "aria-hidden", "false" );
-                    $('.uw-accordion-shortcode__title').hide();
-                    $('.uw-accordion-shortcode__title').attr( "aria-hidden", "true" );
-                };
-            });
+					// clean each td by removing all inline styles
+					$("td").each(function() {
+						$(this).removeProp("style");
+					});
 
-            </script>
+					// set img widths (inside of table tds)
+					$("td img").each(function() {
+						//$(this).removeProp("width");
+						$(this).attr('width', '100%');
+						$(this).removeProp("height");
+					});
+				});
 
-        </div>
+							});
 
-</section>
+			$(document).on("keydown", function(e){
+				// cntrl-f or command-f
+				if((event.ctrlKey || event.metaKey) && event.which == 70) {
+					$('.uw-accordion-shortcode__header').attr( "aria-expanded", "true" );
+					$('.uw-accordion-shortcode__panel').attr( "aria-hidden", "false" );
+					$('.uw-accordion-shortcode__title').hide();
+					$('.uw-accordion-shortcode__title').attr( "aria-hidden", "true" );
+				};
+			});
+
+			</script>
+
+		</div>
+
+	</section>
+
+</div>
 
 <?php get_footer();
