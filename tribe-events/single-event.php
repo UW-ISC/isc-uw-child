@@ -38,30 +38,28 @@ get_header();
 
                 <div id="tribe-events-content" class="isc-events">
 
-								<?php if(have_posts()) {
-									while ( have_posts() ) {
-										the_post();
-										$event_id = get_the_ID();
-										$html = isc_title();
-										$html .= "<div class='event-date'>" . tribe_get_start_date($event_id) . "</div>";
-										if (tribe_has_venue($event_id)) {
-												$details = tribe_get_venue_details($event_id);
-												$html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
-												if (tribe_show_google_map_link($event_id)){
-														$html .= "<br/>" . tribe_get_map_link_html($event_id);
-												}
-												$html .= "</div>";
-										} else {
-												$html .= "<div class='event-location'>Location : TBD</div>";
-										}
-										$html .= "<div class='event-content'>";
-										echo $html;
-										the_content();
-										echo "</div>";
-									}
-								}
-								?>
-
+		<?php if(have_posts()) {
+			while ( have_posts() ) {
+				the_post();
+				$event_id = get_the_ID();
+				$html = isc_title();
+				$html .= "<div class='event-date'>" . tribe_get_start_date($event_id) . "</div>";
+				if (tribe_has_venue($event_id)) {
+					$details = tribe_get_venue_details($event_id);
+					$html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details["linked_name"];
+					if (tribe_show_google_map_link($event_id)){
+						$html .= "<br/>" . tribe_get_map_link_html($event_id);
+					}
+					$html .= "</div>";
+				} else {
+					$html .= "<div class='event-location'>Location : TBD</div>";
+				}
+				$html .= "<div class='event-content'>";
+				echo $html;
+				the_content();
+				echo "</div>";
+			}
+		}?>
                 </div>
 
             </div>
