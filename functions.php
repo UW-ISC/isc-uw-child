@@ -181,6 +181,7 @@ function allowedtags() {
 }
 
 // This function allows HTML tags within the excerpt
+// Based off of this solution: https://wordpress.stackexchange.com/questions/141125/allow-html-in-excerpt/141136
 if ( ! function_exists( 'custom_wp_trim_excerpt' ) ) :
 
     function custom_wp_trim_excerpt($excerpt) {
