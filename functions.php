@@ -173,3 +173,49 @@ function savehyphens_2( $a ) {
 	$a = str_replace( 'HYPHEN', '-', $a );
 	return $a;
 }
+
+// Function determines the tags that custom_wp_trim_excerpt will allow
+function allowedtags() {
+// Add custom tags to this string
+    return '<strong>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>,<img>,<pre>';
+}
+
+// This function allows HTML tags within the excerpt
+// Based off of this solution: https://wordpress.stackexchange.com/questions/141125/allow-html-in-excerpt/141136
+if ( ! function_exists( 'custom_wp_trim_excerpt' ) ) :
+
+    function custom_wp_trim_excerpt($excerpt) {
+    global $post;
+    $raw_excerpt = $excerpt;
+        if ( '' == $excerpt ) {
+            $excerpt = get_the_content('');
+            $excerpt = strip_shortcodes( $excerpt );
+            $excerpt = apply_filters('the_content', $excerpt);
+            $excerpt = str_replace(']]>', ']]>', $excerpt);
+            $excerpt = strip_tags($excerpt, allowedtags());
+            //Set the excerpt word count and only break after sentence is complete.
+                $excerpt_word_count = 55;
+                $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
+                $tokens = array();
+                $excerptOutput = '';
+                $count = 0;
+                // Divide the string into tokens; HTML tags, or words, followed by any whitespace
+                preg_match_all('/(<[^>]+>|[^<>\s]+)\s*/u', $excerpt, $tokens);
+                foreach ($tokens[0] as $token) {
+                    if ($count >= $excerpt_word_count && preg_match('/[\?\.\!]\s*$/uS', $token)) {
+                    // Limit reached, continue until , ; ? . or ! occur at the end
+                        $excerptOutput .= trim($token);
+                        break;
+                    }
+                    $count++;
+                    $excerptOutput .= $token;
+                }
+            $excerpt = trim(force_balance_tags($excerptOutput));
+            return $excerpt;
+        }
+        return apply_filters('custom_wp_trim_excerpt', $excerpt, $raw_excerpt);
+    }
+endif;
+
+remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
