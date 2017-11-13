@@ -1064,3 +1064,13 @@ $font_family_1: FontAwesome;
 
 }
 ***/
+
+#uwalert-alert-message{
+  a {
+    color: #FDE048;
+    &:hover {
+        color: $uw-purple;
+        border-bottom: 1px solid $uw-purple;
+    }
+  }
+}
