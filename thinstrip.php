@@ -81,7 +81,7 @@ if ( $alert_news_posts ) :
 		<div class="container">
 			<h1><?php echo get_the_title( $alert_news_post ); ?></h1>
 			<p></p>
-            <?php the_excerpt(); ?>
+            <?php custom_wp_trim_excerpt(the_excerpt()); ?>
             <?php wp_reset_postdata() ?>
 			<p></p>
 		</div>
