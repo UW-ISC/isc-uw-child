@@ -259,7 +259,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 			if ( count( $cur->subheaders ) > 0 ) {
 				// This means there are subheaders under the current header.
-				$pages .= '<li class="nav-item has-children"><a href="javascript:void(0);" class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="#' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
+				$pages .= '<li class="nav-item has-children"><a href="javascript:void(0);" class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
 				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" style="height: 0px;">';
 				// Iterate through the subheaders under the current header.
 				foreach ( $cur->subheaders as $subslug => $subname ) {
@@ -324,7 +324,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$type = $header_type[ $i ];
 			$name = wp_strip_all_tags( $header_name[ $i ] );
 			$slug = '';
-			if ( ! (ctype_space( $name ) || $name === '') ) {
+			if ( ! (ctype_space( $name ) || '' === $name ) ) {
 				if ( 'h2' === $type ) {
 					$slug = wp_strip_all_tags( strval( count( $header_list ) + 1 ) . '-' . sanitize_title( $name ) );
 					$current_header = new Header( $name, $slug );
@@ -347,7 +347,7 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 			$pos = strpos( $content, $find[ $i ] );
 			if ( false !== $pos ) {
 					// replacing only the first instance that we find (in case of duplicate headers/subheaders).
-			    $content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
+				$content = substr_replace( $content, $replace[ $i ], $pos, strlen( $find[ $i ] ) );
 			}
 		}
 	}// End if().
@@ -355,3 +355,33 @@ function isc_add_ids_to_header_tags_auto( $content ) {
 	update_post_meta( get_the_ID(), 'isc_anchor_links', $header_list );
 	return $content;
 }
+
+/**
+ * ISC Expand Shortcode
+ *
+ * @param string $atts Title and alt tag values for the link.
+ * @param string $content The content to show when expanded.
+ */
+function isc_expander( $atts, $content = null ) {
+
+	$atts = shortcode_atts(
+		array(
+			'title' => 'replace this text w/ descriptive title',
+			'alt' => 'same text as title',
+		),
+		$atts
+	);
+
+	static $i = 1;
+
+	$out = '<div class="isc-expander">
+		<a role="button" data-toggle="collapse" class="expanded" title="' . $atts['alt'] . '" href="#isc_expand_' . $i . '" aria-expanded="true" aria-controls="isc_expand_' . $i . '">' . $atts['title'] . '</a>
+		<div class="collapse in isc-expander-content" id="isc_expand_' . $i . '"><div  class="isc-expander-inner">' . $content . '</div></div>
+	</div>';
+
+	$i++;
+
+	return $out;
+
+}
+add_shortcode( 'expand', 'isc_expander' );

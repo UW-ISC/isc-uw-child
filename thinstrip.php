@@ -14,7 +14,7 @@
 	<div class="container">
 
 		<div class="pull-left isc-logo">
-			  <a href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><?php  bloginfo( 'name' ); ?></a>
+			  <a aria-hidden="true" href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><?php  bloginfo( 'name' ); ?></a>
 		</div>
 
 	</div>
@@ -35,7 +35,7 @@
 			  <script>
 			  $(function(){
 				 $("a:contains('Sign in to Workday')").addClass("work-day-link");
-                 $("a:contains('Sign in to Workday')").attr('target', '_blank');
+				 $("a:contains('Sign in to Workday')").attr('target', '_blank');
 			  });
 			  </script>
 
@@ -63,3 +63,27 @@
 	  </div>
 
 </header>
+
+<?php
+$alert_args = array(
+	'hierarchical' => false,
+	'posts_per_page' => '1',
+	'post_status'	=> 'publish',
+	'meta_key'		=> 'isc_alert',
+	'meta_value'    => 1,
+);
+$alert_news_posts = get_posts( $alert_args );
+
+if ( $alert_news_posts ) :
+	$alert_news_post = get_post( $alert_news_posts[0]->ID ) ?>
+    <?php setup_postdata( $GLOBALS['post'] =& $alert_news_post ); ?>
+	<div id="uwalert-alert-message" class="advisories  uwalert-steel">
+		<div class="container">
+			<h1><?php echo get_the_title( $alert_news_post ); ?></h1>
+			<p></p>
+            <?php custom_wp_trim_excerpt(the_excerpt()); ?>
+            <?php wp_reset_postdata() ?>
+			<p></p>
+		</div>
+	</div>
+<?php endif; ?>

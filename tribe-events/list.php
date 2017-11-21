@@ -44,7 +44,7 @@ get_header();
 						$args = array(
 						'post_type' => 'tribe_events',
 						'post_status' => 'publish',
-						'start_date' => date( 'Y-m-d' ),
+						'start_date' => current_time( 'Y-m-d H:i' ),
 						);
 
 						$events = tribe_get_events( $args );

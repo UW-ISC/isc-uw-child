@@ -178,7 +178,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 									<a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo the_title(); ?></a>
 								</h3>
 								<div class="update-date"><?php echo get_the_date(); ?></div>
-								<div class="post-content"><?php the_excerpt(); ?></div>
+								<div class="post-content"><?php custom_wp_trim_excerpt(the_excerpt()); ?></div>
 						<?php
 							endwhile;
 					  else :

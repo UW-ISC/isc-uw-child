@@ -6,59 +6,64 @@
  * as well as listing the children pages within it
  *
  * @author Abhishek Chauhan <abhi3@uw.edu>
+ * @package isc-uw-child
  */
 
 get_header();
 ?>
 
-<?php uw_site_title(); ?>
-<?php get_template_part('menu', 'mobile'); ?>
+<div role="main">
 
-<section class="uw-body container" role="main">
+	<?php uw_site_title(); ?>
+	<?php get_template_part( 'menu', 'mobile' ); ?>
 
-    <div class="row">
-        <div class="col-md-12">
-            <?php get_template_part('breadcrumbs'); ?>
-        </div>
-    </div>
+	<section class="uw-body container">
 
-    <div class="row" id="top">
+		<div class="row">
+			<div class="col-md-12">
+				<?php get_template_part( 'breadcrumbs' ); ?>
+			</div>
+		</div>
 
-        <article id='main_content' class="uw-body-copy col-md-9" tabindex="-1" id="main_content">
+		<div class="row" id="top">
 
-            <?php log_to_console("template-article-page.php") ?>
+			<article id='main_content' class="uw-body-copy col-md-9" tabindex="-1" id="main_content">
 
-            <?php
+				<?php log_to_console( 'template-article-page.php' ) ?>
 
-            while ( have_posts() ) : the_post();
-                isc_title();
-                the_content();
-            endwhile;
+				<?php
 
-                isc_display_child_pages_with_toc();
-            ?>
+				while ( have_posts() ) : the_post();
+					isc_title();
+					the_content();
+				endwhile;
 
-        </article>
+					isc_display_child_pages_with_toc();
+				?>
 
-        <script>
-        $(function(){
-            $('.isc-article-content table').each(function() {
-                // add responsive table class and clear all other inline styles
-                $(this).addClass("table-responsive");
-                $(this).addClass("table-condensed");
-                $(this).removeProp("style");
+			</article>
 
-                // clean each td by removing all inline styles
-                $("td").each(function() {
-                    $(this).removeProp("style");
-                });
+			<script>
+			$(function(){
+				$('.isc-article-content table').each(function() {
+					// add responsive table class and clear all other inline styles
+					$(this).addClass("table-responsive");
+					$(this).addClass("table-condensed");
+					$(this).removeProp("style");
 
-            });
-        });
-        </script>
+					// clean each td by removing all inline styles
+					$("td").each(function() {
+						$(this).removeProp("style");
+					});
 
-    </div>
+				});
+			});
+			</script>
 
-</section>
+		</div>
+
+	</section>
+
+</div>
 
 <?php get_footer();
