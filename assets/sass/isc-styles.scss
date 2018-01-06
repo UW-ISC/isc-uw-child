@@ -497,6 +497,10 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
                 background-image: url('../isc-uw-child/assets/images/Campus_August_2016-1264-M.jpg');
             }
 
+            .isc-homepage-card-body {
+                padding: 30px;
+            }
+
             h3 { margin-top: 0; }
 
             .isc-homepage-excerpt { height:180px; max-height: 180px; overflow: hidden; }
@@ -509,7 +513,7 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
 
         .isc-homepage-news-content {
             background: #fff;
-            padding: 40px;
+            padding: 30px;
             -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5);
             box-shadow: 0 0 4px rgba(164,164,164,.5);
             margin-bottom: 30px;
@@ -812,47 +816,47 @@ $font_family_1: FontAwesome;
     }
 
     table.dataTable {
-    	thead {
-    		th {
-    			position: relative;
-    			background-image: none !important;
-    		}
-    		th.sorting {
-    			&:after {
-    				position: absolute;
-    				//top: 12px;
-    				right: 8px;
-    				display: block;
-    				font-family: $font_family_1;
-    				content: "\f0dc";
-    				color: $color_1;
-    				//font-size: 0.8em;
-    				//padding-top: 0.12em;
-    			}
-    		}
-    		th.sorting_asc {
-    			&:after {
-    				position: absolute;
-    				//top: 12px;
-    				right: 8px;
-    				display: block;
-    				font-family: $font_family_1;
+        thead {
+            th {
+                position: relative;
+                background-image: none !important;
+            }
+            th.sorting {
+                &:after {
+                    position: absolute;
+                    //top: 12px;
+                    right: 8px;
+                    display: block;
+                    font-family: $font_family_1;
+                    content: "\f0dc";
+                    color: $color_1;
                     //font-size: 0.8em;
-    				content: "\f0de";
-    			}
-    		}
-    		th.sorting_desc {
-    			&:after {
-    				position: absolute;
-    				//top: 12px;
-    				right: 8px;
-    				display: block;
-    				font-family: $font_family_1;
+                    //padding-top: 0.12em;
+                }
+            }
+            th.sorting_asc {
+                &:after {
+                    position: absolute;
+                    //top: 12px;
+                    right: 8px;
+                    display: block;
+                    font-family: $font_family_1;
                     //font-size: 0.8em;
-    				content: "\f0dd";
-    			}
-    		}
-    	}
+                    content: "\f0de";
+                }
+            }
+            th.sorting_desc {
+                &:after {
+                    position: absolute;
+                    //top: 12px;
+                    right: 8px;
+                    display: block;
+                    font-family: $font_family_1;
+                    //font-size: 0.8em;
+                    content: "\f0dd";
+                }
+            }
+        }
     }
 
 }
