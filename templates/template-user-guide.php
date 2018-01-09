@@ -39,7 +39,7 @@ get_header();
 				while ( have_posts() ) : the_post();
 					isc_title();
 					the_content();
-					the_modified_date('l, F j, Y', '<div class="the-modified-date">Last updated ', '</div>');
+					the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
 				endwhile
 				?>
 			</article>
