@@ -253,6 +253,16 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
     }
 }
 
+/*** global elemebts ***/
+.isc-updated-date {
+    color: #666666;
+    font-size: 12px !important;
+    font-style: italic;
+    text-align: right;
+}
+
+
+
 /*** uw body copy ***/
 .uw-body-copy { margin-top: 0;
 
@@ -1078,3 +1088,5 @@ $font_family_1: FontAwesome;
     }
   }
 }
+
+
