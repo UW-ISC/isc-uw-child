@@ -316,9 +316,8 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
     }
 
     .isc-homepage-title {
-        font-size:35px;
-        line-height: 40px;
-
+        font-size:20px;
+        line-height: 25px;
         font-weight: 900;
         font-family:'Encode Sans Compressed', sans-serif;
         text-transform:uppercase;
@@ -334,15 +333,20 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
 
         @include tablet { padding: 30px; }
         @include desktop {
-            padding: 30px;
+            padding: 20px 30px 15px 30px;
             background: rgba(232,211,162,.75);
-            margin-bottom: 100px;
+            margin-bottom: 80px;
         }
 
-        .udub-slant span {
-            margin-bottom: 30px;
-            background-color: rgba(232,211,162,1);
-            @include desktop { background-color: $uw-purple; }
+        .udub-slant {
+            margin: 20px 0 15px 0;
+
+            span {
+                margin-bottom: 12px;
+                background-color: rgba(232,211,162,1);
+                width: 175px;
+                @include desktop { background-color: $uw-purple; }
+            }
         }
 
     }
