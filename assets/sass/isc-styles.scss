@@ -253,7 +253,22 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
     }
 }
 
-/*** global elemebts ***/
+/*** global elements ***/
+
+.isc {
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+}
+
 .isc-updated-date {
     color: #666666;
     font-size: 13px;
