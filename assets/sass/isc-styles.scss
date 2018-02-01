@@ -556,6 +556,29 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
     }
 }
 
+
+/*** search results ***/
+
+
+.isc div.search-breadcrumbs {
+  color: #85754d;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin-bottom: 10px;    
+}
+.isc div.search-breadcrumbs span:before {
+  content: "\f105";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-align: center;
+  width: 20px;
+}
+.isc div.search-breadcrumbs span:first-child:before {
+    display: none;
+}
+
+
+
 /*** admin corner ***/
 .isc-admin-hero {
 
