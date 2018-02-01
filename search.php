@@ -40,6 +40,7 @@ get_header(); ?>
 					if ( have_posts() ) {
 						while ( have_posts() ) : the_post();?>
 							<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
+							<?php include( locate_template( 'search-breadcrumbs.php' ) ); ?>
 							<div class='post-content'><?php the_excerpt(); ?></div>
 							<?php
 							$i++;
