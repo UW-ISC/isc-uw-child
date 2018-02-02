@@ -38,6 +38,16 @@ get_header(); ?>
 
 				<h1>Search Results</h1>
 
+				<?php
+
+				global $wp_query;
+				$search_query = get_search_query();
+				$total_results = $wp_query->found_posts;
+
+				echo 'Found <b>' . $total_results . '</b> results for the term <i>' . $search_query . '</i>.';
+
+				?>
+
 				<div>
 
 					<?php
