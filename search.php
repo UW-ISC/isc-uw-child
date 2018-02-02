@@ -39,9 +39,11 @@ get_header(); ?>
 					$url = 'http://www.washington.edu/search/?q=' . $terms;
 					if ( have_posts() ) {
 						while ( have_posts() ) : the_post();?>
-							<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
-							<?php include( locate_template( 'search-breadcrumbs.php' ) ); ?>
-							<div class='post-content'><?php the_excerpt(); ?></div>
+							<div class='search-result'>
+								<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
+								<?php include( locate_template( 'search-breadcrumbs.php' ) ); ?>
+								<div class='post-content'><?php the_excerpt(); ?></div>
+							</div>
 							<?php
 							$i++;
 						endwhile;
