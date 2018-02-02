@@ -27,7 +27,14 @@ get_header(); ?>
 
 			<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-				<?php log_to_console( 'search.php' ) ?>
+				<?php 
+
+				log_to_console( 'search.php' );
+
+				get_search_form();
+
+				?>
+
 
 				<h1>Search Results</h1>
 
