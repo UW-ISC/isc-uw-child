@@ -560,24 +560,19 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
 /*** search results ***/
 
 .isc .search-result {
-    padding: 10px 0;
+    padding: 10px 0 15px 0;
 
     &:after {
         border-bottom: 1px solid #d9d9d9;
         content: '';
         display: block;
         height: 1px;
-        margin: 10px 0;
         visibility: visible;
         width: 170px;
     }
 
     h2 {
         margin: 7px 0;
-    }
-
-    .post-content {
-        margin-bottom: 15px;
     }
 }
 
