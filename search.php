@@ -44,7 +44,7 @@ get_header(); ?>
 				$search_query = get_search_query();
 				$total_results = $wp_query->found_posts;
 
-				echo 'Found <b>' . $total_results . '</b> results for the term <i>' . $search_query . '</i>.';
+				echo 'Found <b>' . $total_results . '</b> results for "<i>' . $search_query . '</i>".';
 
 				?>
 
