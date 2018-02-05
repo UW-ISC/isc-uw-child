@@ -268,7 +268,7 @@ a.uw-btn.btn-sm.btn-left {
   background-repeat: no-repeat;
   position: relative;
   background-size: cover;
-  min-height: 600px; }
+  min-height: 540px; }
 @media (min-width: 992px) {
   .isc-homepage-hero {
     position: relative;
