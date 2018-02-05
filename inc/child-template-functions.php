@@ -113,7 +113,7 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
 		$html = '';
 		$posttags = get_the_terms( $child->ID, 'md-tags' );
 		if ( ! is_wp_error( $posttags ) && ! empty( $posttags ) ) {
-			$html .= '<div class="isc-toc-tags" id="tags">';
+			$html .= '<div class="isc-toc-tags" id="tags">Tags: ';
 			$num_posttags = count( $posttags );
 			for ( $x = 0; $x < $num_posttags - 1; $x++ ) {
 				$tag = $posttags[ $x ];

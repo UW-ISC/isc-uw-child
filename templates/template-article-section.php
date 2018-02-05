@@ -34,8 +34,8 @@ get_header();
 				while ( have_posts() ) : the_post();
 					isc_title();
 					// Echoing the tags.
-					echo isc_get_tags( get_queried_object() );
 					the_content();
+					echo isc_get_tags( get_queried_object() );
 					edit_post_link();
 				endwhile;
 
