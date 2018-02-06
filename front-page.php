@@ -104,7 +104,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 									  &nbsp;
 									  </div>
 
-									<div style="padding:40px;">
+									<div class="isc-homepage-card-body">
 										<h3>
 										  <a href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>">
 											<?php echo get_the_title( $featured_page->ID ); ?></a>

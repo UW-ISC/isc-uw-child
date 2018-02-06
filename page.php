@@ -34,6 +34,12 @@ get_header();
 
 					<?php isc_title(); ?>
 
+					<?php 
+
+					the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
+
+					?>
+
 					<?php
 					// Start the Loop.
 					while ( have_posts() ) : the_post();
