@@ -44,13 +44,13 @@ if ( ! function_exists( 'isc_display_child_pages_with_toc' ) ) :
 			$html .= '<h2 class="title" id="' . esc_attr( $child->post_name ) . '"> <a href="' . $url . '">';
 			$html .= esc_html( $child->post_title );
 			$html .= '</a> </h2>';
-			// Displaying the tags.
-			$html .= isc_get_tags( $child );
 			// Displaying the content.
 			$html .= '<div class="isc-article-content">';
 			// Making sure paragraphs are added in place of double line breaks.
 			$html .= wpautop( $child->post_content );
 			$html .= '</div>';
+			// Displaying the tags.
+			$html .= isc_get_tags( $child );
 
 			if ( $toc ) {
 				$html .= '<p class="isc-toc-top-btn"><a class="more" href="#top">Return to top</a></p>';
@@ -113,7 +113,7 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
 		$html = '';
 		$posttags = get_the_terms( $child->ID, 'md-tags' );
 		if ( ! is_wp_error( $posttags ) && ! empty( $posttags ) ) {
-			$html .= '<div class="isc-toc-tags" id="tags">';
+			$html .= '<div class="isc-toc-tags" id="tags">Tags: ';
 			$num_posttags = count( $posttags );
 			for ( $x = 0; $x < $num_posttags - 1; $x++ ) {
 				$tag = $posttags[ $x ];
