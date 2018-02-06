@@ -219,3 +219,12 @@ endif;
 
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
+
+/**
+* Adds classes to body tag for CSS specificity over parent theme
+*/
+add_filter('body_class', 'isc_body_classes');
+function isc_body_classes($classes) {
+    $classes[] = 'isc';
+    return $classes;
+}

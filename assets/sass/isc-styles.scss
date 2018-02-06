@@ -222,7 +222,7 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
 
     h1 { color: $uw-tan-dark; }
 
-    h2, h4 {margin-top:40px;
+    h2, h4 {margin-top:30px;
         a { color: $uw-purple; }
     }
 
@@ -253,6 +253,31 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
     }
 }
 
+/*** global elements ***/
+
+.isc {
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+}
+
+.isc-updated-date {
+    color: #666666;
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+
 /*** uw body copy ***/
 .uw-body-copy { margin-top: 0;
 
@@ -273,14 +298,14 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
     background-repeat: no-repeat;
     position: relative;
     background-size: cover;
-    min-height: 600px;
+    min-height: 540px;
 
     @include desktop {
         position: relative;
         background-size: cover;
         background-repeat: no-repeat;
-        min-height:500px;
-        background-position:61%;
+        min-height:490px;
+        background-position:61% 30%;
     }
 
     &:before{
@@ -306,9 +331,8 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
     }
 
     .isc-homepage-title {
-        font-size:35px;
-        line-height: 40px;
-
+        font-size:20px;
+        line-height: 25px;
         font-weight: 900;
         font-family:'Encode Sans Compressed', sans-serif;
         text-transform:uppercase;
@@ -324,15 +348,20 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
 
         @include tablet { padding: 30px; }
         @include desktop {
-            padding: 30px;
+            padding: 20px 30px 15px 30px;
             background: rgba(232,211,162,.75);
-            margin-bottom: 100px;
+            margin-bottom: 80px;
         }
 
-        .udub-slant span {
-            margin-bottom: 30px;
-            background-color: rgba(232,211,162,1);
-            @include desktop { background-color: $uw-purple; }
+        .udub-slant {
+            margin: 20px 0 15px 0;
+
+            span {
+                margin-bottom: 12px;
+                background-color: rgba(232,211,162,1);
+                width: 175px;
+                @include desktop { background-color: $uw-purple; }
+            }
         }
 
     }
@@ -497,6 +526,10 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
                 background-image: url('../isc-uw-child/assets/images/Campus_August_2016-1264-M.jpg');
             }
 
+            .isc-homepage-card-body {
+                padding: 30px;
+            }
+
             h3 { margin-top: 0; }
 
             .isc-homepage-excerpt { height:180px; max-height: 180px; overflow: hidden; }
@@ -509,7 +542,7 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
 
         .isc-homepage-news-content {
             background: #fff;
-            padding: 40px;
+            padding: 30px;
             -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5);
             box-shadow: 0 0 4px rgba(164,164,164,.5);
             margin-bottom: 30px;
@@ -522,6 +555,49 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
         }
     }
 }
+
+
+/*** search results ***/
+
+.isc .search-result {
+    padding: 10px 0 15px 0;
+
+    &:after {
+        border-bottom: 1px solid #d9d9d9;
+        content: '';
+        display: block;
+        height: 1px;
+        visibility: visible;
+        width: 170px;
+    }
+
+    h2 {
+        margin: 7px 0;
+    }
+}
+
+
+.isc div.search-breadcrumbs {
+    color: #85754d;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-bottom: 10px;    
+
+    span:before {
+        content: "\f105";
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        text-align: center;
+        width: 20px;
+    }
+
+}
+
+.isc div.search-breadcrumbs span:first-child:before {
+    display: none;
+}
+
+
 
 /*** admin corner ***/
 .isc-admin-hero {
@@ -564,7 +640,7 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
     color: #3d3d3d !important;
 }
 
-.isc-admin-block { border: solid 1px #ddd; padding: 40px; margin-bottom: 2em; position: relative; margin-top: 0;
+.isc-admin-block { border: solid 1px #ddd; padding: 30px; margin-bottom: 2em; position: relative; margin-top: 0;
 
     h4 { margin-top: 0; margin-bottom: 10px;
         a { font-size: 21px; color: $uw-purple; font-weight: 800; }
@@ -612,7 +688,7 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
             &:hover { color: inherit; text-decoration: none; border: none; cursor: default; }
         }
 
-        .sub-menu { border: solid 1px #ddd; padding: 40px; list-style: none; min-height: 250px;
+        .sub-menu { border: solid 1px #ddd; padding: 30px; list-style: none; min-height: 250px;
             a { font-size: 16px !important; font-weight: normal; margin:0; display: inline-block; text-transform: none; font-family: "Open Sans", sans-serif; color: #0088dd;
                 &:hover { color: $uw-tan-dark; text-decoration: underline; cursor: pointer; }
             }
@@ -812,47 +888,47 @@ $font_family_1: FontAwesome;
     }
 
     table.dataTable {
-    	thead {
-    		th {
-    			position: relative;
-    			background-image: none !important;
-    		}
-    		th.sorting {
-    			&:after {
-    				position: absolute;
-    				//top: 12px;
-    				right: 8px;
-    				display: block;
-    				font-family: $font_family_1;
-    				content: "\f0dc";
-    				color: $color_1;
-    				//font-size: 0.8em;
-    				//padding-top: 0.12em;
-    			}
-    		}
-    		th.sorting_asc {
-    			&:after {
-    				position: absolute;
-    				//top: 12px;
-    				right: 8px;
-    				display: block;
-    				font-family: $font_family_1;
+        thead {
+            th {
+                position: relative;
+                background-image: none !important;
+            }
+            th.sorting {
+                &:after {
+                    position: absolute;
+                    //top: 12px;
+                    right: 8px;
+                    display: block;
+                    font-family: $font_family_1;
+                    content: "\f0dc";
+                    color: $color_1;
                     //font-size: 0.8em;
-    				content: "\f0de";
-    			}
-    		}
-    		th.sorting_desc {
-    			&:after {
-    				position: absolute;
-    				//top: 12px;
-    				right: 8px;
-    				display: block;
-    				font-family: $font_family_1;
+                    //padding-top: 0.12em;
+                }
+            }
+            th.sorting_asc {
+                &:after {
+                    position: absolute;
+                    //top: 12px;
+                    right: 8px;
+                    display: block;
+                    font-family: $font_family_1;
                     //font-size: 0.8em;
-    				content: "\f0dd";
-    			}
-    		}
-    	}
+                    content: "\f0de";
+                }
+            }
+            th.sorting_desc {
+                &:after {
+                    position: absolute;
+                    //top: 12px;
+                    right: 8px;
+                    display: block;
+                    font-family: $font_family_1;
+                    //font-size: 0.8em;
+                    content: "\f0dd";
+                }
+            }
+        }
     }
 
 }
@@ -1074,3 +1150,5 @@ $font_family_1: FontAwesome;
     }
   }
 }
+
+

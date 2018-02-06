@@ -27,9 +27,26 @@ get_header(); ?>
 
 			<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-				<?php log_to_console( 'search.php' ) ?>
+				<?php 
+
+				log_to_console( 'search.php' );
+
+				get_search_form();
+
+				?>
+
 
 				<h1>Search Results</h1>
+
+				<?php
+
+				global $wp_query;
+				$search_query = get_search_query();
+				$total_results = $wp_query->found_posts;
+
+				echo 'Found <b>' . $total_results . '</b> results for "<i>' . $search_query . '</i>".';
+
+				?>
 
 				<div>
 
@@ -39,8 +56,11 @@ get_header(); ?>
 					$url = 'http://www.washington.edu/search/?q=' . $terms;
 					if ( have_posts() ) {
 						while ( have_posts() ) : the_post();?>
-							<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
-							<div class='post-content'><?php the_excerpt(); ?></div>
+							<div class='search-result'>
+								<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
+								<?php include( locate_template( 'search-breadcrumbs.php' ) ); ?>
+								<div class='post-content'><?php the_excerpt(); ?></div>
+							</div>
 							<?php
 							$i++;
 						endwhile;
