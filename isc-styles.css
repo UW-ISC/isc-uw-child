@@ -606,7 +606,7 @@ a.uw-btn.btn-sm.btn-left {
 /*** user guide content ***/
 .isc-user-guide a {
   display: inline-block;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff !important;
 }
 .isc-user-guide a:hover img, .isc-user-guide a:focus img {
   outline: -webkit-focus-ring-color auto 5px; }
