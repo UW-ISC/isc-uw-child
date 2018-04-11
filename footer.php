@@ -29,7 +29,7 @@
 			  <div class="col-md-6">
 				<ul class="footer-contact-container">
 				  <li><div class="icon-container"><i class="fa fa-map-marker" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_url( $options['map'] ) ?>">   <?php echo esc_html( $options['location'] ) ?></a></div></li>
-				  <li><div class="icon-container"><i class="fa fa-phone-square " aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_html( 'tel:1-' . $options['phone'] ) ?>"> <?php echo esc_html( $options['phone'] ) ?>   </a></div></li>
+				  <!-- <li><div class="icon-container"><i class="fa fa-phone-square " aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_html( 'tel:1-' . $options['phone'] ) ?>"> <?php echo esc_html( $options['phone'] ) ?>   </a></div></li> -->
 				  <li><div class="icon-container icons-stacked"><i class="fa fa-square fa-stack-2x" aria-hidden="true"></i><i class="fa fa-envelope fa-stack-1x" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_url( 'mailto:' . $options['email'] ) ?>"> <?php echo esc_html( $options['email'] ) ?> </a></div></li>
 				</ul>
 			  </div>
