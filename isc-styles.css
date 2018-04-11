@@ -4,7 +4,7 @@ a {
   color: #0B6EAD; }
 
 h1 {
-  font-size: 28px; }
+  font-size: 50px; }
 
 h2 {
   font-size: 23px; }
@@ -605,7 +605,9 @@ a.uw-btn.btn-sm.btn-left {
 
 /*** user guide content ***/
 .isc-user-guide a {
-  display: inline-block; }
+  display: inline;
+  /* border-bottom: 1px solid #ffffff; */
+}
 .isc-user-guide a:hover img, .isc-user-guide a:focus img {
   outline: -webkit-focus-ring-color auto 5px; }
 
