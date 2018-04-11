@@ -33,7 +33,7 @@ get_header();
 				<h2 class="sr-only">Search Options</h2>
 				<div style="background:#f9f9f9; padding: 20px; margin-bottom:1em; font-size: 14px;">
 
-					<div class="col">
+					<div class="row">
 
 						<div class="col-md-8">
 							<div class="sr-only">Filter by:</div>
