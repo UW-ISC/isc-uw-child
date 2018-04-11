@@ -700,7 +700,7 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
 
 .isc-user-guide {
 
-    a { display: inline-block;
+    a { display: inline;
         &:hover, &:focus {
             img { outline: -webkit-focus-ring-color auto 5px; }
         }
