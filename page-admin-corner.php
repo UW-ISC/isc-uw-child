@@ -169,7 +169,9 @@ get_header();
 					<div class='post-content'>
 						<?php
 						$args = array(
-						 'hierarchical' => false,
+						 'hierarchical' => 0,
+						 'sort_order' => 'desc',
+						 'sort_column' => 'post_modified',
 						 'post_type'    => 'page',
 						 'post_status'  => 'publish',
 						 'meta_key'     => 'isc-featured',
@@ -181,6 +183,8 @@ get_header();
 						} else {
 							foreach ( $seasonal_featured as $featured_page ) {
 								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
+								$date = get_the_modified_date("F jS, Y", $featured_page -> ID);
+								$html .= '<div class="update-date">' . $date . '</div>';
 								$html .= "<p style='margin-bottom:1.5em;'>";
 								$custom = get_post_custom( $featured_page->ID );
 								$description = $custom['isc-featured-description'][0];
