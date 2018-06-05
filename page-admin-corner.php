@@ -179,7 +179,7 @@ get_header();
 						);
 						$seasonal_featured = get_pages( $args );
 						if ( ! $seasonal_featured ) {
-							echo '<p>No featured seasonal topics found.</p>';
+							echo '<p>No Known Issues found.</p>';
 						} else {
 							foreach ( $seasonal_featured as $featured_page ) {
 								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
@@ -199,7 +199,7 @@ get_header();
 						}
 						?>
 					</div>
-					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See all Topics</a>
+					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See all Known Issues</a>
 				</div>
 
 			</div>
