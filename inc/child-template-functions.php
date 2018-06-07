@@ -128,6 +128,27 @@ if ( ! function_exists( 'isc_get_tags' ) ) :
 	}
 	endif;
 
+	if ( ! function_exists( 'isc_get_news_tags' ) ) :
+
+		function isc_get_news_tags( $child ) {
+			$html = '';
+			$posttags = get_the_terms( $child->ID, 'news-tags' );
+			if ( ! is_wp_error( $posttags ) && ! empty( $posttags ) ) {
+				$html .= '<div class="isc-toc-tags" id="tags">Tags: ';
+				$num_posttags = count( $posttags );
+				for ( $x = 0; $x < $num_posttags - 1; $x++ ) {
+					$tag = $posttags[ $x ];
+					$link = get_term_link( $tag );
+					$html .= '<a id="tag" href=' . $link . '>' . $tag->name . '</a>';
+				}
+				$finaltag = $posttags[ count( $posttags ) - 1 ];
+				$html .= '<a id="tag" href=' . get_tag_link( $finaltag ) . '>' . $finaltag->name . ' </a>';
+				$html .= '</div>';
+			}
+			return $html;
+		}
+		endif;
+
 /**
  * Allow tags in excerpts
  *

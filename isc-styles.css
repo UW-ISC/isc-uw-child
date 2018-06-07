@@ -1016,3 +1016,69 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: 1px solid #4b2e83; }
 
 /*# sourceMappingURL=isc-styles.css.map */
+
+blockquote{
+  padding:14.5px 29px !important;
+  margin:0 0 29px;
+  }
+  
+  blockquote p {
+    line-height: 1.72222;
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: normal;
+  }
+  
+  blockquote.gold {
+    color: black;
+    background-color: #ECE9E3;
+    border: 0;
+  }
+  
+  blockquote.outline {
+  
+  border: 2px solid #e9e6f0;
+  padding: 14.5px 29px;
+  
+  }
+
+  blockquote p:last-child,blockquote ul:last-child,blockquote ol:last-child {
+  margin-bottom:0
+  }
+  
+  blockquote footer,
+  blockquote small,
+  blockquote .small 
+  {display:block;
+  font-size:80%;
+  line-height:1.72222;
+  color:inherit}
+  
+  blockquote footer:before, 
+  blockquote small:before, 
+  blockquote .small:before {
+  content:'\2014 \00A0'}
+  
+  .blockquote-reverse,
+  blockquote.pull-right {
+    padding-right:15px;
+    padding-left:0;
+    border-right:5px solid #e9e6f0;
+    border-left:0;
+    text-align:right
+}
+
+.blockquote-reverse footer:before,
+blockquote.pull-right footer:before,
+.blockquote-reverse small:before,
+blockquote.pull-right small:before,
+.blockquote-reverse .small:before,
+blockquote.pull-right .small:before {
+  content:''
+}
+
+.blockquote-reverse footer:after,
+blockquote.pull-right footer:after,
+.blockquote-reverse small:after,
+blockquote.pull-right small:after,
+.blockquote-reverse .small:after,blockquote.pull-right .small:after{content:'\00A0 \2014'}blockquote:before,blockquote:after{content:""}
+  
