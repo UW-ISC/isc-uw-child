@@ -87,6 +87,7 @@ get_header();
 								   <h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h4>
 								   <div class="update-date"><?php echo get_the_date() ?> </div>
 								   <div class='post-content'><?php the_excerpt() ?></div>
+								   <div class='tags'><?php echo isc_get_news_tags(the_post())?></div>
 							<?php
 								 endwhile;
 								?>
