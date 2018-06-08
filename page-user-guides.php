@@ -35,6 +35,11 @@ get_header();
 
 					<div class="row">
 
+						<div class="col-md-4">
+							<div class="sr-only">Search by:</div>
+							<label>Keyword:</label>
+							<input class="form-control input-sm" type="text" id="myInputTextField">
+						</div>
 						<div class="col-md-8">
 							<div class="sr-only">Filter by:</div>
 							<div class="row">
@@ -64,11 +69,7 @@ get_header();
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
-							<div class="sr-only">Search by:</div>
-							<label>Keyword:</label>
-							<input class="form-control input-sm" type="text" id="myInputTextField">
-						</div>
+					
 					</div>
 
 				</div>

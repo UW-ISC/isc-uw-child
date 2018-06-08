@@ -116,14 +116,14 @@ class UW_Scripts {
 			'admin'   => false,
 			),
 
-			'isc-analytics-js' => array(
-			'id'      => 'isc-analytics-js',
-			'url'     => $child . '/assets/js/isc-analytics.js',
-			'deps'    => array(),
-			'version' => '1.0.0',
-			'footer'  => true,
-			'admin'   => false,
-			),
+			// 'isc-analytics-js' => array(
+			// 'id'      => 'isc-analytics-js',
+			// 'url'     => $child . '/assets/js/isc-analytics.js',
+			// 'deps'    => array(),
+			// 'version' => '1.0.0',
+			// 'footer'  => true,
+			// 'admin'   => false,
+			// ),
 
 			), $this->get_child_theme_scripts()
 		);

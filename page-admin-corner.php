@@ -87,6 +87,7 @@ get_header();
 								   <h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h4>
 								   <div class="update-date"><?php echo get_the_date() ?> </div>
 								   <div class='post-content'><?php the_excerpt() ?></div>
+								   <div class='tags'><?php echo isc_get_news_tags(the_post())?></div>
 							<?php
 								 endwhile;
 								?>
@@ -179,7 +180,7 @@ get_header();
 						);
 						$seasonal_featured = get_pages( $args );
 						if ( ! $seasonal_featured ) {
-							echo '<p>No featured seasonal topics found.</p>';
+							echo '<p>No Known Issues found.</p>';
 						} else {
 							foreach ( $seasonal_featured as $featured_page ) {
 								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
@@ -199,7 +200,7 @@ get_header();
 						}
 						?>
 					</div>
-					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See all Topics</a>
+					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See all Known Issues</a>
 				</div>
 
 			</div>
