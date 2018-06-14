@@ -49,7 +49,7 @@ get_header();
 				<h1><?php the_title(); ?></h1>
 			<br/>
 			</div>
-
+		</div>
 		<div class="row">
 
 			<div class="col-md-8 uw-content isc-content" role='main'>
