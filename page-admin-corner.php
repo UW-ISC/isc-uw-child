@@ -46,7 +46,8 @@ get_header();
 		<!-- adding title JAB 061418 -->
  		<div class="row">
 			<div class="col-md-12">
-				<h2><?php the_title(); ?></h2>
+				<h1><?php the_title(); ?></h1>
+			<br/>
 			</div>
 
 		<div class="row">
