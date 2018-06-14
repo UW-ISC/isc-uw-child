@@ -16,6 +16,7 @@ get_header();
 	<?php uw_site_title(); ?>
 	<?php get_template_part( 'menu', 'mobile' ); ?>
 
+	<!-- removing search field and title JAB 061418 
 	<div class="isc-admin-hero">
 		<div class="container">
 			<div class="row">
@@ -33,7 +34,7 @@ get_header();
 			</div>
 		</div>
 	</div>
-
+	-->
 	<div class="container uw-body">
 
 		<div class="row">
@@ -41,6 +42,12 @@ get_header();
 				<?php get_template_part( 'breadcrumbs' ); ?>
 			</div>
 		</div>
+
+		<!-- adding title JAB 061418 -->
+ 		<div class="row">
+			<div class="col-md-12">
+				<h2><?php the_title(); ?></h2>
+			</div>
 
 		<div class="row">
 
@@ -199,7 +206,7 @@ get_header();
 						}
 						?>
 					</div>
-					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See all Topics</a>
+					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See all Known Issues</a>
 				</div>
 
 			</div>
