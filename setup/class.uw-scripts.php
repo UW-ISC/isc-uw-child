@@ -116,14 +116,15 @@ class UW_Scripts {
 			'admin'   => false,
 			),
 
-			'isc-analytics-js' => array(
-			'id'      => 'isc-analytics-js',
-			'url'     => $child . '/assets/js/isc-analytics.js',
-			'deps'    => array(),
-			'version' => '1.0.0',
-			'footer'  => true,
-			'admin'   => false,
-			),
+			// Disabling as part of switch to GTM code	
+			// 'isc-analytics-js' => array(
+			// 'id'      => 'isc-analytics-js',
+			// 'url'     => $child . '/assets/js/isc-analytics.js',
+			// 'deps'    => array(),
+			// 'version' => '1.0.0',
+			// 'footer'  => true,
+			// 'admin'   => false,
+			// ),
 
 			), $this->get_child_theme_scripts()
 		);
