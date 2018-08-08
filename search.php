@@ -51,6 +51,12 @@ get_header(); ?>
 				<div>
 
 					<?php
+					if ( function_exists( 'relevanssi_didyoumean' ) ) {
+    				relevanssi_didyoumean( get_search_query(), '<p>Did you mean: ', '</p>', 3 );
+					}
+					?>
+
+					<?php
 					$i = 0;
 					$terms = rawurlencode( get_search_query() );
 					$url = 'http://www.washington.edu/search/?q=' . $terms;
