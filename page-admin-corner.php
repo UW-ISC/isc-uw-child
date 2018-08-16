@@ -113,7 +113,7 @@ get_header();
 
 			<div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
-				<h3 class="isc-admin-header">Upcoming Event</h3>
+				<h3 class="isc-admin-header">At A Glance</h3>
 				<div class="contact-widget-inner isc-widget-tan isc-admin-block">
 				  <div class='post-content isc-events'>
 					<?php
@@ -131,7 +131,10 @@ get_header();
 							$current = $events[0];
 							$title = $current->post_title;
 							$html = '<h4><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h4>';
+							// Hiding Date - JB 081618 //
+							/*
 							$html .= "<div class='event-date'>" . tribe_get_start_date( $current ) . '</div>';
+							*/
 
 							// Hiding Location info - JB 081518 //
 							/*							
@@ -167,9 +170,9 @@ get_header();
 
 					<?php
 					if ( ! empty( $events ) ) {
-						// we only want to show the See All Events button if a future event exists.
+						// we only want to show the More Info button if a future event exists.
 						$events_url = get_site_url() . '/events/';
-						echo '<a class="uw-btn btn-sm" href="' . esc_url( $events_url ) . '"?>See All Events</a>';
+						echo '<a class="uw-btn btn-sm" href="' . esc_url( $events_url ) . '"?>More Info</a>';
 					}
 					?>
 				</div>
@@ -194,8 +197,11 @@ get_header();
 						} else {
 							foreach ( $seasonal_featured as $featured_page ) {
 								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
+								// Get (for sorting) but don't display the Last Modified Date -JB 081618 //
 								$date = get_the_modified_date("F jS, Y", $featured_page -> ID);
+								/*
 								$html .= '<div class="update-date">' . $date . '</div>';
+								*/
 								$html .= "<p style='margin-bottom:1.5em;'>";
 								$custom = get_post_custom( $featured_page->ID );
 								$description = $custom['isc-featured-description'][0];
