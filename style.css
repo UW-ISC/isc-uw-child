@@ -11,3 +11,25 @@
  Tags:         uw
  Text Domain:  uw-isc-child
 */
+
+/* Change chevron character for accordion menus */
+.isc-expander a.expanded:after {
+ 	content: "\f13a" !important;
+}
+ .isc-expander a.collapsed:after {
+  content: "\f13a" !important; 
+}
+
+/* Override style for ol's on Event pages */
+.isc-events ol {
+	list-style: decimal !important;
+	padding-left: 25px !important;
+	padding-right: 0px !important;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+/* Add more padding under pages' Last Modified date */
+.isc-updated-date {
+	margin-bottom: 12px !important;
+}
