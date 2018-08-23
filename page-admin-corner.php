@@ -133,6 +133,8 @@ get_header();
 							$html = '<h4><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h4>';
 							$html .= "<div class='event-date'>" . tribe_get_start_date( $current ) . '</div>';
 
+							// Hiding Location info - JB 081518 //
+							/*							
 							if ( tribe_has_venue( $current->ID ) ) {
 								$details = tribe_get_venue_details( $current->ID );
 								$html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details['linked_name'];
@@ -147,6 +149,7 @@ get_header();
 							} else {
 								$html .= "<div class='event-location'>Location: TBD</div>";
 							}
+							*/
 
 							if ( has_excerpt( $current->ID ) ) {
 								$html .= "<div class='event-content'>" . $current->post_excerpt . '</div>';
