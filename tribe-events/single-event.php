@@ -44,6 +44,8 @@ get_header();
 				$event_id = get_the_ID();
 				$html = isc_title();
 				$html = the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
+				// Hide event date and location -JB 081618 //
+				/*
 				$html .= "<div class='event-date'>" . tribe_get_start_date($event_id) . "</div>";
 				if (tribe_has_venue($event_id)) {
 					$details = tribe_get_venue_details($event_id);
@@ -55,6 +57,7 @@ get_header();
 				} else {
 					$html .= "<div class='event-location'>Location : TBD</div>";
 				}
+				*/
 				$html .= "<div class='event-content'>";
 				echo $html;
 				the_content();
