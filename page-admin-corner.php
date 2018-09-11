@@ -216,8 +216,10 @@ get_header();
 						}
 						?>
 					</div>
+					<!-- Hide the See All button until there's a destination page to point it to
 					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See All Tasks</a>
-				</div>
+					-->
+					</div>
 
 			</div>
 
