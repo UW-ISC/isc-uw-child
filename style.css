@@ -68,3 +68,11 @@ blockquote.outline {
 	list-style: circle !important;
 	padding-left: 20px !important;
 }
+
+/* For a TOC div that spans the container width */
+@media (min-width: 992px) {
+  .isc-toc-wide {
+    width: auto;
+    padding: 20px;
+    }
+}
