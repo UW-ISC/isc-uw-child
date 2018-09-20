@@ -76,3 +76,8 @@ blockquote.outline {
     padding: 20px;
     }
 }
+
+/* Add whitespace to bottom of accordion menu divs */
+.isc-expander {
+    margin-bottom: 15px;
+  }
