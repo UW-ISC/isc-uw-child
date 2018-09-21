@@ -81,3 +81,25 @@ blockquote.outline {
 .isc-expander {
     margin-bottom: 15px;
   }
+
+/* Reduce tile padding */
+.box-outer .box .tile {
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+}
+
+.box-outer .box {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+.box-outer .box.four .tile {
+    padding-top: 10px;
+    padding-right: 25px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+}
