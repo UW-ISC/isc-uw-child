@@ -1016,3 +1016,8 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: 1px solid #4b2e83; }
 
 /*# sourceMappingURL=isc-styles.css.map */
+
+table thead{
+  background: #4b2e83;
+  color: white;
+}
