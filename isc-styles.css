@@ -1021,3 +1021,7 @@ table thead{
   background: #4b2e83;
   color: white;
 }
+
+table thead tr th{
+  border-bottom: 0px !important;
+}
