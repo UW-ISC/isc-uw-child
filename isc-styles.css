@@ -1017,7 +1017,7 @@ a.uw-btn.btn-sm.btn-left {
 
 /*# sourceMappingURL=isc-styles.css.map */
 
-table thead{
+.primary-isc-table thead{
   background: #4b2e83;
   color: white;
 }
