@@ -442,8 +442,8 @@ a.uw-btn.btn-sm.btn-left {
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card h3 {
   margin-top: 0; }
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card .isc-homepage-excerpt {
-  height: 180px;
-  max-height: 180px;
+  height: 190px;
+  max-height: 190px;
   overflow: hidden; }
 @media (min-width: 992px) {
   .isc-homepage-body .isc-homepage-news {
@@ -1016,3 +1016,11 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: 1px solid #4b2e83; }
 
 /*# sourceMappingURL=isc-styles.css.map */
+
+/* for multi-line text containers that may have overflowing text like the featured posts on ISC homepage */
+.multi-line-text-block {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;  
+}
