@@ -1022,6 +1022,6 @@ a.uw-btn.btn-sm.btn-left {
   color: white;
 }
 
-table thead tr th{
+.primary-isc-table thead tr th{
   border-bottom: 0px !important;
 }
