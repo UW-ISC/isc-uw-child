@@ -1067,12 +1067,11 @@ a:focus .simple-list-item img {
 }
 
 .role-list .hover-link {
-  padding-top: 7px;
-  padding-right: 8px;
-  position: absolute;
-  right: 5%;
-  top: 30%;
-  display: none;
+	padding-top: 7px;
+	padding-right: 8px;
+	position: absolute;
+	right: 0%;
+	top: 30%;
 }
 
 .role-list a:hover .hover-link {
@@ -1087,4 +1086,8 @@ a:focus .simple-list-item img {
   background-color: #d3d3d329;
   margin-right: 3px;
   margin-bottom: 3px;
+}
+
+.role-list .col-md-5  p{
+  display: none;
 }
