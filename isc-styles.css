@@ -1072,6 +1072,7 @@ a:focus .simple-list-item img {
 	position: absolute;
 	right: 0%;
 	top: 30%;
+	display: none;
 }
 
 .role-list a:hover .hover-link {
