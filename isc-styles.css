@@ -1016,3 +1016,12 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: 1px solid #4b2e83; }
 
 /*# sourceMappingURL=isc-styles.css.map */
+
+.generic-title{
+  color:black !important;
+  text-shadow: none !important;
+}
+
+.generic-news-bar{
+  margin-top:0px !important;
+}
