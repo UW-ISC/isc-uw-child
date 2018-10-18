@@ -216,13 +216,14 @@ a.uw-btn.btn-sm.btn-left {
   padding: 0 !important;
   display: block !important; }
 .uw-breadcrumbs ul {
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   overflow: hidden;
   text-overflow: ellipsis; }
 .uw-breadcrumbs ul li {
   float: none !important;
   display: inline-block;
-  line-height: 38px; }
+  /*line-height: 38px; */
+}
 .uw-breadcrumbs ul li:first-child a {
   padding: 0;
   background: url("../uw-2014/assets/svg/uw-sprite.svg") no-repeat -250px 2px;
@@ -230,12 +231,12 @@ a.uw-btn.btn-sm.btn-left {
 .uw-breadcrumbs ul li:first-child a:hover, .uw-breadcrumbs ul li:first-child a:focus {
   border-bottom: solid 1px #857533 !important; }
 .uw-breadcrumbs ul li:first-child:after {
-  top: 13px; }
+  top: 7px; }
 @media print {
   .uw-breadcrumbs ul li:first-child {
     display: none; } }
 .uw-breadcrumbs ul li:after {
-  top: 13px; }
+  top: 7px; }
 @media print {
   .uw-breadcrumbs ul .current span {
     font-weight: bold; } }
