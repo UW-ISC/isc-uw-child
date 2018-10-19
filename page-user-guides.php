@@ -33,7 +33,7 @@ get_header();
 				
 				<div style="margin-bottom:1em; font-size: 14px;">
 					<div class="row">
-						<div class="col-md-9 form-inline" style="padding: 0px;">
+						<div class="col-md-9 form-inline">
 							<label>Filter by Keyword:</label>
 							<input id="myInputTextField" type="text" class="form-control" style="width:inherit;border-radius:0px;" >
 						</div>
