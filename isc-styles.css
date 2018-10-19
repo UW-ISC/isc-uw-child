@@ -1021,3 +1021,7 @@ a.uw-btn.btn-sm.btn-left {
   background: #4b2e83;
   color: white;
 }
+
+.primary-isc-table thead tr th{
+  border-bottom: 0px !important;
+}
