@@ -68,7 +68,7 @@ get_header();
 										?>
 									</select></th>
 							<th><select class="form-control input-sm" id="role-dropdown">
-									  <option value="---"> --- </option>
+									  <option value="---"> (Select a role) </option>
 										<?php
 										  $roles = (isc_get_all_roles( $user_guides ));
 										foreach ( $roles as $role ) {
