@@ -30,16 +30,19 @@ get_header();
 
 				<?php isc_title(); ?>
 
-				<h2 class="sr-only">Search Options</h2>
+				
 				<div style="margin-bottom:1em; font-size: 14px;">
-
 					<div class="row">
-						<div class="col-md-6">
-							<label>Search by Keyword:</label>
-							<input class="form-control input-sm" type="text" id="myInputTextField">
+						<div class="col-md-9 form-inline" style="padding: 0px;">
+							<label>Filter by Keyword:</label>
+							<input id="myInputTextField" type="text" class="form-control" style="width:inherit;border-radius:0px;" >
+						</div>
+						<div style="float: right">
+								<button id="clearFiltersBtn" class="isc-simple-button">
+									<i class="fa fa-close isc-btn-icon"></i>clear filters
+								</button>
 						</div>
 					</div>
-
 				</div>
 
 				<h2 class="sr-only">User Guides</h2>
@@ -92,6 +95,13 @@ get_header();
 					$('#myInputTextField').keyup(function(){
 						  table.search($(this).val()).draw() ;
 					});
+
+					//clear all filter fields when this button is clicked
+					$("#clearFiltersBtn").on("click", function() {
+						$("#myInputTextField").val('');
+						$("#topic-dropdown").val('---');
+						$("#role-dropdown").val('---');
+	    			});
 
 				});
 				$("#topic-dropdown, #role-dropdown").change(function() {
