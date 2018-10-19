@@ -99,8 +99,11 @@ get_header();
 					//clear all filter fields when this button is clicked
 					$("#clearFiltersBtn").on("click", function() {
 						$("#myInputTextField").val('');
+						$("#myInputTextField").trigger('keyup');
 						$("#topic-dropdown").val('---');
+						$("#topic-dropdown").trigger('change');
 						$("#role-dropdown").val('---');
+						$("#role-dropdown").trigger('change');
 	    			});
 
 				});
