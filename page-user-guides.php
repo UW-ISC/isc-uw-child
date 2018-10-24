@@ -30,47 +30,19 @@ get_header();
 
 				<?php isc_title(); ?>
 
-				<h2 class="sr-only">Search Options</h2>
-				<div style="background:#f9f9f9; padding: 20px; margin-bottom:1em; font-size: 14px;">
-
+				
+				<div style="margin-bottom:1em; font-size: 14px;">
 					<div class="row">
-
-						<div class="col-md-8">
-							<div class="sr-only">Filter by:</div>
-							<div class="row">
-								<div class="col-md-6">
-									<label>Topic:</label>
-									<select class="form-control input-sm" id="topic-dropdown">
-									  <option value="---"> --- </option>
-										<?php
-										  $topics = (isc_get_all_topics( $user_guides ));
-										foreach ( $topics as $topic ) {
-											echo '<option value = "' . esc_attr( sanitize_title( $topic ) ) . '"> ' . esc_html( $topic ) . ' </option>';
-										}
-										?>
-									</select>
-								</div>
-								<div class="col-md-6">
-									<label>Security Role:</label>
-									<select class="form-control input-sm" id="role-dropdown">
-									  <option value="---"> --- </option>
-										<?php
-										  $roles = (isc_get_all_roles( $user_guides ));
-										foreach ( $roles as $role ) {
-											echo '<option value = "' . esc_attr( sanitize_title( $role ) ) . '"> ' . esc_html( $role ) . ' </option>';
-										}
-										?>
-									</select>
-								</div>
-							</div>
+						<div class="col-md-9 form-inline">
+							<label>Filter by Keyword:</label>
+							<input id="myInputTextField" type="text" class="form-control" style="width:inherit;border-radius:0px;" >
 						</div>
-						<div class="col-md-4">
-							<div class="sr-only">Search by:</div>
-							<label>Keyword:</label>
-							<input class="form-control input-sm" type="text" id="myInputTextField">
+						<div style="float: right">
+								<button id="clearFiltersBtn" class="isc-simple-button">
+									<i class="fa fa-close isc-btn-icon"></i>clear filters
+								</button>
 						</div>
 					</div>
-
 				</div>
 
 				<h2 class="sr-only">User Guides</h2>
@@ -81,6 +53,29 @@ get_header();
 							<th>User Guide</th>
 							<th>Topic</th>
 							<th>Security Role</th>
+						</tr>
+					</thead>
+					<thead style="font-size:14px;">
+						<tr>
+							<th></th>
+							<th><select class="form-control input-sm" id="topic-dropdown">
+									  <option value="---"> (Select a topic) </option>
+										<?php
+										  $topics = (isc_get_all_topics( $user_guides ));
+										foreach ( $topics as $topic ) {
+											echo '<option value = "' . esc_attr( sanitize_title( $topic ) ) . '"> ' . esc_html( $topic ) . ' </option>';
+										}
+										?>
+									</select></th>
+							<th><select class="form-control input-sm" id="role-dropdown">
+									  <option value="---"> (Select a role) </option>
+										<?php
+										  $roles = (isc_get_all_roles( $user_guides ));
+										foreach ( $roles as $role ) {
+											echo '<option value = "' . esc_attr( sanitize_title( $role ) ) . '"> ' . esc_html( $role ) . ' </option>';
+										}
+										?>
+									</select></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -100,6 +95,16 @@ get_header();
 					$('#myInputTextField').keyup(function(){
 						  table.search($(this).val()).draw() ;
 					});
+
+					//clear all filter fields when this button is clicked
+					$("#clearFiltersBtn").on("click", function() {
+						$("#myInputTextField").val('');
+						$("#myInputTextField").trigger('keyup');
+						$("#topic-dropdown").val('---');
+						$("#topic-dropdown").trigger('change');
+						$("#role-dropdown").val('---');
+						$("#role-dropdown").trigger('change');
+	    			});
 
 				});
 				$("#topic-dropdown, #role-dropdown").change(function() {

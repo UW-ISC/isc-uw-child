@@ -1021,3 +1021,38 @@ a.uw-btn.btn-sm.btn-left {
   background: #4b2e83;
   color: white;
 }
+
+.primary-isc-table thead tr th{
+  border-bottom: 0px !important;
+}
+
+.isc-simple-button{
+  color: #4b2e83;
+  background: white;
+  border: 1px solid #4b2e83;
+  border-radius: 0px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 17px;
+  line-height: 1.72222;
+}
+
+.isc-simple-button:hover{
+ color: white;
+  background: #4b2e83; 
+}
+
+.isc-simple-button:focus{
+ outline: none;
+}
+
+.isc-btn-icon{
+  margin-right: 5px;
+}
