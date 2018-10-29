@@ -1,7 +1,5 @@
 /*** sass variables ***/
 /*** sass media query mixins ***/
-a {
-  color: #0B6EAD; }
 
 h1 {
   font-size: 28px; }
@@ -1019,8 +1017,17 @@ a.uw-btn.btn-sm.btn-left {
 .role-list{
   margin-bottom:20px;
 }
+.role-list .role-img-ctr{
+  max-height: 10%;
+  margin-left:20px;
+}
+
+.role-list .content-title{
+      display: inline-flex;
+}
 .role-list .content{
-  max-width: 67%;
+  max-width: 83%;
+  min-width: 83%;
   margin-left: 10px;
 }
 .role-list .role-dsc{
@@ -1039,7 +1046,7 @@ a.uw-btn.btn-sm.btn-left {
   font-weight: 600;
   margin: 0px !important;
   padding-left: 10px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   /*      text-decoration: underline; */
 }
 
@@ -1073,12 +1080,14 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 .role-list .hover-link {
-	padding-top: 7px;
-	padding-right: 8px;
-	position: absolute;
-	right: 0%;
-	top: 30%;
+	margin-left: 20px;
+	/* padding-top: 7px; */
+	/* padding-right: 8px; */
+	/* position: relative; */
+	/* right: -94px; */
+	/* top: 0px; */
 	display: none;
+	line-height: 1em;
 }
 
 .role-list .a:hover .hover-link {
@@ -1090,9 +1099,10 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 .role-list-button {
+  /* border-bottom: 1px dashed purple; */
   background-color: #d3d3d329;
-  margin-right: 3px;
-  margin-bottom: 3px;
+  /* margin-right: 3px; */
+  margin-bottom: 8px;
 }
 
 .role-list .col-md-5  p{
