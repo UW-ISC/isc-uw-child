@@ -1051,17 +1051,18 @@ a.uw-btn.btn-sm.btn-left {
   float: left;
 }
 
-.role-list a:hover   {
+.role-list .a:hover   {
   border-bottom: none;
+  cursor: pointer;
 }
 
-.role-list a:hover h4  {
+.role-list .a:hover h4  {
   color: #85754d;
 }
 
 
-.role-list a:hover .simple-list-item img,
-a:focus .simple-list-item img {
+.role-list .a:hover .simple-list-item img,
+.a:focus .simple-list-item img {
   outline: none !important;
 }
 
@@ -1074,11 +1075,11 @@ a:focus .simple-list-item img {
 	display: none;
 }
 
-.role-list a:hover .hover-link {
+.role-list .a:hover .hover-link {
   display: block !important;
 }
 
-.role-list a:hover h4 {
+.role-list .a:hover h4 {
   text-decoration: underline;
 }
 
