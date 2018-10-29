@@ -1019,7 +1019,13 @@ a.uw-btn.btn-sm.btn-left {
 .role-list{
   margin-bottom:20px;
 }
-
+.role-list .content{
+  max-width: 67%;
+  margin-left: 10px;
+}
+.role-list .role-dsc{
+  margin-left: 10px;
+}
 .role-list .simple-list-item {
   color: #4b2e83;
   width: 100%;
@@ -1030,7 +1036,7 @@ a.uw-btn.btn-sm.btn-left {
 
 .role-list .simple-list-item h4 {
   width: 100%;
-  font-weight: normal;
+  font-weight: 600;
   margin: 0px !important;
   padding-left: 10px;
   padding-top: 20px;
