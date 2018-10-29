@@ -1016,7 +1016,6 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: 1px solid #4b2e83; }
 
 /*# sourceMappingURL=isc-styles.css.map */
-
 .role-list{
   margin-bottom:20px;
 }
@@ -1052,17 +1051,18 @@ a.uw-btn.btn-sm.btn-left {
   float: left;
 }
 
-.role-list a:hover   {
+.role-list .a:hover   {
   border-bottom: none;
+  cursor: pointer;
 }
 
-.role-list a:hover h4  {
+.role-list .a:hover h4  {
   color: #85754d;
 }
 
 
-.role-list a:hover .simple-list-item img,
-a:focus .simple-list-item img {
+.role-list .a:hover .simple-list-item img,
+.a:focus .simple-list-item img {
   outline: none !important;
 }
 
@@ -1075,11 +1075,11 @@ a:focus .simple-list-item img {
 	display: none;
 }
 
-.role-list a:hover .hover-link {
+.role-list .a:hover .hover-link {
   display: block !important;
 }
 
-.role-list a:hover h4 {
+.role-list .a:hover h4 {
   text-decoration: underline;
 }
 
@@ -1091,4 +1091,44 @@ a:focus .simple-list-item img {
 
 .role-list .col-md-5  p{
   display: none;
+}
+
+.primary-isc-table thead{
+  background: #4b2e83;
+  color: white;
+}
+
+.primary-isc-table thead tr th{
+  border-bottom: 0px !important;
+}
+
+.isc-simple-button{
+  color: #4b2e83;
+  background: white;
+  border: 1px solid #4b2e83;
+  border-radius: 0px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 17px;
+  line-height: 1.72222;
+}
+
+.isc-simple-button:hover{
+ color: white;
+  background: #4b2e83; 
+}
+
+.isc-simple-button:focus{
+ outline: none;
+}
+
+.isc-btn-icon{
+  margin-right: 5px;
 }
