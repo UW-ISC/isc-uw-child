@@ -1016,6 +1016,81 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: 1px solid #4b2e83; }
 
 /*# sourceMappingURL=isc-styles.css.map */
+.role-list{
+  margin-bottom:20px;
+}
+
+.role-list .simple-list-item {
+  color: #4b2e83;
+  width: 100%;
+  padding: 10px 0px !important;
+  display: inline-flex;
+  border-radius: 5px;
+}
+
+.role-list .simple-list-item h4 {
+  width: 100%;
+  font-weight: normal;
+  margin: 0px !important;
+  padding-left: 10px;
+  padding-top: 20px;
+  /*      text-decoration: underline; */
+}
+
+.role-list .simple-list-item p {
+  width: 50px;
+  /*width: 20%;*/
+  text-decoration: none;
+  margin: 1px;
+  /*   margin-left: 25px; */
+  /*   float: left; */
+}
+
+.role-list .simple-list-item img {
+  width: 100%;
+  float: left;
+}
+
+.role-list a:hover   {
+  border-bottom: none;
+}
+
+.role-list a:hover h4  {
+  color: #85754d;
+}
+
+
+.role-list a:hover .simple-list-item img,
+a:focus .simple-list-item img {
+  outline: none !important;
+}
+
+.role-list .hover-link {
+	padding-top: 7px;
+	padding-right: 8px;
+	position: absolute;
+	right: 0%;
+	top: 30%;
+	display: none;
+}
+
+.role-list a:hover .hover-link {
+  display: block !important;
+}
+
+.role-list a:hover h4 {
+  text-decoration: underline;
+}
+
+.role-list-button {
+  background-color: #d3d3d329;
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+
+.role-list .col-md-5  p{
+  display: none;
+}
 
 .primary-isc-table thead{
   background: #4b2e83;
