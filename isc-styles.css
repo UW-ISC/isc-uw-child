@@ -1,7 +1,8 @@
 /*** sass variables ***/
 /*** sass media query mixins ***/
 a {
-  color: #0B6EAD; }
+  color: #0B6EAD;
+  }
 
 h1 {
   font-size: 28px; }
@@ -479,7 +480,8 @@ a.uw-btn.btn-sm.btn-left {
   color: #85754d;
   font-size: 0.75em;
   font-weight: 600;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  }
 .isc div.search-breadcrumbs span:before {
   content: "\f105";
   display: inline-block;
@@ -1029,7 +1031,7 @@ a.uw-btn.btn-sm.btn-left {
 .isc-simple-button{
   color: #4b2e83;
   background: white;
-  border: 1px solid #4b2e83;
+  border: 1px solid #4b2e83 !important;
   border-radius: 0px;
   display: inline-block;
   margin-bottom: 0;
@@ -1055,4 +1057,27 @@ a.uw-btn.btn-sm.btn-left {
 
 .isc-btn-icon{
   margin-right: 5px;
+}
+
+.filter-title{
+  display: -webkit-box;
+}
+.clear-filter-link{
+  border-color : #85754d !important;
+}
+
+.clear-filter-link:hover{
+  background: #85754d;
+  color: white !important;
+}
+
+.filter-dd{
+  font-size: 17px;
+  font-weight: normal;
+  padding: 7px;
+}
+
+.crumb a{
+  color: #85754d;
+  font-weight: 600;
 }

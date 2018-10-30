@@ -34,9 +34,9 @@ get_header(); ?>
 				get_search_form();
 
 				?>
-
-
-				<h1>Search Results</h1>
+				<div class="filter-title">
+					<h1>Search Results in <?php rlv_tag_dropdown(); ?></h1>
+				</div>
 
 				<?php
 

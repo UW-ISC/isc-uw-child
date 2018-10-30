@@ -150,6 +150,123 @@ if ( ! function_exists( 'esc_html_title' ) ) :
 	}
 endif;
 
+add_filter('relevanssi_hits_filter', 'rlv_gather_tags', 99);
+/* Gets relevant Tags for Search Result Filtering
+https://www.relevanssi.com/knowledge-base/category-filter-search-results-pages/
+*/
+function rlv_gather_tags($hits) {
+    global $rlv_tags_present;
+    $rlv_tags_present = array();
+    $posts_match = false;
+    $glossary_match = false;
+    foreach ( $hits[0] as $hit ) {
+        $terms = get_the_terms( $hit->ID, 'md-tags' );
+        
+        if(! $posts_match && $hit->post_type === 'post'){
+        	$rlv_tags_present['news'] = 'matched';
+        	$posts_match = true;
+        	// echo '<p>NEWS'.$hit->post_type.'</p>';
+        }
+        if(! $glossary_match && $hit->post_type === 'glossary'){
+        	$rlv_tags_present['glossary'] = 'matched';
+        	$glossary_match - true;
+        	// echo '<p>GLOSS'.$hit->post_type.'</p>';
+        }
+        else
+        {
+        	if(is_array($terms)) {
+	            foreach ( $terms as $term ) {
+	                $rlv_tags_present[ $term->term_id ] = $term->name;
+	                // echo '<p>'.$hit->post_type.'</p>';
+	            }
+        	}
+    	}
+    }
+    asort( $rlv_tags_present );
+    return $hits;
+}
+
+function rlv_tag_dropdown() {
+    global $rlv_tags_present, $wp_query;
+    $query_values = $wp_query->query_vars['post_type'];
+    $url ='';
+    if ( !empty($query_values) ) {   	
+    	$url = esc_url(remove_query_arg('post_type'));
+            if(strpos($query_values, "post") !== false)
+            {
+                echo "<a class='isc-simple-button clear-filter-link' href='$url'><i class='fa fa-close isc-btn-icon'></i>News</a>";
+                return;
+            }
+            if(strpos($query_values, "glossary") !== false)
+            {
+                echo "<a class='isc-simple-button clear-filter-link' href='$url'><i class='fa fa-close isc-btn-icon'></i>Glossary</a>";
+                return;   
+            }
+        
+    }
+    $query_values = $wp_query->query_vars['md-tags'];
+    
+    if (!empty($query_values)) {
+        foreach ( $rlv_tags_present as $tag_id => $tag_name ) {
+            if(strpos($query_values, strval($tag_id) ) !== false)
+            {
+                
+                $url = esc_url(remove_query_arg('md-tags'));
+                echo "<a class='isc-simple-button clear-filter-link' href='$url'><i class='fa fa-close isc-btn-icon'></i>". $tag_name."</a>";
+            }
+        }
+        
+    }
+    else {
+        $select = "<select class='filter-dd' id='rlv_tag' name='rlv_tag'><option value=''>All</option>";
+        // $select = "";
+        $news_added = false;
+        $glossary_added = false;
+        foreach ( $rlv_tags_present as $tag_id => $tag_name ) {
+        	// echo '<p>'.$tag_id.' : '. $tag_name. '</p>';
+            if(strval($tag_id) !== 'news' && strval($tag_id) !== 'glossary' )
+            	{
+            		$select .= "<option value='$tag_id'>$tag_name</option>";
+            	}
+           else if ( strval($tag_id) === 'news' && !$news_added){
+            		$select .= "<option value='post'>News</option>";	
+            		$news_added = true;
+            	}
+            else if ( strval($tag_id) === 'glossary' && !$glossary_added){
+            		$select .= "<option value='glossary'>Glossary</option>";	
+            		$glossary_added =true;
+            	}
+        }
+        $select .= "</select>";
+        $url = esc_url(remove_query_arg('paged'));
+        if (strpos($url, 'page') !== false) {
+            $url = preg_replace('/page\/\d+\//', '', $url);
+        }
+        $select .= <<<EOH
+ 
+<script>
+<!--
+    var dropdown = document.getElementById("rlv_tag");
+    function onTagChange() {
+    	if ( dropdown.options[dropdown.selectedIndex].value == 'post' ) {
+            location.href = "$url"+"&post_type=post";
+        }
+        else if ( dropdown.options[dropdown.selectedIndex].value  == 'glossary' ) {
+            location.href = "$url"+"&post_type=glossary";
+        }
+        else if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
+            location.href = "$url"+"&md-tags="+dropdown.options[dropdown.selectedIndex].value;
+        }
+    }
+    dropdown.onchange = onTagChange;
+-->
+</script>
+EOH;
+ 
+        echo $select;
+    }
+}
+
 add_filter( 'relevanssi_remove_punctuation', 'savehyphens_1', 9 );
 /**
  * Hack around relevanssi dropping punctuation from search queries.
