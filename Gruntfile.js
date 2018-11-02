@@ -4,15 +4,6 @@ module.exports = function(grunt) {
         jshint: {
             files: ['Gruntfile.js', 'assets/js/*.js', 'package.json'],
         },
-        phpcs: {
-            application: {
-                src: ['*.php', '**/*.php']
-            },
-            options: {
-                bin: '/usr/bin/phpcs',
-                standard: 'Wordpress'
-            }
-        },
 		sass: {
 			dist: {
                 options: {
@@ -31,10 +22,6 @@ module.exports = function(grunt) {
             javascript: {
                 files: ['<%= jshint.files %>'],
                 tasks: ['changed:jshint']
-            },
-            php: {
-                files: ['*.php','**/*.php'],
-                tasks: ['changed:phpcs']
             }
 		}
 	});
