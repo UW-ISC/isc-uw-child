@@ -4,11 +4,8 @@
   "devDependencies": {
     "grunt": "*",
     "grunt-changed": "*",
-    "grunt-contrib-jshint": "*",
     "grunt-contrib-sass": "*",
     "grunt-contrib-watch": "*",
-    "grunt-phpcs": "*",
-    "jshint": "*",
     "sass": "^1.14.3"
   }
 }
