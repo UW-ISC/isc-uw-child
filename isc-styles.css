@@ -1182,3 +1182,7 @@ a.uw-btn.btn-sm.btn-left {
 .isc-btn-icon{
   margin-right: 5px;
 }
+
+.fui-radio-unchecked:before, .fui-radio-checked:before{
+  display: none;
+}
