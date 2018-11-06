@@ -1014,8 +1014,17 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: 1px solid #4b2e83; }
 
 /*# sourceMappingURL=isc-styles.css.map */
-.role-list{
-  margin-bottom:20px;
+
+.role-link:focus{
+  outline: none !important;
+  border: 0px;
+}
+
+.role-link p{
+  display:none ;
+}
+.role-link p:focus{
+  display:none ;
 }
 .role-list .role-img-ctr{
   max-height: 10%;
@@ -1063,18 +1072,37 @@ a.uw-btn.btn-sm.btn-left {
   width: 100%;
   float: left;
 }
+.role-list a:focus{
 
-.role-list .a:hover   {
+  border: 0px !important;
+  background: #0000000a;
+}
+.role-list a:hover{
+
+  border: 0px !important;
+  background: #0000000a;
+}
+.role-list a:focus .simple-list-item img {
+  outline:none !important;
+}
+.role-list a{
+  display:block;
+}
+.role-list a:hover   {
   border-bottom: none;
   cursor: pointer;
 }
 
-.role-list .a:hover h4  {
+.role-list a:hover h4  {
+  color: #85754d;
+  
+}
+.role-list a:focus h4  {
   color: #85754d;
 }
 
 
-.role-list .a:hover .simple-list-item img,
+.role-list a:hover .simple-list-item img,
 .a:focus .simple-list-item img {
   outline: none !important;
 }
@@ -1090,13 +1118,19 @@ a.uw-btn.btn-sm.btn-left {
 	line-height: 1em;
 }
 
-.role-list .a:hover .hover-link {
+.role-list a:hover .hover-link {
   display: block !important;
 }
-
-.role-list .a:hover h4 {
+.role-list a:focus .hover-link {
+  display: block !important;
+}
+.role-list a:hover h4 {
   text-decoration: underline;
 }
+.role-list a:focus h4 {
+  text-decoration: underline;
+}
+
 
 .role-list-button {
   /* border-bottom: 1px dashed purple; */
