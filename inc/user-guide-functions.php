@@ -299,6 +299,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 						$("#tocAccordion a").click(function(){
 							$("#tocAccordion .current").removeClass("current");
 							$(this).parent().addClass("current");
+							$("#tocAccordion .first").parent().removeClass("current");
 						});
 					});
 				</script>
