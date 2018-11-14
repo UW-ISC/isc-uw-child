@@ -228,3 +228,12 @@ function isc_body_classes($classes) {
     $classes[] = 'isc';
     return $classes;
 }
+
+function theme_enqueue_scripts() {
+    $dependencies = array('jquery');
+    wp_enqueue_script('bootstrap', get_stylesheet_directory_uri().'/vendor/js/bootstrap.min.js', $dependencies, '4.0.0', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
+
+?>
