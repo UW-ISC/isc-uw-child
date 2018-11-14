@@ -948,13 +948,15 @@ a.uw-btn.btn-sm.btn-left {
   color: red !important; }
 .uw-accordion-menu .has-children a, .uw-accordion-menu .has-children button {
   position: relative;
-  padding-right: 2rem; }
+  padding-right: 2rem;
+  }
 .uw-accordion-menu .has-children i {
   position: absolute;
   right: 1rem;
-  top: 30%;
-  height: 2rem;
-  margin-top: -1rem; }
+  top: 37%;
+  height: 3rem;
+  margin-top: -1rem;
+  }
 .uw-accordion-menu .has-children i:before {
   content: "\f105"; }
 .uw-accordion-menu .has-children.is-open > button > i {
@@ -1181,4 +1183,19 @@ a.uw-btn.btn-sm.btn-left {
 
 .isc-btn-icon{
   margin-right: 5px;
+}
+
+.collapse {
+  display: none;
+}
+
+.collapse.show {
+  display: block;
+}
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
 }
