@@ -1,7 +1,5 @@
 /*** sass variables ***/
 /*** sass media query mixins ***/
-a {
-  color: #0B6EAD; }
 
 h1 {
   font-size: 28px; }
@@ -950,13 +948,15 @@ a.uw-btn.btn-sm.btn-left {
   color: red !important; }
 .uw-accordion-menu .has-children a, .uw-accordion-menu .has-children button {
   position: relative;
-  padding-right: 2rem; }
+  padding-right: 2rem;
+  }
 .uw-accordion-menu .has-children i {
   position: absolute;
   right: 1rem;
-  top: 30%;
-  height: 2rem;
-  margin-top: -1rem; }
+  top: 37%;
+  height: 3rem;
+  margin-top: -1rem;
+  }
 .uw-accordion-menu .has-children i:before {
   content: "\f105"; }
 .uw-accordion-menu .has-children.is-open > button > i {
@@ -1016,3 +1016,186 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: 1px solid #4b2e83; }
 
 /*# sourceMappingURL=isc-styles.css.map */
+
+.role-link:focus{
+  outline: none !important;
+  border: 0px;
+}
+
+.role-link p{
+  display:none ;
+}
+.role-link p:focus{
+  display:none ;
+}
+.role-list .role-img-ctr{
+  max-height: 10%;
+  margin-left:20px;
+}
+
+.role-list .content-title{
+      display: inline-flex;
+}
+.role-list .content{
+  max-width: 83%;
+  min-width: 83%;
+  margin-left: 10px;
+}
+.role-list .role-dsc{
+  margin-left: 10px;
+}
+.role-list .simple-list-item {
+  color: #4b2e83;
+  width: 100%;
+  padding: 10px 0px !important;
+  display: inline-flex;
+  border-radius: 5px;
+}
+
+.role-list .simple-list-item h4 {
+  width: 100%;
+  font-weight: 600;
+  margin: 0px !important;
+  padding-left: 10px;
+  /* padding-top: 20px; */
+  /*      text-decoration: underline; */
+}
+
+.role-list .simple-list-item p {
+  width: 50px;
+  /*width: 20%;*/
+  text-decoration: none;
+  margin: 1px;
+  /*   margin-left: 25px; */
+  /*   float: left; */
+}
+
+.role-list .simple-list-item img {
+  width: 100%;
+  float: left;
+}
+.role-list a:focus{
+
+  border: 0px !important;
+  background: #0000000a;
+}
+.role-list a:hover{
+
+  border: 0px !important;
+  background: #0000000a;
+}
+.role-list a:focus .simple-list-item img {
+  outline:none !important;
+}
+.role-list a{
+  display:block;
+}
+.role-list a:hover   {
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.role-list a:hover h4  {
+  color: #85754d;
+  
+}
+.role-list a:focus h4  {
+  color: #85754d;
+}
+
+
+.role-list a:hover .simple-list-item img,
+.a:focus .simple-list-item img {
+  outline: none !important;
+}
+
+.role-list .hover-link {
+	margin-left: 20px;
+	/* padding-top: 7px; */
+	/* padding-right: 8px; */
+	/* position: relative; */
+	/* right: -94px; */
+	/* top: 0px; */
+	display: none;
+	line-height: 1em;
+}
+
+.role-list a:hover .hover-link {
+  display: block !important;
+}
+.role-list a:focus .hover-link {
+  display: block !important;
+}
+.role-list a:hover h4 {
+  text-decoration: underline;
+}
+.role-list a:focus h4 {
+  text-decoration: underline;
+}
+
+
+.role-list-button {
+  /* border-bottom: 1px dashed purple; */
+  background-color: #d3d3d329;
+  /* margin-right: 3px; */
+  margin-bottom: 8px;
+}
+
+.role-list .col-md-5  p{
+  display: none;
+}
+
+.primary-isc-table thead{
+  background: #4b2e83;
+  color: white;
+}
+
+.primary-isc-table thead tr th{
+  border-bottom: 0px !important;
+}
+
+.isc-simple-button{
+  color: #4b2e83;
+  background: white;
+  border: 1px solid #4b2e83;
+  border-radius: 0px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 17px;
+  line-height: 1.72222;
+}
+
+.isc-simple-button:hover{
+ color: white;
+  background: #4b2e83; 
+}
+
+.isc-simple-button:focus{
+ outline: none;
+}
+
+.isc-btn-icon{
+  margin-right: 5px;
+}
+
+.collapse {
+  display: none;
+}
+
+.collapse.show {
+  display: block;
+}
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
