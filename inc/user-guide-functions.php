@@ -274,7 +274,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 		// Add the title of the table of contents, this is the first element.
 		$first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo( 'name' ) . '"> Table of Contents </a></li>';
-		$last_li = $return ? '' : '<li class="nav-item"><a class="nav-link last" href="#feedback" title="Permanent Link to feedback form"> Feedback </a></li>';
+		$last_li = $return ? '' : '<li class="nav-item"><a class="nav-link last" href="#feedback" title="Permanent Link to feedback form"> Feedback <i class="fa fa-edit" aria-hidden="true"></i> </a></li>';
 
 		$html = sprintf(
 			'<ul id="tocAccordion">%s%s%s</ul>',
