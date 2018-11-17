@@ -243,7 +243,8 @@ a.uw-btn.btn-sm.btn-left {
   font-size: 24px; }
 .isc h3 {
   font-size: 20px;
-  font-weight: 700; }
+  font-weight: 700;
+  }
 .isc h4 {
   font-size: 18px; }
 
@@ -1198,4 +1199,55 @@ a.uw-btn.btn-sm.btn-left {
   height: 0;
   overflow: hidden;
   transition: height 0.35s ease;
+}
+.right-bordered-li{
+  
+padding-right: 10px !important;
+  
+border-right: 1px solid lightgrey;
+}
+
+.tile-header{
+  color: #4b2e83;
+  background: white;
+  border: 1px solid #4b2e83;
+  font-size: 17px;
+  display: inline-grid;
+  padding: 5px 10px;
+  position: relative;
+  top: -5em;
+  left: -5px;
+}
+.tile-header h3{
+  margin: 0px !important
+}
+.tile-ul{
+  padding-left: 0px;
+  top: -3em;
+  position: relative;
+  list-style: none;
+}
+.tile-ul li:not(.list-inline-item){
+  /* margin-bottom: 7px; */
+}
+.li-icon{
+  margin-right: 0.5em;
+}
+.tile-image{
+  position:relative !important;
+  top:-10px !important;
+}
+
+.icon-ctr{
+      border: 1px solid;
+    /*border-radius: 99999px;*/
+    padding: 5px 10px;
+}
+.li-hr{
+  padding-top: 10px;
+  border-top: 1px dashed lightgrey;
+  margin-top: 15px;
+}
+.misc-items ul{
+      list-style: circle;
 }
