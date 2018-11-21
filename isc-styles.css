@@ -1199,3 +1199,9 @@ a.uw-btn.btn-sm.btn-left {
   overflow: hidden;
   transition: height 0.35s ease;
 }
+
+@media print{
+  .collapse{
+    display:block;
+  }
+}
