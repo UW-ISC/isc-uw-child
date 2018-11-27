@@ -1199,3 +1199,17 @@ a.uw-btn.btn-sm.btn-left {
   overflow: hidden;
   transition: height 0.35s ease;
 }
+
+.line{
+  display: -webkit-inline-box;
+}
+.date-diff{
+  margin-left: 10px;
+}
+.new-news-label{
+  background: #85754d;
+  color: white;
+  padding: 0px 5px;
+  margin-left: 10px;
+  font-weight: 100;
+}
