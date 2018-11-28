@@ -68,10 +68,36 @@ get_header();
 							?>
 						</div>
 					</div>
-					<?php 
-					 $news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
-					 ?>
-					<h3 class="isc-admin-header">Admins' News</h3>
+					<div class="line">
+						<h3 class="isc-admin-header">Admins' News</h3>
+						<?php 
+						 $news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
+						 $new_news_count = 0;
+						 if (!is_int(news_stale_after)) {
+						 	$news_stale_after = 3;
+						 }
+						 
+						$args = array(
+										  'tax_query' => array(
+											  array(
+												  'taxonomy' => 'location',
+												  'field'    => 'slug',
+												  'terms'    => 'admin-corner-news',
+											  ),
+										  ),
+										  'posts_per_page' => 5,
+										  'post_status' => 'publish',
+										  'date_query' => array(
+										  	'after' => date('Y-m-d', strtotime('-'.$news_stale_after.' days'))
+										  )
+										);
+						$category_posts = new WP_Query( $args );
+						$new_news_count = $category_posts->found_posts;
+						if($new_news_count > 0){
+							echo '<span id="newNewsCount" class="new-news-count"><span class="new-news-label">'.$category_posts->found_posts.' new</span></span>';
+						}
+						?>
+					</div>
 					<div class="isc-admin-block">
 
 							<?php
@@ -114,13 +140,10 @@ get_header();
 								    else if(strpos($diff_unit, 'day') !== false){
 								    	
 								    	$diff_value = (int)$diff_arr[0];
-								    	
-								    	if (!is_int(news_stale_after)) {
-								    		$news_stale_after = 3;
-								    	}
 
 								    	if($diff_value <= $news_stale_after){
 								    		$new_post = true;
+								    		$new_news_count += 1;
 								    	}
 								    }
 								    if($new_post) {
