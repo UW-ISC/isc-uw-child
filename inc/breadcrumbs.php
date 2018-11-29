@@ -16,10 +16,11 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 		  global $post;
 		  $blog_title = get_bloginfo( 'title' );
 		  $html = '';
+		  $htmlHome = '';
 		if ( '' === $blog_title ) {
-			$html .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url( '/' ) . '" title="Home"> Home </a><li>';
+			$htmlHome .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url( '/' ) . '" title="Home"> Home </a><li>';
 		} else {
-			$html .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'title' ) . '">' . get_bloginfo( 'title' ) . '</a><li>';
+			$htmlHome .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'title' ) . '">' . get_bloginfo( 'title' ) . '</a><li>';
 		}
 
 		if ( is_404() ) {
@@ -98,7 +99,7 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 			}
 		}
 
-		  return "<nav class='uw-breadcrumbs' role='navigation' aria-label='breadcrumbs'><ul>$html</ul></nav>";
+		  return "<nav class='uw-breadcrumbs' role='navigation' aria-label='breadcrumbs'><ul>$htmlHome</ul><ul><li></li>$html</ul></nav>";
 	}
 
 endif;
