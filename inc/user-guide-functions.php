@@ -295,6 +295,16 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 				return $menu;
 			} else {
 				?>
+				<!-- script for TOC last clicked nav item anchor indicator -->
+				<script type="text/javascript">
+					$(function(){
+						$("#tocAccordion a").click(function(){
+							$("#tocAccordion .current").removeClass("current");
+							$(this).parent().addClass("current");
+							$("#tocAccordion .first").parent().removeClass("current");
+						});
+					});
+				</script>
 				<!-- for accordion handle state and smooth transition -->
 				<style>
 			        [data-toggle="collapse"][aria-expanded="true"] > .accordion-handle
