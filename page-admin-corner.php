@@ -57,7 +57,7 @@ get_header();
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
 					<div class="row">
-						<div class="col-md-12" style="margin-bottom: 2em;">
+						<div class="col-md-12 service-links" style="margin-bottom: 2em;">
 							<?php
 							wp_nav_menu(
 								array(

@@ -178,7 +178,8 @@ body, p {
   min-width: 90px !important;
   text-align: center;
   margin-bottom: 0 !important;
-  margin-right: 0 !important; }
+  margin-right: 0 !important;
+  }
 
 .nav-previous, .nav-next {
   margin: 0 !important; }
@@ -595,7 +596,8 @@ a.uw-btn.btn-sm.btn-left {
   display: inline-block;
   text-transform: none;
   font-family: "Open Sans", sans-serif;
-  color: #0088dd; }
+  color: #0088dd;
+  }
 .menu-workday-links-container .menu-item-has-children .sub-menu a:hover {
   color: #85754d;
   text-decoration: underline;
@@ -1205,3 +1207,71 @@ a.uw-btn.btn-sm.btn-left {
     display:block;
   }
 }
+
+.call-to-action a{
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  width: 100%;
+  padding-right: 60px;
+  margin-top: 1em !important;
+  background: #fff !important;
+  display: block;
+  padding: 8px 14px;
+  padding-right: 45px;
+  font-weight: 800 !important;
+  font-family: "Encode Sans Compressed", sans-serif !important;
+  color: #5a5a5a !important;
+  border-bottom: none;
+  line-height: 24px;
+  text-transform: uppercase;
+  position: relative;
+  }
+
+.call-to-action a:hover, .call-to-action a:focus {
+  color: #85754d !important;
+  background-color: #ddd !important;
+  text-decoration: none !important;
+  }
+
+.call-to-action a:before, .call-to-action a:after {
+  right: 0;
+  }
+
+.call-to-action a:before {
+  width: 43px;
+  content: "";
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  background-color: #4b2e83;
+  border-left: 5px solid rgba(0, 0, 0, 0.3);
+  }
+
+.call-to-action a:after {
+  width: 45px;
+  height: 45px;
+  top: 50%;
+  right: 3px;
+  margin-top: -26px;
+  background-size: 740px;
+  background-position: -32px -410px;
+  content: "";
+  position: absolute;
+  background: url("../uw-2014/assets/svg/uw-sprite.svg") no-repeat -36px -475px transparent;
+  }
+
+.call-to-action a:hover:before {
+  background-color: #613ba9;
+  }
+
+.call-to-action a:hover {
+  color: #85754d;
+  }
+
+.service-links .sub-menu li{
+   list-style: circle !important;
+   }
+
+.service-links li .call-to-action{
+   list-style: none !important;
+   }
