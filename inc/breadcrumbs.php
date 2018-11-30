@@ -99,7 +99,7 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 			}
 		}
 
-		  return "<nav class='uw-breadcrumbs' role='navigation' aria-label='breadcrumbs'><ul>$htmlHome</ul><ul><li></li>$html</ul></nav>";
+		  return "<nav class='uw-breadcrumbs' role='navigation' aria-label='breadcrumbs'><ul >$htmlHome</ul><ul class='crumbs-trace'><li></li>$html</ul></nav>";
 	}
 
 endif;
