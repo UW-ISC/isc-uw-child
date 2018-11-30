@@ -259,8 +259,8 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 			if ( count( $cur->subheaders ) > 0 ) {
 				// This means there are subheaders under the current header.
-				$pages .= '<li class="nav-item has-children"><a href="javascript:void(0);" class="nav-link children-toggle collapsed" role="button" data-toggle="collapse" data-target="#' . $slug . '" aria-controls="' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x"></i></a>';
-				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" style="height: 0px;">';
+				$pages .= '<li class="nav-item has-children"><button class="nav-link collapsed " data-toggle="collapse" data-target="#' . $slug . '" aria-controls="' . $slug . '" aria-expanded="false">' . $name . '<i class="fa fa-2x accordion-handle"></i></button>';
+				$pages .= '<ul class="children depth-1 collapse" id="' . $slug . '" data-parent="#tocAccordion">';
 				// Iterate through the subheaders under the current header.
 				foreach ( $cur->subheaders as $subslug => $subname ) {
 					$pages .= '<li class="nav-item"><a class="nav-link" title="' . stripslashes( $subname ) . '" href="#' . $subslug . '">' . stripslashes( $subname ) . '</a></li>';
@@ -274,11 +274,13 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 
 		// Add the title of the table of contents, this is the first element.
 		$first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo( 'name' ) . '"> Table of Contents </a></li>';
+		$last_li = $return ? '' : '<li class="nav-item"><a class="nav-link last" href="#feedback" title="Permanent Link to feedback form"> Feedback <i class="fa fa-edit" aria-hidden="true"></i> </a></li>';
 
 		$html = sprintf(
-			'<ul>%s%s</ul>',
+			'<ul id="tocAccordion">%s%s%s</ul>',
 			$first_li,
-			$pages
+			$pages,
+			$last_li
 		);
 
 		if ( empty( $pages ) ) {
@@ -292,6 +294,31 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 			if ( $return ) {
 				return $menu;
 			} else {
+				?>
+				<!-- script for TOC last clicked nav item anchor indicator -->
+				<script type="text/javascript">
+					$(function(){
+						$("#tocAccordion a").click(function(){
+							$("#tocAccordion .current").removeClass("current");
+							$(this).parent().addClass("current");
+							$("#tocAccordion .first").parent().removeClass("current");
+						});
+					});
+				</script>
+				<!-- for accordion handle state and smooth transition -->
+				<style>
+			        [data-toggle="collapse"][aria-expanded="true"] > .accordion-handle
+			        {
+			            -webkit-transform: rotate(90deg);
+			            -moz-transform:    rotate(90deg);
+			            -ms-transform:     rotate(90deg);
+			            -o-transform:      rotate(90deg);
+			            transform:         rotate(90deg);
+			            transform-origin: center center;
+			            transition-duration: 0.1s;
+			        }
+			    </style>
+				<?php
 				echo $menu;
 			}
 		}
