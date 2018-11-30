@@ -1208,5 +1208,25 @@ a.uw-btn.btn-sm.btn-left {
 @media print{
   .collapse{
     display:block;
-  }
+}
+
+.line{
+  display: -webkit-inline-box;
+}
+  
+.date-diff{
+  margin-left: 10px;
+}
+  
+.new-news-label{
+  background: #85754d;
+  color: white;
+  padding: 0px 5px;
+  margin-left: 10px;
+  font-weight: 100;
+}
+  
+.new-news-count{
+  font-weight: 600;
+  font-size: 15px;
 }
