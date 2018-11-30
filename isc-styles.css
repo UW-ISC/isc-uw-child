@@ -1213,6 +1213,7 @@ a.uw-btn.btn-sm.btn-left {
 @media print{
   .collapse{
     display:block;
+  }
 }
 
 .line{
@@ -1229,6 +1230,7 @@ a.uw-btn.btn-sm.btn-left {
   padding: 0px 5px;
   margin-left: 10px;
   font-weight: 100;
+  font-size: 15px;
 }
   
 .new-news-count{
