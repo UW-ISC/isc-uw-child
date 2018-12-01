@@ -43,7 +43,11 @@ get_header();
 				endwhile
 				?>
 			</article>
-
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-9" id="feedback">
+				<?php echo do_shortcode('[contact-form-7 id="18075" title="User Guide Feedback"]'); ?>		
+			</div>
 			<script>
 			$(function(){
 
