@@ -63,7 +63,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 
 				  <div class="row">
 
-					   <h2 class="col-md-12">Featured articles</h2>
+					   <h2 class="col-md-12">Featured Pages</h2>
 						<?php
 						// Featured Pages
 						// Query finds the published pages marked featured page and lists their
