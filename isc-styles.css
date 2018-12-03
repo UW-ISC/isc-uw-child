@@ -950,23 +950,23 @@ a.uw-btn.btn-sm.btn-left {
   position: relative;
   padding-right: 2rem;
   }
-.uw-accordion-menu .has-children i {
+.uw-accordion-menu .has-children .accordion-handle {
   position: absolute;
   right: 1rem;
   top: 37%;
   height: 3rem;
   margin-top: -1rem;
   }
-.uw-accordion-menu .has-children i:before {
+.uw-accordion-menu .has-children .accordion-handle:before {
   content: "\f105"; }
-.uw-accordion-menu .has-children.is-open > button > i {
+.uw-accordion-menu .has-children.is-open > button > .accordion-handle {
   margin-right: -.2rem; }
-.uw-accordion-menu .has-children.is-open > button > i:before {
+.uw-accordion-menu .has-children.is-open > button > .accordion-handle:before {
   content: "\f107"; }
 .uw-accordion-menu .has-children .children {
   overflow: hidden !important; }
 @media print {
-  .uw-accordion-menu .has-children i {
+  .uw-accordion-menu .has-children .accordion-handle {
     display: none; }
   .uw-accordion-menu .has-children ul {
     height: auto !important; }
