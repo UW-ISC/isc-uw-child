@@ -1,10 +1,11 @@
 <?php
 /**
- * Template Name: User Guide
+ * Template Name: User Guide with Feedback
  *
  * Template that displays a user guide (step by step tutorials)
  * additionally with a table of contents automatically generated
- * from the headers
+ * from the headers. Template also has a feedback section, driven
+ * by Contact Form 7 WordPress Plugin, for the User Guide article.
  *
  * @author UW-IT AXDD
  * @package isc-uw-child
@@ -29,7 +30,7 @@ get_header();
 		<div class="row">
 
 			<div class="col-md-3">
-				<?php isc_user_guide_menu(); ?>
+				<?php isc_user_guide_menu(true); ?>
 			</div>
 
 			<article class="uw-content float-content col-md-9 isc-user-guide" id="main_content">
@@ -69,12 +70,13 @@ get_header();
 
 							});
 
-			$(document).keydown(function(event){
-			// cntrl-f or command-f
+			$(document).on("keydown", function(e){
+				// cntrl-f or command-f
 				if((event.ctrlKey || event.metaKey) && event.which == 70) {
-					$(".collapse.isc-expander-content").attr( "aria-expanded", "true" );
-					$(".collapse.isc-expander-content").removeClass( "collapse" );
-
+					$('.uw-accordion-shortcode__header').attr( "aria-expanded", "true" );
+					$('.uw-accordion-shortcode__panel').attr( "aria-hidden", "false" );
+					$('.uw-accordion-shortcode__title').hide();
+					$('.uw-accordion-shortcode__title').attr( "aria-hidden", "true" );
 				};
 			});
 
