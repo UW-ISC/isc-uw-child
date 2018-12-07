@@ -68,8 +68,36 @@ get_header();
 							?>
 						</div>
 					</div>
-
-					<h3 class="isc-admin-header">Admins' News</h3>
+					<div class="line">
+						<h3 class="isc-admin-header">Admins' News</h3>
+						<?php 
+						 $news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
+						 $new_news_count = 0;
+						 if (!is_int(news_stale_after)) {
+						 	$news_stale_after = 3;
+						 }
+						 $news_stale_after_days_plus_one = $news_stale_after+1;
+						$args = array(
+										  'tax_query' => array(
+											  array(
+												  'taxonomy' => 'location',
+												  'field'    => 'slug',
+												  'terms'    => 'admin-corner-news',
+											  ),
+										  ),
+										  'posts_per_page' => 5,
+										  'post_status' => 'publish',
+										  'date_query' => array(
+										  	'after' => date('Y-m-d', strtotime('-'.$news_stale_after_days_plus_one.' days'))
+										  )
+										);
+						$category_posts = new WP_Query( $args );
+						$new_news_count = $category_posts->found_posts;
+						if($new_news_count > 0){
+							echo '<div class="new-news-count new-news-label">'.$category_posts->found_posts.' new</div>';
+						}
+						?>
+					</div>
 					<div class="isc-admin-block">
 
 							<?php
@@ -92,8 +120,44 @@ get_header();
 									 $category_posts->the_post();
 							?>
 
-								   <h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h4>
-								   <div class="update-date"><?php echo get_the_date() ?> </div>
+								   
+								   <?php 
+								    $diff_str = esc_html( human_time_diff( get_the_time('U'), current_time('timestamp') ) );
+								    $diff_display =  esc_html( '('.human_time_diff( get_the_time('U'), current_time('timestamp') ) ).' ago)';
+								    $diff_arr = explode(" ", $diff_str);
+								    $diff_unit = $diff_arr[1];
+
+								    
+
+								    $new_post = false;
+								    $new_label = '';
+								   
+								    if(strpos($diff_unit, 'second') !== false ||
+								    	strpos($diff_unit, 'min') !== false ||
+								    	strpos($diff_unit, 'hour') !== false){
+								    	$new_post = true;
+								    }
+								    else if(strpos($diff_unit, 'day') !== false){
+								    	
+								    	$diff_value = (int)$diff_arr[0];
+
+								    	if($diff_value <= $news_stale_after){
+								    		$new_post = true;
+								    		$new_news_count += 1;
+								    	}
+								    }
+								    if($new_post) {
+								   		 $new_label = '<span class="new-news-label">new</span>';
+								   	}
+
+								   	?>
+								   <div class="line">
+								   		<h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title()?></a><?php echo $new_label; ?></h4>
+								   	</div><br>
+								   <div class="line">
+								   	<div class="update-date"><?php echo get_the_date(); ?></div>
+								   	<div class="date-diff"><?php echo $diff_display; ?></div>
+								   </div>
 								   <div class='post-content'><?php the_excerpt() ?></div>
 							<?php
 								 endwhile;
