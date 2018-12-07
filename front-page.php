@@ -63,7 +63,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 
 				  <div class="row">
 
-					   <h2 class="col-md-12">Featured articles</h2>
+					   <h2 class="col-md-12">Featured Pages</h2>
 						<?php
 						// Featured Pages
 						// Query finds the published pages marked featured page and lists their
@@ -123,7 +123,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 											$description_text = 'Learn More';
 										}
 										?>
-										<p class="isc-homepage-excerpt"><?php echo esc_textarea( $description ); ?></p>
+										<p class="isc-homepage-excerpt multi-line-text-block"><?php echo esc_textarea( $description ); ?></p>
 										<p><a class="uw-btn btn-sm" title="<?php echo get_the_title( $featured_page->ID ); ?>" href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>"><?php echo esc_textarea( $description_text ); ?><span class="sr-only">: <?php echo get_the_title( $featured_page->ID ); ?></span></a></p>
 									</div>
 
