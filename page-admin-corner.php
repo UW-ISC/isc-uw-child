@@ -76,7 +76,7 @@ get_header();
 						 if (!is_int(news_stale_after)) {
 						 	$news_stale_after = 3;
 						 }
-						 
+						 $news_stale_after_days_plus_one = $news_stale_after+1;
 						$args = array(
 										  'tax_query' => array(
 											  array(
@@ -88,13 +88,13 @@ get_header();
 										  'posts_per_page' => 5,
 										  'post_status' => 'publish',
 										  'date_query' => array(
-										  	'after' => date('Y-m-d', strtotime('-'.$news_stale_after.' days'))
+										  	'after' => date('Y-m-d', strtotime('-'.$news_stale_after_days_plus_one.' days'))
 										  )
 										);
 						$category_posts = new WP_Query( $args );
 						$new_news_count = $category_posts->found_posts;
 						if($new_news_count > 0){
-							echo '<span id="newNewsCount" class="new-news-count"><span class="new-news-label">'.$category_posts->found_posts.' new</span></span>';
+							echo '<div class="new-news-count new-news-label">'.$category_posts->found_posts.' new</div>';
 						}
 						?>
 					</div>
