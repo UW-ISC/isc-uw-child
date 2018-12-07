@@ -1228,18 +1228,24 @@ a.uw-btn.btn-sm.btn-left {
 }
   
 .new-news-label{
+  text-transform: uppercase;
   background: #85754d;
   color: white;
   padding: 0px 5px;
   margin-left: 10px;
   font-weight: 100;
   font-size: 15px;
+  position: relative;
+  top: -3px;
 }
   
 .new-news-count{
-  font-weight: 600;
-  font-size: 15px;
-  }
+      top: 2px;
+      height: 19px;
+      line-height: 18px;
+}
+
+
 
 .crumbs-trace{
   margin-top: 4px !important;
