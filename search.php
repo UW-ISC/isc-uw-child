@@ -21,9 +21,97 @@ get_header(); ?>
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row search-body">
+		<div class="col-md-2 filter-panel">
+			<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="searchResultsFilterForm">
+			<h4>Filter Search Results</h4>
+			<div class="result-type-list">
+				<label>Type</label>
+				  <ul class="no-stylist">
+				  	<li><input type="checkbox" name="all" id="all" autocomplete="off"> <label for="all">All</label></li>
+				    <li><input type="checkbox" name="adminCorner" id="adminCorner" autocomplete="off"> <label for="adminCorner">Admin Corner</label></li>
+				    <li><input type="checkbox" name="userGuide" id="userGuide" autocomplete="off"> <label for="userGuide">User Guide</label></li>
+				    <li><input type="checkbox" name="news" id="news" autocomplete="off"> <label for="news">News</label></li>
+				    <li><input type="checkbox" name="glossary" id="glossary" autocomplete="off"><label for="glossary"> Glossary</label></li>
+				    <li><input type="checkbox" name="others" id="others" autocomplete="off"> <label for="others">Other</label></li>
+				  </ul>
+			  </div>
+			  <!-- <div class="result-tag-list">
+			  	<label>Tags</label>
+			  	<select class="no-stylist" id="tagList" name="tagList" multiple="multiple">
+			  		<?php rlv_tag_options(); ?>
+			    </select>
+			   </div> -->
+				<div class="row panel-actions">
+					<!-- <button class="isc-action-btn">reset</button> -->
+					<button class="isc-primary-action-btn">apply</button>
+					<input type="hidden" name="action" value="searchResultFilter">
+					<input type="hidden" name="query" value="<?php echo get_search_query() ?>">
+				</div>
+			</form>
+			</div>
+			<script type="text/javascript">
+				$('#tagList').searchableOptionList({
+					maxHeight: '250px'
+				});
 
-		<div class="uw-content col-md-9">
+				jQuery(function($){
+					$('#all').change(function(){
+						if(this.checked){
+							$('#all').prop('checked', true);
+							
+							$('#adminCorner').prop('checked', true);
+							$('#userGuide').prop('checked', true);
+							$('#news').prop('checked', true);
+							$('#glossary').prop('checked', true);
+							$('#others').prop('checked', true);
+
+							$("#adminCorner").attr("disabled", true);
+							$("#userGuide").attr("disabled", true);
+							$("#news").attr("disabled", true);
+							$("#glossary").attr("disabled", true);
+							$("#others").attr("disabled", true);
+						}
+						else if(! this.checked){
+							
+							$('#all').prop('checked', false);
+							
+							$('#adminCorner').prop('checked', false);
+							$('#userGuide').prop('checked', false);
+							$('#news').prop('checked', false);
+							$('#glossary').prop('checked', false);
+							$('#others').prop('checked', false);
+
+							$("#adminCorner").attr("disabled", false);
+							$("#userGuide").attr("disabled", false);
+							$("#news").attr("disabled", false);
+							$("#glossary").attr("disabled", false);
+							$("#others").attr("disabled", false);
+						}
+					});
+
+
+
+					$('#searchResultsFilterForm').submit(function(){
+						var filter = $('#searchResultsFilterForm');
+						$.ajax({
+							url:filter.attr('action'),
+							data:filter.serialize(), // form data
+							type:filter.attr('method'), // POST
+							beforeSend:function(xhr){
+								filter.find('button').text('wait...'); // changing the button label
+							},
+							success:function(data){
+								filter.find('button').text('filter'); // changing the button label back
+								$('#response').html(data); // insert data
+							}
+						});
+						return false;
+					});
+				});
+			</script>
+			
+		<div class="uw-content col-md-10">
 
 			<div id='main_content' class="uw-body-copy" tabindex="-1">
 
@@ -35,60 +123,13 @@ get_header(); ?>
 
 				?>
 				<div class="filter-title">
-					<h1>Search Results in <?php rlv_tag_dropdown(); ?></h1>
+					<h1>Search Results</h1>
 				</div>
 
-				<?php
-
-				global $wp_query;
-				$search_query = get_search_query();
-				$total_results = $wp_query->found_posts;
-
-				echo 'Found <b>' . $total_results . '</b> results for "<i>' . $search_query . '</i>".';
-
-				?>
-
-				<div>
-
-					<?php
-					if ( function_exists( 'relevanssi_didyoumean' ) ) {
-    				relevanssi_didyoumean( get_search_query(), '<p>Did you mean: ', '</p>', 3 );
-					}
-					?>
-
-					<?php
-					$i = 0;
-					$terms = rawurlencode( get_search_query() );
-					$url = 'http://www.washington.edu/search/?q=' . $terms;
-					if ( have_posts() ) {
-						while ( have_posts() ) : the_post();?>
-							<div class='search-result'>
-								<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title() ?></a></h2>
-								<?php include( locate_template( 'search-breadcrumbs.php' ) ); ?>
-								<div class='post-content'><?php the_excerpt(); ?></div>
-							</div>
-							<?php
-							$i++;
-						endwhile;
-						if ( $i <= 1 ) {
-							$html = "<p class=\'little-results\'>";
-							$html .= 'Try searching for ';
-							$html .= "<a href ='$url'>'" . get_search_query() . "'</a>";
-							$html .= ' across all of the UW for additional results.</p>';
-							echo $html;
-						}
-					} else {
-						$html = "<p class=\'no-results\'>";
-						$html .= 'Sorry, no results matched your criteria. Try searching for ';
-						$html .= "<a href ='$url'>'" . get_search_query() . "'</a>";
-						$html .= ' across all of the UW.</p>';
-						echo $html;
-					} ?>
-
-					<div><?php posts_nav_link( ' ' ); ?></div>
-
+				<div id="response">
+					<?php relevanssi_search_results(get_search_query(),'')?>
 				</div>
-
+				
 			</div>
 
 		</div>

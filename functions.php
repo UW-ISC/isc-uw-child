@@ -353,4 +353,230 @@ function theme_enqueue_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
+function get_breadcrumbs($post){
+    $html = '<div class="search-breadcrumbs"><span class="crumb">ISC</span>';
+
+    if (get_post_type($post) == 'page')
+        {
+        $parents = get_post_ancestors($post->ID);
+        $parents = array_reverse($parents);
+        foreach($parents as $parent)
+            {
+            $html.= '<span class="crumb"> <a href="' . get_permalink($parent) . '">' . get_the_title($parent) . '</a></span>';
+            }
+        }
+      else
+    if (get_post_type($post) == 'post')
+        {
+            $year = get_the_date('Y', $post->post_ID);
+            $month = get_the_date('F', $post->post_ID);
+            $month_number = get_the_date('m', $post->post_ID);
+            $day = get_the_date('j', $post->post_ID);
+            $html.= '<span class="crumb"><a href="news">News</a></span><span class="crumb"><a href="'.get_year_link($year,$month_number,$day).'">' . $year . '</a></span><span class="crumb"><a href="'.get_month_link($year,$month_number,$day).'">' . $month . '</a></span><span class="crumb"><a href="'.get_day_link($year,$month_number,$day).'">' . $day . '</a></span>';
+        }
+      else
+    if (get_post_type($post) == 'glossary')
+        {
+        $html.= '<span class="crumb"> <a href="glossary"> HR/Payroll Glossary </a> </span>';
+        }
+
+    $html.= '<span class="crumb" style="color: #3a3a3a;">' . get_the_title($post->post_ID) . '</span>';
+    $html.= '</div>';
+    return  $html;  
+}
+
+function all_or_nothing($filter_args){
+    if($filter_args['all'] === 'on' || 
+        (!isset($filter_args['all']) &&
+        !isset($filter_args['userGuide']) &&
+        !isset($filter_args['adminCorner']) &&
+        !isset($filter_args['adminCorner']) &&
+        !isset($filter_args['news']) &&
+        !isset($filter_args['glossary']) &&
+        !isset($filter_args['others']) )){
+        return true;
+    }
+    else return false;
+}
+
+function is_ancestor($post,$ansector_id){
+    /*echo '<br>';
+    print_r(get_the_title($post));
+    echo ':';
+    print_r(get_post_ancestors( $post ));*/
+    return in_array($ansector_id, get_post_ancestors( $post ));
+}
+
+function show_search_result($filter_args,$result_post){
+   /* echo '<br>post_type :';
+    print_r(get_post_type($result_post) );
+    echo '<br>filter:';
+    print_r($filter_args );
+    echo '<br>parent:';
+    print_r(wp_get_post_parent_id($result_post->post_ID));*/
+    
+    if(all_or_nothing($filter_args) ){
+        return true;
+    }
+    else if($filter_args['userGuide'] === 'on' && is_ancestor($result_post, 541) ){ //if parent is User Guide Library.
+            return true;
+    }
+    else if($filter_args['adminCorner'] === 'on' && is_ancestor($result_post, 1594) ){ //if parent is Admin's Corner.
+            return true;
+    }
+     else if($filter_args['news'] === 'on' && get_post_type($result_post) === 'post' ){ //if its a news post.
+            return true;
+    }
+    else if($filter_args['glossary'] === 'on' && get_post_type($result_post) === 'glossary' ){ //if its a glossary item.
+            return true;
+    }
+    else if($filter_args['others'] === 'on' && (
+        get_post_type($result_post) !== 'glossary' &&
+        get_post_type($result_post) !== 'post' &&
+        wp_get_post_parent_id($result_post->post_ID) !== 1594 &&
+        wp_get_post_parent_id($result_post->post_ID) !== 541) ) { //other things.
+            return true;
+        }
+    else {
+        
+        return false;
+    }
+}
+
+function get_filter_description($filter_args){
+    if(all_or_nothing($filter_args)){
+        return '';
+    }else {
+        $desc = ' in ';
+        if($filter_args['userGuide'] === 'on'){
+            $desc .= '<span class="filter-tag">User Guides</span>';
+        }
+        if($filter_args['adminCorner'] === 'on'){
+            $desc .= '<span class="filter-tag">Admin\'s Corner</span>';
+        }
+        if($filter_args['news'] === 'on'){
+            $desc .= '<span class="filter-tag">News</span>';
+        }
+        if($filter_args['glossary'] === 'on'){
+            $desc .= '<span class="filter-tag">Glossary</span>';
+        }
+        if($filter_args['others'] === 'on'){
+            $desc .= '<span class="filter-tag">Others</span>';
+        }
+        return $desc;
+    }
+}
+
+function relevanssi_search_results($filter_args){
+    global $wp_query;
+    // $wp_query->query_vars['posts_per_page'] = -1
+    /*echo '<br> get search query: ';
+    print_r(get_search_query());
+
+    echo '<br> filter_args: ';
+    print_r($filter_args);*/
+
+    if(null==get_search_query() && isset($filter_args['query'])){
+        $search_query = $filter_args['query'] ;
+        $args = array(
+            's'=> $search_query,
+            'posts_per_page' => -1
+        );
+        $wp_query = new WP_Query($args);
+    }
+    else {
+        $search_query = get_search_query();
+    }
+
+   /* echo '<br>Posts per Page: ';
+    print_r($wp_query);*/
+
+    /*echo '<br> wp query: ';
+    print_r($wp_query);*/
+
+    
+    $total_results = $wp_query->found_posts;
+    $results_content ='';
+
+    
+    
+
+    if ( function_exists( 'relevanssi_didyoumean' ) ) {
+        relevanssi_didyoumean( $search_query, '<p>Did you mean: ', '</p>', 3 );
+    }
+        
+    $i = 0;
+    $terms = rawurlencode( $search_query );
+    $url = 'http://www.washington.edu/search/?q=' . $terms;
+    $search_status = '';
+    $post_content ='';
+    $recommendation = '';
+
+    remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+    add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
+
+    if ( have_posts() ) {
+        while ( have_posts() ) : the_post();
+                {
+                    // echo '<br><br>';
+                    if(show_search_result($filter_args,$the_post)){
+                        $post_content .= '<div class="search-result">';
+                        $post_content .= '<h2><a href="'.get_permalink().'">'.get_the_title().'</a></h2>';
+                        $post_content .= get_breadcrumbs($the_post);
+                        // echo $post_content;
+                        $excerpt = get_the_excerpt($the_post->ID);
+                        if(stripos($excerpt,'e8e3d3') === false)
+                        {
+                            $keys = implode('|', explode(' ', $search_query));
+                            $excerpt = preg_replace('/(' . $keys .')/iu', '<span style="background-color: #e8e3d3">\0</span>', $excerpt);
+                        }
+                        $post_content .= '<div class="post-content">'.$excerpt;
+                        $post_content .= '<a class="more" title="'.get_the_title($the_post).'" href="'.get_the_permalink($the_post).'"><br>Read more</a></div>';
+                        $post_content .='</div>';
+                        $i++;
+                    }
+                    else{
+                        // echo '<br>Nope';
+                    }
+                }
+            endwhile;
+
+        $search_status =  'Showing <b> ' . $i .'</b> results for <i>"' . $search_query . '"</i>'.get_filter_description($filter_args);
+
+        if ( $i <= 1 ) {
+                $recommendation .= '<p class="little-results">';
+                $recommendation .= 'Try searching for ';
+                $recommendation .= '<a href="'.$url.'"> '. $search_query .'</a>';
+                $recommendation .= ' across all of the UW for additional results.</p>';
+            }
+        }
+        else {
+            $recommendation .= '<p class="no-results">';
+            $recommendation .= 'Sorry, no results matched your criteria. Try searching for ';
+            $recommendation .= '<a href="'.$url.'"> '. $search_query .'</a>';
+            $recommendation .= ' across all of the UW.</p>';
+        } 
+    $html =  $search_status.$post_content.$recommendation;
+    $html = substr($html, 0,-1); 
+
+    echo $html;
+}
+
+function search_results_filter_function(){
+    relevanssi_search_results($_POST);
+}
+
+
+function postsperpage($limits) {
+    if (is_search()) {
+        global $wp_query;
+        $wp_query->query_vars['posts_per_page'] = -1;
+    }
+    return $limits;
+}
+
+add_filter('post_limits', 'postsperpage');
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts' );
+add_action('wp_ajax_searchResultFilter', 'search_results_filter_function'); 
+add_action('wp_ajax_nopriv_searchResultFilter', 'search_results_filter_function');
 ?>
