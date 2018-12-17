@@ -186,6 +186,15 @@ function rlv_gather_tags($hits) {
     return $hits;
 }
 
+function rlv_tag_options() {
+    global $rlv_tags_present;
+    foreach ( $rlv_tags_present as $tag_id => $tag_name ) {
+            $url = esc_url(remove_query_arg('md-tags'));
+            echo "<option value='$tag_id' title='$tag_name'>$tag_name</option>";
+        }
+    
+}
+
 function rlv_tag_dropdown() {
     global $rlv_tags_present, $wp_query;
     $query_values = $wp_query->query_vars['post_type'];
@@ -350,8 +359,6 @@ function theme_enqueue_scripts() {
     $dependencies = array('jquery');
     wp_enqueue_script('bootstrap', get_stylesheet_directory_uri().'/vendor/js/bootstrap.min.js', $dependencies, '4.0.0', true );
 }
-
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
 function get_breadcrumbs($post){
     $html = '<div class="search-breadcrumbs"><span class="crumb">ISC</span>';

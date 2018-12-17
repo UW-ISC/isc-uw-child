@@ -36,14 +36,8 @@ get_header(); ?>
 				    <li><input type="checkbox" name="others" id="others" autocomplete="off"> <label for="others">Other</label></li>
 				  </ul>
 			  </div>
-			  <!-- <div class="result-tag-list">
-			  	<label>Tags</label>
-			  	<select class="no-stylist" id="tagList" name="tagList" multiple="multiple">
-			  		<?php rlv_tag_options(); ?>
-			    </select>
-			   </div> -->
+			  
 				<div class="row panel-actions">
-					<!-- <button class="isc-action-btn">reset</button> -->
 					<button class="isc-primary-action-btn">apply</button>
 					<input type="hidden" name="action" value="searchResultFilter">
 					<input type="hidden" name="query" value="<?php echo get_search_query() ?>">
@@ -51,9 +45,7 @@ get_header(); ?>
 			</form>
 			</div>
 			<script type="text/javascript">
-				$('#tagList').searchableOptionList({
-					maxHeight: '250px'
-				});
+				
 
 				jQuery(function($){
 					$('#all').change(function(){
