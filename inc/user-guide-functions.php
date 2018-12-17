@@ -236,9 +236,9 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 	 * in-page navigation.
 	 *
 	 * @author Abhishek Chauhan <abhi3@uw.edu>
-	 * @param boolean $return If true, returns the html of the user guide menu. If false, echoes it instead.
+	 * @param boolean $show_feedback If true, includes the feedback link and section.
 	 */
-	function isc_user_guide_menu( $return = false ) {
+	function isc_user_guide_menu( $show_feedback = false ) {
 
 		// Gather all the headers within the isc_anchor_links metafield of the current page
 		// which we will use to make the user guide menu.
@@ -273,8 +273,10 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 		}
 
 		// Add the title of the table of contents, this is the first element.
-		$first_li = $return ? '' : '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo( 'name' ) . '"> Table of Contents </a></li>';
-		$last_li = $return ? '' : '<li class="nav-item"><a class="nav-link last" href="#feedback" title="Permanent Link to feedback form"> Feedback <i class="fa fa-edit" aria-hidden="true"></i> </a></li>';
+		$first_li = '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo( 'name' ) . '"> Table of Contents </a></li>';
+		/*$last_li = $show_feedback ? '<li class="nav-item"><a class="nav-link last" href="#feedback" title="Permanent Link to feedback form"> Feedback <i class="fa fa-edit" aria-hidden="true"></i> </a></li>' : '';*/
+
+		$last_li = $show_feedback ? '<li class="nav-item has-children"><button class="nav-link first collapsed" data-toggle="collapse"  data-target="#feedback" aria-controls="#feedback" aria-expaded="false" title="Link to feedback form"> Feedback? <i class="fa fa-2x accordion-handle"></i> </button> <ul class="children depth-1 collapse" id="feedback" data-parent="#tocAccordion"> '.do_shortcode('[contact-form-7 title="User Guide Feedback"]').' </ul> </li>' : '';
 
 		$html = sprintf(
 			'<ul id="tocAccordion">%s%s%s</ul>',
@@ -284,17 +286,10 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 		);
 
 		if ( empty( $pages ) ) {
-			if ( $return ) {
-				return false;
-			} else {
-				echo '';
-			}
+			echo '';
 		} else {
 			$menu = '<nav class="uw-accordion-menu float-menu" id="pageNav toc" aria-label="Site Menu" tabindex="-1" >' . $html . '</nav>';
-			if ( $return ) {
-				return $menu;
-			} else {
-				?>
+			?>
 				<!-- script for TOC last clicked nav item anchor indicator -->
 				<script type="text/javascript">
 					$(function(){
@@ -320,7 +315,6 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 			    </style>
 				<?php
 				echo $menu;
-			}
 		}
 	}
 endif;
