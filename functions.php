@@ -5,6 +5,14 @@
  * @package isc-uw-child
  */
 
+
+remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
+add_filter('post_limits', 'postsperpage');
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts' );
+add_action('wp_ajax_searchResultFilter', 'search_results_filter_function'); 
+add_action('wp_ajax_nopriv_searchResultFilter', 'search_results_filter_function');
+
 if ( ! function_exists( 'setup_uw_object' ) ) {
 	/**
 	 * Initialize the UW object.
@@ -343,8 +351,6 @@ if ( ! function_exists( 'custom_wp_trim_excerpt' ) ) :
     }
 endif;
 
-remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
 
 /**
 * Adds classes to body tag for CSS specificity over parent theme
@@ -437,11 +443,11 @@ function show_search_result($filter_args,$result_post){
     else if($filter_args['glossary'] === 'on' && get_post_type($result_post) === 'glossary' ){ //if its a glossary item.
             return true;
     }
-    else if($filter_args['others'] === 'on' && (
-        get_post_type($result_post) !== 'glossary' &&
-        get_post_type($result_post) !== 'post' &&
-        wp_get_post_parent_id($result_post->post_ID) !== 1594 &&
-        wp_get_post_parent_id($result_post->post_ID) !== 541) ) { //other things.
+    else if($filter_args['others'] === 'on' 
+                && get_post_type($result_post) !== 'glossary'
+                && get_post_type($result_post) !== 'post'
+                && is_ancestor($result_post, 541) === false
+                && is_ancestor($result_post, 1594) === false  ){ //other things.
             return true;
         }
     else {
@@ -471,6 +477,84 @@ function get_filter_description($filter_args){
             $desc .= '<span class="filter-tag">Others</span>';
         }
         return $desc;
+    }
+}
+
+function highlight_matched($content, $search_query){
+
+    if(stripos($content,'e8e3d3') === false)
+    {
+        $keys = implode('|', explode(' ', $search_query));
+        return preg_replace('/(' . $keys .')/iu', '<span style="background-color: #e8e3d3">\0</span>', $content);
+    }
+    else {
+        return $content;
+    }
+}
+
+function str_contains($haystack,$needle)
+{
+    return stripos($haystack, $needle) !== false;
+}
+
+function first_hit($haystack,$search_query)
+{
+    if(str_contains($search_query, " "))
+    {
+        $needles = explode(" ", $search_query);
+        foreach ($needles as $needle) 
+        {
+            if(str_contains($haystack,$needle))
+            {
+                return stripos($haystack, $needle);
+            }
+        }
+        return false;
+    }
+    else return stripos($haystack, $search_query);
+}
+
+function get_excerpt_with_hits($post, $search_query){
+    $the_excerpt = get_the_excerpt($post);
+    $excerpt_hit_loc =  first_hit($the_excerpt, $search_query);
+
+    if( $excerpt_hit_loc === false)
+    {
+        $the_content = get_the_content($post);
+        $content_hit_loc = first_hit($the_content, $search_query);
+
+        if( $content_hit_loc === false)
+        {
+            // return "no hits in excerpt or content : ".$the_excerpt;
+            return $the_excerpt;
+        }
+        
+
+        $buffer = 25;
+        $start_loc = 0 ;
+        $end_loc = strlen($the_content);
+        $start_ellipses = '';
+        $end_ellipses = '';
+
+        if( $content_hit_loc - $buffer >= 0 )
+        {
+            $start_loc =  $content_hit_loc - $buffer;
+            $start_ellipses = '...';
+        }
+        if( $content_hit_loc + $buffer < strlen($the_content) )
+        {
+            $end_loc = $content_hit_loc + $buffer;
+            $end_ellipses = '...';
+        }
+
+        $the_excerpt = substr($the_content, $start_loc , $end_loc);
+
+        // return "hits in content at loc ".$content_hit_loc." : ".$start_ellipses.$the_excerpt.$end_ellipses;
+        return $start_ellipses.$the_excerpt.$end_ellipses;
+    }
+    else {
+        // return "hits in excerpt at loc ".$excerpt_hit_loc.": ".$the_excerpt;
+        return $the_excerpt;
     }
 }
 
@@ -519,31 +603,26 @@ function relevanssi_search_results($filter_args){
     $post_content ='';
     $recommendation = '';
 
-    remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-    add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
-
-    if ( have_posts() ) {
+    if (
+     have_posts() ) {
         while ( have_posts() ) : the_post();
                 {
                     // echo '<br><br>';
-                    if(show_search_result($filter_args,$the_post)){
+                    if(show_search_result($filter_args,$the_post))
+                    {
                         $post_content .= '<div class="search-result">';
-                        $post_content .= '<h2><a href="'.get_permalink().'">'.get_the_title().'</a></h2>';
+                        $post_content .= '<h2><a href="'.get_permalink().'">'.highlight_matched(get_the_title(), $search_query).'</a></h2>';
                         $post_content .= get_breadcrumbs($the_post);
-                        // echo $post_content;
-                        $excerpt = get_the_excerpt($the_post->ID);
-                        if(stripos($excerpt,'e8e3d3') === false)
-                        {
-                            $keys = implode('|', explode(' ', $search_query));
-                            $excerpt = preg_replace('/(' . $keys .')/iu', '<span style="background-color: #e8e3d3">\0</span>', $excerpt);
-                        }
-                        $post_content .= '<div class="post-content">'.$excerpt;
+                        // $post_content .= '<div class="post-content">'. highlight_matched(get_the_excerpt($the_post->ID) , $search_query );
+                        // $post_content .= '<div>'. get_the_excerpt($the_post->ID).'</div>';
+                        // $post_content .= '<hr>';
+                        $post_content .= '<div class="post-content">'. highlight_matched(get_excerpt_with_hits($the_post , $search_query ), $search_query);
                         $post_content .= '<a class="more" title="'.get_the_title($the_post).'" href="'.get_the_permalink($the_post).'"><br>Read more</a></div>';
                         $post_content .='</div>';
                         $i++;
                     }
                     else{
-                        // echo '<br>Nope';
+                        
                     }
                 }
             endwhile;
@@ -571,6 +650,7 @@ function relevanssi_search_results($filter_args){
 
 function search_results_filter_function(){
     relevanssi_search_results($_POST);
+    wp_die(); 
 }
 
 
@@ -582,8 +662,4 @@ function postsperpage($limits) {
     return $limits;
 }
 
-add_filter('post_limits', 'postsperpage');
-add_action('wp_enqueue_scripts', 'theme_enqueue_scripts' );
-add_action('wp_ajax_searchResultFilter', 'search_results_filter_function'); 
-add_action('wp_ajax_nopriv_searchResultFilter', 'search_results_filter_function');
 ?>
