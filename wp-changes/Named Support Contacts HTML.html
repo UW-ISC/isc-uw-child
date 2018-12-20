@@ -1,11 +1,3 @@
-Named Support Contacts (NSCs) are Workday power-users from across the University who transact in Workday everyday.
-
-NSCs hold either an HCM Initiate 2, HR Partner, and/or Academic Partner Workday security role, and have access to the contact information (direct phone number and email address) for an organization’s dedicated ISC HCM Service Partner(s) who provide transactional support in Workday. NSCs are the only individuals who have the ability to directly contact the HCM Service Partner at the ISC.
-
-Each unit has a fixed number of NSCs. That number is determined, primarily, by the organization’s size, anticipated Workday transactional volume and ISC staffing resources.
-
-A list of NSCs and their contact information is below for your reference; contact your <a href="http://localhost:8080/hrp-portal/support-resources/how-to-get-workday-help/unit-change-leads/">Unit Change Lead</a> for any questions about your unit's NSC assignment(s).
-
 <script type="text/javascript">
 function filterChanged() {
   var input, filter, table, tr, td, i, txtValue;
@@ -14,40 +6,38 @@ function filterChanged() {
   table = document.getElementById("contactsTable");
   tr = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-  	if(filter == null || filter == ""){
-  		tr[i].style.display = "";
-  		continue;
-  	}
-  	txtValue = tr[i].textContent || tr[i].innerText;
-  	if(txtValue.toUpperCase().indexOf(filter) > -1)
-  	{
-  		tr[i].style.display = "";
-  	}
-  	else
-  	{
-  		tr[i].style.display = "none";
+   if(filter == null || filter == ""){
+      tr[i].style.display = "";
+      continue;
+   }
+   txtValue = tr[i].textContent || tr[i].innerText;
+   if(txtValue.toUpperCase().indexOf(filter) > -1)
+   {
+      tr[i].style.display = "";
+   }
+   else
+   {
+      tr[i].style.display = "none";
     }
-    /*td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    } */
   }
 }
-</script>
+</script>Named Support Contacts (NSCs) are Workday power-users from across the University who transact in Workday everyday.
+
+NSCs hold either an HCM Initiate 2, HR Partner, and/or Academic Partner Workday security role, and have access to the contact information (direct phone number and email address) for an organization’s dedicated ISC HCM Service Partner(s) who provide transactional support in Workday. NSCs are the only individuals who have the ability to directly contact the HCM Service Partner at the ISC.
+
+Each unit has a fixed number of NSCs. That number is determined, primarily, by the organization’s size, anticipated Workday transactional volume and ISC staffing resources.
+
+A list of NSCs and their contact information is below for your reference; contact your <a href="https://isc.uw.edu/support-resources/how-to-get-workday-help/unit-change-leads/">Unit Change Lead</a> for any questions about your unit's NSC assignment(s).
+
 <table id="contactsTable">
    <thead>
       <tr>
          <th style="width:40%;"><strong>Unit, School, or College</strong></th>
          <th style="width:40%;"><strong>Department </strong></th>
-         <th style="width:20%;"><strong>Contact Name</strong></th>
+         <th style="width:20%;"><strong>NSC</strong></th>
       </tr>
       <tr>
-      	<td colspan="3"><input  style="width: 100%" type="text" id="contactNameFilterText" onkeyup="filterChanged()" placeholder="Filter Unit, School, College, Department or Name..."></td>
+         <td colspan="3"><input  style="width: 100%" type="text" id="contactNameFilterText" onkeyup="filterChanged()" placeholder="Filter Unit, School, College, Department or Name..."></td>
       </tr>
    </thead>
    <tbody>
