@@ -1,26 +1,28 @@
 <script type="text/javascript">
-function filterChanged() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("contactNameFilterText");
-  filter = input.value.trim().toUpperCase();
-  table = document.getElementById("contactsTable");
-  tr = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-   if(filter == null || filter == ""){
-      tr[i].style.display = "";
-      continue;
-   }
-   txtValue = tr[i].textContent || tr[i].innerText;
-   if(txtValue.toUpperCase().indexOf(filter) > -1)
+   $(document).ready( function ()
    {
-      tr[i].style.display = "";
-   }
-   else
-   {
-      tr[i].style.display = "none";
-    }
-  }
-}
+      $( "#contactNameFilterText" ).keyup(function() {
+      var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("contactNameFilterText");
+        filter = input.value.trim().toUpperCase();
+        table = document.getElementById("contactsTable");
+        tr = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+         if(filter == null || filter == ""){
+            tr[i].style.display = "";
+            continue;
+         }
+         txtValue = tr[i].textContent || tr[i].innerText;
+         if(txtValue.toUpperCase().indexOf(filter) > -1)
+         {
+            tr[i].style.display = "";
+         }
+         else
+         {
+            tr[i].style.display = "none";
+          }
+        }     
+   });});
 </script>Named Support Contacts (NSCs) are Workday power-users from across the University who transact in Workday everyday.
 
 NSCs hold either an HCM Initiate 2, HR Partner, and/or Academic Partner Workday security role, and have access to the contact information (direct phone number and email address) for an organization’s dedicated ISC HCM Service Partner(s) who provide transactional support in Workday. NSCs are the only individuals who have the ability to directly contact the HCM Service Partner at the ISC.
@@ -37,7 +39,7 @@ A list of NSCs and their contact information is below for your reference; contac
          <th style="width:20%;"><strong>NSC</strong></th>
       </tr>
       <tr>
-         <td colspan="3"><input  style="width: 100%" type="text" id="contactNameFilterText" onkeyup="filterChanged()" placeholder="Filter Unit, School, College, Department or Name..."></td>
+         <td colspan="3"><input  style="width: 100%" type="text" id="contactNameFilterText" placeholder="Filter Unit, School, College, Department or Name..."></td>
       </tr>
    </thead>
    <tbody>
