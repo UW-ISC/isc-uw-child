@@ -39,8 +39,8 @@ get_header(); ?>
 				$("#others").attr("disabled", value);
 			}
 
-			function checkAllState (allBox){
-				console.log(allBox);
+			function checkAllState (allBox)
+			{
 				if(allBox.checked){
 					toggleAll(true);
 				}
@@ -49,7 +49,8 @@ get_header(); ?>
 				}
 			}
 
-			function submitClicked(event){
+			function submitClicked(event)
+			{
 				var firstPage = window.location.href.replace(/page.*\?/g,'?');
 				var form = $('#searchResultsFilterForm');
 				form.attr('action', firstPage);
@@ -63,7 +64,7 @@ get_header(); ?>
 				{
 					types[j] = types[j].replace(/type.*=/g,'');
 				}
-				console.log('types :' + types);
+				
 				$('input[name="type[]"]').prop('checked',function(){
 					if($.inArray("all",types) !== -1)
 					{
@@ -82,7 +83,23 @@ get_header(); ?>
 					});
 
 				$('#clearFilter').click(function(){
+
+					var resubmit = false;
+					if($('#all').prop("checked")
+						|| $('#adminCorner').prop("checked")
+						|| $('#userGuide').prop("checked")
+						|| $('#news').prop("checked")
+						|| $('#glossary').prop("checked")
+						|| $('#others').prop("checked")){
+						resubmit = true;
+					}
+
 					toggleAll(false);
+					
+					if(resubmit)
+					{
+						$('#searchResultsFilterForm').submit();
+					}
 				});
 				
 
@@ -92,22 +109,22 @@ get_header(); ?>
 		<div class="row search-body">
 			<div class="col-md-2 filter-panel">
 				<form method="get" id="searchResultsFilterForm" onsubmit="submitClicked(event);">
-					<h4>Filter Search Results</h4>
+					<h4>Filter your search results by content type:</h4>
 					<div class="result-type-list">
-						<label>Type</label>
+						<label><!-- Filter your search results by content type: --></label>
 						  <ul class="no-stylist">
-						  	<li><input type="checkbox" name="type[]" id="all" value="all"> <label for="all">All</label></li>
-						    <li><input type="checkbox" name="type[]" id="adminCorner" value="adminCorner"> <label for="adminCorner">Admins' Corner</label></li>
-						    <li><input type="checkbox" name="type[]" id="userGuide" value="userGuide"> <label for="userGuide">User Guide</label></li>
-						    <li><input type="checkbox" name="type[]" id="news" value="news"> <label for="news">News</label></li>
-						    <li><input type="checkbox" name="type[]" id="glossary" value="glossary"><label for="glossary"> Glossary</label></li>
-						    <li><input type="checkbox" name="type[]" id="others" value="others"> <label for="others">Page</label></li>
+						  	<!-- <li><input type="checkbox" name="type[]" id="all" value="all"> <label for="all">All</label></li> -->
+						    <li><input type="checkbox" name="type[]" id="adminCorner" value="adminCorner"> <label for="adminCorner">Admins' Corner pages</label></li>
+						    <li><input type="checkbox" name="type[]" id="glossary" value="glossary"> <label for="glossary">Glossary terms</label></li>
+						    <li><input type="checkbox" name="type[]" id="news" value="news"> <label for="news">News posts</label></li>
+						    <li><input type="checkbox" name="type[]" id="others" value="others"> <label for="others">Pages</label></li>
+						    <li><input type="checkbox" name="type[]" id="userGuide" value="userGuide"> <label for="userGuide">User Guides</label></li>
 						  </ul>
 					  </div>
 						<div class="row panel-actions">
 							<input type="hidden" name="s" value="<?php echo get_search_query() ?>" >
-							<button class="isc-text-action-btn" type="button" id="clearFilter">clear filter</button>
-							<input class="isc-primary-action-btn" type="submit" value="apply">
+							<button class="isc-text-action-btn" type="button" id="clearFilter">Clear filters</button>
+							<input class="isc-primary-action-btn" type="submit" value="Apply">
 						</div>
 					</form>
 			</div>

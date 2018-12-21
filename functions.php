@@ -332,16 +332,16 @@ function get_filter_description(){
 	        $desc .= '<span class="filter-tag">User Guides</span>';
 	    }
 	    if(in_array('adminCorner', $filters) ){
-	        $desc .= '<span class="filter-tag">Admins\' Corner</span>';
+	        $desc .= '<span class="filter-tag">Admins\' Corner pages</span>';
 	    }
 	    if(in_array('news', $filters) ){
-	        $desc .= '<span class="filter-tag">News</span>';
+	        $desc .= '<span class="filter-tag">News posts</span>';
 	    }
 	    if(in_array('glossary', $filters) ){
-	        $desc .= '<span class="filter-tag">Glossary</span>';
+	        $desc .= '<span class="filter-tag">Glossary terms</span>';
 	    }
 	    if(in_array('others', $filters) ){
-	        $desc .= '<span class="filter-tag">Page</span>';
+	        $desc .= '<span class="filter-tag">Pages</span>';
 	    }
 	    return $desc;
 	}

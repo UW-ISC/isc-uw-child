@@ -1316,6 +1316,7 @@ a.uw-btn.btn-sm.btn-left {
 
 .no-stylist{
   list-style: none;
+  padding-left: 0px;
 }
 
 .no-stylist .fui-radio-unchecked:before, .fui-radio-checked:before{
