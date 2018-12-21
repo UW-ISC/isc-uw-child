@@ -260,14 +260,21 @@ function relevanssi_type_filter($hits)
     	{
     		return $hits;
     	}
+
+    	$admin_corner_id = get_page_by_title("Administrators' Corner")->ID;
+		$user_guide_id = get_page_by_title("User Guide Library")->ID;
+
+		/*echo 'adminCorner: ' . $admin_corner_id;
+		echo 'userGuide: ' . $user_guide_id;*/
+
     	foreach ($hits[0] as $hit)
     	{
-    		if(in_array('adminCorner', $filters) && is_ancestor($hit,1594))
+    	if(in_array('adminCorner', $filters) && is_ancestor($hit,$admin_corner_id))
     		{
     			$to_show[] = $hit;
     			continue; 
     		}
-    		else if(in_array('userGuide', $filters) && is_ancestor($hit,541))
+    		else if(in_array('userGuide', $filters) && is_ancestor($hit,$user_guide_id))
     		{
     			$to_show[] = $hit;
     			continue; 
@@ -285,8 +292,8 @@ function relevanssi_type_filter($hits)
     		else if(in_array('others', $filters)
     				&& get_post_type($hit) !== 'glossary'
                 	&& get_post_type($hit) !== 'post'
-                	&& is_ancestor($hit, 541) === false
-                	&& is_ancestor($hit, 1594) === false)
+                	&& is_ancestor($hit, $user_guide_id) === false
+                	&& is_ancestor($hit, $admin_corner_id) === false)
     		{
     			$to_show[] = $hit;
     		}
@@ -325,7 +332,7 @@ function get_filter_description(){
 	        $desc .= '<span class="filter-tag">User Guides</span>';
 	    }
 	    if(in_array('adminCorner', $filters) ){
-	        $desc .= '<span class="filter-tag">Admin\'s Corner</span>';
+	        $desc .= '<span class="filter-tag">Admins\' Corner</span>';
 	    }
 	    if(in_array('news', $filters) ){
 	        $desc .= '<span class="filter-tag">News</span>';
@@ -334,7 +341,7 @@ function get_filter_description(){
 	        $desc .= '<span class="filter-tag">Glossary</span>';
 	    }
 	    if(in_array('others', $filters) ){
-	        $desc .= '<span class="filter-tag">Others</span>';
+	        $desc .= '<span class="filter-tag">Page</span>';
 	    }
 	    return $desc;
 	}

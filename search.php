@@ -48,10 +48,22 @@ get_header(); ?>
 					toggleAll(false);
 				}
 			}
+
+			function submitClicked(event){
+				var firstPage = window.location.href.replace(/page.*\?/g,'?');
+				var form = $('#searchResultsFilterForm');
+				form.attr('action', firstPage);
+			}
+
 			 $(document).ready( function (){
 
 			 	var i = document.location.href.lastIndexOf('?');
-				var types = document.location.href.substr(i+1).replace(/type%5B%5D=/g,'').split('&');
+				var types = document.location.href.substr(i+1).split('&');
+				for (var j = 0 ; j < types.length ; j++)
+				{
+					types[j] = types[j].replace(/type.*=/g,'');
+				}
+				console.log('types :' + types);
 				$('input[name="type[]"]').prop('checked',function(){
 					if($.inArray("all",types) !== -1)
 					{
@@ -69,6 +81,9 @@ get_header(); ?>
 						checkAllState(this);
 					});
 
+				$('#clearFilter').click(function(){
+					toggleAll(false);
+				});
 				
 
 			 });
@@ -76,21 +91,22 @@ get_header(); ?>
 
 		<div class="row search-body">
 			<div class="col-md-2 filter-panel">
-				<form action="" method="get" id="searchResultsFilterForm">
+				<form method="get" id="searchResultsFilterForm" onsubmit="submitClicked(event);">
 					<h4>Filter Search Results</h4>
 					<div class="result-type-list">
 						<label>Type</label>
 						  <ul class="no-stylist">
 						  	<li><input type="checkbox" name="type[]" id="all" value="all"> <label for="all">All</label></li>
-						    <li><input type="checkbox" name="type[]" id="adminCorner" value="adminCorner"> <label for="adminCorner">Admin Corner</label></li>
+						    <li><input type="checkbox" name="type[]" id="adminCorner" value="adminCorner"> <label for="adminCorner">Admins' Corner</label></li>
 						    <li><input type="checkbox" name="type[]" id="userGuide" value="userGuide"> <label for="userGuide">User Guide</label></li>
 						    <li><input type="checkbox" name="type[]" id="news" value="news"> <label for="news">News</label></li>
 						    <li><input type="checkbox" name="type[]" id="glossary" value="glossary"><label for="glossary"> Glossary</label></li>
-						    <li><input type="checkbox" name="type[]" id="others" value="others"> <label for="others">Other</label></li>
+						    <li><input type="checkbox" name="type[]" id="others" value="others"> <label for="others">Page</label></li>
 						  </ul>
 					  </div>
 						<div class="row panel-actions">
 							<input type="hidden" name="s" value="<?php echo get_search_query() ?>" >
+							<button class="isc-text-action-btn" type="button" id="clearFilter">clear filter</button>
 							<input class="isc-primary-action-btn" type="submit" value="apply">
 						</div>
 					</form>

@@ -1356,4 +1356,14 @@ font-weight: normal;
   padding: 5px;
   margin-left:5px;
 }
+
+.isc-text-action-btn{
+    background: #d3d3d34f;
+    border:none;
+    cursor: pointer;
+    margin-right: 7px;
+}
+.isc-text-action-btn:focus{
+  outline: none;
+}
 /* end - search results page styling*/
