@@ -1366,4 +1366,10 @@ font-weight: normal;
 .isc-text-action-btn:focus{
   outline: none;
 }
+
+.crumb a{
+  color: #85754d;
+  font-weight: 600;
+}
+
 /* end - search results page styling*/
