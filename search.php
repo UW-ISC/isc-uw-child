@@ -21,7 +21,102 @@ get_header(); ?>
 			</div>
 		</div>
 
-		<div class="row">
+		<script type="text/javascript">
+
+			function toggleAll(value){
+				$('#all').prop('checked', value);
+				
+				$('#adminCorner').prop('checked', value);
+				$('#userGuide').prop('checked', value);
+				$('#news').prop('checked', value);
+				$('#glossary').prop('checked', value);
+				$('#others').prop('checked', value);
+
+				$("#adminCorner").attr("disabled", value);
+				$("#userGuide").attr("disabled", value);
+				$("#news").attr("disabled", value);
+				$("#glossary").attr("disabled", value);
+				$("#others").attr("disabled", value);
+			}
+
+			function checkAllState (allBox)
+			{
+				if(allBox.checked){
+					toggleAll(true);
+				}
+				else if(! allBox.checked){
+					toggleAll(false);
+				}
+			}
+
+			function submitClicked(event)
+			{
+				var firstPage = window.location.href.replace(/page.*\?/g,'?');
+				var form = $('#searchResultsFilterForm');
+				form.attr('action', firstPage);
+			}
+
+			 $(document).ready( function (){
+
+			 	var i = document.location.href.lastIndexOf('?');
+				var types = document.location.href.substr(i+1).split('&');
+				for (var j = 0 ; j < types.length ; j++)
+				{
+					types[j] = types[j].replace(/type.*=/g,'');
+				}
+				
+				$('input[name="type[]"]').prop('checked',function(){
+					if($.inArray("all",types) !== -1)
+					{
+						if(this.id !== "all")
+						{
+							this.setAttribute("disabled", true);
+						}
+						return true;
+					}
+
+				     return  $.inArray(this.value,types) !== -1;
+				 });
+
+				$('#all').change(function(){
+						checkAllState(this);
+					});
+
+				$('#clearFilter').click(function(){
+					toggleAll(false);
+					
+					if($('.filter-tag').length > 0)
+					{
+						$('#searchResultsFilterForm').submit();
+					}
+				});
+				
+
+			 });
+		</script>
+
+		<div class="row search-body">
+			<div class="col-md-2 filter-panel">
+				<form method="get" id="searchResultsFilterForm" onsubmit="submitClicked(event);">
+					<h4>Filter your search results by content type:</h4>
+					<div class="result-type-list">
+						<label><!-- Filter your search results by content type: --></label>
+						  <ul class="no-stylist">
+						  	<!-- <li><input type="checkbox" name="type[]" id="all" value="all"> <label for="all">All</label></li> -->
+						    <li><input type="checkbox" name="type[]" id="adminCorner" value="adminCorner"> <label for="adminCorner">Admins' Corner pages</label></li>
+						    <li><input type="checkbox" name="type[]" id="glossary" value="glossary"> <label for="glossary">Glossary terms</label></li>
+						    <li><input type="checkbox" name="type[]" id="news" value="news"> <label for="news">News posts</label></li>
+						    <li><input type="checkbox" name="type[]" id="others" value="others"> <label for="others">Pages</label></li>
+						    <li><input type="checkbox" name="type[]" id="userGuide" value="userGuide"> <label for="userGuide">User Guides</label></li>
+						  </ul>
+					  </div>
+						<div class="row panel-actions">
+							<input type="hidden" name="s" value="<?php echo get_search_query() ?>" >
+							<button class="isc-text-action-btn" type="button" id="clearFilter">Clear filters</button>
+							<input class="isc-primary-action-btn" type="submit" value="Apply">
+						</div>
+					</form>
+			</div>
 
 		<div class="uw-content col-md-9">
 
@@ -44,7 +139,7 @@ get_header(); ?>
 				$search_query = get_search_query();
 				$total_results = $wp_query->found_posts;
 
-				echo 'Found <b>' . $total_results . '</b> results for "<i>' . $search_query . '</i>".';
+				echo 'Found <b>' . $total_results . '</b> results for "<i>' . $search_query . '</i>"'. get_filter_description();
 
 				?>
 
