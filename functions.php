@@ -236,4 +236,112 @@ function theme_enqueue_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
+
+/* Relevanssi Search Results Filtering*/
+add_filter('query_vars', 'relevanssi_qvs');
+function relevanssi_qvs($qv) {
+    $qv[] = 'type';
+    return $qv;
+}
+
+add_filter('relevanssi_hits_filter', 'relevanssi_type_filter');
+function relevanssi_type_filter($hits)
+{
+    global $wp_query;
+    // echo '<br>query vars: ';
+    // print_r($wp_query->query_vars);
+    if (isset($wp_query->query_vars['type']))
+    {
+    	/*echo '<br>query types: ';
+    	print_r($wp_query->query_vars['type']);*/
+    	$filters = $wp_query->query_vars['type'];
+    	$to_show = array();
+    	if(in_array('all', $filters) || empty($filters))
+    	{
+    		return $hits;
+    	}
+    	foreach ($hits[0] as $hit)
+    	{
+    		if(in_array('adminCorner', $filters) && is_ancestor($hit,1594))
+    		{
+    			$to_show[] = $hit;
+    			continue; 
+    		}
+    		else if(in_array('userGuide', $filters) && is_ancestor($hit,541))
+    		{
+    			$to_show[] = $hit;
+    			continue; 
+    		}
+    		else if(in_array('news', $filters) && get_post_type($hit) === 'post' )
+    		{
+    			$to_show[] = $hit;
+    			continue; 
+    		}
+    		else if(in_array('glossary', $filters) && get_post_type($hit) === 'glossary' )
+    		{
+    			$to_show[] = $hit;
+    			continue; 
+    		}
+    		else if(in_array('others', $filters)
+    				&& get_post_type($hit) !== 'glossary'
+                	&& get_post_type($hit) !== 'post'
+                	&& is_ancestor($hit, 541) === false
+                	&& is_ancestor($hit, 1594) === false)
+    		{
+    			$to_show[] = $hit;
+    		}
+
+    	}
+    	$hits[0] = $to_show;
+    }
+    return $hits;
+}
+
+function is_ancestor($post,$ansector_id){
+    return in_array($ansector_id, get_post_ancestors( $post ));
+}
+
+add_filter('post_limits', 'postsperpage');
+function postsperpage($limits) {
+	if (is_search()) {
+		global $wp_query;
+		$wp_query->query_vars['posts_per_page'] = 20;
+	}
+	return $limits;
+}
+
+function get_filter_description(){
+	global $wp_query;
+	if (isset($wp_query->query_vars['type']))
+	{
+		$filters = $wp_query->query_vars['type'];
+		if(in_array('all', $filters))
+		{
+			return '.';
+		}
+
+		$desc = ' in ';
+	    if(in_array('userGuide', $filters) ){
+	        $desc .= '<span class="filter-tag">User Guides</span>';
+	    }
+	    if(in_array('adminCorner', $filters) ){
+	        $desc .= '<span class="filter-tag">Admin\'s Corner</span>';
+	    }
+	    if(in_array('news', $filters) ){
+	        $desc .= '<span class="filter-tag">News</span>';
+	    }
+	    if(in_array('glossary', $filters) ){
+	        $desc .= '<span class="filter-tag">Glossary</span>';
+	    }
+	    if(in_array('others', $filters) ){
+	        $desc .= '<span class="filter-tag">Others</span>';
+	    }
+	    return $desc;
+	}
+	else
+	{
+		return '.';
+	}
+}
+
 ?>
