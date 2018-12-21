@@ -84,7 +84,7 @@ get_header(); ?>
 
 				$('#clearFilter').click(function(){
 					toggleAll(false);
-					
+
 					if($('.filter-tag').length > 0)
 					{
 						$('#searchResultsFilterForm').submit();
@@ -100,7 +100,6 @@ get_header(); ?>
 				<form method="get" id="searchResultsFilterForm" onsubmit="submitClicked(event);">
 					<h4>Filter your search results by content type:</h4>
 					<div class="result-type-list">
-						<label><!-- Filter your search results by content type: --></label>
 						  <ul class="no-stylist">
 						  	<!-- <li><input type="checkbox" name="type[]" id="all" value="all"> <label for="all">All</label></li> -->
 						    <li><input type="checkbox" name="type[]" id="adminCorner" value="adminCorner"> <label for="adminCorner">Admins' Corner pages</label></li>
@@ -110,11 +109,9 @@ get_header(); ?>
 						    <li><input type="checkbox" name="type[]" id="userGuide" value="userGuide"> <label for="userGuide">User Guides</label></li>
 						  </ul>
 					  </div>
-						<div class="row panel-actions">
-							<input type="hidden" name="s" value="<?php echo get_search_query() ?>" >
-							<button class="isc-text-action-btn" type="button" id="clearFilter">Clear filters</button>
-							<input class="isc-primary-action-btn" type="submit" value="Apply">
-						</div>
+					  <input type="hidden" name="s" value="<?php echo get_search_query() ?>" >
+					  <input class="isc-primary-action-btn" type="submit" value="Apply">
+					  <button class="isc-text-action-btn" type="button" id="clearFilter">Clear filters</button>
 					</form>
 			</div>
 

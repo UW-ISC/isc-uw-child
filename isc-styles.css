@@ -1333,6 +1333,7 @@ font-weight: normal;
   font-weight: 400;
   border: 1px solid #4b2e83;
   padding: 0px 10px;
+  float: right;
 }
 
 .isc-action-btn{
@@ -1340,6 +1341,7 @@ font-weight: normal;
   color: #4b2e83;
   border: 1px solid #4b2e83;
   padding: 0px 10px;
+  float: right;
 }
 
 .panel-actions{
@@ -1350,6 +1352,7 @@ font-weight: normal;
 .filter-panel{
   background: #f6f6f6;
   font-family: "Encode Sans Compressed", sans-serif;
+  margin-bottom: 25px;
 }
 
 .filter-tag{
@@ -1360,9 +1363,10 @@ font-weight: normal;
 
 .isc-text-action-btn{
     background: #d3d3d34f;
-    border:none;
+    border: none;
     cursor: pointer;
     margin-right: 7px;
+    margin-bottom: 16px;
 }
 .isc-text-action-btn:focus{
   outline: none;
