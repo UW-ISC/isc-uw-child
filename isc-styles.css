@@ -210,9 +210,9 @@ a.uw-btn.btn-sm.btn-left {
 
 /*** uw breadcrumbs ***/
 .uw-breadcrumbs {
-  margin: 1em 0 0 0 !important;
+  margin: 1em 0 !important;
   padding: 0 !important;
-  /*display: block !important; */
+  /* display: block !important; */
   display: -webkit-box !important;
   }
 .uw-breadcrumbs ul {
@@ -1369,8 +1369,7 @@ font-weight: normal;
     margin-bottom: 16px;
 }
 .isc-text-action-btn:focus{
-  outline: none;
-}
+  outline: none;}
 
 .crumb a{
   color: #85754d;
@@ -1378,3 +1377,12 @@ font-weight: normal;
 }
 
 /* end - search results page styling*/
+
+
+/* start - current page breadcrumbs*/
+.uw-breadcrumbs li.current span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #535353;
+}
+/* end - current page breadcrumbs*/
