@@ -83,20 +83,9 @@ get_header(); ?>
 					});
 
 				$('#clearFilter').click(function(){
-
-					var resubmit = false;
-					if($('#all').prop("checked")
-						|| $('#adminCorner').prop("checked")
-						|| $('#userGuide').prop("checked")
-						|| $('#news').prop("checked")
-						|| $('#glossary').prop("checked")
-						|| $('#others').prop("checked")){
-						resubmit = true;
-					}
-
 					toggleAll(false);
 					
-					if(resubmit)
+					if($('.filter-tag').length > 0)
 					{
 						$('#searchResultsFilterForm').submit();
 					}
