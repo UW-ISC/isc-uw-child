@@ -53,21 +53,51 @@ get_header();
 		<div class="row">
 
 			<div class="col-md-8 uw-content isc-content" role='main'>
+				<h3 class="isc-admin-header">Your Tasks This Month</h3>
+				<div class="contact-widget-inner isc-widget-gray isc-admin-block">
+					<div class='post-content'>
+						<?php
+						$args = array(
+						 'hierarchical' => 0,
+						 'sort_order' => 'desc',
+						 'sort_column' => 'post_modified',
+						 'post_type'    => 'page',
+						 'post_status'  => 'publish',
+						 'meta_key'     => 'isc-featured',
+						 'meta_value'   => 'seasonal',
+						);
+						$seasonal_featured = get_pages( $args );
+						if ( ! $seasonal_featured ) {
+							echo '<p>No monthly tasks found.</p>';
+						} else {
+							foreach ( $seasonal_featured as $featured_page ) {
+								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
+								// Get (for sorting) but don't display the Last Modified Date -JB 081618 //
+								$date = get_the_modified_date("F jS, Y", $featured_page -> ID);
+								/*
+								$html .= '<div class="update-date">' . $date . '</div>';
+								*/
+								$html .= "<p style='margin-bottom:1.5em;'>";
+								$custom = get_post_custom( $featured_page->ID );
+								$description = $custom['isc-featured-description'][0];
+								if ( '' !== $description ) {
+									$html .= $description;
+								} else {
+									$html .= 'No promotional text available.';
+								}
+								$html .= '</p>';
+								echo $html;
+							}
+						}
+						?>
+					</div>
+					<!-- Hide the See All button until there's a destination page to point it to
+					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See All Tasks</a>
+					-->
+					</div>
 
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-					<div class="row">
-						<div class="col-md-12" style="margin-bottom: 2em;">
-							<?php
-							wp_nav_menu(
-								array(
-								'theme_location' => 'admin-corner-links',
-								'fallback_cb'    => false,
-								)
-							);
-							?>
-						</div>
-					</div>
 					<div class="line">
 						<h3 class="isc-admin-header">Admins' News</h3>
 						<?php 
@@ -241,49 +271,21 @@ get_header();
 					?>
 				</div>
 
+				<!-- <div class="row"> -->
+						<!-- <div class="col-md-12" style="margin-bottom: 2em;"> -->
+						<div>
+							<?php
+							wp_nav_menu(
+								array(
+								'theme_location' => 'admin-corner-links',
+								'fallback_cb'    => false,
+								)
+							);
+							?>
+						</div>
+					<!-- </div> -->
 
-				<h3 class="isc-admin-header">Your Tasks This Month</h3>
-				<div class="contact-widget-inner isc-widget-gray isc-admin-block">
-					<div class='post-content'>
-						<?php
-						$args = array(
-						 'hierarchical' => 0,
-						 'sort_order' => 'desc',
-						 'sort_column' => 'post_modified',
-						 'post_type'    => 'page',
-						 'post_status'  => 'publish',
-						 'meta_key'     => 'isc-featured',
-						 'meta_value'   => 'seasonal',
-						);
-						$seasonal_featured = get_pages( $args );
-						if ( ! $seasonal_featured ) {
-							echo '<p>No monthly tasks found.</p>';
-						} else {
-							foreach ( $seasonal_featured as $featured_page ) {
-								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
-								// Get (for sorting) but don't display the Last Modified Date -JB 081618 //
-								$date = get_the_modified_date("F jS, Y", $featured_page -> ID);
-								/*
-								$html .= '<div class="update-date">' . $date . '</div>';
-								*/
-								$html .= "<p style='margin-bottom:1.5em;'>";
-								$custom = get_post_custom( $featured_page->ID );
-								$description = $custom['isc-featured-description'][0];
-								if ( '' !== $description ) {
-									$html .= $description;
-								} else {
-									$html .= 'No promotional text available.';
-								}
-								$html .= '</p>';
-								echo $html;
-							}
-						}
-						?>
-					</div>
-					<!-- Hide the See All button until there's a destination page to point it to
-					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See All Tasks</a>
-					-->
-					</div>
+				
 
 			</div>
 
