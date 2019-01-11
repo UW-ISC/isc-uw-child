@@ -54,8 +54,8 @@ get_header();
 
 			<div class="col-md-8 uw-content isc-content" role='main'>
 				<h3 class="isc-admin-header">Your Tasks This Month</h3>
-				<div class="contact-widget-inner isc-widget-gray isc-admin-block">
-					<div class='post-content'>
+				<div class="">
+					<div>
 						<?php
 						$args = array(
 						 'hierarchical' => 0,
@@ -66,28 +66,50 @@ get_header();
 						 'meta_key'     => 'isc-featured',
 						 'meta_value'   => 'seasonal',
 						);
-						$seasonal_featured = get_pages( $args );
-						if ( ! $seasonal_featured ) {
+						$all_task_posts = get_pages( $args );
+						if ( ! $all_task_posts ) {
 							echo '<p>No monthly tasks found.</p>';
 						} else {
-							foreach ( $seasonal_featured as $featured_page ) {
-								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
-								// Get (for sorting) but don't display the Last Modified Date -JB 081618 //
-								$date = get_the_modified_date("F jS, Y", $featured_page -> ID);
-								/*
-								$html .= '<div class="update-date">' . $date . '</div>';
-								*/
-								$html .= "<p style='margin-bottom:1.5em;'>";
-								$custom = get_post_custom( $featured_page->ID );
-								$description = $custom['isc-featured-description'][0];
-								if ( '' !== $description ) {
-									$html .= $description;
-								} else {
-									$html .= 'No promotional text available.';
-								}
-								$html .= '</p>';
-								echo $html;
+							$current_month_tasks = array_shift($all_task_posts);
+							echo get_task_html($current_month_tasks);
+							$accordion_html = <<<EOT
+							
+								<div class="accordion isc-widget-gray" id="accordionExample" style="
+							      position: relative;
+							      top: -43px;
+							      ">
+								  <div class="card">
+								    <div class="card-header" id="headingOne">
+								      <h2 class="mb-0">
+								        <button class="see-more-accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+								          Previous Months' Tasks
+								        <i class="accordion-handle fa fa-angle-down"></i></button>
+								      </h2>
+								    </div>
+
+								    <div id="collapseOne" class="isc-widget-gray collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+EOT;
+							foreach ( $all_task_posts as $task_post ) {
+								$accordion_html .= get_task_html($task_post);
 							}
+							$accordion_html .= <<<EOT
+								    </div>
+								</div>
+							</div>
+							<style>
+						        [data-toggle="collapse"][aria-expanded="true"] > .accordion-handle
+						        {
+						            -webkit-transform: rotate(180deg);
+						            -moz-transform:    rotate(180deg);
+						            -ms-transform:     rotate(180deg);
+						            -o-transform:      rotate(180deg);
+						            transform:         rotate(180deg);
+						            transform-origin: center center;
+						            transition-duration: 0.1s;
+						        }
+						    </style>
+EOT;
+							echo $accordion_html;	
 						}
 						?>
 					</div>
@@ -207,7 +229,7 @@ get_header();
 
 			<div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
-				<h3 class="isc-admin-header">At A Glance</h3>
+				<!-- <h3 class="isc-admin-header">At A Glance</h3>
 				<div class="contact-widget-inner isc-widget-tan isc-admin-block">
 				  <div class='post-content isc-events'>
 					<?php
@@ -269,7 +291,7 @@ get_header();
 						echo '<a class="uw-btn btn-sm" href="' . esc_url( $events_url ) . '"?>More Info</a>';
 					}
 					?>
-				</div>
+				</div> -->
 
 				<!-- <div class="row"> -->
 						<!-- <div class="col-md-12" style="margin-bottom: 2em;"> -->
@@ -295,4 +317,25 @@ get_header();
 
 </div>
 
-<?php get_footer(); ?>
+<?php get_footer(); 
+
+function get_task_html($task){
+	$html = <<<EOD
+	<div class="contact-widget-inner isc-admin-block isc-widget-gray" style="
+      margin-bottom: 0px;
+      ">
+EOD;
+	$html .= '<h4><a href="' . esc_url( get_post_permalink( $task->ID ) ) . '">' . get_the_title( $task->ID ) . '</a></h4>';
+	$html .= "<p style='margin-bottom:1.5em;'>";
+	$custom = get_post_custom( $task->ID );
+	$description = $custom['isc-featured-description'][0];
+	if ( '' !== $description ) {
+		$html .= $description;
+	} else {
+		$html .= 'No promotional text available.';
+	}
+	$html .= '</p></div>';
+	return $html;
+}
+
+?>

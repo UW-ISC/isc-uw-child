@@ -533,7 +533,8 @@ a.uw-btn.btn-sm.btn-left {
   padding: 30px;
   margin-bottom: 2em;
   position: relative;
-  margin-top: 0; }
+  margin-top: 0;
+  }
 .isc-admin-block h4 {
   margin-top: 0;
   margin-bottom: 10px; }
@@ -1382,27 +1383,17 @@ font-weight: normal;
 /* end - search results page styling*/
 
 
-/* start - current page breadcrumbs*/
-.uw-breadcrumbs li.current span {
-  font-size: 16px;
-  font-weight: 600;
-  color: #535353;
+/* start - admin corner page redesign styling*/
+.see-more-accordion-btn{
+  background: #d3d3d361;
+  width: 100%;
+  border-radius: 0px;
+  border: 0px;
+  font-size: 17px;
+  line-height: 2em;
+  font-weight: initial;
 }
-
-.task-list{
-  /*display: block;*/
+.see-more-accordion-btn:focus{
+ outline: none;
 }
-
-.to-do-item{
-  display: flex;
-}
-
-label.strikethrough{
-  font-weight: normal;
-  margin-left: 1em;
-}
-
-input[type=checkbox]:checked + label.strikethrough{
-text-decoration: line-through;
-}
-/* end - current page breadcrumbs*/
+/* end - admin corner page redesign styling*/
