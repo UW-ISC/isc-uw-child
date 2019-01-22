@@ -9,7 +9,7 @@
 get_header();
 	  $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
 	  $sidebar = get_post_meta( $post->ID, 'sidebar' );
-	  $seasonal = get_post_meta( $post->ID ); ?>
+	  $tasks_this_month = get_post_meta( $post->ID ); ?>
 
 <div role="main">
 
@@ -255,11 +255,11 @@ get_header();
 						 'meta_key'     => 'isc-featured',
 						 'meta_value'   => 'seasonal',
 						);
-						$seasonal_featured = get_pages( $args );
-						if ( ! $seasonal_featured ) {
+						$tasks_this_month_featured = get_pages( $args );
+						if ( ! $tasks_this_month_featured ) {
 							echo '<p>No monthly tasks found.</p>';
 						} else {
-							foreach ( $seasonal_featured as $featured_page ) {
+							foreach ( $tasks_this_month_featured as $featured_page ) {
 								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
 								// Get (for sorting) but don't display the Last Modified Date -JB 081618 //
 								$date = get_the_modified_date("F jS, Y", $featured_page -> ID);
@@ -281,7 +281,7 @@ get_header();
 						?>
 					</div>
 					<!-- Hide the See All button until there's a destination page to point it to
-					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See All Tasks</a>
+					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/admins-corner/your-tasks-this-month' ); ?>">See All Tasks</a>
 					-->
 					</div>
 
