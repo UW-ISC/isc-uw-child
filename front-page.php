@@ -107,7 +107,10 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 									<div class="isc-homepage-card-body">
 										<h3>
 										  <a href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>">
-											<?php echo get_the_title( $featured_page->ID ); ?></a>
+											<span class="isc-homepage-tile-title">
+												<?php echo get_the_title( $featured_page->ID ); ?>
+											</span>
+											</a>
 										</h3>
 										<?php
 										$description = $custom['isc-featured-description'][0];

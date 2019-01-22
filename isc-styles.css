@@ -1386,3 +1386,13 @@ font-weight: normal;
   color: #535353;
 }
 /* end - current page breadcrumbs*/
+
+
+/*start - homepage tile title overflow*/
+.isc-homepage-tile-title{
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/*end - homepage tile title overflow*/
