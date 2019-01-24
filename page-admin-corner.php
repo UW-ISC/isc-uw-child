@@ -94,13 +94,35 @@ get_header();
 						$category_posts = new WP_Query( $args );
 						$new_news_count = $category_posts->found_posts;
 						if($new_news_count > 0){
-							echo '<div class="new-news-count new-news-label">'.$category_posts->found_posts.' new</div>';
-						}
+							echo '<span id="newNewsCount" class="new-news-count"><span class="new-news-label">'.$category_posts->found_posts.' new</span></span>';
+						} ?>
+						
+						<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
+
+						<?php
+						if( $terms = get_terms( 'category', 'orderby=name' ) ) : 
+								echo '<select name="categoryfilter"><option>Select category...</option>';
+								foreach ( $terms as $term ) :
+									echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; 
+								endforeach;
+								echo '</select>';
+							endif;
+						if( $terms = get_terms( 'post_tag', 'orderby=name' ) ) : 
+								echo '<select name="newsTagFIlter"><option>Select Tags...</option>';
+								foreach ( $terms as $term ) :
+									echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; 
+								endforeach;
+								echo '</select>';
+							endif;
 						?>
+						<button> Filter </button>
+					</form>
 					</div>
 					<div class="isc-admin-block">
 
+
 							<?php
+
 
 							 $args = array(
 									  'tax_query' => array(
