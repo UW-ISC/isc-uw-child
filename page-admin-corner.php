@@ -275,7 +275,7 @@ get_header();
 						 'post_type'    => 'page',
 						 'post_status'  => 'publish',
 						 'meta_key'     => 'isc-featured',
-						 'meta_value'   => 'seasonal',
+						 'meta_value'   => 'tasks',
 						);
 						$tasks_this_month_featured = get_pages( $args );
 						if ( ! $tasks_this_month_featured ) {
