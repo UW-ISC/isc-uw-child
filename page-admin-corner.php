@@ -53,9 +53,10 @@ get_header();
 		<div class="row">
 
 			<div class="col-md-8 uw-content isc-content" role='main'>
+
 				<h3 class="isc-admin-header">Your Tasks This Month</h3>
-				<div class="">
-					<div>
+				<div class="contact-widget-inner isc-widget-gray isc-admin-block">
+					<div class='post-content'>
 						<?php
 						$args = array(
 						 'hierarchical' => 0,
@@ -64,57 +65,35 @@ get_header();
 						 'post_type'    => 'page',
 						 'post_status'  => 'publish',
 						 'meta_key'     => 'isc-featured',
-						 'meta_value'   => 'seasonal',
+						 'meta_value'   => 'tasks',
 						);
-						$all_task_posts = get_pages( $args );
-						if ( ! $all_task_posts ) {
+						$tasks_this_month_featured = get_pages( $args );
+						if ( ! $tasks_this_month_featured ) {
 							echo '<p>No monthly tasks found.</p>';
 						} else {
-							$current_month_tasks = array_shift($all_task_posts);
-							echo get_task_html($current_month_tasks);
-							$accordion_html = <<<EOT
-							
-								<div class="accordion isc-widget-gray" id="accordionExample" style="
-							      position: relative;
-							      top: -43px;
-							      ">
-								  <div class="card">
-								    <div class="card-header" id="headingOne">
-								      <h2 class="mb-0">
-								        <button class="see-more-accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-								          Previous Months' Tasks
-								        <i class="accordion-handle fa fa-angle-down"></i></button>
-								      </h2>
-								    </div>
-
-								    <div id="collapseOne" class="isc-widget-gray collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-EOT;
-							foreach ( $all_task_posts as $task_post ) {
-								$accordion_html .= get_task_html($task_post);
+							foreach ( $tasks_this_month_featured as $featured_page ) {
+								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
+								// Get (for sorting) but don't display the Last Modified Date -JB 081618 //
+								$date = get_the_modified_date("F jS, Y", $featured_page -> ID);
+								/*
+								$html .= '<div class="update-date">' . $date . '</div>';
+								*/
+								$html .= "<p style='margin-bottom:1.5em;'>";
+								$custom = get_post_custom( $featured_page->ID );
+								$description = $custom['isc-featured-description'][0];
+								if ( '' !== $description ) {
+									$html .= $description;
+								} else {
+									$html .= 'No promotional text available.';
+								}
+								$html .= '</p>';
+								echo $html;
 							}
-							$accordion_html .= <<<EOT
-								    </div>
-								</div>
-							</div>
-							<style>
-						        [data-toggle="collapse"][aria-expanded="true"] > .accordion-handle
-						        {
-						            -webkit-transform: rotate(180deg);
-						            -moz-transform:    rotate(180deg);
-						            -ms-transform:     rotate(180deg);
-						            -o-transform:      rotate(180deg);
-						            transform:         rotate(180deg);
-						            transform-origin: center center;
-						            transition-duration: 0.1s;
-						        }
-						    </style>
-EOT;
-							echo $accordion_html;	
 						}
 						?>
 					</div>
 					<!-- Hide the See All button until there's a destination page to point it to
-					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/seasonal-topics' ); ?>">See All Tasks</a>
+					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/admins-corner/your-tasks-this-month' ); ?>">See All Tasks</a>
 					-->
 					</div>
 
@@ -307,48 +286,7 @@ EOT;
 						</div>
 					<!-- </div> -->
 
-<h3 class="isc-admin-header">Your Tasks This Month</h3>
-				<div class="contact-widget-inner isc-widget-gray isc-admin-block">
-					<div class='post-content'>
-						<?php
-						$args = array(
-						 'hierarchical' => 0,
-						 'sort_order' => 'desc',
-						 'sort_column' => 'post_modified',
-						 'post_type'    => 'page',
-						 'post_status'  => 'publish',
-						 'meta_key'     => 'isc-featured',
-						 'meta_value'   => 'tasks',
-						);
-						$tasks_this_month_featured = get_pages( $args );
-						if ( ! $tasks_this_month_featured ) {
-							echo '<p>No monthly tasks found.</p>';
-						} else {
-							foreach ( $tasks_this_month_featured as $featured_page ) {
-								$html = '<h4><a href="' . esc_url( get_post_permalink( $featured_page->ID ) ) . '">' . get_the_title( $featured_page->ID ) . '</a></h4>';
-								// Get (for sorting) but don't display the Last Modified Date -JB 081618 //
-								$date = get_the_modified_date("F jS, Y", $featured_page -> ID);
-								/*
-								$html .= '<div class="update-date">' . $date . '</div>';
-								*/
-								$html .= "<p style='margin-bottom:1.5em;'>";
-								$custom = get_post_custom( $featured_page->ID );
-								$description = $custom['isc-featured-description'][0];
-								if ( '' !== $description ) {
-									$html .= $description;
-								} else {
-									$html .= 'No promotional text available.';
-								}
-								$html .= '</p>';
-								echo $html;
-							}
-						}
-						?>
-					</div>
-					<!-- Hide the See All button until there's a destination page to point it to
-					<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/admins-corner/your-tasks-this-month' ); ?>">See All Tasks</a>
-					-->
-					</div>
+	
 
 			</div>
 
