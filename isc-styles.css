@@ -531,7 +531,8 @@ a.uw-btn.btn-sm.btn-left {
 .isc-admin-block {
   border: solid 1px #ddd;
   padding: 30px;
-  margin-bottom: 2em;
+  margin-bottom: 0px;
+  padding-bottom: 1px;
   position: relative;
   margin-top: 0;
   }
@@ -1385,7 +1386,7 @@ font-weight: normal;
 
 /* start - admin corner page redesign styling*/
 .see-more-accordion-btn{
-  background: #d3d3d361;
+  background: #d9d9d9;
   width: 100%;
   border-radius: 0px;
   border: 0px;
@@ -1395,5 +1396,10 @@ font-weight: normal;
 }
 .see-more-accordion-btn:focus{
  outline: none;
+}
+
+.admin-accordion-drawer{
+  top: -45px;
+  position: relative;
 }
 /* end - admin corner page redesign styling*/
