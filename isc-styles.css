@@ -449,8 +449,9 @@ a.uw-btn.btn-sm.btn-left {
   margin-top: 0; }
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card .isc-homepage-excerpt {
   height: 190px;
-  max-height: 190px;
-  overflow: hidden; }
+  /* max-height: 190px; */
+  overflow: hidden;
+  }
 @media (min-width: 992px) {
   .isc-homepage-body .isc-homepage-news {
     margin-top: -90px; } }
@@ -1397,12 +1398,3 @@ font-weight: normal;
  outline: none;
 }
 /* end - admin corner page redesign styling*/
-
-/*start - homepage tile title overflow*/
-.isc-homepage-tile-title{
-  display: -webkit-box !important;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-/*end - homepage tile title overflow*/
