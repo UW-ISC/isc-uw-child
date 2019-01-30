@@ -449,8 +449,9 @@ a.uw-btn.btn-sm.btn-left {
   margin-top: 0; }
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card .isc-homepage-excerpt {
   height: 190px;
-  max-height: 190px;
-  overflow: hidden; }
+  /* max-height: 190px; */
+  overflow: hidden;
+  }
 @media (min-width: 992px) {
   .isc-homepage-body .isc-homepage-news {
     margin-top: -90px; } }
