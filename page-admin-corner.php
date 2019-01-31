@@ -55,8 +55,6 @@ get_header();
 			<div class="col-md-8 uw-content isc-content" role='main'>
 
 				<h3 class="isc-admin-header">Your Tasks This Month</h3> <div>
-				<div class="contact-widget-inner isc-widget-gray isc-admin-block">
-					<div class='post-content'>
 						<?php
 						$args = array(
 						 'hierarchical' => 0,
@@ -73,8 +71,6 @@ get_header();
 							$current_month_tasks = array_shift($all_task_posts);
 							echo get_task_html($current_month_tasks);
 							$accordion_html = <<<EOT
-								</div>
-								</div>
 								<div class="accordion" id="accordionExample">
 								<div class="card-header" id="headingOne" style="position: relative;top: -30px;">
 								      <h2 class="mb-0">
@@ -92,7 +88,6 @@ EOT;
 							$accordion_html .= <<<EOT
 								    </div>
 							   </div>
-							</div>
 							<style>
 						        [data-toggle="collapse"][aria-expanded="true"] > .accordion-handle
 						        {
