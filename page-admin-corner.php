@@ -54,7 +54,7 @@ get_header();
 
 			<div class="col-md-8 uw-content isc-content" role='main'>
 
-				<h3 class="isc-admin-header">Your Tasks This Month</h3> <div>
+				<h3 class="isc-admin-header">Your Tasks This Month</h3> 
 						<?php
 						$args = array(
 						 'hierarchical' => 0,
@@ -212,9 +212,10 @@ EOT;
 
 					  </div>
 
-				  </div>
+
 
 				</div>
+			</div>
 
 			<div class="col-md-4 uw-sidebar isc-sidebar" role="">
 
@@ -310,9 +311,7 @@ EOT;
 
 function get_task_html($task){
 	$html = <<<EOD
-	<div class="contact-widget-inner isc-admin-block isc-widget-gray" style="
-      margin-bottom: 0px;
-      ">
+	<div class="contact-widget-inner isc-admin-block isc-widget-gray" style="padding-bottom: 0px;">
 EOD;
 	$html .= '<h4><a href="' . esc_url( get_post_permalink( $task->ID ) ) . '">' . get_the_title( $task->ID ) . '</a></h4>';
 	$html .= "<p style='margin-bottom:1.5em;'>";
