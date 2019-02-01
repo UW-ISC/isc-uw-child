@@ -54,14 +54,16 @@ get_header();
 
 			<div class="col-md-8 uw-content isc-content" role='main'>
 
-				<h3 class="isc-admin-header">Your Tasks This Month</h3> 
+				<h3 class="isc-admin-header">Your Tasks This Month </h3> 
+
 						<?php
+						
 						$args = array(
 						 'hierarchical' => 0,
 						 'post_type'    => 'page',
 						 'post_status'  => 'publish',
-						 'meta_key'     => 'isc-featured',
-						 'meta_value'   => 'tasks',
+						 'meta_key'     => 'task_list_month',
+						 'meta_value'   => date('n')
 						);
 						$query = new WP_Query($args);
 						$all_task_posts = $query->posts;
@@ -70,7 +72,19 @@ get_header();
 						} else {
 							$current_month_tasks = array_shift($all_task_posts);
 							echo get_task_html($current_month_tasks);
-							$accordion_html = <<<EOT
+
+							$previous_month = date('n') - 1;
+							if($previous_month == 0 ){
+								$previous_month = 12;
+							}
+							$args['meta_value']  = $previous_month;
+							$query = new WP_Query($args);
+							if(! $query->posts){
+								echo '<div style="padding-bottom:30px"></div>';
+							}
+							else{
+								$previous_month_post = array_shift($query->posts);
+								$accordion_html = <<<EOT
 								<div class="accordion" id="accordionExample">
 								<div class="card-header" id="headingOne" style="position: relative;top: -30px;">
 								      <h2 class="mb-0">
@@ -82,10 +96,8 @@ get_header();
 								  
 								  	<div id="collapseOne" class="collapse admin-accordion-drawer" aria-labelledby="headingOne" data-parent="#accordionExample">
 EOT;
-							foreach ( $all_task_posts as $task_post ) {
-								$accordion_html .= get_task_html($task_post);
-							}
-							$accordion_html .= <<<EOT
+								  	$accordion_html .= get_task_html($previous_month_post);
+								  	$accordion_html .= <<<EOT
 								    </div>
 							   </div>
 							<style>
@@ -101,6 +113,8 @@ EOT;
 						        }
 						    </style>
 EOT;
+							}
+							
 							echo $accordion_html;
 						}
 						?>
