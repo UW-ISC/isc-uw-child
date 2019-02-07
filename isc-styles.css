@@ -533,7 +533,6 @@ a.uw-btn.btn-sm.btn-left {
   border: solid 1px #ddd;
   padding: 30px;
   margin-bottom: 0px;
-  padding-bottom: 1px;
   position: relative;
   margin-top: 0;
   }
@@ -881,7 +880,8 @@ a.uw-btn.btn-sm.btn-left {
   margin-bottom: .5em; }
 
 .post-content {
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  }
 
 .more {
   font-size: 15px; }
