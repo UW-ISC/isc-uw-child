@@ -1246,7 +1246,8 @@ a.uw-btn.btn-sm.btn-left {
 }
   
 .new-news-count{
-      top: 2px;
+      position: relative;
+      top: 3px;
       height: 19px;
       line-height: 18px;
 }
@@ -1404,3 +1405,25 @@ font-weight: normal;
   position: relative;
 }
 /* end - admin corner page redesign styling*/
+
+/*filter admin corner news -start*/
+.isc-border-less-button{
+    color: rgb(75, 46, 131);
+    background: none white;
+    border: none;
+    display: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.isc-border-less-button:focus{
+    outline: none;
+}
+
+.isc-select{
+      color: #4b2e83;
+    border: 1px solid #4b2e83;
+    border-radius: 0px;
+    padding: 6px 12px;
+}
+/*filter admin corner news - end*/
