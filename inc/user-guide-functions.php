@@ -273,7 +273,7 @@ if ( ! function_exists( 'isc_user_guide_menu' ) ) :
 		}
 
 		// Add the title of the table of contents, this is the first element.
-		$first_li = '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo( 'name' ) . '"> Table of Contents </a></li>';
+		$first_li = '<li class="nav-item"><a class="nav-link first" href="#top" title="Permanent Link to ' . get_bloginfo( 'name' ) . '"> On This Page </a></li>';
 		/*$last_li = $show_feedback ? '<li class="nav-item"><a class="nav-link last" href="#feedback" title="Permanent Link to feedback form"> Feedback <i class="fa fa-edit" aria-hidden="true"></i> </a></li>' : '';*/
 
 		$last_li = $show_feedback ? '<li class="nav-item has-children"><button class="nav-link first collapsed" data-toggle="collapse"  data-target="#feedback" aria-controls="#feedback" aria-expaded="false" title="Link to feedback form"> Feedback? <i class="fa fa-2x accordion-handle"></i> </button> <ul class="children depth-1 collapse" id="feedback" data-parent="#tocAccordion"> '.do_shortcode('[contact-form-7 title="User Guide Feedback"]').' </ul> </li>' : '';
