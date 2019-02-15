@@ -449,8 +449,9 @@ a.uw-btn.btn-sm.btn-left {
   margin-top: 0; }
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card .isc-homepage-excerpt {
   height: 190px;
-  max-height: 190px;
-  overflow: hidden; }
+  /* max-height: 190px; */
+  overflow: hidden;
+  }
 @media (min-width: 992px) {
   .isc-homepage-body .isc-homepage-news {
     margin-top: -90px; } }
@@ -531,9 +532,10 @@ a.uw-btn.btn-sm.btn-left {
 .isc-admin-block {
   border: solid 1px #ddd;
   padding: 30px;
-  margin-bottom: 2em;
+  margin-bottom: 0px;
   position: relative;
-  margin-top: 0; }
+  margin-top: 0;
+  }
 .isc-admin-block h4 {
   margin-top: 0;
   margin-bottom: 10px; }
@@ -554,7 +556,8 @@ a.uw-btn.btn-sm.btn-left {
   clear: both;
   margin: 0;
   padding: 0;
-  list-style: none; }
+  list-style: none !important;
+  }
 .menu-workday-links-container .menu .menu-item:first-child ul {
   background-color: #ece9e2;
   border: none; }
@@ -563,13 +566,14 @@ a.uw-btn.btn-sm.btn-left {
   border: none; }
 @media (min-width: 992px) {
   .menu-workday-links-container .menu-item-has-children {
-    width: 50%;
+    width: 100%;
     float: left;
-    padding-left: 15px; } }
+    } }
 @media (min-width: 992px) {
   .menu-workday-links-container .menu-item-has-children:first-child {
-    padding-right: 15px;
-    padding-left: 0; } }
+    padding: 0px;
+    margin-bottom: 2em;
+    } }
 .menu-workday-links-container .menu-item-has-children:last-child {
   padding-top: 25px; }
 @media (min-width: 992px) {
@@ -620,7 +624,8 @@ a.uw-btn.btn-sm.btn-left {
 /*** custom widget colors  ***/
 .isc-widget-tan {
   background: #ece9e2 !important;
-  border: none; }
+  border: none;
+  }
 
 .isc-widget-gray {
   background: #e9e9e9;
@@ -875,7 +880,8 @@ a.uw-btn.btn-sm.btn-left {
   margin-bottom: .5em; }
 
 .post-content {
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  }
 
 .more {
   font-size: 15px; }
@@ -1379,10 +1385,22 @@ font-weight: normal;
 /* end - search results page styling*/
 
 
-/* start - current page breadcrumbs*/
-.uw-breadcrumbs li.current span {
-  font-size: 16px;
-  font-weight: 600;
-  color: #535353;
+/* start - admin corner page redesign styling*/
+.see-more-accordion-btn{
+  background: #d9d9d9;
+  width: 100%;
+  border-radius: 0px;
+  border: 0px;
+  font-size: 17px;
+  line-height: 2em;
+  font-weight: initial;
 }
-/* end - current page breadcrumbs*/
+.see-more-accordion-btn:focus{
+ outline: none;
+}
+
+.admin-accordion-drawer{
+  top: -45px;
+  position: relative;
+}
+/* end - admin corner page redesign styling*/
