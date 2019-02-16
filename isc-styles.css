@@ -1404,3 +1404,11 @@ font-weight: normal;
   position: relative;
 }
 /* end - admin corner page redesign styling*/
+
+/* user guide ( w/ & w/o feedback)  title reposition - start */
+
+.table-of-content-cntr {
+  padding-left: 0px;
+}
+
+/* user guide ( w/ & w/o feedback)  title reposition - end */

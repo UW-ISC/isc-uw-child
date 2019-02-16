@@ -27,26 +27,29 @@ get_header();
 			</div>
 		</div>
 
-		<div class="row">
-
-			<div class="col-md-3">
+		
+		<article class="uw-content isc-user-guide" id="main_content">
+			<?php log_to_console( 'template-user-guide.php' ) ?>
+			<?php
+			while ( have_posts() ) : the_post();
+				isc_title();
+				the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
+			?>
+			
+			<div class="col-md-3 table-of-content-cntr">
 				<?php isc_user_guide_menu(true); ?>
 			</div>
 
-			<article class="uw-content float-content col-md-9 isc-user-guide" id="main_content">
-
-				<?php log_to_console( 'template-user-guide.php' ) ?>
+			<div class="col-md-9 float-content">
 				<?php
-				while ( have_posts() ) : the_post();
-					isc_title();
-					the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
 					the_content();
 				endwhile
 				?>
-			</article>
-			<div class="col-md-3">
 			</div>
-			<script>
+		</article>
+			
+
+		<script>
 			$(function(){
 
 				$('.isc-user-guide table').each(function() {
@@ -78,13 +81,10 @@ get_header();
 
 				};
 			});
-
-			</script>
-
-		</div>
+		</script>
 
 	</section>
-
+	
 </div>
 
 <?php get_footer();
