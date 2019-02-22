@@ -25,6 +25,10 @@ get_header();
 				<?php get_template_part( 'breadcrumbs' ); ?>
 			</div>
 		</div>
+		
+		<p class="print-only">
+			<strong>Note:</strong> This printed User Guide might be outdated. Please refer to ISC website (isc.uw.edu) for the latest User Guide.
+		</p>
 
 		<div class="row">
 

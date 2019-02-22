@@ -236,15 +236,16 @@ a.uw-btn.btn-sm.btn-left {
   border-bottom: solid 1px #857533 !important; }
 .uw-breadcrumbs ul li:first-child:after {
   top: 8px; }
+
 @media print {
-  .uw-breadcrumbs ul li:first-child {
-    display: none; } }
+    .uw-breadcrumbs {
+      display: none !important; 
+    }
+  }
 .uw-breadcrumbs ul li:after {
   top: 4px;
   }
-@media print {
-  .uw-breadcrumbs ul .current span {
-    font-weight: bold; } }
+
 
 /*** global elements ***/
 .isc h2 {
@@ -1404,3 +1405,39 @@ font-weight: normal;
   position: relative;
 }
 /* end - admin corner page redesign styling*/
+
+
+/* Extraneous info included when User Guides are printed - start */
+
+.print-only{
+  display: none;
+}
+
+@media print {
+  .user-guide-feedback-menu-item{
+    display: none;
+  }
+
+  .print-only{
+    display: block;
+    padding: 0px 10px;
+    border: solid 1px black;
+    background: lightgrey;
+  }
+
+  body, article {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+ }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+ }
+
+ uw-content {
+  padding: 0em 8em;
+ }
+
+}
+/* Extraneous info included when User Guides are printed - end */
