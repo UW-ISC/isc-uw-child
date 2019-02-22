@@ -1413,7 +1413,7 @@ font-weight: normal;
 }
 
 .isc-user-guide .title{
-  margin-top: -5px;
+  margin-top: -1em;
   margin-bottom: 0px;
 }
 
@@ -1422,7 +1422,7 @@ font-weight: normal;
   max-height: 4em;
 }
 
-.article-header div[class^="col-"]{
+.article-header {
   margin-bottom: 2em;
   margin-top: 1em;
 }
