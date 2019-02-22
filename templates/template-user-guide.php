@@ -28,14 +28,24 @@ get_header();
 		</div>
 		
 		
-		<article class="uw-content  isc-user-guide" id="main_content">
+		<article class="uw-content isc-user-guide" id="main_content">
 			<?php log_to_console( 'template-user-guide.php' ) ?>
-			<?php
-			while ( have_posts() ) : the_post();
-				isc_title();
-				the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
-			?>
-
+			
+			<div class="row article-header">
+				<div class="col-md-1">
+					<?php
+						echo '<img alt="User Guide Icon" title="This is a User Guide page" class="user-guide-icon" src="'. get_media_url_from_title('User-Guide-Icon') . '">';
+					?>
+				</div>
+				<div class="col-md-11">
+					<?php
+					while ( have_posts() ) : the_post();
+						isc_title();
+						the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
+					?>
+				</div>
+			</div>
+			
 			<div class="col-md-3 table-of-content-cntr">
 				<?php isc_user_guide_menu(); ?>
 			</div>
