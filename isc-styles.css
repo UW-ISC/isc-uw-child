@@ -204,7 +204,8 @@ a.uw-btn.btn-sm.btn-left {
 .uw-body h1 {
   color: #85754d; }
 .uw-body h2, .uw-body h4 {
-  margin-top: 30px; }
+  margin-top: 30px;
+  }
 .uw-body h2 a, .uw-body h4 a {
   color: #4b2e83; }
 
@@ -230,7 +231,7 @@ a.uw-btn.btn-sm.btn-left {
   background: url("../uw-2014/assets/svg/uw-sprite.svg") no-repeat -250px -3px;
   border-bottom: solid 1px #fff; }
 .uw-breadcrumbs a {
-  overflow: : initial;
+  overflow:  initial;
 }
 .uw-breadcrumbs ul li:first-child a:hover, .uw-breadcrumbs ul li:first-child a:focus {
   border-bottom: solid 1px #857533 !important; }
@@ -1441,3 +1442,27 @@ font-weight: normal;
 
 }
 /* Extraneous info included when User Guides are printed - end */
+
+/* user guide ( w/ & w/o feedback)  title reposition - start */
+
+.table-of-content-cntr {
+  padding-left: 0px;
+}
+
+.isc-user-guide .title{
+  margin-top: -1em;
+  margin-bottom: 0px;
+}
+
+.user-guide-icon{
+  /* opacity: 0.7; */
+  max-height: 4em;
+}
+
+.article-header {
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+
+/* user guide ( w/ & w/o feedback)  title reposition - end */

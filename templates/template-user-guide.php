@@ -6,6 +6,7 @@
  * additionally with a table of contents automatically generated
  * from the headers
  *
+ * 
  * @author UW-IT AXDD
  * @package isc-uw-child
  */
@@ -26,30 +27,35 @@ get_header();
 			</div>
 		</div>
 		
-		<p class="print-only">
-			<strong>Note:</strong> This printed User Guide might be outdated. Please refer to ISC website (isc.uw.edu) for the latest User Guide.
-		</p>
+		<div class="print-only print-note">
+			<p><strong>Note:</strong> This printed User Guide might be outdated. Please refer to ISC website (isc.uw.edu) for the latest User Guide.</p>
+		</div>
 
-		<div class="row">
-
-			<div class="col-md-3">
+		<article class="uw-content isc-user-guide" id="main_content">
+			<?php log_to_console( 'template-user-guide.php' ) ?>
+			
+			<div class="article-header">
+					<?php
+					while ( have_posts() ) : the_post();
+						isc_title();
+						the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
+					?>
+			</div>
+			
+			<div class="col-md-3 table-of-content-cntr">
 				<?php isc_user_guide_menu(); ?>
 			</div>
 
-			<article class="uw-content float-content col-md-9 isc-user-guide" id="main_content">
-
-				<?php log_to_console( 'template-user-guide.php' ) ?>
+			<div class="col-md-9 float-content">
 				<?php
-				while ( have_posts() ) : the_post();
-					isc_title();
-					the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
 					the_content();
 				endwhile
 				?>
-			</article>
-			<div class="col-md-3">
 			</div>
-			<script>
+		</article>
+		
+			
+		<script>
 			$(function(){
 
 				$('.isc-user-guide table').each(function() {
@@ -81,10 +87,7 @@ get_header();
 
 				};
 			});
-
-			</script>
-
-		</div>
+		</script>
 
 	</section>
 
