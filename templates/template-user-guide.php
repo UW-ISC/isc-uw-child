@@ -27,7 +27,7 @@ get_header();
 			</div>
 		</div>
 		
-		<div class="print-only print-note">
+		<div class="print-only user-guide-print-note">
 			<p><strong>Note:</strong> This printed User Guide might be outdated. Please refer to ISC website (isc.uw.edu) for the latest User Guide.</p>
 		</div>
 
