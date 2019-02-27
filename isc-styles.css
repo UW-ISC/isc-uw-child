@@ -1415,6 +1415,11 @@ font-weight: normal;
 }
 
 @media print {
+  
+  .container{
+    width: auto !important;
+  }
+
   .user-guide-feedback-menu-item{
     display: none;
   }
