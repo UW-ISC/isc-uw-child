@@ -63,7 +63,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 
 				  <div class="row">
 
-					   <h2 class="col-md-12">Featured articles</h2>
+					   <h2 class="col-md-12">Featured Pages</h2>
 						<?php
 						// Featured Pages
 						// Query finds the published pages marked featured page and lists their
@@ -107,7 +107,10 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 									<div class="isc-homepage-card-body">
 										<h3>
 										  <a href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>">
-											<?php echo get_the_title( $featured_page->ID ); ?></a>
+											<span class="isc-homepage-tile-title">
+												<?php echo get_the_title( $featured_page->ID ); ?>
+											</span>
+											</a>
 										</h3>
 										<?php
 										$description = $custom['isc-featured-description'][0];
@@ -123,7 +126,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 											$description_text = 'Learn More';
 										}
 										?>
-										<p class="isc-homepage-excerpt"><?php echo esc_textarea( $description ); ?></p>
+										<p class="isc-homepage-excerpt multi-line-text-block"><?php echo esc_textarea( $description ); ?></p>
 										<p><a class="uw-btn btn-sm" title="<?php echo get_the_title( $featured_page->ID ); ?>" href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>"><?php echo esc_textarea( $description_text ); ?><span class="sr-only">: <?php echo get_the_title( $featured_page->ID ); ?></span></a></p>
 									</div>
 
@@ -197,5 +200,27 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 	</div>
 
 	</div>
+<script type="text/javascript">
+	var adjustExcerpt = function(title){
+		var titleContentHeight = 241;
+		var titleHeight = title.offsetHeight;
+		var newExcerptHeight = titleContentHeight - titleHeight;
+		var excerpt = $($(title.closest('.isc-homepage-card-body')).children('.isc-homepage-excerpt')[0]);
+		excerpt.css('height', newExcerptHeight + "px");
+	}
+	
+	$( document ).ready(function() {
+		var  titles = $('.isc-homepage-tile-title');
+		titles.each(function(){
+			adjustExcerpt(this);
+		});
 
+		window.addEventListener('resize', function(event){
+			var  titles = $('.isc-homepage-tile-title');
+				titles.each(function(){
+				adjustExcerpt(this);
+			});	
+		});
+	});	
+</script>
 <?php get_footer(); ?>
