@@ -1421,3 +1421,11 @@ font-weight: normal;
   position: relative;
 }
 /* end - admin corner page redesign styling*/
+
+/* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - start*/
+
+p:empty{
+  display: none;
+}
+
+/* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - end*/
