@@ -204,7 +204,8 @@ a.uw-btn.btn-sm.btn-left {
 .uw-body h1 {
   color: #85754d; }
 .uw-body h2, .uw-body h4 {
-  margin-top: 30px; }
+  margin-top: 30px;
+  }
 .uw-body h2 a, .uw-body h4 a {
   color: #4b2e83; }
 
@@ -230,21 +231,22 @@ a.uw-btn.btn-sm.btn-left {
   background: url("../uw-2014/assets/svg/uw-sprite.svg") no-repeat -250px -3px;
   border-bottom: solid 1px #fff; }
 .uw-breadcrumbs a {
-  overflow: : initial;
+  overflow:  initial;
 }
 .uw-breadcrumbs ul li:first-child a:hover, .uw-breadcrumbs ul li:first-child a:focus {
   border-bottom: solid 1px #857533 !important; }
 .uw-breadcrumbs ul li:first-child:after {
   top: 8px; }
+
 @media print {
-  .uw-breadcrumbs ul li:first-child {
-    display: none; } }
+    .uw-breadcrumbs {
+      display: none !important; 
+    }
+  }
 .uw-breadcrumbs ul li:after {
   top: 4px;
   }
-@media print {
-  .uw-breadcrumbs ul .current span {
-    font-weight: bold; } }
+
 
 /*** global elements ***/
 .isc h2 {
@@ -1404,3 +1406,113 @@ font-weight: normal;
   position: relative;
 }
 /* end - admin corner page redesign styling*/
+
+
+/* Extraneous info included when User Guides are printed - start */
+
+.print-only{
+  display: none;
+}
+
+@media print {
+  
+  .container{
+    width: auto !important;
+  }
+
+  .user-guide-feedback-menu-item{
+    display: none;
+  }
+
+  .print-only{
+    display: block;
+  }
+
+  .user-guide-print-note{
+    border: 1px solid black;
+    padding: 1em;
+    padding-bottom: 0px;
+  }
+
+  .isc-user-guide .title{
+    margin-top: 0px !important;
+  }
+
+  .current > a{
+    border: none !important;
+  }
+
+  .isc-expander a[role=button]:after{
+    display: none;
+  }
+
+  h1, h2, h3{
+    page-break-after: avoid;
+  }
+
+  p{
+    page-break-inside: avoid;
+  }
+
+  p a::after{
+    content:" (" attr(href) ") " !important;
+    font-size:0.8em;
+    font-weight:normal;
+  }
+
+  p a img{
+    width: 100% !important;
+    border: 2px solid lightgrey !important;
+  }
+
+  p a{
+    text-decoration: none;
+    font-style: italic;
+  }
+
+  span.glossaryLink, a.glossaryLink {
+    border: none !important;
+  }
+
+  a[title="Integrated Service Center"]{
+    text-decoration: none;
+  }
+  .uw-btn.btn-sm{
+    background: none !important;
+  }
+
+  .uw-btn.btn-sm::before{
+    display: none;
+  }
+  .uw-btn.btn-sm::after{
+    position: relative;
+    background: none;
+  }
+
+}
+
+/* Extraneous info included when User Guides are printed - end */
+
+/* user guide ( w/ & w/o feedback)  title reposition - start */
+
+.table-of-content-cntr {
+  padding-left: 0px;
+}
+
+.isc-user-guide .title{
+  margin-top: -1em;
+  margin-bottom: 0px;
+}
+
+.user-guide-icon{
+  /* opacity: 0.7; */
+  max-height: 4em;
+}
+
+.article-header {
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+
+/* user guide ( w/ & w/o feedback)  title reposition - end */
