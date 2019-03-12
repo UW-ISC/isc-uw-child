@@ -123,8 +123,11 @@ EOT;
 
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-					<div class="line">
-						<h3 class="isc-admin-header">Admins' News</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="line">
+							<h3 class="isc-admin-header">Admins' News</h3>
+						
 						<?php 
 						 $news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
 						 $new_news_count = 0;
@@ -149,13 +152,72 @@ EOT;
 						$category_posts = new WP_Query( $args );
 						$new_news_count = $category_posts->found_posts;
 						if($new_news_count > 0){
-							echo '<div class="new-news-count new-news-label">'.$category_posts->found_posts.' new</div>';
-						}
-						?>
+							echo '<span id="newNewsCount" class="new-news-count"><span class="new-news-label">'.$category_posts->found_posts.' new</span></span>';
+						} ?>
+						</div>
+						</div>
+						<div class="col-md-6">
+							<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" style="float:right">
+								<button hidden="true" class ="isc-border-less-button" id="clearFilter" onclick="clearCategoryFilter();"> <i class="fa fa-close isc-btn-icon"></i> clear </button>
+								<?php
+								if( $terms = get_terms( 'category', 'orderby=name' ) ) {
+									echo '<select class="isc-select" id="categorySelectInput" name="categoryfilter"><option value="select">Select category...</option>';
+									
+									foreach ( $terms as $term ) {
+										echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; 
+									}	
+										echo '</select>';
+									}
+								
+								?>
+								<input type="hidden" name="action" value="adminNewsFilter">
+						</form>
+						<script type="text/javascript">
+							clearCategoryFilter = function(){
+								console.log('here');
+								$('#categorySelectInput').prop('selectedIndex',0);
+								$('#filter').submit();
+								$('#clearFilter').hide();
+							}
+							jQuery(function($){
+								$('#categorySelectInput').change(function(){
+									$('#filter').submit();
+								});
+							$('#filter').submit(function(){
+								var filter = $('#filter');
+								$.ajax({
+									url:filter.attr('action'),
+									data:filter.serialize(), // form data
+									type:filter.attr('method'), // POST
+									beforeSend:function(xhr){
+										$('#newNewsCount').hide();
+
+										// filter.find('button').text('Applying...'); // changing the button label
+									},
+									success:function(data){
+										// filter.find('button').text('Filter'); // changing the button label back
+										$('#adminNewsPosts').html(data); // insert data
+										if($('#categorySelectInput').prop('selectedIndex') != 0){
+											$('#clearFilter').show();
+										}
+										else{
+											$('#newNewsCount').show();
+											$('#clearFilter').hide();
+										}
+																			
+									}
+								});
+								return false;
+							});
+						});
+						</script>
+					</div>	
 					</div>
-					<div class="isc-admin-block">
+					<div class="isc-admin-block" id="adminNewsPosts">
+
 
 							<?php
+
 
 							 $args = array(
 									  'tax_query' => array(
@@ -173,10 +235,7 @@ EOT;
 							 if ( $category_posts->have_posts() ) :
 								 while ( $category_posts->have_posts() ) :
 									 $category_posts->the_post();
-							?>
-
-								   
-								   <?php 
+							 
 								    $diff_str = esc_html( human_time_diff( get_the_time('U'), current_time('timestamp') ) );
 								    $diff_display =  esc_html( '('.human_time_diff( get_the_time('U'), current_time('timestamp') ) ).' ago)';
 								    $diff_arr = explode(" ", $diff_str);
