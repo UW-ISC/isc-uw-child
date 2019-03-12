@@ -352,6 +352,7 @@ function get_filter_description(){
 }
 
 
+
 add_action('wp_ajax_adminNewsFilter', 'admin_news_filter_function');
 add_action('wp_ajax_nopriv_adminNewsFilter', 'admin_news_filter_function');
 function admin_news_filter_function(){
@@ -469,6 +470,28 @@ ksnmdklmd;
 	else {
 		echo 'No news items in this category' ;
 	}
+}
+
+
+/**
+* This function returns the URL string of the latest media post with the given title string.
+*
+* @param string $title Title of the media post.
+* @return string  URL string of the latest media post. Empty String if no media with given title.
+*
+**/
+function get_media_url_from_title($title){
+	$args = array(
+		'post_type' => 'attachment',
+		'title' => sanitize_title($title),
+		'posts_per_page' => 1,
+		'sort_column'  => 'post_date',
+		'sort_order'   => 'desc',
+		'post_status' => 'inherit',
+	  );
+	  $query_results = get_posts( $args );
+	  $attachment = $query_results ? array_pop($query_results) : null;
+	return $attachment ? wp_get_attachment_url($attachment->ID) : '';
 }
 
 ?>
