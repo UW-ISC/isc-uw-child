@@ -1408,6 +1408,16 @@ font-weight: normal;
 /* end - admin corner page redesign styling*/
 
 
+/* New table style - start*/
+.table-striped-alt{
+  background: #f9f9f9 !important;
+}
+.table-striped-alt > tbody > tr:nth-child(odd) > td,
+.table-striped-alt > tbody > tr:nth-child(odd) > th {
+  background-color: white;
+}
+/* New table style - end*/
+
 /* Extraneous info included when User Guides are printed - start */
 
 .print-only{
