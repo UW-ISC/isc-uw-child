@@ -123,8 +123,8 @@ EOT;
 
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-					<div class="row">
-						<div class="col-md-6">
+					
+						
 							<div class="line">
 							<h3 class="isc-admin-header">Admins' News</h3>
 						
@@ -155,13 +155,12 @@ EOT;
 							echo '<span id="newNewsCount" class="new-news-count"><span class="new-news-label">'.$category_posts->found_posts.' new</span></span>';
 						} ?>
 						</div>
-						</div>
-						<div class="col-md-6">
-							<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" style="float:right">
-								<button hidden="true" class ="isc-border-less-button" id="clearFilter" onclick="clearCategoryFilter();"> <i class="fa fa-close isc-btn-icon"></i> clear </button>
+						
+						<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" style="margin-bottom:15px">
+								<label for="categorySelectInput">Filter News Posts:</label>
 								<?php
 								if( $terms = get_terms( 'category', 'orderby=name' ) ) {
-									echo '<select class="isc-select" id="categorySelectInput" name="categoryfilter"><option value="select">Select category...</option>';
+									echo '<select class="isc-select" id="categorySelectInput" name="categoryfilter"><option value="select" hidden>Select category...</option>';
 									
 									foreach ( $terms as $term ) {
 										echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; 
@@ -170,6 +169,7 @@ EOT;
 									}
 								
 								?>
+								<button hidden="true" class ="isc-border-less-button" id="clearFilter" onclick="clearCategoryFilter();"> <i class="fa fa-close isc-btn-icon"></i> clear filter</button>
 								<input type="hidden" name="action" value="adminNewsFilter">
 						</form>
 						<script type="text/javascript">
@@ -210,9 +210,8 @@ EOT;
 								return false;
 							});
 						});
-						</script>
-					</div>	
-					</div>
+						</script>	
+					
 					<div class="isc-admin-block" id="adminNewsPosts">
 
 
