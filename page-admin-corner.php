@@ -179,6 +179,11 @@ EOT;
 								$('#filter').submit();
 								$('#clearFilter').hide();
 							}
+							window.onload = function(){
+								if( $('#categorySelectInput').prop('selectedIndex') != 0 ){
+									$('#categorySelectInput').trigger('change');
+								}
+							}
 							jQuery(function($){
 								$('#categorySelectInput').change(function(){
 									$('#filter').submit();
