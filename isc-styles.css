@@ -1544,5 +1544,8 @@ font-weight: normal;
   margin-top: 1em;
 }
 
+h2 {
+  margin-top: 0px !important;
+}
 
 /* user guide ( w/ & w/o feedback)  title reposition - end */
