@@ -494,4 +494,33 @@ function get_media_url_from_title($title){
 	return $attachment ? wp_get_attachment_url($attachment->ID) : '';
 }
 
+
+add_filter( 'wp_generate_attachment_metadata', 'wp_generate_attachment_metadata_custom', 10, 2);
+
+
+/**
+* This function changes the file source for the 'thumbnail' size-type of a media.
+* This filter is applied while uploading media and works by changing the Attachment Metadata.
+*
+* @param array $metadata      An array of attachment meta data.
+* @return  int   $attachment_id Current attachment ID.
+*
+**/
+function wp_generate_attachment_metadata_custom($metadata, $post_id){
+	if(	isset($metadata['sizes'])
+		&& isset($metadata['sizes']['thumbnail'])
+		&& isset($metadata['sizes']['thumbnail']['file'])
+		&& isset($metadata['file']))
+		{
+			$file_path = explode("/", $metadata['file']);
+			
+			if(sizeof($file_path) > 0)
+			{
+				$metadata['sizes']['thumbnail']['file'] = $file_path[sizeof($file_path) - 1];
+			}
+		}
+	return $metadata;
+}
+
+
 ?>

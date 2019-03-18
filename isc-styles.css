@@ -1549,3 +1549,15 @@ font-weight: normal;
 }
 
 /* user guide ( w/ & w/o feedback)  title reposition - end */
+
+/* Thumbnail images are resized when printing - start */
+@media print{
+  
+  a img.size-thumbnail{
+    width: auto !important;
+    height: auto !important;
+    min-width: 100%;
+  }
+  
+}
+/* Thumbnail images are resized when printing - end  */
