@@ -107,7 +107,10 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 									<div class="isc-homepage-card-body">
 										<h3>
 										  <a href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>">
-											<?php echo get_the_title( $featured_page->ID ); ?></a>
+											<span class="isc-homepage-tile-title">
+												<?php echo get_the_title( $featured_page->ID ); ?>
+											</span>
+											</a>
 										</h3>
 										<?php
 										$description = $custom['isc-featured-description'][0];
@@ -197,5 +200,27 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 	</div>
 
 	</div>
+<script type="text/javascript">
+	var adjustExcerpt = function(title){
+		var titleContentHeight = 241;
+		var titleHeight = title.offsetHeight;
+		var newExcerptHeight = titleContentHeight - titleHeight;
+		var excerpt = $($(title.closest('.isc-homepage-card-body')).children('.isc-homepage-excerpt')[0]);
+		excerpt.css('height', newExcerptHeight + "px");
+	}
+	
+	$( document ).ready(function() {
+		var  titles = $('.isc-homepage-tile-title');
+		titles.each(function(){
+			adjustExcerpt(this);
+		});
 
+		window.addEventListener('resize', function(event){
+			var  titles = $('.isc-homepage-tile-title');
+				titles.each(function(){
+				adjustExcerpt(this);
+			});	
+		});
+	});	
+</script>
 <?php get_footer(); ?>
