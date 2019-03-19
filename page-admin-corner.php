@@ -280,7 +280,7 @@ EOT;
 							<?php
 								 endwhile;
 								?>
-								<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/news' );?>">Read older news</a>
+								<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/news' );?>">View All News</a>
 						<?php
 							else :
 								echo '<p>No admin news available.</p>';
