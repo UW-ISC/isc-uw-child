@@ -351,4 +351,145 @@ function get_filter_description(){
 	}
 }
 
+
+
+add_action('wp_ajax_adminNewsFilter', 'admin_news_filter_function');
+add_action('wp_ajax_nopriv_adminNewsFilter', 'admin_news_filter_function');
+function admin_news_filter_function(){
+
+	if($_POST['categoryfilter'] == 'select'){
+		$args = array(
+				  'tax_query' => array(
+					  array(
+						  'taxonomy' => 'location',
+						  'field'    => 'slug',
+						  'terms'    => 'admin-corner-news',
+					  ),
+				  ),
+				  'posts_per_page' => 5,
+				  'post_status' => 'publish',
+		 );
+	}
+	else {
+
+		$args = array(
+				'tax_query' => array(
+						'relation' => 'AND',
+						array(
+						  'taxonomy' => 'location',
+						  'field'    => 'slug',
+						  'terms'    => 'admin-corner-news',
+					  	),
+					  	array(
+							'taxonomy' => 'category',
+							'field' => 'id',
+							'terms' => $_POST['categoryfilter']
+						)
+					),
+				  'posts_per_page' => 5,
+				  'post_status' => 'publish'
+		 );
+	}
+	$query = new WP_Query( $args );
+	print_admin_corner_news($query);
+	die();
+}
+
+function print_admin_corner_news($admin_corner_news){
+	echo $count_hide_script = <<<aijsruksjdf
+	<script type="text/javascript">
+		$()
+	</script>
+aijsruksjdf;
+
+	$html = '';
+	if ( $admin_corner_news->have_posts() ) {
+		$news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
+		$new_news_count = 0;
+		if (!is_int(news_stale_after)) {
+			$news_stale_after = 3;
+		}
+		 while ( $admin_corner_news->have_posts() ) {
+			 $admin_corner_news->the_post();
+		 
+	 
+		    $diff_str = esc_html( human_time_diff( get_the_time('U'), current_time('timestamp') ) );
+		    $diff_display =  esc_html( '('.human_time_diff( get_the_time('U'), current_time('timestamp') ) ).' ago)';
+		    $diff_arr = explode(" ", $diff_str);
+		    $diff_unit = $diff_arr[1];
+
+		    
+
+		    $new_post = false;
+		    $new_label = '';
+		   
+		    if(strpos($diff_unit, 'second') !== false ||
+		    	strpos($diff_unit, 'min') !== false ||
+		    	strpos($diff_unit, 'hour') !== false){
+		    	$new_post = true;
+		    }
+		    else if(strpos($diff_unit, 'day') !== false){
+		    	
+		    	$diff_value = (int)$diff_arr[0];
+
+		    	if($diff_value <= $news_stale_after){
+		    		$new_post = true;
+		    		$new_news_count += 1;
+		    	}
+		    }
+		    if($new_post) {
+		   		 $new_label = '<span class="new-news-label">new</span>';
+		   	}
+		   $post_link = esc_url( get_permalink() );
+		   $post_title = get_the_title();
+		   $post_date = get_the_date();
+		   $post_excerpt = get_the_excerpt();
+
+
+
+		   $html = <<<afwfqwafc
+		   	<div class="line">
+		   		<h4><a href="$post_link">$post_title</a>
+afwfqwafc;
+			$html .= $new_label;
+			$html .= <<<rqfafaesfe
+				</h4>
+								   	</div><br>
+								   <div class="line">
+								   	<div class="update-date">$post_date</div>
+								   	<div class="date-diff">$diff_display</div>
+								   </div>
+								   <div class='post-content'>$post_excerpt</div>
+rqfafaesfe;
+		   echo $html;
+		}
+		 echo '<a class="uw-btn btn-sm" href="'.get_site_url().'/news">Read older news</a>';
+	}
+	else {
+		echo 'No news items in this category' ;
+	}
+}
+
+
+/**
+* This function returns the URL string of the latest media post with the given title string.
+*
+* @param string $title Title of the media post.
+* @return string  URL string of the latest media post. Empty String if no media with given title.
+*
+**/
+function get_media_url_from_title($title){
+	$args = array(
+		'post_type' => 'attachment',
+		'title' => sanitize_title($title),
+		'posts_per_page' => 1,
+		'sort_column'  => 'post_date',
+		'sort_order'   => 'desc',
+		'post_status' => 'inherit',
+	  );
+	  $query_results = get_posts( $args );
+	  $attachment = $query_results ? array_pop($query_results) : null;
+	return $attachment ? wp_get_attachment_url($attachment->ID) : '';
+}
+
 ?>
