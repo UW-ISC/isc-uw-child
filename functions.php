@@ -463,9 +463,7 @@ afwfqwafc;
 rqfafaesfe;
 		   echo $html;
 		}
-		 echo <<<ksnmdklmd
-		   <a class="uw-btn btn-sm" href="get_site_url()/news">Read older news</a>
-ksnmdklmd;
+		 echo '<a class="uw-btn btn-sm" href="'.get_site_url().'/news">Read older news</a>';
 	}
 	else {
 		echo 'No news items in this category' ;
