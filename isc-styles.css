@@ -530,27 +530,44 @@ a.uw-btn.btn-sm.btn-left {
   color: #3d3d3d !important; }
 
 .isc-admin-block {
-  border: solid 1px #ddd;
-  padding: 30px;
-  margin-bottom: 0px;
-  position: relative;
-  margin-top: 0;
-  }
-.isc-admin-block h4 {
-  margin-top: 0;
-  margin-bottom: 10px; }
-.isc-admin-block h4 a {
-  font-size: 21px;
-  color: #4b2e83;
-  font-weight: 800; }
+    border: solid 1px #ddd;
+    padding: 30px;
+    margin-bottom: 0px;
+    position: relative;
+    margin-top: 0;
+}
+
+.isc-admin-block, #adminNewsPosts h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.isc-admin-block, #adminNewsPosts h4 a {
+    font-size: 21px;
+    color: #4b2e83;
+    font-weight: 800;
+}
+
+#adminNewsPosts{
+  margin-top: 3em;
+}
+
+
 .isc-admin-block ul {
-  list-style: none;
-  padding: 0; }
+    list-style: none;
+    padding: 0;
+}
+
 .isc-admin-block ul li a {
-  font-size: 16px; }
+    font-size: 16px;
+}
+
 .isc-admin-block ul li a:hover {
-  border-bottom: none !important;
-  text-decoration: underline; }
+    border-bottom: none !important;
+    text-decoration: underline;
+}
+
+
 
 .menu-workday-links-container .menu {
   clear: both;
