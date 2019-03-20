@@ -37,19 +37,14 @@ get_header();
 	-->
 	<div class="container uw-body">
 
-		<div class="row">
-			<div class="col-md-12">
-				<?php get_template_part( 'breadcrumbs' ); ?>
-			</div>
-		</div>
-
 		<!-- adding title JAB 061418 -->
  		<div class="row">
-			<div class="col-md-12">
-				<h1><?php the_title(); ?></h1>
+			
+			<h1><?php the_title(); ?></h1>
+			
 			<br/>
-			</div>
-		</div>
+			
+
 		<div class="row">
 
 			<div class="col-md-8 uw-content isc-content" role='main'>
@@ -217,7 +212,7 @@ EOT;
 						});
 						</script>	
 					
-					<div class="isc-admin-block" id="adminNewsPosts">
+					<div id="adminNewsPosts">
 
 
 							<?php
