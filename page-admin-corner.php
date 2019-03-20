@@ -151,7 +151,7 @@ EOT;
 						} ?>
 						</div>
 						
-						<form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" style="margin-bottom:15px">
+						<form action="<?php echo site_url() ?>/wp-content/themes/isc-uw-child/isc_request.php" method="POST" id="filter" style="margin-bottom:15px">
 								<label for="categorySelectInput">Filter News Posts:</label>
 								<?php
 								if( $terms = get_terms( 'category', 'orderby=name' ) ) {
@@ -169,7 +169,6 @@ EOT;
 						</form>
 						<script type="text/javascript">
 							clearCategoryFilter = function(){
-								console.log('here');
 								$('#categorySelectInput').prop('selectedIndex',0);
 								$('#filter').submit();
 								$('#clearFilter').hide();
