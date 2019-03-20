@@ -537,12 +537,12 @@ a.uw-btn.btn-sm.btn-left {
     margin-top: 0;
 }
 
-.isc-admin-block, #adminNewsPosts h4 {
+.isc-admin-block h4, #adminNewsPosts h4 {
     margin-top: 0;
     margin-bottom: 10px;
 }
 
-.isc-admin-block, #adminNewsPosts h4 a {
+.isc-admin-block h4 a , #adminNewsPosts h4 a {
     font-size: 21px;
     color: #4b2e83;
     font-weight: 800;
