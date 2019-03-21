@@ -353,8 +353,8 @@ function get_filter_description(){
 
 
 
-add_action('wp_ajax_adminNewsFilter', 'admin_news_filter_function');
-add_action('wp_ajax_nopriv_adminNewsFilter', 'admin_news_filter_function');
+add_action('isc_request_ajax_adminNewsFilter', 'admin_news_filter_function');
+add_action('isc_request_ajax_nopriv_adminNewsFilter', 'admin_news_filter_function');
 function admin_news_filter_function(){
 
 	if($_POST['categoryfilter'] == 'select'){
