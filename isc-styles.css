@@ -1566,3 +1566,80 @@ font-weight: normal;
 }
 
 /* user guide ( w/ & w/o feedback)  title reposition - end */
+
+/* Workday Guides - start*/
+
+ul.post-metadata{
+  padding-left: 0px !important;
+}
+
+.post-metadata li{
+  display: inline;
+}
+
+.course-filter-form label{
+  font-weight: normal;
+}
+
+.fui-radio-unchecked::before {
+ display: none !important;
+}
+
+.loader {
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #ddd;
+}
+.loader:before{
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #4b2e83;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}
+
+.div-overlay-white{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffffc4;
+}
+
+.small-chip{
+  padding: 0px 8px !important;
+  font-size: 1em;
+}
+
+.isc-btn-icon-right{
+  margin-right: 0px !important;
+  margin-left: 5px;
+}
+
+.h-list{
+  padding: 0px;
+  line-height: 34px;
+}
+
+.h-list li{
+  display: inline;
+  padding-right: 4px;
+}
+
+.nav-previous, .nav-next{
+  cursor: pointer; 
+}
+/* Workday Guides - end */
