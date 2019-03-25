@@ -356,7 +356,7 @@ EOT;
 
 				<!-- <div class="row"> -->
 						<!-- <div class="col-md-12" style="margin-bottom: 2em;"> -->
-						<div>
+						<div class="service-links">
 							<?php
 							wp_nav_menu(
 								array(
