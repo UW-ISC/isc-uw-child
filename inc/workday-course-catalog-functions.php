@@ -180,10 +180,17 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 	echo  '<form action="'.site_url().'/wp-admin/admin-ajax.php" method="POST" id="courseFilterForm">';
 
 	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
-									
+
+	$print_order = ['course-employee-population','course-security-role-involved', 'business-process', 'course-scenario', 'course-skill-level'];
+
+	$keyed_taxonomies = array();
+
 	foreach ($taxonomies as $each_taxonomy ){
-		
-		print_filter_section( $each_taxonomy, $term_args, $selected_taxonomy_ids, $post_ids);
+		$keyed_taxonomies[$each_taxonomy->name] = $each_taxonomy;
+	}
+									
+	foreach ($print_order as $taxonomy_name ){
+		print_filter_section( $keyed_taxonomies[$taxonomy_name], $term_args, $selected_taxonomy_ids, $post_ids);
 	}
 		echo  '<input type="hidden" name="page" value="0">';
 	echo  '<input type="hidden" name="action" value="courseFilter"> </form>';
@@ -216,24 +223,12 @@ function print_filter_item($taxonomy, $term, $checked_status, $post_ids) {
 
 
 function get_term_count($term, $post_ids, $taxonomy){
-    
-    print_var("term", $term);
-    
-    // echo "<br> post_ids <br>";
-    // print_r($post_ids);
-
-    // echo "<br> taxonomy <br>";
-    // print_r($taxonomy);
-    
+        
     $count = 0;
     foreach ($post_ids as $id){
-        
-        print_var("id", $id);
 
         $post = get_post($id);
         $terms = get_the_terms($post, $taxonomy->name);
-
-        print_var("terms", $terms);
 
         if(in_array($term, $terms)) {
             $count++;
@@ -289,17 +284,22 @@ function print_workday_course_item(){
 	$update_date = date_create_from_format('m/d/Y', $update_date);
 	$update_date = $update_date->format('M j, Y');
 
+	$skill_level = get_the_terms(get_the_ID(), 'course-skill-level')[0];
+	
+
 	$read_more = esc_url(get_permalink());
 	
-	$post_html = <<<dnfndaskfn
-	<h2><a target="_blank" href="$url"> {$post_title} </a></h2>
-	<p>{$post_excerpt}</p>
-	<ul class="post-metadata">
-	<li> <b> Duration: </b> {$duration} mins</li>
-		<li>| <b> Released On: </b> {$release_date}</li>
+    $post_html = <<<dnfndaskfn
+    <div class="workday-course-item" onclick="handleCourseClick('{$url}')">
+        <h2>{$post_title}</h2>
+        <p>{$post_excerpt}</p>
+        <ul class="post-metadata">
+        <li> <b> Duration: </b> {$duration} mins</li>
+		<li>| <b> Skill Level: </b> {$skill_level->name}</li>
 		<li>| <b> Updated On: </b> {$update_date}</li>
 		<li>| <a href="{$read_more}"> more </a> </li>
-	</ul>
+        </ul>
+    </div>
 dnfndaskfn;
 	echo $post_html;
 }
