@@ -576,8 +576,9 @@ a.uw-btn.btn-sm.btn-left {
   list-style: none !important;
   }
 .menu-workday-links-container .menu .menu-item:first-child ul {
-  background-color: #ece9e2;
-  border: none; }
+    /* background-color: #ece9e2; */
+    border: 1px solid #444444;
+}
 .menu-workday-links-container .menu .menu-item:nth-child(2) ul {
   background-color: #e9e9e9;
   border: none; }
@@ -1566,3 +1567,32 @@ font-weight: normal;
 }
 
 /* user guide ( w/ & w/o feedback)  title reposition - end */
+
+/* Admin corner sidebar rework - start*/
+.service-links .sub-menu {
+    padding-left: 3em !important;
+}
+
+.service-links .sub-menu li {
+    list-style: circle !important;
+}
+
+.service-links .sub-menu .menu-heading {
+  list-style: none !important;
+  margin-left: -30px;
+}
+
+.service-links .sub-menu .menu-heading a {
+  color: black;
+  font-size: 18px !important;
+  font-family: "Encode Sans Compressed", sans-serif;
+  font-weight: 800;
+  margin: 1em 0em;
+}
+
+.service-links .sub-menu .menu-heading a:hover{
+  text-decoration: none;
+  color: black;
+  cursor: text;
+} 
+/* Admin corner sidebar rework - end*/
