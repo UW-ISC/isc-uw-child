@@ -384,7 +384,7 @@ function get_task_html($task){
 	$html = <<<EOD
 	<div class="contact-widget-inner isc-admin-block isc-widget-gray" style="padding-bottom: 0px;">
 EOD;
-	$html .= '<h4><a href="' . esc_url( get_post_permalink( $task->ID ) ) . '">' . get_the_title( $task->ID ) . '</a></h4>';
+	$html .= '<h4><a href="' . esc_url( get_permalink( $task->ID ) ) . '">' . get_the_title( $task->ID ) . '</a></h4>';
 	$html .= "<p style='margin-bottom:1.5em;'>";
 	$custom = get_post_custom( $task->ID );
 	$description = $custom['isc-featured-description'][0];
