@@ -577,7 +577,7 @@ a.uw-btn.btn-sm.btn-left {
   }
 .menu-workday-links-container .menu .menu-item:first-child ul {
     /* background-color: #ece9e2; */
-    border: 1px solid #444444;
+    border: 1px solid #d9d9d9;
 }
 .menu-workday-links-container .menu .menu-item:nth-child(2) ul {
   background-color: #e9e9e9;
@@ -615,7 +615,7 @@ a.uw-btn.btn-sm.btn-left {
   cursor: default; }
 .menu-workday-links-container .menu-item-has-children .sub-menu {
   border: solid 1px #ddd;
-  padding: 30px;
+  padding-bottom: 20px;
   list-style: none;
   min-height: 250px; }
 .menu-workday-links-container .menu-item-has-children .sub-menu a {
