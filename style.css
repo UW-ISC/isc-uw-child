@@ -13,13 +13,17 @@
 */
 
 /* Change chevron character for accordion menus */
-.isc-expander a.expanded:after {
- 	content: "\f13a" !important;
-}
- .isc-expander a.collapsed:after {
-  content: "\f13a" !important; 
+.isc-expander a.expanded::after{
+    content: "\f13a" !important;
 }
 
+.isc-expander a.collapsed:after {
+    content: "\f138" !important;
+}
+
+.isc-expander a:after {
+    content: "\f138" !important;
+}
 /* Override style for ol's on Event pages */
 .isc-events ol {
 	list-style: decimal !important;

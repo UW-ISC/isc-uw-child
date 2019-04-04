@@ -576,8 +576,9 @@ a.uw-btn.btn-sm.btn-left {
   list-style: none !important;
   }
 .menu-workday-links-container .menu .menu-item:first-child ul {
-  background-color: #ece9e2;
-  border: none; }
+    /* background-color: #ece9e2; */
+    border: 1px solid #d9d9d9;
+}
 .menu-workday-links-container .menu .menu-item:nth-child(2) ul {
   background-color: #e9e9e9;
   border: none; }
@@ -614,14 +615,13 @@ a.uw-btn.btn-sm.btn-left {
   cursor: default; }
 .menu-workday-links-container .menu-item-has-children .sub-menu {
   border: solid 1px #ddd;
-  padding: 30px;
+  padding-bottom: 20px;
   list-style: none;
   min-height: 250px; }
 .menu-workday-links-container .menu-item-has-children .sub-menu a {
   font-size: 16px !important;
   font-weight: normal;
   margin: 0;
-  display: inline-block;
   text-transform: none;
   font-family: "Open Sans", sans-serif;
   color: #0088dd; }
@@ -828,68 +828,107 @@ a.uw-btn.btn-sm.btn-left {
 
 /*** custom collapse ***/
 .isc-expander {
-  background: #eee !important;
-  margin-top: 10px;
-  padding: 10px 16px; }
+    background: #eee !important;
+    margin-top: 10px;
+    padding: 10px 16px;
+}
+
 .isc-expander a[role=button] {
-  color: #4b2e83;
-  font-weight: bold;
-  font-size: 18px;
-  background-image: none;
-  display: block;
-  border-bottom: none !important; }
-.isc-expander a[role=button]:hover, .isc-expander a[role=button]:focus {
-  color: #857551 !important;
-  text-decoration: underline !important; }
+    color: #4b2e83;
+    font-weight: bold;
+    font-size: 18px;
+    background-image: none;
+    display: block;
+    border-bottom: none !important;
+}
+
+.isc-expander a[role=button]:hover,
+.isc-expander a[role=button]:focus {
+    color: #857551 !important;
+    text-decoration: underline !important;
+}
+
 .isc-expander a[role=button]:after {
-  font-family: FontAwesome;
-  right: -10px;
-  position: relative; }
+    font-family: FontAwesome;
+    right: -10px;
+    position: relative;
+}
+
 .isc-expander a.collapsed:after {
-  content: "\f078"; }
+    content: "\f078";
+}
+
 .isc-expander a.expanded:after {
-  content: "\f077"; }
+    content: "\f077";
+}
+
 .isc-expander .isc-expander-content {
-  padding: 0;
-  font-size: 16px !important;
-  overflow: hidden; }
-.isc-expander .isc-expander-content p, .isc-expander .isc-expander-content span {
-  font-size: 16px !important; }
+    padding: 0;
+    font-size: 16px !important;
+    overflow: hidden;
+}
+
+.isc-expander .isc-expander-content p,
+.isc-expander .isc-expander-content span {
+    font-size: 16px !important;
+}
+
 .isc-expander .isc-expander-inner {
-  padding-top: 8px; }
+    padding-top: 8px;
+}
+
 
 /*** datatables overrides ***/
-.dataTables_wrapper .dataTables_filter {
-  display: none; }
-.dataTables_wrapper .dataTables_info {
-  font-size: 14px;
-  color: #555; }
-.dataTables_wrapper .pagination {
-  list-style: none; }
-.dataTables_wrapper .pagination .paginate_button {
-  display: inline-block; }
-.dataTables_wrapper table.dataTable thead th {
-  position: relative;
-  background-image: none !important; }
+#user_guide_lib_wrapper.dataTables_wrapper .dataTables_filter {
+    display: none;
+}
+
+#user_guide_lib_wrapper.dataTables_wrapper .dataTables_info {
+    font-size: 14px;
+    color: #555;
+}
+
+#user_guide_lib_wrapper.dataTables_wrapper .pagination {
+    list-style: none;
+}
+
+#user_guide_lib_wrapper.dataTables_wrapper .pagination .paginate_button {
+    display: inline-block;
+}
+
+#user_guide_lib_wrapper.dataTables_wrapper table.dataTable thead th {
+    position: relative;
+    background-image: none !important;
+}
+
 .dataTables_wrapper table.dataTable thead th.sorting:after {
-  position: absolute;
-  right: 8px;
-  display: block;
-  font-family: FontAwesome;
-  content: "\f0dc";
-  color: #ddd; }
+    position: absolute;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+    content: "\f0dc";
+    color: #ddd;
+}
+
 .dataTables_wrapper table.dataTable thead th.sorting_asc:after {
-  position: absolute;
-  right: 8px;
-  display: block;
-  font-family: FontAwesome;
-  content: "\f0de"; }
+    position: absolute;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+    content: "\f0de";
+}
+
 .dataTables_wrapper table.dataTable thead th.sorting_desc:after {
-  position: absolute;
-  right: 8px;
-  display: block;
-  font-family: FontAwesome;
-  content: "\f0dd"; }
+    position: absolute;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+    content: "\f0dd";
+}
+
+.dataTables_wrapper .paginate_button:after, .paginate_button:before {
+  color: #4b2e83 !important;
+}
 
 /*** global post date/content styles ***/
 .update-date {
@@ -1181,8 +1220,8 @@ a.uw-btn.btn-sm.btn-left {
   display: none;
 }
 
-.primary-isc-table thead{
-  background: #4b2e83;
+.primary-isc-table th{
+  background-color: #4b2e83 !important;
   color: white;
 }
 
@@ -1423,6 +1462,15 @@ font-weight: normal;
 }
 /* end - admin corner page redesign styling*/
 
+
+/* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - start*/
+
+p:empty{
+  display: none;
+}
+
+/* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - end*/
+
 /*filter admin corner news -start*/
 .isc-border-less-button{
     color: rgb(75, 46, 131);
@@ -1566,3 +1614,32 @@ font-weight: normal;
 }
 
 /* user guide ( w/ & w/o feedback)  title reposition - end */
+
+/* Admin corner sidebar rework - start*/
+.service-links .sub-menu {
+    padding-left: 3em !important;
+}
+
+.service-links .sub-menu li {
+    list-style: circle !important;
+}
+
+.service-links .sub-menu .menu-heading {
+  list-style: none !important;
+  margin-left: -30px;
+}
+
+.service-links .sub-menu .menu-heading a {
+  color: black;
+  font-size: 18px !important;
+  font-family: "Encode Sans Compressed", sans-serif;
+  font-weight: 800;
+  margin: 1em 0em;
+}
+
+.service-links .sub-menu .menu-heading a:hover{
+  text-decoration: none;
+  color: black;
+  cursor: text;
+} 
+/* Admin corner sidebar rework - end*/
