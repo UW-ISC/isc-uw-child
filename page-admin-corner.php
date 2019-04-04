@@ -37,18 +37,13 @@ get_header();
 	-->
 	<div class="container uw-body">
 
-		<div class="row">
-			<div class="col-md-12">
-				<?php get_template_part( 'breadcrumbs' ); ?>
-			</div>
-		</div>
-
 		<!-- adding title JAB 061418 -->
  		<div class="row">
-			<div class="col-md-12">
-				<h1><?php the_title(); ?></h1>
+			
+			<h1><?php the_title(); ?></h1>
+			
 			<br/>
-			</div>
+			
 
 		<div class="row">
 
@@ -123,8 +118,11 @@ EOT;
 
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-					<div class="line">
-						<h3 class="isc-admin-header">Admins' News</h3>
+					
+						
+							<div class="line">
+							<h3 class="isc-admin-header">Admins' News</h3>
+						
 						<?php 
 						 $news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
 						 $new_news_count = 0;
@@ -149,13 +147,75 @@ EOT;
 						$category_posts = new WP_Query( $args );
 						$new_news_count = $category_posts->found_posts;
 						if($new_news_count > 0){
-							echo '<div class="new-news-count new-news-label">'.$category_posts->found_posts.' new</div>';
-						}
-						?>
-					</div>
-					<div class="isc-admin-block">
+							echo '<span id="newNewsCount" class="new-news-count"><span class="new-news-label">'.$category_posts->found_posts.' new</span></span>';
+						} ?>
+						</div>
+						
+						<form action="<?php echo site_url() ?>/wp-content/themes/isc-uw-child/isc_request.php" method="POST" id="filter" style="margin-bottom:15px">
+								<label for="categorySelectInput">Filter News Posts:</label>
+								<?php
+								if( $terms = get_terms( 'category', 'orderby=name' ) ) {
+									echo '<select class="isc-select" id="categorySelectInput" name="categoryfilter"><option value="select" hidden>Select category...</option>';
+									
+									foreach ( $terms as $term ) {
+										echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; 
+									}	
+										echo '</select>';
+									}
+								
+								?>
+								<button hidden="true" class ="isc-border-less-button" id="clearFilter" onclick="clearCategoryFilter();"> <i class="fa fa-close isc-btn-icon"></i> clear filter</button>
+								<input type="hidden" name="action" value="adminNewsFilter">
+						</form>
+						<script type="text/javascript">
+							clearCategoryFilter = function(){
+								$('#categorySelectInput').prop('selectedIndex',0);
+								$('#filter').submit();
+								$('#clearFilter').hide();
+							}
+							window.onload = function(){
+								if( $('#categorySelectInput').prop('selectedIndex') != 0 ){
+									$('#categorySelectInput').trigger('change');
+								}
+							}
+							jQuery(function($){
+								$('#categorySelectInput').change(function(){
+									$('#filter').submit();
+								});
+							$('#filter').submit(function(){
+								var filter = $('#filter');
+								$.ajax({
+									url:filter.attr('action'),
+									data:filter.serialize(), // form data
+									type:filter.attr('method'), // POST
+									beforeSend:function(xhr){
+										$('#newNewsCount').hide();
+
+										// filter.find('button').text('Applying...'); // changing the button label
+									},
+									success:function(data){
+										// filter.find('button').text('Filter'); // changing the button label back
+										$('#adminNewsPosts').html(data); // insert data
+										if($('#categorySelectInput').prop('selectedIndex') != 0){
+											$('#clearFilter').show();
+										}
+										else{
+											$('#newNewsCount').show();
+											$('#clearFilter').hide();
+										}
+																			
+									}
+								});
+								return false;
+							});
+						});
+						</script>	
+					
+					<div id="adminNewsPosts">
+
 
 							<?php
+
 
 							 $args = array(
 									  'tax_query' => array(
@@ -173,10 +233,7 @@ EOT;
 							 if ( $category_posts->have_posts() ) :
 								 while ( $category_posts->have_posts() ) :
 									 $category_posts->the_post();
-							?>
-
-								   
-								   <?php 
+							 
 								    $diff_str = esc_html( human_time_diff( get_the_time('U'), current_time('timestamp') ) );
 								    $diff_display =  esc_html( '('.human_time_diff( get_the_time('U'), current_time('timestamp') ) ).' ago)';
 								    $diff_arr = explode(" ", $diff_str);
@@ -217,7 +274,7 @@ EOT;
 							<?php
 								 endwhile;
 								?>
-								<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/news' );?>">Read older news</a>
+								<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/news' );?>">View All News</a>
 						<?php
 							else :
 								echo '<p>No admin news available.</p>';
@@ -299,7 +356,7 @@ EOT;
 
 				<!-- <div class="row"> -->
 						<!-- <div class="col-md-12" style="margin-bottom: 2em;"> -->
-						<div>
+						<div class="service-links">
 							<?php
 							wp_nav_menu(
 								array(
@@ -327,7 +384,7 @@ function get_task_html($task){
 	$html = <<<EOD
 	<div class="contact-widget-inner isc-admin-block isc-widget-gray" style="padding-bottom: 0px;">
 EOD;
-	$html .= '<h4><a href="' . esc_url( get_post_permalink( $task->ID ) ) . '">' . get_the_title( $task->ID ) . '</a></h4>';
+	$html .= '<h4><a href="' . esc_url( get_permalink( $task->ID ) ) . '">' . get_the_title( $task->ID ) . '</a></h4>';
 	$html .= "<p style='margin-bottom:1.5em;'>";
 	$custom = get_post_custom( $task->ID );
 	$description = $custom['isc-featured-description'][0];

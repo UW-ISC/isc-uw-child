@@ -204,7 +204,8 @@ a.uw-btn.btn-sm.btn-left {
 .uw-body h1 {
   color: #85754d; }
 .uw-body h2, .uw-body h4 {
-  margin-top: 30px; }
+  margin-top: 30px;
+  }
 .uw-body h2 a, .uw-body h4 a {
   color: #4b2e83; }
 
@@ -229,19 +230,21 @@ a.uw-btn.btn-sm.btn-left {
   padding: 0;
   background: url("../uw-2014/assets/svg/uw-sprite.svg") no-repeat -250px -3px;
   border-bottom: solid 1px #fff; }
+
 .uw-breadcrumbs ul li:first-child a:hover, .uw-breadcrumbs ul li:first-child a:focus {
   border-bottom: solid 1px #857533 !important; }
 .uw-breadcrumbs ul li:first-child:after {
   top: 8px; }
+
 @media print {
-  .uw-breadcrumbs ul li:first-child {
-    display: none; } }
+    .uw-breadcrumbs {
+      display: none !important; 
+    }
+  }
 .uw-breadcrumbs ul li:after {
   top: 4px;
   }
-@media print {
-  .uw-breadcrumbs ul .current span {
-    font-weight: bold; } }
+
 
 /*** global elements ***/
 .isc h2 {
@@ -527,27 +530,44 @@ a.uw-btn.btn-sm.btn-left {
   color: #3d3d3d !important; }
 
 .isc-admin-block {
-  border: solid 1px #ddd;
-  padding: 30px;
-  margin-bottom: 0px;
-  position: relative;
-  margin-top: 0;
-  }
-.isc-admin-block h4 {
-  margin-top: 0;
-  margin-bottom: 10px; }
-.isc-admin-block h4 a {
-  font-size: 21px;
-  color: #4b2e83;
-  font-weight: 800; }
+    border: solid 1px #ddd;
+    padding: 30px;
+    margin-bottom: 0px;
+    position: relative;
+    margin-top: 0;
+}
+
+.isc-admin-block h4, #adminNewsPosts h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.isc-admin-block h4 a , #adminNewsPosts h4 a {
+    font-size: 21px;
+    color: #4b2e83;
+    font-weight: 800;
+}
+
+#adminNewsPosts{
+  margin-top: 3em;
+}
+
+
 .isc-admin-block ul {
-  list-style: none;
-  padding: 0; }
+    list-style: none;
+    padding: 0;
+}
+
 .isc-admin-block ul li a {
-  font-size: 16px; }
+    font-size: 16px;
+}
+
 .isc-admin-block ul li a:hover {
-  border-bottom: none !important;
-  text-decoration: underline; }
+    border-bottom: none !important;
+    text-decoration: underline;
+}
+
+
 
 .menu-workday-links-container .menu {
   clear: both;
@@ -556,8 +576,9 @@ a.uw-btn.btn-sm.btn-left {
   list-style: none !important;
   }
 .menu-workday-links-container .menu .menu-item:first-child ul {
-  background-color: #ece9e2;
-  border: none; }
+    /* background-color: #ece9e2; */
+    border: 1px solid #d9d9d9;
+}
 .menu-workday-links-container .menu .menu-item:nth-child(2) ul {
   background-color: #e9e9e9;
   border: none; }
@@ -594,14 +615,13 @@ a.uw-btn.btn-sm.btn-left {
   cursor: default; }
 .menu-workday-links-container .menu-item-has-children .sub-menu {
   border: solid 1px #ddd;
-  padding: 30px;
+  padding-bottom: 20px;
   list-style: none;
   min-height: 250px; }
 .menu-workday-links-container .menu-item-has-children .sub-menu a {
   font-size: 16px !important;
   font-weight: normal;
   margin: 0;
-  display: inline-block;
   text-transform: none;
   font-family: "Open Sans", sans-serif;
   color: #0088dd; }
@@ -859,37 +879,56 @@ a.uw-btn.btn-sm.btn-left {
 
 
 /*** datatables overrides ***/
-.dataTables_wrapper .dataTables_filter {
-  display: none; }
-.dataTables_wrapper .dataTables_info {
-  font-size: 14px;
-  color: #555; }
-.dataTables_wrapper .pagination {
-  list-style: none; }
-.dataTables_wrapper .pagination .paginate_button {
-  display: inline-block; }
-.dataTables_wrapper table.dataTable thead th {
-  position: relative;
-  background-image: none !important; }
+#user_guide_lib_wrapper.dataTables_wrapper .dataTables_filter {
+    display: none;
+}
+
+#user_guide_lib_wrapper.dataTables_wrapper .dataTables_info {
+    font-size: 14px;
+    color: #555;
+}
+
+#user_guide_lib_wrapper.dataTables_wrapper .pagination {
+    list-style: none;
+}
+
+#user_guide_lib_wrapper.dataTables_wrapper .pagination .paginate_button {
+    display: inline-block;
+}
+
+#user_guide_lib_wrapper.dataTables_wrapper table.dataTable thead th {
+    position: relative;
+    background-image: none !important;
+}
+
 .dataTables_wrapper table.dataTable thead th.sorting:after {
-  position: absolute;
-  right: 8px;
-  display: block;
-  font-family: FontAwesome;
-  content: "\f0dc";
-  color: #ddd; }
+    position: absolute;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+    content: "\f0dc";
+    color: #ddd;
+}
+
 .dataTables_wrapper table.dataTable thead th.sorting_asc:after {
-  position: absolute;
-  right: 8px;
-  display: block;
-  font-family: FontAwesome;
-  content: "\f0de"; }
+    position: absolute;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+    content: "\f0de";
+}
+
 .dataTables_wrapper table.dataTable thead th.sorting_desc:after {
-  position: absolute;
-  right: 8px;
-  display: block;
-  font-family: FontAwesome;
-  content: "\f0dd"; }
+    position: absolute;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+    content: "\f0dd";
+}
+
+.dataTables_wrapper .paginate_button:after, .paginate_button:before {
+  color: #4b2e83 !important;
+}
 
 /*** global post date/content styles ***/
 .update-date {
@@ -1181,8 +1220,8 @@ a.uw-btn.btn-sm.btn-left {
   display: none;
 }
 
-.primary-isc-table thead{
-  background: #4b2e83;
+.primary-isc-table th{
+  background-color: #4b2e83 !important;
   color: white;
 }
 
@@ -1263,7 +1302,8 @@ a.uw-btn.btn-sm.btn-left {
 }
   
 .new-news-count{
-      top: 2px;
+      position: relative;
+      top: 3px;
       height: 19px;
       line-height: 18px;
 }
@@ -1422,6 +1462,7 @@ font-weight: normal;
 }
 /* end - admin corner page redesign styling*/
 
+
 /* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - start*/
 
 p:empty{
@@ -1429,3 +1470,176 @@ p:empty{
 }
 
 /* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - end*/
+
+/*filter admin corner news -start*/
+.isc-border-less-button{
+    color: rgb(75, 46, 131);
+    background: none white;
+    border: none;
+    display: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.isc-border-less-button:focus{
+    outline: none;
+}
+
+.isc-select{
+      color: #4b2e83;
+    border: 1px solid #4b2e83;
+    border-radius: 0px;
+    padding: 6px 12px;
+}
+/*filter admin corner news - end*/
+
+/* New table style - start*/
+.table-striped-alt{
+  background: #f9f9f9 !important;
+}
+.table-striped-alt > tbody > tr:nth-child(odd) > td,
+.table-striped-alt > tbody > tr:nth-child(odd) > th {
+  background-color: white;
+}
+/* New table style - end*/
+
+/* Extraneous info included when User Guides are printed - start */
+
+.print-only{
+  display: none;
+}
+
+@media print {
+  
+  .container{
+    width: auto !important;
+  }
+
+  .user-guide-feedback-menu-item{
+    display: none;
+  }
+
+  .print-only{
+    display: block;
+  }
+
+  .user-guide-print-note{
+    border: 1px solid black;
+    padding: 1em;
+    padding-bottom: 0px;
+  }
+
+  .isc-user-guide .title{
+    margin-top: 0px !important;
+  }
+
+  .current > a{
+    border: none !important;
+  }
+
+  .isc-expander a[role=button]:after{
+    display: none;
+  }
+
+  h1, h2, h3{
+    page-break-after: avoid;
+  }
+
+  p{
+    page-break-inside: avoid;
+  }
+
+  p a::after{
+    content:" (" attr(href) ") " !important;
+    font-size:0.8em;
+    font-weight:normal;
+  }
+
+  p a img{
+    width: 100% !important;
+    border: 2px solid lightgrey !important;
+  }
+
+  p a{
+    text-decoration: none;
+    font-style: italic;
+  }
+
+  span.glossaryLink, a.glossaryLink {
+    border: none !important;
+  }
+
+  a[title="Integrated Service Center"]{
+    text-decoration: none;
+  }
+  .uw-btn.btn-sm{
+    background: none !important;
+  }
+
+  .uw-btn.btn-sm::before{
+    display: none;
+  }
+  .uw-btn.btn-sm::after{
+    position: relative;
+    background: none;
+  }
+
+}
+
+/* Extraneous info included when User Guides are printed - end */
+
+/* user guide ( w/ & w/o feedback)  title reposition - start */
+
+.table-of-content-cntr {
+  padding-left: 0px;
+}
+
+.isc-user-guide .title{
+  margin-top: -1em;
+  margin-bottom: 0px;
+}
+
+.user-guide-icon{
+  /* opacity: 0.7; */
+  max-height: 4em;
+}
+
+.article-header {
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+.float-content h2:first-of-type {
+  margin-top: 0px !important;
+}
+
+/* user guide ( w/ & w/o feedback)  title reposition - end */
+
+/* Admin corner sidebar rework - start*/
+.service-links .sub-menu {
+    padding-left: 3em !important;
+}
+
+.service-links .sub-menu li {
+    list-style: circle !important;
+}
+
+.service-links .sub-menu .menu-heading {
+  list-style: none !important;
+  margin-left: -30px;
+}
+
+.service-links .sub-menu .menu-heading a {
+  color: black;
+  font-size: 18px !important;
+  font-family: "Encode Sans Compressed", sans-serif;
+  font-weight: 800;
+  margin: 1em 0em;
+}
+
+.service-links .sub-menu .menu-heading a:hover{
+  text-decoration: none;
+  color: black;
+  cursor: text;
+} 
+/* Admin corner sidebar rework - end*/
