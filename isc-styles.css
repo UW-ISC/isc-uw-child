@@ -828,35 +828,55 @@ a.uw-btn.btn-sm.btn-left {
 
 /*** custom collapse ***/
 .isc-expander {
-  background: #eee !important;
-  margin-top: 10px;
-  padding: 10px 16px; }
+    background: #eee !important;
+    margin-top: 10px;
+    padding: 10px 16px;
+}
+
 .isc-expander a[role=button] {
-  color: #4b2e83;
-  font-weight: bold;
-  font-size: 18px;
-  background-image: none;
-  display: block;
-  border-bottom: none !important; }
-.isc-expander a[role=button]:hover, .isc-expander a[role=button]:focus {
-  color: #857551 !important;
-  text-decoration: underline !important; }
+    color: #4b2e83;
+    font-weight: bold;
+    font-size: 18px;
+    background-image: none;
+    display: block;
+    border-bottom: none !important;
+}
+
+.isc-expander a[role=button]:hover,
+.isc-expander a[role=button]:focus {
+    color: #857551 !important;
+    text-decoration: underline !important;
+}
+
 .isc-expander a[role=button]:after {
-  font-family: FontAwesome;
-  right: -10px;
-  position: relative; }
+    font-family: FontAwesome;
+    right: -10px;
+    position: relative;
+}
+
 .isc-expander a.collapsed:after {
-  content: "\f078"; }
+    content: "\f078";
+}
+
 .isc-expander a.expanded:after {
-  content: "\f077"; }
+    content: "\f077";
+}
+
 .isc-expander .isc-expander-content {
-  padding: 0;
-  font-size: 16px !important;
-  overflow: hidden; }
-.isc-expander .isc-expander-content p, .isc-expander .isc-expander-content span {
-  font-size: 16px !important; }
+    padding: 0;
+    font-size: 16px !important;
+    overflow: hidden;
+}
+
+.isc-expander .isc-expander-content p,
+.isc-expander .isc-expander-content span {
+    font-size: 16px !important;
+}
+
 .isc-expander .isc-expander-inner {
-  padding-top: 8px; }
+    padding-top: 8px;
+}
+
 
 /*** datatables overrides ***/
 #user_guide_lib_wrapper.dataTables_wrapper .dataTables_filter {
@@ -1441,6 +1461,15 @@ font-weight: normal;
   position: relative;
 }
 /* end - admin corner page redesign styling*/
+
+
+/* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - start*/
+
+p:empty{
+  display: none;
+}
+
+/* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - end*/
 
 /*filter admin corner news -start*/
 .isc-border-less-button{
