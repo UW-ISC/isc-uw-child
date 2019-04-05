@@ -930,6 +930,10 @@ a.uw-btn.btn-sm.btn-left {
   color: #4b2e83 !important;
 }
 
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th{
+  background-color: white;
+}
+
 /*** global post date/content styles ***/
 .update-date {
   font-weight: bold;
@@ -1643,3 +1647,13 @@ p:empty{
   cursor: text;
 } 
 /* Admin corner sidebar rework - end*/
+
+/* Named support contact tables - start*/
+.dataTables_filter{
+  float: left !important;
+}
+.datatable-filter-container{
+  width: 100%;
+  display: table;
+}
+/* Named support contact tables - end*/
