@@ -47,7 +47,7 @@ get_header();
 
 				<h2 class="sr-only">User Guides</h2>
 
-				<table id="user_guide_lib" class="table primary-isc-table table-striped" style="border:none !important;">
+				<table id="user_guide_lib" class="table primary-isc-table table-striped-alt" style="border:none !important;">
 					<thead style="font-size:14px;">
 						<tr>
 							<th>User Guide</th>
