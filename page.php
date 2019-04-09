@@ -57,6 +57,19 @@ get_header();
 				</div>
 
 			</div>
+			
+			
+			<?php
+				$show_right_sidebar = get_post_meta( $post->ID, 'show-right-sidebar',true);
+				$right_side_bar = '';
+				if($show_right_sidebar == 'Yes'){
+				$right_side_bar = get_post_meta( $post->ID, 'right-sidebar-custom-html',true);
+				echo '<div class="col-md-3 isc-dark-grey default-page-right-sidebar">';
+					echo $right_side_bar;
+				echo '</div>';
+				}
+			?>
+			
 
 		</div>
 

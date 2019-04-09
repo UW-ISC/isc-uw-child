@@ -1644,6 +1644,16 @@ p:empty{
 } 
 /* Admin corner sidebar rework - end*/
 
+/* Right sidebar - start*/
+.isc-dark-grey{
+  background: #d9d9d9;
+}
+
+.default-page-right-sidebar{
+  padding: 20px; 
+}
+/* Rgiht sidebar - end*/
+
 /* Named support contact tables - start*/
 .dataTables_filter{
   float: left !important;
