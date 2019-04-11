@@ -21,6 +21,7 @@ p {
 
 /*** top banner nav (white bar) ***/
 .uw-thinstrip {
+    height: 70px;
     background: #fff;
     color: #4b2e83;
     padding-top: 0 !important;
@@ -107,14 +108,13 @@ p {
 
 @media (min-width: 768px) and (max-width: 991px) {
     .uw-thinstrip .isc-logo a {
-        height: 90px;
+        height: 70px;
         text-indent: -9999px;
         background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");
         background-position: left center;
         background-repeat: no-repeat;
         background-size: contain;
         width: 400px;
-        height: 90px;
     }
 
     .uw-thinstrip .isc-logo a:hover,
@@ -125,14 +125,13 @@ p {
 
 @media (min-width: 992px) {
     .uw-thinstrip .isc-logo a {
-        height: 90px;
+        height: 70px;
         text-indent: -9999px;
         background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");
         background-position: left center;
         background-repeat: no-repeat;
         background-size: contain;
         width: 400px;
-        height: 90px;
     }
 
     .uw-thinstrip .isc-logo a:hover,
@@ -218,7 +217,7 @@ p {
     height: 20px;
     width: 50px;
     right: -25px;
-    top: 8px;
+    top: 18px;
     background-size: 45%;
 }
 
@@ -239,7 +238,7 @@ p {
     height: 20px;
     width: 50px;
     right: -23px;
-    top: 8px;
+    top: 18px;
     background-size: 45%;
     -o-transform: none;
     -webkit-transform: none;
@@ -2128,3 +2127,21 @@ p:empty {
 }
 
 /* Named support contact tables - end*/
+
+/* Global Header Improvements - start*/
+
+.isc-header-links-container {
+    position: absolute;
+    right: 30px;
+    top: 11.5px;
+}
+
+.dawgdrops-inner {
+    padding: 0px;
+}
+
+.dawgdrops-item.dawgdrops-item a{
+  padding: 15.5px 30px 15.5px 15px;
+}
+
+/* Global Header Improvements - end*/
