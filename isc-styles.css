@@ -1663,3 +1663,16 @@ p:empty{
   display: table;
 }
 /* Named support contact tables - end*/
+
+/* Consistent Page Header - start*/
+
+.isc-page-header .title{
+  color: #85754d;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.isc-page-header .title-n-info{
+  margin-bottom: 32px;
+}
+/* Consistent Page Header - end*/
