@@ -8,15 +8,16 @@
 
 get_header();
 	  $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-	  $sidebar = get_post_meta( $post->ID, 'sidebar' );   
-
-	  the_page_header();
+	  $sidebar = get_post_meta( $post->ID, 'sidebar' );
 ?>
 
 <div role="main">
 
-	<?php uw_site_title(); ?>
-	<?php get_template_part( 'menu', 'mobile' ); ?>
+	<?php
+		uw_site_title();
+		get_template_part( 'menu', 'mobile' );
+		the_page_header();
+	?>
 
 	<div class="container uw-body">
 
