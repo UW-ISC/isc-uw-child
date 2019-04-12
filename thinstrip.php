@@ -19,7 +19,7 @@
 
 	</div>
 
-	 <div style="position:absolute; right:30px; top: 20px;">
+	 <div class="isc-header-links-container">
 		  <nav class="uw-thin-strip-nav" role='navigation' aria-label='audience based'>
 			  <ul class="uw-thin-links">
 				<?php
