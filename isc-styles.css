@@ -2106,14 +2106,18 @@ p:empty {
 /* Admin corner sidebar rework - end*/
 
 /* Right sidebar - start*/
-.isc-dark-grey {
-    background: #d9d9d9;
+
+.isc-dark-grey{
+  background: #EEEEEE;
 }
 
 .default-page-right-sidebar {
     padding: 20px;
 }
 
+.isc-right-sidebar-title{
+  margin-top:0px !important;
+}
 /* Rgiht sidebar - end*/
 
 /* Named support contact tables - start*/
@@ -2127,6 +2131,7 @@ p:empty {
 }
 
 /* Named support contact tables - end*/
+
 
 /* Global Header Improvements - start*/
 
@@ -2145,3 +2150,17 @@ p:empty {
 }
 
 /* Global Header Improvements - end*/
+
+
+/* Consistent Page Header - start*/
+
+.isc-page-header .title{
+  color: #85754d;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.isc-page-header .title-n-info{
+  margin-bottom: 32px;
+}
+/* Consistent Page Header - end*/

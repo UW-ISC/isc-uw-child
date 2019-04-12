@@ -6,10 +6,12 @@
  * @author UW-IT AXDD
  */
 
-get_header();
-	  $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-	  $sidebar = get_post_meta( $post->ID, 'sidebar' );   ?>
-
+	get_header();
+	$url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
+	$sidebar = get_post_meta( $post->ID, 'sidebar' );   
+	
+	the_page_header();
+?>
 <div role="main">
 
 	<?php uw_site_title(); ?>
@@ -17,12 +19,7 @@ get_header();
 
 	<div class="container uw-body">
 
-		<div class="row">
-			<div class="col-md-12">
-
-				<?php get_template_part( 'breadcrumbs' ); ?>
-			</div>
-		</div>
+	
 
 		<div class="row">
 
@@ -30,20 +27,12 @@ get_header();
 
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-					<?php log_to_console( 'page.php' ) ?>
-
-					<?php isc_title(); ?>
-
-					<?php 
-
-					the_modified_date('l, F j, Y', '<div class="isc-updated-date">Last updated ', '</div>');
-
-					?>
-
 					<?php
+					log_to_console( 'page.php' );
+					
 					// Start the Loop.
-					while ( have_posts() ) : the_post();
-
+					while ( have_posts() ){
+						the_post();
 						the_content();
 
 						// If comments are open or we have at least one comment, load up the comment template.
@@ -51,7 +40,7 @@ get_header();
 							  comments_template();
 						}
 
-					endwhile;
+					}
 					?>
 
 				</div>
@@ -60,11 +49,16 @@ get_header();
 			
 			
 			<?php
-				$show_right_sidebar = get_post_meta( $post->ID, 'show-right-sidebar',true);
+				$show_right_sidebar = get_post_meta( $post->ID, 'show_right_sidebar',true);
 				$right_side_bar = '';
+				$side_bar_title = get_post_meta( $post->ID, 'sidebar_title',true);
+
 				if($show_right_sidebar == 'Yes'){
-				$right_side_bar = get_post_meta( $post->ID, 'right-sidebar-custom-html',true);
+				$right_side_bar = get_post_meta( $post->ID, 'custom_html',true);
 				echo '<div class="col-md-3 isc-dark-grey default-page-right-sidebar">';
+					if(isset($side_bar_title)){
+						echo '<h2 class="isc-right-sidebar-title">'.$side_bar_title.'</h2>';
+					}
 					echo $right_side_bar;
 				echo '</div>';
 				}
