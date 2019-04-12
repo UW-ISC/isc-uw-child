@@ -49,11 +49,16 @@
 			
 			
 			<?php
-				$show_right_sidebar = get_post_meta( $post->ID, 'show-right-sidebar',true);
+				$show_right_sidebar = get_post_meta( $post->ID, 'show_right_sidebar',true);
 				$right_side_bar = '';
+				$side_bar_title = get_post_meta( $post->ID, 'sidebar_title',true);
+
 				if($show_right_sidebar == 'Yes'){
-				$right_side_bar = get_post_meta( $post->ID, 'right-sidebar-custom-html',true);
+				$right_side_bar = get_post_meta( $post->ID, 'custom_html',true);
 				echo '<div class="col-md-3 isc-dark-grey default-page-right-sidebar">';
+					if(isset($side_bar_title)){
+						echo '<h2 class="isc-right-sidebar-title">'.$side_bar_title.'</h2>';
+					}
 					echo $right_side_bar;
 				echo '</div>';
 				}
