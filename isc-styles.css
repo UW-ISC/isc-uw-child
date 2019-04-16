@@ -33,11 +33,17 @@ p {
     }
 }
 
+@media only screen and (max-width: 767px) {
+    .uw-thinstrip {
+        height: 45px !important;
+    }
+}
+
 .uw-thinstrip button.uw-search {
     border-color: #4b2e83 !important;
     background: #fff;
     margin: 0;
-    top: -22px;
+    top: -14px;
     right: -22px;
 }
 
@@ -217,7 +223,7 @@ p {
     height: 20px;
     width: 50px;
     right: -25px;
-    top: 18px;
+    top: 23px;
     background-size: 45%;
 }
 
@@ -237,8 +243,7 @@ p {
     background: url("../isc-uw-child/assets/icons/arrow-down.png") no-repeat;
     height: 20px;
     width: 50px;
-    right: -23px;
-    top: 18px;
+    top: 23px;
     background-size: 45%;
     -o-transform: none;
     -webkit-transform: none;
@@ -2146,7 +2151,7 @@ p:empty {
 }
 
 .dawgdrops-item.dawgdrops-item a{
-  padding: 15.5px 30px 15.5px 15px;
+  padding: 20.5px 30px 20.5px 15px;
 }
 
 /* Global Header Improvements - end*/
