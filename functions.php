@@ -123,6 +123,41 @@ function isc_excerpt_more( $excerpt ) {
 }
 
 /**
+ * Echoes the page header: Bread crumbs + Page Title + Last updated time stamp in that order
+ * 
+ *
+ * @param boolean $echo if true then echoes the header HTML, else returns the header HTML.
+ */
+function the_page_header( $echo = true ) {
+	$breadcrumbs_html = get_uw_breadcrumbs();
+	$title_html = isc_title(false);
+	$modified_date = the_modified_date('l, F j, Y', '', '', false);
+
+	$page_header = <<<djajnokdnvn
+	<div class="isc-page-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					$breadcrumbs_html
+				</div>
+			</div>
+			<div class="title-n-info">
+				$title_html
+				<div class="isc-updated-date">Last updated  $modified_date</div>
+			</div>
+		</div>
+	</div>
+djajnokdnvn;
+	
+   if ( $echo ) {
+	   echo $page_header;
+   } else {
+	   return $page_header;
+   }
+}
+
+
+/**
  * Echoes the title of a page in an h2
  * (removing any potential html elements)
  *
