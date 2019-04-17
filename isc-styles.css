@@ -2169,3 +2169,12 @@ p:empty {
   margin-bottom: 32px;
 }
 /* Consistent Page Header - end*/
+
+
+/* Icons in content being treated as images resulting to width scaling on smaller screens - start */
+
+.isc-icon{
+    width: auto !important;
+}
+
+/* Icons in content being treated as images resulting to width scaling on smaller screens - end */
