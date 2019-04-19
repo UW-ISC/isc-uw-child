@@ -148,47 +148,42 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 					</div>
 
 			  </div>
-			  <div class="col-md-4 isc-homepage-news">
-				  <h2>News</h2>
+			  <div class="col-md-4 isc-homepage-sidebar">
+				  <h2>ISC Announcements</h2>
 
 				  <!-- loop news posts here
 						Gets numberposts of the posts that have been
 						published, and have their location set to homepage
 				  -->
 
-				  <div class="isc-homepage-news-content">
+				  <div class="isc-homepage-sidebar-content">
 						<?php
 
-						$args = array(
-							  'posts_per_page' => '3',
-							  'post_status' => 'publish',
-							  'tax_query' => array(
-								array(
-								  'taxonomy' => 'location',
-								  'field'    => 'slug',
-								  'terms'    => 'homepage',
-								),
-							  ),
-						);
-						$news_posts = new WP_Query( $args );
+							$args = array(
+								'posts_per_page' => '3',
+								'post_status' => 'publish',
+								'post_type' => 'announcement',
+								'meta_query' => array(
+									array(
+										'key'	=> 'announcement_displayed_on',
+										'value'	=> 'Homepage'
+									),
+									array(
+										'key'	=> 'announcement_active',
+										'value'	=> '1'
+									)
+								)
+							);
+							$announcement_posts = new WP_Query( $args );
 
-						if ( $news_posts->have_posts() ) :
-							while ( $news_posts->have_posts() ) :
-								$news_posts->the_post();
+							if ( $announcement_posts->have_posts() ) {
+								
+								while ( $announcement_posts->have_posts() ) {
+									$announcement_posts->the_post();
+									the_announcement();
+								}
+							}
 								?>
-
-								<h3>
-									<a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo the_title(); ?></a>
-								</h3>
-								<div class="update-date"><?php echo get_the_date(); ?></div>
-								<div class="post-content"><?php custom_wp_trim_excerpt(the_excerpt()); ?></div>
-						<?php
-							endwhile;
-					  else :
-							echo 'No news posts found.';
-					  endif;
-					?>
-					  <div><a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() ) . '/news'?>">See all news</a></div>
 				  </div>
 
 				  <!-- end loop -->
