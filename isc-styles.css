@@ -2306,28 +2306,8 @@ p:empty {
     color: #4b2e83 !important;
 }
 
-.isc-announcement-icon:before {
+.isc-announcement-icon-default:before {
     content: "\f0a1";
-}
-
-.isc-announcement-icon-critical:before {
-    content: "\f071";
-}
-
-.isc-announcement-icon-major:before {
-    content: "\f024";
-}
-
-.isc-announcement-icon-major:before {
-    content: "\f024";
-}
-
-.isc-announcement-icon-information:before {
-    content: "\f05a";
-}
-
-.isc-announcement-icon-reminder:before {
-    content: "\f0f3";
 }
 
 .isc-announcement-content {

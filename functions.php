@@ -607,6 +607,11 @@ function the_announcement($echo = true){
 
 									$announcement_html = <<<erhvsfvsfsza
 									<div class="isc-announcement-item">
+										<style>
+											.isc-announcement-icon-$announcement_icon:before {
+												content: "\\$announcement_icon";
+											}
+										</style>
 										<i class="fa isc-btn-icon isc-announcement-icon isc-announcement-icon-$announcement_icon"></i>
 										<div class="isc-announcement-content">
 											<h3 class="isc-announcement-title">

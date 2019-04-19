@@ -160,7 +160,6 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 						<?php
 
 							$args = array(
-								'posts_per_page' => '3',
 								'post_status' => 'publish',
 								'post_type' => 'announcement',
 								'meta_query' => array(
