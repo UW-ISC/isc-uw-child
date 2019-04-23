@@ -182,6 +182,9 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 									the_announcement();
 								}
 							}
+							else{
+								echo '<p>No announcements are currently posted.</p>';
+							}
 								?>
 				  </div>
 
