@@ -123,6 +123,41 @@ function isc_excerpt_more( $excerpt ) {
 }
 
 /**
+ * Echoes the page header: Bread crumbs + Page Title + Last updated time stamp in that order
+ * 
+ *
+ * @param boolean $echo if true then echoes the header HTML, else returns the header HTML.
+ */
+function the_page_header( $echo = true ) {
+	$breadcrumbs_html = get_uw_breadcrumbs();
+	$title_html = isc_title(false);
+	$modified_date = the_modified_date('l, F j, Y', '', '', false);
+
+	$page_header = <<<djajnokdnvn
+	<div class="isc-page-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					$breadcrumbs_html
+				</div>
+			</div>
+			<div class="title-n-info">
+				$title_html
+				<div class="isc-updated-date">Last updated  $modified_date</div>
+			</div>
+		</div>
+	</div>
+djajnokdnvn;
+	
+   if ( $echo ) {
+	   echo $page_header;
+   } else {
+	   return $page_header;
+   }
+}
+
+
+/**
  * Echoes the title of a page in an h2
  * (removing any potential html elements)
  *
@@ -491,5 +526,44 @@ function get_media_url_from_title($title){
 	  $attachment = $query_results ? array_pop($query_results) : null;
 	return $attachment ? wp_get_attachment_url($attachment->ID) : '';
 }
+
+/**
+ * ISC card Shortcode
+ * This card will create a card (similar to a material design cards) with boxed shadow. 
+ * Cards can be arranged in responsive grids for better page navigation.
+ * This card has 4 sections:
+ * 	1. url: Image or Icon Url
+ * 	2. title: Card title text
+ * 	3. description (HTML enclosed with the shortcode): short excerpt or description of concept housed in this card.
+ * 	4. button_text: Label for the bottom call-to-action or link button.
+ *  5. button_link: Url for call-to-action button or link.
+ *  
+ * Usage eg.
+ * 	[card url="http://localhost/hrp-portal/wp-content/uploads/2019/02/wd-applet-career.png" title="Employee" button_text="Employee Training" button_link="https://isc.uw.edu/support-resources/workday-training/workday-training-for-employees/"]
+ *  I am looking for guidance to help me use Workday to add, make changes to, or take action on my own account.
+ *  [/card]
+ * @param string $atts Img Url, title, description, CTA label and CTA link attributes.
+ */
+function isc_card( $atts, $content= null ) {
+	extract(shortcode_atts(array(
+			'url' => '',
+			'title' => '',
+			'button_link' => '',
+			'button_text' => '',
+		),
+		$atts));
+	
+	$out ='<div class="card-box-33 col-md-3">
+		<img src="'.$url.'" class="card-grid-icon">
+		<h5 class="card-grid-title" >'.$title.'</h5>
+		<p class="card-grid-decription" >'.$content.'</p>
+		<h4 class="card-grid-link" title="'.$button_text.'">
+			<a class="uw-btn btn-sm" href="'.$button_link.'" target="_blank" rel="noopener noreferrer">'.$button_text.'</a>
+		</h4>
+		</div>
+		';
+	return $out;
+}
+add_shortcode( 'card', 'isc_card' );
 
 ?>
