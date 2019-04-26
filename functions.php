@@ -402,9 +402,11 @@ function print_news_item()
     $post_excerpt = get_the_excerpt();
 
     $html = <<<igfjsdnokgfnsmf
-		<h2><a href="$post_link">$post_title</a></h2>
+		<h2><a href="$post_link" title="$post_title" >$post_title</a></h2>
 		<div class="update-date">$post_update_date</div>
-		<div class='post-content'>$post_excerpt</div>
+        <div class='post-content'>$post_excerpt</div>
+        <p> <a class="more" title="$post_title" href="$post_link"> Read more</a> </p>
+        <hr>
 igfjsdnokgfnsmf;
 
     echo $html;
