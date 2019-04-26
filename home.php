@@ -82,6 +82,10 @@ $sidebar = get_post_meta($post->ID, 'sidebar');?>
 								$('.nav-next').click(function(){
 									$('.full-screen-mask-dark').show();
 								})
+
+								$('.isc-news-category-tag').click(function(){
+									$('.full-screen-mask-dark').show();
+								})
 							}
 
 							jQuery(function($){

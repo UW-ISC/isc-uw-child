@@ -400,14 +400,30 @@ function print_news_item()
     $post_title = get_the_title();
     $post_update_date = get_the_date();
     $post_excerpt = get_the_excerpt();
+    $post_categories = get_the_terms(get_the_ID(),'category');
+    $site_url = esc_url( get_site_url() );
 
     $html = <<<igfjsdnokgfnsmf
-		<h2><a href="$post_link" title="$post_title" >$post_title</a></h2>
-		<div class="update-date">$post_update_date</div>
-        <div class='post-content'>$post_excerpt</div>
-        <p> <a class="more" title="$post_title" href="$post_link"> Read more</a> </p>
-        <hr>
+        <div class="news-post-item">
+		    <h2><a href="$post_link" title="$post_title" >$post_title</a></h2>
+		    <div class="update-date">$post_update_date</div>
+            <div class='post-content'>$post_excerpt</div>
+            <a class="more" title="$post_title" href="$post_link"> Read more</a>
 igfjsdnokgfnsmf;
+
+    $html .= '<div> <ul class="isc-news-category-tag-container">';
+
+    foreach($post_categories as $category_item){
+        $category_item_id = $category_item->term_id;
+        $html .=<<<jsdnfkjfnajf
+        <li class="isc-news-category-tag" > <a href="$site_url/news?taxonomy=category&tag_ID=$category_item_id"> $category_item->name </a> </li>
+jsdnfkjfnajf;
+    }
+
+    $html .= '</ul></div>
+    </div>
+    <hr>';
+
 
     echo $html;
 }

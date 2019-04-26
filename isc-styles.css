@@ -2328,3 +2328,25 @@ p:empty {
 
 
 /* Fitler News by category - end*/
+
+/* Category hyperlinks - start*/
+
+.isc-news-category-tag-container {
+    list-style: none;
+    padding-left: 0px !important;
+    float: right;
+}
+
+.isc-news-category-tag {
+    border: solid 1px #ddd;
+    margin-right: 8px;
+    margin-top: 5px;
+    padding: 0px 10px;
+    float: left;
+}
+
+.news-post-item .post-content {
+    margin-bottom: 0px !important;
+}
+
+/* Category hyperlinks - end*/
