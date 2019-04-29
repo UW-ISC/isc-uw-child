@@ -123,15 +123,39 @@ function isc_excerpt_more( $excerpt ) {
 }
 
 /**
- * Echoes the page header: Bread crumbs + Page Title + Last updated time stamp in that order
+ * Echoes the page header: Bread crumbs + Page Title + Last updated time stamp in that order (depending on params)
  * 
- *
+ * @param boolean $use_breadcrumbs if true then echoes the breadcrumbs HTML, else echoes empty string.
+ * @param boolean $use_date if true then echoes the date (depending on $use_created_date param), else echoes empty string.
+ * @param boolean $use_created_date if true then echoes the date of creation of the post, else echoes the last date of modification of post along with approriate label.
  * @param boolean $echo if true then echoes the header HTML, else returns the header HTML.
  */
-function the_page_header( $echo = true ) {
-	$breadcrumbs_html = get_uw_breadcrumbs();
+function the_page_header( $use_breadcrumbs = true, $use_date = true, $use_created_date = false, $echo = true ) {
+	if($use_breadcrumbs){
+		$breadcrumbs_html = get_uw_breadcrumbs();
+	}
+	else{
+		$breadcrumbs_html = ' ';
+	}
+
 	$title_html = isc_title(false);
-	$modified_date = the_modified_date('l, F j, Y', '', '', false);
+	
+	if($use_date) {
+		if(! $use_created_date){
+			$date_decription = 'Last updated';
+			$date = the_modified_date('l, F j, Y', '', '', false);
+		}
+		else{
+			$date_decription = 'Published on';
+			$date = get_the_date('l, F j, Y', '', '', false);
+		}
+	} else {
+		$date_decription = '';
+		$date = '';
+	}
+	
+	
+	
 
 	$page_header = <<<djajnokdnvn
 	<div class="isc-page-header">
@@ -143,7 +167,7 @@ function the_page_header( $echo = true ) {
 			</div>
 			<div class="title-n-info">
 				$title_html
-				<div class="isc-updated-date">Last updated  $modified_date</div>
+				<div class="isc-updated-date"> $date_decription  $date </div>
 			</div>
 		</div>
 	</div>
@@ -565,5 +589,44 @@ function isc_card( $atts, $content= null ) {
 	return $out;
 }
 add_shortcode( 'card', 'isc_card' );
+
+/**
+ * This function prints (if echo param is not false) the HTML for an announcement item (icon, title, post content)
+ * 
+ * @param boolean $echo Specify wether to echo (true) or print (false)
+ */
+function the_announcement($echo = true){
+	$announcement_icon = strtolower(get_post_meta(get_the_ID(), 'announcement_type', true ));
+									$announcement_permalink = esc_url( get_permalink() );
+									$announcement_title = the_title('','',false);
+									$announcement_default_excerpt = get_the_excerpt();
+									$announcement_excerpt = get_post_meta(get_the_ID(), 'announcement_excerpt', true );
+									if(empty($announcement_excerpt)){
+										$announcement_excerpt = $announcement_default_excerpt;
+									}
+
+									$announcement_html = <<<erhvsfvsfsza
+									<div class="isc-announcement-item">
+										<style>
+											.isc-announcement-icon-$announcement_icon:before {
+												content: "\\$announcement_icon";
+											}
+										</style>
+										<i class="fa isc-btn-icon isc-announcement-icon isc-announcement-icon-$announcement_icon"></i>
+										<div class="isc-announcement-content">
+											<h3 class="isc-announcement-title">
+												<a href="$announcement_permalink">$announcement_title</a>
+											</h3>
+											<div class="post-content isc-announcement-excerpt">$announcement_excerpt</div>
+										</div>
+									</div>
+erhvsfvsfsza;
+	if($echo){
+		echo $announcement_html;
+	}
+	else{
+		return $announcement_html;
+	}
+}
 
 ?>
