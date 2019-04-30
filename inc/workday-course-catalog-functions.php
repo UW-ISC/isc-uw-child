@@ -273,15 +273,17 @@ function print_workday_course_item(){
 	$url = get_post_meta(get_the_ID(), 'course-url', true);
 
 	$post_excerpt = get_the_excerpt();
+	
+	$post_image_url = wp_get_attachment_url(get_post_meta(get_the_ID(), 'course-image', true));
 
 	$duration = get_post_meta(get_the_ID(), 'course-duration', true);
 
-	$release_date = get_post_meta(get_the_ID(), 'course-release-date', true);
-	$release_date = date_create_from_format('m/d/Y', $release_date);
-	$release_date = $release_date->format('M j, Y');
+	// $release_date = get_post_meta(get_the_ID(), 'course-release-date', true);
+	// $release_date = date_create_from_format('m/d/Y', $release_date);
+	// $release_date = $release_date->format('M j, Y');
 
 	$update_date = get_post_meta(get_the_ID(), 'course-update-date', true);
-	$update_date = date_create_from_format('m/d/Y', $update_date);
+	$update_date = date_create_from_format('Y-m-d', $update_date);
 	$update_date = $update_date->format('M j, Y');
 
 	$skill_level = get_the_terms(get_the_ID(), 'course-skill-level')[0];
@@ -289,17 +291,30 @@ function print_workday_course_item(){
 
 	$read_more = esc_url(get_permalink());
 	
-    $post_html = <<<dnfndaskfn
-    <div class="workday-course-item" onclick="handleCourseClick('{$url}')">
-        <h2>{$post_title}</h2>
-        <p>{$post_excerpt}</p>
-        <ul class="post-metadata">
-        <li> <b> Duration: </b> {$duration} mins</li>
-		<li>| <b> Skill Level: </b> {$skill_level->name}</li>
-		<li>| <b> Updated On: </b> {$update_date}</li>
-		<li>| <a href="{$read_more}"> more </a> </li>
-        </ul>
-    </div>
+	$post_html = <<<dnfndaskfn
+	<div class="workday-course-item" onclick="handleCourseClick('$url')">
+
+		<table class="workday-layout-table">
+			<tr>
+				<td class="workday-course-cover-image-container-portrait" style="background-image: url($post_image_url)"></td>
+			</tr>
+			<tr>
+				<td class="workday-course-cover-image-container" style="background-image: url($post_image_url)"></td>
+
+				<td class="workday-course-cover-content-container">
+					<h2>{$post_title}</h2>
+					<p>{$post_excerpt}</p>
+					<ul class="workday-item-post-metadata">
+						<li> <b> Duration: </b> {$duration} mins</li>
+						<li>| <b> Skill Level: </b> {$skill_level->name}</li>
+						<li>| <b> Updated On: </b> {$update_date}</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
 dnfndaskfn;
+	
+	//<li>| <a href="{$read_more}"> more </a> </li>
 	echo $post_html;
 }

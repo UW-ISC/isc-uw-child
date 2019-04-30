@@ -27,7 +27,6 @@ get_header();?>
     Workday Course Catalouge
 </title>
 <div class="container uw-body">
-    
     <div class="row">
         <div class="col-md-12">
             <?php get_template_part( 'breadcrumbs' ); ?>
@@ -38,18 +37,24 @@ get_header();?>
     <div class="row">
         <div class="uw-content col-md-12">
             <div id='main_content' class="uw-body-copy" tabindex="-1">
-                
-                <header class="page-header">
-                    <?php
-                       the_archive_title( '<h1 class="page-title">', '</h1>' );
+                <section>
+                    <header class="page-header">
+                        <?php
+                        the_archive_title( '<h1 class="page-title">', '</h1>' );
 
-                       $post_args =array(
-                        'post_type' => 'workday_course',
-                        'posts_per_page' => -1,
-                        );
+                        $post_args =array(
+                            'post_type' => 'workday_course',
+                            'posts_per_page' => -1,
+                            );
 
-                       ?>
-                </header>
+                        ?>
+                    </header>
+                    <p>
+                        Use the filters below to find the courses in the library that best suit your needs.<br>
+                        <br>
+                        For anyone seeking a security role where training is required (HCM Initiate 2, HR Partner, Academic Partner, and/or Time & Absence Initiate) check the name of the role(s) below and complete all Level 1, 2, and 3 courses displayed in order to be eligible.
+                    </p>
+                </section>
                 <div class="loader" hidden></div>
                 <div class="row" id="courseCatalog">
                     <?php print_workday_course_catalog($post_args); ?>
@@ -123,16 +128,14 @@ get_header();?>
     }
     
     function handleCourseClick(url){
-        // console.log("overlay!");
+        
         $('.uw-body-overlay').show();
-        $('.uw-body-overlay-dialog').css('top', getCenterY('.uw-body-overlay-dialog') + document.documentElement.scrollTop );
-        $('.uw-body-overlay-dialog').css('left', getCenterX('.uw-body-overlay-dialog'));
+        
+        $('.uw-body-overlay-dialog').css('top', getCenterY('.uw-body-overlay-dialog') );
+        $('.uw-body-overlay-dialog').css('left', getCenterX('.uw-body-overlay-dialog') );
+
         $('.uw-body-overlay-primary-action').attr('href', url);
         
-    }
-
-    function handleWindowScroll(){
-        $('.uw-body-overlay-dialog').css('top', getCenterY('.uw-body-overlay-dialog') + document.documentElement.scrollTop );
     }
 
     function getCenterX(query){
@@ -149,11 +152,14 @@ get_header();?>
         $('.uw-body-overlay').hide();
     }
 
-    window.onload = function (){
-            $(window).scroll(handleWindowScroll);
+    function drawerHandleClick(){
+        if($('#drawer').is(':visible')){
+            $('#drawer').hide();
+        }
+        else{
+            $('#drawer').show();
+        }
     }
-    
-    
 </script>
 
 <?php get_footer();
