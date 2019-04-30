@@ -431,7 +431,7 @@ function print_news_item()
             <a class="more" title="$post_title" href="$post_link"> Read more</a>
 igfjsdnokgfnsmf;
 
-    $html .= '<div> <ul class="isc-news-category-tag-container">';
+    $html .= '<div> <ul class="isc-news-category-tag-container"><label>Categories:</label>';
 
     foreach($post_categories as $category_item){
         $category_item_id = $category_item->term_id;
