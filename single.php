@@ -46,12 +46,9 @@ get_header();
 					</div>
 
 				</div>
-
-			</div>
-
-			<div class="col-md-3">
+				
 				<ul class="isc-news-category-tag-container">
-					<label>Categories</label>
+					<label>Categories:</label>
 					<?php
 						
 						$post_categories = get_the_terms(get_the_ID(),'category');
@@ -63,6 +60,7 @@ get_header();
 						}
 					?>
 				</ul>
+
 			</div>
 
 		</div>
