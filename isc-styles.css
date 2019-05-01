@@ -2397,3 +2397,32 @@ p:empty {
 }
 
 /* Category hyperlinks - end*/
+
+/* Milestone - start*/
+
+.isc-milestone-icon{
+    font-size: 30px;
+    vertical-align: middle;
+}
+
+.isc-milestone-done:before {
+    content: "\f058";
+    color:#1dc01a;
+}
+
+.isc-milestone-routing:before {
+    content: "\f126";
+    color:#4b2e83;
+}
+
+.isc-milestone-important:before {
+    content: "\f071";
+    color: #c0392b;
+}
+
+.isc-milestone-pause:before {
+    content: "\f28b";
+    color: #f39c12;
+}
+
+/* Milestone - end*/

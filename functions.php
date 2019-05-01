@@ -610,7 +610,7 @@ function get_media_url_from_title($title)
 
 /**
  * ISC card Shortcode
- * This card will create a card (similar to a material design cards) with boxed shadow.
+ * This shortcode will create a card (similar to a material design cards) with boxed shadow.
  * Cards can be arranged in responsive grids for better page navigation.
  * This card has 4 sections:
  *     1. url: Image or Icon Url
@@ -687,5 +687,36 @@ erhvsfvsfsza;
 		return $announcement_html;
 	}
 }
+
+// Milestones - start
+
+/**
+ * ISC Milestone Shortcode
+ * This shortcode should be used for consistent presentation of milestones inside content or articles.
+ * This milestone has an icon (associated with its type) and user defined content.
+ * It will be wrapped between two horizontal lines with appropriate padding and margins to seperate it from page content.
+ *
+ * Usage eg.
+ *     [isc-milestone type="done"]
+ *          At this point the process has been fully approved.
+ *     [/isc-milestone]
+ * 
+ * @param string $atts type.
+ */
+function isc_milestone($atts, $content = null)
+{
+    extract(shortcode_atts(array(
+        'type' => 'done',
+    ),
+        $atts));
+
+    
+    $out = '
+        <hr><p><i class="fa far isc-milestone-icon isc-milestone-'. $type .'" ></i><span style="margin-left:1em">'.$content.'</span></p><hr>';
+    return $out;
+}
+add_shortcode( 'isc-milestone', 'isc_milestone' );
+
+// Milestones - end
 
 ?>
