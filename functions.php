@@ -695,7 +695,9 @@ erhvsfvsfsza;
  * This shortcode should be used for consistent presentation of milestones inside content or articles.
  * This milestone has an icon (associated with its type) and user defined content.
  * It will be wrapped between two horizontal lines with appropriate padding and margins to seperate it from page content.
- *
+ * 
+ * Valid value for type attribute: done, routing, important, pause
+ * 
  * Usage eg.
  *     [isc-milestone type="done"]
  *          At this point the process has been fully approved.
