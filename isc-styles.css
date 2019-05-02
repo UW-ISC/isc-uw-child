@@ -1206,11 +1206,11 @@ a.uw-btn.btn-sm.btn-left {
     position: relative;
 }
 
-.isc-expander a.collapsed:after {
+.isc-expander a[role=button].collapsed:after {
     content: "\f078";
 }
 
-.isc-expander a.expanded:after {
+.isc-expander a[role=button].expanded:after {
     content: "\f077";
 }
 
