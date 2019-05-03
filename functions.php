@@ -421,7 +421,6 @@ function print_news_item()
     $post_update_date = get_the_date();
     $post_excerpt = get_the_excerpt();
     $post_categories = get_the_terms(get_the_ID(),'category');
-    $site_url = esc_url( get_site_url() );
 
     $html = <<<igfjsdnokgfnsmf
         <div class="news-post-item">
@@ -431,21 +430,25 @@ function print_news_item()
             <a class="more" title="$post_title" href="$post_link"> Read more</a>
 igfjsdnokgfnsmf;
 
-    $html .= '<div> <ul class="isc-news-category-tag-container"><label>Categories:</label>';
+    $html .= get_category_tags_list($post_categories);
+    $html .= '</div><hr>';
+
+    echo $html;
+}
+
+function get_category_tags_list($post_categories)
+{
+    $tags_list = '<div> <ul class="isc-news-category-tag-container"><label>Categories:</label>';
+    $site_url = esc_url( get_site_url() );
 
     foreach($post_categories as $category_item){
         $category_item_id = $category_item->term_id;
-        $html .=<<<jsdnfkjfnajf
-        <li class="isc-news-category-tag" > <a href="$site_url/news?taxonomy=category&tag_ID=$category_item_id"> $category_item->name </a> </li>
-jsdnfkjfnajf;
+        $tags_list .= '<li class="isc-news-category-tag" > <a href="'. $site_url.'/news?taxonomy=category&tag_ID='.$category_item_id.'"> '.$category_item->name .'</a> </li>';
     }
 
-    $html .= '</ul></div>
-    </div>
-    <hr>';
+    $tags_list .= '</ul></div>';
 
-
-    echo $html;
+    return $tags_list;
 }
 
 /**
@@ -572,13 +575,15 @@ function print_admin_corner_news($admin_corner_news)
 				<h4><a href="$post_link">$post_title</a>
 				   $new_label
 				</h4>
-								   	</div><br>
-								   <div class="line">
-								   	<div class="update-date">$post_date</div>
-								   	<div class="date-diff">$diff_display</div>
-								   </div>
-								   <div class='post-content'>$post_excerpt</div>
+            </div><br>
+            <div class="line">
+            <div class="update-date">$post_date</div>
+            <div class="date-diff">$diff_display</div>
+            </div>
+            <div class='post-content'>$post_excerpt</div>
+            <a class="more" title="$post_title" href="$post_link"> Read more</a>
 afwfqwafc;
+            $html .= get_category_tags_list(get_the_terms(get_the_ID(),'category'));
             echo $html;
         }
         echo '<a class="uw-btn btn-sm" href="' . get_site_url() . '/news?taxonomy=category&tag_ID=' . $category_id . '">View All ' . $category_label . 'News</a>';

@@ -56,7 +56,7 @@ get_header();
 						
 						foreach($post_categories as $category_item){
 							$category_item_id = $category_item->term_id;
-							echo '<li class="isc-news-category-tag"> <a href="'.$site_url.'/'.get_post_type_object(get_post_type())->labels->name.'?taxonomy=category&tag_ID='.$category_item_id.'"> '.$category_item->name.' </a> </li>';
+							echo '<li class="isc-news-category-tag"> <a href="'. get_permalink( get_option( 'page_for_posts' ) ) .'?taxonomy=category&tag_ID='.$category_item_id.'"> '.$category_item->name.' </a> </li>';
 						}
 					?>
 				</ul>
