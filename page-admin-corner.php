@@ -81,7 +81,7 @@ get_header();
 								$previous_month_post = array_shift($query->posts);
 								$accordion_html = <<<EOT
 								<div class="accordion" id="accordionExample">
-								<div class="card-header" id="headingOne" style="position: relative;top: -30px;">
+								<div class="card-header" id="headingOne" style="position: relative;top: -31px;">
 								      <h2 class="mb-0">
 								        <button class="see-more-accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 								          Last Month's Tasks
@@ -271,6 +271,11 @@ EOT;
 								   	<div class="date-diff"><?php echo $diff_display; ?></div>
 								   </div>
 								   <div class='post-content'><?php the_excerpt() ?></div>
+									 <!-- <a class="more" title="<?php the_title()?>" href="<?php echo esc_url( get_permalink() ); ?>"> Read more</a> -->
+									 <?php
+											echo get_category_tags_list(get_the_terms(get_the_ID(),'category'));
+									 ?>
+									 <hr>
 							<?php
 								 endwhile;
 								?>
