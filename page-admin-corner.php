@@ -81,7 +81,7 @@ get_header();
 								$previous_month_post = array_shift($query->posts);
 								$accordion_html = <<<EOT
 								<div class="accordion" id="accordionExample">
-								<div class="card-header" id="headingOne" style="position: relative;top: -30px;">
+								<div class="card-header" id="headingOne" style="position: relative;top: -31px;">
 								      <h2 class="mb-0">
 								        <button class="see-more-accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 								          Last Month's Tasks
@@ -271,6 +271,11 @@ EOT;
 								   	<div class="date-diff"><?php echo $diff_display; ?></div>
 								   </div>
 								   <div class='post-content'><?php the_excerpt() ?></div>
+									 <!-- <a class="more" title="<?php the_title()?>" href="<?php echo esc_url( get_permalink() ); ?>"> Read more</a> -->
+									 <?php
+											echo get_category_tags_list(get_the_terms(get_the_ID(),'category'));
+									 ?>
+									 <hr>
 							<?php
 								 endwhile;
 								?>
@@ -356,7 +361,7 @@ EOT;
 
 				<!-- <div class="row"> -->
 						<!-- <div class="col-md-12" style="margin-bottom: 2em;"> -->
-						<div>
+						<div class="service-links">
 							<?php
 							wp_nav_menu(
 								array(
@@ -384,7 +389,7 @@ function get_task_html($task){
 	$html = <<<EOD
 	<div class="contact-widget-inner isc-admin-block isc-widget-gray" style="padding-bottom: 0px;">
 EOD;
-	$html .= '<h4><a href="' . esc_url( get_post_permalink( $task->ID ) ) . '">' . get_the_title( $task->ID ) . '</a></h4>';
+	$html .= '<h4><a href="' . esc_url( get_permalink( $task->ID ) ) . '">' . get_the_title( $task->ID ) . '</a></h4>';
 	$html .= "<p style='margin-bottom:1.5em;'>";
 	$custom = get_post_custom( $task->ID );
 	$description = $custom['isc-featured-description'][0];

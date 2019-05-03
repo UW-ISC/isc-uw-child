@@ -537,10 +537,10 @@ a.uw-btn.btn-sm.btn-left { margin-right: 0 !important; }
 
     }
 
-    .isc-homepage-news {
+    .isc-homepage-sidebar {
         @include desktop  { margin-top: -90px; };
 
-        .isc-homepage-news-content {
+        .isc-homepage-sidebar-content {
             background: #fff;
             padding: 30px;
             -webkit-box-shadow: 0 0 4px rgba(164,164,164,.5);

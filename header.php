@@ -15,7 +15,15 @@
 		<!-- End Google Tag Manager -->
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title> <?php echo get_the_title() . " | "; bloginfo( 'name' ); ?> </title>
+		<title> <?php 
+					$prefix = get_the_title();
+
+					if('post' == get_post_type()){
+						$prefix = get_post_type_object(get_post_type())->labels->name;
+					}
+					
+					echo $prefix . " | "; bloginfo( 'name' ); 
+					?> </title>
 		<meta charset="utf-8">
 		<meta name="description" content="<?php bloginfo( 'description', 'display' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">

@@ -21,6 +21,7 @@ p {
 
 /*** top banner nav (white bar) ***/
 .uw-thinstrip {
+    height: 70px;
     background: #fff;
     color: #4b2e83;
     padding-top: 0 !important;
@@ -32,11 +33,17 @@ p {
     }
 }
 
+@media only screen and (max-width: 767px) {
+    .uw-thinstrip {
+        height: 45px !important;
+    }
+}
+
 .uw-thinstrip button.uw-search {
     border-color: #4b2e83 !important;
     background: #fff;
     margin: 0;
-    top: -22px;
+    top: -14px;
     right: -22px;
 }
 
@@ -107,14 +114,13 @@ p {
 
 @media (min-width: 768px) and (max-width: 991px) {
     .uw-thinstrip .isc-logo a {
-        height: 90px;
+        height: 70px;
         text-indent: -9999px;
         background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");
         background-position: left center;
         background-repeat: no-repeat;
         background-size: contain;
         width: 400px;
-        height: 90px;
     }
 
     .uw-thinstrip .isc-logo a:hover,
@@ -125,14 +131,13 @@ p {
 
 @media (min-width: 992px) {
     .uw-thinstrip .isc-logo a {
-        height: 90px;
+        height: 70px;
         text-indent: -9999px;
         background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");
         background-position: left center;
         background-repeat: no-repeat;
         background-size: contain;
         width: 400px;
-        height: 90px;
     }
 
     .uw-thinstrip .isc-logo a:hover,
@@ -218,7 +223,7 @@ p {
     height: 20px;
     width: 50px;
     right: -25px;
-    top: 8px;
+    top: 23px;
     background-size: 45%;
 }
 
@@ -238,8 +243,7 @@ p {
     background: url("../isc-uw-child/assets/icons/arrow-down.png") no-repeat;
     height: 20px;
     width: 50px;
-    right: -23px;
-    top: 8px;
+    top: 23px;
     background-size: 45%;
     -o-transform: none;
     -webkit-transform: none;
@@ -656,20 +660,27 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 @media (min-width: 992px) {
-    .isc-homepage-body .isc-homepage-news {
+    .isc-homepage-body .isc-homepage-sidebar {
         margin-top: -90px;
     }
 }
 
-.isc-homepage-body .isc-homepage-news .isc-homepage-news-content {
+.isc-homepage-body .isc-homepage-sidebar .isc-homepage-sidebar-content {
     background: #fff;
     padding: 30px;
     -webkit-box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
     box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
     margin-bottom: 30px;
-    min-height: 532px;
     position: relative;
     z-index: 5;
+}
+
+.isc-homepage-body .isc-homepage-sidebar .isc-homepage-sidebar-content h3 {
+    margin-top: 0;
+}
+
+.isc-homepage-body .isc-homepage-sidebar .isc-homepage-sidebar-content .post-content {
+    margin-bottom: 0;
 }
 
 .isc-homepage-body .isc-homepage-news .isc-homepage-news-content h3 {
@@ -807,8 +818,8 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 .menu-workday-links-container .menu .menu-item:first-child ul {
-    background-color: #ece9e2;
-    border: none;
+    /* background-color: #ece9e2; */
+    border: 1px solid #d9d9d9;
 }
 
 .menu-workday-links-container .menu .menu-item:nth-child(2) ul {
@@ -862,7 +873,7 @@ a.uw-btn.btn-sm.btn-left {
 
 .menu-workday-links-container .menu-item-has-children .sub-menu {
     border: solid 1px #ddd;
-    padding: 30px;
+    padding-bottom: 20px;
     list-style: none;
     min-height: 250px;
 }
@@ -871,7 +882,6 @@ a.uw-btn.btn-sm.btn-left {
     font-size: 16px !important;
     font-weight: normal;
     margin: 0;
-    display: inline-block;
     text-transform: none;
     font-family: "Open Sans", sans-serif;
     color: #0088dd;
@@ -1204,11 +1214,11 @@ a.uw-btn.btn-sm.btn-left {
     position: relative;
 }
 
-.isc-expander a.collapsed:after {
+.isc-expander a[role=button].collapsed:after {
     content: "\f078";
 }
 
-.isc-expander a.expanded:after {
+.isc-expander a[role=button].expanded:after {
     content: "\f077";
 }
 
@@ -1227,25 +1237,27 @@ a.uw-btn.btn-sm.btn-left {
     padding-top: 8px;
 }
 
+
 /*** datatables overrides ***/
-.dataTables_wrapper .dataTables_filter {
+#user_guide_lib_wrapper.dataTables_wrapper .dataTables_filter {
     display: none;
 }
 
-.dataTables_wrapper .dataTables_info {
+#user_guide_lib_wrapper.dataTables_wrapper .dataTables_info {
     font-size: 14px;
     color: #555;
 }
 
-.dataTables_wrapper .pagination {
+
+#user_guide_lib_wrapper.dataTables_wrapper .pagination {
     list-style: none;
 }
 
-.dataTables_wrapper .pagination .paginate_button {
+#user_guide_lib_wrapper.dataTables_wrapper .pagination .paginate_button {
     display: inline-block;
 }
 
-.dataTables_wrapper table.dataTable thead th {
+#user_guide_lib_wrapper.dataTables_wrapper table.dataTable thead th {
     position: relative;
     background-image: none !important;
 }
@@ -1273,6 +1285,11 @@ a.uw-btn.btn-sm.btn-left {
     display: block;
     font-family: FontAwesome;
     content: "\f0dd";
+}
+
+.dataTables_wrapper .paginate_button:after,
+.paginate_button:before {
+    color: #4b2e83 !important;
 }
 
 /*** global post date/content styles ***/
@@ -1662,8 +1679,8 @@ a.uw-btn.btn-sm.btn-left {
     display: none;
 }
 
-.primary-isc-table thead {
-    background: #4b2e83;
+.primary-isc-table th {
+    background-color: #4b2e83 !important;
     color: white;
 }
 
@@ -1904,11 +1921,20 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 .admin-accordion-drawer {
-    top: -45px;
+    top: -47px;
     position: relative;
 }
 
 /* end - admin corner page redesign styling*/
+
+
+/* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - start*/
+
+p:empty {
+    display: none;
+}
+
+/* Hide empty p tags added by wordpress (related to content accordions, where empty p tags are added by wordpress when accordion shortcode is used) - end*/
 
 /*filter admin corner news -start*/
 .isc-border-less-button {
@@ -2061,6 +2087,325 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 /* user guide ( w/ & w/o feedback)  title reposition - end */
+
+/* Admin corner sidebar rework - start*/
+.service-links .sub-menu {
+    padding-left: 3em !important;
+}
+
+.service-links .sub-menu li {
+    list-style: circle !important;
+}
+
+.service-links .sub-menu .menu-heading {
+    list-style: none !important;
+    margin-left: -30px;
+}
+
+.service-links .sub-menu .menu-heading a {
+    color: black;
+    font-size: 18px !important;
+    font-family: "Encode Sans Compressed", sans-serif;
+    font-weight: 800;
+    margin: 1em 0em;
+}
+
+.service-links .sub-menu .menu-heading a:hover {
+    text-decoration: none;
+    color: black;
+    cursor: text;
+}
+
+/* Admin corner sidebar rework - end*/
+
+/* Right sidebar - start*/
+
+.isc-dark-grey {
+    background: #EEEEEE;
+}
+
+.default-page-right-sidebar {
+    padding: 20px;
+}
+
+.isc-right-sidebar-title {
+    margin-top: 0px !important;
+}
+
+/* Rgiht sidebar - end*/
+
+/* Named support contact tables - start*/
+.dataTables_filter {
+    float: left !important;
+}
+
+.datatable-filter-container {
+    width: 100%;
+    display: table;
+}
+
+/* Named support contact tables - end*/
+
+/* content and heading in tiles/cards - start */
+
+.right-bordered-li {
+
+    padding-right: 10px !important;
+
+    border-right: 1px solid lightgrey;
+}
+
+.tile-header {
+    color: #4b2e83;
+    background: white;
+    border: 1px solid #4b2e83;
+    font-size: 17px;
+    display: inline-grid;
+    padding: 5px 10px;
+    position: relative;
+    top: -5em;
+    left: -5px;
+}
+
+.tile-header h3 {
+    margin: 0px !important
+}
+
+.tile-ul {
+    padding-left: 0px;
+    top: -3em;
+    position: relative;
+    list-style: none;
+}
+
+/* .tile-ul li:not(.list-inline-item){
+    margin-bottom: 7px;
+  } */
+.li-icon {
+    margin-right: 0.5em;
+}
+
+.tile-image {
+    position: relative !important;
+    top: -10px !important;
+}
+
+.icon-ctr {
+    border: 1px solid;
+    /*border-radius: 99999px;*/
+    padding: 5px 10px;
+}
+
+.li-hr {
+    padding-top: 10px;
+    border-top: 1px dashed lightgrey;
+    margin-top: 15px;
+}
+
+.misc-items ul {
+    list-style: circle;
+}
+
+.card-box-33 {
+    /* width: 33%; */
+    display: grid;
+    grid-template-rows: 92px 50px auto 100px;
+    grid-template-areas:
+        "icon"
+        "title"
+        "decription"
+        "link"
+    ;
+    margin: 6px;
+    min-height: auto;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border: solid 1px #d3d3d387;
+}
+
+@media (min-width: 992px) {
+    .card-box-33 {
+        min-height: 520px;
+    }
+}
+
+.card-grid-icon {
+    grid-area: icon;
+    place-self: center;
+}
+
+.card-grid-title {
+    grid-area: title;
+    place-self: center;
+}
+
+.card-grid-decription {
+    grid-area: decription;
+    align-self: start;
+}
+
+.card-grid-link {
+    grid-area: link;
+    place-self: center;
+}
+
+/* content and heading in tiles/cards - end */
+
+/* Global Header Improvements - start*/
+
+.isc-header-links-container {
+    position: absolute;
+    right: 30px;
+    top: 11.5px;
+}
+
+.dawgdrops-inner {
+    padding: 0px;
+}
+
+.dawgdrops-item.dawgdrops-item a {
+    padding: 20.5px 30px 20.5px 15px;
+}
+
+/* Global Header Improvements - end*/
+
+
+/* Consistent Page Header - start*/
+
+.isc-page-header .title {
+    color: #85754d;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.isc-page-header .title-n-info {
+    margin-bottom: 32px;
+}
+
+/* Consistent Page Header - end*/
+
+
+/* Icons in content being treated as images resulting to width scaling on smaller screens - start */
+
+.isc-icon {
+    width: auto !important;
+}
+
+/* Icons in content being treated as images resulting to width scaling on smaller screens - end */
+
+
+/* ISC Announcements - start*/
+
+.isc-announcement-item {
+    /* width: 33%; */
+    display: grid;
+    grid-template-columns: 10% auto;
+    grid-template-areas:
+        "icon content"
+    ;
+    /* margin: 6px;
+    min-height: auto;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border: solid 1px #d3d3d387; */
+}
+
+.isc-announcement-icon {
+    grid-area: icon;
+    place-self: start center;
+    font-size: 20px;
+    margin-top: 4px;
+    color: #4b2e83 !important;
+}
+
+.isc-announcement-icon-default:before {
+    content: "\f0a1";
+}
+
+.isc-announcement-content {
+    grid-area: content;
+    display: grid;
+    grid-template-areas:
+        "title"
+        "excerpt"
+    ;
+}
+
+.isc-announcement-title {
+    grid-area: title;
+}
+
+.isc-announcement-excerpt {
+    grid-area: excerpt;
+}
+
+/* ISC Announcements - end*/
+
+/* Fitler News by category - start*/
+.full-screen-mask-dark {
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    background: #00000054;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    position: relative;
+    top: 50vh;
+    left: 50vw;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Fitler News by category - end*/
+
+/* Category hyperlinks - start*/
+
+.isc-news-category-tag-container {
+    list-style: none;
+    padding-left: 0px !important;
+}
+
+.isc-news-category-tag {
+    border: solid 1px #ddd;
+    margin-right: 8px;
+    margin-top: 5px;
+    padding: 0px 10px;
+    display: inline-block;
+}
+
+.news-post-item .post-content {
+    margin-bottom: 0px !important;
+}
+
+/* Category hyperlinks - end*/
+
 
 /* Workday Learning Library - start*/
 
