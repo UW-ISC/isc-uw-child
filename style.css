@@ -13,15 +13,15 @@
 */
 
 /* Change chevron character for accordion menus */
-.isc-expander a.expanded::after{
+.isc-expander a[role=button].expanded::after{
     content: "\f13a" !important;
 }
 
-.isc-expander a.collapsed:after {
+.isc-expander a[role=button].collapsed:after {
     content: "\f138" !important;
 }
 
-.isc-expander a:after {
+.isc-expander a[role=button]:after {
     content: "\f138" !important;
 }
 /* Override style for ol's on Event pages */
