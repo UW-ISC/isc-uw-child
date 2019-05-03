@@ -421,11 +421,15 @@ function print_news_item()
     $post_update_date = get_the_date();
     $post_excerpt = get_the_excerpt();
     $post_categories = get_the_terms(get_the_ID(),'category');
+    $diff_display = esc_html('(' . human_time_diff(get_the_time('U'), current_time('timestamp'))) . ' ago)';
 
     $html = <<<igfjsdnokgfnsmf
         <div class="news-post-item">
-		    <h2><a href="$post_link" title="$post_title" >$post_title</a></h2>
-		    <div class="update-date">$post_update_date</div>
+            <h2><a href="$post_link" title="$post_title" >$post_title</a></h2>
+            <div class="line">
+                <div class="update-date">$post_update_date</div>
+                <div class="date-diff">$diff_display</div>
+            </div>
             <div class='post-content'>$post_excerpt</div>
             <a class="more" title="$post_title" href="$post_link"> Read more</a>
 igfjsdnokgfnsmf;
@@ -543,6 +547,7 @@ function print_admin_corner_news($admin_corner_news)
 
             $diff_str = esc_html(human_time_diff(get_the_time('U'), current_time('timestamp')));
             $diff_display = esc_html('(' . human_time_diff(get_the_time('U'), current_time('timestamp'))) . ' ago)';
+
             $diff_arr = explode(" ", $diff_str);
             $diff_unit = $diff_arr[1];
 
@@ -577,8 +582,8 @@ function print_admin_corner_news($admin_corner_news)
 				</h4>
             </div><br>
             <div class="line">
-            <div class="update-date">$post_date</div>
-            <div class="date-diff">$diff_display</div>
+                <div class="update-date">$post_date</div>
+                <div class="date-diff">$diff_display</div>
             </div>
             <div class='post-content'>$post_excerpt</div>
             <a class="more" title="$post_title" href="$post_link"> Read more</a>
