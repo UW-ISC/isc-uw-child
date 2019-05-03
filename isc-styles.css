@@ -1206,11 +1206,11 @@ a.uw-btn.btn-sm.btn-left {
     position: relative;
 }
 
-.isc-expander a.collapsed:after {
+.isc-expander a[role=button].collapsed:after {
     content: "\f078";
 }
 
-.isc-expander a.expanded:after {
+.isc-expander a[role=button].expanded:after {
     content: "\f077";
 }
 
@@ -1912,7 +1912,7 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 .admin-accordion-drawer {
-    top: -45px;
+    top: -47px;
     position: relative;
 }
 
@@ -2381,7 +2381,6 @@ p:empty {
 .isc-news-category-tag-container {
     list-style: none;
     padding-left: 0px !important;
-    float: right;
 }
 
 .isc-news-category-tag {
@@ -2389,7 +2388,7 @@ p:empty {
     margin-right: 8px;
     margin-top: 5px;
     padding: 0px 10px;
-    float: left;
+    display: inline-block;
 }
 
 .news-post-item .post-content {
