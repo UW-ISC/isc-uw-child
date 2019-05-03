@@ -481,44 +481,47 @@ function print_news($query = null)
 
 add_action('isc_request_ajax_adminNewsFilter', 'admin_news_filter_function');
 add_action('isc_request_ajax_nopriv_adminNewsFilter', 'admin_news_filter_function');
-function admin_news_filter_function()
-{
 
-    if ($_POST['categoryfilter'] == 'select') {
-        $args = array(
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'location',
-                    'field' => 'slug',
-                    'terms' => 'admin-corner-news',
-                ),
-            ),
-            'posts_per_page' => 5,
-            'post_status' => 'publish',
-        );
-    } else {
+function admin_news_filter_function(){
 
-        $args = array(
-            'tax_query' => array(
-                'relation' => 'AND',
-                array(
-                    'taxonomy' => 'location',
-                    'field' => 'slug',
-                    'terms' => 'admin-corner-news',
-                ),
-                array(
-                    'taxonomy' => 'category',
-                    'field' => 'id',
-                    'terms' => $_POST['categoryfilter'],
-                ),
-            ),
-            'posts_per_page' => 5,
-            'post_status' => 'publish',
-        );
-    }
-    $query = new WP_Query($args);
-    print_admin_corner_news($query);
-    die();
+	//show all for default selection
+	if($_POST['categoryfilter'] == 'select'){
+		$args = array(
+				  'tax_query' => array(
+					  array(
+						  'taxonomy' => 'location',
+						  'field'    => 'slug',
+						  'terms'    => 'admin-corner-news',
+					  ),
+				  ),
+				  'posts_per_page' => 5,
+				  'post_status' => 'publish',
+		 );
+	}
+	//apply taxonomy query if category filter is not default
+	else {
+
+		$args = array(
+				'tax_query' => array(
+						'relation' => 'AND',
+						array(
+						  'taxonomy' => 'location',
+						  'field'    => 'slug',
+						  'terms'    => 'admin-corner-news',
+					  	),
+					  	array(
+							'taxonomy' => 'category',
+							'field' => 'id',
+							'terms' => $_POST['categoryfilter']
+						)
+					),
+				  'posts_per_page' => 5,
+				  'post_status' => 'publish'
+		 );
+	}
+	$query = new WP_Query( $args );
+	print_admin_corner_news($query);
+	die();
 }
 
 function print_admin_corner_news($admin_corner_news)
@@ -658,6 +661,7 @@ function isc_card($atts, $content = null)
     return $out;
 }
 
+
 add_shortcode( 'card', 'isc_card' );
 
 /**
@@ -697,6 +701,14 @@ erhvsfvsfsza;
 	else{
 		return $announcement_html;
 	}
+}
+
+
+function print_var($label, $obj){
+	return;
+    echo "<br><br>====". $label . "=====<br>";
+    print_r($obj);
+    echo "<br>";
 }
 
 ?>
