@@ -722,10 +722,20 @@ function isc_milestone($atts, $content = null)
         'type' => 'done',
     ),
         $atts));
-
     
-    $out = '
-        <hr><p><i class="fa far isc-milestone-icon isc-milestone-'. $type .'" ></i><span style="margin-left:1em">'.$content.'</span></p><hr>';
+    $content = html_entity_decode($content);
+    
+    $out = <<<oahfnmnfjhnfu
+    <hr>
+    <ul class="line no-stylist">
+        <li class="bullet line-height-proper">
+            <i class="fa isc-milestone-icon isc-milestone-$type" ></i>
+        </li>
+        <li class="line-height-proper right-padding" >$content</li>
+    </ul>
+    <hr>
+oahfnmnfjhnfu;
+
     return $out;
 }
 add_shortcode( 'isc-milestone', 'isc_milestone' );

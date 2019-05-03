@@ -2399,19 +2399,19 @@ p:empty {
 
 /* Milestone - start*/
 
-.isc-milestone-icon{
+.isc-milestone-icon {
     font-size: 30px;
     vertical-align: middle;
 }
 
 .isc-milestone-done:before {
     content: "\f058";
-    color:#1dc01a;
+    color: #1dc01a;
 }
 
 .isc-milestone-routing:before {
     content: "\f126";
-    color:#4b2e83;
+    color: #4b2e83;
 }
 
 .isc-milestone-important:before {
@@ -2422,6 +2422,29 @@ p:empty {
 .isc-milestone-pause:before {
     content: "\f28b";
     color: #f39c12;
+}
+
+.center {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.bullet {
+    margin-right: 1em;
+}
+
+.line-height-proper {
+    line-height: 30px;
+}
+
+.right-padding{
+    padding-right: 3em;
 }
 
 /* Milestone - end*/
