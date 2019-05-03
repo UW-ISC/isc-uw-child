@@ -130,22 +130,8 @@ get_header();?>
     function handleCourseClick(url){
         
         $('.uw-body-overlay').show();
-        
-        $('.uw-body-overlay-dialog').css('top', getCenterY('.uw-body-overlay-dialog') );
-        $('.uw-body-overlay-dialog').css('left', getCenterX('.uw-body-overlay-dialog') );
-
         $('.uw-body-overlay-primary-action').attr('href', url);
         
-    }
-
-    function getCenterX(query){
-        let centerX =  Math.floor ( ($( window ).width() - $(query).width() ) / 2);
-        return centerX;
-    }
-
-    function getCenterY(query){
-        let centerY =  Math.floor ( ($( window ).height() - $(query).height() ) / 2);
-        return centerY;
     }
 
     function handleMaskClick(){
