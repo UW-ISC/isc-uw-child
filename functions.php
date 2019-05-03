@@ -584,6 +584,7 @@ function print_admin_corner_news($admin_corner_news)
             <a class="more" title="$post_title" href="$post_link"> Read more</a>
 afwfqwafc;
             $html .= get_category_tags_list(get_the_terms(get_the_ID(),'category'));
+            $html .= '<hr>';
             echo $html;
         }
         echo '<a class="uw-btn btn-sm" href="' . get_site_url() . '/news?taxonomy=category&tag_ID=' . $category_id . '">View All ' . $category_label . 'News</a>';
