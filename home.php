@@ -32,7 +32,7 @@ $sidebar = get_post_meta($post->ID, 'sidebar');?>
 
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-					<?php log_to_console('home.php')?>
+					<?php log_to_console('home.php'); ?>
 
 					<h1><?php echo get_the_title(get_option('page_for_posts', true)); ?></h1>
 
@@ -138,8 +138,11 @@ $sidebar = get_post_meta($post->ID, 'sidebar');?>
 					<div class="nav-next alignright"><?php next_posts_link('Next', $query ? $query->max_num_pages : '');?></div>
 
 					<?php
-						$wp_query = null;
-						$wp_query = $temp_query;
+					if ($category_id != 'select' && $category_id != '') 
+						{
+							$wp_query = null;
+							$wp_query = $temp_query;
+						}
 					?>
 
 				</div>
