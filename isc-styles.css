@@ -2593,6 +2593,29 @@ p:empty {
     background-color: white !important;
 }
 
+.table-cell-list-item{
+    margin-right: 1em;
+    display: inherit;
+    border-bottom: 1px solid grey;
+    padding: 0px 6px;
+}
+
+.table-cell-label{
+    text-align:right;
+    padding-top: 8px !important;
+}
+
+.no-stylist-table{
+    border: none;
+}
+
+.no-stylist-table td{
+    background: white !important;
+}
 
 
+.post-cta{
+    position: relative;
+    left: 50%;
+}
 /* Workday Learning Library - end */
