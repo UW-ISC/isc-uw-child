@@ -78,7 +78,7 @@ function print_workday_course_catalog($post_args, $page_value = 0,  $selected_ta
 		print_course_filter_form($post_args, $selected_taxonomy_ids);
 	echo '</div>';
 	echo '<div class="col-md-8">';
-		echo '<div class="div-overlay-white" hidden></div>';
+		// echo '<div class="full-screen-mask-dark" hidden><div class="lds-dual-ring"></div></div>';
 		print_filter_status_bar($selected_taxonomy_ids);
 		echo '<div  id="coursePosts">';
 			$post_query = new WP_Query( $post_args );
@@ -109,7 +109,13 @@ function print_workday_course_catalog($post_args, $page_value = 0,  $selected_ta
 				if(count($selected_taxonomy_ids) > 0){	
 					echo '<h4> Found ' . $found_num . ' Course'.$plural.'</h4>';
 				} else{
-					echo '<h4> Showing  ' . ($start_at + 1) . '-'. ($start_at + $page_size) . ' of '. $found_num.' Course'.$plural.'</h4>';
+
+					$end_num = $start_at + $page_size;
+					
+					if($end_num >= $found_num ){
+						$end_num = $found_num;
+					}
+					echo '<h4> Showing  ' . ($start_at + 1) . '-'. $end_num . ' of '. $found_num.' Course'.$plural.'</h4>';
 				}
 				
 				
