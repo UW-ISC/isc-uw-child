@@ -5,6 +5,7 @@
  */
 
 get_header();?>
+<div class="full-screen-mask-dark" hidden><div class="lds-dual-ring"></div></div>
 <div class="uw-body-overlay" hidden >
     <div class="uw-body-overlay-dialog col-md-4" >
         <i class="fa fa-close fa-2x uw-body-overlay-dialog-close"
@@ -27,6 +28,7 @@ get_header();?>
     Workday Course Catalouge
 </title>
 <div class="container uw-body">
+    
     <div class="row">
         <div class="col-md-12">
             <?php get_template_part( 'breadcrumbs' ); ?>
@@ -74,12 +76,12 @@ get_header();?>
             data:filter.serialize(),
             type:filter.attr('method'),
             beforeSend:function(xhr){
-                $('.loader').show();
-                $('.div-overlay-white').show();
+                $('.full-screen-mask-dark').show();
+                // $('.div-overlay-white').show();
             },
             success:function(data){
-                $('.loader').hide();
-                $('.div-overlay-white').hide();
+                $('.full-screen-mask-dark').hide();
+                // $('.div-overlay-white').hide();
                 $('#courseCatalog').html(data);                 
             }
         });
