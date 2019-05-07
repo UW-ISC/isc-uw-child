@@ -175,7 +175,7 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 
 	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
 
-	$print_order = ['course-employee-population','course-security-role-involved', 'business-process', 'course-scenario', 'course-skill-level'];
+	$print_order = ['course-employee-population', 'course-skill-level', 'course-type', 'course-security-role-involved', 'business-process', 'course-scenario'];
 
 	$keyed_taxonomies = array();
 
