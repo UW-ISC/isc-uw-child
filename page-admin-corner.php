@@ -16,25 +16,6 @@ get_header();
 	<?php uw_site_title(); ?>
 	<?php get_template_part( 'menu', 'mobile' ); ?>
 
-	<!-- removing search field and title JAB 061418 
-	<div class="isc-admin-hero">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2><?php the_title(); ?></h2>
-
-					<form method="get" id="searchform" class="searchform" action="<?php echo esc_url( get_site_url() ); ?>">
-						<div role="search">
-							<label class="screen-reader-text" for="s">Search the ISC:</label>
-							<input type="text" value="" name="s" id="s" placeholder="Search the ISC:" autocomplete="off">
-							<input type="submit" id="searchsubmit" value="Search">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	-->
 	<div class="container uw-body">
 
 		<!-- adding title JAB 061418 -->
@@ -294,73 +275,6 @@ EOT;
 			</div>
 
 			<div class="col-md-4 uw-sidebar isc-sidebar" role="">
-
-				<!-- <h3 class="isc-admin-header">At A Glance</h3>
-				<div class="contact-widget-inner isc-widget-tan isc-admin-block">
-				  <div class='post-content isc-events'>
-					<?php
-					if ( function_exists( 'tribe_get_events' ) ) {
-						$events = tribe_get_events(
-							array(
-							'posts_per_page' => 1,
-							'post_status' => 'publish',
-							'start_date' => current_time( 'Y-m-d H:i' ),
-							)
-						);
-						if ( empty( $events ) ) {
-							echo 'No events found.';
-						} else {
-							$current = $events[0];
-							$title = $current->post_title;
-							$html = '<h4><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h4>';
-							// Hiding Date - JB 081618 //
-							/*
-							$html .= "<div class='event-date'>" . tribe_get_start_date( $current ) . '</div>';
-							*/
-
-							// Hiding Location info - JB 081518 //
-							/*							
-							if ( tribe_has_venue( $current->ID ) ) {
-								$details = tribe_get_venue_details( $current->ID );
-								$html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details['linked_name'];
-								$html .= $details['address'];
-
-								if ( tribe_show_google_map_link( $current ) ) {
-									$html .= tribe_get_map_link_html( $current );
-								}
-
-								$html .= '</div>';
-
-							} else {
-								$html .= "<div class='event-location'>Location: TBD</div>";
-							}
-							*/
-
-							if ( has_excerpt( $current->ID ) ) {
-								$html .= "<div class='event-content'>" . $current->post_excerpt . '</div>';
-							} else {
-								$html .= "<div class='event-content'>No description found.</div>";
-							}
-							echo $html;
-						}
-					} else {
-						// we cannot find the plugin as the function tribe_get_events does not exist.
-						echo 'The Event Calendar plugin cannot be found!';
-					}// End if().
-					?>
-				  </div>
-
-					<?php
-					if ( ! empty( $events ) ) {
-						// we only want to show the More Info button if a future event exists.
-						$events_url = get_site_url() . '/events/';
-						echo '<a class="uw-btn btn-sm" href="' . esc_url( $events_url ) . '"?>More Info</a>';
-					}
-					?>
-				</div> -->
-
-				<!-- <div class="row"> -->
-						<!-- <div class="col-md-12" style="margin-bottom: 2em;"> -->
 						<div class="service-links">
 							<?php
 							wp_nav_menu(
@@ -371,10 +285,6 @@ EOT;
 							);
 							?>
 						</div>
-					<!-- </div> -->
-
-	
-
 			</div>
 
 		</div>
