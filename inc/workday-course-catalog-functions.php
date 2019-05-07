@@ -67,18 +67,6 @@ function course_filter(){
 	}
 
 	print_workday_course_catalog($args, $page_value, $selected_taxonomy_ids);
-	// $query = new WP_Query( $args );
-
-	// if( $query->have_posts()) {
-		// echo "<br> have posts: ";
-		// $counter = 0;
-		// echo"<br>";
-		// while ( $query->have_posts() ) {
-			// echo ++$counter;
-	// 		$query->the_post();
-	// 		print_workday_course_item();
-	// 	}
-	// }
 	die();
 }
 
@@ -90,7 +78,7 @@ function print_workday_course_catalog($post_args, $page_value = 0,  $selected_ta
 		print_course_filter_form($post_args, $selected_taxonomy_ids);
 	echo '</div>';
 	echo '<div class="col-md-8">';
-		echo '<div class="div-overlay-white" hidden></div>';
+		// echo '<div class="full-screen-mask-dark" hidden><div class="lds-dual-ring"></div></div>';
 		print_filter_status_bar($selected_taxonomy_ids);
 		echo '<div  id="coursePosts">';
 			$post_query = new WP_Query( $post_args );
@@ -121,7 +109,13 @@ function print_workday_course_catalog($post_args, $page_value = 0,  $selected_ta
 				if(count($selected_taxonomy_ids) > 0){	
 					echo '<h4> Found ' . $found_num . ' Course'.$plural.'</h4>';
 				} else{
-					echo '<h4> Showing  ' . ($start_at + 1) . '-'. ($start_at + $page_size) . ' of '. $found_num.' Course'.$plural.'</h4>';
+
+					$end_num = $start_at + $page_size;
+					
+					if($end_num >= $found_num ){
+						$end_num = $found_num;
+					}
+					echo '<h4> Showing  ' . ($start_at + 1) . '-'. $end_num . ' of '. $found_num.' Course'.$plural.'</h4>';
 				}
 				
 				
@@ -260,6 +254,85 @@ function print_filter_status_bar($selected_taxonomy_ids){
 	}
 }
 
+function get_workday_course_metadata(){
+
+	$course_metadata = array();
+
+	$course_metadata['post_title'] = get_the_title();
+
+	$course_metadata['url'] = get_post_meta(get_the_ID(), 'course-url', true);
+
+	$course_metadata['post_excerpt'] = get_the_excerpt();
+	
+	$course_metadata['post_image_url'] = wp_get_attachment_url(get_post_meta(get_the_ID(), 'course-image', true));
+
+	$course_metadata['duration'] = get_post_meta(get_the_ID(), 'course-duration', true);
+
+	// $release_date = get_post_meta(get_the_ID(), 'course-release-date', true);
+	// $release_date = date_create_from_format('m/d/Y', $release_date);
+	// $release_date = $release_date->format('M j, Y');
+
+	$update_date = get_post_meta(get_the_ID(), 'course-update-date', true);
+	$update_date = date_create_from_format('Y-m-d', $update_date);
+	$course_metadata['update_date'] = $update_date->format('M j, Y');
+
+	$course_metadata['skill_level'] = get_the_terms(get_the_ID(), 'course-skill-level')[0];
+	
+
+	$course_metadata['read_more'] = esc_url(get_permalink());
+
+	return $course_metadata;
+}
+
+
+function print_workday_course_page(){
+	$course_metadata = get_workday_course_metadata();
+	extract($course_metadata);
+
+	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
+	$tax_fields_html = '';
+
+	foreach ($taxonomies as $each_taxonomy ){
+		
+		$tax_terms_for_post = wp_get_post_terms(get_the_id(), $each_taxonomy->name );
+
+		if(count( $tax_terms_for_post) > 0){
+			$tax_fields_html .= '<tr>';
+			$tax_fields_html .= '<td class="table-cell-label"><b>'.$each_taxonomy->label.':</b></tb>';
+			$tax_fields_html .= '<td> <ul class="line no-stylist">';
+
+			foreach ( $tax_terms_for_post as $term ) {
+
+				$tax_fields_html .= '<li class="table-cell-list-item">'.$term->name . '</li>';
+			}
+
+			$tax_fields_html .= '</ul></td>';
+
+			$tax_fields_html .= '</tr>';
+		}
+	}
+
+	$post_html = <<<ojaefnjeafksmjf
+	<p>$post_excerpt</p>
+	<table class="no-stylist-table">
+		<tbody>
+			<tr>
+				<td class="table-cell-label"><b>Updated On:</b></td>
+				<td>$update_date</td>
+			</tr>
+			<tr>
+				<td class="table-cell-label"><b>Duration:</b></td>
+				<td>$duration mins</td>
+			</tr>
+			$tax_fields_html
+		<tbody>
+	</table>
+	<a class="uw-btn uw-body-overlay-primary-action post-cta" href="$url">Go</a>
+ojaefnjeafksmjf;
+
+	echo $post_html;
+}
+
 /**
 * This function renders the current post as if it was a workday course listing.
 **/
@@ -268,29 +341,10 @@ function print_workday_course_item(){
 		echo "Not a workday course!";
 		return;
 	}
-	$post_title = get_the_title();
 
-	$url = get_post_meta(get_the_ID(), 'course-url', true);
+	$course_metadata = get_workday_course_metadata();
+	extract($course_metadata);
 
-	$post_excerpt = get_the_excerpt();
-	
-	$post_image_url = wp_get_attachment_url(get_post_meta(get_the_ID(), 'course-image', true));
-
-	$duration = get_post_meta(get_the_ID(), 'course-duration', true);
-
-	// $release_date = get_post_meta(get_the_ID(), 'course-release-date', true);
-	// $release_date = date_create_from_format('m/d/Y', $release_date);
-	// $release_date = $release_date->format('M j, Y');
-
-	$update_date = get_post_meta(get_the_ID(), 'course-update-date', true);
-	$update_date = date_create_from_format('Y-m-d', $update_date);
-	$update_date = $update_date->format('M j, Y');
-
-	$skill_level = get_the_terms(get_the_ID(), 'course-skill-level')[0];
-	
-
-	$read_more = esc_url(get_permalink());
-	
 	$post_html = <<<dnfndaskfn
 	<div class="workday-course-item" onclick="handleCourseClick('$url')">
 
