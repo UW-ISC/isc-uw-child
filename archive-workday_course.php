@@ -7,22 +7,37 @@
 get_header();?>
 <div class="full-screen-mask-dark" hidden><div class="lds-dual-ring"></div></div>
 <div class="uw-body-overlay" hidden >
-    <div class="uw-body-overlay-dialog col-md-4" >
-        <i class="fa fa-close fa-2x uw-body-overlay-dialog-close"
-        onclick="$('.uw-body-overlay').hide()" ></i>
-        <h1> Redirecting to an external website...</h1>
-        <div class="row">
-            <img style="width:200px" class="col-md-5" src="http://localhost/hrp-portal/wp-content/uploads/2019/03/workday-screenshot.png" />
-            <p class="col-md-7"> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et nibh ac erat blandit convallis a ac ex. Donec sapien est, rhoncus vel porttitor lobortis, suscipit vel tortor. Fusce luctus sollicitudin justo eget ultrices. Vivamus sapien nunc.
-                <a href="www.isc.uw.edu" target="_blank" class="uw-btn uw-body-overlay-primary-action"> take me </a>
-            </p>
-            
+
+    <div class="uw-body-overlay-dialog" >
+        <i class="fa fa-close fa-2x uw-body-overlay-dialog-close" onclick="$('.uw-body-overlay').hide()" ></i>
+        <div class="uw-body-overlay-dialog-header">
+            <h1> Redirecting to Bridge...</h1>
         </div>
         
+        <div class="uw-body-overlay-dialog-main">
+            <div class="row">
+                <img class="col-md-6 uw-body-overlay-dialog-img" src="http://localhost/hrp-portal/wp-content/uploads/2019/03/workday-screenshot.png" />
+                <div class="col-md-6"> 
+                    <p>You are about to leave the Workday Learning Library for our Learning Management System, Bridge.</p>
+                    <ol>
+                        <li>Log in to Bridge using your UWNetID and password.</li>
+                        <li>If prompted to enroll in the course, select Enroll.</li>
+                        <li>Once you are enrolled, you will be able to log in to Bridge at any time to register for live training sessions and access eLearning modules. Bridge will track and save your progress as you complete each course.</li>
+                    </ol>
+                    <p>Questions, concerns, or feedback?
+                    <a href="<?php echo esc_url( get_site_url())?>/contact-us">Contact us</a> with "Training" in the subject.</p>
+                </div>
+            </div>
+        </div>  
+        
+        <div class="uw-body-overlay-dialog-footer">
+            <a href="www.isc.uw.edu" target="_blank" class="uw-btn uw-body-overlay-primary-action"> take me </a>
+        </div>
     </div>
+    
     <div class="uw-body-overlay-mask" onclick="handleMaskClick()">
     </div>
+
 </div>
 <title>
     Workday Course Catalouge

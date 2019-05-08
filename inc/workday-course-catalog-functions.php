@@ -327,7 +327,7 @@ function print_workday_course_page(){
 			$tax_fields_html
 		<tbody>
 	</table>
-	<a class="uw-btn uw-body-overlay-primary-action post-cta" href="$url">Go</a>
+	<a class="uw-btn post-cta" href="$url">Go</a>
 ojaefnjeafksmjf;
 
 	echo $post_html;

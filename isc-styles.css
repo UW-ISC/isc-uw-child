@@ -2536,11 +2536,24 @@ p:empty {
     position: fixed;
     z-index: 6;
     border: 2px solid black;
-    padding: 2em;
+    /* padding: 2em;
+    padding-top:10px; */
     max-width: 100vw;
+    min-width: 65vw;
+    max-height: 80vh;
+    overflow: hidden;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+}
+
+.uw-body-overlay-dialog-header h1{
+    margin-top: 10px;
+    margin-bottom: 1em;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 0;
+    
 }
 
 .uw-body-overlay-dialog-close {
@@ -2548,6 +2561,34 @@ p:empty {
     top: 10px;
     right: 10px;
     cursor: pointer;
+}
+
+.uw-body-overlay-dialog-main{
+    max-height: 45vh;
+    padding-bottom: 46px;
+    padding-left: 1em;
+    padding-right: 1em;
+    position: relative;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px){
+    .uw-body-overlay-dialog-img{
+        display: none;
+    }
+}
+
+.uw-body-overlay-dialog-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+}
+
+.uw-body-overlay-primary-action{
+    float: right;
+    right: 48px;
 }
 
 .workday-course-cover-image-container {
@@ -2613,7 +2654,6 @@ p:empty {
 .no-stylist-table td{
     background: white !important;
 }
-
 
 .post-cta{
     position: relative;
