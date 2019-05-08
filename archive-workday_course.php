@@ -39,9 +39,7 @@ get_header();?>
     </div>
 
 </div>
-<title>
-    Workday Course Catalouge
-</title>
+
 <div class="container uw-body">
     
     <div class="row">
@@ -69,7 +67,12 @@ get_header();?>
                     <p>
                         Use the filters below to find the courses in the library that best suit your needs.<br>
                         <br>
-                        For anyone seeking a security role where training is required (HCM Initiate 2, HR Partner, Academic Partner, and/or Time & Absence Initiate) check the name of the role(s) below and complete all Level 1, 2, and 3 courses displayed in order to be eligible.
+                        For anyone seeking a security role where training is required (HCM Initiate 2, HR Partner, Academic Partner, and/or Time & Absence Initiate), follow these steps using the filters below:
+                        <ol>
+                            <li>Select the employee population(s) you will support in your new role.</li>
+                            <li>Select the name(s) of the security role(s) you are seeking.</li>
+                            <li>Complete all Level 1, 2, and 3 courses displayed in order to be eligible. If you have already completed the course(s) for another role, you do not need to retake them.</li>
+                        </ol>
                     </p>
                 </section>
                 <div class="loader" hidden></div>
