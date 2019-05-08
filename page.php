@@ -20,8 +20,6 @@
 
 	<div class="container uw-body">
 
-	
-
 		<div class="row">
 
 			<div class="uw-content col-md-9">
