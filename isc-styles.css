@@ -2539,7 +2539,7 @@ p:empty {
     /* padding: 2em;
     padding-top:10px; */
     max-width: 100vw;
-    min-width: 65vw;
+    /* min-width: 65vw; */
     max-height: 80vh;
     overflow: hidden;
     left: 50%;
