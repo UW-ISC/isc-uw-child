@@ -28,6 +28,7 @@ function course_filter(){
 
 	$args = array(
 		'post_type' => 'workday_course',
+		'post_status' => 'publish',
 		'posts_per_page' => -1,
 		'tax_query' => $tax_query_base
 	);
@@ -57,6 +58,7 @@ function course_filter(){
 		// echo "resetting";
 		$args = array(
 			'post_type' => 'workday_course',
+			'post_status' => 'publish',
 			'posts_per_page' => -1,
 		);
 	}

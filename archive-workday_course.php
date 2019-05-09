@@ -59,6 +59,7 @@ get_header();?>
 
                         $post_args =array(
                             'post_type' => 'workday_course',
+                            'post_status' => 'publish',
                             'posts_per_page' => -1,
                             );
 
