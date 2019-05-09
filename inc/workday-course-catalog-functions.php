@@ -28,6 +28,7 @@ function course_filter(){
 
 	$args = array(
 		'post_type' => 'workday_course',
+		'post_status' => 'publish',
 		'posts_per_page' => -1,
 		'tax_query' => $tax_query_base
 	);
@@ -57,6 +58,7 @@ function course_filter(){
 		// echo "resetting";
 		$args = array(
 			'post_type' => 'workday_course',
+			'post_status' => 'publish',
 			'posts_per_page' => -1,
 		);
 	}
@@ -175,7 +177,7 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 
 	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
 
-	$print_order = ['course-employee-population','course-security-role-involved', 'business-process', 'course-scenario', 'course-skill-level'];
+	$print_order = ['course-employee-population', 'course-skill-level', 'course-security-role-involved', 'course-type', 'business-process', 'course-scenario'];
 
 	$keyed_taxonomies = array();
 
@@ -327,7 +329,7 @@ function print_workday_course_page(){
 			$tax_fields_html
 		<tbody>
 	</table>
-	<a class="uw-btn uw-body-overlay-primary-action post-cta" href="$url">Go</a>
+	<a class="uw-btn post-cta" href="$url">Go</a>
 ojaefnjeafksmjf;
 
 	echo $post_html;
