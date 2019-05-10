@@ -2631,6 +2631,10 @@ p:empty {
     margin-top: 1em;
 }
 
+.workday-layout-table{
+    border: none !important;
+}
+
 .workday-layout-table td {
     background-color: white !important;
 }
