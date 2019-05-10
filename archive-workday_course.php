@@ -16,8 +16,15 @@ get_header();?>
         
         <div class="uw-body-overlay-dialog-main">
             <div class="row">
-                <img class="col-md-6 uw-body-overlay-dialog-img" src="http://localhost/hrp-portal/wp-content/uploads/2019/03/workday-screenshot.png" />
-                <div class="col-md-6"> 
+                <?php
+                    $img_url = get_media_url_from_title("Workday Redirection Image");
+                    $text_col_size = 'col-md-12';
+                    if(wp_http_validate_url($img_url)){
+                        $text_col_size = 'col-md-6';
+                        echo '<img class="col-md-6 uw-body-overlay-dialog-img" src="'.wp_http_validate_url($img_url).'" />';
+                    }
+                ?>
+                <div class="<?php echo $text_col_size ?>"> 
                     <p>You are about to leave the Workday Learning Library for our Learning Management System, Bridge.</p>
                     <ol>
                         <li>Log in to Bridge using your UWNetID and password.</li>
@@ -31,7 +38,7 @@ get_header();?>
         </div>  
         
         <div class="uw-body-overlay-dialog-footer">
-            <a href="www.isc.uw.edu" target="_blank" class="uw-btn uw-body-overlay-primary-action"> take me </a>
+            <a href="www.isc.uw.edu" target="_blank" class="uw-btn uw-body-overlay-primary-action"> continue </a>
         </div>
     </div>
     
