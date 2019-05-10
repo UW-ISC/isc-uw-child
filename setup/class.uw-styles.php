@@ -28,6 +28,13 @@ class UW_Styles {
 	 */
 	function __construct() {
 		$ver = wp_get_theme( 'isc-uw-child' )->version;
+		
+		//try to get isc-styles.css last modified time in Unix timestamp format e.g. 1557447122
+		//note: path is relative to htdocs directory
+		$style_sheet_time_stamp = filemtime('wp-content/themes/isc-uw-child/isc-styles.css');
+
+		//if timestamp retrieval fails, fallback to $ver variable.
+		$style_sheet_time_stamp  = $style_sheet_time_stamp ? $style_sheet_time_stamp : $ver;
 
 		$this->STYLES = array(
 
@@ -64,7 +71,7 @@ class UW_Styles {
 		 'id'       => 'isc-styles',
 		 'url'      => get_stylesheet_directory_uri() . '/isc-styles.css',
 		 'deps'     => array(),
-		 'version'  => $ver,
+		 'version'  => $style_sheet_time_stamp,
 		 ),
 
 		'uw-style' => array(
