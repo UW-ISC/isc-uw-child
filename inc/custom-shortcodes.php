@@ -16,7 +16,8 @@
  *     2. title: Card title text
  *     3. description (HTML enclosed with the shortcode): short excerpt or description of concept housed in this card.
  *     4. button_text: Label for the bottom call-to-action or link button.
- *  5. button_link: Url for call-to-action button or link.
+ *     5. button_link: Url for call-to-action button or link.
+ * 	   6. auto_height: if any value except "false" is specified card will have heigh:auto, if attribute is not present card will have fixed height.
  *
  * Usage eg.
  *     [card url="http://localhost/hrp-portal/wp-content/uploads/2019/02/wd-applet-career.png" title="Employee" button_text="Employee Training" button_link="https://isc.uw.edu/support-resources/workday-training/workday-training-for-employees/"]
