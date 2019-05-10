@@ -2539,12 +2539,36 @@ p:empty {
     /* padding: 2em;
     padding-top:10px; */
     max-width: 100vw;
-    /* min-width: 65vw; */
+    min-width: 65vw;
     max-height: 80vh;
     overflow: hidden;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+}
+
+@media only screen and (max-width: 425px) {
+    .uw-body-overlay-dialog{
+        min-width: 90vw !important;
+    }
+
+    .uw-body-overlay-dialog-main{
+        max-height: 60vh !important;
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 1440px) {
+    .uw-body-overlay-dialog{
+        min-width: 80vw !important;
+        min-height: 60vh;
+    }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1440px) {
+    .uw-body-overlay-dialog{
+        min-width: 80vw !important;
+        min-height: 60vh;
+    }
 }
 
 .uw-body-overlay-dialog-header h1{
@@ -2571,6 +2595,8 @@ p:empty {
     position: relative;
     overflow-y: auto;
 }
+
+
 
 @media (max-width: 768px){
     .uw-body-overlay-dialog-img{
