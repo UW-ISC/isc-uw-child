@@ -32,5 +32,5 @@ if(in_array($action, $allowed_actions)){
         do_action('isc_request_ajax_nopriv_'.$action);
 }
 else{
-    die('-1');
+    die('This request is not allowed!');
 }

@@ -33,11 +33,17 @@ p {
     }
 }
 
+@media only screen and (max-width: 767px) {
+    .uw-thinstrip {
+        height: 45px !important;
+    }
+}
+
 .uw-thinstrip button.uw-search {
     border-color: #4b2e83 !important;
     background: #fff;
     margin: 0;
-    top: -22px;
+    top: -14px;
     right: -22px;
 }
 
@@ -217,7 +223,7 @@ p {
     height: 20px;
     width: 50px;
     right: -25px;
-    top: 18px;
+    top: 23px;
     background-size: 45%;
 }
 
@@ -237,8 +243,7 @@ p {
     background: url("../isc-uw-child/assets/icons/arrow-down.png") no-repeat;
     height: 20px;
     width: 50px;
-    right: -23px;
-    top: 18px;
+    top: 23px;
     background-size: 45%;
     -o-transform: none;
     -webkit-transform: none;
@@ -655,20 +660,27 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 @media (min-width: 992px) {
-    .isc-homepage-body .isc-homepage-news {
+    .isc-homepage-body .isc-homepage-sidebar {
         margin-top: -90px;
     }
 }
 
-.isc-homepage-body .isc-homepage-news .isc-homepage-news-content {
+.isc-homepage-body .isc-homepage-sidebar .isc-homepage-sidebar-content {
     background: #fff;
     padding: 30px;
     -webkit-box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
     box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
     margin-bottom: 30px;
-    min-height: 532px;
     position: relative;
     z-index: 5;
+}
+
+.isc-homepage-body .isc-homepage-sidebar .isc-homepage-sidebar-content h3 {
+    margin-top: 0;
+}
+
+.isc-homepage-body .isc-homepage-sidebar .isc-homepage-sidebar-content .post-content {
+    margin-bottom: 0;
 }
 
 .isc-homepage-body .isc-homepage-news .isc-homepage-news-content h3 {
@@ -1202,11 +1214,11 @@ a.uw-btn.btn-sm.btn-left {
     position: relative;
 }
 
-.isc-expander a.collapsed:after {
+.isc-expander a[role=button].collapsed:after {
     content: "\f078";
 }
 
-.isc-expander a.expanded:after {
+.isc-expander a[role=button].expanded:after {
     content: "\f077";
 }
 
@@ -1235,6 +1247,7 @@ a.uw-btn.btn-sm.btn-left {
     font-size: 14px;
     color: #555;
 }
+
 
 #user_guide_lib_wrapper.dataTables_wrapper .pagination {
     list-style: none;
@@ -1908,7 +1921,7 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 .admin-accordion-drawer {
-    top: -45px;
+    top: -47px;
     position: relative;
 }
 
@@ -2107,17 +2120,18 @@ p:empty {
 
 /* Right sidebar - start*/
 
-.isc-dark-grey{
-  background: #EEEEEE;
+.isc-dark-grey {
+    background: #EEEEEE;
 }
 
 .default-page-right-sidebar {
     padding: 20px;
 }
 
-.isc-right-sidebar-title{
-  margin-top:0px !important;
+.isc-right-sidebar-title {
+    margin-top: 0px !important;
 }
+
 /* Rgiht sidebar - end*/
 
 /* Named support contact tables - start*/
@@ -2249,8 +2263,8 @@ p:empty {
     padding: 0px;
 }
 
-.dawgdrops-item.dawgdrops-item a{
-  padding: 15.5px 30px 15.5px 15px;
+.dawgdrops-item.dawgdrops-item a {
+    padding: 20.5px 30px 20.5px 15px;
 }
 
 /* Global Header Improvements - end*/
@@ -2258,13 +2272,421 @@ p:empty {
 
 /* Consistent Page Header - start*/
 
-.isc-page-header .title{
-  color: #85754d;
-  margin-top: 0px;
-  margin-bottom: 0px;
+.isc-page-header .title {
+    color: #85754d;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
-.isc-page-header .title-n-info{
-  margin-bottom: 32px;
+.isc-page-header .title-n-info {
+    margin-bottom: 32px;
 }
+
 /* Consistent Page Header - end*/
+
+
+/* Icons in content being treated as images resulting to width scaling on smaller screens - start */
+
+.isc-icon {
+    width: auto !important;
+}
+
+/* Icons in content being treated as images resulting to width scaling on smaller screens - end */
+
+
+/* ISC Announcements - start*/
+
+.isc-announcement-item {
+    /* width: 33%; */
+    display: grid;
+    grid-template-columns: 10% auto;
+    grid-template-areas:
+        "icon content"
+    ;
+    /* margin: 6px;
+    min-height: auto;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border: solid 1px #d3d3d387; */
+}
+
+.isc-announcement-icon {
+    grid-area: icon;
+    place-self: start center;
+    font-size: 20px;
+    margin-top: 4px;
+    color: #4b2e83 !important;
+}
+
+.isc-announcement-icon-default:before {
+    content: "\f0a1";
+}
+
+.isc-announcement-content {
+    grid-area: content;
+    display: grid;
+    grid-template-areas:
+        "title"
+        "excerpt"
+    ;
+}
+
+.isc-announcement-title {
+    grid-area: title;
+}
+
+.isc-announcement-excerpt {
+    grid-area: excerpt;
+}
+
+/* ISC Announcements - end*/
+
+/* Fitler News by category - start*/
+.full-screen-mask-dark {
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    background: #00000054;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Fitler News by category - end*/
+
+/* Category hyperlinks - start*/
+
+.isc-news-category-tag-container {
+    list-style: none;
+    padding-left: 0px !important;
+}
+
+.isc-news-category-tag {
+    border: solid 1px #ddd;
+    margin-right: 8px;
+    margin-top: 5px;
+    padding: 0px 10px;
+    display: inline-block;
+}
+
+.news-post-item .post-content {
+    margin-bottom: 0px !important;
+}
+
+/* Category hyperlinks - end*/
+
+
+/* Workday Learning Library - start*/
+
+.workday-item-post-metadata li {
+    display: inline-block;
+}
+
+.workday-item-post-metadata {
+    font-size: 14px;
+    position: relative;
+    bottom: 1em;
+    float: right;
+    right: 2em;
+}
+
+.course-filter-form label {
+    font-weight: normal;
+}
+
+.fui-radio-unchecked::before {
+    display: none !important;
+}
+
+.loader {
+    height: 4px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #ddd;
+}
+
+.loader:before {
+    display: block;
+    position: absolute;
+    content: "";
+    left: -200px;
+    width: 200px;
+    height: 4px;
+    background-color: #4b2e83;
+    animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {
+        left: -200px;
+        width: 30%;
+    }
+
+    50% {
+        width: 30%;
+    }
+
+    70% {
+        width: 70%;
+    }
+
+    80% {
+        left: 50%;
+    }
+
+    95% {
+        left: 120%;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+.div-overlay-white {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffffc4;
+}
+
+.small-chip {
+    padding: 0px 8px !important;
+    font-size: 1em;
+}
+
+.isc-btn-icon-right {
+    margin-right: 0px !important;
+    margin-left: 5px;
+}
+
+.h-list {
+    padding: 0px;
+    line-height: 34px;
+}
+
+.h-list li {
+    display: inline;
+    padding-right: 4px;
+}
+
+.nav-previous,
+.nav-next {
+    cursor: pointer;
+}
+
+.uw-body-overlay-mask {
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 5;
+    position: absolute;
+    top: 0px;
+    background: #0000009c;
+}
+
+.workday-course-item {
+    cursor: pointer;
+    /* padding: 2em; */
+    margin-bottom: 2em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.workday-course-item:hover {
+    /* background: #00000012; */
+    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+    /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.uw-body-overlay-dialog {
+    background: white;
+    position: fixed;
+    z-index: 6;
+    border: 2px solid black;
+    /* padding: 2em;
+    padding-top:10px; */
+    max-width: 100vw;
+    min-width: 65vw;
+    max-height: 80vh;
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+@media only screen and (max-width: 425px) {
+    .uw-body-overlay-dialog{
+        min-width: 90vw !important;
+    }
+
+    .uw-body-overlay-dialog-main{
+        max-height: 60vh !important;
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 1440px) {
+    .uw-body-overlay-dialog{
+        min-width: 80vw !important;
+        min-height: 60vh;
+    }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1440px) {
+    .uw-body-overlay-dialog{
+        min-width: 80vw !important;
+        min-height: 60vh;
+    }
+}
+
+.uw-body-overlay-dialog-header h1{
+    margin-top: 10px;
+    margin-bottom: 1em;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 0;
+    
+}
+
+.uw-body-overlay-dialog-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.uw-body-overlay-dialog-main{
+    max-height: 45vh;
+    padding-bottom: 46px;
+    padding-left: 1em;
+    padding-right: 1em;
+    position: relative;
+    overflow-y: auto;
+}
+
+
+
+@media (max-width: 768px){
+    .uw-body-overlay-dialog-img{
+        display: none;
+    }
+}
+
+.uw-body-overlay-dialog-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+}
+
+.uw-body-overlay-primary-action{
+    float: right;
+    right: 48px;
+}
+
+.workday-course-cover-image-container {
+    height: 13em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 33%;
+}
+
+
+.workday-course-cover-content-container {
+    padding: 15px !important;
+}
+
+.workday-course-cover-image-container-portrait{
+    display: none;
+    height: 13em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 600px) {
+    .workday-course-cover-image-container {
+       display: none;
+    }
+
+    .workday-course-cover-image-container-portrait{
+        display: block;
+    }
+}
+
+.workday-course-item h2 {
+    margin-top: 14px;
+}
+
+.workday-course-item ul {
+    margin-bottom: 0px;
+    margin-top: 1em;
+}
+
+.workday-layout-table{
+    border: none !important;
+}
+
+.workday-layout-table td {
+    background-color: white !important;
+}
+
+.table-cell-list-item{
+    margin-right: 1em;
+    display: inherit;
+    border-bottom: 1px solid grey;
+    padding: 0px 6px;
+}
+
+.table-cell-label{
+    text-align:right;
+    padding-top: 8px !important;
+}
+
+.no-stylist-table{
+    border: none;
+}
+
+.no-stylist-table td{
+    background: white !important;
+}
+
+.post-cta{
+    position: relative;
+    left: 50%;
+}
+/* Workday Learning Library - end */

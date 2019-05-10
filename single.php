@@ -8,15 +8,16 @@
 
 get_header();
 	  $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-	  $sidebar = get_post_meta( $post->ID, 'sidebar' );   
-
-	  the_page_header();
+	  $sidebar = get_post_meta( $post->ID, 'sidebar' );
 ?>
 
 <div role="main">
 
-	<?php uw_site_title(); ?>
-	<?php get_template_part( 'menu', 'mobile' ); ?>
+	<?php
+		uw_site_title();
+		get_template_part( 'menu', 'mobile' );
+		the_page_header();
+	?>
 
 	<div class="container uw-body">
 
@@ -30,21 +31,35 @@ get_header();
 
 					<div class="post-content">
 						<?php
-						  // Start the Loop.
-						while ( have_posts() ) : the_post();
+						  
+						the_post();
 
-							the_content();
+						the_content();
 
-							// If comments are open or we have at least one comment, load up the comment template.
-							if ( comments_open() || get_comments_number() ) {
-								comments_template();
-							}
+						// If comments are open or we have at least one comment, load up the comment template.
+						if ( comments_open() || get_comments_number() ) {
+							comments_template();
+						}
 
-						endwhile;
+						
 						?>
 					</div>
 
 				</div>
+				
+				<ul class="isc-news-category-tag-container">
+					<label>Categories:</label>
+					<?php
+						
+						$post_categories = get_the_terms(get_the_ID(),'category');
+						$site_url = esc_url( get_site_url() );
+						
+						foreach($post_categories as $category_item){
+							$category_item_id = $category_item->term_id;
+							echo '<li class="isc-news-category-tag"> <a href="'. get_permalink( get_option( 'page_for_posts' ) ) .'?taxonomy=category&tag_ID='.$category_item_id.'"> '.$category_item->name.' </a> </li>';
+						}
+					?>
+				</ul>
 
 			</div>
 
