@@ -2223,6 +2223,10 @@ p:empty {
     border: solid 1px #d3d3d387;
 }
 
+.auto-height-card{
+    min-height: auto !important;
+}
+
 @media (min-width: 992px) {
     .card-box-33 {
         min-height: 520px;

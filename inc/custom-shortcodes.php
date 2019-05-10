@@ -30,11 +30,19 @@ function isc_card($atts, $content = null)
         'url' => '',
         'title' => '',
         'button_link' => '',
-        'button_text' => '',
+		'button_text' => '',
+		'auto_height' => 'false'
     ),
-        $atts));
+		$atts));
+	
+	$apply_auto_height = strcmp($auto_height, 'false') !== 0;
 
-    $out = '<div class="card-box-33 col-md-3">
+	$height_class= '';
+	if( $apply_auto_height){
+		$height_class= 'auto-height-card';
+	}
+
+    $out = '<div class="card-box-33 col-md-3 '.$height_class.'">
 		<img src="' . $url . '" class="card-grid-icon">
 		<h5 class="card-grid-title" >' . $title . '</h5>
 		<p class="card-grid-decription" >' . $content . '</p>
