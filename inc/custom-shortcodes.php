@@ -7,6 +7,67 @@
  */
 
  
+
+/**
+* Short code for long button -- divs with images and text that act as hyperlinks.
+* 
+* This button has 3 attributes:
+*     1. url: Hyperlink to destination
+*     2. title: Title
+*     3. img: Url of the image from media library
+* 
+* The content enclosed in the short code will be displayed after the title.
+* 
+* Usage eg.
+*     [long_button
+* 			title="HCM Initiate 2"
+* 			img="http://localhost/hrp-portal/wp-content/uploads/2018/10/HCMInitiate2Icon.png"
+* 			url="http://localhost/hrp-portal/user-guides/long-button-security-roles-page/"]
+*		
+* 		The primary initiators of staffing and hiring processes.
+*
+*     [/long_button]
+*
+* @param string $atts Img Url, title, description, CTA label and CTA link attributes.
+* @param string $content The content to show when expanded.
+*/
+function isc_long_button( $atts, $content = '' ) {
+
+	extract(shortcode_atts(array(
+		'url' => '',
+		'title' => '',
+		'img' => ''
+	),$atts));
+
+	$img = wp_get_attachment_image(attachment_url_to_postid($img));
+
+	$out = <<<akisujancdkan
+		<div class="long-button">
+			<a class="long-button-link" href="$url" target="_blank">
+				<div class="long-button-body">
+					<div class="row">
+						<div class="long-button-img col-md-2">
+						$img
+						</div>
+						<div class="long-button-main col-md-9">
+							<div class="long-button-title">
+								<h4 id="2-hcm-initiate-2">$title</h4>
+							</div>
+							<p>$content</p>
+						</div>
+					</div>
+				</div>
+				<div class="fa fa-external-link fa-lg hover-link"></div>
+			</a>
+		</div>
+akisujancdkan;
+
+	return $out;
+
+}
+add_shortcode( 'long_button', 'isc_long_button' );
+
+ 
 /**
  * ISC card Shortcode
  * This card will create a card (similar to a material design cards) with boxed shadow.
@@ -54,11 +115,7 @@ function isc_card($atts, $content = null)
 		';
     return $out;
 }
-
-
 add_shortcode( 'card', 'isc_card' );
-
-
 
 /**
  * ISC Expand Shortcode
@@ -89,4 +146,3 @@ function isc_expander( $atts, $content = null ) {
 
 }
 add_shortcode( 'expand', 'isc_expander' );
-
