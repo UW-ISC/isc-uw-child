@@ -110,21 +110,23 @@ EOT;
 						 if (!is_int(news_stale_after)) {
 						 	$news_stale_after = 3;
 						 }
-						 $news_stale_after_days_plus_one = $news_stale_after+1;
-						$args = array(
-										  'tax_query' => array(
-											  array(
-												  'taxonomy' => 'location',
-												  'field'    => 'slug',
-												  'terms'    => 'admin-corner-news',
-											  ),
-										  ),
-										  'posts_per_page' => 5,
-										  'post_status' => 'publish',
-										  'date_query' => array(
-										  	'after' => date('Y-m-d', strtotime('-'.$news_stale_after_days_plus_one.' days'))
-										  )
-										);
+						 $news_stale_after_days_plus_one = $news_stale_after + 1;
+						 $after_date = date('Y-F-d', strtotime('- '.$news_stale_after_days_plus_one.' days'));
+
+							$args = array(
+												'tax_query' => array(
+													array(
+														'taxonomy' => 'location',
+														'field'    => 'slug',
+														'terms'    => 'admin-corner-news',
+													),
+												),
+												'posts_per_page' => 5,
+												'post_status' => 'publish',
+												'date_query' => array(
+													'after' => $after_date
+												)
+											);
 						$category_posts = new WP_Query( $args );
 						$new_news_count = $category_posts->found_posts;
 						if($new_news_count > 0){
@@ -193,11 +195,7 @@ EOT;
 						</script>	
 					
 					<div id="adminNewsPosts">
-
-
 							<?php
-
-
 							 $args = array(
 									  'tax_query' => array(
 										  array(
@@ -211,61 +209,8 @@ EOT;
 							 );
 							 $category_posts = new WP_Query( $args );
 
-							 if ( $category_posts->have_posts() ) :
-								 while ( $category_posts->have_posts() ) :
-									 $category_posts->the_post();
-							 
-								    $diff_str = esc_html( human_time_diff( get_the_time('U'), current_time('timestamp') ) );
-								    $diff_display =  esc_html( '('.human_time_diff( get_the_time('U'), current_time('timestamp') ) ).' ago)';
-								    $diff_arr = explode(" ", $diff_str);
-								    $diff_unit = $diff_arr[1];
-
-								    
-
-								    $new_post = false;
-								    $new_label = '';
-								   
-								    if(strpos($diff_unit, 'second') !== false ||
-								    	strpos($diff_unit, 'min') !== false ||
-								    	strpos($diff_unit, 'hour') !== false){
-								    	$new_post = true;
-								    }
-								    else if(strpos($diff_unit, 'day') !== false){
-								    	
-								    	$diff_value = (int)$diff_arr[0];
-
-								    	if($diff_value <= $news_stale_after){
-								    		$new_post = true;
-								    		$new_news_count += 1;
-								    	}
-								    }
-								    if($new_post) {
-								   		 $new_label = '<span class="new-news-label">new</span>';
-								   	}
-
-								   	?>
-								   <div class="line">
-								   		<h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title()?></a><?php echo $new_label; ?></h4>
-								   	</div><br>
-								   <div class="line">
-								   	<div class="update-date"><?php echo get_the_date(); ?></div>
-								   	<div class="date-diff"><?php echo $diff_display; ?></div>
-								   </div>
-								   <div class='post-content'><?php the_excerpt() ?></div>
-									 <!-- <a class="more" title="<?php the_title()?>" href="<?php echo esc_url( get_permalink() ); ?>"> Read more</a> -->
-									 <?php
-											echo get_category_tags_list(get_the_terms(get_the_ID(),'category'));
-									 ?>
-									 <hr>
-							<?php
-								 endwhile;
-								?>
-								<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/news' );?>">View All News</a>
-						<?php
-							else :
-								echo '<p>No admin news available.</p>';
-							endif;
-							?>
+							 print_admin_corner_news($category_posts);
+							 ?>
 
 					  </div>
 
