@@ -83,6 +83,7 @@ get_header();?>
                         </ol>
                     </p>
                 </section>
+                <hr/>
                 <div class="loader" hidden></div>
                 <div class="row" id="courseCatalog">
                     <?php print_workday_course_catalog($post_args); ?>

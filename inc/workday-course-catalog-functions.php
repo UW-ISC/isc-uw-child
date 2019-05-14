@@ -235,7 +235,7 @@ function get_term_count($term, $post_ids, $taxonomy){
 
 function print_filter_status_bar($selected_taxonomy_ids){
 	if(count($selected_taxonomy_ids) > 0) {
-		echo '<ul  id="filterStatus" class="h-list">';
+		echo '<ul  id="filterStatus" class="h-list"><label>Filters Applied:</label>';
 		foreach ($selected_taxonomy_ids as $taxonomy_id){
 			$filter_term = get_term($taxonomy_id);
 				echo '<li class="no-stylist">';
