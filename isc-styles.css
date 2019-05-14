@@ -2700,16 +2700,23 @@ p:empty {
 .long-button-link{
     color: #4b2e83;
     width: 100%;
-    padding: 10px 0px !important;
     display: inline-flex;
     border-radius: 5px;
     background-color: #d3d3d329;
     margin-bottom: 8px;
+    border: 1px solid #d3d3d3ab;
 }
 
 .long-button-main{
-    margin: 0em 1em;
-    max-width: 75%;
+    max-width: 95%;
+}
+
+@media (min-width:992px){
+    .long-button-main{
+        position: relative;
+        top: 50%;
+        transform: translate(0,-50%);
+    }
 }
 
 .long-button-link:hover, .long-button-link:focus{
@@ -2727,7 +2734,7 @@ p:empty {
 .long-button-body{
     width: 100%;
     display: inline-flex;   
-    padding: 1em 1em 0 1em;
+    padding: 0.5em 0.5em 0 0.5em;
 }
 
 .long-button-title{
@@ -2735,12 +2742,9 @@ p:empty {
 }
 
 .long-button .hover-link{
-    display: none;
-    position: relative;
-    float: right;
-    z-index: 1111;
-    right: 1em;
-    top: -5.5em;
+    display: block;
+    align-self: center;
+    margin: 0px 0.5em;
 }
 
 .long-button-title h4 {
@@ -2756,7 +2760,7 @@ p:empty {
 }
 
 .long-button a:hover, .long-button a:focus{
-    border: none !important;
+    /* border: none !important; */
 }
 
 .long-button-body .row{
@@ -2776,6 +2780,7 @@ p:empty {
     position: relative;
     left:50%;
     transform: translate(-50%);
+    max-width: 90%;
 }
 
 @media only screen and (min-width: 426px){

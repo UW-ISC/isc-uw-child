@@ -52,12 +52,12 @@ function isc_long_button( $atts, $content = '' ) {
 						<div class="long-button-main col-md-9">
 							<div class="long-button-title">
 								<h4 id="2-hcm-initiate-2">$title</h4>
+								<div class="fa fa-external-link fa-lg hover-link"></div>
 							</div>
 							<p>$content</p>
 						</div>
 					</div>
 				</div>
-				<div class="fa fa-external-link fa-lg hover-link"></div>
 			</a>
 		</div>
 akisujancdkan;
