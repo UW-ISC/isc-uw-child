@@ -117,6 +117,10 @@ get_header();?>
         return false;
     }
 
+    function handleCourseFilterChange(){
+        fromStart();
+    }
+
     function handleFilterClear(clearButton){
         $(clearButton).hide();
         var termId = clearButton.getAttribute('data-term-id');
