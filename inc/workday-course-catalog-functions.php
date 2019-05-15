@@ -66,27 +66,7 @@ function course_filter(){
 		);
 	}
 
-	$page_value = 0;
-	if(isset($_POST['page'])){
-		$page_value = $_POST['page'];
-	}
-
-	if(isset($_POST['sortBy'])){
-		if('date-updated' == $_POST['sortBy']){
-			$args['orderby'] = 'meta_value';
-			$args['meta_key'] = 'course-update-date';
-			$args['meta_type'] = 'DATE';
-		}
-	}else{
-		$args['orderby'] = 'title';
-	}
-
-	$args['order'] = 'ASC';
-	if(isset($_POST['sortOrder'])){
-		if('DESC' == $_POST['sortOrder']){
-			$args['order'] = 'DESC';
-		}
-	}
+	
 
 	print_workday_course_catalog($args, $page_value, $selected_taxonomy_ids);
 	die();
@@ -95,6 +75,27 @@ function course_filter(){
 function print_workday_course_catalog($post_args, $page_value = 0,  $selected_taxonomy_ids = array()){
 
 	$page_size = 10;
+
+	$page_value = 0;
+	if(isset($_POST['page'])){
+		$page_value = $_POST['page'];
+	}
+
+	$post_args['orderby'] = 'title';
+	if(isset($_POST['sortBy'])){
+		if('date-updated' == $_POST['sortBy']){
+			$post_args['orderby'] = 'meta_value';
+			$post_args['meta_key'] = 'course-update-date';
+			$post_args['meta_type'] = 'DATE';
+		}
+	}
+
+	$post_args['order'] = 'ASC';
+	if(isset($_POST['sortOrder'])){
+		if('DESC' == $_POST['sortOrder']){
+			$post_args['order'] = 'DESC';
+		}
+	}
 	
 	echo '<div class="col-md-4 course-filter-form">';
 		print_course_filter_form($post_args, $selected_taxonomy_ids);
@@ -107,6 +108,9 @@ function print_workday_course_catalog($post_args, $page_value = 0,  $selected_ta
 	echo '</div></div>';
 
 	echo '<div  id="coursePosts">';
+
+	
+	
 		$post_query = new WP_Query( $post_args );
 
 		
