@@ -83,6 +83,7 @@ get_header();?>
                         </ol>
                     </p>
                 </section>
+                <hr/>
                 <div class="loader" hidden></div>
                 <div class="row" id="courseCatalog">
                     <?php print_workday_course_catalog($post_args); ?>
@@ -114,11 +115,15 @@ get_header();?>
         return false;
     }
 
+    function handleCourseFilterChange(){
+        fromStart();
+    }
+
     function handleFilterClear(clearButton){
         $(clearButton).hide();
         var termId = clearButton.getAttribute('data-term-id');
         $('#courseFilterForm').find('[value='+ termId +']').prop("checked",false);
-        handleCourseFilterChange();
+        fromStart();
     }
 
     function handleFilterClearAll(clearAllButton){
@@ -126,7 +131,32 @@ get_header();?>
         $.each($("input[type='checkbox']:checked"),function (){
             $(this).prop("checked",false)
         });
-        handleCourseFilterChange();
+        fromStart();
+    }
+
+    function handleSortByChange(sel){
+        $("[name='sortBy']").attr('value',sel.value);
+        fromStart();
+    }
+
+    function handleSortOrderChange(icon){
+        let sortOrderValue = $(icon).attr('data-sort-order');
+        
+        switch(sortOrderValue){
+            case 'DESC':
+                $(icon).removeClass('fa-arrow-down');
+                $(icon).addClass('fa-arrow-up');
+                $(icon).attr('data-sort-order', 'ASC');
+                $("[name='sortOrder']").attr('value','ASC');
+                break;
+            default:
+                $(icon).removeClass('fa-arrow-up');
+                $(icon).addClass('fa-arrow-down');
+                $(icon).attr('data-sort-order', 'DESC');
+                $("[name='sortOrder']").attr('value','DESC');
+        }
+        fromStart();
+        
     }
 
     function attachAndSubmit(){
@@ -150,7 +180,7 @@ get_header();?>
         attachAndSubmit();
     }
 
-    function handleCourseFilterChange () {
+    function fromStart () {
         pageValue = 0;
         attachAndSubmit();
     }
