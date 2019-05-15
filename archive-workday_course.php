@@ -68,6 +68,8 @@ get_header();?>
                             'post_type' => 'workday_course',
                             'post_status' => 'publish',
                             'posts_per_page' => -1,
+                            'orderby' => 'title',
+                            'order'=> 'ASC'
                             );
 
                         ?>
@@ -128,6 +130,31 @@ get_header();?>
             $(this).prop("checked",false)
         });
         handleCourseFilterChange();
+    }
+
+    function handleSortByChange(sel){
+        $("[name='sortBy']").attr('value',sel.value);
+        attachAndSubmit();
+    }
+
+    function handleSortOrderChange(icon){
+        let sortOrderValue = $(icon).attr('data-sort-order');
+        
+        switch(sortOrderValue){
+            case 'DESC':
+                $(icon).removeClass('fa-arrow-down');
+                $(icon).addClass('fa-arrow-up');
+                $(icon).attr('data-sort-order', 'ASC');
+                $("[name='sortOrder']").attr('value','ASC');
+                break;
+            default:
+                $(icon).removeClass('fa-arrow-up');
+                $(icon).addClass('fa-arrow-down');
+                $(icon).attr('data-sort-order', 'DESC');
+                $("[name='sortOrder']").attr('value','DESC');
+        }
+        attachAndSubmit();
+        
     }
 
     function attachAndSubmit(){
