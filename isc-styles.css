@@ -1689,9 +1689,9 @@ a.uw-btn.btn-sm.btn-left {
 }
 
 .isc-simple-button {
-    color: #4b2e83;
+    color: #3d3d3d;
     background: white;
-    border: 1px solid #4b2e83;
+    border: 1px solid #bbbbbb;
     border-radius: 0px;
     display: inline-block;
     margin-bottom: 0;
@@ -1839,6 +1839,10 @@ a.uw-btn.btn-sm.btn-left {
 .no-stylist {
     list-style: none;
     padding-left: 0px;
+}
+
+.h-list .no-stylist{
+    margin-left: 3px;
 }
 
 .no-stylist .fui-radio-unchecked:before,
@@ -2515,7 +2519,7 @@ p:empty {
 
 .h-list li {
     display: inline;
-    padding-right: 4px;
+    margin:0 4px;
 }
 
 .nav-previous,
@@ -2703,5 +2707,10 @@ p:empty {
 .post-cta{
     position: relative;
     left: 50%;
+}
+
+.control-icon{
+    margin: 0 0.5em;
+    cursor: pointer;
 }
 /* Workday Learning Library - end */
