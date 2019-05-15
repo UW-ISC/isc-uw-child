@@ -121,7 +121,7 @@ get_header();?>
         $(clearButton).hide();
         var termId = clearButton.getAttribute('data-term-id');
         $('#courseFilterForm').find('[value='+ termId +']').prop("checked",false);
-        handleCourseFilterChange();
+        fromStart();
     }
 
     function handleFilterClearAll(clearAllButton){
@@ -129,12 +129,12 @@ get_header();?>
         $.each($("input[type='checkbox']:checked"),function (){
             $(this).prop("checked",false)
         });
-        handleCourseFilterChange();
+        fromStart();
     }
 
     function handleSortByChange(sel){
         $("[name='sortBy']").attr('value',sel.value);
-        attachAndSubmit();
+        fromStart();
     }
 
     function handleSortOrderChange(icon){
@@ -153,7 +153,7 @@ get_header();?>
                 $(icon).attr('data-sort-order', 'DESC');
                 $("[name='sortOrder']").attr('value','DESC');
         }
-        attachAndSubmit();
+        fromStart();
         
     }
 
@@ -178,7 +178,7 @@ get_header();?>
         attachAndSubmit();
     }
 
-    function handleCourseFilterChange () {
+    function fromStart () {
         pageValue = 0;
         attachAndSubmit();
     }

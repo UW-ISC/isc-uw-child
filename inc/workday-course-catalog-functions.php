@@ -215,11 +215,11 @@ askdnaknckascnkan;
 
 function print_sort_order_toggle(){
 	switch($_POST['sortOrder']){
-		case 'ASC':
-			echo '<i class="fa fa-arrow-up control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="ASC" ></i>';
+		case 'DESC':
+			echo '<i class="fa fa-arrow-down control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="DESC" ></i>';
 			break;
 		default:
-			echo '<i class="fa fa-arrow-down control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="DESC" ></i>';
+			echo '<i class="fa fa-arrow-up control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="ASC" ></i>';
 	}
 	
 }
@@ -255,8 +255,20 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 		print_filter_section( $keyed_taxonomies[$taxonomy_name], $term_args, $selected_taxonomy_ids, $post_ids);
 	}
 	echo  '<input type="hidden" name="page" value="0">';
-	echo  '<input type="hidden" name="sortBy" value="title">';
-	echo  '<input type="hidden" name="sortOrder" value="ASC">';
+
+	$sort_by_value = 'title';
+	if('date-updated' == $_POST['sortBy']){
+		$sort_by_value = 'date-updated';
+	}
+	
+	$sort_order_value = 'ASC';
+	if('DESC' == $_POST['sortOrder']){
+		$sort_order_value = 'DESC';
+	}
+	
+	echo  '<input type="hidden" name="sortBy" value="'.$sort_by_value.'">';
+	echo  '<input type="hidden" name="sortOrder" value="'.$sort_order_value.'">';
+
 	echo  '<input type="hidden" name="action" value="courseFilter"> </form>';
 }
 
