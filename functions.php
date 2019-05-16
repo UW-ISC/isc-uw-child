@@ -458,7 +458,7 @@ function print_news_item()
                 <div class="date-diff">$diff_display</div>
             </div>
             <div class="news-excerpt">
-                <div class='post-content'>$post_excerpt</div>
+                <div class='post-content limit-to-4-lines'>$post_excerpt</div>
                 <a class="more" title="$post_title" href="$post_link"> Read more</a>
             </div>
 igfjsdnokgfnsmf;
@@ -619,7 +619,7 @@ function print_admin_corner_news($admin_corner_news)
                     <div class="date-diff">$diff_display</div>
                 </div>
                 <div class="news-excerpt">
-                    <div class='post-content'>$post_excerpt</div>
+                    <div class='post-content limit-to-4-lines'>$post_excerpt</div>
                     <a class="more" title="$post_title" href="$post_link"> Read more</a>
                 </div>
 afwfqwafc;
