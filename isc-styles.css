@@ -2386,6 +2386,17 @@ p:empty {
         transform: rotate(360deg);
     }
 }
+
+.limit-to-4-lines{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-height: 27px;
+    max-height: 112px;
+}
+
 /* Fitler News by category - end*/
 
 
