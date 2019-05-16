@@ -60,7 +60,7 @@ get_header();?>
         <div class="uw-content col-md-12">
             <div id='main_content' class="uw-body-copy" tabindex="-1">
                 <section>
-                    <header class="page-header">
+                    <header class="isc-page-header">
                         <?php
                         the_archive_title( '<h1 class="page-title">', '</h1>' );
 
@@ -84,7 +84,6 @@ get_header();?>
                     </p>
                 </section>
                 <hr/>
-                <div class="loader" hidden></div>
                 <div class="row" id="courseCatalog">
                     <?php print_workday_course_catalog($post_args); ?>
                 </div>
@@ -116,14 +115,14 @@ get_header();?>
     }
 
     function handleCourseFilterChange(){
-        fromStart();
+        getResultsFromStart();
     }
 
     function handleFilterClear(clearButton){
         $(clearButton).hide();
         var termId = clearButton.getAttribute('data-term-id');
         $('#courseFilterForm').find('[value='+ termId +']').prop("checked",false);
-        fromStart();
+        getResultsFromStart();
     }
 
     function handleFilterClearAll(clearAllButton){
@@ -131,12 +130,12 @@ get_header();?>
         $.each($("input[type='checkbox']:checked"),function (){
             $(this).prop("checked",false)
         });
-        fromStart();
+        getResultsFromStart();
     }
 
     function handleSortByChange(sel){
         $("[name='sortBy']").attr('value',sel.value);
-        fromStart();
+        getResultsFromStart();
     }
 
     function handleSortOrderChange(icon){
@@ -155,7 +154,7 @@ get_header();?>
                 $(icon).attr('data-sort-order', 'DESC');
                 $("[name='sortOrder']").attr('value','DESC');
         }
-        fromStart();
+        getResultsFromStart();
         
     }
 
@@ -180,7 +179,7 @@ get_header();?>
         attachAndSubmit();
     }
 
-    function fromStart () {
+    function getResultsFromStart () {
         pageValue = 0;
         attachAndSubmit();
     }
