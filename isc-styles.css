@@ -1841,7 +1841,7 @@ a.uw-btn.btn-sm.btn-left {
     padding-left: 0px;
 }
 
-.h-list .no-stylist{
+.h-list .no-stylist {
     margin-left: 3px;
 }
 
@@ -2362,7 +2362,7 @@ p:empty {
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 .lds-dual-ring:after {
@@ -2387,7 +2387,7 @@ p:empty {
     }
 }
 
-.limit-to-4-lines{
+.limit-to-4-lines {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -2420,7 +2420,7 @@ p:empty {
     margin-bottom: 0px !important;
 }
 
-.news-post-item hr{
+.news-post-item hr {
     margin-top: 14px;
 }
 
@@ -2428,13 +2428,14 @@ p:empty {
     margin-bottom: 0px;
 }
 
-.news-post-item .more{
+.news-post-item .more {
     font-size: 16px;
 }
 
-.news-excerpt{
+.news-excerpt {
     margin-bottom: 0.5em;
 }
+
 /* Category hyperlinks - end*/
 
 
@@ -2530,7 +2531,7 @@ p:empty {
 
 .h-list li {
     display: inline;
-    margin:0 4px;
+    margin: 0 4px;
 }
 
 .nav-previous,
@@ -2574,40 +2575,40 @@ p:empty {
     overflow: hidden;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 @media only screen and (max-width: 425px) {
-    .uw-body-overlay-dialog{
+    .uw-body-overlay-dialog {
         min-width: 90vw !important;
     }
 
-    .uw-body-overlay-dialog-main{
+    .uw-body-overlay-dialog-main {
         max-height: 60vh !important;
     }
 }
 
 @media only screen and (min-width: 426px) and (max-width: 1440px) {
-    .uw-body-overlay-dialog{
+    .uw-body-overlay-dialog {
         min-width: 80vw !important;
         min-height: 60vh;
     }
 }
 
 @media only screen and (min-width: 1441px) and (max-width: 1440px) {
-    .uw-body-overlay-dialog{
+    .uw-body-overlay-dialog {
         min-width: 80vw !important;
         min-height: 60vh;
     }
 }
 
-.uw-body-overlay-dialog-header h1{
+.uw-body-overlay-dialog-header h1 {
     margin-top: 10px;
     margin-bottom: 1em;
     margin-left: 10px;
     margin-right: 10px;
     padding-top: 0;
-    
+
 }
 
 .uw-body-overlay-dialog-close {
@@ -2617,7 +2618,7 @@ p:empty {
     cursor: pointer;
 }
 
-.uw-body-overlay-dialog-main{
+.uw-body-overlay-dialog-main {
     max-height: 45vh;
     padding-bottom: 46px;
     padding-left: 1em;
@@ -2628,13 +2629,13 @@ p:empty {
 
 
 
-@media (max-width: 768px){
-    .uw-body-overlay-dialog-img{
+@media (max-width: 768px) {
+    .uw-body-overlay-dialog-img {
         display: none;
     }
 }
 
-.uw-body-overlay-dialog-footer{
+.uw-body-overlay-dialog-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -2642,7 +2643,7 @@ p:empty {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));
 }
 
-.uw-body-overlay-primary-action{
+.uw-body-overlay-primary-action {
     float: right;
     right: 48px;
 }
@@ -2660,7 +2661,7 @@ p:empty {
     padding: 15px !important;
 }
 
-.workday-course-cover-image-container-portrait{
+.workday-course-cover-image-container-portrait {
     display: none;
     height: 13em;
     background-repeat: no-repeat;
@@ -2670,10 +2671,10 @@ p:empty {
 
 @media (max-width: 600px) {
     .workday-course-cover-image-container {
-       display: none;
+        display: none;
     }
 
-    .workday-course-cover-image-container-portrait{
+    .workday-course-cover-image-container-portrait {
         display: block;
     }
 }
@@ -2687,7 +2688,7 @@ p:empty {
     margin-top: 1em;
 }
 
-.workday-layout-table{
+.workday-layout-table {
     border: none !important;
 }
 
@@ -2695,33 +2696,42 @@ p:empty {
     background-color: white !important;
 }
 
-.table-cell-list-item{
+.table-cell-list-item {
     margin-right: 1em;
     display: inherit;
     border-bottom: 1px solid grey;
     padding: 0px 6px;
 }
 
-.table-cell-label{
-    text-align:right;
+.table-cell-label {
+    text-align: right;
     padding-top: 8px !important;
 }
 
-.no-stylist-table{
+.no-stylist-table {
     border: none;
 }
 
-.no-stylist-table td{
+.no-stylist-table td {
     background: white !important;
 }
 
-.post-cta{
+.post-cta {
     position: relative;
     left: 50%;
 }
 
-.control-icon{
+.control-icon {
     margin: 0 0.5em;
     cursor: pointer;
 }
+
 /* Workday Learning Library - end */
+
+/* Tablepress border - start */
+
+.tablepress {
+    border: 1px solid #E7E7E7 !important;
+}
+
+/* Tablepress border - end */
