@@ -2386,20 +2386,20 @@ p:empty {
         transform: rotate(360deg);
     }
 }
-
-
 /* Fitler News by category - end*/
+
 
 /* Category hyperlinks - start*/
 
 .isc-news-category-tag-container {
     list-style: none;
     padding-left: 0px !important;
+    font-size: 14px;
 }
 
 .isc-news-category-tag {
     border: solid 1px #ddd;
-    margin-right: 8px;
+    margin-left: 8px;
     margin-top: 5px;
     padding: 0px 10px;
     display: inline-block;
@@ -2409,6 +2409,21 @@ p:empty {
     margin-bottom: 0px !important;
 }
 
+.news-post-item hr{
+    margin-top: 14px;
+}
+
+.news-post-item .post-content p {
+    margin-bottom: 0px;
+}
+
+.news-post-item .more{
+    font-size: 16px;
+}
+
+.news-excerpt{
+    margin-bottom: 0.5em;
+}
 /* Category hyperlinks - end*/
 
 

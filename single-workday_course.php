@@ -14,7 +14,9 @@ get_header();
 	<?php 
 		uw_site_title();
 		get_template_part( 'menu', 'mobile' );
-		the_page_header(true, false, false, true );
+		the_page_header([
+			'use_date' => false
+		]);
 	?>
 
 	<div class="container uw-body">
