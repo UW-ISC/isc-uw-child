@@ -10,7 +10,10 @@ get_header();
 	  $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
 	  $sidebar = get_post_meta( $post->ID, 'sidebar' );   
 	  echo "<br>";
-	  the_page_header(false, true, true);
+	  the_page_header([
+		  'use_breadcrumbs' => false,
+		  'use_created_date' => true
+	  ]);
 ?>
 
 <div role="main">

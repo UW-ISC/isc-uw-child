@@ -16,25 +16,6 @@ get_header();
 	<?php uw_site_title(); ?>
 	<?php get_template_part( 'menu', 'mobile' ); ?>
 
-	<!-- removing search field and title JAB 061418 
-	<div class="isc-admin-hero">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2><?php the_title(); ?></h2>
-
-					<form method="get" id="searchform" class="searchform" action="<?php echo esc_url( get_site_url() ); ?>">
-						<div role="search">
-							<label class="screen-reader-text" for="s">Search the ISC:</label>
-							<input type="text" value="" name="s" id="s" placeholder="Search the ISC:" autocomplete="off">
-							<input type="submit" id="searchsubmit" value="Search">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	-->
 	<div class="container uw-body">
 
 		<!-- adding title JAB 061418 -->
@@ -129,21 +110,23 @@ EOT;
 						 if (!is_int(news_stale_after)) {
 						 	$news_stale_after = 3;
 						 }
-						 $news_stale_after_days_plus_one = $news_stale_after+1;
-						$args = array(
-										  'tax_query' => array(
-											  array(
-												  'taxonomy' => 'location',
-												  'field'    => 'slug',
-												  'terms'    => 'admin-corner-news',
-											  ),
-										  ),
-										  'posts_per_page' => 5,
-										  'post_status' => 'publish',
-										  'date_query' => array(
-										  	'after' => date('Y-m-d', strtotime('-'.$news_stale_after_days_plus_one.' days'))
-										  )
-										);
+						 $news_stale_after_days_plus_one = $news_stale_after + 1;
+						 $after_date = date('Y-F-d', strtotime('- '.$news_stale_after_days_plus_one.' days'));
+
+							$args = array(
+												'tax_query' => array(
+													array(
+														'taxonomy' => 'location',
+														'field'    => 'slug',
+														'terms'    => 'admin-corner-news',
+													),
+												),
+												'posts_per_page' => 5,
+												'post_status' => 'publish',
+												'date_query' => array(
+													'after' => $after_date
+												)
+											);
 						$category_posts = new WP_Query( $args );
 						$new_news_count = $category_posts->found_posts;
 						if($new_news_count > 0){
@@ -212,11 +195,7 @@ EOT;
 						</script>	
 					
 					<div id="adminNewsPosts">
-
-
 							<?php
-
-
 							 $args = array(
 									  'tax_query' => array(
 										  array(
@@ -230,61 +209,8 @@ EOT;
 							 );
 							 $category_posts = new WP_Query( $args );
 
-							 if ( $category_posts->have_posts() ) :
-								 while ( $category_posts->have_posts() ) :
-									 $category_posts->the_post();
-							 
-								    $diff_str = esc_html( human_time_diff( get_the_time('U'), current_time('timestamp') ) );
-								    $diff_display =  esc_html( '('.human_time_diff( get_the_time('U'), current_time('timestamp') ) ).' ago)';
-								    $diff_arr = explode(" ", $diff_str);
-								    $diff_unit = $diff_arr[1];
-
-								    
-
-								    $new_post = false;
-								    $new_label = '';
-								   
-								    if(strpos($diff_unit, 'second') !== false ||
-								    	strpos($diff_unit, 'min') !== false ||
-								    	strpos($diff_unit, 'hour') !== false){
-								    	$new_post = true;
-								    }
-								    else if(strpos($diff_unit, 'day') !== false){
-								    	
-								    	$diff_value = (int)$diff_arr[0];
-
-								    	if($diff_value <= $news_stale_after){
-								    		$new_post = true;
-								    		$new_news_count += 1;
-								    	}
-								    }
-								    if($new_post) {
-								   		 $new_label = '<span class="new-news-label">new</span>';
-								   	}
-
-								   	?>
-								   <div class="line">
-								   		<h4><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title()?></a><?php echo $new_label; ?></h4>
-								   	</div><br>
-								   <div class="line">
-								   	<div class="update-date"><?php echo get_the_date(); ?></div>
-								   	<div class="date-diff"><?php echo $diff_display; ?></div>
-								   </div>
-								   <div class='post-content'><?php the_excerpt() ?></div>
-									 <!-- <a class="more" title="<?php the_title()?>" href="<?php echo esc_url( get_permalink() ); ?>"> Read more</a> -->
-									 <?php
-											echo get_category_tags_list(get_the_terms(get_the_ID(),'category'));
-									 ?>
-									 <hr>
-							<?php
-								 endwhile;
-								?>
-								<a class="uw-btn btn-sm" href="<?php echo esc_url( get_site_url() . '/news' );?>">View All News</a>
-						<?php
-							else :
-								echo '<p>No admin news available.</p>';
-							endif;
-							?>
+							 print_admin_corner_news($category_posts);
+							 ?>
 
 					  </div>
 
@@ -294,73 +220,6 @@ EOT;
 			</div>
 
 			<div class="col-md-4 uw-sidebar isc-sidebar" role="">
-
-				<!-- <h3 class="isc-admin-header">At A Glance</h3>
-				<div class="contact-widget-inner isc-widget-tan isc-admin-block">
-				  <div class='post-content isc-events'>
-					<?php
-					if ( function_exists( 'tribe_get_events' ) ) {
-						$events = tribe_get_events(
-							array(
-							'posts_per_page' => 1,
-							'post_status' => 'publish',
-							'start_date' => current_time( 'Y-m-d H:i' ),
-							)
-						);
-						if ( empty( $events ) ) {
-							echo 'No events found.';
-						} else {
-							$current = $events[0];
-							$title = $current->post_title;
-							$html = '<h4><a href="' . get_post_permalink( $current->ID ) . '">' . $title . '</a> </h4>';
-							// Hiding Date - JB 081618 //
-							/*
-							$html .= "<div class='event-date'>" . tribe_get_start_date( $current ) . '</div>';
-							*/
-
-							// Hiding Location info - JB 081518 //
-							/*							
-							if ( tribe_has_venue( $current->ID ) ) {
-								$details = tribe_get_venue_details( $current->ID );
-								$html .= "<div class='event-location'><i class='fa fa-map-marker' aria-hidden='true'></i> " . $details['linked_name'];
-								$html .= $details['address'];
-
-								if ( tribe_show_google_map_link( $current ) ) {
-									$html .= tribe_get_map_link_html( $current );
-								}
-
-								$html .= '</div>';
-
-							} else {
-								$html .= "<div class='event-location'>Location: TBD</div>";
-							}
-							*/
-
-							if ( has_excerpt( $current->ID ) ) {
-								$html .= "<div class='event-content'>" . $current->post_excerpt . '</div>';
-							} else {
-								$html .= "<div class='event-content'>No description found.</div>";
-							}
-							echo $html;
-						}
-					} else {
-						// we cannot find the plugin as the function tribe_get_events does not exist.
-						echo 'The Event Calendar plugin cannot be found!';
-					}// End if().
-					?>
-				  </div>
-
-					<?php
-					if ( ! empty( $events ) ) {
-						// we only want to show the More Info button if a future event exists.
-						$events_url = get_site_url() . '/events/';
-						echo '<a class="uw-btn btn-sm" href="' . esc_url( $events_url ) . '"?>More Info</a>';
-					}
-					?>
-				</div> -->
-
-				<!-- <div class="row"> -->
-						<!-- <div class="col-md-12" style="margin-bottom: 2em;"> -->
 						<div class="service-links">
 							<?php
 							wp_nav_menu(
@@ -371,10 +230,6 @@ EOT;
 							);
 							?>
 						</div>
-					<!-- </div> -->
-
-	
-
 			</div>
 
 		</div>

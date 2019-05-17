@@ -63,6 +63,7 @@ class UW {
 
 		include_once get_stylesheet_directory() . '/inc/child-template-functions.php';
 		include_once get_stylesheet_directory() . '/inc/user-guide-functions.php';
+		include_once get_stylesheet_directory() . '/inc/workday-course-catalog-functions.php';
 		include_once get_stylesheet_directory() . '/inc/front-page-functions.php';
 		include_once get_stylesheet_directory() . '/inc/footer-fields.php';
 		include_once get_stylesheet_directory() . '/inc/breadcrumbs.php';
