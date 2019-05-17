@@ -29,22 +29,20 @@ get_header();
 			<div class="col-md-12" id="main_content">
 
 				<?php isc_title(); ?>
-
-				
-				<div style="margin-bottom:1em; font-size: 14px;">
-					<div class="row">
-						<div class="col-md-9 form-inline">
-							<label>Filter by Keyword:</label>
-							<input id="myInputTextField" type="text" class="form-control" style="width:inherit;border-radius:0px;" >
-						</div>
-						<div style="float: right">
-								<button id="clearFiltersBtn" class="isc-simple-button">
-									<i class="fa fa-close isc-btn-icon"></i>clear filters
-								</button>
+				<div class="row">
+					<div class="col-md-3 col-lg-2" style="width: fit-content !important;padding-right: 0;">
+						<label style="line-height:41px;margin-right: 5px;">Filter by Keyword:</label>
+					</div>
+					<div class="col-sm-9 col-lg-10">
+						<div class="line">
+							<input id="myInputTextField" type="text" class="form-control no-rounded-border" style="max-width:250px;">
+							<button id="clearFiltersBtn" class="control-icon isc-simple-button" >
+											<i class="fa fa-close isc-btn-icon"></i>clear filters
+							</button>
 						</div>
 					</div>
 				</div>
-
+												
 				<h2 class="sr-only">User Guides</h2>
 
 				<table id="user_guide_lib" class="table primary-isc-table table-striped-alt" style="border:none !important;">
