@@ -744,4 +744,22 @@ function print_var($label, $obj){
     echo "<br>";
 }
 
+/**
+ * This function tries to get the value of the option with 'key' from a privately published "Site Content Options" page with slug 'site-content-options'.
+ * If the said page or the option with provided key is not found, it will return the 'default' value.
+ * 
+ * @param string $option_key meta key of the option.
+ * @param string $default_value default value to use if Options page or the option with provided key is not found.
+ */
+function get_site_content($option_key, $default_value){
+    $options_page = get_page_by_path('site-content-options');
+    if(null != $options_page){
+        $option_value = get_post_meta($options_page->ID, $option_key);
+        if(!empty($option_value)){
+            return $option_value;
+        }
+    }
+    return $default_value;
+}
+
 ?>
