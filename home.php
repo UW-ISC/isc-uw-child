@@ -8,24 +8,34 @@
 
 get_header();
 $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
-$sidebar = get_post_meta($post->ID, 'sidebar');?>
+$sidebar = get_post_meta($post->ID, 'sidebar');
+?>
 
 <div role="main">
 	<div class="full-screen-mask-dark" hidden>
 		<div class="lds-dual-ring"></div>
 	</div>
 
-	<?php uw_site_title();?>
-	<?php get_template_part('menu', 'mobile');?>
+	
+	<?php
+		$post_type = get_post_type_object( get_post_type() );
+
+		if(isset($post_type->labels->blog_display)){
+			$page_title = $post_type->labels->blog_display;
+		}
+		else{
+			$page_title = get_the_title(get_option('page_for_posts', true));
+		}
+		uw_site_title();
+		get_template_part( 'menu', 'mobile' );
+		the_page_header([
+			'use_date' => false,
+			'title' =>  $page_title
+		]);
+	?>
 
 	<div class="container uw-body">
-
-		<div class="row">
-			<div class="col-md-12">
-				<?php get_template_part('breadcrumbs');?>
-			</div>
-		</div>
-
+		
 		<div class="row">
 
 			<div class="uw-content col-md-9">
@@ -33,8 +43,6 @@ $sidebar = get_post_meta($post->ID, 'sidebar');?>
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
 					<?php log_to_console('home.php'); ?>
-
-					<h1><?php echo get_the_title(get_option('page_for_posts', true)); ?></h1>
 
 					<form method="GET" id="filter" style="margin-bottom:15px">
 						<input type="hidden" name="taxonomy" value="category">

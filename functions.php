@@ -72,6 +72,7 @@ function isc_change_post_object()
     global $wp_post_types;
     $labels = &$wp_post_types['post']->labels;
     $labels->name = 'News';
+    $labels->blog_display = 'Admins\' News';
     $labels->singular_name = 'News';
     $labels->add_new = 'Add News';
     $labels->add_new_item = 'Add News';
@@ -137,7 +138,17 @@ function isc_excerpt_more($excerpt)
  * @param boolean $use_created_date if true then echoes the date of creation of the post, else echoes the last date of modification of post along with approriate label.
  * @param boolean $echo if true then echoes the header HTML, else returns the header HTML.
  */
-function the_page_header( $use_breadcrumbs = true, $use_date = true, $use_created_date = false, $echo = true ) {
+function the_page_header( $options = []) {
+
+    $use_breadcrumbs = true;
+    $use_date = true;
+    $use_created_date = false;
+    $use_title = true;
+    $title ='';
+    $echo = true;
+    
+    extract($options);
+
 	if($use_breadcrumbs){
 		$breadcrumbs_html = get_uw_breadcrumbs();
 	}
@@ -145,7 +156,7 @@ function the_page_header( $use_breadcrumbs = true, $use_date = true, $use_create
 		$breadcrumbs_html = ' ';
 	}
 
-	$title_html = isc_title(false);
+	
 	
 	if($use_date) {
 		if(! $use_created_date){
@@ -159,7 +170,26 @@ function the_page_header( $use_breadcrumbs = true, $use_date = true, $use_create
 	} else {
 		$date_decription = '';
 		$date = '';
-	}
+    }
+
+    $title_html = '';
+    
+    if($use_title){
+
+        if('' == $title){
+            $title_value = isc_title(false);
+        }
+        else{
+            $title_value = '<h1 class="title">' . $title  . '</h1>';
+        }
+
+        $title_html = <<<ofjakjfnnefniejroa
+            <div class="title-n-info">
+                $title_value
+                <div class="isc-updated-date"> $date_decription  $date </div>
+            </div>
+ofjakjfnnefniejroa;
+    }
 
     $page_header = <<<djajnokdnvn
 	<div class="isc-page-header">
@@ -168,11 +198,8 @@ function the_page_header( $use_breadcrumbs = true, $use_date = true, $use_create
 				<div class="col-md-12">
 					$breadcrumbs_html
 				</div>
-			</div>
-			<div class="title-n-info">
-				$title_html
-				<div class="isc-updated-date"> $date_decription  $date </div>
-			</div>
+            </div>
+            $title_html
 		</div>
 	</div>
 djajnokdnvn;
@@ -430,12 +457,14 @@ function print_news_item()
                 <div class="update-date">$post_update_date</div>
                 <div class="date-diff">$diff_display</div>
             </div>
-            <div class='post-content'>$post_excerpt</div>
-            <a class="more" title="$post_title" href="$post_link"> Read more</a>
+            <div class="news-excerpt">
+                <div class='post-content limit-to-4-lines'>$post_excerpt</div>
+                <a class="more" title="$post_title" href="$post_link"> Read more</a>
+            </div>
 igfjsdnokgfnsmf;
 
     $html .= get_category_tags_list($post_categories);
-    $html .= '</div><hr>';
+    $html .= '<hr></div>';
 
     echo $html;
 }
@@ -481,44 +510,47 @@ function print_news($query = null)
 
 add_action('isc_request_ajax_adminNewsFilter', 'admin_news_filter_function');
 add_action('isc_request_ajax_nopriv_adminNewsFilter', 'admin_news_filter_function');
-function admin_news_filter_function()
-{
 
-    if ($_POST['categoryfilter'] == 'select') {
-        $args = array(
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'location',
-                    'field' => 'slug',
-                    'terms' => 'admin-corner-news',
-                ),
-            ),
-            'posts_per_page' => 5,
-            'post_status' => 'publish',
-        );
-    } else {
+function admin_news_filter_function(){
 
-        $args = array(
-            'tax_query' => array(
-                'relation' => 'AND',
-                array(
-                    'taxonomy' => 'location',
-                    'field' => 'slug',
-                    'terms' => 'admin-corner-news',
-                ),
-                array(
-                    'taxonomy' => 'category',
-                    'field' => 'id',
-                    'terms' => $_POST['categoryfilter'],
-                ),
-            ),
-            'posts_per_page' => 5,
-            'post_status' => 'publish',
-        );
-    }
-    $query = new WP_Query($args);
-    print_admin_corner_news($query);
-    die();
+	//show all for default selection
+	if($_POST['categoryfilter'] == 'select'){
+		$args = array(
+				  'tax_query' => array(
+					  array(
+						  'taxonomy' => 'location',
+						  'field'    => 'slug',
+						  'terms'    => 'admin-corner-news',
+					  ),
+				  ),
+				  'posts_per_page' => 5,
+				  'post_status' => 'publish',
+		 );
+	}
+	//apply taxonomy query if category filter is not default
+	else {
+
+		$args = array(
+				'tax_query' => array(
+						'relation' => 'AND',
+						array(
+						  'taxonomy' => 'location',
+						  'field'    => 'slug',
+						  'terms'    => 'admin-corner-news',
+					  	),
+					  	array(
+							'taxonomy' => 'category',
+							'field' => 'id',
+							'terms' => $_POST['categoryfilter']
+						)
+					),
+				  'posts_per_page' => 5,
+				  'post_status' => 'publish'
+		 );
+	}
+	$query = new WP_Query( $args );
+	print_admin_corner_news($query);
+	die();
 }
 
 function print_admin_corner_news($admin_corner_news)
@@ -576,20 +608,23 @@ function print_admin_corner_news($admin_corner_news)
             $post_excerpt = get_the_excerpt();
 
             $html = <<<afwfqwafc
-		   	<div class="line">
-				<h4><a href="$post_link">$post_title</a>
-				   $new_label
-				</h4>
-            </div><br>
-            <div class="line">
-                <div class="update-date">$post_date</div>
-                <div class="date-diff">$diff_display</div>
-            </div>
-            <div class='post-content'>$post_excerpt</div>
-            <a class="more" title="$post_title" href="$post_link"> Read more</a>
+            <div class="news-post-item">
+                <div class="line">
+                    <h4><a href="$post_link">$post_title</a>
+                    $new_label
+                    </h4>
+                </div><br>
+                <div class="line">
+                    <div class="update-date">$post_date</div>
+                    <div class="date-diff">$diff_display</div>
+                </div>
+                <div class="news-excerpt">
+                    <div class='post-content limit-to-4-lines'>$post_excerpt</div>
+                    <a class="more" title="$post_title" href="$post_link"> Read more</a>
+                </div>
 afwfqwafc;
             $html .= get_category_tags_list(get_the_terms(get_the_ID(),'category'));
-            $html .= '<hr>';
+            $html .= '<hr></div>';
             echo $html;
         }
         echo '<a class="uw-btn btn-sm" href="' . get_site_url() . '/news?taxonomy=category&tag_ID=' . $category_id . '">View All ' . $category_label . 'News</a>';
@@ -608,13 +643,14 @@ function get_media_url_from_title($title)
 {
     $args = array(
         'post_type' => 'attachment',
-        'title' => sanitize_title($title),
+        'title' => $title,
         'posts_per_page' => 1,
         'sort_column' => 'post_date',
         'sort_order' => 'desc',
         'post_status' => 'inherit',
     );
     $query_results = get_posts($args);
+    
     $attachment = $query_results ? array_pop($query_results) : null;
     return $attachment ? wp_get_attachment_url($attachment->ID) : '';
 }
@@ -741,5 +777,31 @@ oahfnmnfjhnfu;
 add_shortcode( 'isc-milestone', 'isc_milestone' );
 
 // Milestones - end
+
+
+function print_var($label, $obj){
+	return;
+    echo "<br><br>====". $label . "=====<br>";
+    print_r($obj);
+    echo "<br>";
+}
+
+/**
+ * This function tries to get the value of the option with 'key' from a privately published "Site Content Options" page with slug 'site-content-options'.
+ * If the said page or the option with provided key is not found, it will return the 'default' value.
+ * 
+ * @param string $option_key meta key of the option.
+ * @param string $default_value default value to use if Options page or the option with provided key is not found.
+ */
+function get_site_content($option_key, $default_value){
+    $options_page = get_page_by_path('site-content-options');
+    if(null != $options_page){
+        $option_value = get_post_meta($options_page->ID, $option_key);
+        if(!empty($option_value)){
+            return $option_value;
+        }
+    }
+    return $default_value;
+}
 
 ?>
