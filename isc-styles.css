@@ -2227,6 +2227,10 @@ p:empty {
     border: solid 1px #d3d3d387;
 }
 
+.auto-height-card{
+    min-height: auto !important;
+}
+
 @media (min-width: 992px) {
     .card-box-33 {
         min-height: 520px;
@@ -2386,6 +2390,17 @@ p:empty {
         transform: rotate(360deg);
     }
 }
+
+.limit-to-4-lines{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-height: 27px;
+    max-height: 112px;
+}
+
 /* Fitler News by category - end*/
 
 
@@ -2714,3 +2729,117 @@ p:empty {
     cursor: pointer;
 }
 /* Workday Learning Library - end */
+
+/* Long button - start*/
+
+.long-button-link{
+    color: #4b2e83;
+    width: 100%;
+    display: inline-flex;
+    border-radius: 5px;
+    background-color: #d3d3d329;
+    margin-bottom: 8px;
+    border: 1px solid #d3d3d3ab;
+}
+
+.long-button-main{
+    max-width: 95%;
+}
+
+@media (min-width:992px){
+    .long-button-main{
+        position: relative;
+        top: 50%;
+        transform: translate(0,-50%);
+    }
+}
+
+.long-button-link:hover, .long-button-link:focus{
+    background: #eeeeee;
+}
+
+.long-button-link:hover .hover-link, .long-button a:focus .hover-link{
+    display: block !important;
+}
+.long-button-link{
+    display: block;
+    width: 100%;
+}
+
+.long-button-body{
+    width: 100%;
+    display: inline-flex;   
+    padding: 0.5em 0.5em 0 0.5em;
+}
+
+.long-button-title{
+    display: inline-flex;
+}
+
+.long-button .hover-link{
+    display: block;
+    align-self: center;
+    margin: 0px 0.5em;
+}
+
+.long-button-title h4 {
+    width: 100%;
+    font-weight: 600;
+    margin: 0px !important;
+    color: #4b2e83;
+}
+
+.long-button a:hover h4, .long-button a:focus h4{
+    text-decoration: underline !important;
+    color: #85754d;
+}
+
+.long-button a:hover, .long-button a:focus{
+    /* border: none !important; */
+}
+
+.long-button-body .row{
+    width:100%;
+}
+
+.long-button-img{
+    padding-bottom: 1em;
+}
+
+.long-button-link>p{
+    display: none;
+}
+
+
+.long-button-img img{
+    position: relative;
+    left:50%;
+    transform: translate(-50%);
+    max-width: 90%;
+}
+
+@media only screen and (min-width: 426px){
+    .long-button-img{
+        min-width:auto;
+    }
+}
+
+@media only screen and (max-width: 960px){
+    .long-button-main{
+        position: relative;
+        left:50%;
+        transform: translate(-50%);
+    }
+}
+
+.long-button-img img:hover, .long-button-img img:focus{
+    outline: none !important;
+}
+
+.long-button a:hover img, .long-button a:focus img{
+    outline: none !important;
+}
+
+
+/* Long button - end*/
+
