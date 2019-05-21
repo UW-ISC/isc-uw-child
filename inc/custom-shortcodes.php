@@ -43,7 +43,7 @@ function isc_long_button( $atts, $content = '' ) {
 
 	$out = <<<akisujancdkan
 		<div class="long-button">
-			<a class="long-button-link" href="$url" target="_blank">
+			<a class="long-button-link" href="$url">
 				<div class="long-button-body">
 					<div class="row">
 						<div class="long-button-img col-md-2">
