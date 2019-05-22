@@ -656,6 +656,47 @@ function get_media_url_from_title($title)
 }
 
 /**
+ * ISC card Shortcode
+ * This shortcode will create a card (similar to a material design cards) with boxed shadow.
+ * Cards can be arranged in responsive grids for better page navigation.
+ * This card has 4 sections:
+ *     1. url: Image or Icon Url
+ *     2. title: Card title text
+ *     3. description (HTML enclosed with the shortcode): short excerpt or description of concept housed in this card.
+ *     4. button_text: Label for the bottom call-to-action or link button.
+ *  5. button_link: Url for call-to-action button or link.
+ *
+ * Usage eg.
+ *     [card url="http://localhost/hrp-portal/wp-content/uploads/2019/02/wd-applet-career.png" title="Employee" button_text="Employee Training" button_link="https://isc.uw.edu/support-resources/workday-training/workday-training-for-employees/"]
+ *  I am looking for guidance to help me use Workday to add, make changes to, or take action on my own account.
+ *  [/card]
+ * @param string $atts Img Url, title, description, CTA label and CTA link attributes.
+ */
+function isc_card($atts, $content = null)
+{
+    extract(shortcode_atts(array(
+        'url' => '',
+        'title' => '',
+        'button_link' => '',
+        'button_text' => '',
+    ),
+        $atts));
+
+    $out = '<div class="card-box-33 col-md-3">
+		<img src="' . $url . '" class="card-grid-icon">
+		<h5 class="card-grid-title" >' . $title . '</h5>
+		<p class="card-grid-decription" >' . $content . '</p>
+		<h4 class="card-grid-link" title="' . $button_text . '">
+			<a class="uw-btn btn-sm" href="' . $button_link . '" target="_blank" rel="noopener noreferrer">' . $button_text . '</a>
+		</h4>
+		</div>
+		';
+    return $out;
+}
+
+add_shortcode( 'card', 'isc_card' );
+
+/**
  * This function prints (if echo param is not false) the HTML for an announcement item (icon, title, post content)
  * 
  * @param boolean $echo Specify wether to echo (true) or print (false)
@@ -693,6 +734,49 @@ erhvsfvsfsza;
 		return $announcement_html;
 	}
 }
+
+// Milestones - start
+
+/**
+ * ISC Milestone Shortcode
+ * This shortcode should be used for consistent presentation of milestones inside content or articles.
+ * This milestone has an icon (associated with its type) and user defined content.
+ * It will be wrapped between two horizontal lines with appropriate padding and margins to seperate it from page content.
+ * 
+ * Valid value for type attribute: done, routing, important, pause
+ * 
+ * Usage eg.
+ *     [isc-milestone type="done"]
+ *          At this point the process has been fully approved.
+ *     [/isc-milestone]
+ * 
+ * @param string $atts type.
+ */
+function isc_milestone($atts, $content = null)
+{
+    extract(shortcode_atts(array(
+        'type' => 'done',
+    ),
+        $atts));
+    
+    $content = html_entity_decode($content);
+    
+    $out = <<<oahfnmnfjhnfu
+    <hr>
+    <ul class="line no-stylist">
+        <li class="bullet line-height-proper">
+            <i class="fa isc-milestone-icon isc-milestone-$type" ></i>
+        </li>
+        <li class="line-height-proper right-padding" >$content</li>
+    </ul>
+    <hr>
+oahfnmnfjhnfu;
+
+    return $out;
+}
+add_shortcode( 'isc-milestone', 'isc_milestone' );
+
+// Milestones - end
 
 
 function print_var($label, $obj){
