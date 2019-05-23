@@ -22,7 +22,8 @@ $action = esc_attr($_POST['action']);
  
 //A bit of security
 $allowed_actions = array(
-    'adminNewsFilter'
+    'adminNewsFilter',
+    'courseFilter'
 );
  
 if(in_array($action, $allowed_actions)){
