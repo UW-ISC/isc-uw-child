@@ -2492,6 +2492,15 @@ p:empty {
     padding-right: 3em;
 }
 
+hr {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.isc-milestone {
+    margin-bottom: 0px;
+}
+
 /* Milestone - end*/
 
 
