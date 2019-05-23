@@ -2893,5 +2893,8 @@ p:empty {
     outline: none !important;
 }
 
+.long-button>p{
+    display: none;
+}
 
 /* Long button - end*/

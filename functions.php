@@ -792,11 +792,12 @@ function print_var($label, $obj){
  * 
  * @param string $option_key meta key of the option.
  * @param string $default_value default value to use if Options page or the option with provided key is not found.
+ * @param boolean $$single If true, returns only the first value for the specified meta key. Default value: false
  */
-function get_site_content($option_key, $default_value){
+function get_site_option_value($option_key, $default_value, $single = false){
     $options_page = get_page_by_path('site-content-options');
     if(null != $options_page){
-        $option_value = get_post_meta($options_page->ID, $option_key);
+        $option_value = get_post_meta($options_page->ID, $option_key, $single);
         if(!empty($option_value)){
             return $option_value;
         }
