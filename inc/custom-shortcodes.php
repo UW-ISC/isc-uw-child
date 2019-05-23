@@ -175,7 +175,7 @@ function isc_milestone($atts, $content = null)
     
     $out = <<<oahfnmnfjhnfu
     <hr>
-    <ul class="line no-stylist">
+    <ul class="line no-stylist isc-milestone">
         <li class="bullet line-height-proper">
             <i class="fa isc-milestone-icon isc-milestone-$type" ></i>
         </li>
