@@ -43,7 +43,7 @@ function isc_long_button( $atts, $content = '' ) {
 
 	$out = <<<akisujancdkan
 		<div class="long-button">
-			<a class="long-button-link" href="$url" target="_blank">
+			<a class="long-button-link" href="$url">
 				<div class="long-button-body">
 					<div class="row">
 						<div class="long-button-img col-md-2">
@@ -146,3 +146,46 @@ function isc_expander( $atts, $content = null ) {
 
 }
 add_shortcode( 'expand', 'isc_expander' );
+
+// Milestones - start
+
+/**
+ * ISC Milestone Shortcode
+ * This shortcode should be used for consistent presentation of milestones inside content or articles.
+ * This milestone has an icon (associated with its type) and user defined content.
+ * It will be wrapped between two horizontal lines with appropriate padding and margins to seperate it from page content.
+ * 
+ * Valid value for type attribute: done, routing, important, pause
+ * 
+ * Usage eg.
+ *     [isc-milestone type="done"]
+ *          At this point the process has been fully approved.
+ *     [/isc-milestone]
+ * 
+ * @param string $atts type.
+ */
+function isc_milestone($atts, $content = null)
+{
+    extract(shortcode_atts(array(
+        'type' => 'done',
+    ),
+        $atts));
+    
+    $content = html_entity_decode($content);
+    
+    $out = <<<oahfnmnfjhnfu
+    <hr>
+    <ul class="line no-stylist isc-milestone">
+        <li class="bullet line-height-proper">
+            <i class="fa isc-milestone-icon isc-milestone-$type" ></i>
+        </li>
+        <li class="line-height-proper right-padding" >$content</li>
+    </ul>
+    <hr>
+oahfnmnfjhnfu;
+
+    return $out;
+}
+add_shortcode( 'isc-milestone', 'isc_milestone' );
+
+// Milestones - end
