@@ -352,7 +352,14 @@ function get_workday_course_metadata(){
 
 	$course_metadata['post_excerpt'] = get_the_excerpt();
 	
+	debug_obj('post_id',get_the_ID());
+	debug_obj('post_title',$course_metadata['post_title']);
+	debug_obj('meta_value',get_post_meta(get_the_ID(), 'course-image', true));
+	
+
 	$course_metadata['post_image_url'] = wp_get_attachment_url(get_post_meta(get_the_ID(), 'course-image', true));
+
+	debug_obj('image_url',$course_metadata['post_image_url']);
 
 	$course_metadata['duration'] = get_post_meta(get_the_ID(), 'course-duration', true);
 

@@ -694,9 +694,22 @@ erhvsfvsfsza;
 	}
 }
 
-function print_var($label, $obj){
-	return;
-    echo "<br><br>====". $label . "=====<br>";
+
+/**
+ * This function helps you debug php objects by either directly echoing it in the HTML or logging it's value in the browser console.
+ * 
+ * @param string $label lable to display for object.
+ * @param string $obj object to debug.
+ * @param boolean $log_in_browser_console if true the object will be logged in the browser's console instead of directly to HTML.
+ */
+function debug_obj($label, $obj, $log_in_browser_console = true){
+    //turn unconditional return on by uncommentinng it if you're not explicitly debugging stuff.
+    // return;
+    if($log_in_browser_console){
+        echo '<script type="text/javascript">console.log("'.$label.'",">>>>'.print_r($obj,true).'<<<<");</script>';
+        return;
+    }
+    echo "<br>====". $label . "=====<br>";
     print_r($obj);
     echo "<br>";
 }
