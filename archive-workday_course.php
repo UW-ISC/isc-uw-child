@@ -25,14 +25,7 @@ get_header();?>
                     }
                 ?>
                 <div class="<?php echo $text_col_size ?>"> 
-                    <p>You are about to leave the Workday Learning Library for our Learning Management System, Bridge.</p>
-                    <ol>
-                        <li>Log in to Bridge using your UWNetID and password.</li>
-                        <li>If prompted to enroll in the course, select Enroll.</li>
-                        <li>Once you are enrolled, you will be able to log in to Bridge at any time to register for live training sessions and access eLearning modules. Bridge will track and save your progress as you complete each course.</li>
-                    </ol>
-                    <p>Questions, concerns, or feedback?
-                    <a href="<?php echo esc_url( get_site_url())?>/contact-us">Contact us</a> with "Training" in the subject.</p>
+                    <?php echo get_site_option_value('workday_learning_library_redirection_message','',true); ?>
                 </div>
             </div>
         </div>  
