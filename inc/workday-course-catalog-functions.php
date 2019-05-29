@@ -5,7 +5,7 @@
  * @author Prasad Thakur
  * @package isc-uw-child
  */
-add_filter('get_the_archive_title', custom_post_archive_title);
+add_filter('get_the_archive_title', 'custom_post_archive_title');
 
 function custom_post_archive_title ( $title ){
 	if( is_post_type_archive() ){

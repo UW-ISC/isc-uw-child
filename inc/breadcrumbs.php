@@ -10,8 +10,13 @@
 if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 	/**
 	 * This is the main breadcrumb function.
+	 * Customization Options:
+	 * 'insert_after_root' boolean indicating wether to insert custom breadcrumb trail. Default: false
+	 * 'trail' array with breadcrumb nodes as label=>slug (absolute from root) to be inserted after root, only if 'insert_after_root' option is true. Default: []
+	 * 
+	 * @param array $options breadcrumbs customization options
 	 */
-	function get_uw_breadcrumbs() {
+	function get_uw_breadcrumbs($options=[]) {
 
 		  global $post;
 		  $blog_title = get_bloginfo( 'title' );
@@ -21,6 +26,14 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 			$htmlHome .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url( '/' ) . '" title="Home"> Home </a><li>';
 		} else {
 			$htmlHome .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'title' ) . '">' . get_bloginfo( 'title' ) . '</a><li>';
+		}
+
+		if(sizeof($options) > 0){
+			if($options['insert_after_root'] && $options['trail']){
+				foreach($options['trail'] as $each_node_label => $each_node_slug){
+					$html .= '<li><a href="' . get_site_url() . '/'. $each_node_slug . '" title="' . $each_node_label . '">' . $each_node_label . '</a></li>';
+				}
+			}		
 		}
 
 		if ( is_404() ) {
