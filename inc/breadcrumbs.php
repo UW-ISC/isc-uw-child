@@ -54,10 +54,9 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 					$thecat = get_the_category( $post->ID );
 					$category = array_shift( $thecat );
 					$category_name = get_cat_name( $category->term_id );
-					if ( 'Uncategorized' === $category_name ) {
-						  $category_name = 'News';
-						  $category_link = get_site_url() . '/news/';
-					}
+					$category_ID = get_cat_ID($category_name);
+					$category_link = get_site_url() . '/news/?taxonomy=category&tag_ID='.$category_ID;
+					
 					$html .= '<li><a href="' . $category_link . '" title="' . $category_name . '">' . $category_name . '</a>';
 				}
 				if ( uw_is_custom_post_type() ) {

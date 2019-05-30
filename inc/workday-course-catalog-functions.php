@@ -42,7 +42,7 @@ function course_filter(){
 	
 	foreach ($taxonomies as $each_taxonomy ){
 
-		if(isset($_POST[$each_taxonomy->name])){
+		if(array_key_exists($each_taxonomy->name, $_POST)){
 
 			$selected_taxonomy_ids = array_merge($selected_taxonomy_ids, $_POST[$each_taxonomy->name] );
 
@@ -68,35 +68,26 @@ function course_filter(){
 
 	
 
-	print_workday_course_catalog($args, $page_value, $selected_taxonomy_ids);
+	print_workday_course_catalog($args, $selected_taxonomy_ids);
 	die();
 }
 
-function print_workday_course_catalog($post_args, $page_value = 0,  $selected_taxonomy_ids = array()){
+function print_workday_course_catalog($post_args, $selected_taxonomy_ids = array()){
 
 	$page_size = 10;
-
-	$page_value = 0;
-	if(isset($_POST['page'])){
-		$page_value = $_POST['page'];
-	}
+	$page_value = get_if_exists('page', $_POST, 0);
 
 	$post_args['orderby'] = 'title';
-	if(isset($_POST['sortBy'])){
-		if('date-updated' == $_POST['sortBy']){
-			$post_args['orderby'] = 'meta_value';
-			$post_args['meta_key'] = 'course-update-date';
-			$post_args['meta_type'] = 'DATE';
-		}
-	}
-
-	$post_args['order'] = 'ASC';
-	if(isset($_POST['sortOrder'])){
-		if('DESC' == $_POST['sortOrder']){
-			$post_args['order'] = 'DESC';
-		}
+	
+	if(equate_if_exists('sortBy',$_POST,'date-updated')){
+		$post_args['orderby'] = 'meta_value';
+		$post_args['meta_key'] = 'course-update-date';
+		$post_args['meta_type'] = 'DATE';
 	}
 	
+
+	$post_args['order'] = get_if_exists('sortOrder',$_POST,'ASC');
+		
 	echo '<div class="col-md-4 course-filter-form">';
 		print_course_filter_form($post_args, $selected_taxonomy_ids);
 	echo '</div>';
@@ -196,15 +187,12 @@ function print_sort_bar(){
 }
 
 function print_sort_by_dropdown(){
-	$sort_by_title = '';
+	$sort_by_title = 'selected';
 	$sort_by_update_date = '';
 
-	switch($_POST['sortBy']){
-		case 'date-updated':
-			$sort_by_update_date = 'selected';
-			break;
-		default:
-			$sort_by_title = 'selected';
+	if(equate_if_exists('sortBy',$_POST, 'date-updated')){
+		$sort_by_title = '';
+		$sort_by_update_date = 'selected';
 	}
 
 	$sort_by_html = <<<askdnaknckascnkan
@@ -261,15 +249,16 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 	echo  '<input type="hidden" name="page" value="0">';
 
 	$sort_by_value = 'title';
-	if('date-updated' == $_POST['sortBy']){
+	if(equate_if_exists('sortBy',$_POST,'date-updated')){
 		$sort_by_value = 'date-updated';
 	}
 	
+	
 	$sort_order_value = 'ASC';
-	if('DESC' == $_POST['sortOrder']){
+	if(equate_if_exists('sortOrder',$_POST,'DESC')){
 		$sort_order_value = 'DESC';
 	}
-	
+		
 	echo  '<input type="hidden" name="sortBy" value="'.$sort_by_value.'">';
 	echo  '<input type="hidden" name="sortOrder" value="'.$sort_order_value.'">';
 
