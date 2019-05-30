@@ -131,16 +131,22 @@ function isc_excerpt_more($excerpt)
 }
 
 /**
- * Echoes the page header: Bread crumbs + Page Title + Last updated time stamp in that order (depending on params)
+ * Echoes the page header based on passed options.
+ * Options:
+ * 'use_breadcrumbs' boolean to show/hide breadcrumbs. Default: true
+ * 'breadcrumbs_options' array breadcrumbns options. Default: empty
+ * 'use_date' boolean to hide/show timestamp. Default: true
+ * 'use_created_date' boolean indicating to use creation date instead of modification date. Default: false
+ * 'use_title' boolean to show/hide page title. Default: true
+ * 'title' string value of title. Default: value returned by function call: isc_title(false)
+ * 'echo' boolean indicating wether to echo or return. Default: true
  * 
- * @param boolean $use_breadcrumbs if true then echoes the breadcrumbs HTML, else echoes empty string.
- * @param boolean $use_date if true then echoes the date (depending on $use_created_date param), else echoes empty string.
- * @param boolean $use_created_date if true then echoes the date of creation of the post, else echoes the last date of modification of post along with approriate label.
- * @param boolean $echo if true then echoes the header HTML, else returns the header HTML.
+ * @param array $options page header customization options
  */
 function the_page_header( $options = []) {
 
     $use_breadcrumbs = true;
+    $breadcrumbs_options =[];
     $use_date = true;
     $use_created_date = false;
     $use_title = true;
@@ -150,7 +156,7 @@ function the_page_header( $options = []) {
     extract($options);
 
 	if($use_breadcrumbs){
-		$breadcrumbs_html = get_uw_breadcrumbs();
+		$breadcrumbs_html = get_uw_breadcrumbs($breadcrumbs_options);
 	}
 	else{
 		$breadcrumbs_html = ' ';
@@ -694,9 +700,21 @@ erhvsfvsfsza;
 	}
 }
 
-function print_var($label, $obj){
-	return;
-    echo "<br><br>====". $label . "=====<br>";
+/**
+ * This function helps you debug php objects by either directly echoing it in the HTML or logging it's value in the browser console.
+ * 
+ * @param string $label lable to display for object.
+ * @param string $obj object to debug.
+ * @param boolean $log_in_browser_console if true the object will be logged in the browser's console instead of directly to HTML.
+ */
+function debug_obj($label, $obj, $log_in_browser_console = true){
+    //turn unconditional return on by uncommentinng it if you're not explicitly debugging stuff.
+    // return;
+    if($log_in_browser_console){
+        echo '<script type="text/javascript">console.log("'.$label.'",">>>>'.print_r($obj,true).'<<<<");</script>';
+        return;
+    }
+    echo "<br>====". $label . "=====<br>";
     print_r($obj);
     echo "<br>";
 }
