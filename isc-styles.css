@@ -2795,6 +2795,15 @@ hr {
 /* Workday Learning Library - end */
 
 
+/* Tablepress border - start */
+
+.tablepress {
+    border: 1px solid #E7E7E7 !important;
+}
+
+/* Tablepress border - end */
+
+
 /* User guide library fields - start*/
 
 .no-rounded-border {
