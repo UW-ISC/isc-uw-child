@@ -1701,7 +1701,7 @@ a.uw-btn.btn-sm.btn-left {
     cursor: pointer;
     background-image: none;
     white-space: nowrap;
-    padding: 6px 12px;
+    padding: 5px 12px;
     font-size: 17px;
     line-height: 1.72222;
 }
@@ -2227,6 +2227,10 @@ p:empty {
     border: solid 1px #d3d3d387;
 }
 
+.auto-height-card{
+    min-height: auto !important;
+}
+
 @media (min-width: 992px) {
     .card-box-33 {
         min-height: 520px;
@@ -2437,6 +2441,68 @@ p:empty {
 }
 
 /* Category hyperlinks - end*/
+
+
+/* Milestone - start*/
+
+.isc-milestone-icon {
+    font-size: 30px;
+    vertical-align: middle;
+}
+
+.isc-milestone-done:before {
+    content: "\f058";
+    color: #1dc01a;
+}
+
+.isc-milestone-routing:before {
+    content: "\f277";
+    color: #4b2e83;
+}
+
+.isc-milestone-important:before {
+    content: "\f071";
+    color: #c0392b;
+}
+
+.isc-milestone-pause:before {
+    content: "\f28b";
+    color: #f39c12;
+}
+
+.center {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.bullet {
+    margin-right: 1em;
+}
+
+.line-height-proper {
+    line-height: 30px;
+}
+
+.right-padding{
+    padding-right: 3em;
+}
+
+hr {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.isc-milestone {
+    margin-bottom: 0px;
+}
+
+/* Milestone - end*/
 
 
 /* Workday Learning Library - start*/
@@ -2728,6 +2794,7 @@ p:empty {
 
 /* Workday Learning Library - end */
 
+
 /* Tablepress border - start */
 
 .tablepress {
@@ -2735,3 +2802,128 @@ p:empty {
 }
 
 /* Tablepress border - end */
+
+
+/* User guide library fields - start*/
+
+.no-rounded-border {
+    border-radius: 0px;
+}
+
+/* User guide library fields - end*/
+
+/* Long button - start*/
+
+.long-button-link{
+    color: #4b2e83;
+    width: 100%;
+    display: inline-flex;
+    border-radius: 5px;
+    background-color: #d3d3d329;
+    margin-bottom: 8px;
+    border: 1px solid #d3d3d3ab;
+}
+
+.long-button-main{
+    max-width: 95%;
+}
+
+@media (min-width:992px){
+    .long-button-main{
+        position: relative;
+        top: 50%;
+        transform: translate(0,-50%);
+    }
+}
+
+.long-button-link:hover, .long-button-link:focus{
+    background: #eeeeee;
+}
+
+.long-button-link:hover .hover-link, .long-button a:focus .hover-link{
+    display: block !important;
+}
+.long-button-link{
+    display: block;
+    width: 100%;
+}
+
+.long-button-body{
+    width: 100%;
+    display: inline-flex;   
+    padding: 0.5em 0.5em 0 0.5em;
+}
+
+.long-button-title{
+    display: inline-flex;
+}
+
+.long-button .hover-link{
+    display: block;
+    align-self: center;
+    margin: 0px 0.5em;
+}
+
+.long-button-title h4 {
+    width: 100%;
+    font-weight: 600;
+    margin: 0px !important;
+    color: #4b2e83;
+}
+
+.long-button a:hover h4, .long-button a:focus h4{
+    text-decoration: underline !important;
+    color: #85754d;
+}
+
+.long-button a:hover, .long-button a:focus{
+    /* border: none !important; */
+}
+
+.long-button-body .row{
+    width:100%;
+}
+
+.long-button-img{
+    padding-bottom: 1em;
+}
+
+.long-button-link>p{
+    display: none;
+}
+
+
+.long-button-img img{
+    position: relative;
+    left:50%;
+    transform: translate(-50%);
+    max-width: 90%;
+}
+
+@media only screen and (min-width: 426px){
+    .long-button-img{
+        min-width:auto;
+    }
+}
+
+@media only screen and (max-width: 960px){
+    .long-button-main{
+        position: relative;
+        left:50%;
+        transform: translate(-50%);
+    }
+}
+
+.long-button-img img:hover, .long-button-img img:focus{
+    outline: none !important;
+}
+
+.long-button a:hover img, .long-button a:focus img{
+    outline: none !important;
+}
+
+.long-button>p{
+    display: none;
+}
+
+/* Long button - end*/

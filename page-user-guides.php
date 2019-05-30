@@ -29,22 +29,20 @@ get_header();
 			<div class="col-md-12" id="main_content">
 
 				<?php isc_title(); ?>
-
-				
-				<div style="margin-bottom:1em; font-size: 14px;">
-					<div class="row">
-						<div class="col-md-9 form-inline">
-							<label>Filter by Keyword:</label>
-							<input id="myInputTextField" type="text" class="form-control" style="width:inherit;border-radius:0px;" >
-						</div>
-						<div style="float: right">
-								<button id="clearFiltersBtn" class="isc-simple-button">
-									<i class="fa fa-close isc-btn-icon"></i>clear filters
-								</button>
+				<div class="row">
+					<div class="col-md-3 col-lg-2" style="width: fit-content !important;padding-right: 0;">
+						<label style="line-height:41px;margin-right: 5px;">Filter by Keyword:</label>
+					</div>
+					<div class="col-sm-9 col-lg-10">
+						<div class="line">
+							<input id="myInputTextField" type="text" class="form-control no-rounded-border" style="max-width:250px;">
+							<button id="clearFiltersBtn" class="control-icon isc-simple-button" >
+											<i class="fa fa-close isc-btn-icon"></i>clear filters
+							</button>
 						</div>
 					</div>
 				</div>
-
+												
 				<h2 class="sr-only">User Guides</h2>
 
 				<table id="user_guide_lib" class="table primary-isc-table table-striped-alt" style="border:none !important;">
@@ -105,7 +103,50 @@ get_header();
 						$("#role-dropdown").val('---');
 						$("#role-dropdown").trigger('change');
 	    			});
+					
+					//split url to check if it has params
+					var urlArray = window.location.href.split('?');
 
+					//if it has prams only then try to extract these
+					if(urlArray.length > 0 ){
+
+						var filterParams = new URLSearchParams(urlArray[1]);
+						
+						//if params contain '_topic' key/value use its value to set the Topic select dropdown and trigger change 
+						if(filterParams.has("_topic")){
+							let topicValue = filterParams.get("_topic");
+							
+							if(optionExistsInSelect("topic-dropdown",topicValue)){
+								$("#topic-dropdown").val(topicValue);
+								$("#topic-dropdown").trigger('change');
+							}
+						}
+						
+						//if params contain '_role' key/value use its value to set the Role select dropdown and trigger change 
+						if(filterParams.has("_role")){
+							let roleValue = filterParams.get("_role");
+
+							if(optionExistsInSelect("role-dropdown",roleValue)){
+								$("#role-dropdown").val(roleValue);
+								$("#role-dropdown").trigger('change');
+							}
+						}
+
+						//if params contain '_filter' key/value use its value to set the Filter textfield and trigger change 
+						if(filterParams.has("_filter")){
+							let filterValue = filterParams.get("_filter");
+
+							$("#myInputTextField").val(filterValue);
+							$("#myInputTextField").trigger('keyup');
+						}
+
+					}
+
+					//returns true only if passed option value exists in a <select> element's <option>s
+					function optionExistsInSelect(selectId, option) {
+						return $("#"+selectId+" option[value='" + option + "']").length !== 0;
+					}
+					
 				});
 				$("#topic-dropdown, #role-dropdown").change(function() {
 					var topic_value = $("#topic-dropdown").val();

@@ -5,17 +5,17 @@
  * @author Prasad Thakur
  * @package isc-uw-child
  */
-add_filter('get_the_archive_title', custom_post_archive_title);
 
-function custom_post_archive_title ( $title ){
+ function custom_post_archive_title ( $title ){
 	if( is_post_type_archive() ){
 		$title = post_type_archive_title('', false);
 	}
 	return $title;
 }
 
-add_action('wp_ajax_courseFilter', 'course_filter');
-add_action('wp_ajax_nopriv_courseFilter', 'course_filter');
+add_filter('get_the_archive_title', 'custom_post_archive_title');
+add_action('isc_request_ajax_courseFilter', 'course_filter');
+add_action('isc_request_ajax_nopriv_courseFilter', 'course_filter');
 
 function course_filter(){
 	
@@ -242,8 +242,8 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 		'object_ids' => $post_ids,
 		'hide_empty' => true
 	);
-
-	echo  '<form action="'.site_url().'/wp-admin/admin-ajax.php" method="POST" id="courseFilterForm">';
+	
+	echo  '<form action="'.site_url().'/wp-content/themes/isc-uw-child/isc_request.php" method="POST" id="courseFilterForm">';
 
 	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
 
@@ -310,7 +310,7 @@ function get_term_count($term, $post_ids, $taxonomy){
         $post = get_post($id);
         $terms = get_the_terms($post, $taxonomy->name);
 
-        if(in_array($term, $terms)) {
+        if($terms && in_array($term, $terms)) {
             $count++;
         }
     }
