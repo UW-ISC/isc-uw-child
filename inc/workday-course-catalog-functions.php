@@ -206,14 +206,13 @@ askdnaknckascnkan;
 }
 
 function print_sort_order_toggle(){
-	switch($_POST['sortOrder']){
-		case 'DESC':
-			echo '<i class="fa fa-arrow-down control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="DESC" ></i>';
-			break;
-		default:
-			echo '<i class="fa fa-arrow-up control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="ASC" ></i>';
+	$icon_html = '<i class="fa fa-arrow-up control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="ASC" ></i>';
+	
+	if(equate_if_exists('sortOrder',$_POST,'DESC')){
+		$icon_html = '<i class="fa fa-arrow-down control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="DESC" ></i>';
 	}
 	
+	 echo $icon_html;
 }
 
 function print_course_filter_form($args, $selected_taxonomy_ids){
