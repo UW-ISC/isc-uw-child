@@ -725,7 +725,7 @@ function debug_obj($label, $obj, $log_in_browser_console = true){
  * 
  * @param string $option_key meta key of the option.
  * @param string $default_value default value to use if Options page or the option with provided key is not found.
- * @param boolean $$single If true, returns only the first value for the specified meta key. Default value: false
+ * @param boolean $single If true, returns only the first value for the specified meta key. Default value: false
  */
 function get_site_option_value($option_key, $default_value, $single = false){
     $options_page = get_page_by_path('site-content-options');
@@ -736,6 +736,41 @@ function get_site_option_value($option_key, $default_value, $single = false){
         }
     }
     return $default_value;
+}
+
+/**
+ * Returns the value in an array with given key if it exists. If it does not exist, the default value is returned.
+ * 
+ * @param string $array_key  The key/index to check in the array.
+ * @param array $array_to_check_in  The array to check the key's existence in.
+ * @param mixed $default_value  The default value to return when key is not present.
+ */
+function get_if_exists($array_key, $array_to_check_in, $default_value){
+	
+	if(array_key_exists($array_key, $array_to_check_in)){
+		return $array_to_check_in[$array_key];
+	}
+	else{
+		return $default_value;
+	}
+}
+
+/**
+ * Returns a boolean indicating if a given value is equal to the value associated with a given index in a give array.
+ * If the given index does not exist in the given array - returns false.
+ * 
+ * @param string $array_key  The key/index to check in the array.
+ * @param array $array_to_check_in  The array to check the key's existence in.
+ * @param mixed $value_to_check_equality  The value to check quality with.
+ */
+function equate_if_exists($array_key, $array_to_check_in, $value_to_check_equality){
+	
+	if(array_key_exists($array_key, $array_to_check_in)){
+		return $array_to_check_in[$array_key] == $value_to_check_equality;
+	}
+	else {
+		return false;
+	}
 }
 
 ?>
