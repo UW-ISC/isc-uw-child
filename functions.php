@@ -732,6 +732,13 @@ function get_site_option_value($option_key, $default_value, $single = false){
     if(null != $options_page){
         $option_value = get_post_meta($options_page->ID, $option_key, $single);
         if(!empty($option_value)){
+
+            $field_props = CFS()->get_field_info($option_key, $options_page->ID);
+            
+            if(equate_if_exists('type',$field_props,'wysiwyg')){
+                return do_shortcode($option_value);
+            };
+                        
             return $option_value;
         }
     }
