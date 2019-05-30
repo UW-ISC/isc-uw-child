@@ -1701,7 +1701,7 @@ a.uw-btn.btn-sm.btn-left {
     cursor: pointer;
     background-image: none;
     white-space: nowrap;
-    padding: 6px 12px;
+    padding: 5px 12px;
     font-size: 17px;
     line-height: 1.72222;
 }
@@ -1841,7 +1841,7 @@ a.uw-btn.btn-sm.btn-left {
     padding-left: 0px;
 }
 
-.h-list .no-stylist{
+.h-list .no-stylist {
     margin-left: 3px;
 }
 
@@ -2227,6 +2227,10 @@ p:empty {
     border: solid 1px #d3d3d387;
 }
 
+.auto-height-card{
+    min-height: auto !important;
+}
+
 @media (min-width: 992px) {
     .card-box-33 {
         min-height: 520px;
@@ -2362,7 +2366,7 @@ p:empty {
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 .lds-dual-ring:after {
@@ -2386,6 +2390,17 @@ p:empty {
         transform: rotate(360deg);
     }
 }
+
+.limit-to-4-lines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-height: 27px;
+    max-height: 112px;
+}
+
 /* Fitler News by category - end*/
 
 
@@ -2409,7 +2424,7 @@ p:empty {
     margin-bottom: 0px !important;
 }
 
-.news-post-item hr{
+.news-post-item hr {
     margin-top: 14px;
 }
 
@@ -2417,14 +2432,77 @@ p:empty {
     margin-bottom: 0px;
 }
 
-.news-post-item .more{
+.news-post-item .more {
     font-size: 16px;
 }
 
-.news-excerpt{
+.news-excerpt {
     margin-bottom: 0.5em;
 }
+
 /* Category hyperlinks - end*/
+
+
+/* Milestone - start*/
+
+.isc-milestone-icon {
+    font-size: 30px;
+    vertical-align: middle;
+}
+
+.isc-milestone-done:before {
+    content: "\f058";
+    color: #1dc01a;
+}
+
+.isc-milestone-routing:before {
+    content: "\f277";
+    color: #4b2e83;
+}
+
+.isc-milestone-important:before {
+    content: "\f071";
+    color: #c0392b;
+}
+
+.isc-milestone-pause:before {
+    content: "\f28b";
+    color: #f39c12;
+}
+
+.center {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.bullet {
+    margin-right: 1em;
+}
+
+.line-height-proper {
+    line-height: 30px;
+}
+
+.right-padding{
+    padding-right: 3em;
+}
+
+hr {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.isc-milestone {
+    margin-bottom: 0px;
+}
+
+/* Milestone - end*/
 
 
 /* Workday Learning Library - start*/
@@ -2519,7 +2597,7 @@ p:empty {
 
 .h-list li {
     display: inline;
-    margin:0 4px;
+    margin: 0 4px;
 }
 
 .nav-previous,
@@ -2563,40 +2641,40 @@ p:empty {
     overflow: hidden;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 @media only screen and (max-width: 425px) {
-    .uw-body-overlay-dialog{
+    .uw-body-overlay-dialog {
         min-width: 90vw !important;
     }
 
-    .uw-body-overlay-dialog-main{
+    .uw-body-overlay-dialog-main {
         max-height: 60vh !important;
     }
 }
 
 @media only screen and (min-width: 426px) and (max-width: 1440px) {
-    .uw-body-overlay-dialog{
+    .uw-body-overlay-dialog {
         min-width: 80vw !important;
         min-height: 60vh;
     }
 }
 
 @media only screen and (min-width: 1441px) and (max-width: 1440px) {
-    .uw-body-overlay-dialog{
+    .uw-body-overlay-dialog {
         min-width: 80vw !important;
         min-height: 60vh;
     }
 }
 
-.uw-body-overlay-dialog-header h1{
+.uw-body-overlay-dialog-header h1 {
     margin-top: 10px;
     margin-bottom: 1em;
     margin-left: 10px;
     margin-right: 10px;
     padding-top: 0;
-    
+
 }
 
 .uw-body-overlay-dialog-close {
@@ -2606,7 +2684,7 @@ p:empty {
     cursor: pointer;
 }
 
-.uw-body-overlay-dialog-main{
+.uw-body-overlay-dialog-main {
     max-height: 45vh;
     padding-bottom: 46px;
     padding-left: 1em;
@@ -2617,13 +2695,13 @@ p:empty {
 
 
 
-@media (max-width: 768px){
-    .uw-body-overlay-dialog-img{
+@media (max-width: 768px) {
+    .uw-body-overlay-dialog-img {
         display: none;
     }
 }
 
-.uw-body-overlay-dialog-footer{
+.uw-body-overlay-dialog-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -2631,7 +2709,7 @@ p:empty {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));
 }
 
-.uw-body-overlay-primary-action{
+.uw-body-overlay-primary-action {
     float: right;
     right: 48px;
 }
@@ -2649,7 +2727,7 @@ p:empty {
     padding: 15px !important;
 }
 
-.workday-course-cover-image-container-portrait{
+.workday-course-cover-image-container-portrait {
     display: none;
     height: 13em;
     background-repeat: no-repeat;
@@ -2659,10 +2737,10 @@ p:empty {
 
 @media (max-width: 600px) {
     .workday-course-cover-image-container {
-       display: none;
+        display: none;
     }
 
-    .workday-course-cover-image-container-portrait{
+    .workday-course-cover-image-container-portrait {
         display: block;
     }
 }
@@ -2676,7 +2754,7 @@ p:empty {
     margin-top: 1em;
 }
 
-.workday-layout-table{
+.workday-layout-table {
     border: none !important;
 }
 
@@ -2684,33 +2762,168 @@ p:empty {
     background-color: white !important;
 }
 
-.table-cell-list-item{
+.table-cell-list-item {
     margin-right: 1em;
     display: inherit;
     border-bottom: 1px solid grey;
     padding: 0px 6px;
 }
 
-.table-cell-label{
-    text-align:right;
+.table-cell-label {
+    text-align: right;
     padding-top: 8px !important;
 }
 
-.no-stylist-table{
+.no-stylist-table {
     border: none;
 }
 
-.no-stylist-table td{
+.no-stylist-table td {
     background: white !important;
 }
 
-.post-cta{
+.post-cta {
     position: relative;
     left: 50%;
 }
 
-.control-icon{
+.control-icon {
     margin: 0 0.5em;
     cursor: pointer;
 }
+
 /* Workday Learning Library - end */
+
+
+/* Tablepress border - start */
+
+.tablepress {
+    border: 1px solid #E7E7E7 !important;
+}
+
+/* Tablepress border - end */
+
+
+/* User guide library fields - start*/
+
+.no-rounded-border {
+    border-radius: 0px;
+}
+
+/* User guide library fields - end*/
+
+/* Long button - start*/
+
+.long-button-link{
+    color: #4b2e83;
+    width: 100%;
+    display: inline-flex;
+    border-radius: 5px;
+    background-color: #d3d3d329;
+    margin-bottom: 8px;
+    border: 1px solid #d3d3d3ab;
+}
+
+.long-button-main{
+    max-width: 95%;
+}
+
+@media (min-width:992px){
+    .long-button-main{
+        position: relative;
+        top: 50%;
+        transform: translate(0,-50%);
+    }
+}
+
+.long-button-link:hover, .long-button-link:focus{
+    background: #eeeeee;
+}
+
+.long-button-link:hover .hover-link, .long-button a:focus .hover-link{
+    display: block !important;
+}
+.long-button-link{
+    display: block;
+    width: 100%;
+}
+
+.long-button-body{
+    width: 100%;
+    display: inline-flex;   
+    padding: 0.5em 0.5em 0 0.5em;
+}
+
+.long-button-title{
+    display: inline-flex;
+}
+
+.long-button .hover-link{
+    display: block;
+    align-self: center;
+    margin: 0px 0.5em;
+}
+
+.long-button-title h4 {
+    width: 100%;
+    font-weight: 600;
+    margin: 0px !important;
+    color: #4b2e83;
+}
+
+.long-button a:hover h4, .long-button a:focus h4{
+    text-decoration: underline !important;
+    color: #85754d;
+}
+
+.long-button a:hover, .long-button a:focus{
+    /* border: none !important; */
+}
+
+.long-button-body .row{
+    width:100%;
+}
+
+.long-button-img{
+    padding-bottom: 1em;
+}
+
+.long-button-link>p{
+    display: none;
+}
+
+
+.long-button-img img{
+    position: relative;
+    left:50%;
+    transform: translate(-50%);
+    max-width: 90%;
+}
+
+@media only screen and (min-width: 426px){
+    .long-button-img{
+        min-width:auto;
+    }
+}
+
+@media only screen and (max-width: 960px){
+    .long-button-main{
+        position: relative;
+        left:50%;
+        transform: translate(-50%);
+    }
+}
+
+.long-button-img img:hover, .long-button-img img:focus{
+    outline: none !important;
+}
+
+.long-button a:hover img, .long-button a:focus img{
+    outline: none !important;
+}
+
+.long-button>p{
+    display: none;
+}
+
+/* Long button - end*/
