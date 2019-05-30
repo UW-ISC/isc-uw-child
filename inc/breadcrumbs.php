@@ -71,7 +71,8 @@ if ( ! function_exists( 'get_uw_breadcrumbs' ) ) :
 						  $category_name = 'News';
 						  $category_link = get_site_url() . '/news/';
 					}
-					$html .= '<li><a href="' . $category_link . '" title="' . $category_name . '">' . $category_name . '</a>';
+					$html .= '<li><a href="' . get_site_url() . '/news' . '" title="Admins\' News">Admins\' News</a></li>';
+					$html .= '<li><a href="' . $category_link . '" title="' . $category_name . '">' . $category_name . '</a></li>';
 				}
 				if ( uw_is_custom_post_type() ) {
 					$posttype = get_post_type_object( get_post_type() );

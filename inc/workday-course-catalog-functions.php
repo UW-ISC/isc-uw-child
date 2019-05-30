@@ -5,15 +5,15 @@
  * @author Prasad Thakur
  * @package isc-uw-child
  */
-add_filter('get_the_archive_title', 'custom_post_archive_title');
 
-function custom_post_archive_title ( $title ){
+ function custom_post_archive_title ( $title ){
 	if( is_post_type_archive() ){
 		$title = post_type_archive_title('', false);
 	}
 	return $title;
 }
 
+add_filter('get_the_archive_title', 'custom_post_archive_title');
 add_action('isc_request_ajax_courseFilter', 'course_filter');
 add_action('isc_request_ajax_nopriv_courseFilter', 'course_filter');
 
@@ -310,7 +310,7 @@ function get_term_count($term, $post_ids, $taxonomy){
         $post = get_post($id);
         $terms = get_the_terms($post, $taxonomy->name);
 
-        if(in_array($term, $terms)) {
+        if($terms && in_array($term, $terms)) {
             $count++;
         }
     }
