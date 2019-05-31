@@ -64,7 +64,29 @@ get_header();?>
                 <section>
                     <header class="isc-page-header">
                         <?php
-                        
+
+                        //Support for URL based filtering.
+                        $valid_params = get_filter_order();
+                        $filter_param_array = array();
+
+                        //for each valid taxonomy item
+                        foreach($valid_params as $param_name){
+
+                            //check if url has this taxonomy item and get its term slugs
+                            $term_slugs = get_if_exists('_'.$param_name, $_GET, array());
+                            $filter_param_values = array();
+
+                            foreach($term_slugs as $term_slug){
+                                $term_obj = get_term_by('slug',$term_slug, $param_name, OBJECT);
+                                $term_id = $term_obj->term_id;
+
+                                array_push($filter_param_values, $term_id);
+                            }
+
+                            if(!empty($term_slugs)){
+                                $filter_param_array[$param_name] = $filter_param_values;
+                            }
+                        }
 
                         $post_args =array(
                             'post_type' => 'workday_course',
@@ -78,7 +100,14 @@ get_header();?>
                 </section>
                 <hr/>
                 <div class="row" id="courseCatalog">
-                    <?php print_workday_course_catalog($post_args); ?>
+                    <?php
+                        if(!empty($filter_param_array)){
+                            trigger_course_fitler_with_params_from($filter_param_array);
+                        }
+                        else {
+                            print_workday_course_catalog($post_args);
+                        }
+                     ?>
                 </div>
                 
             </div>
