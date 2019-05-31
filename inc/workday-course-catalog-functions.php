@@ -19,13 +19,15 @@ add_action('isc_request_ajax_nopriv_courseFilter', 'course_filter');
 
 function course_filter(){
 	
-	// echo "POST: ";
-	// print_r($_POST);
-	// echo "<br>";
+	trigger_course_fitler_with_params_from($_POST);
+	die();
+}
+
+function trigger_course_fitler_with_params_from ($param_source){
+	
 	$tax_query_base = array(
 		'relation' => 'AND',
 	);
-
 	
 	$args = array(
 		'post_type' => 'workday_course',
@@ -34,28 +36,24 @@ function course_filter(){
 		'tax_query' => $tax_query_base
 	);
 
-	
-
 	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
 
 	$selected_taxonomy_ids = array();
 	
 	foreach ($taxonomies as $each_taxonomy ){
 
-		if(array_key_exists($each_taxonomy->name, $_POST)){
+		if(array_key_exists($each_taxonomy->name, $param_source)){
 
-			$selected_taxonomy_ids = array_merge($selected_taxonomy_ids, $_POST[$each_taxonomy->name] );
+			$selected_taxonomy_ids = array_merge($selected_taxonomy_ids, $param_source[$each_taxonomy->name] );
 
 			array_push($args['tax_query'],  array(
 				'taxonomy' => $each_taxonomy->name,
 				'field' => 'id',
-				'terms' => $_POST[$each_taxonomy->name]
+				'terms' => $param_source[$each_taxonomy->name]
 			  ));
 		}
 	}
 
-	// echo "args: ";
-	// print_r( ($args['tax_query'] == $tax_query_base) == 1);
 
 	if( $args['tax_query']  == $tax_query_base ){
 		// echo "resetting";
@@ -66,10 +64,20 @@ function course_filter(){
 		);
 	}
 
+	$args['orderby'] = 'title';
+	
+	if(equate_if_exists('sortBy',$param_source,'date-updated')){
+		$args['orderby'] = 'meta_value';
+		$args['meta_key'] = 'course-update-date';
+		$args['meta_type'] = 'DATE';
+	}
 	
 
+	$args['order'] = get_if_exists('sortOrder',$param_source,'ASC');
+
 	print_workday_course_catalog($args, $selected_taxonomy_ids);
-	die();
+
+	
 }
 
 function print_workday_course_catalog($post_args, $selected_taxonomy_ids = array()){
@@ -77,104 +85,86 @@ function print_workday_course_catalog($post_args, $selected_taxonomy_ids = array
 	$page_size = 10;
 	$page_value = get_if_exists('page', $_POST, 0);
 
-	$post_args['orderby'] = 'title';
 	
-	if(equate_if_exists('sortBy',$_POST,'date-updated')){
-		$post_args['orderby'] = 'meta_value';
-		$post_args['meta_key'] = 'course-update-date';
-		$post_args['meta_type'] = 'DATE';
-	}
-	
-
-	$post_args['order'] = get_if_exists('sortOrder',$_POST,'ASC');
 		
 	echo '<div class="col-md-4 course-filter-form">';
 		print_course_filter_form($post_args, $selected_taxonomy_ids);
 	echo '</div>';
 	echo '<div class="col-md-8"> <div class="filter-and-sort-bar"> <div class="row">';
-	// echo '<div class="full-screen-mask-dark" hidden><div class="lds-dual-ring"></div></div>';
+	
 	print_filter_status_bar($selected_taxonomy_ids);
 	print_sort_bar();
 
 	echo '</div></div>';
 
 	echo '<div  id="coursePosts">';
+	
+	$post_query = new WP_Query( $post_args );
 
 	
-	
-		$post_query = new WP_Query( $post_args );
-
+	if( $post_query->have_posts()) {
 		
-		if( $post_query->have_posts()) {
-			
-			
-			$found_num = $post_query->found_posts;
-			$plural = $found_num > 1 ? 's' : '';
+		
+		$found_num = $post_query->found_posts;
+		$plural = $found_num > 1 ? 's' : '';
 
-			$start_at = 0;
-			$possible_pages = intval($found_num / $page_size);
+		$start_at = 0;
+		$possible_pages = intval($found_num / $page_size);
 
-			if(($found_num % $page_size)>0) {
-				$possible_pages++;
-			}
-
-			if($page_value< 0){
-				$page_value = 0;
-			}
-			else if( $page_value > $possible_pages){
-				$page_value = $possible_pages;
-			}
-
-			if($found_num > $page_size){
-				$start_at = $page_size * $page_value;
-			}
-
-			if(count($selected_taxonomy_ids) > 0){	
-				echo '<h4> Found ' . $found_num . ' Course'.$plural.'</h4>';
-			} else{
-
-				$end_num = $start_at + $page_size;
-				
-				if($end_num >= $found_num ){
-					$end_num = $found_num;
-				}
-				echo '<h4> Showing  ' . ($start_at + 1) . '-'. $end_num . ' of '. $found_num.' Course'.$plural.'</h4>';
-			}
-			
-			
-			// echo "<br>start at:". $start_at;
-			// echo "<br>page_size:". $page_size;
-			// echo "<br>page_value:". $page_value;
-			// echo "<br>possible_pages:". $possible_pages;
-
-			$counter = 0;
-
-			while ( $post_query->have_posts() ) {
-				$post_query->the_post();
-				
-				if($counter >= ($start_at + $page_size) ){
-					break;
-				}
-
-				if( $counter >= $start_at)
-				{
-					print_workday_course_item();
-				}
-				
-				$counter ++;
-			} //end while
-			if( $start_at > 0 ) {
-				echo '<div class="nav-previous alignleft"><a  onclick="handlePrevClick(this)" class="uw-btn btn-sm btn-left">Previous</a></div>';
-				// echo  '<a onclick="handlePrevClick(this)"> << prev </a>';
-			}
-			if( ($start_at + $page_size) < $found_num) {
-				// echo  '<a onclick="handleNextClick(this)"> next >> </a>';
-				echo '<div class="nav-next alignright"><a  onclick="handleNextClick(this)" class="uw-btn btn-sm">Next</a></div>';
-			}
-		} // end if
-		else{
-			echo "<h3> No Workday Courses </h3>";
+		if(($found_num % $page_size)>0) {
+			$possible_pages++;
 		}
+
+		if($page_value< 0){
+			$page_value = 0;
+		}
+		else if( $page_value > $possible_pages){
+			$page_value = $possible_pages;
+		}
+
+		if($found_num > $page_size){
+			$start_at = $page_size * $page_value;
+		}
+
+		if(count($selected_taxonomy_ids) > 0){	
+			echo '<h4> Found ' . $found_num . ' Course'.$plural.'</h4>';
+		} else{
+
+			$end_num = $start_at + $page_size;
+			
+			if($end_num >= $found_num ){
+				$end_num = $found_num;
+			}
+			echo '<h4> Showing  ' . ($start_at + 1) . '-'. $end_num . ' of '. $found_num.' Course'.$plural.'</h4>';
+		}
+		
+		$counter = 0;
+
+		while ( $post_query->have_posts() ) {
+			$post_query->the_post();
+			
+			if($counter >= ($start_at + $page_size) ){
+				break;
+			}
+
+			if( $counter >= $start_at)
+			{
+				print_workday_course_item();
+			}
+			
+			$counter ++;
+		} //end while
+		if( $start_at > 0 ) {
+			echo '<div class="nav-previous alignleft"><a  onclick="handlePrevClick(this)" class="uw-btn btn-sm btn-left">Previous</a></div>';
+			
+		}
+		if( ($start_at + $page_size) < $found_num) {
+			echo '<div class="nav-next alignright"><a  onclick="handleNextClick(this)" class="uw-btn btn-sm">Next</a></div>';
+		}
+	} // end if
+	else{
+		echo "<h3> No Workday Courses </h3>";
+	}
 	echo '</div>';
 	echo '</div>';
 }
@@ -234,7 +224,7 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 
 	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
 
-	$print_order = ['course-employee-population', 'course-skill-level', 'course-security-role-involved', 'course-type', 'business-process', 'course-scenario'];
+	$print_order = get_filter_order();
 
 	$keyed_taxonomies = array();
 
@@ -340,15 +330,8 @@ function get_workday_course_metadata(){
 
 	$course_metadata['post_excerpt'] = get_the_excerpt();
 	
-	debug_obj('post_id',get_the_ID());
-	debug_obj('post_title',$course_metadata['post_title']);
-	debug_obj('meta_value',get_post_meta(get_the_ID(), 'course-image', true));
-	
 
 	$course_metadata['post_image_url'] = wp_get_attachment_url(get_post_meta(get_the_ID(), 'course-image', true));
-
-	debug_obj('image_url',$course_metadata['post_image_url']);
-
 	$course_metadata['duration'] = get_post_meta(get_the_ID(), 'course-duration', true);
 
 	// $release_date = get_post_meta(get_the_ID(), 'course-release-date', true);
@@ -454,4 +437,8 @@ dnfndaskfn;
 	
 	//<li>| <a href="{$read_more}"> more </a> </li>
 	echo $post_html;
+}
+
+function get_filter_order(){
+	return ['course-employee-population', 'course-skill-level', 'course-security-role-involved', 'course-type', 'business-process', 'course-scenario'];
 }
