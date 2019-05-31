@@ -110,8 +110,11 @@ $sidebar = get_post_meta($post->ID, 'sidebar');
 					<div id="newsPosts">
 
 						<?php
-							$category_id = $_GET['tag_ID'];
 
+							$category_id = get_if_exists('tag_ID',$_GET,'');						
+							$query = false;
+
+							
 							if ($category_id == 'select' || $category_id == '') {
 								print_news();
 							} else {
