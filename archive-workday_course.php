@@ -78,12 +78,15 @@ get_header();?>
 
                             foreach($term_slugs as $term_slug){
                                 $term_obj = get_term_by('slug',$term_slug, $param_name, OBJECT);
-                                $term_id = $term_obj->term_id;
-
-                                array_push($filter_param_values, $term_id);
+                                
+                                if(!empty($term_obj)){
+                                    $term_id = $term_obj->term_id;
+                                    array_push($filter_param_values, $term_id);
+                                }
+                                
                             }
 
-                            if(!empty($term_slugs)){
+                            if(!empty($filter_param_values)){
                                 $filter_param_array[$param_name] = $filter_param_values;
                             }
                         }
