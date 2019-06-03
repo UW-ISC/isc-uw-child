@@ -131,16 +131,22 @@ function isc_excerpt_more($excerpt)
 }
 
 /**
- * Echoes the page header: Bread crumbs + Page Title + Last updated time stamp in that order (depending on params)
+ * Echoes the page header based on passed options.
+ * Options:
+ * 'use_breadcrumbs' boolean to show/hide breadcrumbs. Default: true
+ * 'breadcrumbs_options' array breadcrumbns options. Default: empty
+ * 'use_date' boolean to hide/show timestamp. Default: true
+ * 'use_created_date' boolean indicating to use creation date instead of modification date. Default: false
+ * 'use_title' boolean to show/hide page title. Default: true
+ * 'title' string value of title. Default: value returned by function call: isc_title(false)
+ * 'echo' boolean indicating wether to echo or return. Default: true
  * 
- * @param boolean $use_breadcrumbs if true then echoes the breadcrumbs HTML, else echoes empty string.
- * @param boolean $use_date if true then echoes the date (depending on $use_created_date param), else echoes empty string.
- * @param boolean $use_created_date if true then echoes the date of creation of the post, else echoes the last date of modification of post along with approriate label.
- * @param boolean $echo if true then echoes the header HTML, else returns the header HTML.
+ * @param array $options page header customization options
  */
 function the_page_header( $options = []) {
 
     $use_breadcrumbs = true;
+    $breadcrumbs_options =[];
     $use_date = true;
     $use_created_date = false;
     $use_title = true;
@@ -150,7 +156,7 @@ function the_page_header( $options = []) {
     extract($options);
 
 	if($use_breadcrumbs){
-		$breadcrumbs_html = get_uw_breadcrumbs();
+		$breadcrumbs_html = get_uw_breadcrumbs($breadcrumbs_options);
 	}
 	else{
 		$breadcrumbs_html = ' ';
@@ -694,9 +700,21 @@ erhvsfvsfsza;
 	}
 }
 
-function print_var($label, $obj){
-	return;
-    echo "<br><br>====". $label . "=====<br>";
+/**
+ * This function helps you debug php objects by either directly echoing it in the HTML or logging it's value in the browser console.
+ * 
+ * @param string $label lable to display for object.
+ * @param string $obj object to debug.
+ * @param boolean $log_in_browser_console if true the object will be logged in the browser's console instead of directly to HTML.
+ */
+function debug_obj($label, $obj, $log_in_browser_console = true){
+    //turn unconditional return on by uncommentinng it if you're not explicitly debugging stuff.
+    // return;
+    if($log_in_browser_console){
+        echo '<script type="text/javascript">console.log("'.$label.'",">>>>'.print_r($obj,true).'<<<<");</script>';
+        return;
+    }
+    echo "<br>====". $label . "=====<br>";
     print_r($obj);
     echo "<br>";
 }
@@ -707,17 +725,59 @@ function print_var($label, $obj){
  * 
  * @param string $option_key meta key of the option.
  * @param string $default_value default value to use if Options page or the option with provided key is not found.
- * @param boolean $$single If true, returns only the first value for the specified meta key. Default value: false
+ * @param boolean $single If true, returns only the first value for the specified meta key. Default value: false
  */
 function get_site_option_value($option_key, $default_value, $single = false){
     $options_page = get_page_by_path('site-content-options');
     if(null != $options_page){
         $option_value = get_post_meta($options_page->ID, $option_key, $single);
         if(!empty($option_value)){
+
+            $field_props = CFS()->get_field_info($option_key, $options_page->ID);
+            
+            if(equate_if_exists('type',$field_props,'wysiwyg')){
+                return do_shortcode($option_value);
+            };
+                        
             return $option_value;
         }
     }
     return $default_value;
+}
+
+/**
+ * Returns the value in an array with given key if it exists. If it does not exist, the default value is returned.
+ * 
+ * @param string $array_key  The key/index to check in the array.
+ * @param array $array_to_check_in  The array to check the key's existence in.
+ * @param mixed $default_value  The default value to return when key is not present.
+ */
+function get_if_exists($array_key, $array_to_check_in, $default_value){
+	
+	if(array_key_exists($array_key, $array_to_check_in)){
+		return $array_to_check_in[$array_key];
+	}
+	else{
+		return $default_value;
+	}
+}
+
+/**
+ * Returns a boolean indicating if a given value is equal to the value associated with a given index in a give array.
+ * If the given index does not exist in the given array - returns false.
+ * 
+ * @param string $array_key  The key/index to check in the array.
+ * @param array $array_to_check_in  The array to check the key's existence in.
+ * @param mixed $value_to_check_equality  The value to check quality with.
+ */
+function equate_if_exists($array_key, $array_to_check_in, $value_to_check_equality){
+	
+	if(array_key_exists($array_key, $array_to_check_in)){
+		return $array_to_check_in[$array_key] == $value_to_check_equality;
+	}
+	else {
+		return false;
+	}
 }
 
 ?>
