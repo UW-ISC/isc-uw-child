@@ -5,27 +5,29 @@
  * @author Prasad Thakur
  * @package isc-uw-child
  */
-add_filter('get_the_archive_title', custom_post_archive_title);
 
-function custom_post_archive_title ( $title ){
+ function custom_post_archive_title ( $title ){
 	if( is_post_type_archive() ){
 		$title = post_type_archive_title('', false);
 	}
 	return $title;
 }
 
+add_filter('get_the_archive_title', 'custom_post_archive_title');
 add_action('isc_request_ajax_courseFilter', 'course_filter');
 add_action('isc_request_ajax_nopriv_courseFilter', 'course_filter');
 
 function course_filter(){
 	
-	// echo "POST: ";
-	// print_r($_POST);
-	// echo "<br>";
+	trigger_course_fitler_with_params_from($_POST);
+	die();
+}
+
+function trigger_course_fitler_with_params_from ($param_source){
+	
 	$tax_query_base = array(
 		'relation' => 'AND',
 	);
-
 	
 	$args = array(
 		'post_type' => 'workday_course',
@@ -34,28 +36,24 @@ function course_filter(){
 		'tax_query' => $tax_query_base
 	);
 
-	
-
 	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
 
 	$selected_taxonomy_ids = array();
 	
 	foreach ($taxonomies as $each_taxonomy ){
 
-		if(isset($_POST[$each_taxonomy->name])){
+		if(array_key_exists($each_taxonomy->name, $param_source)){
 
-			$selected_taxonomy_ids = array_merge($selected_taxonomy_ids, $_POST[$each_taxonomy->name] );
+			$selected_taxonomy_ids = array_merge($selected_taxonomy_ids, $param_source[$each_taxonomy->name] );
 
 			array_push($args['tax_query'],  array(
 				'taxonomy' => $each_taxonomy->name,
 				'field' => 'id',
-				'terms' => $_POST[$each_taxonomy->name]
+				'terms' => $param_source[$each_taxonomy->name]
 			  ));
 		}
 	}
 
-	// echo "args: ";
-	// print_r( ($args['tax_query'] == $tax_query_base) == 1);
 
 	if( $args['tax_query']  == $tax_query_base ){
 		// echo "resetting";
@@ -66,124 +64,107 @@ function course_filter(){
 		);
 	}
 
+	$args['orderby'] = 'title';
+	
+	if(equate_if_exists('sortBy',$param_source,'date-updated')){
+		$args['orderby'] = 'meta_value';
+		$args['meta_key'] = 'course-update-date';
+		$args['meta_type'] = 'DATE';
+	}
 	
 
-	print_workday_course_catalog($args, $page_value, $selected_taxonomy_ids);
-	die();
+	$args['order'] = get_if_exists('sortOrder',$param_source,'ASC');
+
+	print_workday_course_catalog($args, $selected_taxonomy_ids);
+
+	
 }
 
-function print_workday_course_catalog($post_args, $page_value = 0,  $selected_taxonomy_ids = array()){
+function print_workday_course_catalog($post_args, $selected_taxonomy_ids = array()){
 
 	$page_size = 10;
+	$page_value = get_if_exists('page', $_POST, 0);
 
-	$page_value = 0;
-	if(isset($_POST['page'])){
-		$page_value = $_POST['page'];
-	}
-
-	$post_args['orderby'] = 'title';
-	if(isset($_POST['sortBy'])){
-		if('date-updated' == $_POST['sortBy']){
-			$post_args['orderby'] = 'meta_value';
-			$post_args['meta_key'] = 'course-update-date';
-			$post_args['meta_type'] = 'DATE';
-		}
-	}
-
-	$post_args['order'] = 'ASC';
-	if(isset($_POST['sortOrder'])){
-		if('DESC' == $_POST['sortOrder']){
-			$post_args['order'] = 'DESC';
-		}
-	}
 	
+		
 	echo '<div class="col-md-4 course-filter-form">';
 		print_course_filter_form($post_args, $selected_taxonomy_ids);
 	echo '</div>';
 	echo '<div class="col-md-8"> <div class="filter-and-sort-bar"> <div class="row">';
-	// echo '<div class="full-screen-mask-dark" hidden><div class="lds-dual-ring"></div></div>';
+	
 	print_filter_status_bar($selected_taxonomy_ids);
 	print_sort_bar();
 
 	echo '</div></div>';
 
 	echo '<div  id="coursePosts">';
+	
+	$post_query = new WP_Query( $post_args );
 
 	
-	
-		$post_query = new WP_Query( $post_args );
-
+	if( $post_query->have_posts()) {
 		
-		if( $post_query->have_posts()) {
-			
-			
-			$found_num = $post_query->found_posts;
-			$plural = $found_num > 1 ? 's' : '';
+		
+		$found_num = $post_query->found_posts;
+		$plural = $found_num > 1 ? 's' : '';
 
-			$start_at = 0;
-			$possible_pages = intval($found_num / $page_size);
+		$start_at = 0;
+		$possible_pages = intval($found_num / $page_size);
 
-			if(($found_num % $page_size)>0) {
-				$possible_pages++;
-			}
-
-			if($page_value< 0){
-				$page_value = 0;
-			}
-			else if( $page_value > $possible_pages){
-				$page_value = $possible_pages;
-			}
-
-			if($found_num > $page_size){
-				$start_at = $page_size * $page_value;
-			}
-
-			if(count($selected_taxonomy_ids) > 0){	
-				echo '<h4> Found ' . $found_num . ' Course'.$plural.'</h4>';
-			} else{
-
-				$end_num = $start_at + $page_size;
-				
-				if($end_num >= $found_num ){
-					$end_num = $found_num;
-				}
-				echo '<h4> Showing  ' . ($start_at + 1) . '-'. $end_num . ' of '. $found_num.' Course'.$plural.'</h4>';
-			}
-			
-			
-			// echo "<br>start at:". $start_at;
-			// echo "<br>page_size:". $page_size;
-			// echo "<br>page_value:". $page_value;
-			// echo "<br>possible_pages:". $possible_pages;
-
-			$counter = 0;
-
-			while ( $post_query->have_posts() ) {
-				$post_query->the_post();
-				
-				if($counter >= ($start_at + $page_size) ){
-					break;
-				}
-
-				if( $counter >= $start_at)
-				{
-					print_workday_course_item();
-				}
-				
-				$counter ++;
-			} //end while
-			if( $start_at > 0 ) {
-				echo '<div class="nav-previous alignleft"><a  onclick="handlePrevClick(this)" class="uw-btn btn-sm btn-left">Previous</a></div>';
-				// echo  '<a onclick="handlePrevClick(this)"> << prev </a>';
-			}
-			if( ($start_at + $page_size) < $found_num) {
-				// echo  '<a onclick="handleNextClick(this)"> next >> </a>';
-				echo '<div class="nav-next alignright"><a  onclick="handleNextClick(this)" class="uw-btn btn-sm">Next</a></div>';
-			}
-		} // end if
-		else{
-			echo "<h3> No Workday Courses </h3>";
+		if(($found_num % $page_size)>0) {
+			$possible_pages++;
 		}
+
+		if($page_value< 0){
+			$page_value = 0;
+		}
+		else if( $page_value > $possible_pages){
+			$page_value = $possible_pages;
+		}
+
+		if($found_num > $page_size){
+			$start_at = $page_size * $page_value;
+		}
+
+		if(count($selected_taxonomy_ids) > 0){	
+			echo '<h4> Found ' . $found_num . ' Course'.$plural.'</h4>';
+		} else{
+
+			$end_num = $start_at + $page_size;
+			
+			if($end_num >= $found_num ){
+				$end_num = $found_num;
+			}
+			echo '<h4> Showing  ' . ($start_at + 1) . '-'. $end_num . ' of '. $found_num.' Course'.$plural.'</h4>';
+		}
+		
+		$counter = 0;
+
+		while ( $post_query->have_posts() ) {
+			$post_query->the_post();
+			
+			if($counter >= ($start_at + $page_size) ){
+				break;
+			}
+
+			if( $counter >= $start_at)
+			{
+				print_workday_course_item();
+			}
+			
+			$counter ++;
+		} //end while
+		if( $start_at > 0 ) {
+			echo '<div class="nav-previous alignleft"><a  onclick="handlePrevClick(this)" class="uw-btn btn-sm btn-left">Previous</a></div>';
+			
+		}
+		if( ($start_at + $page_size) < $found_num) {
+			echo '<div class="nav-next alignright"><a  onclick="handleNextClick(this)" class="uw-btn btn-sm">Next</a></div>';
+		}
+	} // end if
+	else{
+		echo "<h3> No Workday Courses </h3>";
+	}
 	echo '</div>';
 	echo '</div>';
 }
@@ -196,15 +177,12 @@ function print_sort_bar(){
 }
 
 function print_sort_by_dropdown(){
-	$sort_by_title = '';
+	$sort_by_title = 'selected';
 	$sort_by_update_date = '';
 
-	switch($_POST['sortBy']){
-		case 'date-updated':
-			$sort_by_update_date = 'selected';
-			break;
-		default:
-			$sort_by_title = 'selected';
+	if(equate_if_exists('sortBy',$_POST, 'date-updated')){
+		$sort_by_title = '';
+		$sort_by_update_date = 'selected';
 	}
 
 	$sort_by_html = <<<askdnaknckascnkan
@@ -218,14 +196,13 @@ askdnaknckascnkan;
 }
 
 function print_sort_order_toggle(){
-	switch($_POST['sortOrder']){
-		case 'DESC':
-			echo '<i class="fa fa-arrow-down control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="DESC" ></i>';
-			break;
-		default:
-			echo '<i class="fa fa-arrow-up control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="ASC" ></i>';
+	$icon_html = '<i class="fa fa-arrow-up control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="ASC" ></i>';
+	
+	if(equate_if_exists('sortOrder',$_POST,'DESC')){
+		$icon_html = '<i class="fa fa-arrow-down control-icon" aria-hidden="true" onclick="handleSortOrderChange(this)" data-sort-order="DESC" ></i>';
 	}
 	
+	 echo $icon_html;
 }
 
 function print_course_filter_form($args, $selected_taxonomy_ids){
@@ -247,7 +224,7 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 
 	$taxonomies = get_object_taxonomies( 'workday_course', 'objects' );
 
-	$print_order = ['course-employee-population', 'course-skill-level', 'course-security-role-involved', 'course-type', 'business-process', 'course-scenario'];
+	$print_order = get_filter_order();
 
 	$keyed_taxonomies = array();
 
@@ -261,15 +238,16 @@ function print_course_filter_form($args, $selected_taxonomy_ids){
 	echo  '<input type="hidden" name="page" value="0">';
 
 	$sort_by_value = 'title';
-	if('date-updated' == $_POST['sortBy']){
+	if(equate_if_exists('sortBy',$_POST,'date-updated')){
 		$sort_by_value = 'date-updated';
 	}
 	
+	
 	$sort_order_value = 'ASC';
-	if('DESC' == $_POST['sortOrder']){
+	if(equate_if_exists('sortOrder',$_POST,'DESC')){
 		$sort_order_value = 'DESC';
 	}
-	
+		
 	echo  '<input type="hidden" name="sortBy" value="'.$sort_by_value.'">';
 	echo  '<input type="hidden" name="sortOrder" value="'.$sort_order_value.'">';
 
@@ -310,7 +288,7 @@ function get_term_count($term, $post_ids, $taxonomy){
         $post = get_post($id);
         $terms = get_the_terms($post, $taxonomy->name);
 
-        if(in_array($term, $terms)) {
+        if($terms && in_array($term, $terms)) {
             $count++;
         }
     }
@@ -352,8 +330,8 @@ function get_workday_course_metadata(){
 
 	$course_metadata['post_excerpt'] = get_the_excerpt();
 	
-	$course_metadata['post_image_url'] = wp_get_attachment_url(get_post_meta(get_the_ID(), 'course-image', true));
 
+	$course_metadata['post_image_url'] = wp_get_attachment_url(get_post_meta(get_the_ID(), 'course-image', true));
 	$course_metadata['duration'] = get_post_meta(get_the_ID(), 'course-duration', true);
 
 	// $release_date = get_post_meta(get_the_ID(), 'course-release-date', true);
@@ -459,4 +437,8 @@ dnfndaskfn;
 	
 	//<li>| <a href="{$read_more}"> more </a> </li>
 	echo $post_html;
+}
+
+function get_filter_order(){
+	return ['course-employee-population', 'course-skill-level', 'course-security-role-involved', 'course-type', 'business-process', 'course-scenario'];
 }

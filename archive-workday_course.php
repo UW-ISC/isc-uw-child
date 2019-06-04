@@ -40,22 +40,56 @@ get_header();?>
 
 </div>
 
+<?php
+		uw_site_title();
+        get_template_part( 'menu', 'mobile' );
+		the_page_header([
+            'title' => get_the_archive_title(),
+            'use_date' => false,
+            'breadcrumbs_options' => array(
+                'insert_after_root' => true,
+                'type' => 'relative',
+                'trail' => array(
+                    'Support Resources' => 'support-resources',
+                    'Workday Training' => 'support-resources/workday-training',
+                )
+            )
+        ]);
+	?>
+
 <div class="container uw-body">
-    
-    <div class="row">
-        <div class="col-md-12">
-            <?php get_template_part( 'breadcrumbs' ); ?>
-        </div>
-    </div>
-
-
     <div class="row">
         <div class="uw-content col-md-12">
             <div id='main_content' class="uw-body-copy" tabindex="-1">
                 <section>
                     <header class="isc-page-header">
                         <?php
-                        the_archive_title( '<h1 class="page-title">', '</h1>' );
+
+                        //Support for URL based filtering.
+                        $valid_params = get_filter_order();
+                        $filter_param_array = array();
+
+                        //for each valid taxonomy item
+                        foreach($valid_params as $param_name){
+
+                            //check if url has this taxonomy item and get its term slugs
+                            $term_slugs = get_if_exists('_'.$param_name, $_GET, array());
+                            $filter_param_values = array();
+
+                            foreach($term_slugs as $term_slug){
+                                $term_obj = get_term_by('slug',$term_slug, $param_name, OBJECT);
+                                
+                                if(!empty($term_obj)){
+                                    $term_id = $term_obj->term_id;
+                                    array_push($filter_param_values, $term_id);
+                                }
+                                
+                            }
+
+                            if(!empty($filter_param_values)){
+                                $filter_param_array[$param_name] = $filter_param_values;
+                            }
+                        }
 
                         $post_args =array(
                             'post_type' => 'workday_course',
@@ -65,20 +99,18 @@ get_header();?>
 
                         ?>
                     </header>
-                    <p>
-                        Use the filters below to find the courses in the library that best suit your needs.<br>
-                        <br>
-                        For anyone seeking a security role where training is required (HCM Initiate 2, HR Partner, Academic Partner, and/or Time & Absence Initiate), follow these steps using the filters below:
-                        <ol>
-                            <li>Select the employee population(s) you will support in your new role.</li>
-                            <li>Select the name(s) of the security role(s) you are seeking.</li>
-                            <li>Complete all Level 1, 2, and 3 courses displayed in order to be eligible. If you have already completed the course(s) for another role, you do not need to retake them.</li>
-                        </ol>
-                    </p>
+                    <?php echo get_site_option_value('workday_learning_library_intro','',true); ?>
                 </section>
                 <hr/>
                 <div class="row" id="courseCatalog">
-                    <?php print_workday_course_catalog($post_args); ?>
+                    <?php
+                        if(!empty($filter_param_array)){
+                            trigger_course_fitler_with_params_from($filter_param_array);
+                        }
+                        else {
+                            print_workday_course_catalog($post_args);
+                        }
+                     ?>
                 </div>
                 
             </div>
