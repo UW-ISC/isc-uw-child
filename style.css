@@ -62,6 +62,13 @@ blockquote.gold {
     border: 0;
     padding: 3px 10px 3px 10px !important;
   }
+
+blockquote.white {
+    color: black;
+    background-color: white;
+    border: 0;
+    padding: 3px 10px 3px 10px !important;
+  }
   
 blockquote.outline {
     border: 3px solid #e9e6f0;
