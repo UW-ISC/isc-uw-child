@@ -21,6 +21,9 @@
 					if('post' == get_post_type()){
 						$prefix = get_post_type_object(get_post_type())->labels->name;
 					}
+					else if ('workday_course' == get_post_type()){
+						$prefix = get_the_archive_title();
+					}
 					
 					echo $prefix . " | "; bloginfo( 'name' ); 
 					?> </title>
