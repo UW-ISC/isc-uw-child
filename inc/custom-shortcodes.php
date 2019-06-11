@@ -179,9 +179,11 @@ function isc_milestone($atts, $content = null)
         <li class="bullet line-height-proper">
             <i class="fa isc-milestone-icon isc-milestone-$type" ></i>
         </li>
-        <li class="line-height-proper right-padding" >$content</li>
+		<li class="line-height-proper right-padding" >
+			<p>$content</p>
+		</li>
     </ul>
-    <hr>
+    <hr style="margin-top:0 !important">
 oahfnmnfjhnfu;
 
     return $out;
