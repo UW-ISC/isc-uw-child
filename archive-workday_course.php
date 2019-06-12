@@ -108,6 +108,7 @@ get_header();?>
                             trigger_course_fitler_with_params_from($filter_param_array);
                         }
                         else {
+                            $post_args = set_sorting_params($post_args);
                             print_workday_course_catalog($post_args);
                         }
                      ?>
