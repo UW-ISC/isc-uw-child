@@ -64,6 +64,14 @@ function trigger_course_fitler_with_params_from ($param_source){
 		);
 	}
 
+	
+	$args = set_sorting_params($args,$param_source);
+	print_workday_course_catalog($args, $selected_taxonomy_ids);
+
+	
+}
+
+function set_sorting_params($args, $param_source = []){
 	$args['orderby'] = 'title';
 	
 	if(equate_if_exists('sortBy',$param_source,'date-updated')){
@@ -75,9 +83,7 @@ function trigger_course_fitler_with_params_from ($param_source){
 
 	$args['order'] = get_if_exists('sortOrder',$param_source,'ASC');
 
-	print_workday_course_catalog($args, $selected_taxonomy_ids);
-
-	
+	return $args;
 }
 
 function print_workday_course_catalog($post_args, $selected_taxonomy_ids = array()){
