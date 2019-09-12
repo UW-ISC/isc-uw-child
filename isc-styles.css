@@ -1190,13 +1190,13 @@ a.uw-btn.btn-sm.btn-left {
 .isc-expander {
     background: #eee !important;
     margin-top: 10px;
-    padding: 10px 16px;
+    padding: 5px 10px;
 }
 
 .isc-expander a[role=button] {
     color: #4b2e83;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     background-image: none;
     display: block;
     border-bottom: none !important;

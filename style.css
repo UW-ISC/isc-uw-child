@@ -90,7 +90,7 @@ blockquote.outline {
 
 /* Add whitespace to bottom of accordion menu divs */
 .isc-expander {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
 /* Reduce tile padding */
