@@ -28,7 +28,7 @@ get_header();
 		</div>
 
 		<div class="print-only user-guide-print-note">
-			<p><strong>Note:</strong> This printed User Guide might be outdated. Please refer to ISC website (isc.uw.edu) for the latest User Guide.</p>
+			<p><strong>Note:</strong> This is a printed version of <?php global $wp; echo home_url( $wp->request )?>. Please visit this page on the ISC website to ensure you're referencing the most current information.</p>
 		</div>
 			
 		<article class="uw-content isc-user-guide" id="main_content">
