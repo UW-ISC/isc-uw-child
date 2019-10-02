@@ -68,6 +68,16 @@
 
 	</div>
 
+	<script>
+		$(document).keydown(function(event){
+			// cntrl-f or command-f
+				if((event.ctrlKey || event.metaKey) && event.which == 70) {
+					$(".collapse.isc-expander-content").attr( "aria-expanded", "true" );
+					$(".collapse.isc-expander-content").removeClass( "collapse" );
+
+				};
+			});
+	</script>
 </div>
 
 <?php get_footer(); ?>
