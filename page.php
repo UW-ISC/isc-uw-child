@@ -12,6 +12,10 @@
 ?>
 <div role="main">
 
+	<div class="print-only user-guide-print-note">
+		<p><strong>Note:</strong> This is a printed version of <?php global $wp; echo home_url( $wp->request )?>. Please visit this page on the ISC website to ensure you're referencing the most current information.</p>
+	</div>	
+
 	<?php
 		uw_site_title();
 		get_template_part( 'menu', 'mobile' );
