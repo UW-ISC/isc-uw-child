@@ -41,6 +41,25 @@ function isc_long_button( $atts, $content = '' ) {
 
 	$img = wp_get_attachment_image(attachment_url_to_postid($img));
 
+	if ($img == "") {
+		$out = <<<akisujancdkan
+		<div class="long-button">
+			<a class="long-button-link" href="$url">
+				<div class="long-button-body">
+					<div class="row">
+						<div class="long-button-main-no-img col-md-9">
+							<div class="long-button-title">
+								<h4 id="2-hcm-initiate-2">$title</h4>
+								<div class="fa fa-external-link fa-lg hover-link"></div>
+							</div>
+							<p>$content</p>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		akisujancdkan;
+	} else {
 	$out = <<<akisujancdkan
 		<div class="long-button">
 			<a class="long-button-link" href="$url">
@@ -60,7 +79,8 @@ function isc_long_button( $atts, $content = '' ) {
 				</div>
 			</a>
 		</div>
-akisujancdkan;
+		akisujancdkan;
+	}
 
 	return $out;
 

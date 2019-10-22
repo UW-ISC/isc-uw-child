@@ -2326,6 +2326,11 @@ p:empty {
     align-self: start;
 }
 
+.card-decription-p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
 .card-grid-link {
     grid-area: link;
     place-self: center;
@@ -2904,6 +2909,10 @@ hr {
 
 .long-button-main {
     max-width: 95%;
+}
+
+.long-button-main-no-img {
+    width: 100%;
 }
 
 @media (min-width:992px) {
