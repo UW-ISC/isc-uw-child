@@ -2911,6 +2911,10 @@ hr {
     max-width: 95%;
 }
 
+.long-button-main-no-img {
+    width: 100%;
+}
+
 @media (min-width:992px) {
     .long-button-main {
         position: relative;
