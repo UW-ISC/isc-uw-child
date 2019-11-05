@@ -138,6 +138,13 @@ get_header(); ?>
 
 				echo 'Found <b>' . $total_results . '</b> results for "<i>' . $search_query . '</i>"'. get_filter_description();
 
+				$terms = rawurlencode( get_search_query() );
+				$url = 'http://www.washington.edu/search/?q=' . $terms;
+
+				if (have_posts()) {
+					echo "<p class='newtop'> You can also search for <a href = '$url'>" . "'" . get_search_query() . "'</a> across all of the UW.</p>";
+				}
+				
 				?>
 
 				<div>
