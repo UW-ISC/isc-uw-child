@@ -93,12 +93,18 @@ function isc_card($atts, $content = null)
         'title' => '',
         'button_link' => '',
 		'button_text' => '',
+		'open_in_same' => '',
 		'auto_height' => 'false'
     ),
 		$atts));
 	
 	$apply_auto_height = strcmp($auto_height, 'false') !== 0;
 
+	if(strcmp($open_in_same, 'true') == 0) {
+		$button_open = "";
+	} else {
+		$button_open = "_blank";
+	}
 	$height_class= '';
 	if( $apply_auto_height){
 		$height_class= 'auto-height-card';
@@ -107,9 +113,9 @@ function isc_card($atts, $content = null)
     $out = '<div class="card-box-33 col-md-3 '.$height_class.'">
 		<img src="' . $url . '" class="card-grid-icon">
 		<h5 class="card-grid-title" >' . $title . '</h5>
-		<p class="card-grid-decription" >' . $content . '</p>
+		<div class="card-grid-decription" >' . $content . '</div>
 		<h4 class="card-grid-link" title="' . $button_text . '">
-			<a class="uw-btn btn-sm" href="' . $button_link . '" target="_blank" rel="noopener noreferrer">' . $button_text . '</a>
+			<a class="uw-btn btn-sm" href="' . $button_link . '" target="'.$button_open .'" rel="noopener noreferrer">' . $button_text . '</a>
 		</h4>
 		</div>
 		';
