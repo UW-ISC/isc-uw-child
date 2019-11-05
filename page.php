@@ -30,6 +30,13 @@
 
 				<div id='main_content' class="uw-body-copy" tabindex="-1">
 
+				<script>
+						$(document).ready(function() {
+							let p_tag = $("div.card-box-33 > div.card-grid-decription > p");
+							p_tag.addClass("card-decription-p");
+						});
+					</script>
+
 					<?php
 					log_to_console( 'page.php' );
 					
