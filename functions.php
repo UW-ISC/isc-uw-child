@@ -247,32 +247,6 @@ if (!function_exists('esc_html_title')):
     }
 endif;
 
-// add_filter('relevanssi_remove_punctuation', 'savehyphens_1', 9);
-/**
- * Hack around relevanssi dropping punctuation from search queries.
- * Part 1 of 2.
- *
- * @param String $a The search query.
- */
-// function savehyphens_1($a)
-// {
-//     $a = str_replace('-', 'HYPHEN', $a);
-//     return $a;
-// }
-
-// add_filter('relevanssi_remove_punctuation', 'savehyphens_2', 11);
-/**
- * Hack around relevanssi dropping punctuation from search queries.
- * Part 2 of 2.
- *
- * @param String $a The search query.
- */
-// function savehyphens_2($a)
-// {
-//     $a = str_replace('HYPHEN', '-', $a);
-//     return $a;
-// }
-
 // Function determines the tags that custom_wp_trim_excerpt will allow
 function allowedtags()
 {
