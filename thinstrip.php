@@ -77,7 +77,7 @@ $alert_news_posts = get_posts( $alert_args );
 if ( $alert_news_posts ) :
 	$alert_news_post = get_post( $alert_news_posts[0]->ID ) ?>
     <?php setup_postdata( $GLOBALS['post'] =& $alert_news_post ); ?>
-	<div id="uwalert-alert-message" class="advisories  uwalert-steel">
+	<div id="isc-alert-banner">
 		<div class="container">
 			<h1><?php echo get_the_title( $alert_news_post ); ?></h1>
 			<p></p>
