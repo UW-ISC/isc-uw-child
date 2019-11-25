@@ -153,10 +153,42 @@ p {
     background-color: #85754d;
     padding-bottom: 2em;
 }
+
+#isc-alert-banner {
+padding: 0 20px 40px;
+position: relative;
+}
+
+#isc-alert-banner h1 {
+    color: white;
+    font-size: 25px;
+}
+
 #isc-alert-banner p {
+    color: white;
+    line-height: 1.62222;
     display: inline;
 }
 
+#isc-alert-banner a.more {
+    color: #4b2e83;
+    display: inline-block;
+}
+#isc-alert-banner a.more:after {
+    bottom: 0px;
+}
+
+#isc-alert-banner h1 {
+    color: #ffffff;
+}
+
+#isc-alert-banner p {
+    display: inline;
+    color: #ffffff;
+}
+#isc-alert-banner a:link {
+    color: #4b2e83;
+  }
 
 /*** main navigation (purple bar) ***/
 
