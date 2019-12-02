@@ -73,3 +73,16 @@
 
 	<?php require get_template_directory() . '/inc/template-functions.php';
 		  uw_dropdowns(); ?>
+
+	<script>
+		$(document).ready(function() {
+			for (let x = 0; x < $("blockquote.banner p").length; x++) {
+				let ele = $($("blockquote.banner p")[x]);
+				if(ele.height() == 24) {
+					ele.css('margin-top', '7px');
+				} else {
+					ele.css('margin-top', 'unset');
+				}
+			}
+		});
+	</script>
