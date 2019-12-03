@@ -187,8 +187,12 @@ position: relative;
     color: #ffffff;
 }
 #isc-alert-banner a:link {
-    color: #4b2e83;
-  }
+    color: #4B2E83;
+}
+
+#isc-alert-banner a:hover {
+    text-decoration: underline;
+}
 
 /*** main navigation (purple bar) ***/
 
