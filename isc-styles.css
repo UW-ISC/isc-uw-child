@@ -24,6 +24,21 @@ p {
 }
 
 
+.responsive-youtube-iframe {
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+    overflow:hidden;
+}
+    
+.responsive-youtube-iframe iframe, .responsive-youtube-iframe object, .responsive-youtube-iframe embed {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
 /*** top banner nav (white bar) ***/
 
 .uw-thinstrip {
@@ -149,6 +164,46 @@ p {
     }
 }
 
+#isc-alert-banner {
+    background-color: #85754d;
+    padding-bottom: 2em;
+}
+
+#isc-alert-banner {
+padding: 0 20px 40px;
+position: relative;
+}
+
+#isc-alert-banner h1 {
+    color: white;
+    font-size: 25px;
+}
+
+#isc-alert-banner p {
+    color: white;
+    line-height: 1.62222;
+    display: inline;
+}
+
+#isc-alert-banner a.more {
+    color: #4b2e83;
+    display: inline-block;
+}
+#isc-alert-banner a.more:after {
+    bottom: 0px;
+}
+
+#isc-alert-banner h1 {
+    color: #ffffff;
+}
+
+#isc-alert-banner p {
+    display: inline;
+    color: #ffffff;
+}
+#isc-alert-banner a:link {
+    color: #4b2e83;
+  }
 
 /*** main navigation (purple bar) ***/
 
@@ -492,7 +547,7 @@ h3 > a {
 }
 
 .isc-homepage-hero .isc-homepage-title {
-    font-size: 20px;
+    font-size: 23px;
     line-height: 25px;
     font-weight: 900;
     font-family: 'Encode Sans Compressed', sans-serif;
