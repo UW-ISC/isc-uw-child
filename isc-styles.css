@@ -176,6 +176,8 @@ position: relative;
 }
 #isc-alert-banner a.more:after {
     bottom: 0px;
+    width: 0;
+    height: 0;
 }
 
 #isc-alert-banner h1 {
@@ -186,6 +188,14 @@ position: relative;
     display: inline;
     color: #ffffff;
 }
+
+#isc-alert-banner a {
+    color: #4B2E83;
+    -o-transition: 0s;
+    -webkit-transition: 0s;
+    transition: 0s;
+}
+
 #isc-alert-banner a:link {
     color: #4B2E83;
 }
