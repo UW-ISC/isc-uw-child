@@ -29,13 +29,11 @@ get_header(); ?>
 				$('#adminCorner').prop('checked', value);
 				$('#userGuide').prop('checked', value);
 				$('#news').prop('checked', value);
-				$('#glossary').prop('checked', value);
 				$('#others').prop('checked', value);
 
 				$("#adminCorner").attr("disabled", value);
 				$("#userGuide").attr("disabled", value);
 				$("#news").attr("disabled", value);
-				$("#glossary").attr("disabled", value);
 				$("#others").attr("disabled", value);
 			}
 
@@ -103,7 +101,6 @@ get_header(); ?>
 						  <ul class="no-stylist">
 						  	<!-- <li><input type="checkbox" name="type[]" id="all" value="all"> <label for="all">All</label></li> -->
 						    <li><input type="checkbox" name="type[]" id="adminCorner" value="adminCorner"> <label for="adminCorner">Admins' Corner pages</label></li>
-						    <li><input type="checkbox" name="type[]" id="glossary" value="glossary"> <label for="glossary">Glossary terms</label></li>
 						    <li><input type="checkbox" name="type[]" id="news" value="news"> <label for="news">News posts</label></li>
 						    <li><input type="checkbox" name="type[]" id="others" value="others"> <label for="others">Pages</label></li>
 						    <li><input type="checkbox" name="type[]" id="userGuide" value="userGuide"> <label for="userGuide">User Guides</label></li>
