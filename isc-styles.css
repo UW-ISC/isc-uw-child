@@ -1632,9 +1632,15 @@ h3 > a {
     }
 }
 
+/*** commenting out to fix checkbox formatting ***
 .wpcf7-form-control-wrap input,
+***/
 .wpcf7-form-control-wrap textarea {
     width: 100% !important;
+}
+
+span.wpcf7-list-item { 
+	display: block !important;
 }
 
 
