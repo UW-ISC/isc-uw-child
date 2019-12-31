@@ -2179,7 +2179,8 @@ p:empty {
         font-weight: normal;
     }
     p a img {
-        width: 100% !important;
+        max-width: 100%; 
+        height: auto; 
         border: 2px solid lightgrey !important;
     }
     p a {
