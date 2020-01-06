@@ -204,9 +204,20 @@ add_shortcode( 'isc-milestone', 'isc_milestone' );
  * @return string The obfuscated email address. 
  */
 function wpdocs_hide_email_shortcode( $atts , $content = null ) {
+
+	extract(shortcode_atts(array(
+		'subject' => ''
+	),$atts));
+
     if ( ! is_email( $content ) ) {
         return;
-    }
-    return '<a href="mailto:' . esc_url( antispambot( $content, 1 ) ) . '">' . esc_html( antispambot( $content, 0 ) ) . '</a>';
+	}
+	$email = esc_html(antispambot( $content, 1));
+	if ($subject != '') {
+		$email .= '?subject=' . $subject;
+	}
+
+	return '<a href="mailto:' . $email . '">' . esc_html( antispambot( $content, 0 ) ) . '</a>';
+   
 }
 add_shortcode( 'email', 'wpdocs_hide_email_shortcode' );
