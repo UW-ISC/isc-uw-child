@@ -196,4 +196,28 @@ oahfnmnfjhnfu;
 }
 add_shortcode( 'isc-milestone', 'isc_milestone' );
 
-// Milestones - end
+/**
+ * Hide email from Spam Bots using a shortcode.
+ *
+ * @param array  $atts    Shortcode attributes. Not used.
+ * @param string $content The shortcode content. Should be an email address.
+ * @return string The obfuscated email address. 
+ */
+function wpdocs_hide_email_shortcode( $atts , $content = null ) {
+
+	extract(shortcode_atts(array(
+		'subject' => ''
+	),$atts));
+
+    if ( ! is_email( $content ) ) {
+        return;
+	}
+	$email = esc_html(antispambot( $content, 1));
+	if ($subject != '') {
+		$email .= '?subject=' . $subject;
+	}
+
+	return '<a href="mailto:' . $email . '">' . esc_html( antispambot( $content, 0 ) ) . '</a>';
+   
+}
+add_shortcode( 'email', 'wpdocs_hide_email_shortcode' );
