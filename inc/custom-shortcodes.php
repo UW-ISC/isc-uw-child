@@ -199,9 +199,16 @@ add_shortcode( 'isc-milestone', 'isc_milestone' );
 /**
  * Hide email from Spam Bots using a shortcode.
  *
- * @param array  $atts    Shortcode attributes. Not used.
+ * @param array  $atts    $subject, the suject to send with the email
  * @param string $content The shortcode content. Should be an email address.
  * @return string The obfuscated email address. 
+ * 
+ * To only add email and not any subject just use [email]<write email here> [/email]
+ * For example: [email]test@uw.edu[/email]
+ * 
+ * If you want to add an subject too add an subject field to the shortcode like this:
+ *   [email subject="<write subject here>"]<write email here>[/email]
+ * For example: [email subject="Test Subject"]test@uw.edu[/email]
  */
 function wpdocs_hide_email_shortcode( $atts , $content = null ) {
 
