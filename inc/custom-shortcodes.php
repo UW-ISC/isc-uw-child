@@ -140,6 +140,8 @@ function isc_expander( $atts, $content = null ) {
 	);
 
 	static $i = 1;
+	
+	$content = do_shortcode($content);
 
 	$out = '<div class="isc-expander">
 		<a role="button" data-toggle="collapse" class="expanded collapsed" title="' . $atts['alt'] . '" href="#isc_expand_' . $i . '" aria-expanded="false" aria-controls="isc_expand_' . $i . '">' . $atts['title'] . '</a>
@@ -177,7 +179,8 @@ function isc_milestone($atts, $content = null)
     ),
         $atts));
     
-    $content = html_entity_decode($content);
+	$content = html_entity_decode($content);
+	$content = do_shortcode($content);
     
     $out = <<<oahfnmnfjhnfu
     <hr>
