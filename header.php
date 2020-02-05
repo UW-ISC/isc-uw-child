@@ -73,3 +73,5 @@
 
 	<?php require get_template_directory() . '/inc/template-functions.php';
 		  uw_dropdowns(); ?>
+
+<?php include 'common-code.php'; ?>
