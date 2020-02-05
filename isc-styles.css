@@ -132,6 +132,88 @@ p {
     outline: 5px auto -webkit-focus-ring-color !important;
 }
 
+.uw-search-bar-thinstrip form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.uw-search-bar-thinstrip form {
+    /* float: left; */
+    /* width: calc(100% - 65px); */
+    width: 100%;
+    outline: 1px solid #ADADAD;
+    /* outline: 1px solid #4b2e83; */
+    height: 39px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.search-bar-div {
+    -o-transition: 2s;
+    -webkit-transition: 2s;
+    transition: 2s;
+ }
+
+.uw-search-bar-thinstrip form label {
+    width: none !important;
+}
+
+.uw-search-bar-thinstrip form input#uw-search-bar {
+    width: 100%;
+    height: 39px;
+    padding: 5px 0 5px 7px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    background-color: #F1F1F1;
+    font-family: "Encode Sans Compressed", sans-serif;
+}
+
+.uw-search-bar-thinstrip input.search {
+    border: none;
+    font-size: 0px;
+    float: left;
+    display: block;
+    height: 39px;
+    /* outline: 1px solid #808080; */
+    outline: 1px solid #4b2e83;
+    background: url(assets/svg/search.svg) no-repeat center center #4b2e83;
+    position: relative;
+    -webkit-background-size: 22px;
+    -moz-background-size: 22px;
+    -o-background-size: 22px;
+    background-size: 22px;
+    padding: 0px 40px 0px 0px;
+}
+
+#open-search-button {
+    visibility: hidden;
+    display: none;
+}
+@media (max-width: 991px) {
+
+    #open-search-button {
+        visibility: visible;
+        display: block;
+    }
+
+    .uw-search-bar-thinstrip {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+.search-bar-div {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+
+
+
 @media (min-width: 768px) and (max-width: 991px) {
     .uw-thinstrip .isc-logo a {
         height: 70px;
@@ -168,8 +250,40 @@ p {
     background-color: #85754d;
     padding-bottom: 2em;
 }
+
+#isc-alert-banner {
+padding: 0 20px 40px;
+position: relative;
+}
+
+#isc-alert-banner h1 {
+    color: white;
+    font-size: 25px;
+}
+
+#isc-alert-banner p {
+    color: white;
+    line-height: 1.62222;
+    display: inline;
+}
+
+#isc-alert-banner a.more {
+    color: #4b2e83;
+    display: inline-block;
+}
+#isc-alert-banner a.more:after {
+    bottom: 0px;
+    width: 0;
+    height: 0;
+}
+
+#isc-alert-banner h1 {
+    color: #ffffff;
+}
+
 #isc-alert-banner p {
     display: inline;
+    color: #ffffff;
 }
 
 blockquote.banner {
@@ -1606,9 +1720,15 @@ h3 > a {
     }
 }
 
+/*** commenting out to fix checkbox formatting ***
 .wpcf7-form-control-wrap input,
+***/
 .wpcf7-form-control-wrap textarea {
     width: 100% !important;
+}
+
+span.wpcf7-list-item { 
+	display: block !important;
 }
 
 
