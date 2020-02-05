@@ -348,7 +348,8 @@ function get_workday_course_metadata(){
 	$update_date = date_create_from_format('Y-m-d', $update_date);
 	$course_metadata['update_date'] = $update_date->format('M j, Y');
 
-	$course_metadata['skill_level'] = get_the_terms(get_the_ID(), 'course-skill-level')[0];
+    $course_metadata['skill_levels'] = get_the_terms(get_the_ID(), 'course-skill-level');
+	$course_metadata['security_role_involved'] = get_the_terms(get_the_ID(), 'course-security-role-involved');
 	
 
 	$course_metadata['read_more'] = esc_url(get_permalink());
@@ -405,6 +406,19 @@ ojaefnjeafksmjf;
 	echo $post_html;
 }
 
+function minToHrs($time) {
+	$hours = floor($time / 60);
+	$minutes = ($time % 60);
+	if ($hours > 0) {
+		if ($minutes > 0) {
+			return "$hours hrs, $minutes mins";
+		}
+		return "$hours hrs";
+	}
+
+	return "$minutes mins";
+}
+
 /**
 * This function renders the current post as if it was a workday course listing.
 **/
@@ -417,6 +431,36 @@ function print_workday_course_item(){
 	$course_metadata = get_workday_course_metadata();
 	extract($course_metadata);
 
+	$duration = minToHrs($duration);
+
+    // For all the levels for a card
+    $skill_level_array = array();
+    foreach ($skill_levels as $level) {
+        $level_name = substr($level->name, 5);
+
+        array_push($skill_level_array, $level_name);
+    }
+    // $skill_level_values = implode(", ", $skill_level_array);
+    if (count($skill_level_array) > 1) {
+        $skill_level_values = min($skill_level_array) . " - " . max($skill_level_array);
+    } else {
+        $skill_level_values = $skill_level_array[0];
+    }
+
+
+    $skill_level_array_1 = array();
+    foreach ($skill_levels as $level) {
+        array_push($skill_level_array_1, $level->name);
+    }
+    $skill_level_values_1 = implode(", ", $skill_level_array_1);
+
+    // For all the security roles for a card
+    $security_role_involved_array = array();
+    foreach ($security_role_involved as $role) {
+        array_push($security_role_involved_array,$role->name);
+    }
+	$security_role_involved_values = implode(", ", $security_role_involved_array);
+	
 	$post_html = <<<dnfndaskfn
 	<div class="workday-course-item" onclick="handleCourseClick('$url')">
 
@@ -431,9 +475,10 @@ function print_workday_course_item(){
 					<h2>{$post_title}</h2>
 					<p>{$post_excerpt}</p>
 					<ul class="workday-item-post-metadata">
-						<li> <b> Duration: </b> {$duration} mins</li>
-						<li>| <b> Skill Level: </b> {$skill_level->name}</li>
-						<li>| <b> Updated On: </b> {$update_date}</li>
+					<li> <b> Duration: </b> {$duration} |</li>
+					<li> <b> Level(s): </b> {$skill_level_values} |</li>
+					<li> <b> Updated On: </b> {$update_date}</li>
+					<li> <b> Security Roles Involved: </b> {$security_role_involved_values} </li>
 					</ul>
 				</td>
 			</tr>
