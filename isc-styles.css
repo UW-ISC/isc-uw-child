@@ -3180,3 +3180,56 @@ hr {
 
 
 /* Long button - end*/
+
+.dataTables_filter {
+    float: none !important;
+}
+
+table.dataTable thead tr th {
+    background-color: #4b2e83 !important;
+    color: white;
+}
+
+table #user-guide td {
+    position: relative;
+}
+
+.user-guide-pdf-icon, .user-guide-video-icon {
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-guide-pdf-icon:hover, .user-guide-video-icon:hover {
+    border-bottom: 0 solid #BDBDBD !important;
+    text-decoration: none;
+} 
+
+.user-guide-video-icon:before, .user-guide-pdf-icon:before {
+    font-family: FontAwesome;
+    font-size: 25px;
+}
+
+
+.user-guide-pdf-icon:before {
+    content: "\f1c1";
+}
+
+.user-guide-video-icon:before {
+    content: "\f1c8";
+}
+
+.user-guide-fixed {
+    position: fixed;
+    margin-top: 0px;
+}
+
+.user-guide-clear-filter {
+    border: 2px solid #4b2e83;
+    font-size: 14px;
+    max-width: 150px;
+    padding: 5px 10px 5px 10px;
+}
