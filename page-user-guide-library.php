@@ -114,14 +114,14 @@ get_header();
 
                         <?php
 
-                            $populations = array(
-                                "Academic Personnel",
-                                "Medical Centers",
-                                "Postdocs",
-                                "Staff Campus",
-                                "Students"
-                            );
-                            $security_roles = array(
+                            // $populations = array(
+                            //     "Academic Personnel",
+                            //     "Medical Centers",
+                            //     "Postdocs",
+                            //     "Staff Campus",
+                            //     "Students"
+                            // );
+                            $security_roles_names = array(
                                 "HCM Initiate 1",
                                 "HCM Initiate 2",
                                 "Time & Absence Initiate",
@@ -138,18 +138,24 @@ get_header();
                             // );
 
                             $topics = get_terms( 'ug-topic' );
+                            $topics_names = array();
+                            $populations_names = array();
+                            $populations = get_terms('ug-population');
 
                             echo "<h3>Population</h3>";
                             foreach($populations as $i) {
+                                $i = $i->name;
+                                array_push($populations_names, sanitize_title($i));
                                 echo "<label><input type='checkbox' name='population' value='" . sanitize_title($i) . "'> " . $i . " </label> <br>";
                             }
                             echo "<h3>Security role</h3>";
-                            foreach($security_roles as $i) {
+                            foreach($security_roles_names as $i) {
                                 echo "<label><input type='checkbox' name='security' value='" . sanitize_title($i) . "'> " . $i . " </label> <br>";
                             }
                             echo "<h3>Topic</h3>";
                             foreach($topics as $i) {
                                 $i = $i->name;
+                                array_push($topics_names, sanitize_title($i));
                                 echo "<label><input type='checkbox' name='topic' value='" . sanitize_title($i) . "'> " . $i . "</label> <br>";
                             }
                         ?>
@@ -168,18 +174,19 @@ get_header();
 
 <?php 
 
-    $page_id = url_to_postid(get_site_url() . '/user-guides/');
+    $page_id = 
     $user_guides = get_user_guides(); // grabs all the user guides. 
     function get_user_guides() {
         $args = array(
             // 'parent' => get_the_ID(),
-            'parent' => $page_id,
+            'parent' => url_to_postid(get_site_url() . '/user-guides/'),
+            // 'parent' => 541,
             'hierarchical' => 0,
             'sort_column' => 'menu_order',
             'sort_order' => 'asc',
         );
         $children_pages = get_pages( $args );
-        $user_guides = array();
+        $user_guides_return = array();
         foreach ( $children_pages as $child ) {
             $security_query = get_the_terms( $child->ID, 'sec_role' );
             $sec_roles = array();
@@ -238,16 +245,22 @@ get_header();
             $temp_user_guide["data_pop"] = $data_pop;
             $temp_user_guide["data_topics"] = $data_topics;
             $temp_user_guide["data_roles"] = $data_roles;
-            $user_guides[substr($url, strpos($url,"user-guides"))] = $temp_user_guide;
+            $user_guides_return[substr($url, strpos($url,"user-guides"))] = $temp_user_guide;
         }
-        return $user_guides;
+        return $user_guides_return;
     }
 ?>
 
 <script>
-
+    let table = "";
+    
     $(document).ready(function() {
+        datetableSetup().then(function() {
+            urlSetup();
+        });
+    });
 
+    async function datetableSetup() {
         $("table tbody td.column-1 a").each(function () {
             let s = $(this).attr("href");
             let user_guides = <?php echo json_encode($user_guides); ?>;
@@ -278,7 +291,7 @@ get_header();
         });
 
         $('#main_content').css('visibility', 'hidden');
-        let table =  $('table.tablepress').DataTable( {
+        table =  $('table.tablepress').DataTable( {
             "paging":   false,
             orderCellsTop: true,
             fixedHeader: true
@@ -296,81 +309,18 @@ get_header();
             role_values = [];
             topic_values = [];
             pop_values = []
-            search_filters();
+            filterClicked();
             $("#user-guide-clear-filter-button").addClass("hidden");
         });
 
         $('input[type="checkbox"]').click(function() {
-            role_values = [];
-            topic_values = [];
-            pop_values = []
-            let filter_count = 0;
-            $('input[type="checkbox"]:checked').each(function(i) {
-                filter_count++;
-                if ($(this).attr("name") == "security") {
-                    role_values.push($(this).val());
-                }
-                if ($(this).attr("name") == "topic") {
-                    topic_values.push($(this).val());
-                }
-                if ($(this).attr("name") == "population") {
-                    pop_values.push($(this).val());
-                }
-            });
-
-            if (filter_count >= 1) {
-                $("#user-guide-clear-filter-button").removeClass("hidden");
-            } else {
-                $("#user-guide-clear-filter-button").addClass("hidden");
-            }
+            filterClicked();
             
-            console.log($(".dataTables_info").html());
-            table.draw();
         });
 
-            $.fn.dataTable.ext.search.push(
-                function(settings, data, dataIndex) {
-                    var topics = $(table.row(dataIndex).node()).attr('data-topics');
-                    var roles = $(table.row(dataIndex).node()).attr('data-roles');
-                    var populations = $(table.row(dataIndex).node()).attr('data-pop');
-
-                    if (topics == undefined) { topics = ""; }
-                    if (roles == undefined) { roles = ""; }
-                    if (populations == undefined) { populations = ""; }
 
 
-                    topics = topics.split(" ");
-                    roles = roles.split(" ");
-                    populations = populations.split(" ");
-
-                    if (pop_values.length != 0 && role_values.length != 0 && topic_values.length != 0) {
-                        return (populations.some(i => pop_values.includes(i))) &&
-                            (roles.some(i => role_values.includes(i))) &&
-                            (topics.some(i => topic_values.includes(i)));
-                    }
-
-                    else if (pop_values.length != 0 && role_values.length != 0) {
-                        return (populations.some(i => pop_values.includes(i))) && (roles.some(i => role_values.includes(i)));
-                    } else if (pop_values.length != 0 && topic_values.length != 0) {
-                        return (populations.some(i => pop_values.includes(i))) && (topics.some(i => topic_values.includes(i)));
-                    } else if (role_values.length != 0 && topic_values.length != 0) {
-                        return (roles.some(i => role_values.includes(i))) && (topics.some(i => topic_values.includes(i)));
-                    }
-
-                    else if (pop_values.length != 0) {
-                        return populations.some(i => pop_values.includes(i));
-                    } else if (topic_values.length != 0) {
-                        return topics.some(i => topic_values.includes(i));
-                    } else if (role_values.length != 0) {
-                        return roles.some(i => role_values.includes(i));
-                    }
-                    else {
-                        return true;
-                    }
-                }
-            );
-
-        $(".dataTables_wrapper .dataTables_filter label input").detach().prependTo("#main_content .col-md-4");
+        $(".dataTables_wrapper .dataTables_filter label input").detach().prependTo("#main_content .col-md-4").attr('id', 'datatable_search');;
         $("<h3>User Guide Name or Keyword</h3>").detach().prependTo("#main_content .col-md-4");
         $("<h2 style='margin:0;'>Filter by:</h2>").detach().prependTo("#main_content .col-md-4");
         $(".dataTables_wrapper .dataTables_filter").remove();
@@ -391,7 +341,149 @@ get_header();
                 $(this).css("margin-top", -mt + "px");
             });
         }
+    }
 
-    } );
+    function filterClicked() {
+        role_values = [];
+        topic_values = [];
+        pop_values = []
+        let filter_count = 0;
+        $('input[type="checkbox"]:checked').each(function(i) {
+            filter_count++;
+            if ($(this).attr("name") == "security") {
+                role_values.push($(this).val());
+            }
+            if ($(this).attr("name") == "topic") {
+                topic_values.push($(this).val());
+            }
+            if ($(this).attr("name") == "population") {
+                pop_values.push($(this).val());
+            }
+        });
+
+        if (filter_count >= 1) {
+            $("#user-guide-clear-filter-button").removeClass("hidden");
+        } else {
+            $("#user-guide-clear-filter-button").addClass("hidden");
+        }
+        
+        table.draw();
+
+        $.fn.dataTable.ext.search.push(
+            function(settings, data, dataIndex) {
+                var topics = $(table.row(dataIndex).node()).attr('data-topics');
+                var roles = $(table.row(dataIndex).node()).attr('data-roles');
+                var populations = $(table.row(dataIndex).node()).attr('data-pop');
+
+                if (topics == undefined) { topics = ""; }
+                if (roles == undefined) { roles = ""; }
+                if (populations == undefined) { populations = ""; }
+
+
+                topics = topics.split(" ");
+                roles = roles.split(" ");
+                populations = populations.split(" ");
+
+                if (pop_values.length != 0 && role_values.length != 0 && topic_values.length != 0) {
+                    return (populations.some(i => pop_values.includes(i))) &&
+                        (roles.some(i => role_values.includes(i))) &&
+                        (topics.some(i => topic_values.includes(i)));
+                }
+
+                else if (pop_values.length != 0 && role_values.length != 0) {
+                    return (populations.some(i => pop_values.includes(i))) && (roles.some(i => role_values.includes(i)));
+                } else if (pop_values.length != 0 && topic_values.length != 0) {
+                    return (populations.some(i => pop_values.includes(i))) && (topics.some(i => topic_values.includes(i)));
+                } else if (role_values.length != 0 && topic_values.length != 0) {
+                    return (roles.some(i => role_values.includes(i))) && (topics.some(i => topic_values.includes(i)));
+                }
+
+                else if (pop_values.length != 0) {
+                    return populations.some(i => pop_values.includes(i));
+                } else if (topic_values.length != 0) {
+                    return topics.some(i => topic_values.includes(i));
+                } else if (role_values.length != 0) {
+                    return roles.some(i => role_values.includes(i));
+                }
+                else {
+                    return true;
+                }
+            }
+        );
+    }
+
+    async function urlSetup() {
+        //split url to check if it has params
+        var urlArray = window.location.href.split('?');
+
+        //if it has prams only then try to extract these
+        if(urlArray.length > 0 ){
+
+            var filterParams = new URLSearchParams(urlArray[1]);
+            
+            //if params contain '_topic' key/value use its value to set the Topic select dropdown and trigger change 
+            if(filterParams.has("_topic")){
+                let topicValue = sanitize_str(filterParams.get("_topic"));
+                $("input[name='topic']:checkbox").each(function() {
+                    if ($(this).attr("value") == topicValue) {
+                        $(this).trigger('click');
+                        filterClicked();
+                    }
+                });
+            }
+            
+            //if params contain '_role' key/value use its value to set the Role select dropdown and trigger change 
+            if(filterParams.has("_role")) {
+                let roleValue = sanitize_str(filterParams.get("_role"));
+                $("input[name='security']:checkbox").each(function() {
+                    if ($(this).attr("value") == roleValue) {
+                        $(this).trigger('click');
+                        filterClicked();
+                    }
+                });
+            }
+            
+            //if params contain '_pop' key/value use its value to set the Population select dropdown and trigger change 
+            if(filterParams.has("_pop")) {
+                let popValue = sanitize_str(filterParams.get("_pop"));
+                $("input[name='population']:checkbox").each(function() {
+                    if ($(this).attr("value") == popValue) {
+                        $(this).trigger('click');
+                        filterClicked();
+                    }
+                });
+            }
+
+            //if params contain '_filter' key/value use its value to set the Filter textfield and trigger change 
+            if(filterParams.has("_filter")) {
+                let filterValue = filterParams.get("_filter");
+                $("#datatable_search").val(filterValue);
+                $("#datatable_search").trigger('keyup');
+            }
+
+        }
+
+        function sanitize_str(str) {
+            str = str.replace(/^\s+|\s+$/g, ''); // trim
+            str = str.toLowerCase();
+
+            // remove accents, swap ñ for n, etc
+            var from = "àáäâèéëêìíïîòóöôùúüûñçěščřžýúůďťň·/_,:;";
+            var to   = "aaaaeeeeiiiioooouuuuncescrzyuudtn------";
+
+            for (var i=0, l=from.length ; i<l ; i++)
+            {
+                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            str = str.replace('.', '-') // replace a dot by a dash 
+                .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+                .replace(/\s+/g, '-') // collapse whitespace and replace by a dash
+                .replace(/-+/g, '-') // collapse dashes
+                .replace( /\//g, '' ); // collapse all forward-slashes
+
+            return str;
+        }
+    }
 
 </script>
