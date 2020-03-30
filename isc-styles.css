@@ -286,6 +286,21 @@ position: relative;
     color: #ffffff;
 }
 
+#isc-alert-banner a {
+    color: #4B2E83;
+    -o-transition: 0s;
+    -webkit-transition: 0s;
+    transition: 0s;
+}
+
+#isc-alert-banner a:link {
+    color: #4B2E83;
+}
+
+#isc-alert-banner a:hover {
+    text-decoration: underline;
+}
+
 blockquote.banner {
     color: rgb(51, 0, 111);
     background-color: #d4d4d4;
