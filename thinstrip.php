@@ -44,9 +44,9 @@
 		  <!-- <button class='uw-search' aria-owns='uwsearcharea' aria-controls='uwsearcharea' aria-expanded='false' aria-label='open search area' aria-haspopup='true'> -->
 		  <div class="uw-search-bar-thinstrip">
 			<form class="uw-search" action="<%= UW.baseUrl %>">
-				<label class="screen-reader" for="uw-search-bar">Enter search text</label>
+				<label class="screen-reader" for="uw-search-bar-new">Enter search text</label>
 				<div class="search-bar-div">
-					<input id="uw-search-bar" type="search" name="s" value="" placeholder="Search this site"autocomplete="off" />
+					<input id="uw-search-bar-new" type="search" name="s" value="" placeholder="Search this site"autocomplete="off" />
 				</div>
 				<input type="submit" value="search" class="search" tabindex="0"/>
 			</form>
