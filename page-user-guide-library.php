@@ -162,7 +162,7 @@ get_header();
                         <button id="user-guide-clear-filter-button" class="user-guide-clear-filter hidden">Clear all filters</button>
                     </div>
                     <div class="col-md-8">
-                        <?php echo do_shortcode("[table id=" . json_encode(get_the_content()) . " /]"); ?>
+                        <?php echo do_shortcode("[table id=777 /]"); ?>
                     </div>
                 </div>
                 
