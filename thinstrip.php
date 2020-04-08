@@ -41,7 +41,19 @@
 
 		  </nav>
 		  <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
-		  <button class='uw-search' aria-owns='uwsearcharea' aria-controls='uwsearcharea' aria-expanded='false' aria-label='open search area' aria-haspopup='true'>
+		  <!-- <button class='uw-search' aria-owns='uwsearcharea' aria-controls='uwsearcharea' aria-expanded='false' aria-label='open search area' aria-haspopup='true'> -->
+		  <div class="uw-search-bar-thinstrip">
+			<form class="uw-search" action="<%= UW.baseUrl %>">
+				<label class="screen-reader" for="uw-search-bar-new">Enter search text</label>
+				<div class="search-bar-div">
+					<input id="uw-search-bar-new" type="search" name="s" value="" placeholder="Search this site"autocomplete="off" />
+				</div>
+				<input type="submit" value="search" class="search" tabindex="0"/>
+			</form>
+			<select id="mobile-search-select" class="visible-xs">
+			</select>
+			</div>
+		  <button id="open-search-button" class='uw-search' aria-owns='uwsearcharea' aria-controls='uwsearcharea' aria-expanded='false' aria-label='open search area' aria-haspopup='true'>
 	<!--[if gt IE 8]><!-->
 			  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				   width="19px" height="51px" viewBox="0 0 18.776 51.062" enable-background="new 0 0 18.776 51.062" xml:space="preserve" focusable="false">
