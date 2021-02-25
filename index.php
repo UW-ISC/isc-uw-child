@@ -4,7 +4,7 @@
  * and single.php does not exist
  *
  * @package isc-uw-child
- * @author UW-IT AXDD
+ * @author UW-IT AXDD +parallelpublicworks
  */
 
 get_header();
