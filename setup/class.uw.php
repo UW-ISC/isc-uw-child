@@ -60,6 +60,7 @@ class UW {
 		include_once $child . 'class.isc-footer-links.php';
 		include_once $child . 'class.isc-hero-quicklinks.php';
 		include_once $child . 'class.isc-white-bar-links.php';
+		include_once $child . 'class.isc-admin-corner-links.php';
 
 		include_once get_stylesheet_directory() . '/inc/child-template-functions.php';
 		include_once get_stylesheet_directory() . '/inc/user-guide-functions.php';
@@ -104,6 +105,7 @@ class UW {
 		$this->WhiteBarLinks     = new ISC_WhiteBarLinks;
 		$this->FooterLinks       = new ISC_FooterLinks;
 		$this->HeroQuickLinks    = new ISC_HeroQuicklinks;
+		$this->AdminCornerLinks    = new ISC_AdminCornerLinks;
 		remove_shortcode( 'subsection' );
 		remove_shortcode( 'section' );
 		remove_shortcode( 'accordion' );
