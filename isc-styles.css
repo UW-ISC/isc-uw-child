@@ -3200,3 +3200,9 @@ hr {
 
 
 /* Long button - end*/
+
+/* Create box "tile" with gray bg */
+.box-outer .box .tile {
+    background-color: #efefef !important;
+    box-shadow: 1px 1px 3px rgb(0 0 0 / 20%)
+}
