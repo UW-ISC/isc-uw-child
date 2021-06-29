@@ -577,7 +577,7 @@ function print_admin_corner_news($admin_corner_news)
     if ($admin_corner_news->have_posts()) {
         $news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
         $new_news_count = 0;
-        if (!is_int(news_stale_after)) {
+        if (!is_int('news_stale_after')) {
             $news_stale_after = 3;
         }
         while ($admin_corner_news->have_posts()) {
