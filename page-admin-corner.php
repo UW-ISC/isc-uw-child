@@ -106,7 +106,7 @@ EOT;
 						<?php
 $news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
 $new_news_count = 0;
-if (!is_int(news_stale_after)) {
+if (!is_int('news_stale_after')) {
     $news_stale_after = 3;
 }
 $news_stale_after_days_plus_one = $news_stale_after + 1;
