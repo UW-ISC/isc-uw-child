@@ -247,31 +247,32 @@ if (!function_exists('esc_html_title')):
     }
 endif;
 
-add_filter('relevanssi_remove_punctuation', 'savehyphens_1', 9);
+/*add_filter('relevanssi_remove_punctuation', 'savehyphens_1', 9);
 /**
  * Hack around relevanssi dropping punctuation from search queries.
  * Part 1 of 2.
  *
  * @param String $a The search query.
  */
-function savehyphens_1($a)
+/*function savehyphens_1($a)
 {
     $a = str_replace('-', 'HYPHEN', $a);
     return $a;
 }
-
-add_filter('relevanssi_remove_punctuation', 'savehyphens_2', 11);
+*/
+/*add_filter('relevanssi_remove_punctuation', 'savehyphens_2', 11);
 /**
  * Hack around relevanssi dropping punctuation from search queries.
  * Part 2 of 2.
  *
  * @param String $a The search query.
  */
-function savehyphens_2($a)
+/*function savehyphens_2($a)
 {
     $a = str_replace('HYPHEN', '-', $a);
     return $a;
 }
+*/
 
 // Function determines the tags that custom_wp_trim_excerpt will allow
 function allowedtags()
@@ -577,7 +578,7 @@ function print_admin_corner_news($admin_corner_news)
     if ($admin_corner_news->have_posts()) {
         $news_stale_after = get_post_custom_values('news_stale_after_days', get_the_ID())[0];
         $new_news_count = 0;
-        if (!is_int(news_stale_after)) {
+        if (!is_int('news_stale_after')) {
             $news_stale_after = 3;
         }
         while ($admin_corner_news->have_posts()) {
