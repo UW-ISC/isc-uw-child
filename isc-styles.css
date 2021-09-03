@@ -3208,3 +3208,30 @@ hr {
     background-color: #efefef !important;
     box-shadow: 1px 1px 3px rgb(0 0 0 / 20%)
 }
+
+/* Gravity Forms start */
+
+/* Remove hr */
+.gform_wrapper.gravity-theme .gfield_label {
+    border-bottom: 0px !important;
+}
+
+/* Hacky way to suppress extra br's */
+.gform_wrapper br { 
+    display: none;
+}
+
+/* un-bold radio button choices (labels) */
+
+body .gform_wrapper .gform_body .gform_fields .gfield .gfield_radio .gchoice {
+    font-weight: normal !important;
+} 
+
+/* un-bold checkbox item choices (labels) */
+
+body .gform_wrapper .gform_body .gform_fields .gfield .gfield_checkbox .gchoice {
+    font-weight: normal !important;
+} 
+
+/* Gravity Forms end */
+
