@@ -781,4 +781,11 @@ function equate_if_exists($array_key, $array_to_check_in, $value_to_check_equali
 	}
 }
 
+/** Enable cc in Gravity Forms forms **/
+add_filter('gform_notification_enable_cc', 'enable_cc', 10, 3 );
+ 
+function enable_cc( $enable, $notification, $form ){
+  return true;
+}
+
 ?>
