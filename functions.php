@@ -781,7 +781,26 @@ function equate_if_exists($array_key, $array_to_check_in, $value_to_check_equali
 	}
 }
 
-/** Enable cc in Gravity Forms forms **/
+/** Start Gravity Forms customizations **/
+
+/** Override default notification HTML to remove Subject from msg body **/
+
+add_filter( 'gform_html_message_template_pre_send_email', 'notification_template' );
+ 
+function notification_template( $template ) {
+    $template = '
+        <html>
+            <head>
+            </head>
+            <body>
+                {message}
+            </body>
+        </html>';
+ 
+    return $template;
+}
+
+/** Enable cc in notifications **/
 add_filter('gform_notification_enable_cc', 'enable_cc', 10, 3 );
  
 function enable_cc( $enable, $notification, $form ){
