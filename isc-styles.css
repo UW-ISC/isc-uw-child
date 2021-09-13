@@ -3209,6 +3209,12 @@ hr {
     box-shadow: 1px 1px 3px rgb(0 0 0 / 20%)
 }
 
+/* prevent images in box tiles from being upsized to 100% */
+
+.box-outer .box .tile img {
+    width:  initial;
+}
+
 /* Gravity Forms start */
 
 /* Remove hr */
