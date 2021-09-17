@@ -3227,16 +3227,9 @@ hr {
     display: none;
 }
 
-/* un-bold radio button choices (labels) */
-
-body .gform_wrapper .gform_body .gform_fields .gfield .gfield_radio .gchoice {
-    font-weight: normal !important;
-} 
-
-/* un-bold checkbox item choices (labels) */
-
-body .gform_wrapper .gform_body .gform_fields .gfield .gfield_checkbox .gchoice {
-    font-weight: normal !important;
+/* un-bold labels */
+.gform_wrapper.gravity-theme .gfield_checkbox label, .gform_wrapper.gravity-theme .gfield_radio label {
+    font-weight: normal;
 } 
 
 /* Gravity Forms end */
