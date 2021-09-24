@@ -2383,12 +2383,17 @@ p:empty {
 
 /* Right sidebar - start*/
 
+/*
 .isc-dark-grey {
     background: #EEEEEE;
 }
+*/
 
 .default-page-right-sidebar {
     padding: 20px;
+    border-left:  solid;
+    border-left-width: 1px;
+    border-left-color: #E0E0E0;
 }
 
 .isc-right-sidebar-title {
