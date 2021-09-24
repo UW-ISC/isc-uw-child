@@ -65,7 +65,7 @@
 
 				if($show_right_sidebar == 'Yes'){
 				$right_side_bar = get_post_meta( $post->ID, 'custom_html',true);
-				echo '<div class="col-md-3 isc-dark-grey default-page-right-sidebar">';
+				echo '<div class="col-md-3 default-page-right-sidebar">';
 					if(isset($side_bar_title)){
 						echo '<h2 class="isc-right-sidebar-title">'.$side_bar_title.'</h2>';
 					}
