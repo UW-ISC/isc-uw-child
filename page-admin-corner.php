@@ -9,23 +9,27 @@
 get_header();
 $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
 $sidebar = get_post_meta($post->ID, 'sidebar');
-$tasks_this_month = get_post_meta($post->ID);?>
+	$tasks_this_month = get_post_meta($post->ID);
+	$banner = get_post_meta( $post->ID, 'banner-image' );
+	$banner_url = wp_get_attachment_url($banner[0]);
+	?>
 
 <div role="main">
 
 	<?php uw_site_title();?>
 	<?php get_template_part('menu', 'mobile');?>
 
+	<div class="isc-admin-hero" style="background-image: url('<?php echo $banner_url ?>');">
+		<div class="container">
+			<h1 class="banner-text"><?php the_title(); ?></h1>
+		</div>
+	</div>
+
 	<div class="container uw-body">
 
 		<!-- adding title JAB 061418 -->
  		<div class="row">
-
-			<h1><?php the_title();?></h1>
-
-			<br/>
-
-
+ 		<br/>
 		<div class="row">
 
 			<div class="col-md-8 uw-content isc-content" role='main'>
