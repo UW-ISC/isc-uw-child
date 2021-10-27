@@ -248,18 +248,19 @@ p {
 }
 
 #isc-alert-banner {
-    background-color: #85754d;
+    background-color: #65468dc7;
     padding-bottom: 2em;
 }
 
 #isc-alert-banner {
-padding: 0 20px 40px;
+padding: 0 20px 20px;
 position: relative;
 }
 
 #isc-alert-banner h1 {
     color: white;
     font-size: 25px;
+    margin-top: 20px;
 }
 
 #isc-alert-banner p {
@@ -269,8 +270,9 @@ position: relative;
 }
 
 #isc-alert-banner a.more {
-    color: #4b2e83;
+    color: #fff943;
     display: inline-block;
+    text-decoration: underline;
 }
 #isc-alert-banner a.more:after {
     bottom: 0px;
@@ -288,18 +290,19 @@ position: relative;
 }
 
 #isc-alert-banner a {
-    color: #4B2E83;
+    color: #FFFFFF;
     -o-transition: 0s;
     -webkit-transition: 0s;
     transition: 0s;
 }
 
 #isc-alert-banner a:link {
-    color: #4B2E83;
+    color: #FFFFFF;
+    text-decoration: underline;
 }
 
 #isc-alert-banner a:hover {
-    text-decoration: underline;
+    color: #fff943;
 }
 
 blockquote.banner {
