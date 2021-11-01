@@ -781,6 +781,10 @@ function equate_if_exists($array_key, $array_to_check_in, $value_to_check_equali
 	}
 }
 
+/** Disable WP's auto-generated xml sitemap **/
+
+add_filter( 'wp_sitemaps_enabled', '__return_false' );
+
 /** Start Gravity Forms customizations **/
 
 /** Override default notification HTML to remove Subject from msg body **/
