@@ -774,12 +774,6 @@ a.uw-btn-light.btn-sm-light.btn-left { margin-right: 0 !important; }
         }
     }
     .slide-home-featureds{
-        max-width: 1000px;
-        width: 100%;
-        overflow-x: hidden;
-        .owl-stage{
-            display: flex;
-        }
         .owl-dot{
             span{
                 background-color: $uw-purple-87 !important;
@@ -792,17 +786,9 @@ a.uw-btn-light.btn-sm-light.btn-left { margin-right: 0 !important; }
             }
         }
         .owl-dots {
-            display: none;
-            @include desktop {
-                display: block;
             position: absolute;
             right: 40%;
-                top: 10% !important;
-                button{
-                    background-color: transparent;
-                    border: none;
-                }
-            }
+            top: -24px;
         }
         .slide-home-featureds-maintitle{
             font-family: "Encode Sans Compressed",sans-serif;
@@ -819,7 +805,7 @@ a.uw-btn-light.btn-sm-light.btn-left { margin-right: 0 !important; }
                 display: block;
                 z-index: 100;
                 position: absolute;
-                top: 24% !important;
+                top: 12%;
                 width: 105%;
                 left: -20px;
                 .owl-prev{
