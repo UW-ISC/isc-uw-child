@@ -60,19 +60,12 @@ class UW_Styles {
 		'version'  => '1.10.13',
 		),
 
-		 'isc-styles' => array(
-		 'id'       => 'isc-styles',
-		 'url'      => get_stylesheet_directory_uri() . '/isc-styles.css',
-		 'deps'     => array(),
-		 'version'  => $ver,
-		 ),
-
-		'owl-carousel' => array(
+		/**'owl-carousel' => array(
 			'id'       => 'owl-carousel',
 			'url'      => get_stylesheet_directory_uri() . '/owl.carousel.min.css',
 			'deps'     => array(),
 			'version'  => '2.3.4',
-		),
+		), */
 
 		'owl-theme' => array(
 			'id'       => 'owl-theme',
@@ -80,6 +73,13 @@ class UW_Styles {
 			'deps'     => array(),
 			'version'  => '2.3.4',
 		),
+
+		 'isc-styles' => array(
+		 'id'       => 'isc-styles',
+		 'url'      => get_stylesheet_directory_uri() . '/isc-styles.css',
+		 'deps'     => array(),
+		 'version'  => $ver,
+		 ),
 
 		'uw-style' => array(
 		  'id'      => 'uw-style',
