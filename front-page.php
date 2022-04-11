@@ -63,7 +63,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 							<h2 class="quicklinks-maintitle ml-3">Employee Quick Links</h2>
 							<section class="options-employee text-center row">
 								<a title="Getting paid"
-									href="https://wd5.myworkday.com/uw/login.htmld"
+									href="/your-pay-taxes/paydays/"
 									target="_blank"
 									class="options-employee-item col-md-6 col-xs-4">
 									<img alt="Getting paid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon_GettingPaid.png" alt="">
@@ -99,7 +99,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								</a>
 								<a
 									title="Managing Your Workday Profile"
-									href="/your-benefits/changing/year-round/"
+									href="/using-workday/managing-your-personal-and-work-information/"
 									class="options-employee-item col-md-6 col-xs-4">
 									<img alt="Managing Your Workday Profile" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon_ManageBenefits.png" alt="">
 									<h4 class="text-uppercase">Managing Your Workday Profile</h4>
