@@ -2,3 +2,12 @@
 .sass-cache
 node_modules
 isc-styles.css.map
+/.bin
+/.vs/isc-uw-child/config/applicationhost.config
+/.vs/isc-uw-child/v16
+/.vs
+/packages
+/compilerconfig.json
+/compilerconfig.json.defaults
+/isc-uw-child.sln
+/packages.config
