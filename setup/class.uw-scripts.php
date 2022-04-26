@@ -92,6 +92,14 @@ class UW_Scripts {
 			'admin'   => false,
 			),
 
+			'owl-carousel' => array(
+				'id'      => 'owl-carousel',
+				'url'     => $child . '/vendor/js/owl.carousel.min.js',
+				'deps'    => array( 'jquery' ),
+				'version' => '2.3.4',
+				'admin'   => false,
+			),
+
 			'isc-collapse-additions' => array(
 			'id'      => 'isc-collapse-additions',
 			'url'     => $child . '/assets/js/isc-collapse-additions.js',
