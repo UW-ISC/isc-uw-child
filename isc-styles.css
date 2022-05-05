@@ -2330,7 +2330,7 @@ p:empty {
 }
 
 .isc-user-guide .title {
-    margin-top: -1em;
+    margin-top: 0em;
     margin-bottom: 0px;
 }
 
