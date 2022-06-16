@@ -64,6 +64,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 							<section class="options-employee text-center row">
 								<a title="Getting paid"
 									href="/your-pay-taxes/paydays/"
+									id="home-btn-1-1"
 									target="_blank"
 									class="options-employee-item col-md-6 col-xs-4">
 									<img alt="Getting paid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon_GettingPaid.png" alt="">
@@ -72,6 +73,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								<a
 									title="Entering Time"
 									href="/your-time-absence/time-entry/"
+									id="home-btn-1-2"
 									class="options-employee-item col-md-6 col-xs-4">
 									<img alt="Entering Time" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon_EnteringTime.png" alt="">
 									<h4 class="text-uppercase">Entering Time</h4>
@@ -79,6 +81,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								<a
 									title="Taking Time off"
 									href="/your-time-absence/time-off/"
+									id="home-btn-2-1"
 									class="options-employee-item col-md-6 col-xs-4">
 									<img alt="Taking Time off" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon_TakingTimeOff.png" alt="">
 									<h4 class="text-uppercase">Taking Time off</h4>
@@ -86,6 +89,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								<a
 									title="Enrolling in benefits"
 									href="/your-benefits/newly-eligible/"
+									id="home-btn-2-2"
 									class="options-employee-item col-md-6 col-xs-4">
 									<img alt="Enrolling in benefits" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon_Enrolling.png" alt="">
 									<h4 class="text-uppercase">Enrolling in benefits</h4>
@@ -93,6 +97,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								<a
 									title="Changing Your benefits"
 									href="/your-benefits/changing/"
+									id="home-btn-3-1"
 									class="options-employee-item col-md-6 col-xs-4">
 									<img alt="Changing Your benefits" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon_ChangeBenefits.png" alt="">
 									<h4 class="text-uppercase">Changing Your benefits</h4>
@@ -100,6 +105,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 								<a
 									title="Managing Your Workday Profile"
 									href="/using-workday/managing-your-personal-and-work-information/"
+									id="home-btn-3-2"
 									class="options-employee-item col-md-6 col-xs-4">
 									<img alt="Managing Your Workday Profile" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon_ManageBenefits.png" alt="">
 									<h4 class="text-uppercase">Managing Your Workday Profile</h4>
