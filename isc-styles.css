@@ -2758,6 +2758,11 @@ p:empty {
     color: #f39c12;
 }
 
+.isc-milestone-qq:before {
+    content: "\f059";
+    color: #0088ff;
+}
+
 .center {
     position: relative;
     left: 50%;
