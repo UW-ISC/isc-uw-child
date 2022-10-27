@@ -161,7 +161,7 @@ add_shortcode( 'expand', 'isc_expander' );
  * This milestone has an icon (associated with its type) and user defined content.
  * It will be wrapped between two horizontal lines with appropriate padding and margins to seperate it from page content.
  * 
- * Valid value for type attribute: done, routing, important, pause
+ * Valid value for type attribute: done, routing, important, pause, qq ("quick question")
  * 
  * Usage eg.
  *     [isc-milestone type="done"]
