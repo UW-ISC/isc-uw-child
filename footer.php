@@ -20,7 +20,8 @@
 
 			<?php $options = get_option( 'isc_footer_fields' );?>
 
-			<div class="col-md-6">
+			<!-- Start ISC-40331 Remove Contact Information section from footer -->
+			<!-- <div class="col-md-6">
 			  <h3>Contact Information</h3>
 			  <div class="row  location-container">
 			  <div class="col-md-6 map-container">
@@ -28,15 +29,30 @@
 			  </div>
 			  <div class="col-md-6">
 				<ul class="footer-contact-container">
-				  <li><div class="icon-container"><i class="fa fa-map-marker" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_url( $options['map'] ) ?>">   <?php echo esc_html( $options['location'] ) ?></a></div></li>
-				  <!-- <li><div class="icon-container"><i class="fa fa-phone-square " aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_html( 'tel:1-' . $options['phone'] ) ?>"> <?php echo esc_html( $options['phone'] ) ?>   </a></div></li> -->
-				  <li><div class="icon-container icons-stacked"><i class="fa fa-square fa-stack-2x" aria-hidden="true"></i><i class="fa fa-envelope fa-stack-1x" aria-hidden="true"></i></div><div class="text-container"><a href="<?php echo esc_url( 'mailto:' . $options['email'] ) ?>"> <?php echo esc_html( $options['email'] ) ?> </a></div></li>
+				  <li><div class="icon-container">
+				      <i class="fa fa-map-marker" aria-hidden="true"></i>
+				      </div>
+				      <div class="text-container"><a href="<?php echo esc_url( $options['map'] ) ?>">   <?php echo esc_html( $options['location'] ) ?></a>
+				      </div>
+				  </li>
+				  <li>
+				  	<div class="icon-container"><i class="fa fa-phone-square " aria-hidden="true"></i>
+				  	</div>
+				  	<div class="text-container"><a href="<?php echo esc_html( 'tel:1-' . $options['phone'] ) ?>"> <?php echo esc_html( $options['phone'] ) ?>   </a>
+				  	</div>
+				  </li>
+				  <li><div class="icon-container icons-stacked"><i class="fa fa-square fa-stack-2x" aria-hidden="true"></i><i class="fa fa-envelope fa-stack-1x" aria-hidden="true"></i>
+				  </div>
+				  <div class="text-container"><a href="<?php echo esc_url( 'mailto:' . $options['email'] ) ?>"> <?php echo esc_html( $options['email'] ) ?> </a>
+				  </div></li>
 				</ul>
 			  </div>
-			</div>
-		  </div>
+			  </div>
+		    </div> -->
+		    <!-- End ISC-40331 Remove Contact Information section from footer -->
 
-			<div class="col-md-6">
+			<div style="text-align:center;">
+				<span style="padding-right:13px; margin-right:10px;">
 				<div class="row">
 					<?php
 					wp_nav_menu(
@@ -46,6 +62,7 @@
 						)
 					);
 					?>
+				</span>
 				</div>
 			</div>
 		</div>
