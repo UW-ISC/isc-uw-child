@@ -113,13 +113,11 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 							</section>
 						</div>
 					</div>
-				</div>
-				<span class="under-line-title"></span>
-				<!--END ROW -->
+				</div><!--END ROW -->
 
 				<div class="row">
-
 					<div class="col-md-8 col-xs-12">
+					<span class="under-line-title"></span>
 						<section class="slide-home-featureds">
 							<h2  class="slide-home-featureds-maintitle">Here and now</h2>
 							<?php
