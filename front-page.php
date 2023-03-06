@@ -29,8 +29,8 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 		  <div class="container">
 				<div class="row">
 					<div class="col-md-8 col-xs-12">
-						<h1 class="hero-title"><?php echo get_the_title( $ID ); ?></h1>
-						<span class="under-line-title"></span>
+						<!-- <h1 class="hero-title"><?php echo get_the_title( $ID ); ?></h1>
+						<span class="under-line-title"></span> -->
 						<?php
 							$page = get_page_by_path('featured-headline');
 							$imagePath = get_the_post_thumbnail_url($page->ID);
@@ -113,7 +113,9 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 							</section>
 						</div>
 					</div>
-				</div><!--END ROW -->
+				</div>
+				<span class="under-line-title"></span>
+				<!--END ROW -->
 
 				<div class="row">
 
