@@ -181,10 +181,10 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 
 								</div> <!-- END owl-carousel -->
 								<div class="slider_nav owl-nav">
-									<a title="next item" class="am-next">
+									<a title="Next item" class="am-next">
 										<img alt="Left arrow" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/LeftArrow.png" alt="LeftArrow" />
 									</a>
-									<a title="previus item" class="am-prev">
+									<a title="Previous item" class="am-prev">
 										<img alt="Right arrow" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/RightArrow.png" alt="RightArrow" />
 									</a>
 								</div>
