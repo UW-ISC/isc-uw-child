@@ -29,6 +29,9 @@ get_header();
 			<div class="col-md-12" id="main_content">
 
 				<?php isc_title(); ?>
+				<div class="row"><div class="col-md-3 col-lg-2" style="width: fit-content !important;padding-right: 0;">
+					<blockquote class="banner"><strong>Looking for Finance processes?</strong><br/>Step-by-step guidance and job aids for Workday Finance business processes can be found in the <a href="https://uwconnect.uw.edu/finance/" rel="noopener">UW Connect Finance</a> portal.</blockquote></div>
+				</div>
 				<div class="row">
 					<div class="col-md-3 col-lg-2" style="width: fit-content !important;padding-right: 0;">
 						<label style="line-height:41px;margin-right: 5px;">Filter by Keyword:</label>
@@ -37,7 +40,7 @@ get_header();
 						<div class="line">
 							<input id="myInputTextField" type="text" class="form-control no-rounded-border" style="max-width:250px;">
 							<button id="clearFiltersBtn" class="control-icon isc-simple-button" >
-											<i class="fa fa-close isc-btn-icon"></i>clear filters
+											<i class="fa fa-close isc-btn-icon"></i>Clear filters
 							</button>
 						</div>
 					</div>
