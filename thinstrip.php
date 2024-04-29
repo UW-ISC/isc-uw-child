@@ -12,7 +12,7 @@
 <header class="uw-thinstrip">
 	<div class="container">
 		<div class="pull-left isc-logo">
-			<a aria-hidden="true" href="<?php echo esc_url( get_site_url() ); ?>" title="ISC Home"><?php bloginfo( 'name' ); ?></a>
+			<a aria-hidden="true" href="<?php echo esc_url( get_site_url() ); ?>" title="Employee Workday Help Home"><?php bloginfo( 'name' ); ?></a>
 		</div>
 	</div>
 		<div class="col-xs-12 isc-translateplugin">
