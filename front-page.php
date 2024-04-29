@@ -241,7 +241,7 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 
 					<aside class="col-md-4 col-xs-12 pt-1 mb-3">
 						<div class="isc-homepage-sidebar-v2 mt-3">
-							<h2 class="homepage-sidebar-v2-maintitle ml-3">ISC Announcements</h2>
+							<h2 class="homepage-sidebar-v2-maintitle ml-3">Announcements</h2>
 							<div class="isc-homepage-sidebar-v2-content px-2">
 								<?php
 									$args = array(
