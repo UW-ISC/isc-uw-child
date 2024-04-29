@@ -219,8 +219,7 @@ p {
     .uw-thinstrip .isc-logo a {
         height: 70px;
         text-indent: -9999px;
-		background-image: url("../isc-uw-child/assets/images/Employee-Workday-Help-logo-purple.png");
-/*		background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");  */
+        background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");
         background-position: left center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -228,8 +227,7 @@ p {
     }
     .uw-thinstrip .isc-logo a:hover,
     .uw-thinstrip .isc-logo a:focus {
-        background-image: url("../isc-uw-child/assets/images/Employee-Workday-Help-logo-gold.png");
-/*      background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg");  */
+        background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg");
     }
 }
 
@@ -237,8 +235,7 @@ p {
     .uw-thinstrip .isc-logo a {
         height: 70px;
         text-indent: -9999px;
-        background-image: url("../isc-uw-child/assets/images/Employee-Workday-Help-logo-purple.png");
-/*      background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg"); */
+        background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");
         background-position: left center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -246,8 +243,7 @@ p {
     }
     .uw-thinstrip .isc-logo a:hover,
     .uw-thinstrip .isc-logo a:focus {
-        background-image: url("../isc-uw-child/assets/images/Employee-Workday-Help-logo-gold.png");
-/*      background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg");  */
+        background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg");
     }
 }
 
@@ -3438,8 +3434,7 @@ body, p {
     .uw-thinstrip .isc-logo a {
         height: 70px;
         text-indent: -9999px;
-        background-image: url("../isc-uw-child/assets/images/Employee-Workday-Help-logo-purple.png");
-/*      background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");  */
+        background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");
         background-position: left center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -3447,8 +3442,7 @@ body, p {
     }
 
         .uw-thinstrip .isc-logo a:hover, .uw-thinstrip .isc-logo a:focus {
-            background-image: url("../isc-uw-child/assets/images/Employee-Workday-Help-logo-gold.png");
-/*          background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg"); */
+            background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg");
         }
 }
 
@@ -3456,8 +3450,7 @@ body, p {
     .uw-thinstrip .isc-logo a {
         height: 70px;
         text-indent: -9999px;
-        background-image: url("../isc-uw-child/assets/images/Employee-Workday-Help-logo-purple.png");
-/*      background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg"); */
+        background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_purple.jpg");
         background-position: left center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -3465,8 +3458,7 @@ body, p {
     }
 
         .uw-thinstrip .isc-logo a:hover, .uw-thinstrip .isc-logo a:focus {
-            background-image: url("../isc-uw-child/assets/images/Employee-Workday-Help-logo-gold.png");
-/*          background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg"); */
+            background-image: url("../isc-uw-child/assets/images/UW_IntegratedSrvcCtr_gold.jpg");
         }
 }
 
