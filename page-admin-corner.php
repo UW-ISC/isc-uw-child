@@ -223,7 +223,7 @@ print_admin_corner_news($category_posts);
 			</div>
 
 			<div class="col-md-4 uw-sidebar isc-sidebar" role="">
-						<div class="service-links"><h4>WORKDAY FINANCE SUPPORT</h4><p>Where to go for Workday support now depends on what you need help with. For questions about Workday Finance processes (procurement, grant management, etc.) visit the <strong>UW Connect Finance Portal</strong>.</p><p><a class="uw-btn btn-sm" href="https://uwconnect.uw.edu/finance" rel="noopener">Go to the Portal</a></p><p>The ISC continues to be your source for Workday HCM (HR and payroll) support.</p>
+						<div class="service-links"><h4>WORKDAY FINANCE SUPPORT</h4><p>Where to go for Workday support now depends on what you need help with. For questions about Workday Finance processes (procurement, grant management, etc.) visit the <strong>UW Connect Finance Portal</strong>.</p><p><a class="uw-btn btn-sm" href="https://uwconnect.uw.edu/finance" rel="noopener">Go to the Portal</a></p>
 							<?php
 wp_nav_menu(
     array(
