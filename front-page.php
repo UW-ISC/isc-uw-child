@@ -25,7 +25,8 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 	<div class="uw-content" role='main'>
 	<?php uw_site_title(); ?>
 	<?php get_template_part( 'menu', 'mobile' ); ?>
-	  <div class="isc-homepage-hero" style="background-image: url('<?php echo esc_url( $url );?>');">
+	<!--  <div class="isc-homepage-hero" style="background-image: url('<php echo esc_url( $url );?>');"> -->
+	  <div class="isc-homepage-hero">
 		  <div class="container">
 				<div class="row">
 					<div class="col-md-8 col-xs-12">
