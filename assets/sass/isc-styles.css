@@ -292,9 +292,9 @@ a.uw-btn-light.btn-sm-light.btn-left {
   font-size: 18px; }
 
 .isc-updated-date {
-  color: #666666;
+/*  color: #666666; */
   font-size: 13px;
-  font-style: italic; }
+/*  font-style: italic; */ }
 
 /*** uw body copy ***/
 .uw-body-copy {
