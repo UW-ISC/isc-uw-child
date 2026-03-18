@@ -311,7 +311,7 @@ position: relative;
 
 blockquote.banner {
     color: rgb(51, 0, 111);
-    background-color: #d4d4d4;
+/*    background-color: #d4d4d4; Hide due to accessibility */
     border: 0 !important;
     padding: 5px 10px 5px 40px !important;
     border-radius: 5px;
@@ -876,7 +876,7 @@ Let's remove the isc-homepage-hero reference....
 }
 
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card {
-    background: #ece9e2;
+/*    background: #ece9e2; Hide due to accessibility*/
     margin-bottom: 30px;
     position: relative;
     z-index: 5;
@@ -4353,7 +4353,7 @@ a.uw-btn-light.btn-sm-light.btn-left {
 .isc-homepage-hero .slide-home-featureds .isc-homepage-card-v2 {
     padding: 2rem 3rem;
     margin-bottom: 1rem;
-    background-color: #ece9e2;
+/*    background-color: #ece9e2; Hide due to accessibility */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -4452,7 +4452,7 @@ a.uw-btn-light.btn-sm-light.btn-left {
 }
 
 .isc-homepage-body .isc-homepage-featured .isc-homepage-card {
-    background: #ece9e2;
+/*    background: #ece9e2; Hide due to accessibility */
     margin-bottom: 30px;
     position: relative;
     z-index: 5;
