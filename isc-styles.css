@@ -311,7 +311,6 @@ position: relative;
 
 blockquote.banner {
     color: rgb(51, 0, 111);
-/*    background-color: #d4d4d4; Hide due to accessibility */
     border: 0 !important;
     padding: 5px 10px 5px 40px !important;
     border-radius: 5px;
