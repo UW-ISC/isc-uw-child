@@ -38,7 +38,7 @@ get_header();
 					</div>
 					<div class="col-sm-9 col-lg-10">
 						<div class="line">
-							<input id="myInputTextField" type="text" aria-label="Filter by Keyword" class="form-control no-rounded-border" style="max-width:250px;">
+							<input id="myInputTextField" type="text" class="form-control no-rounded-border" style="max-width:250px;">
 							<button id="clearFiltersBtn" class="control-icon isc-simple-button" >
 											<i class="fa fa-close isc-btn-icon"></i>Clear filters
 							</button>
@@ -59,7 +59,7 @@ get_header();
 					<thead style="font-size:14px;">
 						<tr>
 							<th></th>
-							<th><select class="form-control input-sm" id="topic-dropdown" aria-label="Select a topic">
+							<th><select class="form-control input-sm" id="topic-dropdown">
 									  <option value="---"> (Select a topic) </option>
 										<?php
 										  $topics = (isc_get_all_topics( $user_guides ));
@@ -68,7 +68,7 @@ get_header();
 										}
 										?>
 									</select></th>
-							<th><select class="form-control input-sm" id="role-dropdown" aria-label="Select a role">
+							<th><select class="form-control input-sm" id="role-dropdown">
 									  <option value="---"> (Select a role) </option>
 										<?php
 										  $roles = (isc_get_all_roles( $user_guides ));
