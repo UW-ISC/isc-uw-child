@@ -2310,7 +2310,7 @@ p:empty {
     }
 	/* change p a to underline */
     p a {
-        text-decoration: underline;
+        text-decoration: underline !important;
         font-style: italic;
     }
     span.glossaryLink,
@@ -3305,7 +3305,7 @@ hr {
 /*** sass media query mixins ***/
 a {
     color: #0B6EAD;
-	text-decoration: underline;
+	text-decoration: underline !important;
 }
 
 h1 {
