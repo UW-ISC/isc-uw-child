@@ -2308,8 +2308,9 @@ p:empty {
         width: 100% !important;
         border: 2px solid lightgrey !important;
     }
+	/* change p a to underline */
     p a {
-        text-decoration: none;
+        text-decoration: underline;
         font-style: italic;
     }
     span.glossaryLink,
