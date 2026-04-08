@@ -121,46 +121,86 @@ $buttonlink = get_post_meta( $post->ID, 'buttonlink' );   ?>
 					<span class="under-line-title"></span>
 						<section class="slide-home-featureds">
 							<h2  class="slide-home-featureds-maintitle">Here and now</h2>
+							<?php
+								$args = array(
+									'hierarchical'	=> false,
+									'post_type'	=> 'page',
+									'post_status'	=> 'publish',
+									'meta_key'	=> 'isc-featured',
+									'meta_value'	=> 'Homepage',
+									'sort_column'  => 'post_date',
+									'sort_order'   => 'desc');
 
-<!-- Deleted carousel code and replaced with static HTML for accessibility -->
+								$featured = get_pages( $args );
+								if ( ! $featured ):
+									echo "<div class='col-md-8'>No featured pages found!</div>";
+								else: ?>
+								<div class="owl-dots">
+									<div class="owl-dot active"><span></span></div>
+									<div class="owl-dot"><span></span></div>
+									<div class="owl-dot"><span></span></div>
+								</div>
+								<div class="owl-carousel owl-theme owl-loaded">
 
-<div class="isc-homepage-card-v2">
-	<div class="isc-homepage-image">
-		<div class="warpper-isc-homepage-image">
-			<img alt="Workday HCM training" src="https://employeehelp.workday.uw.edu/wp-content/uploads/2020/03/Training_630x386.png" />
-		</div>
-	</div>
-	<div class="isc-homepage-card-body">
-		<h3><a title="Workday HCM Training" href="https://employeehelp.workday.uw.edu/support-resources/workday-training/">Workday HCM Training</a></h3>
-			<p class="isc-homepage-excerpt-card-v2">
-			Whether you need to sign up for Workday Security Role training or wish to brush up on Workday fundamentals, visit this page to find the training you need to succeed in Workday.</p>
-	</div><!--END isc-homepage-card-body-->
-</div><!--END isc-homepage-card-v2-->
-<div class="isc-homepage-card-v2">
-	<div class="isc-homepage-image">
-		<div class="warpper-isc-homepage-image">
-			<img alt="Managing your personal and work information in Workday" src="https://employeehelp.workday.uw.edu/wp-content/uploads/2020/07/Mailbox-1251x708.png" />
-		</div>
-	</div>
-	<div class="isc-homepage-card-body">
-		<h3><a title="Managing Your Personal and Work Information in Workday" href="https://employeehelp.workday.uw.edu/using-workday/managing-your-personal-and-work-information/">Managing Your Personal and Work Information in Workday</a></h3>
-			<p class="isc-homepage-excerpt-card-v2">
-			Follow the guidance on this page to review and update your name, address, citizenship status, emergency contacts and more. 		
-			</p>
-	</div><!--END isc-homepage-card-body-->
-</div><!--END isc-homepage-card-v2-->
-<div class="isc-homepage-card-v2">
-	<div class="isc-homepage-image">
-		<div class="warpper-isc-homepage-image">
-			<img alt="How to get Workday HCM help" src="https://employeehelp.workday.uw.edu/wp-content/uploads/2017/12/Bell-Help-1251x658.jpg" />
-		</div>
-	</div>
-	<div class="isc-homepage-card-body">
-		<h3><a title="How to Get Workday HCM Help" href="https://employeehelp.workday.uw.edu/support-resources/how-to-get-workday-help/">How to Get Workday HCM Help</a></h3>
-			<p class="isc-homepage-excerpt-card-v2">Trying to figure out who to contact when you need assistance with HR, payroll and benefits questions or issues? Refer to this page for guidance.</p>
-	</div><!--END isc-homepage-card-body-->
-</div><!--END isc-homepage-card-v2-->
-						
+								<?php	foreach ( $featured as $featured_page ) : ?>
+
+										<div class="isc-homepage-card-v2">
+											<?php
+												$custom = get_post_custom( $featured_page->ID );
+												if ( has_post_thumbnail( $featured_page->ID ) ) :
+													$image = get_the_post_thumbnail_url( $featured_page->ID );
+											?>
+												<div class="isc-homepage-image">
+													<div class="warpper-isc-homepage-image">
+														<img alt="Here and now image" src="<?php echo $image; ?>" />
+													</div>
+											<?php else: // Use the default image. ?>
+												<div class="isc-homepage-image">
+											<?php endif; ?>
+												</div>
+
+											<div class="isc-homepage-card-body">
+												<h3>
+													<?php echo get_the_title( $featured_page->ID ); ?>
+												</h3>
+												<?php
+													$description = $custom['isc-featured-description'][0];
+													if ( '' === $description ) {
+														$description = '[No description found]';
+													}
+												?>
+												<p class="isc-homepage-excerpt-card-v2">
+													<?php echo esc_textarea( $description ); ?>
+													<a title="<?php echo get_the_title( $featured_page->ID ); ?>"
+														href="<?php echo esc_url( get_permalink( $featured_page->ID ) ); ?>">
+														Learn more
+													</a>
+												</p>
+											</div><!--END isc-homepage-card-body-->
+										</div><!--END isc-homepage-card-v2-->
+									<?php endforeach; ?>
+
+								</div> <!-- END owl-carousel -->
+								<div class="slider_nav owl-nav">
+									<a title="Next item" class="am-next">
+										<img alt="Left arrow" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/LeftArrow.png" alt="LeftArrow" />
+									</a>
+									<a title="Previous item" class="am-prev">
+										<img alt="Right arrow" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/RightArrow.png" alt="RightArrow" />
+									</a>
+								</div>
+
+							<?php endif; ?>
+							<script>
+								$('.owl-carousel').owlCarousel({
+									items: 1,
+									margin:10,
+									loop:false,
+									rewind:true,
+									nav:true,
+									navText: [$('.am-next'),$('.am-prev')],
+								});
+							</script>
 						</section>
 
 						<div class="hidden-xs isc-content-body">
