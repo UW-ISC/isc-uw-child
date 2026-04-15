@@ -192,7 +192,7 @@ function print_sort_by_dropdown(){
 	}
 
 	$sort_by_html = <<<askdnaknckascnkan
-			<label for"sortByDropdown">Sort by: </label>
+			<label>Sort by: </label>
 			<select id="sortByDropdown" onchange="handleSortByChange(this)">
 				<option value="title" $sort_by_title>Title</option>
 				<option value="date-updated" $sort_by_update_date >Date Updated</option>
